@@ -1,0 +1,72 @@
+
+<app-header></app-header>
+
+
+<!-- Page Title start -->
+<div class="pageTitle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">Login</h1>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="breadCrumb"><a href="#">Home</a> / <span>Login</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Title End -->
+
+<div class="listpgWraper">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 col-md-offset-3">
+
+        <div class="userccount">
+          <div *ngIf="login_error==true" class="alert alert-danger">
+            <strong>Error!</strong> Invalid Login Details
+          </div>
+          <h5>User Login</h5>
+          <!-- login form -->
+            <form role="form" class="login-form" (ngSubmit)="f.form.valid && loged_in(username.value, password.value)" #f="ngForm" novalidate>
+
+          <div class="formpanel">
+            <div class="formrow">
+              <div class="form-group label-overlay">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                  <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+                  <input type="text" class="form-control" placeholder="Username" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+
+                </div>
+
+              </div><!-- End .form-group -->
+            </div>
+            <div class="formrow">
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="model.password"  #password="ngModel" required>
+              </div>
+
+
+            </div>
+            <input type="submit" class="btn" value="Login">
+          </div>
+          </form>
+          <!-- login form  end-->
+
+          <!-- sign up form -->
+          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a  [routerLink]="['/sign-up']">Register Here</a></div>
+          <!-- sign up form end-->
+
+          <div class="socialLogin">
+            <h5>Login Or Register with Social</h5>
+            <a href="#." class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#." class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>
