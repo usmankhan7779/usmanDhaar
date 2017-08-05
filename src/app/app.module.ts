@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { DatePipe   } from '@angular/common';
 import {Routing , AppRoutingProvider} from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LoginService } from './log-in/log-in.services';
+import { HomeService } from './home/home.services';
+
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SelectCategoryComponent } from './select-category/select-category.component';
 import { SingleProductComponent } from './single-product/single-product.component';
@@ -25,10 +27,9 @@ import { PendingAdComponent } from './pending-ad/pending-ad.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
-
-
-
-
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { AdService } from './post-ad/ad.services';
+import { StoreRegistrationComponent } from './store-registration/store-registration.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { CategoryDetailComponent } from './category-detail/category-detail.compo
     PendingAdComponent,
     EditProfileComponent,
     ContactUsComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    UserDetailComponent,
+    StoreRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,9 @@ import { CategoryDetailComponent } from './category-detail/category-detail.compo
   providers: [
     AppRoutingProvider,
     LoginService,
+    AdService,
+    HomeService,
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

@@ -8,7 +8,25 @@
         <h1 class="page-heading">Dashboard</h1>
       </div>
       <div class="col-md-6 col-sm-6">
-        <div class="breadCrumb"><span>Welcome Jhon</span></div>
+
+
+        <div class="breadCrumb ">
+          <img class="breadimg" src="assets/images/faq-banner.png" alt="google ad"  width="70px" height="70px"> <br/>
+          <span>Welcome Jhon</span>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
       </div>
     </div>
   </div>
@@ -20,20 +38,25 @@
     <div class="row">
       <div class="col-md-3 col-sm-4">
         <ul class="usernavdash">
-          <li class="active"><a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
-          <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
-          <li><a href="#"><i class="fa fa-desktop" aria-hidden="true"></i> My Pending Ads</a></li>
-          <li><a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> My Active Ads</a></li>
+          <li ><a [routerLink]="['/select-category']"><i class="fa fa-tachometer" aria-hidden="true"></i> Post an Ad</a></li>
+          <li class="active"><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
+          <li><a [routerLink]="['/pending-ad']"><i class="fa fa-desktop" aria-hidden="true"></i> My Pending Ads</a></li>
+          <li><a [routerLink]="['/active-ad']"><i class="fa fa-laptop" aria-hidden="true"></i> My Active Ads</a></li>
           <li><a href="#"><i class="fa fa-commenting" aria-hidden="true"></i> Feedback</a></li>
-          <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> Followers</a></li>
           <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i> My Package</a></li>
           <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> Tags</a></li>
           <li><a href="#"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
           <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+
         </ul>
         <div class="adimages"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </div>
       </div>
+
       <div class="col-md-9 col-sm-8">
+        <div *ngIf="NewPostcheck == true" class="alert alert-success">
+          <strong>Product</strong> product successfully added to your shop
+        </div>
         <ul class="row profilestat">
           <li class="col-md-2 col-sm-4 col-xs-6">
             <div class="inbox"> <i class="fa fa-eye" aria-hidden="true"></i>
@@ -50,11 +73,7 @@
               <h6>10</h6>
               <strong>Ad Expire</strong> </div>
           </li>
-          <li class="col-md-2 col-sm-4 col-xs-6">
-            <div class="inbox"> <i class="fa fa-user-o" aria-hidden="true"></i>
-              <h6>21</h6>
-              <strong>Followers</strong> </div>
-          </li>
+
           <li class="col-md-2 col-sm-4 col-xs-6">
             <div class="inbox"> <i class="fa fa-briefcase" aria-hidden="true"></i>
               <h6>2</h6>
@@ -65,10 +84,11 @@
               <h6>8</h6>
               <strong>Messages</strong> </div>
           </li>
+
+
+
         </ul>
-        <div class="instoretxt">
-          <div class="credit">Your on site available credit is: <strong>$99.00</strong></div>
-          <a href="#.">Update Package</a> <a href="#." class="history">Payment History</a> </div>
+
         <div class="myads">
           <h3>My Recent Ads</h3>
           <ul class="searchList">

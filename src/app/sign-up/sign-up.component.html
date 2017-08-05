@@ -100,11 +100,11 @@
                     <div *ngIf="f.submitted && !FName.valid" class="help-block">First Name is required</div>
                     <input type="text" class="form-control" name="FName" placeholder="First Name" [(ngModel)]="model.FName" #FName="ngModel" required>
                   </div><!-- End .form-group -->
-                </div>
+            </div>
 
 
 
-                <div class="formrow label-overlay">
+            <div class="formrow label-overlay">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !LName.valid }">
                     <div *ngIf="f.submitted && !LName.valid" class="help-block">Last Name is required</div>
                     <input type="text" class="form-control" name="LName" placeholder="Last Name" [(ngModel)]="model.LName" #LName="ngModel" required>

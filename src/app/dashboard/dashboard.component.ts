@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 export class DashboardComponent implements OnInit {
 
   ServerUrl =  'http://127.0.0.1:8000/';
-
+  NewPostcheck = false ;
   constructor(private _http: Http ,
               private Profile: LoginService,
               private _nav: Router) {
@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('Verfiying')
+    ///console.log('Verfiying')
     this.Profile.verify_token().subscribe((response) => {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
@@ -38,6 +38,13 @@ export class DashboardComponent implements OnInit {
         //   console.log("COMPLETED");
       }
     );
+
+    if ( localStorage.getItem('NewPost') === 'Done') {
+          this.NewPostcheck = true;
+             localStorage.setItem('NewPost', '');
+      window.scrollTo(0, 0);
+  }
+
 
   }
 

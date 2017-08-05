@@ -19,6 +19,9 @@ import { PendingAdComponent } from './pending-ad/pending-ad.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { StoreRegistrationComponent } from './store-registration/store-registration.component';
+
 
 const appRoutes: Routes = [
   {
@@ -91,6 +94,14 @@ const appRoutes: Routes = [
   {
     path: 'category-detail',
     component: CategoryDetailComponent
+  },
+  {
+    path: 'user-detail',
+    component: UserDetailComponent
+  },
+  {
+    path: 'store-registration',
+    component: StoreRegistrationComponent
   }
 
 

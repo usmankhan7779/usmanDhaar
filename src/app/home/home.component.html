@@ -1,7 +1,7 @@
 
 <div id="page">
 
-    <app-header></app-header>
+  <app-header></app-header>
   <!-- Main Slider Area -->
   <div class="main-slider-area">
     <div class="container">
@@ -48,6 +48,7 @@
     </div>
   </div>
   <!-- End Main Slider Area -->
+
   <div class="container">
     <!-- service section -->
     <div class="jtv-service-area">
@@ -445,6 +446,7 @@
         </div>
       </div>
       <!-- Banner block-->
+
       <div class="container">
         <div class="row">
           <div class="jtv-banner-block">
@@ -473,6 +475,7 @@
         </div>
       </div>
       <!-- main container -->
+
       <div class="home-tab">
         <div class="container">
           <div class="row">
@@ -483,11 +486,11 @@
                 <h3 class="new-product-title pull-left">Products category</h3>
                 <ul class="nav home-nav-tabs home-product-tabs">
                   <li class="active"><a href="#all" data-toggle="tab" aria-expanded="false">All</a></li>
-                  <li> <a href="#women" data-toggle="tab" aria-expanded="false">Women</a> </li>
-                  <li> <a href="#men" data-toggle="tab" aria-expanded="false">Men</a> </li>
-                  <li> <a href="#kids" data-toggle="tab" aria-expanded="false">Kids</a> </li>
+                  <li> <a href="#women" data-toggle="tab" aria-expanded="false">Phones & Tablets</a> </li>
+                  <li> <a href="#men" data-toggle="tab" aria-expanded="false">Fashion</a> </li>
+                  <li> <a href="#kids" data-toggle="tab" aria-expanded="false">Electronics</a> </li>
                 </ul>
-                <!-- /.nav-tabs -->
+                <!-- /.nav-tabs  let phoneProducts of GetallPhoneProduct; -->
               </div>
               <div id="productTabContent" class="tab-content">
                 <div class="tab-pane active in" id="all">
@@ -509,6 +512,261 @@
                           <div class="info-inner">
                             <div class="item-title">
                               <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="tab-pane fade" id="women">
+                  <ng-container *ngFor="let phoneProducts of GetallPhoneProduct">
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <!--<div class="icon-sale-label sale-left">Sale</div>-->
+                        <!--<div class="box-hover">-->
+                          <!--<div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>-->
+                          <!--<div class="add-to-links" data-role="add-to-links"> <a href="#" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="#" class="action add-to-compare" title="Add to Compare"></a> </div>-->
+                        <!--</div>-->
+                        <div class="slider-items-products">
+                          <div id="pro2-slider" class="product-flexslider hidden-buttons">
+                            <div class="slider-items slider-width-col6">
+                              <ng-container *ngFor="let Productspic of Getphoto">
+                              <a *ngIf="phoneProducts.ProductID == Productspic.ProID " [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + Productspic.Pic }}" alt="{{ PicServrUrl + Productspic.pic }}"></a>
+                              <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
+                              <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
+                              </ng-container>
+
+                              <div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">
+                                <div class="countbox_1 jtv-timer-grid"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                              </div>
+                              <div *ngIf="phoneProducts.Auction == true" class="item-price">
+
+                                <div  class="price-box"> <span class="regular-price"> <span class="price">RS {{ phoneProducts.MaxBidPrice }}.00</span> </span> </div>
+
+                              </div>
+                              <div *ngIf="phoneProducts.Auction == false" class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">RS {{ phoneProducts.FixedPrice }}.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
+                              <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
+                            </div>
+                            <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button> </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </ng-container>
+
+                </div>
+                <div class="tab-pane fade" id="men">
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img11.jpg" alt=""></a> </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="tab-pane fade" id="kids">
+                <ng-container *ngFor="let TvVideoaudio88 of TvVideoaudio8">
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <!--<div class="icon-sale-label sale-left"></div>-->
+                        <!--<div class="box-hover">-->
+                          <!--<div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>-->
+                          <!--<div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>-->
+                        <!--</div>-->
+                        <ng-container *ngFor="let Productspic of Getphoto">
+                          <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + Productspic.Pic }}" alt="{{ PicServrUrl + Productspic.pic }}"></a>-->
+                          <a *ngIf="TvVideoaudio88.ProductID == Productspic.ProID " [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + Productspic.Pic }}" alt="{{ PicServrUrl + Productspic.Pic }}"></a>
+
+                      <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
+                          <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
+                        </ng-container>
+
+                        <div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
+
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">{{ TvVideoaudio88.P_Title }} </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+
+                              <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+
+                                <div  class="price-box"> <span class="regular-price"> <span class="price">RS {{ TvVideoaudio88.MaxBidPrice }}.00</span> </span> </div>
+
+                              </div>
+                              <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">RS {{ TvVideoaudio88.FixedPrice }}.00</span> </span> </div>
+                              </div>
+
+
+                            </div>
+
+
+
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                           <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"> <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button></a>
+                          </div>
+                            <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                              <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"> <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </ng-container>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- prom banner-->
+            <div class="jtv-promotion">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="add-banner wow animated fadeInUp animated"> <a href="#"><img src="assets/images/home-banner4.jpg" alt="banner"></a> </div>
+                  </div>
+                  <div class="col-md-8 col-sm-7 col-xs-12">
+                    <div class="wrap">
+                      <div class="wow animated fadeInRight animated">
+                        <div class="box jtv-custom">
+                          <div class="box-content">
+                            <div class="promotion-center">
+                              <p class="text_medium">Limited Time Only</p>
+                              <div class="text_large">
+                                <div class="theme-color">45% off</div>
+                                Flash Sale</div>
+                              <p class="text_small">Fashion for all outerwear, shirt &amp; accessories</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 2nd start-->
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <!-- Home Tabs  -->
+
+              <div class="tab-info">
+                <h3 class="new-product-title pull-left">Products Type</h3>
+                <ul class="nav home-nav-tabs home-product-tabs">
+                  <li class="active"><a href="#all2" data-toggle="tab" aria-expanded="false">Latest</a></li>
+                  <li> <a href="#auction" data-toggle="tab" aria-expanded="false">Auction</a> </li>
+                  <li> <a href="#seller" data-toggle="tab" aria-expanded="false">Best Seller</a> </li>
+                  <li> <a href="#featured" data-toggle="tab" aria-expanded="false">Featured</a> </li>
+                </ul>
+                <!-- /.nav-tabs -->
+              </div>
+              <div id="productTabContent2" class="tab-content">
+                <div class="tab-pane active in" id="all2">
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
                             </div>
                             <div class="item-content">
                               <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
@@ -771,7 +1029,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="women">
+                <div class="tab-pane fade" id="auction">
+
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
@@ -780,17 +1039,16 @@
                           <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
                           <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
                         </div>
-                        <div class="slider-items-products">
-                          <div id="pro2-slider" class="product-flexslider hidden-buttons">
-                            <div class="slider-items slider-width-col6"> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img06.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> </div>
-                          </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
                         </div>
                       </div>
                       <div class="pro-box-info">
                         <div class="item-info">
                           <div class="info-inner">
                             <div class="item-title">
-                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
                             </div>
                             <div class="item-content">
                               <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
@@ -813,21 +1071,26 @@
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
                         <div class="box-hover">
                           <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
                           <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
                         </div>
-                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img07.jpg" alt=""></a> </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
                       <div class="pro-box-info">
                         <div class="item-info">
                           <div class="info-inner">
                             <div class="item-title">
-                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
                             </div>
                             <div class="item-content">
-                              <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                               <div class="item-price">
-                                <div class="price-box"> <span class="regular-price"> <span class="price">$175.88</span> </span> </div>
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
                               </div>
                             </div>
                           </div>
@@ -845,25 +1108,26 @@
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
-                        <div class="icon-new-label new-left">new</div>
+                        <div class="icon-sale-label sale-left">Sale</div>
                         <div class="box-hover">
                           <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
                           <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
                         </div>
-                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img08.jpg" alt=""></a> </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
                       <div class="pro-box-info">
                         <div class="item-info">
                           <div class="info-inner">
                             <div class="item-title">
-                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
                             </div>
                             <div class="item-content">
-                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                               <div class="item-price">
-                                <div class="price-box">
-                                  <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $299.00 </span> </p>
-                                  <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $399.00 </span> </p>
-                                </div>
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
                               </div>
                             </div>
                           </div>
@@ -881,24 +1145,26 @@
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
                         <div class="box-hover">
                           <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
                           <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
                         </div>
-                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img11.jpg" alt=""></a> </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
                       <div class="pro-box-info">
                         <div class="item-info">
                           <div class="info-inner">
                             <div class="item-title">
-                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
                             </div>
                             <div class="item-content">
-                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                               <div class="item-price">
-                                <div class="price-box">
-                                  <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $188.80 </span> </p>
-                                  <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $299.00 </span> </p>
-                                </div>
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
                               </div>
                             </div>
                           </div>
@@ -913,8 +1179,159 @@
                       </div>
                     </div>
                   </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
+                        <div class="jtv-box-timer">
+                          <div class="countbox_1 jtv-timer-grid"></div>
+                        </div>
+                      </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here auction </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
                 </div>
-                <div class="tab-pane fade" id="men">
+                <div class="tab-pane fade" id="seller">
+
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
@@ -1053,8 +1470,281 @@
                       </div>
                     </div>
                   </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img11.jpg" alt=""></a> </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img12.jpg" alt=""></a> </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$175.88</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <div class="slider-items-products">
+                          <div id="pro3-slider" class="product-flexslider hidden-buttons">
+                            <div class="slider-items slider-width-col6"> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img14.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img15.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img05.jpg" alt=""></a> </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$275.88</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-new-label new-left">new</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img13.jpg" alt=""></a> </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box">
+                                  <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $299.00 </span> </p>
+                                  <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $399.00 </span> </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
-                <div class="tab-pane fade" id="kids">
+                <div class="tab-pane fade" id="featured">
+
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-sale-label sale-left">Sale</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img16.jpg" alt=""></a> </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img17.jpg" alt=""></a> </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$175.88</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="icon-new-label new-left">new</div>
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img18.jpg" alt=""></a> </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box">
+                                  <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $299.00 </span> </p>
+                                  <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $399.00 </span> </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-item col-md-3 col-sm-6">
+                    <div class="item-inner">
+                      <div class="product-thumbnail">
+                        <div class="box-hover">
+                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
+                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
+                        </div>
+                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> </div>
+                      <div class="pro-box-info">
+                        <div class="item-info">
+                          <div class="info-inner">
+                            <div class="item-title">
+                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
+                            </div>
+                            <div class="item-content">
+                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="item-price">
+                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.99</span> </span> </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="box-hover">
+                          <div class="product-item-actions">
+                            <div class="pro-actions">
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
@@ -1192,752 +1882,14 @@
               </div>
             </div>
 
-            <!-- prom banner-->
-            <div class="jtv-promotion">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4 col-sm-5 col-xs-12">
-                    <div class="add-banner wow animated fadeInUp animated"> <a href="#"><img src="assets/images/home-banner4.jpg" alt="banner"></a> </div>
-                  </div>
-                  <div class="col-md-8 col-sm-7 col-xs-12">
-                    <div class="wrap">
-                      <div class="wow animated fadeInRight animated">
-                        <div class="box jtv-custom">
-                          <div class="box-content">
-                            <div class="promotion-center">
-                              <p class="text_medium">Limited Time Only</p>
-                              <div class="text_large">
-                                <div class="theme-color">45% off</div>
-                                Flash Sale</div>
-                              <p class="text_small">Fashion for all outerwear, shirt &amp; accessories</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
           </div>
         </div>
 
 
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <!-- Home Tabs  -->
 
-          <div class="tab-info">
-            <h3 class="new-product-title pull-left">Products Type</h3>
-            <ul class="nav home-nav-tabs home-product-tabs">
-              <li class="active"><a href="#all" data-toggle="tab" aria-expanded="false">Latest</a></li>
-              <li> <a href="#women" data-toggle="tab" aria-expanded="false">Current Auction</a> </li>
-              <li> <a href="#men" data-toggle="tab" aria-expanded="false">Best Seller</a> </li>
-              <li> <a href="#kids" data-toggle="tab" aria-expanded="false">Featured</a> </li>
-            </ul>
-            <!-- /.nav-tabs -->
-          </div>
-          <div id="productTabContent2" class="tab-content">
-            <div class="tab-pane active in" id="all">
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="icon-sale-label sale-left">Sale</div>
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
-                    <div class="jtv-box-timer">
-                      <div class="countbox_1 jtv-timer-grid"></div>
-                    </div>
-                  </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="icon-new-label new-left">new</div>
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <div class="slider-items-products">
-                      <div id="pro1-slider" class="product-flexslider hidden-buttons">
-                        <div class="slider-items slider-width-col6"> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img10.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img16.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img17.jpg" alt=""></a> </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box">
-                              <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $299.00 </span> </p>
-                              <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $399.00 </span> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img04.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$125.99</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img08.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$125.99</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img05.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box">
-                              <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $188.80 </span> </p>
-                              <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $299.00 </span> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img09.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$125.99</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img10.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box">
-                              <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $188.80 </span> </p>
-                              <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $299.00 </span> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img06.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box">
-                              <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $188.80 </span> </p>
-                              <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $299.00 </span> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="women">
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="icon-sale-label sale-left">Sale</div>
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <div class="slider-items-products">
-                      <div id="pro2-slider" class="product-flexslider hidden-buttons">
-                        <div class="slider-items slider-width-col6"> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img06.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img07.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$175.88</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="icon-new-label new-left">new</div>
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img08.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box">
-                              <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $299.00 </span> </p>
-                              <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $399.00 </span> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img11.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box">
-                              <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $188.80 </span> </p>
-                              <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $299.00 </span> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="men">
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="icon-sale-label sale-left">Sale</div>
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img11.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img12.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$175.88</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <div class="slider-items-products">
-                      <div id="pro3-slider" class="product-flexslider hidden-buttons">
-                        <div class="slider-items slider-width-col6"> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img14.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img15.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img05.jpg" alt=""></a> </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$275.88</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="icon-new-label new-left">new</div>
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img13.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box">
-                              <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $299.00 </span> </p>
-                              <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $399.00 </span> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="kids">
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="icon-sale-label sale-left">Sale</div>
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img16.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img17.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$175.88</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="icon-new-label new-left">new</div>
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img18.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box">
-                              <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $299.00 </span> </p>
-                              <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $399.00 </span> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="box-hover">
-                      <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                      <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                    </div>
-                    <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$125.99</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div class="pro-actions">
-                          <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
 
 
 
@@ -1981,7 +1933,7 @@
       </div>
     </div>
   </div>
-  <!-- our clients Slider -->
+
 
   <app-footer></app-footer>
 
@@ -2039,8 +1991,6 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
-
-
 
   <div id="modal-quickview" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -2131,5 +2081,5 @@
 </div>
 
 
-<!-- jquery js -->
+
 

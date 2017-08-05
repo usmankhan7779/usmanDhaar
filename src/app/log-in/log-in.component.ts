@@ -14,6 +14,7 @@ export class LogInComponent implements OnInit {
   model: any = {};
   private sub: any;
   loading = false;
+  SignUpDOne = false;
   login_error = false;
   logout: string;
   returnUrl: string;
@@ -35,8 +36,14 @@ export class LogInComponent implements OnInit {
 
       });
 
-    if (this.logout === 'yes')
-    {
+     if ( localStorage.getItem('Reg') === 'Done') {
+
+       this.SignUpDOne = true;
+       localStorage.setItem('Reg', '');
+     }
+
+
+    if (this.logout === 'yes') {
       this.LogOutClick();
 
     }
@@ -65,9 +72,9 @@ export class LogInComponent implements OnInit {
 
 
   LogOutClick() {
-    console.log('Before');
+   // console.log('Before');
     console.log(localStorage.getItem('Authorization'));
-    this.obj.loged_out();
+  //  this.obj.loged_out();
     localStorage.setItem('Authorization', '0');
 
 

@@ -14,6 +14,7 @@
     </div>
   </div>
 </div>
+
 <!-- Page Title End -->
 
 <div class="listpgWraper">
@@ -22,123 +23,194 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="userccount">
           <div class="formpanel">
+            <form role="form" class="login-form" (ngSubmit)="f.form.valid && save('fsd','sfs')"  #f="ngForm" novalidate>
 
+            <div class="form-group">
+              <label class="control-label">Product Type: </label> <span> <u>{{ CatName }}</u>  </span> <a [routerLink]="['/select-category']">Change</a>
+            </div>
             <!-- Ad Information -->
+
             <h5>Ad Information</h5>
             <div class="row">
               <div class="col-md-12">
                 <div class="formrow">
-                  <input type="text" name="jobtitle" class="form-control" placeholder="Ad Title">
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Title.valid }">
+
+                    <label style="color: black" class="help-block">Title</label>
+                    <div *ngIf="f.submitted && !Title.valid" class="help-block">Title required</div>
+                    <input type="text" class="form-control" name="Title" placeholder="Product Title" [(ngModel)]="model.Title" #Title="ngModel"  required>
+
+                  </div>
+                  <span class="help-block">A Good title needs Maximum 60 characters. </span>
+                  <!--<input type="text" name="jobtitle" class="form-control" placeholder="Ad Title ">-->
                 </div>
               </div>
-              <div class="col-md-4">
+
+              <div  class="col-md-12">
                 <div class="formrow">
-                  <select class="form-control" name="indus">
-                    <option>Ad type</option>
-                    <option>I want to Sell</option>
-                    <option>I want to Buy</option>
+
+                  <label  style="color: black" class="help-block">Product condition</label>
+                  <select   [(ngModel)]="model.condition" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                    <option value="New" selected>New</option>
+                    <option value="Manufacturer refurbished"> Manufacturer refurbished </option>
+                    <option value="Seller refurbished"> Seller refurbished </option>
+                    <option value="Used">Used</option>
+
+
                   </select>
+
                 </div>
+
               </div>
-              <div class="col-md-4">
+
+
+              <div  class="col-md-12">
                 <div class="formrow">
-                  <select class="form-control" name="indus">
-                    <option>Item type</option>
-                    <option>New</option>
-                    <option>Used</option>
-                  </select>
+
+                    <label  style="color: black" class="help-block">Select Sub Catgory</label>
+                    <select   [(ngModel)]="model.subcat" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                      <optgroup *ngFor="let item of GetAllSubCat"  label="{{ item.Subcat_Name}}">
+                        <ng-container *ngFor="let item_sub of GetAllSubSubCat">
+                        <option  *ngIf="item.Subcat_Name == item_sub.Sub_Cat_ID" [value]="item.Subcat_Name +'!' +item.id+ '!'+item_sub.Sub_Subcat_Name+ '!' + item_sub.id"> {{ item_sub.Sub_Subcat_Name }}</option>
+                        </ng-container>
+                      </optgroup>
+
+
+
+                    </select>
+
                 </div>
+
               </div>
-              <div class="col-md-4">
+
+              <div class="col-md-12">
                 <div class="formrow">
-                  <select class="form-control" name="indus">
-                    <option>Property type</option>
-                    <option>For Rent</option>
-                    <option>For Sale</option>
-                    <option>For Buy</option>
-                  </select>
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Addetail.valid }">
+
+                    <label style="color: black" class="help-block">Ad Detail*</label>
+                    <div *ngIf="f.submitted && !Addetail.valid" class="help-block">Ad-details required</div>
+                    <textarea class="form-control" name="Addetail" placeholder="Ad Detail" [(ngModel)]="model.Addetail" #Addetail="ngModel"  required></textarea>
+                </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="formrow">
-                  <select class="form-control" name="msalary">
-                    <option>Select Main Catgory</option>
-                    <option>Vehicles</option>
-                    <option>Mobiles</option>
-                    <option>Furniture</option>
-                    <option>Jobs</option>
-                    <option>Real Estates</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="formrow">
-                  <select class="form-control" name="msalary">
-                    <option>Select Sub Catgory</option>
-                    <option>Vehicles</option>
-                    <option>Mobiles</option>
-                    <option>Furniture</option>
-                    <option>Jobs</option>
-                    <option>Real Estates</option>
-                  </select>
-                </div>
-              </div>
+
+              <!--<div class="col-md-6">-->
+                <!--<div class="formrow">-->
+                  <!--<select class="form-control" name="msalary">-->
+                    <!--<option>Select Sub Catgory</option>-->
+                    <!--<option>Vehicles</option>-->
+                    <!--<option>Mobiles</option>-->
+                    <!--<option>Furniture</option>-->
+                    <!--<option>Jobs</option>-->
+                    <!--<option>Real Estates</option>-->
+                  <!--</select>-->
+                <!--</div>-->
+              <!--</div>-->
+
+
               <div class="col-md-12">
                 <div class="formrow">
                   <div class="uploadphotobx"> <i class="fa fa-upload" aria-hidden="true"></i>
                     <h4>Upload your photo</h4>
                     <p>It must be a head-shot photo</p>
                     <label class="uploadBox">Click here to Upload
-                      <input type="file" name="upload">
+                      <!--<input type="file" name="upload">-->
+                      <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture multiple ng-files="getTheFiles($files)" />
+
                     </label>
                   </div>
-                  <div class="fileattached"> <img src="images/ads/01.jpg" alt=""> <span>file-name-here.jpg</span> <i class="fa fa-check-circle" aria-hidden="true"></i>
+                  <div *ngFor="let item_file of files"  class="fileattached"> <img src="images/ads/01.jpg" alt=""> <span> {{ item_file.name }}</span> <i class="fa fa-check-circle" aria-hidden="true"></i>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="fileattached"> <img src="images/ads/02.jpg" alt=""> <span>file-name-here.jpg</span> <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    <div class="clearfix"></div>
-                  </div>
+
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="formrow">
-                  <input type="text" name="jobtitle" class="form-control" placeholder="Ad Price">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="formrow">
-                  <input type="text" name="jobtitle" class="form-control" placeholder="Ad Location">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="formrow">
-                  <select class="form-control" name="emptype">
-                    <option>Select State</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="formrow">
-                  <select class="form-control" name="emptype">
-                    <option>Select City</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="formrow">
-                  <select class="form-control" name="experience">
-                    <option>Country</option>
-                  </select>
-                </div>
-              </div>
+
               <div class="col-md-12">
-                <div class="formrow">
-                  <textarea class="form-control" name="jobdetail" placeholder="Ad Detail"></textarea>
-                </div>
+
+
+                 <div class="userbtns">
+                    <ul class="nav nav-tabs">
+                      <li (click)="EnableAuction()" class="active"><a data-toggle="tab" href="#wsell">Auction</a></li>
+                      <li (click)="EnableFixd()"><a data-toggle="tab" href="#wbuy">Fixed Price</a></li>
+                    </ul>
+                  </div>
+                  <div class="tab-content">
+                    <div id="wsell" class="formpanel tab-pane fade in active">
+
+                      <div class="formrow">
+
+                        <input type="number" name="name" class="form-control" placeholder="Starting Price" [(ngModel)]="model.Starting_Price" #Starting_Price="ngModel"  required>
+
+                      </div>
+
+                    <div class="formrow">
+                      <input type="checkbox"  (click)="BuyitnowFun()"  value="agree text" name="agree" />
+                      Buy it Now
+                    </div>
+                    <div *ngIf="Buyitnow == true" class="formrow">
+                      <input type="number" name="name" class="form-control" [(ngModel)]="model.Buyitnow"  placeholder="Buy it Now Price">
+                    </div>
+
+                    <div class="formrow">
+                      <input type="checkbox" (click)="AddReservePriceFun()" value="agree text" name="agree" />
+                      Add a Reserve Price
+                    </div>
+                    <div *ngIf="ReservePrice == true" class="formrow">
+                      <input type="number" [(ngModel)]="model.ReservePrice" name="name" class="form-control" placeholder="Reserve Price">
+                    </div>
+                      <div class="formrow">
+                        <select [(ngModel)]="model.AuctionListing" class="col-md-push-6" name="listing" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                          <option value="10" selected>10 Days</option>
+                          <option value="7">7 Days</option>
+                          <option value="5">5 Days</option>
+                          <option value="3">3 Days</option>
+                        </select>
+                      </div>
+
+
+                    </div>
+
+                    <!--- 2nd tab --->
+
+                    <div id="wbuy" class="formpanel tab-pane fade in">
+
+
+                      <div class="formrow">
+
+
+                          <input type="number" [(ngModel)]="model.FixedPrice" name="name" class="form-control" placeholder="Price">
+                      </div>
+
+                      <div class="formrow">
+                        <input type="checkbox" (click)="AddbestofferFun()"  value="agree text" name="agree" />
+                        Add Best Offer
+                      </div>
+                      <div *ngIf="Addbestoffer == true" class="formrow">
+                        <input type="number" [(ngModel)]="model.AddBestOffer" name="name" class="form-control" placeholder="Offer">
+                      </div>
+
+                      <div class="formrow">
+                        <input type="number" [(ngModel)]="model.Quantity" name="name" class="form-control" placeholder="Quantity">
+                    </div>
+
+
+
+
+                    </div>
+                  </div>
+
+
+
               </div>
+
+
+
             </div>
             <br>
             <input type="submit" class="btn" value="Post An Ad">
+
+            </form>
           </div>
         </div>
       </div>
@@ -149,3 +221,9 @@
 
 
 <app-footer></app-footer>
+
+
+
+
+
+

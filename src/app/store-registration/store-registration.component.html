@@ -1,0 +1,293 @@
+
+<app-header></app-header>
+
+
+<!-- Page Title start -->
+<div class="pageTitle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">Store Registration</h1>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="breadCrumb"><a href="#.">Home</a> / <span>Store Registration</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Title End -->
+
+
+
+<div class="inner-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <ul class="usernavdash">
+          <li ><a [routerLink]="['/select-category']"><i class="fa fa-tachometer" aria-hidden="true"></i> Post an Ad</a></li>
+          <li ><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
+          <li class="active"><a [routerLink]="['/store-registration']"><i class="fa fa-user" aria-hidden="true"></i> Store Registration</a></li>
+          <li><a [routerLink]="['/pending-ad']"><i class="fa fa-desktop" aria-hidden="true"></i> My Pending Ads</a></li>
+          <li><a [routerLink]="['/active-ad']"><i class="fa fa-laptop" aria-hidden="true"></i> My Active Ads</a></li>
+          <li><a href="#"><i class="fa fa-commenting" aria-hidden="true"></i> Feedback</a></li>
+          <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i> My Package</a></li>
+          <li><a href="#"><i class="fa fa-tag" aria-hidden="true"></i> Tags</a></li>
+          <li><a href="#"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
+          <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+        </ul>
+
+      </div>
+
+      <form role="form" class="login-form" (ngSubmit)="f.form.valid && save()"  #f="ngForm" novalidate>
+
+          <div class="col-md-9 col-sm-8">
+
+        <div class="userccount">
+
+          <div class="userbtns">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#step1">Store Information </a></li>
+              <li><a data-toggle="tab" href="#step2">Legal Details </a></li>
+              <li class="active"><a data-toggle="tab" href="#step3">Categories</a></li>
+              <li><a data-toggle="tab" href="#step4">Bank Details</a></li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div id="step1" class="formpanel tab-pane fade in active">
+
+              <ul>
+                <li class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
+                    <label for="Store _name" class="required">Store Name(*)</label>
+
+                      <div *ngIf="f.submitted && !storename.valid" class="help-block">Store Name required</div>
+                    <input type="text" [(ngModel)]="model.storename" #storename="ngModel" class="input form-control" name="storename" id="Store _name" required>
+                    </div>
+                  </div><!--/ [col] -->
+
+                </li><!--/ .row -->
+
+                <li class="row">
+                  <div class="col-sm-6">
+
+                    <label for="company_name">Owner Name</label>
+                    <input type="text" name="" class="input form-control" id="company_name">
+                  </div><!--/ [col] -->
+
+
+                  <div class="col-sm-6">
+                    <label for="email_address" class="required">Email Address</label>
+                    <input type="text" class="input form-control" name="" id="email_address">
+                  </div><!--/ [col] -->
+                </li><!--/ .row -->
+
+                <li class="row">
+                  <div class="col-xs-12">
+
+                    <label for="address" class="required">Address</label>
+                    <input type="text" class="input form-control" name="" id="address">
+
+                  </div><!--/ [col] -->
+                </li><!-- / .row -->
+
+                <li class="row">
+
+                  <div class="col-sm-6">
+
+                    <label for="city" class="required">City</label>
+                    <input class="input form-control" type="text" name="" id="city">
+
+                  </div><!--/ [col] -->
+
+                  <div  class="col-md-12">
+                    <div class="formrow">
+
+                      <label class="help-block"  style="color: #0b0b0b" >Product condition</label>
+                      <select class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 14px; color: #0b0b0b; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                        <option value="New" selected>New</option>
+                        <option value="Manufacturer refurbished"> Manufacturer refurbished </option>
+                        <option value="Seller refurbished"> Seller refurbished </option>
+                        <option value="Used">Used</option>
+
+
+                      </select>
+
+                    </div>
+
+                  </div>
+                </li><!--/ .row -->
+
+                <li class="row">
+
+                  <div class="col-sm-6">
+
+                    <label for="postal_code" class="required">Zip/Postal Code</label>
+                    <input class="input form-control" type="text" name="" id="postal_code">
+                  </div><!--/ [col] -->
+
+                  <div class="col-sm-6">
+                    <label for="telephone" class="required">Telephone</label>
+                    <input class="input form-control" type="text" name="" id="telephone">
+                  </div><!--/ [col] -->
+                </li><!--/ .row -->
+
+               
+
+              </ul>
+
+
+
+              <input type="submit" class="btn" value="Save and Continue">
+            </div>
+
+            <div id="step2" class="formpanel tab-pane fade in">
+              <h5>Unregistered / Registered on FBR</h5>
+              <ul>
+                <li><label><input type="radio" name="radio1">Unregistered</label></li>
+                <li><label><input type="radio" name="radio1">Registered</label></li>
+              </ul>
+              <br>
+              <p>If registered, please fill the details below
+                If unregistered, please enter your CNIC:</p>
+
+              <ul>
+                <li class="row">
+                  <div class="col-sm-12">
+                    <label for="Store _name" class="required">Legal Name As per FBR</label>
+                    <input type="text" class="input form-control" name="" id="legal_name">
+                  </div><!--/ [col] -->
+
+                </li><!--/ .row -->
+                <li class="row">
+                  <div class="col-sm-12">
+                    <label for="company_name">NTN / CNIC  ( NTN is prefered )</label>
+                    <input type="text" name="" class="input form-control" id="ntn">
+                  </div><!--/ [col] -->
+                  <div class="col-sm-12">
+                    <label for="email_address" class="required">STRN ( Sales Tax Registration Number )</label>
+                    <input type="text" class="input form-control" name="" id="strn ">
+                  </div><!--/ [col] -->
+                </li><!--/ .row -->
+
+              </ul>
+
+
+              <input type="submit" class="btn" value="Save and Continue">
+            </div>
+
+            <div id="step3" class="formpanel tab-pane fade in">
+              <h5>Main Categories Interested to Sell</h5>
+              <ul>
+                <li><label><input type="checkbox" name="radio1">Phones & Tablets</label></li>
+                <li><label><input type="checkbox" name="radio1">Appliances</label></li>
+                <li><label><input type="checkbox" name="radio1">TV, Audio and Video</label></li>
+                <li><label><input type="checkbox" name="radio1">Laptops and Computing</label></li>
+                <li><label><input type="checkbox" name="radio1">Video Games and Consoles</label></li>
+                <li><label><input type="checkbox" name="radio1">Camera and Accessories</label></li>
+                <li><label><input type="checkbox" name="radio1">Fashion</label></li>
+                <li><label><input type="checkbox" name="radio1">Baby, Kids and Toys</label></li>
+                <li><label><input type="checkbox" name="radio1">Cosmetics and Perfumes</label></li>
+                <li><label><input type="checkbox" name="radio1">Sports and Fitness</label></li>
+
+
+
+
+                <li class="row" style="margin-top: 10px;">
+                  <div class="col-sm-12">
+                    <label for="company_name">Brands </label>
+                    <input type="text" name="" class="input form-control" id="brands">
+                  </div><!--/ [col] -->
+                </li><!--/ .row -->
+
+
+              </ul>
+              <br>
+
+
+
+              <input type="submit" class="btn" value="Save and Continue">
+            </div>
+
+            <div id="step4" class="formpanel tab-pane fade in">
+              <h5>As per NTN / CNIC given above</h5>
+
+
+              <ul>
+                <li class="row">
+                  <div class="col-sm-6">
+                    <label for="Store _name" class="required">Account Title</label>
+                    <input type="text" class="input form-control" name="" id="account_title">
+                  </div><!--/ [col] -->
+
+                  <div class="col-sm-6">
+                    <label for="company_name">Account Number </label>
+                    <input type="text" name="" class="input form-control" id="account_number">
+                  </div><!--/ [col] -->
+
+                </li><!--/ .row -->
+                <li class="row">
+
+                  <div class="col-sm-12">
+                    <label for="email_address" class="required">Bank Name</label>
+                    <input type="text" class="input form-control" name="" id="bank_name ">
+                  </div><!--/ [col] -->
+                </li><!--/ .row -->
+
+                <li class="row">
+                  <div class="col-sm-6">
+                    <label for="Store _name" class="required">Branch Name</label>
+                    <input type="text" class="input form-control" name="" id="branch_name">
+                  </div><!--/ [col] -->
+
+                  <div class="col-sm-6">
+                    <label for="company_name">Branch Code</label>
+                    <input type="text" name="" class="input form-control" id="branch_code">
+                  </div><!--/ [col] -->
+
+                </li><!--/ .row -->
+
+
+                <div class="formrow">
+                  <input type="checkbox" value="agree text" name="agree" />
+                  I agree to the Terms and Conditions laid out in the COMMISSION AGENT AGREEMENT</div>
+
+              </ul>
+
+
+              <input type="submit" class="btn" value="Submit">
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+      </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<app-footer></app-footer>
+

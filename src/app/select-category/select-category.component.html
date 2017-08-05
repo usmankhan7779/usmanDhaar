@@ -1,28 +1,21 @@
 <app-header></app-header>
 
-<!-- Search start -->
-<div class="searchwrap">
+
+<!-- Page Title start -->
+<div class="pageTitle">
   <div class="container">
-    <h3>World's Largest Classifieds Site</h3>
-    <p>Search from over 99,00,000 Active ads &amp; Post free unlimited classifieds ads!</p>
-    <div class="searchbar row">
-      <div class="col-md-8">
-        <input type="text" class="form-control" placeholder="What are you looking for" />
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">World's Largest Classifieds Site</h1>
       </div>
-      <div class="col-md-2">
-        <select class="form-control">
-          <option>Select City</option>
-          <option>New York</option>
-          <option>San Joes</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <input type="submit" class="btn" value="Search Ad">
+      <div class="col-md-6 col-sm-6">
+        <div class="breadCrumb"><a href="#">Home</a> / <span>Select Category</span></div>
       </div>
     </div>
   </div>
 </div>
-<!-- Search End -->
+<!-- Page Title End -->
+
 
 <!-- Categories start -->
 <div class="section catewrap">
@@ -32,19 +25,26 @@
       <h3>Browse <span>Categories</span></h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius, orci id facilisis egestas, neque purus sagittis arcu, nec maximus quam odio nec elit Pellentesque eget ipsum mattis</p>
     </div>
+
+
+
+
+
     <ul class="categoryList row">
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/01.png" alt="Cate Img" /> <span>Vehicles <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/02.png" alt="Cate Img" /> <span>Mobiles <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/03.png" alt="Cate Img" /> <span>Electronics <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/04.png" alt="Cate Img" /> <span>Furniture <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/05.png" alt="Cate Img" /> <span>Jobs <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/06.png" alt="Cate Img" /> <span>Real Estate <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/07.png" alt="Cate Img" /> <span>Services <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/08.png" alt="Cate Img" /> <span>Education <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/09.png" alt="Cate Img" /> <span>Pets <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/10.png" alt="Cate Img" /> <span>Fashion <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/11.png" alt="Cate Img" /> <span>Baby Products <i>(598)</i></span></a></li>
-      <li class="col-md-2 col-sm-3 col-xs-6"><a href="listing.html"><img src="assets/assets2/images/category/12.png" alt="Cate Img" /> <span>Sports <i>(598)</i></span></a></li>
+      <ng-container *ngFor="let item_cat of GetallCat">
+      <li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']" [queryParams]="{ CatName:  item_cat.Cat_Name, CatId: item_cat.id }"><img src="{{ ServrUrl + item_cat.Pic }}" alt="Cate Img" /> <span>{{ item_cat.Cat_Name }}</span></a></li>
+      </ng-container>
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']" [queryParams]="{ CatName: 'Mobiles', CatId: '1'}"><img src="assets/assets2/images/category/02.png" alt="Cate Img" /> <span>Mobiles <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/03.png" alt="Cate Img" /> <span>Electronics <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/04.png" alt="Cate Img" /> <span>Furniture <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/05.png" alt="Cate Img" /> <span>Jobs <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/06.png" alt="Cate Img" /> <span>Real Estate <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/07.png" alt="Cate Img" /> <span>Services <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/08.png" alt="Cate Img" /> <span>Education <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/09.png" alt="Cate Img" /> <span>Pets <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/10.png" alt="Cate Img" /> <span>Fashion <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/11.png" alt="Cate Img" /> <span>Baby Products <i>(598)</i></span></a></li>-->
+      <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/12.png" alt="Cate Img" /> <span>Sports <i>(598)</i></span></a></li>-->
     </ul>
   </div>
 </div>

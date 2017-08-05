@@ -2,7 +2,7 @@ import 'rxjs/add/operator/map';
 import {Injectable} from '@angular/core';
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-
+import { JwtHelper } from 'angular2-jwt';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 
@@ -12,11 +12,13 @@ import 'rxjs/add/operator/map';
 
 export class LoginService {
 
+  jwtHelper: JwtHelper = new JwtHelper();
   private id: any;
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'http://127.0.0.1:8000/';
+  decoded: string;
+  ServerUrl =  'http://127.0.0.1:8000/user/';
 
   constructor(private _http: Http ,
               private _nav: Router) {
@@ -31,7 +33,11 @@ export class LoginService {
       .map((res: Response) => {
         if (res) {
           if (res.status === 200) {
-            localStorage.setItem('Authorization', res.json().token)
+            localStorage.setItem('Authorization', res.json().token);
+            this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
+           //localStorage.setItem('User_ID', res.json().id);
+              console.log('Token: ' +  res.json().token);
+              console.log('UserID: ' +  this.decoded);
             this._nav.navigate(['/dashboard']);
             return [{ status: res.status, json: res }];
           }
@@ -58,7 +64,7 @@ export class LoginService {
           if (res.status === 201 || res.status === 200) {
             // localStorage.setItem('account_created' , '1' );
             const responce_data = res.json();
-            this.id = localStorage.setItem('id', responce_data.id);
+            localStorage.setItem('Reg', 'Done');
             //  alert(localStorage.getItem('id'));
             //  console.log(responce_data.id);
             //  console.log('ok submited');
@@ -86,7 +92,7 @@ export class LoginService {
   }
 
   register_customer(responce_data, Fname, LName, Mobile) {
-    return this._http.post('http://127.0.0.1:8000/addUserDetails/',
+    return this._http.post(this.ServerUrl +'addUserDetails/',
       { 'user_id': responce_data,
         'Fname':  Fname,
         'Lname':  LName,
@@ -120,7 +126,7 @@ export class LoginService {
   verify_username(username:  string) {
     //console.log(username);
 
-    return this._http.get( this.ServerUrl + 'verifyusername/'+ username)
+    return this._http.get( this.ServerUrl + 'verifyusername/' + username)
       .map((res: Response) => {
 
         if (res) {
@@ -153,8 +159,8 @@ export class LoginService {
       });
   }
 
-  check_email_unique(email){
-    return this._http.get(this.ServerUrl+'email_verify/'+email).map((response:Response) => response.json());
+  check_email_unique(email) {
+    return this._http.get(this.ServerUrl + 'email_verify/' + email).map((response: Response) => response.json());
 
   }
 

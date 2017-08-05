@@ -27,6 +27,11 @@
           <div *ngIf="login_error==true" class="alert alert-danger">
             <strong>Error!</strong> Invalid Login Details
           </div>
+
+          <div *ngIf="SignUpDOne==true" class="alert alert-success">
+            <strong>User Registered!</strong> LogIn to your account
+          </div>
+
           <h5>User Login</h5>
           <!-- login form -->
             <form role="form" class="login-form" (ngSubmit)="f.form.valid && loged_in(username.value, password.value)" #f="ngForm" novalidate>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdService } from '../post-ad/ad.services';
+
 
 @Component({
   selector: 'app-select-category',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select-category.component.css']
 })
 export class SelectCategoryComponent implements OnInit {
-
-  constructor() { }
+  GetallCat: any = [];
+  ServrUrl: string = 'assets/assets2/images/category/';
+  constructor(
+    private PostAdd: AdService,
+  ) { }
 
   ngOnInit() {
+
+    this.PostAdd.GetAllCategories().subscribe(resSlidersData => this.GetallCat = resSlidersData);
+
   }
 
 }
