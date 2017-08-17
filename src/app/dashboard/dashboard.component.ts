@@ -4,44 +4,38 @@ import {Http , Headers , Response} from '@angular/http';
 import { LoginService } from '../log-in/log-in.services';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
-
+import { JwtHelper } from 'angular2-jwt';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  jwtHelper: JwtHelper = new JwtHelper();
   ServerUrl =  'http://127.0.0.1:8000/';
   NewPostcheck = false ;
+  USerName: any;
   constructor(private _http: Http ,
               private Profile: LoginService,
               private _nav: Router) {
   }
 
-
   ngOnInit() {
 
-    ///console.log('Verfiying')
+    console.log('sessionStorage' + sessionStorage.getItem('Authorization'))
     this.Profile.verify_token().subscribe((response) => {
-        /* this function is executed every time there's a new output */
-        // console.log("VALUE RECEIVED: "+response);
+        this.USerName =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
       },
       (err) => {
-        console.log("ERROR: "+err);
-
+        console.log('ERROR:' + err);
         this._nav.navigate(['/login']);
-        /* this function is executed when there's an ERROR */
-         },
+      },
       () => {
-        /* this function is executed when the observable ends (completes) its stream */
-        //   console.log("COMPLETED");
       }
     );
-
-    if ( localStorage.getItem('NewPost') === 'Done') {
+    if ( sessionStorage.getItem('NewPost') === 'Done') {
           this.NewPostcheck = true;
-             localStorage.setItem('NewPost', '');
+      sessionStorage.setItem('NewPost', '');
       window.scrollTo(0, 0);
   }
 

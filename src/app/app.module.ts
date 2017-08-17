@@ -12,7 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LoginService } from './log-in/log-in.services';
 import { HomeService } from './home/home.services';
-
+import { Ng2PaginationModule } from 'ng2-pagination';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SelectCategoryComponent } from './select-category/select-category.component';
 import { SingleProductComponent } from './single-product/single-product.component';
@@ -30,6 +30,12 @@ import { CategoryDetailComponent } from './category-detail/category-detail.compo
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AdService } from './post-ad/ad.services';
 import { StoreRegistrationComponent } from './store-registration/store-registration.component';
+import { CategoryServices } from './category-detail/category-detail.services';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
+import { ActiveAdServices } from './active-ad/active-ad.services';
+import { MyBiddsComponent } from './my-bidds/my-bidds.component';
+import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
 
 @NgModule({
   declarations: [
@@ -54,19 +60,26 @@ import { StoreRegistrationComponent } from './store-registration/store-registrat
     ContactUsComponent,
     CategoryDetailComponent,
     UserDetailComponent,
-    StoreRegistrationComponent
+    StoreRegistrationComponent,
+    NotFoundComponent,
+    BuyerDashboardComponent,
+    MyBiddsComponent,
+    MyBidsBuyerComponent
   ],
   imports: [
     BrowserModule,
+    Ng2PaginationModule,
     FormsModule,
     HttpModule,
     Routing
   ],
   providers: [
     AppRoutingProvider,
+    ActiveAdServices,
     LoginService,
     AdService,
     HomeService,
+    CategoryServices,
     DatePipe,
   ],
   bootstrap: [AppComponent]

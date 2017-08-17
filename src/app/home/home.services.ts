@@ -41,9 +41,9 @@ export class HomeService {
     // console.log(this.CateDeatils)
   }
 
-  getTvVideoaudio8() {
+  getcomputinglaptopsproduct8() {
 
-    return this._http.get(this.ServerUrl + 'gettvaudioproducts8').map(response => response.json());
+    return this._http.get(this.ServerUrl + 'getcomputinglaptopsproduct8').map(response => response.json());
     // console.log(this.CateDeatils)
   }
 
@@ -100,6 +100,7 @@ export class HomeService {
   InsertUserBid(User_Id: any, Product_ID: any, Price: any) {
 
 
+    // console.log(Pidd);
     // console.log(Pidd);
 
 

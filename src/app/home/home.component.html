@@ -546,11 +546,10 @@
                         <div class="slider-items-products">
                           <div id="pro2-slider" class="product-flexslider hidden-buttons">
                             <div class="slider-items slider-width-col6">
-                              <ng-container *ngFor="let Productspic of Getphoto">
-                              <a *ngIf="phoneProducts.ProductID == Productspic.ProID " [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + Productspic.Pic }}" alt="{{ PicServrUrl + Productspic.pic }}"></a>
+
+                              <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.pic }}"></a>
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
-                              </ng-container>
 
                               <div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">
                                 <div class="countbox_1 jtv-timer-grid"></div>
@@ -637,7 +636,7 @@
 
                 </div>
                 <div class="tab-pane fade" id="kids">
-                <ng-container *ngFor="let TvVideoaudio88 of TvVideoaudio8">
+                <ng-container *ngFor="let TvVideoaudio88 of getcomputinglaptopsproduct8">
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
@@ -646,13 +645,8 @@
                           <!--<div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>-->
                           <!--<div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>-->
                         <!--</div>-->
-                        <ng-container *ngFor="let Productspic of Getphoto">
-                          <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + Productspic.Pic }}" alt="{{ PicServrUrl + Productspic.pic }}"></a>-->
-                          <a *ngIf="TvVideoaudio88.ProductID == Productspic.ProID " [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + Productspic.Pic }}" alt="{{ PicServrUrl + Productspic.Pic }}"></a>
+                          <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + TvVideoaudio88.Pic }}" alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
 
-                      <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
-                          <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
-                        </ng-container>
 
                         <div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">
                           <div class="countbox_1 jtv-timer-grid"></div>

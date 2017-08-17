@@ -130,7 +130,7 @@ export class AdService {
   }
 
   Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
-    console.log('fsdfsfgsahd' + SubSubCat);
+    console.log('fsdfsfgsahd' + CatName);
 
     return this._http.post(this.ServerUrl + 'phoneandtablets',
       {
@@ -151,16 +151,20 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'Active': false,
+        'Sold': false,
+        'Pic': basex64,
 
 
 
-        //    'Pidd':  Pidd,
+
+        //    'Pidd':  Pidd,sssssss
       }).map((res: Response) => {
       if (res) {
         console.log('abc');
         if (res.status === 201) {
           const responce_data = res.json();
-          this.ProductImages(Product_ID, basex64).subscribe();
+        // /  this.ProductImages(Product_ID, basex64).subscribe();
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
@@ -184,9 +188,9 @@ export class AdService {
         'ProductID': Product_ID,
         'Cat_Name': CatName ,
         'Sub_Cat_Name': SubCat,
+        'User_ID': User_ID,
         'Sub_Sub_Cat_Name': SubSubCat,
         'P_Title':  Title,
-        'User_ID': User_ID,
         'P_Des':  Addetail,
         'P_Condition':  condition,
         'Auction': Auction,
@@ -198,6 +202,9 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'Active': false,
+        'Sold': false,
+        'Pic': basex64,
 
 
 
@@ -208,7 +215,7 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
 
-          this.ProductImages(Product_ID, basex64).subscribe();
+          // this.ProductImages(Product_ID, basex64).subscribe();
 
 
           localStorage.setItem('NewPost', 'Done');
@@ -231,9 +238,9 @@ export class AdService {
         'ProductID': Product_ID,
         'Cat_Name': CatName ,
         'Sub_Cat_Name': SubCat,
+        'User_ID': User_ID,
         'Sub_Sub_Cat_Name': SubSubCat,
         'P_Title':  Title,
-        'User_ID': User_ID,
         'P_Des':  Addetail,
         'P_Condition':  condition,
         'Auction': Auction,
@@ -245,6 +252,9 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'Active': false,
+        'Sold': false,
+        'Pic': basex64,
 
 
 
@@ -254,7 +264,7 @@ export class AdService {
         console.log('abc');
         if (res.status === 201) {
           const responce_data = res.json();
-          this.ProductImages(Product_ID, basex64).subscribe();
+          // this.ProductImages(Product_ID, basex64).subscribe();
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
@@ -275,9 +285,9 @@ export class AdService {
         'ProductID': Product_ID,
         'Cat_Name': CatName ,
         'Sub_Cat_Name': SubCat,
+        'User_ID': User_ID,
         'Sub_Sub_Cat_Name': SubSubCat,
         'P_Title':  Title,
-        'User_ID': User_ID,
         'P_Des':  Addetail,
         'P_Condition':  condition,
         'Auction': Auction,
@@ -289,6 +299,9 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'Active': false,
+        'Sold': false,
+        'Pic': basex64,
 
 
 
@@ -299,7 +312,7 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
 
-          this.ProductImages(Product_ID, basex64).subscribe();
+          // this.ProductImages(Product_ID, basex64).subscribe();
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
@@ -321,20 +334,23 @@ export class AdService {
         'ProductID': Product_ID,
         'Cat_Name': CatName ,
         'Sub_Cat_Name': SubCat,
+        'User_ID': User_ID,
         'Sub_Sub_Cat_Name': SubSubCat,
         'P_Title':  Title,
         'P_Des':  Addetail,
-        'User_ID': User_ID,
         'P_Condition':  condition,
         'Auction': Auction,
         'SrartingPrice': Starting_Price,
+        'MaxBidPrice': Starting_Price,
         'Buyitnow': Buyitnow,
         'AuctionListing': AuctionListing,
         'ReservePrice': ReservePrice,
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
-
+        'Active': false,
+        'Sold': false,
+        'Pic': basex64,
 
 
         //    'Pidd':  Pidd,
@@ -343,7 +359,7 @@ export class AdService {
         console.log('abc');
         if (res.status === 201) {
           const responce_data = res.json();
-          this.ProductImages(Product_ID, basex64).subscribe();
+          // this.ProductImages(Product_ID, basex64).subscribe();
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
@@ -364,10 +380,10 @@ export class AdService {
         'ProductID': Product_ID,
         'Cat_Name': CatName ,
         'Sub_Cat_Name': SubCat,
+        'User_ID': User_ID,
         'Sub_Sub_Cat_Name': SubSubCat,
         'P_Title':  Title,
         'P_Des':  Addetail,
-        'User_ID': User_ID,
         'P_Condition':  condition,
         'Auction': Auction,
         'SrartingPrice': Starting_Price,
@@ -378,7 +394,9 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
-
+        'Active': false,
+        'Sold': false,
+        'Pic': basex64,
 
 
         //    'Pidd':  Pidd,
@@ -388,7 +406,7 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
 
-         this.ProductImages(Product_ID, basex64).subscribe();
+         // this.ProductImages(Product_ID, basex64).subscribe();
 
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);

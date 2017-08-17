@@ -3,31 +3,42 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "deploy": "gcloud preview app deploy",
+    "start": "node server.js",
+    "lint": "samples lint",
+    "pretest": "npm run lint",
+    "system-test": "samples test app",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "postinstall": "ng build ",
+    "e2e-test": "samples test deploy"
+  },
+  "engines": {
+    "node": "6.10.2"
+
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.3.1",
     "@angular/compiler": "^4.0.0",
+
+    "express": "4.15.3",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "angular-sessionstorage": "^1.1.5",
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.4.1",
     "jwthelper": "0.0.4",
+    "ng2-pagination": "^2.0.2",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "1.4.16",
     "@angular/cli": "1.2.1",
     "@angular/compiler-cli": "^4.0.0",
     "@angular/language-service": "^4.0.0",

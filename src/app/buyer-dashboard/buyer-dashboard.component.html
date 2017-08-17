@@ -1,0 +1,121 @@
+<app-header></app-header>
+
+<!-- Page Title start -->
+<div class="pageTitle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">Dashboard</h1>
+      </div>
+      <div class="col-md-6 col-sm-6">
+
+
+        <div class="breadCrumb ">
+          <img class="breadimg" src="assets/images/faq-banner.png" alt="google ad"  width="70px" height="70px"> <br/>
+          <span *ngIf="ValueRec == true">Welcome {{ GetUSerDOne['Fname']}}</span>
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Title End -->
+
+<div class="inner-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <ul class="usernavdash">
+          <li class="active"><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/my-bids-buyer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
+          <li><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dharr.pk</a></li>
+          <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
+          <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+
+        </ul>
+        <div class="adimages"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </div>
+      </div>
+
+        <div class="col-md-9 col-sm-8">
+
+          <ul class="row profilestat">
+            <li class="col-md-2 col-sm-4 col-xs-6">
+              <div class="inbox"> <i class="fa fa-eye" aria-hidden="true"></i>
+                <h6>10</h6>
+                <strong>Ad Views</strong> </div>
+            </li>
+            <li class="col-md-2 col-sm-4 col-xs-6">
+              <div class="inbox"> <i class="fa fa-tachometer" aria-hidden="true"></i>
+                <h6>2 <span>hr</span></h6>
+                <strong>Respond Time</strong> </div>
+            </li>
+            <li class="col-md-2 col-sm-4 col-xs-6">
+              <div class="inbox"> <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <h6>10</h6>
+                <strong>Ad Expire</strong> </div>
+            </li>
+
+            <li class="col-md-2 col-sm-4 col-xs-6">
+              <div class="inbox"> <i class="fa fa-briefcase" aria-hidden="true"></i>
+                <h6>2</h6>
+                <strong>Business Pro</strong> </div>
+            </li>
+            <li class="col-md-2 col-sm-4 col-xs-6">
+              <div class="inbox"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                <h6>8</h6>
+                <strong>Messages</strong> </div>
+            </li>
+
+
+
+          </ul>
+
+
+        </div>
+        <!--<div class="myads">-->
+          <!--<h3>Incomplete Ads </h3>-->
+          <!--<p>No ads Found </p>-->
+          <!--<ul class="searchList">-->
+            <!--&lt;!&ndash; ad start &ndash;&gt;-->
+            <!--&lt;!&ndash;<li>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="col-md-2 col-sm-4">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="adimg"><img src="assets/assets2/images/ads/01.jpg" alt="Ad Name"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="col-md-10 col-sm-8">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="jobinfo">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                      <!--&lt;!&ndash;<div class="col-md-8 col-sm-7">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<h3><a href="#.">Nikon Camera DSLR</a></h3>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="cateName"> <a href="#.">Cars</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">Toyota</a> </div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="clearfix"></div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce venenatis arcu est. Phasellus vel dignissim tellus...</p>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="listbtn"><a href="#.">View Details</a></div>&ndash;&gt;-->
+                      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                      <!--&lt;!&ndash;<div class="col-md-4 col-sm-5 text-right">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="adprice">$456.00</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> </div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--&lt;!&ndash; ad end &ndash;&gt;-->
+
+            <!--&lt;!&ndash; ad start &ndash;&gt;-->
+
+            <!--&lt;!&ndash; ad end &ndash;&gt;-->
+          <!--</ul>-->
+        <!--</div>-->
+
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

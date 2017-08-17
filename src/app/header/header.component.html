@@ -18,11 +18,14 @@
           <!-- top links -->
           <div class="headerlinkmenu col-md-7 col-sm-7 col-xs-12">
             <!-- Default Welcome Message -->
-            <div class="welcome-msg hidden-xs">Welcome to msg! </div>
+            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs">Welcome {{ GetUSerDOne['Fname']}}</div>
+            <!--<div class="welcome-msg hidden-xs">Welcome to msg! </div>-->
             <ul class="links">
-              <li><a [routerLink]="['/checkout']">Checkout</a></li>
-              <li><a [routerLink]="['/sign-up']">Sign Up</a></li>
-              <li><a [routerLink]="['/login']">Log In</a></li>
+              <li *ngIf="ValueRec == true"><a [routerLink]="['/checkout']">Checkout</a></li>
+              <li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']">Sign Up</a></li>
+              <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']">Log In</a></li>
+              <li *ngIf="ValueRec == true"><a (click)="ValueReset()" >Logout</a></li>
+
             </ul>
             <div class="language-currency-wrapper pull-right">
               <div class="inner-cl">
@@ -36,11 +39,9 @@
                   </ul>
                 </div>
                 <div class="block block-currency">
-                  <div class="item-cur"> <span>USD </span> <i class="fa fa-angle-down"></i></div>
+                  <div class="item-cur"> <span>RS </span> <i class="fa fa-angle-down"></i></div>
                   <ul>
-                    <li> <a href="#"><span class="cur_icon">€</span> EUR</a> </li>
-                    <li> <a href="#"><span class="cur_icon">¥</span> JPY</a> </li>
-                    <li> <a class="selected" href="#"><span class="cur_icon">$</span> USD</a> </li>
+                    <li> <a href="#"><span class="cur_icon">RS</span>PAK</a> </li>
                   </ul>
                 </div>
               </div>
@@ -111,7 +112,7 @@
                 <li class="active custom-menu"><a [routerLink]="['/home']">Home</a>
 
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']">Phones & Tablets</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }">Phones & Tablets</a>
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
                       <div class="menu-block-1">
@@ -158,7 +159,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a href="shop_grid.html">Women's Fashion</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" >Women's Fashion</a>
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
                       <div class="menu-block-1">
@@ -225,7 +226,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']">Men's Fashion</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }">Men's Fashion</a>
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
                       <div class="menu-block">
@@ -263,7 +264,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']">TV, Audio & Video</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'TV, Audio & Video' }">TV, Audio & Video</a>
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
                       <div class="menu-block-1">
@@ -305,7 +306,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']">Computing & Laptops</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Computing & Laptops' }">Computing & Laptops</a>
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
                       <div class="menu-block">
@@ -337,7 +338,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']">Home Appliances</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Home Appliances' }">Home Appliances</a>
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
                       <div class="menu-block">

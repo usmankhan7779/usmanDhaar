@@ -14,9 +14,9 @@
 
           <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
             <!--<div class="icon-sale-label sale-left">Sale</div>-->
-            <ng-container *ngFor="let productPic of Getphoto">
-            <div *ngIf="productToshow.ProductID == productPic.ProID " class="large-image"> <a href="{{ PicServrUrl + productPic.Pic }}" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img class="zoom-img" src="{{ PicServrUrl + productPic.Pic }}" alt="products"> </a> </div>
-            </ng-container>
+
+            <div class="large-image"> <a href="{{ PicServrUrl + productToshow.Pic }}" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img class="zoom-img" src="{{ PicServrUrl + productToshow.Pic }}" alt="products"> </a> </div>
+
             <!--<div class="slider-items-products col-md-12">-->
               <!--<div id="thumbnail-slider" class="product-flexslider hidden-buttons product-thumbnail">-->
                 <!--<div class="slider-items slider-width-col3">-->
@@ -115,17 +115,34 @@
               <span class="minutes">5</span>
               <div class="smalltext">Seconds</div>
             </div>
+
           </div>
 
-              <form action="#" method="post">
-            <input type="number" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
 
+              <form action="#" method="post">
+               <ng-container *ngIf="LoginID === false">
+                <div class="short-description">
+                  <h5>Login required for Bid*</h5>
+                </div>
+                 <div *ngIf="login_error==true" class="alert alert-danger">
+                   <strong>Error!</strong> Invalid Login Details
+                 </div>
+                <input type="text" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="UserPriceBid" [(ngModel)]="model.Username" placeholder="Username" required>
+                <input type="Password" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.Password" placeholder="Password" required>
+
+                <button class="button pro-add-to-cart col-md-push-6 " (click)="LoginUser()" title="Bid Now" type="button"><span> Login</span></button>
+               </ng-container>
+                <ng-container *ngIf="LoginID === true">
+
+                <input type="number" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
+
+                <div>
                 <div class="cart-plus-minus">
                   <label for="qty">Place your Bid:</label>
-
                 </div>
-
                 <button class="button pro-add-to-cart" (click)="InsertBid(productToshow.SrartingPrice)" title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
+                </div>
+                </ng-container>
               </form>
             </div>
 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { HomeService } from '../home/home.services';
+import { LoginService } from '../log-in/log-in.services';
 
 @Component({
   selector: 'app-single-product',
@@ -13,6 +14,8 @@ import { HomeService } from '../home/home.services';
 export class SingleProductComponent implements OnInit {
   private sub: any;
   model: any = {};
+  LoginID:  Boolean = false;
+  login_error:  Boolean = false;
   ProID: string;
   PicServrUrl = 'http://localhost:8000/media';
   Getphoto: any = [];
@@ -25,9 +28,16 @@ export class SingleProductComponent implements OnInit {
   CatName: string;
   constructor( private route: ActivatedRoute,
                private GetAdd: HomeService,
+               private LOginObj: LoginService,
                private router: Router) { }
 
   ngOnInit() {
+    if (sessionStorage.getItem('UserID') !== null) {
+      this.LoginID = true;
+    } else {
+      this.LoginID = false;
+    }
+
     window.scrollTo(0, 0);
     this.sub = this.route
       .queryParams
@@ -65,7 +75,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   InsertBid(startingPrice: number ) {
-    this.GetAdd.InsertUserBid('1', this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
+    this.GetAdd.InsertUserBid(sessionStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
       this.GeProductBiding = resSlidersData
       if (this.CatName === '0') {
         this.router.navigate(['/login']);
@@ -100,6 +110,27 @@ export class SingleProductComponent implements OnInit {
 
 
   }
+
+  LoginUser() {
+
+    this.LOginObj.loged_No_redirect(this.model.Username, this.model.Password).subscribe((response) => {
+        /* this function is executed every time there's a new output */
+        // console.log("VALUE RECEIVED: "+response);
+        this.LoginID = true;
+        this.login_error = false;
+      },
+      (err) => {
+        this.login_error = true;
+        /* this function is executed when there's an ERROR */
+        //   console.log("ERROR: "+err);
+      },
+      () => {
+        /* this function is executed when the observable ends (completes) its stream */
+        //   console.log("COMPLETED");
+      }
+    );
+  }
+
 
 
 

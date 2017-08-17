@@ -1,0 +1,33 @@
+import 'rxjs/add/operator/map';
+import {Injectable} from '@angular/core';
+import {Http , Headers , Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/map';
+
+
+
+@Injectable()
+export class ActiveAdServices {
+  private id: any;
+  private head: any;
+  public login: any;
+  returnUrl: string;
+  ServerUrl = 'http://127.0.0.1:8000/products/';
+
+  constructor(private _http: Http,
+              private _nav: Router) {
+  }
+
+
+  GetAllActiveproductsBYUserID(page: any, UserID: any) {
+    return this._http.get( this.ServerUrl + 'getAll_Active_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
+
+  GetallProductdBids(page: any, UserID: any) {
+    return this._http.get( this.ServerUrl + 'GetallProductdBids/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
+
+
+}

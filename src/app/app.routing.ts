@@ -21,8 +21,11 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { StoreRegistrationComponent } from './store-registration/store-registration.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
+import { MyBiddsComponent } from './my-bidds/my-bidds.component';
 
-
+import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
 const appRoutes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
@@ -102,7 +105,22 @@ const appRoutes: Routes = [
   {
     path: 'store-registration',
     component: StoreRegistrationComponent
+  },
+  {
+    path: '404',
+    component: NotFoundComponent
+  }, {
+    path: 'buyer-dashboard',
+    component: BuyerDashboardComponent
+  }, {
+    path: 'my-bids',
+    component: MyBiddsComponent
+  }, {
+    path: 'my-bids-buyer',
+    component: MyBidsBuyerComponent
   }
+
+
 
 
 ];

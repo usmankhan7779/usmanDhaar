@@ -8,7 +8,7 @@ import { HomeService } from './home.services';
 export class HomeComponent implements OnInit {
   PicServrUrl = 'http://localhost:8000/media';
   GetallPhoneProduct: any = [];
-  TvVideoaudio8: any = [];
+  getcomputinglaptopsproduct8: any = [];
   WomenFashionProducts4: any = [];
   MenFashionProducts4: any = [];
   ProductPrice: any = [];
@@ -66,11 +66,10 @@ export class HomeComponent implements OnInit {
     });
 
     // tv vidoe audio
-    this.GetProducts.getTvVideoaudio8().subscribe(resSlidersData => {
+    this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
 
-      this.TvVideoaudio8 = resSlidersData;
-      console.log('Start');
-      console.log(this.TvVideoaudio8);
+      this.getcomputinglaptopsproduct8 = resSlidersData;
+
 
     });
 

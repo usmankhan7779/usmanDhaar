@@ -69,9 +69,9 @@
 
                     <label  style="color: black" class="help-block">Select Sub Catgory</label>
                     <select   [(ngModel)]="model.subcat" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
-                      <optgroup *ngFor="let item of GetAllSubCat"  label="{{ item.Subcat_Name}}">
+                      <optgroup *ngFor="let item of GetAllSubCat"  label="{{ item.Sub_Cat_Name}}">
                         <ng-container *ngFor="let item_sub of GetAllSubSubCat">
-                        <option  *ngIf="item.Subcat_Name == item_sub.Sub_Cat_ID" [value]="item.Subcat_Name +'!' +item.id+ '!'+item_sub.Sub_Subcat_Name+ '!' + item_sub.id"> {{ item_sub.Sub_Subcat_Name }}</option>
+                        <option  *ngIf="item.Sub_Cat_Name == item_sub.Sub_Cat_ID" [value]="item.Sub_Cat_Name +'!' +item.id+ '!'+item_sub.Sub_Sub_Cat_Name+ '!' + item_sub.id"> {{ item_sub.Sub_Sub_Cat_Name }}</option>
                         </ng-container>
                       </optgroup>
 
