@@ -79,8 +79,8 @@
 
                 <ul>
                   <li class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
+                    <div class="col-sm-8 ">
+                      <div class="form-group form-group has-feedback" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
                         <label for="Store _name" class="required">Store Name(*)</label>
 
                         <div style="color:red" *ngIf="model.storename!=null && storename.touched && !storename.valid" class="help-block">Store Name required or invalid
@@ -89,10 +89,17 @@
                                pattern="^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$"
                                placeholder="mySotre"
                                (keyup)=checkButtonStep1()
+                               (ngModelChange)="onChange($event)"
                                #storename="ngModel" name="storename" class="input form-control"
                                id="Store _name"
                                required>
+                        <span  *ngIf="Userloading == true && UserTyping == true" style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate form-control-feedback"></span>
+                        <span  *ngIf="UserError == true && UserTyping == true && Userloading == false && storename.valid" style="color: green" class="glyphicon glyphicon-ok-sign form-control-feedback"></span>
+
+                        <span *ngIf="UserError == false && UserTyping == true && Userloading == false" style="color: red"  class="glyphicon glyphicon-remove-sign form-control-feedback"></span>
+
                       </div>
+
                     </div><!--/ [col] -->
 
                   </li><!--/ .row -->
@@ -123,7 +130,7 @@
 
 
 
-                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                      <div class="form-group  form-group has-feedback" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
 
                         <label for="email_address" class="required">Business Email(*)</label>
                         <div  style="color:red" *ngIf=" (!email.valid && email.touched  ) " class="help-block">Email required in proper format</div>
@@ -132,9 +139,15 @@
                                pattern="^(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
                                required
                                (keyup)=checkButtonStep1()
+                               (ngModelChange)="OnEmailChangeEvent()"
+                               (focusout)="checkEmail(email.value)"
                                placeholder="somename@gmail.com"
                                [(ngModel)]="model.email" #email="ngModel" name="email"
                                id="email_address">
+
+                        <span *ngIf="Emailok == true" style="color: green" class="glyphicon glyphicon-ok-sign form-control-feedback"></span>
+                        <div *ngIf=" EmailExist == true "  class="help-block"  style="color: red" >Email is Already Exist for Store</div>
+
 
                       </div><!--/ [col] -->
                     </div>

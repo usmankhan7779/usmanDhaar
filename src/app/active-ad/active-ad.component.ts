@@ -14,7 +14,7 @@ export class ActiveAdComponent implements OnInit {
   r: any;
   pageno: any;
   sub: any;
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'https://sample-175508.appspot.com/media';
   modelNo: any;
   ActiveProduct: any = [];
   GetPhotos: any = [];

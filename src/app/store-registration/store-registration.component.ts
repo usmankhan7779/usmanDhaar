@@ -16,19 +16,137 @@ export class StoreRegistrationComponent implements OnInit {
   step4 = false;
   step1button = false;
   step2button = false;
-
+  UserError = false;
+  UserTyping = false;
+  Userloading= false;
+  EmailExist= false;
+  Emailok= false;
+  Emailinvalid= false;
 
   constructor( private obj: LoginService) {
   }
 
   save() {
 
-    console.log(this.model);
-    this.obj.StoreRegistration(this.model).subscribe(
-      resSlidersData => {
-      // console.log('DONEDsdfnsd');
-      });
 
+    if ( this.model.terms ) {
+
+      this.obj.StoreRegistration(this.model).subscribe(
+        resSlidersData => {
+          // console.log('DONEDsdfnsd');
+        });
+    } else {
+      alert('You must agree to the terms  first.');
+    }
+  }
+
+  onChange(username: string) {
+
+
+    if (username !== '') {
+
+
+      if (username.length > 4 && username.length < 30) {
+        if (username.match('^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$')) {
+          this.Userloading = true;
+          this.UserTyping = true;
+
+
+          this.obj.verifyStoreName(username).subscribe((response) => {
+              /* this function is executed every time there's a new output */
+              // console.log("VALUE RECEIVED: "+response);
+              if (response.Res !== true) {
+
+                this.Userloading = false;
+                this.UserError = true;
+                //   alert('true');
+
+              } else {
+                this.Userloading = false;
+                this.UserError = false;
+                //   alert(response_useradmin.Res);
+              }
+            },
+            (err) => {
+
+              console.log('error');
+              this.Userloading = true;
+
+              alert(err);
+              ////const User_exist_Resonse= err.json();
+
+
+              /* this function is executed when there's an ERROR */
+              //   console.log("ERROR: "+err);
+            },
+            () => {
+              console.log('error');
+              /* this function is executed when the observable ends (completes) its stream */
+              //   console.log("COMPLETED");
+            }
+          );
+        }
+      } else {
+        this.UserTyping = true;
+        this.Userloading = false;
+        this.UserError = false;
+
+      }
+    } else {
+      this.UserTyping = false;
+
+    }
+
+  }
+
+  checkEmail(email: string) {
+
+    if (email !== '') {
+
+      if (email.length > 4) {
+
+
+
+        this.obj.email_verifyforStore(email).subscribe(( data ) => {
+
+            if (data['exists'] === 'Yes') {
+              this.Emailinvalid = false;
+              this.EmailExist = true;
+              //this.out_put = true;
+            }
+            else {
+              this.Emailinvalid = false;
+              //console.log("false");
+              this.Emailok = true;
+
+              // this.out_put = false;
+            }
+
+          },
+          (err) => {
+            alert('Email invalid')
+            this.Emailinvalid = true;
+          },
+          () => {
+            /* this function is executed when the observable ends (completes) its stream */
+            //   console.log("COMPLETED");
+          }
+        );
+      } else {
+        this.Emailok = false;
+        this.Emailinvalid = true;
+      }
+    } else {
+      this.Emailinvalid = false;
+
+
+    }
+
+  }
+
+  OnEmailChangeEvent() {
+    this.EmailExist = false;
+    this.Emailok = false;
   }
 
 
@@ -49,8 +167,7 @@ export class StoreRegistrationComponent implements OnInit {
       this.step1button = true;
     }
   }
-  checkButtonStep2()
-  {
+  checkButtonStep2() {
     if (this.model.fbrname != null && this.model.cnic != null && this.model.strn != null ) {
       this.step2button = true;
     }

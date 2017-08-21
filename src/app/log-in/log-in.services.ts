@@ -18,8 +18,8 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'http://127.0.0.1:8000/user/';
-  StoreServerUrl =  'http://127.0.0.1:8000/store/';
+  ServerUrl =  'https://sample-175508.appspot.com/user/';
+  StoreServerUrl =  'https://sample-175508.appspot.com/store/';
 
   constructor(private _http: Http ,
               private _nav: Router) {
@@ -185,42 +185,57 @@ export class LoginService {
   }
 
   verify_token() {
-    return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': sessionStorage.getItem('Authorization')})
-      .map((res: Response) => {
-        if (res) {
-           console.log('Done');
-          if (res.status === 201) {
-            // return true;
-          }
-          else if (res.status === 200) {
-            // return true;
-          }
-        }
-      }).catch((error: any) => {
-        if (error.status === 404) {
-          console.log('ok not submited submite');
-          this._nav.navigate(['/login']);
-          return Observable.throw(new Error(error.status));
-        }
-        else if (error.status === 400) {
-          console.log('Not');
-          this._nav.navigate(['/owner_login']);
-          return Observable.throw(new Error(error.status));
-        }
-        else if (error.status === 401) {
-          console.log('ok not submited submite');
-          this._nav.navigate(['/login']);
-          return Observable.throw(new Error(error.status));
-        }
-        else  {
-
-          this._nav.navigate(['/login']);
-        }
-      });
+  return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': sessionStorage.getItem('Authorization')})
+.map((res: Response) => {
+  if (res) {
+    console.log('Done');
+    if (res.status === 201) {
+      // return true;
+    }
+    else if (res.status === 200) {
+      // return true;
+    }
   }
+}).catch((error: any) => {
+  if (error.status === 404) {
+    console.log('ok not submited submite');
+    this._nav.navigate(['/login']);
+    return Observable.throw(new Error(error.status));
+  }
+  else if (error.status === 400) {
+    console.log('Not');
+    this._nav.navigate(['/owner_login']);
+    return Observable.throw(new Error(error.status));
+  }
+  else if (error.status === 401) {
+    console.log('ok not submited submite');
+    this._nav.navigate(['/login']);
+    return Observable.throw(new Error(error.status));
+  }
+  else  {
+
+    this._nav.navigate(['/login']);
+  }
+});
+}
+
 
 
   StoreRegistration(model: any []) {
+    console.log(model['fbrunregister'])
+    if (model['fbrunregister'] === true ) {
+
+      model['fbrregister'] = false;
+      model['fbrname'] = '-';
+      model['cnic'] = '-';
+      model['strn'] = '-';
+
+      console.log(model['fbrregister']);
+      console.log(model['fbrname']);
+      console.log(model['cnic']);
+      console.log(model['strn']);
+
+    }
     return this._http.post( this.StoreServerUrl + 'GetStoreInformation/' + sessionStorage.getItem('UserID'),
       {
         'StoreName' :  model['storename'],
@@ -290,7 +305,7 @@ export class LoginService {
          console.log(res);
          if (res.status === 201 || res.status === 200) {
            // const responce_data = res.json();
-           // localStorage.setItem('Reg', 'Done');
+            sessionStorage.setItem('StoreReg', 'Done');
            this._nav.navigate(['/login']);
          }
        }
@@ -312,5 +327,37 @@ export class LoginService {
        }
      });
  }
+
+
+
+
+  verifyStoreName(username:  string) {
+    //console.log(username);
+
+    return this._http.get( this.StoreServerUrl + 'verifyStoreName/' + username)
+      .map((res: Response) => {
+        if (res) {
+          if (res.status === 201 || res.status === 200) {
+            const  response_useradmin = res.json();
+            return response_useradmin;
+          }
+        }
+      }).catch((error: any) => {
+        console.log(error);
+        if (error.status !== 404) {
+          if (error.status === 401) {
+            return Observable.throw(new Error(error.status));
+          }
+        } else {
+          console.log(error);
+          return Observable.throw(new Error(error.status));
+        }
+      });
+  }
+
+  email_verifyforStore(email) {
+    return this._http.get(this.StoreServerUrl + 'emailverifyforStore/' + email).map((response: Response) => response.json());
+
+  }
 
 }

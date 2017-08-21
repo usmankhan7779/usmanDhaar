@@ -15,6 +15,7 @@ export class LogInComponent implements OnInit {
   private sub: any;
   loading = false;
   SignUpDOne = false;
+  StoreUpDOne = false;
   login_error = false;
   logout: string;
   returnUrl: string;
@@ -32,16 +33,20 @@ export class LogInComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.logout = params['Logout'] || 0 ;
-        console.log('assiing ');
 
       });
 
-     if ( localStorage.getItem('Reg') === 'Done') {
+     if ( sessionStorage.getItem('Reg') === 'Done') {
 
        this.SignUpDOne = true;
-       localStorage.setItem('Reg', '');
+       sessionStorage.setItem('Reg', null);
      }
+     if ( sessionStorage.getItem('StoreReg') === 'Done') {
 
+       this.StoreUpDOne = true;
+       sessionStorage.setItem('StoreReg', null);
+     }
+    window.scrollTo(0, 0);
 
     if (this.logout === 'yes') {
       this.LogOutClick();

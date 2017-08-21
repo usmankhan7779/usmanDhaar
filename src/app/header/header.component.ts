@@ -16,16 +16,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('fdsfsdfdsgj' + sessionStorage.getItem('UserID'));
-    // if (localStorage.getItem('UserID') !== null) {
-    //   this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
-    //     this.GetUSerDOne = resSlidersData;
-    //     this.ValueRec = true;
-    //   });
+    // console.log('fdsfsdfdsgj' + sessionStorage.getItem('UserID'));
+    if (sessionStorage.getItem('UserID') !== null) {
+      this.obj.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+        this.GetUSerDOne = resSlidersData;
+         this.ValueRec = true;
 
-    // }
+        console.log('saqib hanif');
+        console.log(  this.GetUSerDOne);
+      });
 
-
+     }
   }
 
   ValueReset() {

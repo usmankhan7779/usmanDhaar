@@ -13,7 +13,7 @@ export class CategoryDetailComponent implements OnInit {
    r: any;
   pageno: any;
   sub: any;
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'https://sample-175508.appspot.com/media';
   modelNo: any;
   Trend: any = [];
   GetPhotos: any = [];

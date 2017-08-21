@@ -16,7 +16,7 @@ export class AdService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://127.0.0.1:8000/products/';
+  ServerUrl = 'https://sample-175508.appspot.com/products/';
 
   constructor(private _http: Http,
               private _nav: Router) {
@@ -130,7 +130,7 @@ export class AdService {
   }
 
   Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
-    console.log('fsdfsfgsahd' + CatName);
+
 
     return this._http.post(this.ServerUrl + 'phoneandtablets',
       {
@@ -161,11 +161,11 @@ export class AdService {
         //    'Pidd':  Pidd,sssssss
       }).map((res: Response) => {
       if (res) {
-        console.log('abc');
+
         if (res.status === 201) {
           const responce_data = res.json();
         // /  this.ProductImages(Product_ID, basex64).subscribe();
-          localStorage.setItem('NewPost', 'Done');
+          sessionStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
 
@@ -181,7 +181,6 @@ export class AdService {
 
   }
   Add_WomenFashion_Product(Product_ID: any,  User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
-    //console.log('fsdfsfgsahd' + SubSubCat);
 
     return this._http.post(this.ServerUrl + 'womenfashion',
       {
@@ -218,7 +217,7 @@ export class AdService {
           // this.ProductImages(Product_ID, basex64).subscribe();
 
 
-          localStorage.setItem('NewPost', 'Done');
+          sessionStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
         }
@@ -231,7 +230,7 @@ export class AdService {
 
   }
   Add_MenFashion_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
-    console.log('fsdfsfgsahd' + SubSubCat);
+
 
     return this._http.post(this.ServerUrl + 'menfashion',
       {
@@ -265,7 +264,7 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
           // this.ProductImages(Product_ID, basex64).subscribe();
-          localStorage.setItem('NewPost', 'Done');
+          sessionStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
         }
@@ -278,7 +277,7 @@ export class AdService {
 
   }
   Add_TVAudioVideo_Product(Product_ID: any, User_ID,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
-    console.log('fsdfsfgsahd' + SubSubCat);
+
 
     return this._http.post(this.ServerUrl + 'TVAudioVideo',
       {
@@ -313,7 +312,7 @@ export class AdService {
           const responce_data = res.json();
 
           // this.ProductImages(Product_ID, basex64).subscribe();
-          localStorage.setItem('NewPost', 'Done');
+          sessionStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
           return [{ status: res.status, json: res }];
@@ -360,7 +359,7 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
           // this.ProductImages(Product_ID, basex64).subscribe();
-          localStorage.setItem('NewPost', 'Done');
+          sessionStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
         }
@@ -373,7 +372,7 @@ export class AdService {
 
   }
   Add_HomeAppliances_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
-    //console.log('fsdfsfgsahd' + SubSubCat);
+
 
     return this._http.post(this.ServerUrl + 'HomeAppliances',
       {
@@ -408,7 +407,7 @@ export class AdService {
 
          // this.ProductImages(Product_ID, basex64).subscribe();
 
-          localStorage.setItem('NewPost', 'Done');
+          sessionStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
           return [{ status: res.status, json: res }];

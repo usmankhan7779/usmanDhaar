@@ -143,9 +143,8 @@ export class PostAdComponent implements OnInit {
     this.CatNumber = + this.CatId;
 
     if ( this.CatNumber < 10) {
-      console.log('loggggggg');
+
       this.CatId = '0' + this.CatId;
-      console.log('loggcat' + this.CatId);
     }
 
     const Product_ID = this.CatId + subcat[1] + subcat[3] + this.DateTime;
@@ -179,7 +178,6 @@ export class PostAdComponent implements OnInit {
       } else if (this.CatName === 'Home Appliances') {
         this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
       }
-
     } else {
 
 

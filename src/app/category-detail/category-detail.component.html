@@ -65,11 +65,10 @@
                       <div class="slider-items-products">
                         <div id="pro2-slider" class="product-flexslider hidden-buttons">
                           <div class="slider-items slider-width-col6">
-                            <ng-container *ngFor="let Productspic of GetPhotos">
-                              <a *ngIf="phoneProducts.ProductID == Productspic.ProID " [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + Productspic.Pic }}" alt="{{ PicServrUrl + Productspic.pic }}"></a>
+                               <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
+
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
-                            </ng-container>
 
                             <div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">
                               <div class="countbox_1 jtv-timer-grid"></div>

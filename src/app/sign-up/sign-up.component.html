@@ -120,8 +120,8 @@
                 </div>
 
               <div class="formrow">
-                <input type="checkbox" value="agree text" name="agree" />
-                I have read and agree to the <a href="#"> Terms and Conditions</a></div>
+                <input type="checkbox" [(ngModel)]="model.Agree" #Agree="ngModel"  value="agree text" name="agree" />
+                I have read and agree to the <a href="#" style="color: red"> Terms and Conditions</a></div>
               <input type="submit" class="btn" value="Register">
               </form>
             </div>

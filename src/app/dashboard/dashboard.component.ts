@@ -12,7 +12,7 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class DashboardComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
-  ServerUrl =  'http://127.0.0.1:8000/';
+  ServerUrl =  'https://sample-175508.appspot.com/';
   NewPostcheck = false ;
   USerName: any;
   constructor(private _http: Http ,
@@ -22,7 +22,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('sessionStorage' + sessionStorage.getItem('Authorization'))
     this.Profile.verify_token().subscribe((response) => {
         this.USerName =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
       },
@@ -35,10 +34,10 @@ export class DashboardComponent implements OnInit {
     );
     if ( sessionStorage.getItem('NewPost') === 'Done') {
           this.NewPostcheck = true;
-      sessionStorage.setItem('NewPost', '');
-      window.scrollTo(0, 0);
-  }
+      sessionStorage.setItem('NewPost', null);
 
+  }
+    window.scrollTo(0, 0);
 
   }
 

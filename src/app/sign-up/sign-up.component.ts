@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
+
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -19,10 +21,8 @@ export class SignUpComponent implements OnInit {
   Emailok= false;
   Emailinvalid= false;
   Emailchange= false;
-
+  termsAggre= false;
   PassMatch= true;
-
-
   registration_error = false;
   constructor( private singup: LoginService,
                private route: ActivatedRoute,
@@ -33,25 +33,27 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/log-in';
   }
-
   register(username: string, Email: string, Password: string , Fname: string, Lname: string, Mobile: string ) {
 
-
-    this.singup.post_signup_form(username, Email, Password, Fname, Lname, Mobile) .subscribe((response) => {
-        /* this function is executed every time there's a new output */
-        // console.log("VALUE RECEIVED: "+response);
-        this.registration_ok = true;
-      },
-      (err) => {
-        this.registration_error = true;
-        /* this function is executed when there's an ERROR */
-        //   console.log("ERROR: "+err);
-      },
-      () => {
-        /* this function is executed when the observable ends (completes) its stream */
-        //   console.log("COMPLETED");
-      }
-    );
+    if ( this.model.Agree ) {
+      this.singup.post_signup_form(username, Email, Password, Fname, Lname, Mobile).subscribe((response) => {
+          /* this function is executed every time there's a new output */
+          // console.log("VALUE RECEIVED: "+response);
+          this.registration_ok = true;
+        },
+        (err) => {
+          this.registration_error = true;
+          /* this function is executed when there's an ERROR */
+          //   console.log("ERROR: "+err);
+        },
+        () => {
+          /* this function is executed when the observable ends (completes) its stream */
+          //   console.log("COMPLETED");
+        }
+      );
+    } else {
+      alert('You must agree to the terms  first.');
+    }
 
 
     // this.router.navigate([this.returnUrl]);
@@ -169,12 +171,10 @@ export class SignUpComponent implements OnInit {
 
   checkPassowed(RePass: string, Pass: string) {
 
-    if ( RePass != Pass)
-     {
+    if ( RePass !== Pass) {
        this.PassMatch = false;
 
-     }
-     else {
+     } else {
       //  not match
       this.PassMatch = true;
 
