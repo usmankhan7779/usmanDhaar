@@ -12,7 +12,7 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class DashboardComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
-  ServerUrl =  'https://sample-175508.appspot.com/';
+  ServerUrl =  'http://localhost:8000/';
   NewPostcheck = false ;
   USerName: any;
   constructor(private _http: Http ,

@@ -6,11 +6,14 @@ import { HomeService } from './home.services';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  PicServrUrl = 'https://sample-175508.appspot.com/media';
+  PicServrUrl = 'http://localhost:8000/media';
   GetallPhoneProduct: any = [];
   getcomputinglaptopsproduct8: any = [];
   WomenFashionProducts4: any = [];
   MenFashionProducts4: any = [];
+  GetALLProductss: any = [];
+  GetALLFeaturedProductss: any = [];
+  GetALLAuctionProductss: any = [];
   ProductPrice: any = [];
   NewBidInserted = false ;
   Tmp_ProID: any;
@@ -54,6 +57,24 @@ export class HomeComponent implements OnInit {
       // console.log('Start');
       // console.log(this.TvVideoaudio8);
 
+    });
+
+    this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
+
+      this.GetALLProductss = resSlidersData;
+      // console.log('Start');
+
+
+    });
+    this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
+
+      this.GetALLAuctionProductss = resSlidersData;
+      // console.log('Start');
+    });
+    this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
+
+      this.GetALLFeaturedProductss = resSlidersData;
+      // console.log('Start');
     });
 
     // tv vidoe audio

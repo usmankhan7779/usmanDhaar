@@ -14,7 +14,7 @@ export class CategoryServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://sample-175508.appspot.com/products/';
+  ServerUrl = 'http://localhost:8000/products/';
 
 
   constructor(private _http: Http,

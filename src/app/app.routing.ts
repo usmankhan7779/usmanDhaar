@@ -24,6 +24,7 @@ import { StoreRegistrationComponent } from './store-registration/store-registrat
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 import { MyBiddsComponent } from './my-bidds/my-bidds.component';
+import { Checkout2Component } from './checkout2/checkout2.component';
 
 import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
 const appRoutes: Routes = [
@@ -57,6 +58,10 @@ const appRoutes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'checkout2',
+    component: Checkout2Component
   },
   {
     path: 'forget-password',

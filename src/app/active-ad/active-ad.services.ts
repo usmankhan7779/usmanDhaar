@@ -14,7 +14,7 @@ export class ActiveAdServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://sample-175508.appspot.com/products/';
+  ServerUrl = 'http://localhost:8000/products/';
 
   constructor(private _http: Http,
               private _nav: Router) {
@@ -23,6 +23,11 @@ export class ActiveAdServices {
 
   GetAllActiveproductsBYUserID(page: any, UserID: any) {
     return this._http.get( this.ServerUrl + 'getAll_Active_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
+
+  GetAllPendingproductsBYUserID(page: any, UserID: any) {
+
+    return this._http.get( this.ServerUrl + 'getAll_pending_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
   }
 
   GetallProductdBids(page: any, UserID: any) {

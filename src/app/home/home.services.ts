@@ -15,7 +15,7 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'https://sample-175508.appspot.com/products/';
+  ServerUrl =  'http://localhost:8000/products/';
 
 
   constructor(private _http: Http ,
@@ -96,6 +96,26 @@ export class HomeService {
     return this._http.get(this.ServerUrl + 'GetAuctionProductPriceById/' + proId).map(response => response.json());
     // console.log(this.CateDeatils)
   }
+
+  GetProductsfromAllCat( ) {
+
+    return this._http.get(this.ServerUrl + 'getProductsfromAllCat').map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
+  GetAuctionProductsfromAllCat( ) {
+
+    return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat').map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
+   GetAllFeaturedProducts( ) {
+
+    return this._http.get(this.ServerUrl + 'getallfeaturedProducts').map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
+
+
+
+
 
   InsertUserBid(User_Id: any, Product_ID: any, Price: any) {
 

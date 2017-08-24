@@ -18,8 +18,8 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'https://sample-175508.appspot.com/user/';
-  StoreServerUrl =  'https://sample-175508.appspot.com/store/';
+  ServerUrl =  'http://localhost:8000/user/';
+  StoreServerUrl =  'http://localhost:8000/store/';
 
   constructor(private _http: Http ,
               private _nav: Router) {
@@ -38,7 +38,7 @@ export class LoginService {
             this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
             sessionStorage.setItem('UserID', this.decoded);
             this.GetUSerdetailsByUserId(this.decoded).subscribe(resSlidersData => {
-              // console.log('resSlidersData');
+               console.log('resSlidersData');
               if ( resSlidersData['Vendor'] === true) {
                 this._nav.navigate(['/dashboard']);
               } else {
@@ -75,7 +75,6 @@ export class LoginService {
   }
 
   GetUSerdetailsByUserId(decoded: any) {
-    console.log('UserIDsjadkhskjdfasdkg:gdfgdsd');
     return this._http.get(this.ServerUrl + 'Get_User_details/' + this.decoded).map(response => response.json());
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import {HostListener} from '@angular/core';
 import { LoginService } from '../log-in/log-in.services';
 
 
@@ -14,7 +15,19 @@ export class HeaderComponent implements OnInit {
   constructor(private obj: LoginService,
               private _nav: Router) { }
 
+  // @HostListener('window:popstate', ['$event'])
+  // onPopState(event) {
+  //   console.log('Back button pressed');
+  //   if (window.location.pathname === '/home') {
+  //     window.location.reload();
+  //   }
+  // }
+  go() {
+    window.location.href = '/home';
+  }
   ngOnInit() {
+
+
 
     // console.log('fdsfsdfdsgj' + sessionStorage.getItem('UserID'));
     if (sessionStorage.getItem('UserID') !== null) {
@@ -22,7 +35,7 @@ export class HeaderComponent implements OnInit {
         this.GetUSerDOne = resSlidersData;
          this.ValueRec = true;
 
-        console.log('saqib hanif');
+      //  console.log('saqib hanif');
         console.log(  this.GetUSerDOne);
       });
 

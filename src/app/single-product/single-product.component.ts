@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 // import './single-product.js';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { HomeService } from '../home/home.services';
 import { LoginService } from '../log-in/log-in.services';
+
+
 
 @Component({
   selector: 'app-single-product',
@@ -20,9 +22,17 @@ export class SingleProductComponent implements OnInit {
   PicServrUrl = 'http://localhost:8000/media';
   Getphoto: any = [];
   NewBidInserted = false ;
+  NewCart = false ;
   AuctionTest = true;
   AuctionProductPrice: number;
+
   resultProduct: any = [];
+  // onePeoduct: Productlist[];
+  onePeoduct: any = [];
+  products: any = {'products': []};
+
+
+  TmpresultProduct: any = {'products': []};
   GeProductBiding: any = [];
   ProductPrice: any = [];
   CatName: string;
@@ -32,6 +42,7 @@ export class SingleProductComponent implements OnInit {
                private router: Router) { }
 
   ngOnInit() {
+
     if (sessionStorage.getItem('UserID') !== null) {
       this.LoginID = true;
     } else {
@@ -132,6 +143,65 @@ export class SingleProductComponent implements OnInit {
   }
 
 
+  Addtocart(Abc: any) {
 
+    if (Abc === '') {
+    alert('Please Select Product Quantity first');
+    } else {
+
+
+
+      try {
+        alert('alert');
+        // this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+        // alert(this.TmpresultProduct['products']);
+
+        if (sessionStorage.getItem('Cartdata') !== null ) {
+          alert('2st');
+          this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+          for (let ABCC of this.TmpresultProduct['products']) {
+            alert('loop');
+            if (ABCC.ProductID === this.ProID) {
+              this.NewCart = true;
+              alert('loop123');
+            }
+          }
+          if (this.NewCart === false) {
+            alert('new cart');
+            this.resultProduct[0].itemsqty = +Abc;
+            this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+            this.TmpresultProduct['products'].push(this.resultProduct[0]);
+            sessionStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+            // console.log(this.products);
+            this.router.navigate(['/checkout2']);
+          } else {
+            this.router.navigate(['/checkout2']);
+          }
+        } else {
+          alert('nulll');
+          this.resultProduct[0].itemsqty = +Abc;
+          this.TmpresultProduct['products'].push(this.resultProduct[0]);
+          sessionStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+          // console.log(this.products);
+          this.router.navigate(['/checkout2']);
+        }
+      } catch  (e) {
+        this.resultProduct[0].itemsqty = +Abc;
+         this.TmpresultProduct['products'].push(this.resultProduct[0]);
+           sessionStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+      // console.log(this.products);
+            this.router.navigate(['/checkout2']);
+      }
+
+      }
+
+  }
+
+
+
+  ClearSession() {
+    sessionStorage.clear();
+    alert('clear');
+  }
 
 }

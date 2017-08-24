@@ -36,6 +36,7 @@ import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.compo
 import { ActiveAdServices } from './active-ad/active-ad.services';
 import { MyBiddsComponent } from './my-bidds/my-bidds.component';
 import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
+import { Checkout2Component } from './checkout2/checkout2.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
     NotFoundComponent,
     BuyerDashboardComponent,
     MyBiddsComponent,
-    MyBidsBuyerComponent
+    MyBidsBuyerComponent,
+    Checkout2Component
   ],
   imports: [
     BrowserModule,
