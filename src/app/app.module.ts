@@ -34,9 +34,12 @@ import { CategoryServices } from './category-detail/category-detail.services';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 import { ActiveAdServices } from './active-ad/active-ad.services';
+import { BuyerDashboardServices } from './buyer-dashboard/buyer-dashboard.services';
 import { MyBiddsComponent } from './my-bidds/my-bidds.component';
 import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
 import { Checkout2Component } from './checkout2/checkout2.component';
+import { BuyerOrderComponent } from './buyer-order/buyer-order.component';
+import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,9 @@ import { Checkout2Component } from './checkout2/checkout2.component';
     BuyerDashboardComponent,
     MyBiddsComponent,
     MyBidsBuyerComponent,
-    Checkout2Component
+    Checkout2Component,
+    BuyerOrderComponent,
+    BuyerInvoiceComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +87,7 @@ import { Checkout2Component } from './checkout2/checkout2.component';
     AdService,
     HomeService,
     CategoryServices,
+    BuyerDashboardServices,
     DatePipe,
   ],
   bootstrap: [AppComponent]

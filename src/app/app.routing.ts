@@ -25,8 +25,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 import { MyBiddsComponent } from './my-bidds/my-bidds.component';
 import { Checkout2Component } from './checkout2/checkout2.component';
+import { BuyerOrderComponent } from './buyer-order/buyer-order.component';
+import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
 
 import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
+
 const appRoutes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
@@ -123,7 +126,14 @@ const appRoutes: Routes = [
   }, {
     path: 'my-bids-buyer',
     component: MyBidsBuyerComponent
-  }
+  }, {
+    path: 'buyer-orders',
+    component: BuyerOrderComponent
+  }, {
+    path: 'buyer-invoice',
+    component: BuyerInvoiceComponent
+  },
+
 
 
 

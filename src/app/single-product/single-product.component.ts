@@ -157,17 +157,17 @@ export class SingleProductComponent implements OnInit {
         // alert(this.TmpresultProduct['products']);
 
         if (sessionStorage.getItem('Cartdata') !== null ) {
-          alert('2st');
+
           this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
           for (let ABCC of this.TmpresultProduct['products']) {
-            alert('loop');
+
             if (ABCC.ProductID === this.ProID) {
               this.NewCart = true;
-              alert('loop123');
+
             }
           }
           if (this.NewCart === false) {
-            alert('new cart');
+
             this.resultProduct[0].itemsqty = +Abc;
             this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
             this.TmpresultProduct['products'].push(this.resultProduct[0]);

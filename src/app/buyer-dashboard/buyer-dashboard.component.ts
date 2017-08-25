@@ -29,11 +29,12 @@ export class BuyerDashboardComponent implements OnInit {
       () => {
       }
     );
-    if (localStorage.getItem('Authorization') === null) {
+
+    if (sessionStorage.getItem('Authorization') === null) {
       console.log('ERROR:sdfsd');
       this._nav.navigate(['/login']);
     } else {
-      this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+      this.obj.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
         this.GetUSerDOne = resSlidersData;
         this.ValueRec = true;
       });

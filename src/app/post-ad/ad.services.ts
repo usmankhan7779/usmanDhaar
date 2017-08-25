@@ -130,7 +130,8 @@ export class AdService {
   }
 
   Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
-
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
     return this._http.post(this.ServerUrl + 'phoneandtablets',
       {
@@ -154,12 +155,7 @@ export class AdService {
         'Active': false,
         'Sold': false,
         'Pic': basex64,
-
-
-
-
-        //    'Pidd':  Pidd,sssssss
-      }).map((res: Response) => {
+       }, { headers: headers }).map((res: Response) => {
       if (res) {
 
         if (res.status === 201) {

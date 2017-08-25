@@ -22,8 +22,8 @@
       <div class="col-md-3 col-sm-4">
         <ul class="usernavdash">
           <li ><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
-          <li class="active"><a [routerLink]="['/my-bids-buyer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bidds</a></li>
-          <li><a [routerLink]="['/buyer-orders']"><i class="fa fa-laptop" aria-hidden="true"></i> My Orders</a></li>
+          <li><a [routerLink]="['/my-bids-buyer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bidds</a></li>
+          <li class="active"><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My Orders</a></li>
           <li  ><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dharr.pk</a></li>
           <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
@@ -33,29 +33,30 @@
       </div>
       <div class="col-md-9 col-sm-8">
         <div class="myads">
-          <h3>My Bids For Products</h3>
-          <p>No Record Found</p>
+          <h3>My Orders</h3>
+<br/>
+          <br/>
           <ul class="searchList">
             <!-- ad start -->
-            <ng-container *ngFor="let phoneProducts of ActiveProduct.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+            <ng-container *ngFor="let phoneProducts of ActiveProduct">
               <li>
                 <div class="row">
                   <div class="col-md-2 col-sm-4">
-                    <div class="adimg"><img src="{{ PicServrUrl + phoneProducts.Pic  }}" alt="Ad Name"></div>
+                    <div class="adimg"><img src="assets/images/dhaar1.png" alt="Ad Name"></div>
                   </div>
                   <div class="col-md-10 col-sm-8">
                     <div class="jobinfo">
                       <div class="row">
                         <div class="col-md-8 col-sm-7">
-                          <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >{{ phoneProducts.P_Title }}</a></h3>
-                          <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name }}</a> </div>
+                          <h3><a [routerLink]="['/buyer-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.InvoicesID}" > Invoice ID : {{ phoneProducts.InvoicesID }}</a></h3>
+                          <div class="cateName"> <span>Payment Status</span> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <span{{ phoneProducts.Sub_Sub_Cat_Name }} </div>
                           <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
                           <div class="clearfix"></div>
-                          <p>{{phoneProducts.P_Des}}</p>
-                          <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+
+                          <div class="listbtn"><a [routerLink]="['/buyer-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.InvoicesID}" >View Details</a></div>
                         </div>
                         <div class="col-md-4 col-sm-5 text-right">
-                          <div class="adprice">RS {{ phoneProducts.MaxBidPrice}}.00</div>
+                          <div class="adprice">RS {{ phoneProducts.InvoicesBalance}}.00</div>
                           <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
                         </div>
                       </div>
@@ -66,11 +67,7 @@
             </ng-container>
             <!-- ad end -->
 
-            <div class="col-sm-4 col-sm-push-8">
-              <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
-                                   nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
 
-            </div>
             <!-- ad end -->
           </ul>
         </div>
