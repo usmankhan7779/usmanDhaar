@@ -1,7 +1,6 @@
 <app-header></app-header>
 
 
-
 <!-- Main Container -->
 <section class="main-container col2-right-layout">
   <div class="main container">
@@ -10,346 +9,459 @@
       <div class="col-main col-xs-12">
         <div class="page-content checkout-page">
           <div class="page-title">
-          <h2>Checkout</h2>
+            <h2>Checkout</h2>
           </div>
 
-        <h4 class="checkout-sep">Order Review</h4>
-        <div class="box-border">
-          <div class="table-responsive">
-            <table class="table table-bordered cart_summary">
-              <thead>
-              <tr>
-                <th class="cart_product">Product</th>
-                <th>Description</th>
-                <th>Avail.</th>
-                <th>Unit price</th>
-                <th>Qty</th>
-                <th>Total</th>
-                <th class="action"><i class="fa fa-trash-o"></i></th>
-              </tr>
-              </thead>
-              <tbody>
-              <ng-container *ngFor="let abc of CartedProduct.products">
-                <tr >
-                  <td class="cart_product">
-                    <a href="#"><img src="{{ PicServrUrl + abc.Pic }}" alt="products" alt="Product"></a>
-                  </td>
-                  <td class="cart_description">
-                    <p class="product-name"><a href="#">{{ abc.P_Title }} </a></p>
-                    <!--<small><a href="#">Color : Beige</a></small><br>-->
-                    <!--<small><a href="#">Size : S</a></small>-->
-                  </td>
-                  <td class="cart_avail"><span class="label label-success">In stock</span></td>
-                  <td class="price"><span>RS: {{ abc.FixedPrice }}.00</span></td>
-                  <td class="qty">
-                    <form role="form">
-                    <input maxlength="3"  (ngModelChange)="onChange($event, abc.ProductID)"  name="qty" [(ngModel)]="model.qty"  #qty="ngModel"  class="form-control input-sm" type="number" placeholder="{{  abc.itemsqty }}">
-                    </form>
-                  </td>
-                  <td class="price">
-                    <span>RS: {{ abc.FixedPrice * abc.itemsqty }}.00 </span>
-                  </td>
-                  <td class="action">
-                    <a  (click)="TrashcartElement(abc.ProductID)"><i class="fa fa-trash-o"></i></a>
-                  </td>
+          <h4 class="checkout-sep">Order Review</h4>
+          <div class="box-border">
+            <div class="table-responsive">
+              <table class="table table-bordered cart_summary">
+                <thead>
+                <tr>
+                  <th class="cart_product">Product</th>
+                  <th>Description</th>
+                  <th>Avail.</th>
+                  <th>Unit price</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                  <th class="action"><i class="fa fa-trash-o"></i></th>
                 </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let abc of CartedProduct.products">
+                  <tr>
+                    <td class="cart_product">
+                      <a href="#"><img src="{{ PicServrUrl + abc.Pic }}" alt="products" alt="Product"></a>
+                    </td>
+                    <td class="cart_description">
+                      <p class="product-name"><a href="#">{{ abc.P_Title }} </a></p>
+                      <!--<small><a href="#">Color : Beige</a></small><br>-->
+                      <!--<small><a href="#">Size : S</a></small>-->
+                    </td>
+                    <td class="cart_avail"><span class="label label-success">In stock</span></td>
+                    <td class="price"><span>RS: {{ abc.FixedPrice }}.00</span></td>
+                    <td class="qty">
+                      <form role="form">
+                        <input maxlength="3" (ngModelChange)="onChange($event, abc.ProductID)" name="qty"
+                               [(ngModel)]="model.qty" #qty="ngModel" class="form-control input-sm" type="number"
+                               placeholder="{{  abc.itemsqty }}">
+                      </form>
+                    </td>
+                    <td class="price">
+                      <span>RS: {{ abc.FixedPrice * abc.itemsqty }}.00 </span>
+                    </td>
+                    <td class="action">
+                      <a (click)="TrashcartElement(abc.ProductID)"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                  </tr>
 
-              </ng-container>
+                </ng-container>
 
 
-              </tbody>
-              <tfoot>
+                </tbody>
+                <tfoot>
 
-              <tr>
-                <td colspan="2" rowspan="2"><input type="text" class="button col-lg-6" style="font-size: 20px" name="" id="first_name"><span class="col-lg-push-3">-</span><button class="button col-lg-push-6"><span>Apply Coupon</span></button></td>
-                <td colspan="3">Total products (tax incl.)</td>
-                <td colspan="2">RS: {{ Total}}.00 </td>
-              </tr>
-              <tr>
-                <td colspan="3"><strong>Total</strong></td>
-                <td colspan="2"><strong>RS: {{ Total}}.00 </strong></td>
-              </tr>
-              </tfoot>
-            </table></div>
-          <ng-container *ngIf="orderreview === true">
-          <button (click)="ContinuetoCHeckout()"  class="button pull-right"><span>Continue to CHeckout </span></button>
+                <tr>
+                  <td colspan="2" rowspan="2"><input type="text" class="button col-lg-6" style="font-size: 20px" name=""
+                                                     id="first_name"><span class="col-lg-push-3">-</span>
+                    <button class="button col-lg-push-6"><span>Apply Coupon</span></button>
+                  </td>
+                  <td colspan="3">Total products (tax incl.)</td>
+                  <td colspan="2">RS: {{ Total}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="3"><strong>Total</strong></td>
+                  <td colspan="2"><strong>RS: {{ Total}}.00 </strong></td>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <ng-container *ngIf="orderreview === true">
+              <button (click)="ContinuetoCHeckout()" class="button pull-right"><span>Continue to CHeckout </span>
+              </button>
+            </ng-container>
+          </div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <ng-container *ngIf="CheckoutMethod === true">
+            <h4 class="checkout-sep">Checkout Method</h4>
+            <div *ngIf="LoggedIn === false" class="box-border">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5>Checkout as a Guest or Sign up </h5>
+                  <p>Register with us for future convenience:</p>
+                  <ul>
+                    <li><label><input type="radio" #Guest name="radio1">Checkout as Guest</label></li>
+                    <li><label><input type="radio" #Register name="radio1">Sign up</label></li>
+                  </ul>
+                  <br>
+                  <h4>Sign up and save time!</h4>
+                  <p>Sign up with us for future convenience:</p>
+                  <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
+                  <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
+                  <ng-container *ngIf="GuestButton === true">
+                    <button (click)="RegisterOrGuest(Guest.checked,Register.checked)" class="button"><i
+                      class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
+                  </ng-container>
+                </div>
+                <div class="col-sm-6">
+                  <h5>Login</h5>
+                  <p>Already registered? Please log in below:</p>
+                  <form (ngSubmit)="f.form.valid  && LoginUser()" #f="ngForm" novalidate>
+
+                    <label>User name</label>
+                    <input id="LoginEmailAddress" [(ngModel)]="mymodel.username"
+                           pattern="^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$"
+                           #username="ngModel" type="text" name="username" class="form-control input" required>
+
+                    <div *ngIf="f.submitted && username.errors " class="help-block">Please fill username
+                    </div>
+
+                    <label>Password</label>
+                    <input [(ngModel)]="mymodel.Loginpassword" name="Loginpassword" #Loginpassword="ngModel"
+                           type="password" required class="form-control input">
+                    <div *ngIf="f.submitted && !Loginpassword.valid " class="help-block">Password required
+                    </div>
+                    <div *ngIf="status == 2  " class="help-block" style="color: red">Something went wrong
+                    </div>
+
+                    <p><a href="#">Forgot your password?</a></p>
+                    <button class="button"><i class="icon-login"></i>&nbsp; <span>Login</span></button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+            <div *ngIf="LoggedIn === true" class="box-border">
+              <div class="row">
+                <h4 class="col-lg-offset-4 col-lg-4">Logged in as <a style="color: red">{{ LoginName }}</a></h4>
+              </div>
+            </div>
           </ng-container>
-        </div>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-        <ng-container *ngIf="CheckoutMethod === true">
-        <h4  class="checkout-sep">Checkout Method</h4>
-        <div *ngIf="LoggedIn === false" class="box-border">
-          <div class="row">
-            <div class="col-sm-6">
-              <h5>Checkout as a Guest or Register</h5>
-              <p>Register with us for future convenience:</p>
-              <ul>
-                <li><label><input type="radio" #Guest name="radio1">Checkout as Guest</label></li>
-                <li><label><input type="radio" #Register  name="radio1">Register</label></li>
-              </ul>
-              <br>
-              <h4>Register and save time!</h4>
-              <p>Register with us for future convenience:</p>
-              <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
-              <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
-              <ng-container *ngIf="GuestButton === true">
-              <button (click)="RegisterOrGuest(Guest.checked,Register.checked)" class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
-              </ng-container>
-            </div>
-            <div class="col-sm-6">
-              <h5>Login</h5>
-              <p>Already registered? Please log in below:</p>
-              <label>Email address</label>
-              <input id="LoginEmailAddress" [(ngModel)]="model.LoginEMail"  #LoginEMail="ngModel" type="email" class="form-control input">
-              <label>Password</label>
-              <input [(ngModel)]="model.Loginpassword"  #Loginpassword="ngModel" type="password" class="form-control input">
-              <p><a href="#">Forgot your password?</a></p>
-              <button (click)="LoginUser()" class="button"><i class="icon-login"></i>&nbsp; <span>Login</span></button>
-            </div>
-
-          </div>
-        </div>
-          <div *ngIf="LoggedIn === true"  class="box-border">
-            <div class="row">
-              <h4 class="col-lg-offset-4 col-lg-4">Logged in as <a style="color: red">{{ LoginName }}</a></h4>
-            </div>
-          </div>
-        </ng-container>
           <br/>
           <br/>
           <br/>
           <br/>
           <ng-container *ngIf="BillingMethod === true">
-        <h4 class="checkout-sep">Shipping Information</h4>
-        <div class="box-border" >
-          <ul>
+            <h4 class="checkout-sep">Shipping Information</h4>
+            <form (ngSubmit)="f.form.valid  && ShippingDetails()" #f="ngForm" novalidate>
 
-            <li class="row">
+              <div class="box-border">
+                <ul>
 
-              <div class="col-sm-6">
+                  <li class="row">
 
-                <label for="first_name_1" class="required">First Name</label>
-                <input [(ngModel)]="model.first_name"  #first_name="ngModel"  class="input form-control" type="text" name="" id="first_name_1">
+                    <div class="col-sm-6">
 
-              </div><!--/ [col] -->
+                      <label for="first_name_1" class="required">First Name</label>
+                      <input [(ngModel)]="model.first_name" #first_name="ngModel"
+                             pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                             class="input form-control" type="text" name="first_name" required id="first_name_1">
 
-              <div class="col-sm-6">
+                      <div *ngIf="f.submitted && !first_name.valid && first_name.errors "  style="color:red" class="help-block">First name is
+                        required
 
-                <label for="last_name_1" class="required">Last Name</label>
-                <input [(ngModel)]="model.last_name"  #last_name="ngModel" class="input form-control" type="text" name="" id="last_name_1">
+                      </div>
 
-              </div><!--/ [col] -->
-
-            </li><!--/ .row -->
-
-            <li class="row">
+                    </div><!--/ [col] -->
 
 
-              <div class="col-sm-6">
+                    <div class="col-sm-6">
 
-                <label for="email_address_1" class="required">Email Address</label>
-                <input [(ngModel)]="model.email_address"  #email_address_1="ngModel"  class="input form-control" type="email" name="" id="email_address_1">
+                      <label for="last_name_1" class="required">Last Name</label>
+                      <input [(ngModel)]="model.last_name" #last_name="ngModel"
+                             pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                             class="input form-control" type="text"
+                             name="last_name" id="last_name_1">
 
-              </div><!--/ [col] -->
+                    </div><!--/ [col] -->
 
-            </li><!--/ .row -->
+                  </li><!--/ .row -->
 
-            <li class="row">
-
-              <div class="col-sm-6">
-
-                <label class="required">state province</label>
-
-                <div class="custom_select">
-
-                  <select [(ngModel)]="model.state"  #state="ngModel" class="input form-control" name="">
-
-                    <option value="Punjab">Punjab</option>
-                    <option value="Balochistan">Islamabad Capital Territory</option>
-                    <option value="Sindh">Sindh</option>
-                    <option value="Balochistan">Balochistan</option>
-                    <option value="Azad Jammu and Kashmir">Azad Jammu and Kashmir</option>
-                    <option value="Balochistan">Balochistan</option>
-                    <option value="Gilgit–Baltistan">Gilgit–Baltistan</option>
-                    <option value="GKhyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
+                  <li class="row">
 
 
+                    <div class="col-sm-6">
 
-                  </select>
+                      <label for="email_address_1" class="required">Email Address</label>
+                      <input [(ngModel)]="model.email_address"
+                             pattern="^(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+                             #email_address="ngModel" class="input form-control"
+                             type="email" name="email_address" id="email_address_1" required>
 
-                </div>
-
-              </div><!--/ [col] -->
-
-              <div class="col-sm-6">
-
-                <label class="required">Country</label>
-
-                <div class="custom_select">
-
-                  <select [(ngModel)]="model.Country"  #Country="ngModel" class="input form-control" name="">
-
-                    <option value="Alabama">Pakistan</option>
+                      <div style="color:red" *ngIf="f.submitted && email_address.errors  && !email_address.valid" class="help-block">
+                        Email is invalid
+                      </div>
 
 
-                  </select>
+                    </div><!--/ [col] -->
 
-                </div>
+                  </li><!--/ .row -->
 
-              </div><!--/ [col] -->
+                  <li class="row">
 
-            </li><!--/ .row -->
+                    <div class="col-sm-6">
 
-            <li class="row">
+                      <label class="required">state province</label>
 
-              <div class="col-sm-6">
+                      <div class="custom_select">
 
-                <label for="postal_code_1" class="required">City</label>
-                <input [(ngModel)]="model.City"  #City="ngModel" class="input form-control" type="text" name="" id="postal_code_1">
+                        <select [(ngModel)]="model.state" #state="ngModel" class="input form-control" required
+                                name="state">
 
-              </div><!--/ [col] -->
-
-              <div class="col-sm-6">
-
-                <label for="postal_code_1" class="required">Zip/Postal Code</label>
-                <input [(ngModel)]="model.Zip"  #Zip="ngModel" class="input form-control" type="text" name="" id="po">
-
-              </div><!--/ [col] -->
-
-            </li><!--/ .row -->
-            <li class="row">
-
-              <div class="col-xs-12">
-
-                <label for="address_1" class="required">Address</label>
-                <input [(ngModel)]="model.Address"  #Address="ngModel"  class="input form-control" type="text" name="" id="address_1">
-
-              </div><!--/ [col] -->
-
-            </li><!--/ .row -->
+                          <option selected value="Punjab">Punjab</option>
+                          <option value="Balochistan">Islamabad Capital Territory</option>
+                          <option value="Sindh">Sindh</option>
+                          <option value="Balochistan">Balochistan</option>
+                          <option value="Azad Jammu and Kashmir">Azad Jammu and Kashmir</option>
+                          <option value="Balochistan">Balochistan</option>
+                          <option value="Gilgit–Baltistan">Gilgit–Baltistan</option>
+                          <option value="GKhyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
 
 
+                        </select>
+                        <div style="color:red" *ngIf="f.submitted  && !state.valid" class="help-block">
+                          State is required
+                        </div>
+
+                      </div>
+
+                    </div><!--/ [col] -->
+
+                    <div class="col-sm-6">
+
+                      <label class="required">Country</label>
+
+                      <div class="custom_select">
+
+                        <select [(ngModel)]="model.Country" #Country="ngModel" class="input form-control" name="Country"
+                                required>
+
+                          <option selected value="Alabama">Pakistan</option>
 
 
-            <li class="row">
+                        </select>
+                        <div style="color:red" *ngIf="f.submitted  && !Country.valid" class="help-block">
+                          Country is required
+                        </div>
+                      </div>
 
-              <div class="col-sm-6">
+                    </div><!--/ [col] -->
 
-                <label for="telephone_1" class="required">Telephone</label>
-                <input [(ngModel)]="model.telephone"  #telephone="ngModel"  class="input form-control" type="number" name="" id="telephone_1">
+                  </li><!--/ .row -->
 
-              </div><!--/ [col] -->
+                  <li class="row">
 
-              <div class="col-sm-6">
+                    <div class="col-sm-6">
 
-                <label for="fax_1">Fax</label>
-                <input [(ngModel)]="model.fax"  #fax="ngModel"  class="input form-control" type="number" name="" id="fax_1">
+                      <label for="postal_code_1" class="required">City</label>
+                      <input [(ngModel)]="model.City" #City="ngModel"
+                             pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                             class="input form-control" type="text" name="City" required
+                             id="postal_code_1">
+                      <div style="color:red" *ngIf="f.submitted  && !City.valid && City.errors" class="help-block">
+                        City is required
+                      </div>
+                    </div><!--/ [col] -->
 
-              </div><!--/ [col] -->
+                    <div class="col-sm-6">
 
-            </li><!--/ .row -->
+                      <label for="postal_code_1" class="required">Zip/Postal Code</label>
+                      <input [(ngModel)]="model.Zip" #Zip="ngModel" class="input form-control" type="text" name="Zip"
+                             pattern="([0-9])+$"
+                             required
+                             maxlength="6"
+                             id="po">
+                      <div style="color:red" *ngIf="f.submitted  && !Zip.valid && Zip.errors" class="help-block">
+                        Zip code is required
+                      </div>
 
-          </ul>
-          <ng-container *ngIf="BillingMethodButton === true;">
-          <button (click)="BillingInfo()" class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
+                    </div><!--/ [col] -->
+
+                  </li><!--/ .row -->
+                  <li class="row">
+
+                    <div class="col-xs-12">
+
+                      <label for="address_1" class="required">Address</label>
+                      <input [(ngModel)]="model.Address" #Address="ngModel" class="input form-control" type="text"
+                             name="Address" id="address_1" required>
+
+                      <div style="color:red" *ngIf="f.submitted  && !Address.valid" class="help-block">
+                        Address is required
+                      </div>
+
+                    </div><!--/ [col] -->
+
+                  </li><!--/ .row -->
+
+
+                  <li class="row">
+
+                    <div class="col-sm-6">
+
+                      <label for="telephone_1" class="required">Telephone</label>
+                      <input [(ngModel)]="model.telephone" #telephone="ngModel"
+                             [textMask]="{mask: phonemask}"
+                             class="input form-control" type="text"
+                             name="telephone" id="telephone_1">
+
+                      <div style="color:red" *ngIf="f.submitted  && !telephone.valid" class="help-block">
+                        Telephone is required
+                      </div>
+
+                    </div><!--/ [col] -->
+
+                    <div class="col-sm-6">
+
+                      <label for="fax_1">Fax</label>
+                      <input [(ngModel)]="model.fax" #fax="ngModel" class="input form-control" type="number" name="fax"
+                             id="fax_1">
+
+                    </div><!--/ [col] -->
+
+
+                    <div class="col-sm-6">
+                      <h4 class="checkout-sep">Payment Method</h4>
+
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+
+                    <div class="box-border">
+                      <ul class="shipping_method">
+                        <li>
+                          <div class="col-sm-12">
+                            <label for="radio_button_4"><input (click)="Paymentdisplay(home.checked, online.check)"
+                                                               #online
+                                                               type="radio" checked name="radio_3" id="radio_button_4">Online
+                              Payment</label>
+                          </div>
+                          <ng-container *ngIf="PaymentatHme === false">
+                            <div class="col-sm-12">
+                              <div class="col-sm-6">
+                                <br/>
+
+                                <label for="first_name_1" class="required">Name on the Card</label>
+                                <input
+                                  [(ngModel)]="model.card_name" #card_name="ngModel"
+                                  pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                                  class="input form-control" type="text" name="card_name" required
+                                  name="card_name" placeholder="">
+                                <div style="color:red" *ngIf="f.submitted  && !card_name.valid" class="help-block">
+                                  This field is required
+                                </div>
+
+                              </div>
+                            </div><!--/ [col] -->
+                            <div class="col-sm-12">
+                              <div class="col-sm-6">
+                                <br/>
+                                <label for="first_name_1" class="required">Card Number</label>
+                                <input
+                                  [(ngModel)]="model.card_number" #card_number="ngModel"
+                                  required
+                                  [textMask]="{mask: mask}"
+                                  class="input form-control" type="text" name="card_number" placeholder="">
+                                <div style="color:red" *ngIf="f.submitted  && !card_number.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+
+                            </div><!--/ [col] -->
+
+
+                            <div class="col-sm-12">
+
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="first_name_1"
+
+                                       class="required">Expiry month</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.expiry_month" #expiry_month="ngModel"
+                                       required
+                                       maxlength="2"
+                                       minlength="2"
+                                       pattern="([0-9])+$"
+                                       type="text" name="expiry_month" placeholder="05">
+                                <div style="color:red" *ngIf="f.submitted  && !expiry_month.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="first_name_1" class="required">Expiry Year</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.expiry_year" #expiry_year="ngModel"
+                                       required
+                                       maxlength="4"
+                                       minlength="4"
+                                       pattern="([0-9])+$"
+                                       type="text" name="expiry_year" placeholder="2025">
+                                <div style="color:red" *ngIf="f.submitted  && !expiry_year.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="first_name_1" class="required">CVV Number</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.cvv" #cvv="ngModel"
+                                       required
+                                       maxlength="3"
+                                       minlength="3"
+                                       pattern="([0-9])+$"
+                                       type="text" name="cvv" placeholder="365">
+                                <div style="color:red" *ngIf="f.submitted  && !cvv.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                            </div><!--/ [col] -->
+                          </ng-container>
+
+                        </li>
+
+
+                        <li>
+
+                          <div class="col-sm-12">
+                            <br/>
+                            <br/>
+                            <label for="radio_button_3"><input (click)="Paymentdisplay(home.checked, online.check)"
+                                                               #home
+                                                               type="radio" name="radio_3" id="radio_button_3">Payment
+                              At
+                              Home</label>
+                          </div>
+                        </li>
+                      </ul>
+
+                      <br/>
+                      <button class="button col-lg-12 "><i class="fa fa-angle-double-right"></i>&nbsp;
+                        <span>Place Order </span>
+                      </button>
+                    </div>
+                  </li><!--/ .row -->
+
+                </ul>
+
+                <!--<ng-container *ngIf="BillingMethodButton === true;">-->
+                <!--<button (click)="BillingInfo()" class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>-->
+                <!--</ng-container>-->
+              </div>
+            </form>
           </ng-container>
-        </div>
-          </ng-container>
           <br/>
-          <br/>
-          <br/>
-          <br/>
-          <ng-container *ngIf="PaymentMethod === true">
-        <h4 class="checkout-sep">Payment Method</h4>
-        <div class="box-border">
-          <ul class="shipping_method">
-            <li>
-              <div class="col-sm-12">
-              <label  for="radio_button_4"><input (click)="Paymentdisplay(home.checked, online.check)" #online type="radio" checked name="radio_3" id="radio_button_4">Online Payment</label>
-              </div>
-              <ng-container *ngIf="PaymentatHme === false">
-              <div class="col-sm-12">
-              <div class="col-sm-6">
-                  <br/>
-
-                <label for="first_name_1" class="required">Name on the Card</label>
-                <input class="input form-control" type="text" name="" placeholder="">
-              </div>
-              </div><!--/ [col] -->
-              <div class="col-sm-12">
-              <div class="col-sm-6">
-                <br/>
-                <label for="first_name_1" class="required">Card Number</label>
-                <input maxlength="16" class="input form-control" type="number" name="" placeholder="">
-              </div>
-              </div><!--/ [col] -->
-
-
-              <div class="col-sm-12">
-
-                <div  class="col-sm-1">
-                  <br/>
-                <label for="first_name_1" class="required">Expiry month</label>
-                <input class="input form-control" type="text" name="" placeholder="05">
-                </div>
-                <div class="col-sm-1">
-                  <br/>
-                <label for="first_name_1" class="required">Expiry Year</label>
-                <input class="input form-control" type="text" name="" placeholder="2025">
-                </div>
-                <div class="col-sm-1">
-                  <br/>
-                  <label for="first_name_1" class="required">CVV Number</label>
-                  <input class="input form-control" type="text" name="" placeholder="365">
-                </div>
-              </div><!--/ [col] -->
-              </ng-container>
-
-            </li>
-
-
-
-
-            <li>
-
-              <div class="col-sm-12">
-                <br/>
-                <br/>
-              <label for="radio_button_3"><input (click)="Paymentdisplay(home.checked, online.check)" #home type="radio"  name="radio_3" id="radio_button_3">Payment At Home</label>
-              </div>
-            </li>
-          </ul>
-
-          <br/>
-          <br/>
-          <br/>
-
-          <button class="button col-lg-12 "><i class="fa fa-angle-double-right"></i>&nbsp; <span>Place Order </span></button>
-        </div>
-          </ng-container>
 
         </div>
 
       </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>
+    </div>
 
   </div>
 </section>

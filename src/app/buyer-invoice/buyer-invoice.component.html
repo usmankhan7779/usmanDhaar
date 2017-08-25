@@ -91,7 +91,7 @@
           <!--<ng-container *ngFor="let fetchedproducts of Allproducts.products">-->
             <ng-container>
           <tr  *ngFor="let abc of GetAllproducts; let i = index">
-            <td class="no">{{ i }}</td>
+            <td class="no">{{ i+1 }}</td>
             <td class="desc"><h3>{{ abc[0].P_Title }}</h3>{{ abc[0].P_Des }}</td>
             <td class="unit">Rs: {{ abc[0].FixedPrice }}.00</td>
             <td class="qty">{{ abc[0].Qty }}</td>

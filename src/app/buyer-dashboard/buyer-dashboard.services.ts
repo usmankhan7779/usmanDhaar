@@ -34,11 +34,73 @@ export class BuyerDashboardServices {
   GetAllProductBYInvoiceId( InvoiceId: any) {
     return this._http.get( this.saleServerUrl + 'GetAllProductBYInvoiceId/' + InvoiceId  ).map(response => response.json());
   }
+
   GetShippingByInvoiceId( InvoiceId: any) {
     return this._http.get( this.saleServerUrl + 'GetShippingByInvoiceId/' + InvoiceId  ).map(response => response.json());
   }
 
+  Invoice(invID: any , invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
 
+
+    return this._http.post(this.saleServerUrl + 'AddcustomerInvoice', {'InvoicesID': invID, 'InvoicesBalance': invBalance, 'InvoicesPayment': invPay,
+      'InvoicesAsGuest': invGuest,
+      'InvoicesAsUserID': invUserID
+    })
+      .map((res: Response) => {
+        if (res) {
+          console.log(res.status)
+          if (res.status === 200) {
+          }
+        }
+      }).catch((error: any) => {
+
+        return Observable.throw(new Error(error.status));
+      });
+
+  }
+
+
+  InvoiceProducts(invID: any , prodID: any, Quantity: any) {
+
+
+    return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceProduct', {'InvoicesID': invID, 'ProductID': prodID, 'Qty': Quantity
+    })
+      .map((res: Response) => {
+        if (res) {
+          console.log(res.status)
+          if (res.status === 200) {
+
+          }
+        }
+      }).catch((error: any) => {
+        alert(error);
+        return Observable.throw(new Error(error.status));
+      });
+
+  }
+
+
+  CustomerInvoiceShippingAddress(invID: any , fname: any, lname: any, email: any, state: any, country: any, city: any, zip: any, address: any, telephone: any, fax: any) {
+
+
+    return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceShippingAddrres', {'InvoicesID': invID, 'First_Name': fname, 'Last_Name': lname
+      , 'Email': email      , 'State': state
+      , 'Country': country, 'City': city, 'Zip': zip, 'Address': address,  'Telephon': telephone, 'Fax': fax
+
+    })
+      .map((res: Response) => {
+        if (res) {
+          console.log(res.status)
+          if (res.status === 200) {
+
+          }
+        }
+      }).catch((error: any) => {
+
+        return Observable.throw(new Error(error.status));
+      });
+
+  }
 
 
 

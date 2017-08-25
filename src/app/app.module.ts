@@ -40,6 +40,7 @@ import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
 import { Checkout2Component } from './checkout2/checkout2.component';
 import { BuyerOrderComponent } from './buyer-order/buyer-order.component';
 import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
     Ng2PaginationModule,
     FormsModule,
     HttpModule,
+    TextMaskModule,
     Routing
   ],
   providers: [
