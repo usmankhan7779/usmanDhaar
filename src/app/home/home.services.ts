@@ -15,7 +15,7 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'http://localhost:8000/products/';
+  ServerUrl =  'http://127.0.0.1:8000/products/';
 
 
   constructor(private _http: Http ,
@@ -121,7 +121,7 @@ export class HomeService {
 
 
     // console.log(Pidd);
-    // console.log(Pidd);
+
 
 
     return this._http.post(this.ServerUrl + 'InsertUserBid/' + Product_ID,
@@ -145,6 +145,7 @@ export class HomeService {
         }
       }
     }).catch((error: any) => {
+       alert(error.toString())
       console.log(error.toString());
       return Observable.throw(new Error(error.status));
     });

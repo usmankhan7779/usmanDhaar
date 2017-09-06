@@ -14,8 +14,8 @@ export class BuyerDashboardServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://localhost:8000/products/';
-  saleServerUrl = 'http://localhost:8000/sale/';
+  ServerUrl = 'http://127.0.0.1:8000/products/';
+  saleServerUrl = 'http://127.0.0.1:8000/sale/';
 
   constructor(private _http: Http,
               private _nav: Router) {
@@ -48,7 +48,10 @@ export class BuyerDashboardServices {
     })
       .map((res: Response) => {
         if (res) {
-          console.log(res.status)
+          const responce_data = res.json();
+
+          console.log('this is the id' + responce_data.id);
+          sessionStorage.setItem('InvoiceID', responce_data.id)
           if (res.status === 200) {
           }
         }

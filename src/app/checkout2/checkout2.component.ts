@@ -18,10 +18,11 @@ export class Checkout2Component implements OnInit {
   Total: number;
   model: any = {};
   mymodel: any = {};
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'http://127.0.0.1:8000/media';
   LoginName: string;
   CheckoutMethod = false;
   BillingMethod = false;
+
   PaymentMethod = false;
   status= 1;
   orderreview = true;
@@ -30,7 +31,10 @@ export class Checkout2Component implements OnInit {
   BillingMethodButton= true;
   GuestButton = true;
   PaymentatHme = false;
+  OrderPlaced = false;
+  InvoiceIDSet: any;
   id: any;
+
 
   constructor(private Renderer123: Renderer,
               private _nav: Router,
@@ -106,9 +110,10 @@ export class Checkout2Component implements OnInit {
       data => {
 
 
+
         console.log( this.CartedProduct['products']);
-        for (let item of this.CartedProduct['products']) {
-          this.httpbuyerService.InvoiceProducts(this.id, item.ProductID, item.itemsqty).subscribe(
+        for (const item of this.CartedProduct['products']) {
+          this.httpbuyerService.InvoiceProducts(sessionStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty).subscribe(
             data => {
 
 
@@ -123,10 +128,12 @@ export class Checkout2Component implements OnInit {
             },
           );
         }
-        this.httpbuyerService.CustomerInvoiceShippingAddress(this.id, this.model.first_name, this.model.last_name, this.model.email_address, this.model.state, this.model.Country, this.model.City, this.model.Zip, this.model.Address, this.model.telephone, this.model.fax).subscribe(
+        this.httpbuyerService.CustomerInvoiceShippingAddress(sessionStorage.getItem('InvoiceID'), this.model.first_name, this.model.last_name, this.model.email_address, this.model.state, this.model.Country, this.model.City, this.model.Zip, this.model.Address, this.model.telephone, this.model.fax).subscribe(
           data => {
 
-            alert('true');
+           this.OrderPlaced  = true;
+
+            this.InvoiceIDSet =  sessionStorage.getItem('InvoiceID');
 
 
           }, (err) => {

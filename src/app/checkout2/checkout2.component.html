@@ -1,8 +1,8 @@
 <app-header></app-header>
 
 
-<!-- Main Container -->
-<section class="main-container col2-right-layout">
+
+<section *ngIf="OrderPlaced == false"  class="main-container col2-right-layout">
   <div class="main container">
     <div class="row">
 
@@ -465,6 +465,20 @@
 
   </div>
 </section>
+
+
+<div *ngIf="OrderPlaced == true" class="error-page-wrap">
+  <div class="container">
+    <div class="errormain">
+      <h4 style="color: green">Thank you for your Order! Invoice ID: {{InvoiceIDSet}} </h4>
+
+      <div class="error-msg">
+        <p>Your order has been placed and being processed. When the item(s) are shipped, you will receive an email with the details. you can track this order through <a [routerLink]="['/login']">My Order</a> page</p>
+        <a [routerLink]="['/home']" class="btn">Go to Home Page</a> </div>
+    </div>
+  </div>
+</div>
+
 
 
 <app-footer></app-footer>

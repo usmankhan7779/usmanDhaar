@@ -41,6 +41,8 @@ import { Checkout2Component } from './checkout2/checkout2.component';
 import { BuyerOrderComponent } from './buyer-order/buyer-order.component';
 import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { CarouselModule } from 'ngx-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -76,6 +78,7 @@ import { TextMaskModule } from 'angular2-text-mask';
   ],
   imports: [
     BrowserModule,
+    CarouselModule.forRoot(),
     Ng2PaginationModule,
     FormsModule,
     HttpModule,

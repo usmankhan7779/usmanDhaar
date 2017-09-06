@@ -3,50 +3,23 @@
 
   <app-header></app-header>
   <!-- Main Slider Area -->
-  <div class="main-slider-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-xs-12">
-          <!-- Main Slider -->
-          <div class="main-slider">
-            <div class="slider">
-              <div id="mainSlider" class="nivoSlider slider-image"> <img src="assets/images/slider/slider-img1.jpg" alt="main slider" title="#htmlcaption1"/> <img src="assets/images/slider/slider-img2.jpg" alt="main slider" title="#htmlcaption2"/></div>
-              <!-- Slider Caption 1 -->
-              <div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
-                <div class="slider-progress"></div>
-                <div class="slide-text">
-                  <div class="middle-text">
-                    <div class="cap-dec">
-                      <h2 class="cap-dec wow fadeInUp animated" data-wow-duration="1.1s" data-wow-delay="0s">Huge Sales</h2>
-                      <h1 class="cap-dec wow fadeInUp animated" data-wow-duration="2.3s" data-wow-delay="0s">New Fashion Collections</h1>
-                      <p class="cap-dec wow lightSpeedIn hidden-xs" data-wow-duration="1.5s" data-wow-delay="0s"> Loren ipsum dolorsit amet, consectetur adipisicing, sed do eiusmod.</p>
-                    </div>
-                    <div class="cap-readmore wow zoomInRight" data-wow-duration=".9s" data-wow-delay=".5s"> <a href="#">Shop Now</a> </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Slider Caption 2 -->
-              <div id="htmlcaption2" class="nivo-html-caption slider-caption-2">
-                <div class="slider-progress"></div>
-                <div class="slide-text slide-text-2">
-                  <div class="middle-text">
-                    <div class="cap-dec">
-                      <h2 class="cap-dec wow fadeInUp" data-wow-duration="1.1s" data-wow-delay="0s">Spring 2017 </h2>
-                      <h1 class="cap-dec wow fadeInUp" data-wow-duration="2.3s" data-wow-delay="0s"><span>20%</span> OFF ALL ITEMS</h1>
-                      <p class="cap-dec wow lightSpeedIn hidden-xs" data-wow-duration="1.5s" data-wow-delay="0s"> Loren ipsum dolorsit amet, consectetur adipisicing, sed do eiusmod.</p>
-                    </div>
-                    <div class="cap-readmore wow zoomInUp" data-wow-duration="1.3s" data-wow-delay=".3s"> <a href="#">Shop Now</a> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Main Slider -->
-
-        </div>
+  <carousel class="text-center col-md-12" style="background-color: #ffff">
+    <slide >
+      <img class='img-size-carousal' src="assets/images/slider/slider-img1.jpg" alt="First slide">
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </div>
-    </div>
-  </div>
+    </slide>
+    <slide>
+      <img class='img-size-carousal' src="assets/images/slider/slider-img2.jpg" alt="Second slide">
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </slide>
+
+  </carousel>
   <!-- End Main Slider Area -->
 
   <div class="container">
@@ -84,7 +57,7 @@
   <!-- Best selling -->
   <div class="container">
     <div class="row">
-      <div class="best-selling-slider col-sm-12 col-md-6">
+   <!--   <div class="best-selling-slider col-sm-12 col-md-6">
         <div class="title_block">
           <h3 class="products_title">Best selling</h3>
         </div>
@@ -265,7 +238,7 @@
         </div>
       </div>
 
-      <!-- Featured Products -->
+      &lt;!&ndash; Featured Products &ndash;&gt;
 
       <div class="featured-products-slider col-sm-12 col-md-6">
         <div class="title_block">
@@ -346,7 +319,8 @@
           </div>
         </div>
       </div>
-      <!-- Banner block-->
+      &lt;!&ndash; Banner block&ndash;&gt;
+-->
 
       <div class="container">
         <div class="row">
@@ -386,7 +360,7 @@
               <div class="tab-info">
                 <h3 class="new-product-title pull-left">Products category</h3>
                 <ul class="nav home-nav-tabs home-product-tabs">
-                  <li class="active"><a href="#all" data-toggle="tab" aria-expanded="false">All</a></li>
+                  <!--<li class="active"><a href="#all" data-toggle="tab" aria-expanded="false">All</a></li>-->
                   <li> <a href="#women" data-toggle="tab" aria-expanded="false">Phones & Tablets</a> </li>
                   <li> <a href="#men" data-toggle="tab" aria-expanded="false">Fashion</a> </li>
                   <li> <a href="#kids" data-toggle="tab" aria-expanded="false">Electronics</a> </li>
@@ -394,7 +368,7 @@
                 <!-- /.nav-tabs  let phoneProducts of GetallPhoneProduct; -->
               </div>
               <div id="productTabContent" class="tab-content">
-                <div class="tab-pane active in" id="all">
+                <div class="tab-pane fade" id="all">
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
@@ -404,9 +378,9 @@
                           <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
                         </div>
                         <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img01.jpg" alt=""></a>
-                        <div class="jtv-box-timer">
-                          <div class="countbox_1 jtv-timer-grid"></div>
-                        </div>
+                        <!--<div class="jtv-box-timer">-->
+                          <!--<div class="countbox_1 jtv-timer-grid"></div>-->
+                        <!--</div>-->
                       </div>
                       <div class="pro-box-info">
                         <div class="item-info">
@@ -434,7 +408,7 @@
                   </div>
 
                 </div>
-                <div class="tab-pane fade" id="women">
+                <div class="tab-pane active in" id="women">
                   <ng-container *ngFor="let phoneProducts of GetallPhoneProduct">
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
@@ -452,9 +426,11 @@
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 
-                              <div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">
-                                <div class="countbox_1 jtv-timer-grid"></div>
-                              </div>
+                              <!--<div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">-->
+                                <!--<div class="countbox_1 jtv-timer-grid">-->
+
+                                <!--</div>-->
+                              <!--</div>-->
                             </div>
                           </div>
                         </div>
@@ -549,9 +525,9 @@
                           <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="300" src="{{ PicServrUrl + TvVideoaudio88.Pic }}" alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
 
 
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">
-                          <div class="countbox_1 jtv-timer-grid"></div>
-                        </div>
+                        <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->
+                          <!--<div class="countbox_1 jtv-timer-grid"></div>-->
+                        <!--</div>-->
                       </div>
 
                       <div class="pro-box-info">
@@ -656,9 +632,9 @@
                           <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="300" src="{{ PicServrUrl + TvVideoaudio88.Pic }}" alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
 
 
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">
-                            <div class="countbox_1 jtv-timer-grid"></div>
-                          </div>
+                          <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->
+                            <!--<div class="countbox_1 jtv-timer-grid"></div>-->
+                          <!--</div>-->
                         </div>
 
                         <div class="pro-box-info">
@@ -716,9 +692,9 @@
                           <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="300" src="{{ PicServrUrl + TvVideoaudio88.Pic }}" alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
 
 
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">
-                            <div class="countbox_1 jtv-timer-grid"></div>
-                          </div>
+                          <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->
+                            <!--<div class="countbox_1 jtv-timer-grid"></div>-->
+                          <!--</div>-->
                         </div>
 
                         <div class="pro-box-info">
@@ -833,43 +809,6 @@
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
-                        <div class="box-hover">
-                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                        </div>
-                        <div class="slider-items-products">
-                          <div id="pro3-slider" class="product-flexslider hidden-buttons">
-                            <div class="slider-items slider-width-col6"> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img14.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img15.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img05.jpg" alt=""></a> </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="pro-box-info">
-                        <div class="item-info">
-                          <div class="info-inner">
-                            <div class="item-title">
-                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                            </div>
-                            <div class="item-content">
-                              <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                              <div class="item-price">
-                                <div class="price-box"> <span class="regular-price"> <span class="price">$275.88</span> </span> </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="box-hover">
-                          <div class="product-item-actions">
-                            <div class="pro-actions">
-                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item col-md-3 col-sm-6">
-                    <div class="item-inner">
-                      <div class="product-thumbnail">
                         <div class="icon-new-label new-left">new</div>
                         <div class="box-hover">
                           <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
@@ -971,43 +910,6 @@
                   <div class="product-item col-md-3 col-sm-6">
                     <div class="item-inner">
                       <div class="product-thumbnail">
-                        <div class="box-hover">
-                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                        </div>
-                        <div class="slider-items-products">
-                          <div id="pro3-slider" class="product-flexslider hidden-buttons">
-                            <div class="slider-items slider-width-col6"> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img14.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img15.jpg" alt=""></a> <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img05.jpg" alt=""></a> </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="pro-box-info">
-                        <div class="item-info">
-                          <div class="info-inner">
-                            <div class="item-title">
-                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                            </div>
-                            <div class="item-content">
-                              <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                              <div class="item-price">
-                                <div class="price-box"> <span class="regular-price"> <span class="price">$275.88</span> </span> </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="box-hover">
-                          <div class="product-item-actions">
-                            <div class="pro-actions">
-                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item col-md-3 col-sm-6">
-                    <div class="item-inner">
-                      <div class="product-thumbnail">
                         <div class="icon-new-label new-left">new</div>
                         <div class="box-hover">
                           <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
@@ -1057,9 +959,9 @@
                           <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="300" src="{{ PicServrUrl + TvVideoaudio88.Pic }}" alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
 
 
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">
-                            <div class="countbox_1 jtv-timer-grid"></div>
-                          </div>
+                          <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->
+                            <!--<div class="countbox_1 jtv-timer-grid"></div>-->
+                          <!--</div>-->
                         </div>
 
                         <div class="pro-box-info">
@@ -1156,6 +1058,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

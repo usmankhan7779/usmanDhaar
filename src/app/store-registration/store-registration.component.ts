@@ -124,7 +124,7 @@ export class StoreRegistrationComponent implements OnInit {
 
           },
           (err) => {
-            alert('Email invalid')
+            alert('Email invalid');
             this.Emailinvalid = true;
           },
           () => {
@@ -164,7 +164,16 @@ export class StoreRegistrationComponent implements OnInit {
   }
   checkButtonStep1() {
     if (this.model.storename != null && this.model.email != null && this.model.ownername != null && this.model.city != null && this.model.zipcode != null && this.model.personal != null && this.model.address != null && this.model.ownername != null) {
-      this.step1button = true;
+
+
+
+     if (!this.EmailExist && this.UserError && this.UserTyping && !this.Userloading) {
+       this.step1button = true;
+     } else {
+       this.step1button = false;
+     }
+
+
     }
   }
   checkButtonStep2() {

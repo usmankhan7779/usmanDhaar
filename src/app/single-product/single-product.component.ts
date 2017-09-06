@@ -16,39 +16,59 @@ import { LoginService } from '../log-in/log-in.services';
 export class SingleProductComponent implements OnInit {
   private sub: any;
   model: any = {};
+  GetallPhoneProduct: any = [];
+  element: HTMLElement;
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
   ProID: string;
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'http://127.0.0.1:8000/media';
   Getphoto: any = [];
   NewBidInserted = false ;
   NewCart = false ;
+  Timeclose = false ;
   AuctionTest = true;
   AuctionProductPrice: number;
+
+  istimer=true;
 
   resultProduct: any = [];
   // onePeoduct: Productlist[];
   onePeoduct: any = [];
   products: any = {'products': []};
-
-
   TmpresultProduct: any = {'products': []};
   GeProductBiding: any = [];
   ProductPrice: any = [];
   CatName: string;
+  starp: any;
+  starq: any;
+  starv: any;
+  DbDate: string;
+  seconds: any;
+  minutes: any;
+  hours: any;
+  days: any;
+  AuctionDayDB: string;
   constructor( private route: ActivatedRoute,
                private GetAdd: HomeService,
                private LOginObj: LoginService,
                private router: Router) { }
-
   ngOnInit() {
+    setInterval(() => {this.timer(this.element); }, 1000);
+    // window.setInterval(function () {
+    //
+    //
+    // }, 1000);
+
 
     if (sessionStorage.getItem('UserID') !== null) {
       this.LoginID = true;
     } else {
       this.LoginID = false;
     }
+    this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
+      this.GetallPhoneProduct = resSlidersData;
 
+    });
     window.scrollTo(0, 0);
     this.sub = this.route
       .queryParams
@@ -68,10 +88,32 @@ export class SingleProductComponent implements OnInit {
       if (this.CatName === 'Phones & Tablets') {
         console.log('Phones & Tablets');
 
-        this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => this.resultProduct = resSlidersData);
+        this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
+          this.resultProduct = resSlidersData;
+
+          this.DbDate = this.resultProduct[0].CreatedDate;
+          this.AuctionDayDB = this.resultProduct[0].AuctionListing;
+          const auctiondays = +this.AuctionDayDB * 86400000;
+          const time0 = new Date(); //86400000
+          const time1 = new Date(this.DbDate);
+          const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
+          // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
+         let x = time3 / 1000;
+         this.seconds = Math.floor(x % 60);
+          x /= 60;
+          this.minutes = Math.floor( x % 60);
+          x /= 60;
+         this.hours = Math.floor( x % 24);
+          x /= 24;
+          this.days = Math.floor(x);
+
+
+        });
       } else if (this.CatName === 'Women\'s Fashion') {
         // console.log('Women\'s Fashion')
         this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData => this.resultProduct = resSlidersData);
+
+
       } else if (this.CatName === 'Men\'s Fashion') {
         this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData => this.resultProduct = resSlidersData);
       } else if (this.CatName === 'TV, Audio & Video') {
@@ -84,16 +126,28 @@ export class SingleProductComponent implements OnInit {
       }
     }
   }
-
+  getValueq(event) {
+    // //alert(event)
+    this.starp = event;
+    // //alert(this.star)
+  }
+  getValuep(event) {
+    // //alert(event)
+    this.starq = event;
+    // //alert(this.star)
+  }
+  getValuev(event) {
+    // //alert(event)
+    this.starv = event;
+    // //alert(this.star)
+  }
   InsertBid(startingPrice: number ) {
     this.GetAdd.InsertUserBid(sessionStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
-      this.GeProductBiding = resSlidersData
+      this.GeProductBiding = resSlidersData;
       if (this.CatName === '0') {
         this.router.navigate(['/login']);
       } else {
         if (this.CatName === 'Phones & Tablets') {
-          console.log('Phones & Tablets');
-
           this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
         } else if (this.CatName === 'Women\'s Fashion') {
           // console.log('Women\'s Fashion')
@@ -106,7 +160,7 @@ export class SingleProductComponent implements OnInit {
         } else if (this.CatName === 'Computing & Laptops') {
           this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
         } else if (this.CatName === 'Home Appliances') {
-          this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData => this.resultProduct = resSlidersData);
+          this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
         }
       }
 
@@ -142,7 +196,6 @@ export class SingleProductComponent implements OnInit {
     );
   }
 
-
   Addtocart(Abc: any) {
 
     if (Abc === '') {
@@ -152,14 +205,15 @@ export class SingleProductComponent implements OnInit {
 
 
       try {
-        alert('alert');
+
+
         // this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
         // alert(this.TmpresultProduct['products']);
 
         if (sessionStorage.getItem('Cartdata') !== null ) {
 
           this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
-          for (let ABCC of this.TmpresultProduct['products']) {
+          for (const ABCC of this.TmpresultProduct['products']) {
 
             if (ABCC.ProductID === this.ProID) {
               this.NewCart = true;
@@ -178,7 +232,7 @@ export class SingleProductComponent implements OnInit {
             this.router.navigate(['/checkout2']);
           }
         } else {
-          alert('nulll');
+
           this.resultProduct[0].itemsqty = +Abc;
           this.TmpresultProduct['products'].push(this.resultProduct[0]);
           sessionStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
@@ -197,11 +251,33 @@ export class SingleProductComponent implements OnInit {
 
   }
 
-
-
   ClearSession() {
     sessionStorage.clear();
     alert('clear');
+  }
+
+
+  timer(element: HTMLElement) {
+
+  this.seconds -= 1;
+  if (this.seconds === 0) {
+    this.seconds = 59;
+    this.minutes -= 1;
+     if (this.minutes === 0) {
+       this.minutes = 59;
+       this.hours -= 1;
+        if ( this.hours === 0 ) {
+          this.hours = 23;
+          this.days -= 1;
+           if (this.days === 0) {
+              this.Timeclose = true;
+           }
+
+        }
+     }
+
+  }
+
   }
 
 }

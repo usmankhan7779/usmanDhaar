@@ -15,6 +15,8 @@ export class SignUpComponent implements OnInit {
   returnUrl: string;
   registration_ok = false;
   UserError = false;
+  EmailPosterror = false;
+
   UserTyping = false;
   Userloading= false;
   EmailExist= false;
@@ -35,23 +37,27 @@ export class SignUpComponent implements OnInit {
   }
   register(username: string, Email: string, Password: string , Fname: string, Lname: string, Mobile: string ) {
 
-    if ( this.model.Agree ) {
-      this.singup.post_signup_form(username, Email, Password, Fname, Lname, Mobile).subscribe((response) => {
-          /* this function is executed every time there's a new output */
-          // console.log("VALUE RECEIVED: "+response);
-          this.registration_ok = true;
-        },
-        (err) => {
-          this.registration_error = true;
-          /* this function is executed when there's an ERROR */
-          //   console.log("ERROR: "+err);
-        },
-        () => {
-          /* this function is executed when the observable ends (completes) its stream */
-          //   console.log("COMPLETED");
-        }
-      );
-    } else {
+    if ( this.model.Agree) {
+      if (this.Emailok) {
+        this.singup.post_signup_form(username, Email, Password, Fname, Lname, Mobile).subscribe((response) => {
+            /* this function is executed every time there's a new output */
+            // console.log("VALUE RECEIVED: "+response);
+            this.registration_ok = true;
+          },
+          (err) => {
+            this.registration_error = true;
+            /* this function is executed when there's an ERROR */
+            //   console.log("ERROR: "+err);
+          },
+          () => {
+            /* this function is executed when the observable ends (completes) its stream */
+            //   console.log("COMPLETED");
+          }
+        );
+      } else {
+        this.EmailPosterror = true;
+      }
+    }else {
       alert('You must agree to the terms  first.');
     }
 

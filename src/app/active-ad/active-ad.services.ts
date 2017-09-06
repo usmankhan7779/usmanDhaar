@@ -14,7 +14,7 @@ export class ActiveAdServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://localhost:8000/products/';
+  ServerUrl = 'http://127.0.0.1:8000/products/';
 
   constructor(private _http: Http,
               private _nav: Router) {

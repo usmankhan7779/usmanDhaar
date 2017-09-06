@@ -90,9 +90,9 @@
         </div>
         <div class="col-lg-2 col-sm-3 col-xs-12 top-cart">
           <!-- Begin shopping cart trigger  -->
-          <div id="shopping-cart-trigger"> <a href="#0" class="cart-icon" title="Shopping Cart" data-toggle="modal" data-target="#modal-cart"> <i class="fa fa-shopping-bag"></i> <span class="cart-num">2</span> </a> </div>
+          <div id="shopping-cart-trigger"> <a [routerLink]="['/checkout2']" class="cart-icon" title="Shopping Cart" > <i class="fa fa-shopping-bag"></i> <span class="cart-num">{{ItemInCart}}</span></a> </div>
           <!-- End shopping cart trigger -->
-          <a href="account_page.html" class="top-my-account"><i class="fa fa-user"></i></a> <a href="compare.html" class="top-compare"><i class="fa fa-signal"></i></a> </div>
+        </div>
       </div>
     </div>
   </div>

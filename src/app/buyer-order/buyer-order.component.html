@@ -9,7 +9,11 @@
         <h1 class="page-heading">My Active Ads</h1>
       </div>
       <div class="col-md-6 col-sm-6">
-        <div class="breadCrumb"><a href="#">Dashboard</a> <span>My Active Ads</span></div>
+        <div class="breadCrumb ">
+          <img class="breadimg" src="assets/images/faq-banner.png" alt="google ad"  width="70px" height="70px"> <br/>
+          <span>Welcome Jhon</span>
+
+        </div>
       </div>
     </div>
   </div>
@@ -48,12 +52,12 @@
                     <div class="jobinfo">
                       <div class="row">
                         <div class="col-md-8 col-sm-7">
-                          <h3><a [routerLink]="['/buyer-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.InvoicesID}" > Invoice ID : {{ phoneProducts.InvoicesID }}</a></h3>
-                          <div class="cateName"> <span>Payment Status</span> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <span{{ phoneProducts.Sub_Sub_Cat_Name }} </div>
+                          <h3><a [routerLink]="['/buyer-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.id}" > Invoice ID : {{ phoneProducts.id }}</a></h3>
+                          <div class="cateName"> <span>Payment Status</span> <i class="fa fa-angle-double-right" aria-hidden="true"></i> {{ phoneProducts.Sub_Sub_Cat_Name }} </div>
                           <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
                           <div class="clearfix"></div>
 
-                          <div class="listbtn"><a [routerLink]="['/buyer-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.InvoicesID}" >View Details</a></div>
+                          <div class="listbtn"><a [routerLink]="['/buyer-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.id}" >View Details</a></div>
                         </div>
                         <div class="col-md-4 col-sm-5 text-right">
                           <div class="adprice">RS {{ phoneProducts.InvoicesBalance}}.00</div>

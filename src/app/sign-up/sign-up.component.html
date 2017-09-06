@@ -39,6 +39,9 @@
             <div *ngIf="registration_error==true" class="alert alert-danger">
               <strong>Error!</strong> Account creation failed please try again.
             </div>
+            <div *ngIf="EmailPosterror==true" class="alert alert-danger">
+              <strong>Error!</strong> Email Already exist.
+            </div>
             <h5>User SingUp</h5>
             <div id="wsell" class="formpanel tab-pane fade in active">
               <form role="form" class="login-form" (ngSubmit)="f.form.valid && register(Username.value,Email.value,Password.value,FName.value,LName.value,Mobile.value)" #f="ngForm" novalidate>
@@ -147,7 +150,7 @@
               <!--<input type="submit" class="btn" value="Register">-->
             <!--</div>-->
           </div>
-          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> Already a Member? <a href="#.">Login Here</a></div>
+          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> Already a Member? <a [routerLink]="['/login']" href="#.">Login Here</a></div>
 
 
           <div class="socialLogin">

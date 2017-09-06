@@ -108,7 +108,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'user-detail',
-    component: UserDetailComponent
+     component: UserDetailComponent
   },
   {
     path: 'store-registration',

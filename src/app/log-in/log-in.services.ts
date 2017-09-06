@@ -18,8 +18,8 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'http://localhost:8000/user/';
-  StoreServerUrl =  'http://localhost:8000/store/';
+  ServerUrl =  'http://127.0.0.1:8000/user/';
+  StoreServerUrl =  'http://127.0.0.1:8000/store/';
 
   constructor(private _http: Http ,
               private _nav: Router) {
@@ -38,7 +38,7 @@ export class LoginService {
             this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
             sessionStorage.setItem('UserID', this.decoded);
             this.GetUSerdetailsByUserId(this.decoded).subscribe(resSlidersData => {
-               console.log('resSlidersData');
+
               if ( resSlidersData['Vendor'] === true) {
                 this._nav.navigate(['/dashboard']);
               } else {

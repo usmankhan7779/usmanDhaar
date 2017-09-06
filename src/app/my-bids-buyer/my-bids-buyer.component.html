@@ -9,7 +9,11 @@
         <h1 class="page-heading">My Active Ads</h1>
       </div>
       <div class="col-md-6 col-sm-6">
-        <div class="breadCrumb"><a href="#">Dashboard</a> <span>My Active Ads</span></div>
+          <div class="breadCrumb ">
+            <img class="breadimg" src="assets/images/faq-banner.png" alt="google ad"  width="70px" height="70px"> <br/>
+            <span>Welcome Jhon</span>
+
+          </div>
       </div>
     </div>
   </div>
@@ -34,7 +38,7 @@
       <div class="col-md-9 col-sm-8">
         <div class="myads">
           <h3>My Bids For Products</h3>
-          <p>No Record Found</p>
+
           <ul class="searchList">
             <!-- ad start -->
             <ng-container *ngFor="let phoneProducts of ActiveProduct.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">

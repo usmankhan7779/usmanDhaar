@@ -12,6 +12,8 @@ import { LoginService } from '../log-in/log-in.services';
 export class HeaderComponent implements OnInit {
   ValueRec: Boolean = false;
   GetUSerDOne: any [];
+  CartedProduct: any = [];
+  ItemInCart: any ;
   constructor(private obj: LoginService,
               private _nav: Router) { }
 
@@ -40,6 +42,21 @@ export class HeaderComponent implements OnInit {
       });
 
      }
+
+    this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+
+    if (this.CartedProduct) {
+
+      this.ItemInCart = this.CartedProduct['products'].length;
+
+    } else {
+      this.ItemInCart = 0;
+
+    }
+
+
+
+
   }
 
   ValueReset() {
