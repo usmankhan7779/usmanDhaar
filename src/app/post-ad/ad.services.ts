@@ -16,7 +16,7 @@ export class AdService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://localhost:8000/products/';
+  ServerUrl = 'https://sample-175508.appspot.com/products/';
 
   constructor(private _http: Http,
               private _nav: Router) {
@@ -151,6 +151,7 @@ export class AdService {
         'ReservePrice': ReservePrice,
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
+        'StoreName': sessionStorage.getItem('StoreName'),
         'Quantity': Quantity,
         'Active': false,
         'Sold': false,
@@ -194,6 +195,7 @@ export class AdService {
         'Buyitnow': Buyitnow,
         'AuctionListing': AuctionListing,
         'ReservePrice': ReservePrice,
+        'StoreName': sessionStorage.getItem('StoreName'),
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
@@ -243,6 +245,7 @@ export class AdService {
         'MaxBidPrice': Starting_Price,
         'Buyitnow': Buyitnow,
         'AuctionListing': AuctionListing,
+        'StoreName': sessionStorage.getItem('StoreName'),
         'ReservePrice': ReservePrice,
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
@@ -286,6 +289,7 @@ export class AdService {
         'P_Des':  Addetail,
         'P_Condition':  condition,
         'Auction': Auction,
+        'StoreName': sessionStorage.getItem('StoreName'),
         'SrartingPrice': Starting_Price,
         'MaxBidPrice': Starting_Price,
         'Buyitnow': Buyitnow,
@@ -337,6 +341,7 @@ export class AdService {
         'Auction': Auction,
         'SrartingPrice': Starting_Price,
         'MaxBidPrice': Starting_Price,
+        'StoreName': sessionStorage.getItem('StoreName'),
         'Buyitnow': Buyitnow,
         'AuctionListing': AuctionListing,
         'ReservePrice': ReservePrice,
@@ -380,6 +385,7 @@ export class AdService {
         'P_Title':  Title,
         'P_Des':  Addetail,
         'P_Condition':  condition,
+        'StoreName': sessionStorage.getItem('StoreName'),
         'Auction': Auction,
         'SrartingPrice': Starting_Price,
         'MaxBidPrice': Starting_Price,

@@ -30,6 +30,13 @@ export class CategoryServices {
   getAllPhoneAndTabletProduct(page: any) {
     return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProduct?page=' + page, ).map(response => response.json());
   }
+
+  getAllSubPhoneAndTabletProduct(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProduct/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+  getAllSubSubPhoneAndTabletProduct(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubSubPhoneAndTabletProduct/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
   getAllWomenFashionProduct(page: any) {
     return this._http.get( this.ServerUrl + 'getAllWomenFashionProduct?page=' + page, ).map(response => response.json());
   }

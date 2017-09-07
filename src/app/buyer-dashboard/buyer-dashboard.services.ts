@@ -14,8 +14,8 @@ export class BuyerDashboardServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://127.0.0.1:8000/products/';
-  saleServerUrl = 'http://127.0.0.1:8000/sale/';
+  ServerUrl = 'https://sample-175508.appspot.com/products/';
+  saleServerUrl = 'https://sample-175508.appspot.com/sale/';
 
   constructor(private _http: Http,
               private _nav: Router) {

@@ -14,7 +14,8 @@ export class ActiveAdServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://127.0.0.1:8000/products/';
+  ServerUrl = 'https://sample-175508.appspot.com/products/';
+  StoreServerUrl = 'https://sample-175508.appspot.com/store/';
 
   constructor(private _http: Http,
               private _nav: Router) {
@@ -23,6 +24,13 @@ export class ActiveAdServices {
 
   GetAllActiveproductsBYUserID(page: any, UserID: any) {
     return this._http.get( this.ServerUrl + 'getAll_Active_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
+
+  getAll_ProductBYUserID(page: any, UserID: any) {
+    return this._http.get( this.ServerUrl + 'getAll_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
+  getAll_ProductBYStoreName(page: any, UserID: any) {
+    return this._http.get( this.ServerUrl + 'getAll_ProductBYStoreName/' + UserID + '?page=' + page, ).map(response => response.json());
   }
 
   GetAllPendingproductsBYUserID(page: any, UserID: any) {
@@ -34,5 +42,9 @@ export class ActiveAdServices {
     return this._http.get( this.ServerUrl + 'GetallProductdBids/' + UserID + '?page=' + page, ).map(response => response.json());
   }
 
+  GetStoreInformation(storename) {
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + storename).map((response: Response) => response.json());
+
+  }
 
 }

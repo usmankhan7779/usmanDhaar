@@ -27,8 +27,12 @@ import { MyBiddsComponent } from './my-bidds/my-bidds.component';
 import { Checkout2Component } from './checkout2/checkout2.component';
 import { BuyerOrderComponent } from './buyer-order/buyer-order.component';
 import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
-
 import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
+import { SellerPurchasingComponent } from './seller-purchasing/seller-purchasing.component';
+import { SellerPurchasingInvoiceComponent } from './seller-purchasing-invoice/seller-purchasing-invoice.component';
+import { StoreTemplateComponent } from './store-template/store-template.component';
+import { SubCategoryDetailComponent } from './sub-category-detail/sub-category-detail.component';
+import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-category-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -132,7 +136,25 @@ const appRoutes: Routes = [
   }, {
     path: 'buyer-invoice',
     component: BuyerInvoiceComponent
+  }, {
+    path: 'seller-purchasing',
+    component: SellerPurchasingComponent
+  }, {
+    path: 'seller-purchasing-invoice',
+    component: SellerPurchasingInvoiceComponent
+  }, {
+    path: 'store/:storename',
+    component: StoreTemplateComponent
+  }, {
+    path: 'sub-category-detail/:CatName/:SubCat',
+    component: SubCategoryDetailComponent
+  }, {
+    path: 'subsub-category-detail/:CatName/:SubsubCat',
+    component: SubsubCategoryDetailComponent
   },
+
+
+
 
 
 

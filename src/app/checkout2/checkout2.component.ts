@@ -18,7 +18,7 @@ export class Checkout2Component implements OnInit {
   Total: number;
   model: any = {};
   mymodel: any = {};
-  PicServrUrl = 'http://127.0.0.1:8000/media';
+  PicServrUrl = 'https://sample-175508.appspot.com/media';
   LoginName: string;
   CheckoutMethod = false;
   BillingMethod = false;

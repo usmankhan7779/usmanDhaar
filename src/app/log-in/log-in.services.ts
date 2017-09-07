@@ -18,8 +18,8 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'http://127.0.0.1:8000/user/';
-  StoreServerUrl =  'http://127.0.0.1:8000/store/';
+  ServerUrl =  'https://sample-175508.appspot.com/user/';
+  StoreServerUrl =  'https://sample-175508.appspot.com/store/';
 
   constructor(private _http: Http ,
               private _nav: Router) {
@@ -42,6 +42,8 @@ export class LoginService {
               if ( resSlidersData['Vendor'] === true) {
                 this._nav.navigate(['/dashboard']);
               } else {
+
+
                 this._nav.navigate(['/buyer-dashboard']);
               }
               }
@@ -182,6 +184,10 @@ export class LoginService {
     return this._http.get(this.ServerUrl + 'email_verify/' + email).map((response: Response) => response.json());
 
   }
+  GetStoreInformationByUserId(email) {
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformationByUserId/' + email).map((response: Response) => response.json());
+
+  }
 
   verify_token() {
   return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': sessionStorage.getItem('Authorization')})
@@ -249,6 +255,7 @@ export class LoginService {
         'LegalName':  model['fbrname'],
         'NTN':  model['cnic'],
         'STRN':  model['strn'],
+        'UserID': sessionStorage.getItem('UserID'),
 
       })
       .map((res: Response) => {

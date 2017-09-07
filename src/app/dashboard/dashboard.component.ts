@@ -12,8 +12,9 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class DashboardComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
-  ServerUrl =  'http://127.0.0.1:8000/';
+  ServerUrl =  'https://sample-175508.appspot.com/';
   NewPostcheck = false ;
+  ActiveProduct: any = [];
   USerName: any;
   constructor(private _http: Http ,
               private Profile: LoginService,
@@ -38,6 +39,20 @@ export class DashboardComponent implements OnInit {
 
   }
     window.scrollTo(0, 0);
+
+    this.Profile.GetStoreInformationByUserId(sessionStorage.getItem('UserID')).subscribe(
+      data => {
+        this.ActiveProduct = data;
+        if (this.ActiveProduct.length > 0 ) {
+          sessionStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
+
+        } else {
+          this._nav.navigate(['/login']);
+        }
+
+
+
+      });
 
   }
 

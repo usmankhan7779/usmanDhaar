@@ -4,6 +4,7 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import {PaginatePipe, PaginationService} from 'ng2-pagination';
+
 @Component({
   selector: 'app-category-detail',
   templateUrl: './category-detail.component.html',
@@ -12,8 +13,9 @@ import {PaginatePipe, PaginationService} from 'ng2-pagination';
 export class CategoryDetailComponent implements OnInit {
    r: any;
   pageno: any;
+  CoverPix: any;
   sub: any;
-  PicServrUrl = 'http://127.0.0.1:8000/media';
+  PicServrUrl = 'https://sample-175508.appspot.com/media';
   modelNo: any;
   Trend: any = [];
   GetPhotos: any = [];
@@ -34,8 +36,6 @@ export class CategoryDetailComponent implements OnInit {
         data => {
           this.Trend = data;
         });
-
-
   }
 ngOnInit() {
 
@@ -44,6 +44,22 @@ ngOnInit() {
     .subscribe(params => {
       // Defaults to 0 if no query param provided.
       this.CatName = params['CatName'] || '0' ;
+
+      if (this.CatName === 'Phones & Tablets') {
+            this.CoverPix = 'PT';
+      } else if (this.CatName === 'Women\'s Fashion') {
+              this.CoverPix = 'WF';
+      } else if (this.CatName === 'Men\'s Fashion') {
+              this.CoverPix = 'MF';
+      } else if (this.CatName === 'TV, Audio & Video') {
+              this.CoverPix = 'TAV';
+      } else if (this.CatName === 'Computing & Laptops') {
+              this.CoverPix = 'CL';
+      } else if (this.CatName === 'Home Appliances') {
+              this.CoverPix = 'HA';
+      } else if (this.CatName === 'Online Services') {
+              this.CoverPix = 'OS';
+      }
 
 
 
@@ -77,6 +93,11 @@ ngOnInit() {
         this.Trend = data;
       });
   } else if (this.CatName === 'Home Appliances') {
+    this.httpService.getAllHomeAppliancesProduct(1).subscribe(
+      data => {
+        this.Trend = data;
+      });
+  } else if (this.CatName === 'Online Services') {
     this.httpService.getAllHomeAppliancesProduct(1).subscribe(
       data => {
         this.Trend = data;

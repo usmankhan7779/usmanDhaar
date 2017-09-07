@@ -15,7 +15,7 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'http://127.0.0.1:8000/products/';
+  ServerUrl =  'https://sample-175508.appspot.com/products/';
 
 
   constructor(private _http: Http ,

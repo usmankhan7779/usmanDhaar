@@ -21,7 +21,7 @@ export class SingleProductComponent implements OnInit {
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
   ProID: string;
-  PicServrUrl = 'http://127.0.0.1:8000/media';
+  PicServrUrl = 'https://sample-175508.appspot.com/media';
   Getphoto: any = [];
   NewBidInserted = false ;
   NewCart = false ;

@@ -14,7 +14,7 @@ export class BuyerOrderComponent implements OnInit {
 
   pageno: any;
   sub: any;
-  PicServrUrl = 'http://127.0.0.1:8000/media';
+  PicServrUrl = 'https://sample-175508.appspot.com/media';
   modelNo: any;
   ActiveProduct: any = [];
   GetPhotos: any = [];

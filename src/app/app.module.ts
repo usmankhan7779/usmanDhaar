@@ -42,6 +42,11 @@ import { BuyerOrderComponent } from './buyer-order/buyer-order.component';
 import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CarouselModule } from 'ngx-bootstrap';
+import { SellerPurchasingComponent } from './seller-purchasing/seller-purchasing.component';
+import { SellerPurchasingInvoiceComponent } from './seller-purchasing-invoice/seller-purchasing-invoice.component';
+import { StoreTemplateComponent } from './store-template/store-template.component';
+import { SubCategoryDetailComponent } from './sub-category-detail/sub-category-detail.component';
+import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-category-detail.component';
 
 
 @NgModule({
@@ -74,7 +79,12 @@ import { CarouselModule } from 'ngx-bootstrap';
     MyBidsBuyerComponent,
     Checkout2Component,
     BuyerOrderComponent,
-    BuyerInvoiceComponent
+    BuyerInvoiceComponent,
+    SellerPurchasingComponent,
+    SellerPurchasingInvoiceComponent,
+    StoreTemplateComponent,
+    SubCategoryDetailComponent,
+    SubsubCategoryDetailComponent
   ],
   imports: [
     BrowserModule,

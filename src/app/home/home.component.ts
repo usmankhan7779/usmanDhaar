@@ -6,7 +6,7 @@ import { HomeService } from './home.services';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  PicServrUrl = 'http://127.0.0.1:8000/media';
+  PicServrUrl = 'https://sample-175508.appspot.com/media';
   GetallPhoneProduct: any = [];
   getcomputinglaptopsproduct8: any = [];
   WomenFashionProducts4: any = [];
