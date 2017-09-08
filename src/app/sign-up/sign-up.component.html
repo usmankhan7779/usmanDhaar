@@ -42,7 +42,7 @@
             <div *ngIf="EmailPosterror==true" class="alert alert-danger">
               <strong>Error!</strong> Email Already exist.
             </div>
-            <h5>User SingUp</h5>
+            <h5>User SinUp</h5>
             <div id="wsell" class="formpanel tab-pane fade in active">
               <form role="form" class="login-form" (ngSubmit)="f.form.valid && register(Username.value,Email.value,Password.value,FName.value,LName.value,Mobile.value)" #f="ngForm" novalidate>
 
@@ -125,7 +125,9 @@
               <div class="formrow">
                 <input type="checkbox" [(ngModel)]="model.Agree" #Agree="ngModel"  value="agree text" name="agree" />
                 I have read and agree to the <a href="#" style="color: red"> Terms and Conditions</a></div>
-              <input type="submit" class="btn" value="Register">
+                <recaptcha  (resolved)="resolved($event)" siteKey="6Lfd6y8UAAAAAL_D96Onic2FcRsjy-CxP1i8forw" required=""></recaptcha>
+              <br/>
+                <input type="submit" class="btn" value="Register">
               </form>
             </div>
             <!--<div id="wbuy" class="formpanel tab-pane fade in">-->

@@ -15,16 +15,24 @@ export class DashboardComponent implements OnInit {
   ServerUrl =  'https://sample-175508.appspot.com/';
   NewPostcheck = false ;
   ActiveProduct: any = [];
+  GetUSerDOne: any = [];
   USerName: any;
+  SessionstoreName: any;
+
   constructor(private _http: Http ,
               private Profile: LoginService,
               private _nav: Router) {
   }
 
   ngOnInit() {
+    this.Profile.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+      this.GetUSerDOne = resSlidersData;
 
+    });
     this.Profile.verify_token().subscribe((response) => {
         this.USerName =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
+
+
       },
       (err) => {
         console.log('ERROR:' + err);
@@ -53,6 +61,9 @@ export class DashboardComponent implements OnInit {
 
 
       });
+
+
+    this.SessionstoreName = sessionStorage.getItem('StoreName');
 
   }
 

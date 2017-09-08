@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DatePipe   } from '@angular/common';
 import {Routing , AppRoutingProvider} from './app.routing';
+import { RecaptchaModule } from 'ng2-recaptcha';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -89,6 +90,7 @@ import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-c
   imports: [
     BrowserModule,
     CarouselModule.forRoot(),
+    RecaptchaModule.forRoot(),
     Ng2PaginationModule,
     FormsModule,
     HttpModule,

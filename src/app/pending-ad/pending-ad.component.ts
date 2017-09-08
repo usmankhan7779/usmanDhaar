@@ -19,6 +19,7 @@ export class PendingAdComponent implements OnInit {
   ActiveProduct: any = [];
   GetPhotos: any = [];
   CatName: any;
+  SessionstoreName: any;
 
   constructor( private _nav: Router,
                private route: ActivatedRoute,
@@ -50,6 +51,9 @@ export class PendingAdComponent implements OnInit {
           this.ActiveProduct = data;
         });
     }
+
+
+    this.SessionstoreName = sessionStorage.getItem('StoreName');
   }
 
 

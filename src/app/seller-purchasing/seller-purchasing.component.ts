@@ -19,6 +19,7 @@ export class SellerPurchasingComponent implements OnInit {
   ActiveProduct: any = [];
   GetPhotos: any = [];
   CatName: any;
+  SessionstoreName: any;
 
   constructor( private _nav: Router,
                private route: ActivatedRoute,
@@ -26,7 +27,7 @@ export class SellerPurchasingComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.SessionstoreName = sessionStorage.getItem('StoreName');
     if (sessionStorage.getItem('UserID') === null) {
 
       this._nav.navigate(['/login']);

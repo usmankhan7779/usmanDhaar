@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
   registration_ok = false;
   UserError = false;
   EmailPosterror = false;
-
+  recaptcha: any
   UserTyping = false;
   Userloading= false;
   EmailExist= false;
@@ -37,27 +37,35 @@ export class SignUpComponent implements OnInit {
   }
   register(username: string, Email: string, Password: string , Fname: string, Lname: string, Mobile: string ) {
 
+
     if ( this.model.Agree) {
-      if (this.Emailok) {
-        this.singup.post_signup_form(username, Email, Password, Fname, Lname, Mobile).subscribe((response) => {
-            /* this function is executed every time there's a new output */
-            // console.log("VALUE RECEIVED: "+response);
-            this.registration_ok = true;
-          },
-          (err) => {
-            this.registration_error = true;
-            /* this function is executed when there's an ERROR */
-            //   console.log("ERROR: "+err);
-          },
-          () => {
-            /* this function is executed when the observable ends (completes) its stream */
-            //   console.log("COMPLETED");
-          }
-        );
+
+      if (this.recaptcha) {
+
+        if (this.Emailok) {
+          this.singup.post_signup_form(username, Email, Password, Fname, Lname, Mobile).subscribe((response) => {
+              /* this function is executed every time there's a new output */
+              // console.log("VALUE RECEIVED: "+response);
+              this.registration_ok = true;
+            },
+            (err) => {
+              this.registration_error = true;
+              /* this function is executed when there's an ERROR */
+              //   console.log("ERROR: "+err);
+            },
+            () => {
+              /* this function is executed when the observable ends (completes) its stream */
+              //   console.log("COMPLETED");
+            }
+          );
+        } else {
+          this.EmailPosterror = true;
+        }
       } else {
-        this.EmailPosterror = true;
+        alert('Captcha Missing');
+
       }
-    }else {
+    } else {
       alert('You must agree to the terms  first.');
     }
 
@@ -169,7 +177,13 @@ export class SignUpComponent implements OnInit {
     }
 
   }
+  resolved(captchaResponse: string) {
 
+    if (captchaResponse) {
+      this.recaptcha = true;
+    }
+  }
+  // alert("hiii")  }
   OnEmailChangeEvent() {
     this.EmailExist = false;
     this.Emailok = false;

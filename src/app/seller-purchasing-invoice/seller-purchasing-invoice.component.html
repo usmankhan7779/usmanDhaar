@@ -20,10 +20,12 @@
     <div class="row">
       <div class="col-md-3 col-sm-4">
         <ul class="usernavdash">
-          <li ><a [routerLink]="['/select-category']"><i class="fa fa-tachometer" aria-hidden="true"></i> Post an Ad</a></li>
+          <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
+          <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Post an Ad</a></li>
           <li><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
-          <li><a [routerLink]="['/pending-ad']"><i class="fa fa-desktop" aria-hidden="true"></i> My Pending Ads</a></li>
-          <li><a [routerLink]="['/active-ad']"><i class="fa fa-laptop" aria-hidden="true"></i> My Active Ads</a></li>
+
+          <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
+          <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
           <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
           <li class="active"><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchasing</a></li>
           <li><a href="#"><i class="fa fa-commenting" aria-hidden="true"></i> Feedback</a></li>

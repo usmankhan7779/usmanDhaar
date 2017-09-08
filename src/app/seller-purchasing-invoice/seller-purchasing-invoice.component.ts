@@ -31,6 +31,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
   Str: string;
   TMpStr: string;
   TableName: string;
+  SessionstoreName: string;
 
   Allproducts: any = {'products': []};
   GetAllproducts = [];
@@ -45,7 +46,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.SessionstoreName = sessionStorage.getItem('StoreName');
     this.sub = this.route
       .queryParams
       .subscribe(params => {
