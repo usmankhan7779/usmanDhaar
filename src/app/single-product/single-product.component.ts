@@ -26,12 +26,15 @@ export class SingleProductComponent implements OnInit {
   NewBidInserted = false ;
   NewCart = false ;
   Timeclose = false ;
+  MinBidPrice = false ;
+  amountoffer = false ;
   AuctionTest = true;
   AuctionProductPrice: number;
 
-  istimer=true;
+  istimer = true;
 
   resultProduct: any = [];
+  BidingProduct: any[] = [];
   // onePeoduct: Productlist[];
   onePeoduct: any = [];
   products: any = {'products': []};
@@ -65,6 +68,8 @@ export class SingleProductComponent implements OnInit {
     } else {
       this.LoginID = false;
     }
+
+
     this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
       this.GetallPhoneProduct = resSlidersData;
 
@@ -76,7 +81,10 @@ export class SingleProductComponent implements OnInit {
         // Defaults to 0 if no query param provided.
         this.CatName = params['CatName'] || '0' ;
         this.ProID  = params['ProID'] || '0';
+        this.GetAdd.GetallBidsProductdbyProductID(1, this.ProID).subscribe(resSlidersData => {
 
+          this.BidingProduct = resSlidersData;
+        });
       });
     this.GetAdd.GetphotoById().subscribe(resSlidersData => {
       this.Getphoto = resSlidersData;
@@ -141,39 +149,47 @@ export class SingleProductComponent implements OnInit {
     this.starv = event;
     // //alert(this.star)
   }
-  InsertBid(startingPrice: number ) {
-    this.GetAdd.InsertUserBid(sessionStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
-      this.GeProductBiding = resSlidersData;
-      if (this.CatName === '0') {
-        this.router.navigate(['/login']);
-      } else {
-        if (this.CatName === 'Phones & Tablets') {
-          this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-        } else if (this.CatName === 'Women\'s Fashion') {
-          // console.log('Women\'s Fashion')
-          this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-        } else if (this.CatName === 'Men\'s Fashion') {
-          this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-        } else if (this.CatName === 'TV, Audio & Video') {
-          // console.log('TV, Audio & Video')
-          this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-        } else if (this.CatName === 'Computing & Laptops') {
-          this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-        } else if (this.CatName === 'Home Appliances') {
-          this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+  InsertBid(startingPrice: number, MaxPrice: number ) {
+    if (this.model.UserPriceBid > MaxPrice) {
+      this.MinBidPrice = false;
+      this.GetAdd.InsertUserBid(sessionStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
+        this.GeProductBiding = resSlidersData;
+        if (this.CatName === '0') {
+          this.router.navigate(['/login']);
+        } else {
+          if (this.CatName === 'Phones & Tablets') {
+            this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+          } else if (this.CatName === 'Women\'s Fashion') {
+            // console.log('Women\'s Fashion')
+            this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+          } else if (this.CatName === 'Men\'s Fashion') {
+            this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+          } else if (this.CatName === 'TV, Audio & Video') {
+            // console.log('TV, Audio & Video')
+            this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+          } else if (this.CatName === 'Computing & Laptops') {
+            this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+          } else if (this.CatName === 'Home Appliances') {
+            this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+          }
         }
-      }
 
+      });
+      console.log(this.GeProductBiding);
+      // this.someMethod(true, this.ProID, startingPrice );
+      this.NewBidInserted = true;
+
+    } else {
+      this.MinBidPrice = true;
+    }
+
+
+  }
+  RefreshBids() {
+    this.GetAdd.GetallBidsProductdbyProductID(1, this.ProID).subscribe(resSlidersData => {
+
+      this.BidingProduct = resSlidersData;
     });
-     console.log(this.GeProductBiding);
-    // this.someMethod(true, this.ProID, startingPrice );
-    console.log('BIdding');
-    this.NewBidInserted = true;
-    //UPdate QUery
-    console.log('Checking if else');
-
-
-
   }
 
   LoginUser() {
@@ -256,7 +272,42 @@ export class SingleProductComponent implements OnInit {
     alert('clear');
   }
 
+  MakeAnOffer() {
+    if (sessionStorage.getItem('Authorization') !== null) {
+      this.LOginObj.verify_tokenWithNoRedirict().subscribe((response) => {
 
+          if (response) {
+
+            alert('login');
+          } else {
+
+
+            this.router.navigate(['/login'], {queryParams: { CatName:  this.CatName, ProID: this.ProID } });
+
+          }
+        },
+        (err) => {
+
+          console.log('ERROR:' + err);
+          alert(err);
+          // this._nav.navigate(['/login']);
+        },
+        () => {
+        }
+      );
+
+
+    } else {
+
+      this.router.navigate(['/login'], {queryParams: { CatName:  this.CatName, ProID: this.ProID } });
+    }
+
+  }
+
+
+  SubmitOffer() {
+
+  }
   timer(element: HTMLElement) {
 
   this.seconds -= 1;

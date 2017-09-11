@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { JwtHelper } from 'angular2-jwt';
+import {HttpService} from '../services/http-service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 
@@ -27,7 +28,7 @@ export class LoginService {
   }
 
 
-  loged_in(mail: any , pass: any) {
+  loged_in(mail: any , pass: any, CatName: any, ProID: any) {
 
 
     return this._http.post(this.ServerUrl + 'user-token-auth/', {'username': mail, 'password': pass})
@@ -35,18 +36,26 @@ export class LoginService {
         if (res) {
           if (res.status === 200) {
             sessionStorage.setItem('Authorization', res.json().token);
+            sessionStorage.setItem('UserName', mail);
             this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
             sessionStorage.setItem('UserID', this.decoded);
-            this.GetUSerdetailsByUserId(this.decoded).subscribe(resSlidersData => {
+              this.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
 
-              if ( resSlidersData['Vendor'] === true) {
-                this._nav.navigate(['/dashboard']);
+
+              if ( CatName !== null && ProID !== null) {
+
+                this._nav.navigate(['/single-product'], {queryParams: { CatName:  CatName, ProID: ProID } });
               } else {
 
+                if (resSlidersData['Vendor'] === true) {
+                  this._nav.navigate(['/dashboard']);
+                } else {
+                  this._nav.navigate(['/buyer-dashboard']);
+                }
+              }
 
-                this._nav.navigate(['/buyer-dashboard']);
-              }
-              }
+
+            }
               );
            }
         }
@@ -64,6 +73,7 @@ export class LoginService {
         if (res) {
           if (res.status === 200) {
             sessionStorage.setItem('Authorization', res.json().token);
+            sessionStorage.setItem('UserName', mail);
             this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
             sessionStorage.setItem('UserID', this.decoded);
 
@@ -77,7 +87,8 @@ export class LoginService {
   }
 
   GetUSerdetailsByUserId(decoded: any) {
-    return this._http.get(this.ServerUrl + 'Get_User_details/' + this.decoded).map(response => response.json());
+
+    return this._http.get(this.ServerUrl + 'Get_User_details/' + decoded).map(response => response.json());
   }
 
   loged_out() {
@@ -87,7 +98,6 @@ export class LoginService {
 
 
   post_signup_form(username: string, email: string , password: string, Fname, LName, Mobile) {
-
     return this._http.post( this.ServerUrl + 'addUser/',
       {'username' :  username,  'email':  email, 'password':  password, })
       .map((res: Response) => {
@@ -105,7 +115,7 @@ export class LoginService {
           }
         }
       }).catch((error: any) => {
-        console.log(error);
+
         if (error.status !== 404) {
           if (error.status === 401) {
             console.log(error);
@@ -223,11 +233,24 @@ export class LoginService {
   }
 });
 }
+  verify_tokenWithNoRedirict() {
 
+    return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': sessionStorage.getItem('Authorization')})
+      .map(response => {
+            const token = response.json() && response.json().token;
+            if (token) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        )
+          .catch(err => Observable.of(false));
+      }
 
 
   StoreRegistration(model: any []) {
-    console.log(model['fbrunregister'])
+    console.log(model['fbrunregister']);
     if (model['fbrunregister'] === true ) {
 
       model['fbrregister'] = false;

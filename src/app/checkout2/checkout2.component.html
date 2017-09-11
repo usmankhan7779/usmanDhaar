@@ -39,7 +39,7 @@
                       <!--<small><a href="#">Size : S</a></small>-->
                     </td>
                     <td class="cart_avail"><span class="label label-success">In stock</span></td>
-                    <td class="price"><span>RS: {{ abc.FixedPrice }}.00</span></td>
+                    <td class="price"><span>Rs: {{ abc.FixedPrice | number:'.0-0' }}</span></td>
                     <td class="qty">
                       <form role="form">
                         <input maxlength="3" (ngModelChange)="onChange($event, abc.ProductID)" name="qty"
@@ -48,7 +48,7 @@
                       </form>
                     </td>
                     <td class="price">
-                      <span>RS: {{ abc.FixedPrice * abc.itemsqty }}.00 </span>
+                      <span>Rs: {{ abc.FixedPrice * abc.itemsqty | number:'.0-0' }} </span>
                     </td>
                     <td class="action">
                       <a (click)="TrashcartElement(abc.ProductID)"><i class="fa fa-trash-o"></i></a>
@@ -67,17 +67,17 @@
                     <button class="button col-lg-push-6"><span>Apply Coupon</span></button>
                   </td>
                   <td colspan="3">Total products (tax incl.)</td>
-                  <td colspan="2">RS: {{ Total}}.00</td>
+                  <td colspan="2">Rs: {{ Total | number:'.0-0'}}</td>
                 </tr>
                 <tr>
                   <td colspan="3"><strong>Total</strong></td>
-                  <td colspan="2"><strong>RS: {{ Total}}.00 </strong></td>
+                  <td colspan="2"><strong>Rs: {{ Total | number:'.0-0'}} </strong></td>
                 </tr>
                 </tfoot>
               </table>
             </div>
             <ng-container *ngIf="orderreview === true">
-              <button (click)="ContinuetoCHeckout()" class="button pull-right"><span>Continue to CHeckout </span>
+              <button (click)="ContinuetoCHeckout()" class="button pull-right"><span>Continue to Checkout </span>
               </button>
             </ng-container>
           </div>
@@ -134,12 +134,13 @@
 
               </div>
             </div>
-            <div *ngIf="LoggedIn === true" class="box-border">
-              <div class="row">
-                <h4 class="col-lg-offset-4 col-lg-4">Logged in as <a style="color: red">{{ LoginName }}</a></h4>
-              </div>
-            </div>
+
           </ng-container>
+          <div *ngIf="LoggedIn === true" class="box-border">
+            <div class="row">
+              <h4 class="col-lg-4">Logged in as <a style="color: red">{{ LoginName }}</a></h4>
+            </div>
+          </div>
           <br/>
           <br/>
           <br/>

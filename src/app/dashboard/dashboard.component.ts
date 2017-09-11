@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
         this.ActiveProduct = data;
         if (this.ActiveProduct.length > 0 ) {
           sessionStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
-
+          this.SessionstoreName = sessionStorage.getItem('StoreName');
         } else {
           this._nav.navigate(['/login']);
         }
@@ -63,9 +63,12 @@ export class DashboardComponent implements OnInit {
       });
 
 
-    this.SessionstoreName = sessionStorage.getItem('StoreName');
+
 
   }
 
+  clearSessionstoreage() {
+    sessionStorage.clear();
+  }
 
 }

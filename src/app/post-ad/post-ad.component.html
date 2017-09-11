@@ -111,7 +111,7 @@
               <div class="col-md-12">
                 <div class="formrow">
                   <div class="uploadphotobx"> <i class="fa fa-upload" aria-hidden="true"></i>
-                    <h4>Upload your photo</h4>
+                    <h4>Upload Product photo</h4>
                     <p>It must be a head-shot photo</p>
                     <label class="uploadBox">Click here to Upload
                       <!--<input type="file" name="upload">-->
@@ -140,7 +140,7 @@
 
                       <div class="formrow">
 
-                        <input type="number" name="name" class="form-control" placeholder="Starting Price" [(ngModel)]="model.Starting_Price" #Starting_Price="ngModel"  required>
+                        <input type="number" name="name1" class="form-control" placeholder="Starting Price" [(ngModel)]="model.Starting_Price" #Starting_Price="ngModel"  required>
 
                       </div>
 
@@ -149,7 +149,7 @@
                       Buy it Now
                     </div>
                     <div *ngIf="Buyitnow == true" class="formrow">
-                      <input type="number" name="name" class="form-control" [(ngModel)]="model.Buyitnow"  placeholder="Buy it Now Price">
+                      <input type="number" name="name2" class="form-control" [(ngModel)]="model.Buyitnow"  placeholder="Buy it Now Price">
                     </div>
 
                     <div class="formrow">
@@ -157,7 +157,7 @@
                       Add a Reserve Price
                     </div>
                     <div *ngIf="ReservePrice == true" class="formrow">
-                      <input type="number" [(ngModel)]="model.ReservePrice" name="name" class="form-control" placeholder="Reserve Price">
+                      <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control" placeholder="Reserve Price">
                     </div>
                       <div class="formrow">
                         <select [(ngModel)]="model.AuctionListing" class="col-md-push-6" name="listing" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
@@ -179,7 +179,7 @@
                       <div class="formrow">
 
 
-                          <input type="number" [(ngModel)]="model.FixedPrice" name="name" class="form-control" placeholder="Price">
+                          <input type="number" [(ngModel)]="model.FixedPrice" name="name4" class="form-control" placeholder="Price">
                       </div>
 
                       <div class="formrow">
@@ -187,11 +187,11 @@
                         Add Best Offer
                       </div>
                       <div *ngIf="Addbestoffer == true" class="formrow">
-                        <input type="number" [(ngModel)]="model.AddBestOffer" name="name" class="form-control" placeholder="Offer">
+                        <input type="number" [(ngModel)]="model.AddBestOffer" name="name5" class="form-control" placeholder="Offer">
                       </div>
 
                       <div class="formrow">
-                        <input type="number" [(ngModel)]="model.Quantity" name="name" class="form-control" placeholder="Quantity">
+                        <input type="number" [(ngModel)]="model.Quantity" name="name6" class="form-control" placeholder="Quantity">
                     </div>
 
 

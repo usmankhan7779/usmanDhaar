@@ -48,7 +48,18 @@ import { SellerPurchasingInvoiceComponent } from './seller-purchasing-invoice/se
 import { StoreTemplateComponent } from './store-template/store-template.component';
 import { SubCategoryDetailComponent } from './sub-category-detail/sub-category-detail.component';
 import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-category-detail.component';
+//preloader-content
 
+import { XHRBackend, RequestOptions } from '@angular/http';
+import { HttpService } from './services/http-service';
+import { PreloaderService } from './services/preloader-service';
+import { PostService } from './services/post-service';
+import { PreloaderFull } from './components/preloader-full/preloader-full';
+import { PreloaderSmall } from './components/preloader-small/preloader-small';
+
+export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions, preloaderService: PreloaderService) {
+  return new HttpService(backend, defaultOptions, preloaderService);
+}
 
 @NgModule({
   declarations: [
@@ -85,7 +96,9 @@ import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-c
     SellerPurchasingInvoiceComponent,
     StoreTemplateComponent,
     SubCategoryDetailComponent,
-    SubsubCategoryDetailComponent
+    SubsubCategoryDetailComponent,
+    PreloaderFull,
+    PreloaderSmall,
   ],
   imports: [
     BrowserModule,
@@ -106,6 +119,13 @@ import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-c
     CategoryServices,
     BuyerDashboardServices,
     DatePipe,
+    PreloaderService,
+    PostService,
+    {
+      provide: HttpService,
+      useFactory: httpServiceFactory,
+      deps: [XHRBackend, RequestOptions, PreloaderService]
+    }
   ],
   bootstrap: [AppComponent]
 })

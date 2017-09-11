@@ -93,11 +93,11 @@
                               </div>
                               <div *ngIf="phoneProducts.Auction == true" class="item-price">
 
-                                <div  class="price-box"> <span class="regular-price"> <span class="price">RS {{ phoneProducts.MaxBidPrice }}.00</span> </span> </div>
+                                <div  class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0' }}</span> </span> </div>
 
                               </div>
                               <div *ngIf="phoneProducts.Auction == false" class="item-price">
-                                <div class="price-box"> <span class="regular-price"> <span class="price">RS {{ phoneProducts.FixedPrice }}.00</span> </span> </div>
+                                <div class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.FixedPrice | number:'.0-0' }}</span> </span> </div>
                               </div>
                             </div>
                           </div>

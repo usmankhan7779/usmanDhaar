@@ -18,13 +18,14 @@
           <!-- top links -->
           <div class="headerlinkmenu col-md-7 col-sm-7 col-xs-12">
             <!-- Default Welcome Message -->
-            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs">Welcome {{ GetUSerDOne['Fname']}}</div>
+            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs">Welcome {{ GetUSerDOne['Fname']}},</div>
+            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs" ><a [routerLink]="['/login']" (click)="gotodashboard()" style="color: #f23534 !important;" > My Account </a></div>
             <!--<div class="welcome-msg hidden-xs">Welcome to msg! </div>-->
             <ul class="links">
-              <li *ngIf="ValueRec == true"><a [routerLink]="['/checkout']">Checkout</a></li>
+              <li *ngIf="ValueRec == true"><a [routerLink]="['/checkout2']">Checkout</a></li>
               <li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']">Sign Up</a></li>
               <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']">Log In</a></li>
-              <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" >Logout</a></li>
+              <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" >Logout</a></li>
 
             </ul>
             <div class="language-currency-wrapper pull-right">

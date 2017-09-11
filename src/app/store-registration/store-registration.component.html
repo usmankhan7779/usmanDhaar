@@ -25,7 +25,7 @@
         <ul class="usernavdash">
           <li ><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
           <li><a [routerLink]="['/my-bidds']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bidds</a></li>
-          <li><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchasing</a></li>
+          <li><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
           <li class="active" ><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dharr.pk</a></li>
           <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
@@ -64,8 +64,7 @@
                   <li class="row">
                     <div class="col-sm-8 ">
                       <div class="form-group form-group has-feedback" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
-                        <label for="Store _name" class="required">Store Name(*)</label>
-
+                        <label for="Store _name" class="required">Store URL(*)</label>
                         <div style="color:red" *ngIf="model.storename!=null && storename.touched && !storename.valid" class="help-block">Store Name required or invalid
                         </div>
                         <input type="text" [(ngModel)]="model.storename"
@@ -142,14 +141,14 @@
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !zipcode.valid }">
 
-                        <label for="postal_code" class="required">Zip/Postal Code(*)</label>
+                        <label for="postal_code" class="required">Zip/Postal Code</label>
                         <div  style="color:red" *ngIf=" model.zipcode!=null  && !zipcode.valid" class="help-block">Zip code required</div>
 
                         <input class="input form-control" type="text"
                                pattern="([0-9])+$"
                                (keyup)=checkButtonStep1()
                                placeholder="55560"
-                               required [(ngModel)]="model.zipcode" #zipcode="ngModel" name="zipcode" id="postal_code">
+                                [(ngModel)]="model.zipcode" #zipcode="ngModel" name="zipcode" id="postal_code">
                       </div>
                     </div><!--/ [col] -->
 
@@ -377,7 +376,7 @@
                         <div  style="color:red" *ngIf=" model.acount_title!=null && !acount_title.valid" class="help-block">Account title is  required</div>
 
 
-                        <label for="Store _name" class="required">Account Title</label>
+                        <label for="Store _name" class="required">Bank Account Title</label>
                       <input type="text" class="input form-control" required
                              placeholder="My Acount title"
                              pattern="^([A-Za-z]+?[ ]?|[A-Za-z]+?)+$"
@@ -392,7 +391,7 @@
                         <div  style="color:red" *ngIf=" model.acount_number!=null && !acount_number.valid" class="help-block">Account number is  required</div>
 
 
-                        <label for="company_name">Account Number </label>
+                        <label for="company_name">Bank Account Number </label>
                         <input type="text" class="input form-control" required
                                placeholder="My Acount number"
 

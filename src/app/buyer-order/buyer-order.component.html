@@ -23,7 +23,7 @@
         <ul class="usernavdash">
           <li ><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
           <li><a [routerLink]="['/my-bids-buyer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
-          <li class="active"><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchasing</a></li>
+          <li class="active"><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
 
           <li  ><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dharr.pk</a></li>
           <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
@@ -57,7 +57,7 @@
                           <div class="listbtn"><a [routerLink]="['/buyer-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.id}" >View Details</a></div>
                         </div>
                         <div class="col-md-4 col-sm-5 text-right">
-                          <div class="adprice">RS {{ phoneProducts.InvoicesBalance}}.00</div>
+                          <div class="adprice">Rs {{ phoneProducts.InvoicesBalance | number:'.0-0'}}</div>
                           <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
                         </div>
                       </div>

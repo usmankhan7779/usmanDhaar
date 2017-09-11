@@ -29,7 +29,7 @@
           <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
 
           <li  class="active" ><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
-          <li><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchasing</a></li>
+          <li><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
 
           <li><a href="#"><i class="fa fa-commenting" aria-hidden="true"></i> Feedback</a></li>
           <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> Followers</a></li>
@@ -65,7 +65,7 @@
                           <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
                         </div>
                         <div class="col-md-4 col-sm-5 text-right">
-                          <div class="adprice">RS {{ phoneProducts.MaxBidPrice}}.00</div>
+                          <div class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>
                           <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
                         </div>
                       </div>

@@ -18,6 +18,8 @@ export class LogInComponent implements OnInit {
   StoreUpDOne = false;
   login_error = false;
   logout: string;
+  ProID: string;
+  CatName: string;
   returnUrl: string;
 
 
@@ -33,6 +35,8 @@ export class LogInComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.logout = params['Logout'] || 0 ;
+        this.CatName = params['CatName'] || null ;
+        this.ProID = params['ProID'] || null ;
 
       });
 
@@ -58,9 +62,11 @@ export class LogInComponent implements OnInit {
 
   loged_in(mail: string , pass: string) {
 
-    this.obj.loged_in(mail, pass).subscribe((response) => {
+    this.obj.loged_in(mail, pass, this.CatName, this.ProID).subscribe((response) => {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
+
+
       },
       (err) => {
         this.login_error = true;

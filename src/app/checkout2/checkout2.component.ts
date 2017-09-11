@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer  } from '@angular/core';
-
+import { LoginService } from '../log-in/log-in.services';
 import { Router, ActivatedRoute } from '@angular/router';
-import {LoginService} from '../log-in/log-in.services';
+
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 
 @Component({
@@ -39,6 +39,7 @@ export class Checkout2Component implements OnInit {
   constructor(private Renderer123: Renderer,
               private _nav: Router,
               private httpService: LoginService,
+              private Profile: LoginService,
               private httpbuyerService: BuyerDashboardServices) {
 
   }
@@ -48,12 +49,10 @@ export class Checkout2Component implements OnInit {
     this.id = Math.floor((Math.random()  * 10000) );
     this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
 
-    console.log(this.CartedProduct['products']);
     this.Total = 0;
     for (const tmp of this.CartedProduct['products']) {
       this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
     }
-
   }
 
   onChange(qty: string, Abc: any) {
@@ -72,7 +71,7 @@ export class Checkout2Component implements OnInit {
 
 
   TrashcartElement(Abc: any) {
-    alert(Abc);
+
     for (const tmp of this.CartedProduct['products']) {
 
 
@@ -89,9 +88,34 @@ export class Checkout2Component implements OnInit {
   }
 
   ContinuetoCHeckout() {
+    this.orderreview = false;
     if (this.Total > 0) {
-      this.CheckoutMethod = true;
-      this.orderreview = false;
+      this.Profile.verify_tokenWithNoRedirict().subscribe((response) => {
+
+             if (response) {
+
+               this.LoggedIn = true;
+               this.LoginName = sessionStorage.getItem('UserName');
+               this.PaymentMethod = true;
+               this.BillingMethod = true;
+               this.user = sessionStorage.getItem('UserID');
+
+             } else {
+
+               this.CheckoutMethod = true;
+
+             }
+        },
+        (err) => {
+          console.log('ERROR:' + err);
+          alert(err);
+          // this._nav.navigate(['/login']);
+        },
+        () => {
+        }
+      );
+
+
       // this.model.LoginEMail;
       // this.Renderer123.selectRootElement('#LoginEmailAddress').focus();
 
@@ -102,8 +126,7 @@ export class Checkout2Component implements OnInit {
 
   }
 
-  ShippingDetails()
-  {
+  ShippingDetails() {
 
     console.log(this.model);
     this.httpbuyerService.Invoice(this.id, this.Total, false, true, this.user).subscribe(
@@ -169,7 +192,7 @@ export class Checkout2Component implements OnInit {
           this.LoggedIn = true;
           this.PaymentMethod = true;
           this.BillingMethod = true;
-          this.user = User;
+          this.user = sessionStorage.getItem('UserID');
 
         } else {
           this.LoggedIn = false;

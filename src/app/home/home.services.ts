@@ -2,7 +2,7 @@ import 'rxjs/add/operator/map';
 import {Injectable} from '@angular/core';
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-
+import {HttpService} from '../services/http-service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 
@@ -18,7 +18,7 @@ export class HomeService {
   ServerUrl =  'https://sample-175508.appspot.com/products/';
 
 
-  constructor(private _http: Http ,
+  constructor(private _http: HttpService ,
               private _nav: Router) {
   }
 
@@ -113,7 +113,9 @@ export class HomeService {
     // console.log(this.CateDeatils)
   }
 
-
+  GetallBidsProductdbyProductID(page: any, ProductID: any) {
+    return this._http.get( this.ServerUrl + 'GetallBidsProductd/' + ProductID + '?page=' + page, ).map(response => response.json());
+  }
 
 
 

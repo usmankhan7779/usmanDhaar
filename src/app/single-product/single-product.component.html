@@ -51,12 +51,12 @@
               <ng-container *ngIf="productToshow.Auction == true">
 
               <p class="special-price"> <span class="price-label">Price</span>
-                <span class="price"> RS: {{ productToshow.MaxBidPrice }}.00 </span> </p>
+                <span class="price"> Rs: {{ productToshow.MaxBidPrice | number:'.0-0' }}   </span> </p>
               </ng-container>
           <ng-container *ngIf="productToshow.Auction == false">
 
                 <p class="special-price"> <span class="price-label">Price</span>
-                  <span class="price"> RS: {{ productToshow.FixedPrice }}.00 </span> </p>
+                  <span class="price"> Rs: {{ productToshow.FixedPrice | number:'.0-0' }} </span> </p>
               </ng-container>
 
 
@@ -97,6 +97,8 @@
                 <!--</div>-->
               <!--</div>-->
             <!--</div>-->
+
+
             <div *ngIf="productToshow.Auction" class="product-variation">
             <div id="clockdiv" style="margin-bottom: 15px;">
             <div>
@@ -129,47 +131,89 @@
                  </div>
                 <input type="text" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="UserPriceBid" [(ngModel)]="model.Username" placeholder="Username" required>
                 <input type="Password" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.Password" placeholder="Password" required>
-
                 <button class="button pro-add-to-cart col-md-push-6 " (click)="LoginUser()" title="Bid Now" type="button"><span> Login</span></button>
                </ng-container>
                 <ng-container *ngIf="LoginID === true">
+                  <div *ngIf="MinBidPrice === true" class="alert alert-danger">
+                    <strong>Error!</strong> Minimum Price for Bid  {{ productToshow.MaxBidPrice + 1 | number:'.0-0' }}
+                  </div>
 
-                <input type="number" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
+                <input type="number" class="form-control" style="margin-bottom: 15px;"  placeholder="Minimum Price for Bid  {{ productToshow.MaxBidPrice+1 | number:'.0-0' }}" name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
 
                 <div>
                 <div class="cart-plus-minus">
                   <label for="qty">Place your Bid:</label>
                 </div>
-                <button class="button pro-add-to-cart" (click)="InsertBid(productToshow.SrartingPrice)" title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
+
+                <button class="button pro-add-to-cart" (click)="InsertBid(productToshow.SrartingPrice, productToshow.MaxBidPrice)" title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
                 </div>
                 </ng-container>
               </form>
             </div>
 
+
             <div *ngIf="!productToshow.Auction" class="product-variation">
               <form action="#" method="post">
+                <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="UserPriceBid" [(ngModel)]="model.Username" placeholder="Your Offer Amount" required>
+                <textarea type="text" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.Password" placeholder="Message for Seller" ></textarea>
+
                 <div class="cart-plus-minus">
+
                   <label for="qty">Quantity:</label>
                   <div class="numbers-row">
-                    <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
-                    <input type="number" [(ngModel)]="model.qtyproduct" #qty class="qty" style="font-size: 15px !important;" title="Qty" value="1" maxlength="12" id="qty" name="qtyproduct">
+                    <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
+                    <input type="number" ng-Model="1"  #qty class="qty" value="1" style="font-size: 15px !important;"  id="qty" name="qty">
                     <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
                   </div>
                 </div>
                 <button class="button pro-add-to-cart" (click)="Addtocart(qty.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
+                <button class="button pro-add-to-cart" style="margin-left: 5px;" (click)="MakeAnOffer(qty.value)" title="Add to Cart" type="button"><span><i class="fa fa-bullhorn"></i> Make Offer</span></button>
+                <button class="button pro-add-to-cart" style="margin-left: 5px;" (click)="SubmitOffer(qty.value)" title="Submit Offer" type="button"><span><i class="fa fa-paper-plane"></i>Submit Offer</span></button>
+                  <br/>
+                  <br/>
+                <!--Newsletter Popup Start -->
+                <div id="myModal" class="modal fade">
+                  <div class="modal-dialog newsletter-popup">
+                    <div class="modal-content">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <div class="modal-body">
+                        <h2 class="modal-title">Top Fashion</h2>
+                        <form id="newsletter-form" method="post" action="#">
+                          <div class="content-subscribe">
+                            <div class="form-subscribe-header">
+                              <label>Register now to get updates on discount & coupons</label>
+                            </div>
+                            <div class="input-box">
+                              <input type="text" class="input-text newsletter-subscribe" title="Sign up for our newsletter" name="email" placeholder="Enter your email address">
+                            </div>
+                            <div class="actions">
+                              <button class="button-subscribe" title="Subscribe" type="submit">Subscribe</button>
+                            </div>
+                          </div>
+                        </form>
+                        <div class="subscribe-bottom">
+                          <input name="notshowpopup" id="notshowpopup" type="checkbox">
+                          Don’t show this popup again </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--End of Newsletter Popup-->
+
               </form>
             </div>
             <div class="product-cart-option">
               <ul>
+                <li *ngIf="productToshow.Auction"><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{ BidingProduct['results'].length}})</span></a></li>
                 <li><a href="#"><i class="fa fa-heart"></i><span>Add to Wishlist</span></a></li>
                 <li><a href="#"><i class="fa fa-retweet"></i><span>Add to Compare</span></a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i><span>Email to a Friend</span></a></li>
+                <li><a href="#Bidhistory"><i class="fa fa-envelope"></i><span>Email to a Friend</span></a></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="product-overview-tab">
+        <div class="product-overview-tab">
         <div class="container">
           <div class="row">
             <div class="col-xs-12">
@@ -177,6 +221,7 @@
                 <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
                   <li class="active"> <a href="#description" data-toggle="tab"> Description </a> </li>
                   <li> <a href="#reviews" data-toggle="tab">Reviews</a> </li>
+                  <li> <a href="#Bidhistory"  data-toggle="tab">Bid History ({{ BidingProduct['results'].length}})</a> </li>
 
                 </ul>
                 <div id="productTabContent" class="tab-content">
@@ -307,13 +352,82 @@
                       </div>
                     </div>
                   </div>
+                  <div class="tab-pane fade " id="Bidhistory">
+                    <div class="main container">
+                      <div class="row">
 
-                </div>
+                        <div class="col-xs-10">
+                          <div class="page-content checkout-page">
+                            <div class="page-title">
+                              <h2>Biding History</h2>
+                            </div>
+
+                            <!--<h4 class="checkout-sep">Biding History</h4>-->
+                            <div class="box-border col-xs-offset-1">
+                              <div class="table-responsive">
+                                <table class="table table-bordered cart_summary">
+                                  <thead>
+                                  <tr>
+                                    <th>Sr.</th>
+                                    <th>Bidder</th>
+                                    <th>Bid Amount</th>
+                                    <th>BidTime</th>
+
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                    <ng-container *ngFor="let abc of BidingProduct['results']; let i = index">
+                                    <tr>
+                                      <td >
+                                         <span> {{ i+1 }}</span>
+                                      </td>
+                                      <td >
+                                        <p> {{ abc.User_Id.substr(0, 2 ) }}****</p>
+                                        <!--<small><a href="#">Color : Beige</a></small><br>-->
+                                        <!--<small><a href="#">Size : S</a></small>-->
+                                      </td>
+                                      <td class="cart_avail"><span>Rs {{ abc.Price |   number:'.0-0' }}</span></td>
+                                      <td>{{ abc.CreatedDate.substr(0, 19 ) }}</td>
+
+
+                                    </tr>
+                                    </ng-container>
+                                  </tbody>
+                                  <tfoot>
+
+                                  <tr>
+                                    <td colspan="2" rowspan="2">
+                                      <span>If two people bid the same amount, the first bid has priority</span>
+                                      <br/>
+                                      <button (click)="RefreshBids()" class="button"><span>Refresh</span></button>
+                                    </td>
+
+
+                                  </tr>
+
+                                  </tfoot>
+                                </table>
+                              </div>
+
+                            </div>
+
+
+
+
+                          </div>
+
+                        </div>
+
+
               </div>
             </div>
           </div>
         </div>
       </div>
+            </div>
+          </div>
+        </div>
+        </div>
       </ng-container>
     </div>
   </div>
@@ -384,11 +498,11 @@
                           </div>
                           <div *ngIf="phoneProducts.Auction == true" class="item-price">
 
-                            <div  class="price-box"> <span class="regular-price"> <span class="price">RS {{ phoneProducts.MaxBidPrice }}.00</span> </span> </div>
+                            <div  class="price-box"> <span class="regular-price"> <span class="price"  >Rs {{ phoneProducts.MaxBidPrice | number:'.0-0' }} </span> </span> </div>
 
                           </div>
                           <div *ngIf="phoneProducts.Auction == false" class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">RS {{ phoneProducts.FixedPrice }}.00</span> </span> </div>
+                            <div class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.FixedPrice | number:'.0-0' }}.00</span> </span> </div>
                           </div>
                         </div>
                       </div>
