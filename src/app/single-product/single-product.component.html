@@ -154,9 +154,16 @@
 
             <div *ngIf="!productToshow.Auction" class="product-variation">
               <form action="#" method="post">
-                <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="UserPriceBid" [(ngModel)]="model.Username" placeholder="Your Offer Amount" required>
-                <textarea type="text" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.Password" placeholder="Message for Seller" ></textarea>
-
+                <div *ngIf="minOffer"  class="alert alert-danger">
+                  <strong>Offer Decline. </strong>  Amount not meet minimum requirement
+                </div>
+                <div  *ngIf="minOfferDone == true" class="alert alert-success">
+                  <strong>Offer Sent</strong> Please Wait for seller response.  Email will be sent After seller reviewing your offer.
+                </div>
+                <div *ngIf="amountoffer">
+                <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="OfferAmount" [(ngModel)]="model.OfferAmount" placeholder="Your Offer Amount" required>
+                <textarea type="text" class="form-control" style="margin-bottom: 15px;"  name="SellerMessage" [(ngModel)]="model.message" placeholder="Message for Seller" ></textarea>
+                </div>
                 <div class="cart-plus-minus">
 
                   <label for="qty">Quantity:</label>
@@ -166,9 +173,13 @@
                     <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
                   </div>
                 </div>
+                <div *ngIf="!amountoffer">
                 <button class="button pro-add-to-cart" (click)="Addtocart(qty.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
-                <button class="button pro-add-to-cart" style="margin-left: 5px;" (click)="MakeAnOffer(qty.value)" title="Add to Cart" type="button"><span><i class="fa fa-bullhorn"></i> Make Offer</span></button>
-                <button class="button pro-add-to-cart" style="margin-left: 5px;" (click)="SubmitOffer(qty.value)" title="Submit Offer" type="button"><span><i class="fa fa-paper-plane"></i>Submit Offer</span></button>
+
+                  <button *ngIf="productToshow.Addbestoffer > 0" class="button pro-add-to-cart" style="margin-left: 5px;" (click)="MakeAnOffer(qty.value)" title="Add to Cart" type="button"><span><i class="fa fa-bullhorn"></i> Make Offer</span></button>
+                </div>
+
+                <button *ngIf="amountoffer" class="button pro-add-to-cart" style="margin-left: 5px;" (click)="SubmitOffer(qty.value)" title="Submit Offer" type="button"><span><i class="fa fa-paper-plane"></i>Submit Offer</span></button>
                   <br/>
                   <br/>
                 <!--Newsletter Popup Start -->

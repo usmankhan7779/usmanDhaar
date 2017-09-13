@@ -19,6 +19,7 @@ export class LogInComponent implements OnInit {
   login_error = false;
   logout: string;
   ProID: string;
+  RedirectFromlogin: string;
   CatName: string;
   returnUrl: string;
 

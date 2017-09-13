@@ -29,6 +29,8 @@ export class SingleProductComponent implements OnInit {
   MinBidPrice = false ;
   amountoffer = false ;
   AuctionTest = true;
+  minOffer = false;
+  minOfferDone = false;
   AuctionProductPrice: number;
 
   istimer = true;
@@ -38,6 +40,7 @@ export class SingleProductComponent implements OnInit {
   // onePeoduct: Productlist[];
   onePeoduct: any = [];
   products: any = {'products': []};
+
   TmpresultProduct: any = {'products': []};
   GeProductBiding: any = [];
   ProductPrice: any = [];
@@ -50,6 +53,9 @@ export class SingleProductComponent implements OnInit {
   minutes: any;
   hours: any;
   days: any;
+  RedirectFromlogin: string;
+  LocalStoreName: any;
+  MinimumbestOffer: any;
   AuctionDayDB: string;
   constructor( private route: ActivatedRoute,
                private GetAdd: HomeService,
@@ -72,7 +78,6 @@ export class SingleProductComponent implements OnInit {
 
     this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
       this.GetallPhoneProduct = resSlidersData;
-
     });
     window.scrollTo(0, 0);
     this.sub = this.route
@@ -81,6 +86,15 @@ export class SingleProductComponent implements OnInit {
         // Defaults to 0 if no query param provided.
         this.CatName = params['CatName'] || '0' ;
         this.ProID  = params['ProID'] || '0';
+        this.RedirectFromlogin = params['Redirect'] || null ;
+        if (this.RedirectFromlogin !== null)
+        {
+          if (this.RedirectFromlogin === 'MakeOffer') {
+            this.amountoffer = true;
+          }
+        }
+
+
         this.GetAdd.GetallBidsProductdbyProductID(1, this.ProID).subscribe(resSlidersData => {
 
           this.BidingProduct = resSlidersData;
@@ -98,9 +112,13 @@ export class SingleProductComponent implements OnInit {
 
         this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
           this.resultProduct = resSlidersData;
+          this.LocalStoreName = this.resultProduct[0].StoreName;
+          this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
 
           this.DbDate = this.resultProduct[0].CreatedDate;
           this.AuctionDayDB = this.resultProduct[0].AuctionListing;
+
+
           const auctiondays = +this.AuctionDayDB * 86400000;
           const time0 = new Date(); //86400000
           const time1 = new Date(this.DbDate);
@@ -278,7 +296,7 @@ export class SingleProductComponent implements OnInit {
 
           if (response) {
 
-            alert('login');
+            this.amountoffer = true;
           } else {
 
 
@@ -305,7 +323,34 @@ export class SingleProductComponent implements OnInit {
   }
 
 
-  SubmitOffer() {
+  SubmitOffer(Qty: any) {
+
+    if ( this.model.OfferAmount !== null  ) {
+
+     if(this.model.OfferAmount >=  this.MinimumbestOffer) {
+
+       this.GetAdd.ProductOffers(this.ProID, this.LocalStoreName, this.CatName, Qty, this.model).subscribe((response) => {
+           /* this function is executed every time there's a new output */
+           // console.log("VALUE RECEIVED: "+response);
+         // alert('inserted');
+           this.minOfferDone = true;
+         },
+         (err) => {
+           //erro
+         },
+         () => {
+           /* this function is executed when the observable ends (completes) its stream */
+           //   console.log("COMPLETED");
+         }
+       );
+     } else {
+       this.minOffer = true;
+     }
+
+
+    } else {
+
+    }
 
   }
   timer(element: HTMLElement) {

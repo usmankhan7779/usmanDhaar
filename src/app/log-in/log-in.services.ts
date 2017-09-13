@@ -44,7 +44,7 @@ export class LoginService {
 
               if ( CatName !== null && ProID !== null) {
 
-                this._nav.navigate(['/single-product'], {queryParams: { CatName:  CatName, ProID: ProID } });
+                this._nav.navigate(['/single-product'], {queryParams: { CatName:  CatName, ProID: ProID, Redirect: 'MakeOffer' } });
               } else {
 
                 if (resSlidersData['Vendor'] === true) {

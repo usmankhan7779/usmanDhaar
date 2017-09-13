@@ -156,6 +156,42 @@ export class HomeService {
   }
 
 
+  ProductOffers(Product_ID: any, StoreName: any, Cat_Name: any, Qty: any, model: any) {
+    return this._http.post(this.ServerUrl + 'ProductsOffersInsert',
+      {
+
+        'User_Id': sessionStorage.getItem('UserID') ,
+        'Product_Id': Product_ID,
+        'StoreName': StoreName,
+        'Cat_Name': Cat_Name,
+        'Price': model.OfferAmount,
+        'Status': 'Open',
+        'Qty': Qty,
+        'Message': model.message,
+
+        //    'Pidd':  Pidd,
+      }).map((res: Response) => {
+      if (res) {
+        // console.log('abc');
+        if (res.status === 201) {
+          const responce_data = res.json();
+
+          // console.log('this is the id' + responce_data.id);
+          // localStorage.setItem('Authorization', res.json().token);
+
+          return [{ status: res.status, json: res }];
+        }
+      }
+    }).catch((error: any) => {
+      alert(error.toString())
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+
+
 
 
 
