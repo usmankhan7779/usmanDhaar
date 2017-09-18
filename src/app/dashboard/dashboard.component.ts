@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Injectable} from '@angular/core';
 import {Http , Headers , Response} from '@angular/http';
 import { LoginService } from '../log-in/log-in.services';
+import { HomeService } from '../home/home.services';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 import { JwtHelper } from 'angular2-jwt';
@@ -12,15 +13,18 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class DashboardComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
-  ServerUrl =  'https://sample-175508.appspot.com/';
+  ServerUrl =  'http://localhost:8000/';
   NewPostcheck = false ;
   ActiveProduct: any = [];
   GetUSerDOne: any = [];
+
+  GetUSerOffer: any[] = [];
   USerName: any;
   SessionstoreName: any;
 
   constructor(private _http: Http ,
               private Profile: LoginService,
+              private HomeServics: HomeService,
               private _nav: Router) {
   }
 
@@ -31,6 +35,7 @@ export class DashboardComponent implements OnInit {
     });
     this.Profile.verify_token().subscribe((response) => {
         this.USerName =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
+
 
 
       },
@@ -53,6 +58,10 @@ export class DashboardComponent implements OnInit {
         this.ActiveProduct = data;
         if (this.ActiveProduct.length > 0 ) {
           sessionStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
+          this.HomeServics.GetallProductsOffersByStoreName(1, sessionStorage.getItem('StoreName') ).subscribe(resSlidersData => {
+            this.GetUSerOffer = resSlidersData;
+
+          });
           this.SessionstoreName = sessionStorage.getItem('StoreName');
         } else {
           this._nav.navigate(['/login']);

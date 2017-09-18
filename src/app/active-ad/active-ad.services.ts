@@ -14,8 +14,8 @@ export class ActiveAdServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://sample-175508.appspot.com/products/';
-  StoreServerUrl = 'https://sample-175508.appspot.com/store/';
+  ServerUrl = 'http://localhost:8000/products/';
+  StoreServerUrl = 'http://localhost:8000/store/';
 
   constructor(private _http: Http,
               private _nav: Router) {

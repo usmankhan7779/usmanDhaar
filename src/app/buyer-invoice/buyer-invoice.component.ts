@@ -16,7 +16,7 @@ export class BuyerInvoiceComponent implements OnInit {
 
   pageno: any;
   sub: any;
-  PicServrUrl = 'https://sample-175508.appspot.com/media';
+  PicServrUrl = 'http://localhost:8000/media';
   modelNo: any;
   ShipingInvoice: any = [];
   InvoiceData: any = [];

@@ -16,7 +16,7 @@ export class AdService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://sample-175508.appspot.com/products/';
+  ServerUrl = 'http://localhost:8000/products/';
 
   constructor(private _http: Http,
               private _nav: Router) {
@@ -153,6 +153,7 @@ export class AdService {
         'Addbestoffer': AddBestOffer,
         'StoreName': sessionStorage.getItem('StoreName'),
         'Quantity': Quantity,
+        'MaxQuantity': Quantity,
         'Active': false,
         'Sold': false,
         'Pic': basex64,
@@ -199,6 +200,7 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'MaxQuantity': Quantity,
         'Active': false,
         'Sold': false,
         'Pic': basex64,
@@ -250,6 +252,7 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'MaxQuantity': Quantity,
         'Active': false,
         'Sold': false,
         'Pic': basex64,
@@ -298,6 +301,7 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'MaxQuantity': Quantity,
         'Active': false,
         'Sold': false,
         'Pic': basex64,
@@ -348,6 +352,7 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'MaxQuantity': Quantity,
         'Active': false,
         'Sold': false,
         'Pic': basex64,
@@ -395,6 +400,7 @@ export class AdService {
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
+        'MaxQuantity': Quantity,
         'Active': false,
         'Sold': false,
         'Pic': basex64,

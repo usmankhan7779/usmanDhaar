@@ -15,7 +15,7 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'https://sample-175508.appspot.com/products/';
+  ServerUrl =  'http://localhost:8000/products/';
 
 
   constructor(private _http: HttpService ,
@@ -113,8 +113,12 @@ export class HomeService {
     // console.log(this.CateDeatils)
   }
 
-  GetallBidsProductdbyProductID(page: any, ProductID: any) {
-    return this._http.get( this.ServerUrl + 'GetallBidsProductd/' + ProductID + '?page=' + page, ).map(response => response.json());
+  GetallBidsProductdbyProductID( ProductID: any) {
+    return this._http.get( this.ServerUrl + 'GetallBidsProductd/' + ProductID  ).map(response => response.json());
+  }
+
+  GetallProductsOffersByStoreName(page: any, StoreName: any) {
+    return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + StoreName + '?page=' + page, ).map(response => response.json());
   }
 
 

@@ -12,13 +12,14 @@ import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.servi
 })
 export class Checkout2Component implements OnInit {
   CartedProduct: any = [];
+  Total: number;
   public mask = [ /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public phonemask = [ /\d/, /\d/, /\d/,  /\d/,  '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
-  Total: number;
+
   model: any = {};
   mymodel: any = {};
-  PicServrUrl = 'https://sample-175508.appspot.com/media';
+  PicServrUrl = 'http://localhost:8000/media';
   LoginName: string;
   CheckoutMethod = false;
   BillingMethod = false;
@@ -46,7 +47,7 @@ export class Checkout2Component implements OnInit {
 
 
   ngOnInit() {
-    this.id = Math.floor((Math.random()  * 10000) );
+
     this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
 
     this.Total = 0;

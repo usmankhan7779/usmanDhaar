@@ -52,8 +52,6 @@
                   <label  style="color: black" class="help-block">Product condition</label>
                   <select   [(ngModel)]="model.condition" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                     <option value="New" selected>New</option>
-                    <option value="Manufacturer refurbished"> Manufacturer refurbished </option>
-                    <option value="Seller refurbished"> Seller refurbished </option>
                     <option value="Used">Used</option>
 
 
@@ -140,7 +138,7 @@
 
                       <div class="formrow">
 
-                        <input type="number" name="name1" class="form-control" placeholder="Starting Price" [(ngModel)]="model.Starting_Price" #Starting_Price="ngModel"  required>
+                        <input type="number" name="name1" class="form-control" placeholder="Starting Price" [(ngModel)]="model.Starting_Price" #Starting_Price="ngModel" >
 
                       </div>
 

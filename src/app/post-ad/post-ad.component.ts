@@ -129,6 +129,7 @@ export class PostAdComponent implements OnInit {
 
 
   save( cateogry: any, condition: string) {
+    // alert('first')
     const utcDate = new Date(new Date().getTime());
     const dateformat = utcDate.toString().split(' ');
     const timeNOw = dateformat[4].split(':');
@@ -149,9 +150,10 @@ export class PostAdComponent implements OnInit {
 
     const Product_ID = this.CatId + subcat[1] + subcat[3] + this.DateTime;
     // console.log('var132:' + Product_ID );
-
+    //   alert('before');
+    //   alert(this.CatName);
     if ( this.Auction === true ) {
-
+           // alert('dasdasd');
       this.model.FixedPrice = 0;
       this.model.AddBestOffer = 0;
       this.model.Quantity = 0;
@@ -204,6 +206,7 @@ export class PostAdComponent implements OnInit {
       } else if (this.CatName === 'Computing & Laptops') {
         this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
       } else if (this.CatName === 'Home Appliances') {
+        // alert('Home');
         this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
       }
 

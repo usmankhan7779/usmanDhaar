@@ -15,7 +15,7 @@
           <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
             <!--<div class="icon-sale-label sale-left">Sale</div>-->
 
-            <div class="large-image"> <a href="{{ PicServrUrl + productToshow.Pic }}" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img class="zoom-img" src="{{ PicServrUrl + productToshow.Pic }}" alt="products"> </a> </div>
+            <div class="large-image"> <a href="{{ PicServrUrl + productToshow.Pic }}" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img  class="zoom-img" src="{{ PicServrUrl + productToshow.Pic }}" alt="products"> </a> </div>
 
             <!--<div class="slider-items-products col-md-12">-->
               <!--<div id="thumbnail-slider" class="product-flexslider hidden-buttons product-thumbnail">-->
@@ -138,14 +138,14 @@
                     <strong>Error!</strong> Minimum Price for Bid  {{ productToshow.MaxBidPrice + 1 | number:'.0-0' }}
                   </div>
 
-                <input type="number" class="form-control" style="margin-bottom: 15px;"  placeholder="Minimum Price for Bid  {{ productToshow.MaxBidPrice+1 | number:'.0-0' }}" name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
+                <input *ngIf="this.Timeclose === false" type="number" class="form-control" style="margin-bottom: 15px;"  placeholder="Minimum Price for Bid  {{ productToshow.MaxBidPrice+1 | number:'.0-0' }}" name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
 
                 <div>
-                <div class="cart-plus-minus">
+                <div *ngIf="this.Timeclose === false" class="cart-plus-minus">
                   <label for="qty">Place your Bid:</label>
                 </div>
 
-                <button class="button pro-add-to-cart" (click)="InsertBid(productToshow.SrartingPrice, productToshow.MaxBidPrice)" title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
+                <button *ngIf="this.Timeclose === false" class="button pro-add-to-cart" (click)="InsertBid(productToshow.SrartingPrice, productToshow.MaxBidPrice)" title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
                 </div>
                 </ng-container>
               </form>
@@ -215,7 +215,7 @@
             </div>
             <div class="product-cart-option">
               <ul>
-                <li *ngIf="productToshow.Auction"><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{ BidingProduct['results'].length}})</span></a></li>
+                <li *ngIf="productToshow.Auction"><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{ BidingProduct.length}})</span></a></li>
                 <li><a href="#"><i class="fa fa-heart"></i><span>Add to Wishlist</span></a></li>
                 <li><a href="#"><i class="fa fa-retweet"></i><span>Add to Compare</span></a></li>
                 <li><a href="#Bidhistory"><i class="fa fa-envelope"></i><span>Email to a Friend</span></a></li>
@@ -232,7 +232,7 @@
                 <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
                   <li class="active"> <a href="#description" data-toggle="tab"> Description </a> </li>
                   <li> <a href="#reviews" data-toggle="tab">Reviews</a> </li>
-                  <li> <a href="#Bidhistory"  data-toggle="tab">Bid History ({{ BidingProduct['results'].length}})</a> </li>
+                  <li *ngIf="productToshow.Auction"> <a href="#Bidhistory"  data-toggle="tab">Bid History ({{ BidingProduct.length}})</a> </li>
 
                 </ul>
                 <div id="productTabContent" class="tab-content">
@@ -387,10 +387,10 @@
                                   </tr>
                                   </thead>
                                   <tbody>
-                                    <ng-container *ngFor="let abc of BidingProduct['results']; let i = index">
+                                    <ng-container *ngFor="let abc of BidingProduct; let i = index">
                                     <tr>
                                       <td >
-                                         <span> {{ i+1 }}</span>
+                                        <span> {{ i+1 }} </span>
                                       </td>
                                       <td >
                                         <p> {{ abc.User_Id.substr(0, 2 ) }}****</p>

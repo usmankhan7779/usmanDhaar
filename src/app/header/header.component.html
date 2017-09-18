@@ -239,8 +239,8 @@
                           <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Eyewear']">Men's Eyewear</a></li>
                           <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Bags']">Men's Bags</a> </li>
                           <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Belts']">Men's Belts</a> </li>
-                          <li><a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Watches']">Men\'s Watches </a> </li>
-                          <li><a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Ties & Cufflinks']">Men\'s Ties & Cufflinks </a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Watches']">Men's Watches </a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Ties & Cufflinks']">Men's Ties & Cufflinks </a> </li>
                         </ul>
                       </div>
                       <div class="menu-block-3 hidden-sm">
@@ -255,34 +255,36 @@
                       <div class="menu-block-1">
                         <ul>
                           <li class="menu-banner"><a href="#"><img src="assets/images/e-img1.jpg" alt="menu-banner"></a></li>
-                          <li> <a class="mega-title" href="#">Television <span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
-                          <li><a href="#">LED Tv's</a></li>
-                          <li><a href="#">Smart Tv's</a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','TV, Audio & Video','Television']">Television </a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','LED Tv\'s']">LED Tv's</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Smart Tv\'s']">Smart Tv's</a></li>
+
                         </ul>
                         <ul>
                           <li class="menu-banner"><a href="#"><img src="assets/images/e-img2.jpg" alt="menu-banner"></a></li>
-                          <li> <a class="mega-title" href="#">Musical Instruments<span class="menu-item-tag menu-item-tag-hot">Sale</span></a></li>
-                          <li><a href="#">Drums & Percussion</a></li>
-                          <li><a href="#"><span>Guitars<span class="tip">New</span></span></a></li>
-                          <li><a href="#"><span>Keyboard & Piano<span class="tip">New</span></span></a></li>
-                          <li><a href="#">Live & Studio</a></li>
-                          <li><a href="#">Instrument Accessories</a></li>
+                          <!--<span class="menu-item-tag menu-item-tag-hot">Sale</span>-->
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','TV, Audio & Video','Musical Instruments']">Musical Instruments</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Drums & Percussion']">Drums & Percussion</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Guitars']"><span>Guitars</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Keyboard & Piano']"><span>Keyboard & Piano</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Live & Studio']">Live & Studio</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Instrument Accessories']">Instrument Accessories</a></li>
                         </ul>
                         <ul>
                           <li class="menu-banner"><a href="#"><img src="assets/images/e-img3.jpg" alt="menu-banner"></a></li>
-                          <li> <a class="mega-title" href="#"> Cameras </a></li>
-                          <li> <a href="shop_grid.html">Canon</a></li>
-                          <li> <a href="shop_grid.html">Nikon</a> </li>
-                          <li><a href="shop_grid.html">Lens </a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','TV, Audio & Video','Cameras']"> Cameras </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Canon']">Canon</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Nikon']">Nikon</a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Lens']">Lens </a></li>
 
                         </ul>
                         <ul>
                           <li class="menu-banner"><a href="#"><img src="assets/images/e-img4.jpg" alt="menu-banner"></a></li>
-                          <li> <a class="mega-title" href="#">Headphone</a></li>
-                          <li> <a href="shop_grid.html">Backpacks</a> </li>
-                          <li><a href="shop_grid.html">Ray-Ban</a></li>
-                          <li> <a href="shop_grid.html">Opium </a></li>
-                          <li> <a href="shop_grid.html">Joe Black </a> </li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','TV, Audio & Video','Headphone']">Headphone</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Backpacks']">Backpacks</a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Ray-Ban']">Ray-Ban</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Opium']">Opium </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Joe Black']">Joe Black </a> </li>
                         </ul>
                       </div>
                       <div class="menu-block-3 hidden-sm">
@@ -296,26 +298,29 @@
                     <div class="menu-block menu-block-center">
                       <div class="menu-block">
                         <ul>
-                          <li> <a class="mega-title" href="#">Laptops<span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
-                          <li><a href="#">Refurbished Laptops</a></li>
-                          <li><a href="#">Notebooks</a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Computing & Laptops','Laptops']">Laptops</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Refurbished Laptops']">Refurbished Laptops</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Notebooks']">Notebooks</a></li>
+
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" href="#">Printers & Scanners </a></li>
-                          <li><a href="#"><span>All in One Printers</span></a></li>
-                          <li><a href="#">Laser Printers</a></li>
-                          <li><a href="#"><span>Scanners<span class="tip">New</span></span></a></li>
+                          <li> <a class="mega-title"  [routerLink]="['/sub-category-detail','Computing & Laptops','Printers & Scanners']">Printers & Scanners </a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','All in One Printers']"><span>All in One Printers</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Laser Printers']">Laser Printers</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Scanners']"><span>Scanners</span></a></li>
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" href="#">Storage </a></li>
-                          <li><a href="#"><span>External Hard Drives<span class="tip hot">Hot</span></span></a></li>
-                          <li><a href="#">USB</a></li>
-                          <li><a href="#"><span>SSD<span class="tip hot">Hot</span></span></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Computing & Laptops','Storage']">Storage </a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','All in One Printers']"><span>External Hard Drives</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','USB']">USB</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','SSD']"><span>SSD</span></a></li>
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" href="#">Components & Parts</a></li>
-                          <li><a href="#">Laptop Battery</a></li>
-                          <li><a href="#">Graphic Cards</a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Computing & Laptops','Components & Parts']">Components & Parts</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Webcams']">Webcams</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Laptop Bags ']">Laptop Bags</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Laptop Battery']">Laptop Battery</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Graphic Cards']">Graphic Cards</a></li>
                         </ul>
                         <div class="mega-menu-img-box"><a href="#"><img src="assets/images/Laptop1.png" alt="Bannar 1"></a> </div>
                         <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/menu-img3.jpg" alt="Bannar 3"></a> </div>
@@ -328,26 +333,30 @@
                     <div class="menu-block menu-block-center">
                       <div class="menu-block">
                         <ul>
-                          <li> <a class="mega-title" href="#">Laptops<span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
-                          <li><a href="#">Refurbished Laptops</a></li>
-                          <li><a href="#">Notebooks</a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooking']">Cooking</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Floorcare']">Floorcare</a></li>
+
+
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" href="#">Printers & Scanners </a></li>
-                          <li><a href="#"><span>All in One Printers</span></a></li>
-                          <li><a href="#">Laser Printers</a></li>
-                          <li><a href="#"><span>Scanners<span class="tip">New</span></span></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']">Mixing & Blending</a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']">Other Small Appliances</a></li>
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" href="#">Storage </a></li>
-                          <li><a href="#"><span>External Hard Drives<span class="tip hot">Hot</span></span></a></li>
-                          <li><a href="#">USB</a></li>
-                          <li><a href="#"><span>SSD<span class="tip hot">Hot</span></span></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Washers & Dryers']">Washers & Dryers</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Refrigerators & Freezers']">Refrigerators & Freezers</a></li>
+
+
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" href="#">Components & Parts</a></li>
-                          <li><a href="#">Laptop Battery</a></li>
-                          <li><a href="#">Graphic Cards</a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooling & Heating']">Cooling & Heating</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Large Appliances']">Other Large Appliances</a></li>
                         </ul>
                         <div class="mega-menu-img-box"><a href="#"><img src="assets/images/Laptop1.png" alt="Bannar 1"></a> </div>
                         <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/menu-img3.jpg" alt="Bannar 3"></a> </div>
@@ -355,38 +364,38 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Online Services' }">Online Services</a>
-                  <div class="mega-menu">
-                    <div class="menu-block menu-block-center">
-                      <div class="menu-block">
-                        <ul>
-                          <li> <a class="mega-title" href="#">Laptops<span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
-                          <li><a href="#">Refurbished Laptops</a></li>
-                          <li><a href="#">Notebooks</a></li>
-                        </ul>
-                        <ul>
-                          <li> <a class="mega-title" href="#">Printers & Scanners </a></li>
-                          <li><a href="#"><span>All in One Printers</span></a></li>
-                          <li><a href="#">Laser Printers</a></li>
-                          <li><a href="#"><span>Scanners<span class="tip">New</span></span></a></li>
-                        </ul>
-                        <ul>
-                          <li> <a class="mega-title" href="#">Storage </a></li>
-                          <li><a href="#"><span>External Hard Drives<span class="tip hot">Hot</span></span></a></li>
-                          <li><a href="#">USB</a></li>
-                          <li><a href="#"><span>SSD<span class="tip hot">Hot</span></span></a></li>
-                        </ul>
-                        <ul>
-                          <li> <a class="mega-title" href="#">Components & Parts</a></li>
-                          <li><a href="#">Laptop Battery</a></li>
-                          <li><a href="#">Graphic Cards</a></li>
-                        </ul>
-                        <div class="mega-menu-img-box"><a href="#"><img src="assets/images/Laptop1.png" alt="Bannar 1"></a> </div>
-                        <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/menu-img3.jpg" alt="Bannar 3"></a> </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+                <!--<li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Online Services' }">Online Services</a>-->
+                  <!--<div class="mega-menu">-->
+                    <!--<div class="menu-block menu-block-center">-->
+                      <!--<div class="menu-block">-->
+                        <!--<ul>-->
+                          <!--<li> <a class="mega-title" href="#">Laptops<span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>-->
+                          <!--<li><a href="#">Refurbished Laptops</a></li>-->
+                          <!--<li><a href="#">Notebooks</a></li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                          <!--<li> <a class="mega-title" href="#">Printers & Scanners </a></li>-->
+                          <!--<li><a href="#"><span>All in One Printers</span></a></li>-->
+                          <!--<li><a href="#">Laser Printers</a></li>-->
+                          <!--<li><a href="#"><span>Scanners<span class="tip">New</span></span></a></li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                          <!--<li> <a class="mega-title" href="#">Storage </a></li>-->
+                          <!--<li><a href="#"><span>External Hard Drives<span class="tip hot">Hot</span></span></a></li>-->
+                          <!--<li><a href="#">USB</a></li>-->
+                          <!--<li><a href="#"><span>SSD<span class="tip hot">Hot</span></span></a></li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                          <!--<li> <a class="mega-title" href="#">Components & Parts</a></li>-->
+                          <!--<li><a href="#">Laptop Battery</a></li>-->
+                          <!--<li><a href="#">Graphic Cards</a></li>-->
+                        <!--</ul>-->
+                        <!--<div class="mega-menu-img-box"><a href="#"><img src="assets/images/Laptop1.png" alt="Bannar 1"></a> </div>-->
+                        <!--<div class="mega-menu-img-box1"><a href="#"><img src="assets/images/menu-img3.jpg" alt="Bannar 3"></a> </div>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</li>-->
 
               </ul>
             </div>

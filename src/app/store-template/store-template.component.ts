@@ -12,7 +12,7 @@ export class StoreTemplateComponent implements OnInit {
   Trend: any = [];
   pageno: any;
 
-  PicServrUrl = 'https://sample-175508.appspot.com/media';
+  PicServrUrl = 'http://localhost:8000/media';
   StoreName: any;
   StoreInfo: any = [];
   constructor(private route: ActivatedRoute,
