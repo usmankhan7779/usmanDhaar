@@ -14,7 +14,7 @@ export class SellerPurchasingComponent implements OnInit {
 
   pageno: any;
   sub: any;
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   modelNo: any;
   ActiveProduct: any = [];
   GetPhotos: any = [];

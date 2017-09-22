@@ -15,7 +15,7 @@ export class SubCategoryDetailComponent implements OnInit {
   r: any;
   pageno: any;
   sub: any;
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   modelNo: any;
   Trend: any = [];
   GetPhotos: any = [];

@@ -19,9 +19,9 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'http://localhost:8000/user/';
-  StoreServerUrl =  'http://localhost:8000/store/';
-  EMailServerUrl =  'http://localhost:8000/rest-auth/';
+  ServerUrl =  'https://dhaardb.herokuapp.com/user/';
+  StoreServerUrl =  'https://dhaardb.herokuapp.com/store/';
+  EMailServerUrl =  'https://dhaardb.herokuapp.com/rest-auth/';
 
 
   constructor(private _http: Http ,

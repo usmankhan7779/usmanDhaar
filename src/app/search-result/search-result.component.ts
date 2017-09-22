@@ -17,7 +17,7 @@ export class SearchResultComponent implements OnInit {
   pageno: any;
   CoverPix: any;
   sub: any;
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   modelNo: any;
   Trend: any = [];
   GetPhotos: any = [];

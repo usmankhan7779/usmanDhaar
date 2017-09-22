@@ -15,7 +15,7 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'http://localhost:8000/products/';
+  ServerUrl =  'https://dhaardb.herokuapp.com/products/';
 
 
   constructor(private _http: HttpService ,

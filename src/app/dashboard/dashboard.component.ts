@@ -13,8 +13,8 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class DashboardComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
-  ServerUrl =  'http://localhost:8000/';
-  PicServrUrl = 'http://localhost:8000/media';
+  ServerUrl =  'https://dhaardb.herokuapp.com/';
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   NewPostcheck = false ;
   ValueRec: Boolean = false;
   ActiveProduct: any = [];
