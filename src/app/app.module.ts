@@ -56,7 +56,12 @@ import { PreloaderService } from './services/preloader-service';
 import { PostService } from './services/post-service';
 import { PreloaderFull } from './components/preloader-full/preloader-full';
 import { PreloaderSmall } from './components/preloader-small/preloader-small';
-
+import { SellerUserDetailComponent } from './seller-user-detail/seller-user-detail.component';
+import { BuyerSettingComponent } from './buyer-setting/buyer-setting.component';
+import { SellerSettingComponent } from './seller-setting/seller-setting.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { ReserPasswordComponent } from './reser-password/reser-password.component';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions, preloaderService: PreloaderService) {
   return new HttpService(backend, defaultOptions, preloaderService);
 }
@@ -99,6 +104,11 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     SubsubCategoryDetailComponent,
     PreloaderFull,
     PreloaderSmall,
+    SellerUserDetailComponent,
+    BuyerSettingComponent,
+    SellerSettingComponent,
+    SearchResultComponent,
+    ReserPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,6 +117,7 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     Ng2PaginationModule,
     FormsModule,
     HttpModule,
+    Ng2AutoCompleteModule,
     TextMaskModule,
     Routing
   ],

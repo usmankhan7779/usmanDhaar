@@ -121,38 +121,50 @@ export class HomeService {
     return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + StoreName + '?page=' + page, ).map(response => response.json());
   }
 
+  GetallUserReviewsBYProductId(pID: any) {
+    return this._http.get( this.ServerUrl + 'InsertUserReviews/' + pID  ).map(response => response.json());
+  }
+
 
 
   InsertUserBid(User_Id: any, Product_ID: any, Price: any) {
-
-
-    // console.log(Pidd);
-
-
-
     return this._http.post(this.ServerUrl + 'InsertUserBid/' + Product_ID,
       {
-
         'User_Id': User_Id ,
         'Product_Id': Product_ID,
         'Price': Price,
-
-        //    'Pidd':  Pidd,
       }).map((res: Response) => {
       if (res) {
        // console.log('abc');
         if (res.status === 201) {
           const responce_data = res.json();
-
-         // console.log('this is the id' + responce_data.id);
-          // localStorage.setItem('Authorization', res.json().token);
-
           return [{ status: res.status, json: res }];
         }
       }
     }).catch((error: any) => {
-       alert(error.toString())
-      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+
+  InsertProductReviews(Name: any, Email: any, Reviews: any, Product_ID: any, RateNUmber: any) {
+    return this._http.post(this.ServerUrl + 'InsertUserReviews/' + Product_ID,
+      {
+        'Name': Name ,
+        'Email': Email ,
+        'Product_Id': Product_ID,
+        'Rating': RateNUmber,
+        'Reviews': Reviews,
+      }).map((res: Response) => {
+      if (res) {
+       // console.log('abc');
+        if (res.status === 201) {
+          const responce_data = res.json();
+          return [{ status: res.status, json: res }];
+        }
+      }
+    }).catch((error: any) => {
       return Observable.throw(new Error(error.status));
     });
 

@@ -21,6 +21,7 @@ export class LogInComponent implements OnInit {
   ProID: string;
   RedirectFromlogin: string;
   CatName: string;
+  checkout: string;
   returnUrl: string;
 
 
@@ -38,6 +39,7 @@ export class LogInComponent implements OnInit {
         this.logout = params['Logout'] || 0 ;
         this.CatName = params['CatName'] || null ;
         this.ProID = params['ProID'] || null ;
+        this.checkout = params['checkout'] || null ;
 
       });
 
@@ -63,7 +65,7 @@ export class LogInComponent implements OnInit {
 
   loged_in(mail: string , pass: string) {
 
-    this.obj.loged_in(mail, pass, this.CatName, this.ProID).subscribe((response) => {
+    this.obj.loged_in(mail, pass, this.CatName, this.ProID, this.checkout).subscribe((response) => {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
 

@@ -55,6 +55,8 @@ export class PendingAdComponent implements OnInit {
 
     this.SessionstoreName = sessionStorage.getItem('StoreName');
   }
-
+  clearSessionstoreage() {
+    sessionStorage.clear();
+  }
 
 }

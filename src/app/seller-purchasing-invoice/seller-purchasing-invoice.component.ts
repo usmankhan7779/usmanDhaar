@@ -204,4 +204,8 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
     }
   }
 
+  clearSessionstoreage() {
+    sessionStorage.clear();
+  }
+
 }

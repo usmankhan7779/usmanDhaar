@@ -14,7 +14,7 @@ export class  CategoryServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://localhost:8000/products/';
+  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
 
 
   constructor(private _http: Http,
@@ -30,6 +30,16 @@ export class  CategoryServices {
   //Phone
   getAllPhoneAndTabletProduct(page: any) {
     return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProduct?page=' + page, ).map(response => response.json());
+  }
+
+  getAllSearchProducts(page: any, query: string) {
+    return this._http.get( this.ServerUrl + 'SearchResults/' + query + '?page=' + page, ).map(response => response.json());
+  }
+  getAllSearchProductsType(page: any, query: string, abc: boolean) {
+    return this._http.get( this.ServerUrl + 'SearchResultstype/' + query + '/' + abc + '?page=' + page, ).map(response => response.json());
+  }
+  getAllSearchProductsPrice(page: any, query: string, pk1: string, pk2: string) {
+    return this._http.get( this.ServerUrl + 'SearchResultsprice/' + query + '/' + pk1 + '/' + pk2 + '?page=' + page, ).map(response => response.json());
   }
 
   getAllPhoneAndTabletProductWithType(page: any, Type: boolean) {

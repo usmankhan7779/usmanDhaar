@@ -15,12 +15,14 @@ export class Checkout2Component implements OnInit {
   Total: number;
   public mask = [ /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public phonemask = [ /\d/, /\d/, /\d/,  /\d/,  '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
-
+  private sub: any;
 
   model: any = {};
+  GetUSerDOne: any = [];
   mymodel: any = {};
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   LoginName: string;
+  login: string;
   CheckoutMethod = false;
   BillingMethod = false;
 
@@ -33,11 +35,13 @@ export class Checkout2Component implements OnInit {
   GuestButton = true;
   PaymentatHme = false;
   OrderPlaced = false;
+
   InvoiceIDSet: any;
   id: any;
 
 
   constructor(private Renderer123: Renderer,
+              private route: ActivatedRoute,
               private _nav: Router,
               private httpService: LoginService,
               private Profile: LoginService,
@@ -48,12 +52,38 @@ export class Checkout2Component implements OnInit {
 
   ngOnInit() {
 
+    this.sub = this.route
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.login = params['login'] || '0' ;
+
+        if ( this.login === 'yes' ) {
+          this.orderreview = false;
+          this.LoginName = sessionStorage.getItem('UserName');
+          this.LoggedIn = true;
+          this.PaymentMethod = true;
+                this.BillingMethod = true;
+                this.user = sessionStorage.getItem('UserID');
+                this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+                  this.GetUSerDOne = resSlidersData;
+
+                });
+        }
+
+
+
+      });
     this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
 
     this.Total = 0;
     for (const tmp of this.CartedProduct['products']) {
       this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
     }
+    this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+      this.GetUSerDOne = resSlidersData;
+
+    });
   }
 
   onChange(qty: string, Abc: any) {
@@ -91,6 +121,7 @@ export class Checkout2Component implements OnInit {
   ContinuetoCHeckout() {
     this.orderreview = false;
     if (this.Total > 0) {
+
       this.Profile.verify_tokenWithNoRedirict().subscribe((response) => {
 
              if (response) {
@@ -100,6 +131,12 @@ export class Checkout2Component implements OnInit {
                this.PaymentMethod = true;
                this.BillingMethod = true;
                this.user = sessionStorage.getItem('UserID');
+               this.LoginName = sessionStorage.getItem('UserName');
+               this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+                 this.GetUSerDOne = resSlidersData;
+
+
+               });
 
              } else {
 
@@ -152,7 +189,7 @@ export class Checkout2Component implements OnInit {
             },
           );
         }
-        this.httpbuyerService.CustomerInvoiceShippingAddress(sessionStorage.getItem('InvoiceID'), this.model.first_name, this.model.last_name, this.model.email_address, this.model.state, this.model.Country, this.model.City, this.model.Zip, this.model.Address, this.model.telephone, this.model.fax).subscribe(
+        this.httpbuyerService.CustomerInvoiceShippingAddress(sessionStorage.getItem('InvoiceID'), this.GetUSerDOne['Fname'],  this.GetUSerDOne['Lname'], this.GetUSerDOne['user_id'], this.GetUSerDOne['State'], this.GetUSerDOne['State'], this.GetUSerDOne['City'], this.GetUSerDOne['Zip'], this.GetUSerDOne['Address'], this.GetUSerDOne['Mobile'], '01').subscribe(
           data => {
 
            this.OrderPlaced  = true;
@@ -183,32 +220,38 @@ export class Checkout2Component implements OnInit {
 
   LoginUser() {
 
-    this.LoginName = this.model.username;
+    this._nav.navigate(['/login'], {queryParams: { checkout:  'yes' } });
 
-    this.httpService.loged_No_redirect(this.mymodel.username, this.mymodel.Loginpassword).subscribe(
-      data => {
-        const User = (sessionStorage.getItem('UserID')) || 0;
-        if (User ) {
-
-          this.LoggedIn = true;
-          this.PaymentMethod = true;
-          this.BillingMethod = true;
-          this.user = sessionStorage.getItem('UserID');
-
-        } else {
-          this.LoggedIn = false;
-
-
-        }
-
-      }, (err) => {
-
-        this.status = 2;
-        alert('wrong');
-        /* this function is executed when there's an ERROR */
-        //   console.log("ERROR: "+err);
-      },
-    );
+    // this.LoginName = this.model.username;
+    //
+    // this.httpService.loged_No_redirect(this.mymodel.username, this.mymodel.Loginpassword).subscribe(
+    //   data => {
+    //     const User = (sessionStorage.getItem('UserID')) || 0;
+    //     if (User ) {
+    //
+    //       this.LoggedIn = true;
+    //       this.PaymentMethod = true;
+    //       this.BillingMethod = true;
+    //       this.user = sessionStorage.getItem('UserID');
+    //       this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+    //         this.GetUSerDOne = resSlidersData;
+    //
+    //       });
+    //
+    //     } else {
+    //       this.LoggedIn = false;
+    //
+    //
+    //     }
+    //
+    //   }, (err) => {
+    //
+    //     this.status = 2;
+    //     alert('wrong');
+    //     /* this function is executed when there's an ERROR */
+    //     //   console.log("ERROR: "+err);
+    //   },
+    // );
 
   }
 

@@ -51,7 +51,6 @@ export class StoreRegistrationComponent implements OnInit {
           this.Userloading = true;
           this.UserTyping = true;
 
-
           this.obj.verifyStoreName(username).subscribe((response) => {
               /* this function is executed every time there's a new output */
               // console.log("VALUE RECEIVED: "+response);
@@ -186,5 +185,9 @@ export class StoreRegistrationComponent implements OnInit {
 this.model.fbrregister = false;
     this.model.fbrunregister = false;
 this.model.terms = true;
+  }
+
+  clearSessionstoreage() {
+    sessionStorage.clear();
   }
 }

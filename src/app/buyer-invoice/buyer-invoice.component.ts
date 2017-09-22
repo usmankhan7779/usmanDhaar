@@ -16,7 +16,7 @@ export class BuyerInvoiceComponent implements OnInit {
 
   pageno: any;
   sub: any;
-  PicServrUrl = 'http://localhost:8000/media';
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   modelNo: any;
   ShipingInvoice: any = [];
   InvoiceData: any = [];
@@ -200,5 +200,7 @@ export class BuyerInvoiceComponent implements OnInit {
 
     }
   }
-
+  clearSessionstoreage() {
+    sessionStorage.clear();
+  }
 }

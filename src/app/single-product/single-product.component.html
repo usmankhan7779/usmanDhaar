@@ -36,6 +36,7 @@
           <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
             <div (click)="ClearSession()" class="product-name">
               <h1>{{ productToshow.P_Title}}</h1>
+
             </div>
             <div class="price-box">
           <ng-container *ngIf="AuctionTest == true">
@@ -244,73 +245,38 @@
                     <div class="col-sm-5 col-lg-5 col-md-5">
                       <div class="reviews-content-left">
                         <h2>Customer Reviews</h2>
+                        <ng-container *ngFor="let ProductReview of GetallProductReview" >
                         <div class="review-ratting">
-                          <p><a href="#">Amazing</a> Review by Company</p>
+                          <p><a>{{ ProductReview.Reviews }}</a>
+                           </p>
                           <table>
                             <tbody>
                             <tr>
-                              <th>Price</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
+                              <th>Rating</th>
+                              <td>
+                                <div class="rating">
+                                 <ng-container *ngFor="let number of [0,1,2,3,4]" >
+                                <i *ngIf="number < ProductReview.Rating-1" class="fa fa-star"></i>
+                                <i *ngIf="number > ProductReview.Rating-1" class="fa fa-star-o"></i>
+                                 </ng-container>
+
+
+                              </div>
+                              </td>
                             </tr>
-                            <tr>
-                              <th>Value</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                            </tr>
-                            <tr>
-                              <th>Quality</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                            </tr>
+
                             </tbody>
                           </table>
-                          <p class="author"> Angela Mack<small> (Posted on 16/12/2015)</small> </p>
+                          <p class="author">   {{ProductReview.Name}}<small> (Posted on {{ProductReview.CreatedDate.substr(0,10)}})</small> </p>
                         </div>
-                        <div class="review-ratting">
-                          <p><a href="#">Good!!!!!</a> Review by Company</p>
-                          <table>
-                            <tbody>
-                            <tr>
-                              <th>Price</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                            </tr>
-                            <tr>
-                              <th>Value</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                            </tr>
-                            <tr>
-                              <th>Quality</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                            </tr>
-                            </tbody>
-                          </table>
-                          <p class="author"> Lifestyle<small> (Posted on 20/12/2015)</small> </p>
-                        </div>
-                        <div class="review-ratting">
-                          <p><a href="#">Excellent</a> Review by Company</p>
-                          <table>
-                            <tbody>
-                            <tr>
-                              <th>Price</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                            </tr>
-                            <tr>
-                              <th>Value</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                            </tr>
-                            <tr>
-                              <th>Quality</th>
-                              <td><div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div></td>
-                            </tr>
-                            </tbody>
-                          </table>
-                          <p class="author"> Jone Deo<small> (Posted on 25/12/2015)</small> </p>
-                        </div>
+                         </ng-container>
                       </div>
                     </div>
                     <div class="col-sm-7 col-lg-7 col-md-7">
                       <div class="reviews-content-right">
                         <h2>Write Your Own Review</h2>
-                        <form>
-                          <h3>You're reviewing: <span>Donec Ac Tempus</span></h3>
+                        <form (ngSubmit)="f.form.valid && SubmitReview()" #f="ngForm" novalidate>
+                          <h3>You're reviewing: <span>{{ resultProduct[0].P_Title}}</span></h3>
                           <h4>How do you rate this product?<em>*</em></h4>
 
                           <div class="col-lg-12">
@@ -344,16 +310,25 @@
 
                           <div class="form-area">
                             <div class="form-element">
-                              <label>Nickname <em>*</em></label>
-                              <input type="text">
+                              <label>Your Name <em>*</em></label>
+                              <div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourName.valid }">
+                                <div *ngIf="f.submitted && !YourName.valid" class="help-block">Name is required</div>
+                              <input type="text" name="YourName" [(ngModel)]="model.YourName"  #YourName="ngModel" required>
+                              </div>
                             </div>
                             <div class="form-element">
-                              <label>Summary of Your Review <em>*</em></label>
-                              <input type="text">
+                              <div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourEmail.valid }">
+                                <div *ngIf="f.submitted && !YourEmail.valid" class="help-block">Email is required</div>
+                              <label>Your Email <em>*</em></label>
+                              <input type="email" name="YourEmail" [(ngModel)]="model.YourEmail"  #YourEmail="ngModel" required>
+                              </div>
                             </div>
                             <div class="form-element">
+                              <div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourReview.valid }">
+                                <div *ngIf="f.submitted && !YourReview.valid" class="help-block">Review is required</div>
                               <label>Review <em>*</em></label>
-                              <textarea></textarea>
+                              <textarea name="YourReview" [(ngModel)]="model.YourReview"  #YourReview="ngModel" required></textarea>
+                              </div>
                             </div>
                             <div class="buttons-set">
                               <button class="button submit" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;Review</span></button>

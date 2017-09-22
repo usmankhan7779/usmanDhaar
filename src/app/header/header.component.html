@@ -64,28 +64,28 @@
         </div>
         <div class="col-xs-12 col-sm-5 col-md-6 col-md-5 top-search">
           <!-- Search -->
+          <!--top-search-->
           <div id="search">
-            <form>
+            <form >
               <div class="input-group">
                 <select class="cate-dropdown hidden-xs hidden-sm" name="category_id">
                   <option>All Categories</option>
-                  <option>women</option>
-                  <option>&nbsp;&nbsp;&nbsp;Accessories </option>
-                  <option>&nbsp;&nbsp;&nbsp;Dresses</option>
-                  <option>&nbsp;&nbsp;&nbsp;Top</option>
-                  <option>&nbsp;&nbsp;&nbsp;Handbags </option>
-                  <option>&nbsp;&nbsp;&nbsp;Shoes </option>
-                  <option>&nbsp;&nbsp;&nbsp;Clothing </option>
-                  <option>Men</option>
-                  <option>Electronics</option>
-                  <option>&nbsp;&nbsp;&nbsp;Mobiles </option>
-                  <option>&nbsp;&nbsp;&nbsp;Music &amp; Audio </option>
+                  <ng-container *ngFor="let item_cat of GetallCat">
+                    <option value="{{item_cat.Cat_Name}}">{{item_cat.Cat_Name}}</option>
+
+                  </ng-container>
                 </select>
-                <input type="text" class="form-control" placeholder="Search" name="search">
-                <button class="btn-search" type="button"><i class="fa fa-search"></i></button>
+                <!--id="institutenameid"-->
+                <input type="text"  ng-Model="model.search" (keydown)="navigate($event, search.value )" #search class="form-control"  placeholder="Search" name="search">
+
+                <button (click)="navigate(search.value)"  class="btn-search" type="button"><i class="fa fa-search"></i></button>
               </div>
+
             </form>
           </div>
+
+
+
 
           <!-- End Search -->
         </div>
@@ -405,6 +405,7 @@
     </div>
   </nav>
 </header>
+
 <!-- end header -->
 
 
@@ -595,3 +596,23 @@
   </ul>
 </div>
 
+<div aria-hidden="false" role="dialog" tabindex="-1" class="modal fade example-modal-lg search-wrapper in">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <p class="clearfix"><button data-dismiss="modal" class="close" type="button"><span class="icon_close color-main" aria-hidden="true"></span></button></p>
+
+      <form role="form" class="form-inline form-search">
+        <div class="form-group">
+          <!--<label for="textsearch" style="font-weight: 800;font-size: xx-large;" class="sr-only">Enter text search</label>-->
+          <input autofocus type="text" name=query [(ngModel)]="query" #quer="ngModel" (keyup)=filter() style="font-weight: 800;font-size:larger" placeholder="Enter keywords or ISBN or UPC for comparitive shopping" id="textsearch"
+                 class="form-control input-lg font-main font-weight-normal color-main">
+        </div>
+
+        <button id="search1" data-dismiss="modal" class="btn btn-white font-additional font-weight-normal color-main text-uppercase hover-focus-bg"
+                (click)="filter()" type="submit">Search</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 {
-  "name": "dhaar-front",
+  "name": "temporary",
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
@@ -13,8 +13,8 @@
     "e2e": "protractor"
   },
   "engines": {
-    "node": "6.10.2",
-    "npm": "5.3.0"
+    "node": "6.10.0",
+    "npm": "5.1.0"
   },
   "private": true,
   "dependencies": {
@@ -50,10 +50,18 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "latest": "^0.2.0",
-    "ng2-pagination": "^2.0.2",
+    "md-autocomplete": "0.0.1-alpha.1",
+    "ng2-auto-complete": "^0.12.0",
+
     "ng2-recaptcha": "^1.7.0",
     "ngx-bootstrap": "^1.9.1",
+
+    "ng2-file-upload": "^1.2.1",
+    "ng2-imageupload": "^1.4.2",
+    "ng2-pagination": "^2.0.2",
+    "ng2-uploader": "^2.0.0",
     "rxjs": "^5.1.0",
+    "underscore": "^1.8.3",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {

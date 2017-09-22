@@ -18,6 +18,7 @@ export class SingleProductComponent implements OnInit {
 
   model: any = {};
   GetallPhoneProduct: any = [];
+  GetallProductReview: any = [];
   element: HTMLElement;
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
@@ -46,7 +47,7 @@ export class SingleProductComponent implements OnInit {
   GeProductBiding: any = [];
   ProductPrice: any = [];
   CatName: string;
-  starp: any;
+  starp: any = 0;
   starq: any;
   starv: any;
   DbDate: string;
@@ -80,6 +81,7 @@ export class SingleProductComponent implements OnInit {
     this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
       this.GetallPhoneProduct = resSlidersData;
     });
+
     window.scrollTo(0, 0);
     this.sub = this.route
       .queryParams
@@ -94,6 +96,9 @@ export class SingleProductComponent implements OnInit {
           }
         }
 
+        this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
+          this.GetallProductReview = resSlidersData;
+        });
 
         this.GetAdd.GetallBidsProductdbyProductID( this.ProID).subscribe(resSlidersData => {
 
@@ -456,7 +461,7 @@ export class SingleProductComponent implements OnInit {
     this.minOffer = false;
     if ( this.model.OfferAmount !== null  ) {
 
-     if(this.model.OfferAmount >=  this.MinimumbestOffer) {
+     if (this.model.OfferAmount >=  this.MinimumbestOffer) {
 
        this.GetAdd.ProductOffers(this.ProID, this.LocalStoreName, this.CatName, Qty, this.model).subscribe((response) => {
            /* this function is executed every time there's a new output */
@@ -510,6 +515,20 @@ export class SingleProductComponent implements OnInit {
       }
 
     }
+  }
+
+  SubmitReview() {
+    this.GetAdd.InsertProductReviews(this.model.YourName, this.model.YourEmail, this.model.YourReview, this.ProID, this.starp).subscribe(resSlidersData => {
+        alert('Done');
+      },
+      (err) => {
+        alert('Error');
+      },
+      () => {
+        /* this function is executed when the observable ends (completes) its stream */
+        //   console.log("COMPLETED");
+      }
+    );
   }
 
 }

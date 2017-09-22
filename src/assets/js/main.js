@@ -1,5 +1,12 @@
+jQuery(function ($) {
+
+
+
+});
+
 jQuery(document).ready( function() {
     "use strict";
+
 
 
 /******************************************
@@ -251,7 +258,7 @@ jQuery(document).ready( function() {
             pagination: !1,
             autoPlay: false
         }),
-				
+
 /******************************************
         	thumbnail slider slider1
 ******************************************/
@@ -268,7 +275,7 @@ jQuery(document).ready( function() {
             pagination: !1,
             autoPlay: false
         }),
-				
+
 /******************************************
         	previews products slider
 ******************************************/
@@ -323,7 +330,7 @@ jQuery(document).ready( function() {
         }),
 
 
-	
+
 /******************************************
            Upsell product slider
 ******************************************/
@@ -447,7 +454,7 @@ jQuery(document).ready( function() {
             e.stopPropagation();
         });
     });
-	
+
 //smooth scroll to top
 jQueryback_to_top.on('click', function(event) {
     event.preventDefault();
@@ -502,7 +509,6 @@ jQuery(window).scroll(function() {
 	/*  sticky header  */
 	jQuery(this).scrollTop() > 40 ? jQuery("nav").addClass("menu-sticky") : jQuery("nav").removeClass("menu-sticky")
 });
-
 
 
 

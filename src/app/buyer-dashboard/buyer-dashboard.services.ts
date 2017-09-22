@@ -14,8 +14,8 @@ export class BuyerDashboardServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://localhost:8000/products/';
-  saleServerUrl = 'http://localhost:8000/sale/';
+  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
+  saleServerUrl = 'https://dhaardb.herokuapp.com/sale/';
 
   constructor(private _http: Http,
               private _nav: Router) {

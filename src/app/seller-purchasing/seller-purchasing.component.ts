@@ -41,4 +41,8 @@ export class SellerPurchasingComponent implements OnInit {
     }
   }
 
+  clearSessionstoreage() {
+    sessionStorage.clear();
+  }
+
 }

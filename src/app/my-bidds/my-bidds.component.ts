@@ -54,4 +54,7 @@ export class MyBiddsComponent implements OnInit {
     }
   }
 
+  clearSessionstoreage() {
+    sessionStorage.clear();
+  }
 }

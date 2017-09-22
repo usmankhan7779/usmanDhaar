@@ -12,6 +12,7 @@ import {NgForm} from '@angular/forms';
 })
 export class BuyerDashboardComponent implements OnInit {
   GetUSerDOne: any [];
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   ValueRec: Boolean = false;
   constructor(private obj: LoginService,
               private _nav: Router,
@@ -43,7 +44,9 @@ export class BuyerDashboardComponent implements OnInit {
 
 
   }
-
+  clearSessionstoreage() {
+    sessionStorage.clear();
+  }
 
 
 }

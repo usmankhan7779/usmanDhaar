@@ -14,7 +14,9 @@ import { JwtHelper } from 'angular2-jwt';
 export class DashboardComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
   ServerUrl =  'http://localhost:8000/';
+  PicServrUrl = 'http://localhost:8000/media';
   NewPostcheck = false ;
+  ValueRec: Boolean = false;
   ActiveProduct: any = [];
   GetUSerDOne: any = [];
 
@@ -31,7 +33,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.Profile.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
-
+       this.ValueRec = true;
     });
     this.Profile.verify_token().subscribe((response) => {
         this.USerName =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
@@ -66,9 +68,6 @@ export class DashboardComponent implements OnInit {
         } else {
           this._nav.navigate(['/login']);
         }
-
-
-
       });
 
 

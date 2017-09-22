@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtHelper } from 'angular2-jwt';
 import {HostListener} from '@angular/core';
-import { LoginService } from '../log-in/log-in.services';
+import { AdService } from '../post-ad/ad.services';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
+import { LoginService } from '../log-in/log-in.services';
 
 @Component({
   selector: 'app-header',
@@ -11,13 +13,17 @@ import { LoginService } from '../log-in/log-in.services';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  GetallCat: any = [];
   jwtHelper: JwtHelper = new JwtHelper();
   ValueRec: Boolean = false;
   GetUSerDOne: any [];
   CartedProduct: any = [];
   ItemInCart: any ;
+
+  public filteredList = [];
+  public elementRef;
   constructor(private obj: LoginService,
+              private PostAdd: AdService,
               private _nav: Router) { }
 
   // @HostListener('window:popstate', ['$event'])
@@ -29,6 +35,9 @@ export class HeaderComponent implements OnInit {
   // }
   go() {
     window.location.href = '/home';
+  }
+  TextChange(val) {
+    // alert(val);
   }
   ngOnInit() {
     // console.log('fdsfsdfdsgj' + sessionStorage.getItem('UserID'));
@@ -42,7 +51,7 @@ export class HeaderComponent implements OnInit {
               this.ValueRec = true;
 
               //  console.log('saqib hanif');
-              console.log(  this.GetUSerDOne);
+              // console.log(  this.GetUSerDOne);
             });
 
           } else {
@@ -75,7 +84,7 @@ export class HeaderComponent implements OnInit {
     }
 
 
-
+    this.PostAdd.GetAllCategories().subscribe(resSlidersData => this.GetallCat = resSlidersData);
 
   }
 
@@ -101,5 +110,19 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
+
+
+  navigate(event, search: string) {
+    //
+
+    if(event.keyCode === 13) {
+
+
+
+    this._nav.navigate(['/search-resuls'], { queryParams: { Search: search }});
+  }
+  }
+
+
 
 }

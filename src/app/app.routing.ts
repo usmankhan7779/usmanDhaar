@@ -33,6 +33,11 @@ import { SellerPurchasingInvoiceComponent } from './seller-purchasing-invoice/se
 import { StoreTemplateComponent } from './store-template/store-template.component';
 import { SubCategoryDetailComponent } from './sub-category-detail/sub-category-detail.component';
 import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-category-detail.component';
+import { SellerUserDetailComponent } from './seller-user-detail/seller-user-detail.component';
+import { SellerSettingComponent } from './seller-setting/seller-setting.component';
+import { BuyerSettingComponent } from './buyer-setting/buyer-setting.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { ReserPasswordComponent } from './reser-password/reser-password.component';
 
 const appRoutes: Routes = [
   {
@@ -115,6 +120,10 @@ const appRoutes: Routes = [
      component: UserDetailComponent
   },
   {
+    path: 'seller-user-detail',
+     component: SellerUserDetailComponent
+  },
+  {
     path: 'store-registration',
     component: StoreRegistrationComponent
   },
@@ -152,6 +161,22 @@ const appRoutes: Routes = [
     path: 'subsub-category-detail/:CatName/:SubsubCat',
     component: SubsubCategoryDetailComponent
   },
+  {
+    path: 'search-resuls',
+    component: SearchResultComponent
+  },
+  {
+    path: 'account-setting',
+    component: BuyerSettingComponent
+  },
+  {
+    path: 'seller-setting',
+    component: SellerSettingComponent
+  },
+  {
+      path: 'reset/:uid/:token',
+      component: ReserPasswordComponent
+    },
 
 
 

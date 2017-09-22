@@ -11,8 +11,13 @@
 
 
         <div class="breadCrumb ">
-          <img class="breadimg" src="assets/images/faq-banner.png" alt="google ad"  width="70px" height="70px"> <br/>
+          <ng-container *ngIf="GetUSerDOne !== null">
+            <img *ngIf="GetUSerDOne['Pic'] !== ''"  class="breadimg" src="{{PicServrUrl + GetUSerDOne['Pic']}}" alt=""  width="70px" height="70px"> <br/>
+            <img *ngIf="GetUSerDOne['Pic'] === ''" class="breadimg" src="assets/images/defaultprofile.jpg" alt=""  width="70px" height="70px"> <br/>
           <span *ngIf="ValueRec == true">Welcome {{ GetUSerDOne['Fname']}}</span>
+
+          </ng-container>
+
 
         </div>
 
@@ -36,46 +41,79 @@
           <li><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dharr.pk</a></li>
           <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
-          <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+
+          <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 
         </ul>
         <div class="adimages"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </div>
       </div>
 
         <div class="col-md-9 col-sm-8">
-
-          <ul class="row profilestat">
-            <li class="col-md-2 col-sm-4 col-xs-6">
-              <div class="inbox"> <i class="fa fa-eye" aria-hidden="true"></i>
-                <h6>10</h6>
-                <strong>Ad Views</strong> </div>
-            </li>
-            <li class="col-md-2 col-sm-4 col-xs-6">
-              <div class="inbox"> <i class="fa fa-tachometer" aria-hidden="true"></i>
-                <h6>2 <span>hr</span></h6>
-                <strong>Respond Time</strong> </div>
-            </li>
-            <li class="col-md-2 col-sm-4 col-xs-6">
-              <div class="inbox"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <h6>10</h6>
-                <strong>Ad Expire</strong> </div>
-            </li>
-
-            <li class="col-md-2 col-sm-4 col-xs-6">
-              <div class="inbox"> <i class="fa fa-briefcase" aria-hidden="true"></i>
-                <h6>2</h6>
-                <strong>Business Pro</strong> </div>
-            </li>
-            <li class="col-md-2 col-sm-4 col-xs-6">
-              <div class="inbox"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                <h6>8</h6>
-                <strong>Messages</strong> </div>
-            </li>
+          <ng-container *ngIf="GetUSerDOne !== null">
+          <div *ngIf="GetUSerDOne['Complete'] === false"  class="alert alert-info">
+            Profile Incomplete Spend 2 minutes to complete. <a style="color: red !important;" [routerLink]="['/user-detail']">Go to Porfile Section</a>
+          </div>
+          </ng-container>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad" >
 
 
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">My details</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <ng-container *ngIf="GetUSerDOne !== null">
+                  <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{PicServrUrl + GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
+                  <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
+                  <div class=" col-md-8 col-lg-8 ">
+                    <table class="table table-user-information">
+                      <tbody>
+                      <tr>
+                        <td>Name:</td>
+                        <td>{{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}</td>
+                      </tr>
+                      <tr>
+                        <td>Mobile:</td>
+                        <td>{{GetUSerDOne['Mobile']}}</td>
+                      </tr>
+                      <tr>
+                        <td>Address:</td>
+                        <td>{{GetUSerDOne['Address']}}</td>
+                      </tr>
 
-          </ul>
+                      <tr>
+                      <tr>
+                        <td>City:</td>
+                        <td>{{ GetUSerDOne['City'] +' ' +GetUSerDOne['Zip'] }}</td>
+                      </tr>
+                      <tr>
+                        <td>State</td>
+                        <td>{{GetUSerDOne['State'] }} </td>
+                      </tr>
+                      <tr>
+                        <td>Country</td>
+                        <td>{{GetUSerDOne['Country'] }}</td>
+                      </tr>
 
+
+                      </tbody>
+                    </table>
+
+
+                  </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <a [routerLink]="['/user-detail']" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
+                <span class="pull-right">
+                         </span>
+              </div>
+
+            </div>
+          </div>
 
         </div>
         <!--<div class="myads">-->

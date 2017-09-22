@@ -51,5 +51,7 @@ export class MyBidsBuyerComponent implements OnInit {
         });
     }
   }
-
+  clearSessionstoreage() {
+    sessionStorage.clear();
+  }
 }

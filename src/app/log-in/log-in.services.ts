@@ -21,6 +21,8 @@ export class LoginService {
   decoded: string;
   ServerUrl =  'http://localhost:8000/user/';
   StoreServerUrl =  'http://localhost:8000/store/';
+  EMailServerUrl =  'http://localhost:8000/rest-auth/';
+
 
   constructor(private _http: Http ,
               private _nav: Router) {
@@ -28,7 +30,7 @@ export class LoginService {
   }
 
 
-  loged_in(mail: any , pass: any, CatName: any, ProID: any) {
+  loged_in(mail: any , pass: any, CatName: any, ProID: any, checkout: any) {
 
 
     return this._http.post(this.ServerUrl + 'user-token-auth/', {'username': mail, 'password': pass})
@@ -45,6 +47,8 @@ export class LoginService {
               if ( CatName !== null && ProID !== null) {
 
                 this._nav.navigate(['/single-product'], {queryParams: { CatName:  CatName, ProID: ProID, Redirect: 'MakeOffer' } });
+              } else if(checkout === 'yes') {
+                this._nav.navigate(['/checkout2'], {queryParams: { login:  'yes' } });
               } else {
 
                 if (resSlidersData['Vendor'] === true) {
@@ -388,5 +392,136 @@ export class LoginService {
     return this._http.get(this.StoreServerUrl + 'emailverifyforStore/' + email).map((response: Response) => response.json());
 
   }
+  GetUserDetailByName(USerid) {
+    return this._http.get(this.ServerUrl + 'UserFullDetails/' + USerid).map((response: Response) => response.json());
+
+  }
+
+
+  UserDetailsUpdate(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: any, Username: string) {
+
+
+    return this._http.post( this.ServerUrl + 'UserFullDetails/' + Username,
+      {
+        'user_id': Username,
+        'Fname' :  FName,
+        'Lname' :  Lname,
+        'Mobile' :  Mobile,
+        'Country' :  Country,
+        'State' :  State,
+        'City' : City,
+        'Zip' :  Zip,
+        'Address' :  Address,
+        'Pic' : Pic,
+
+
+      })
+      .map((res: Response) => {
+
+        if (res) {
+          if (res.status === 201 || res.status === 200) {
+            const responce_data = res.json();
+         }
+        }
+      }).catch((error: any) => {
+
+        if (error.status !== 404) {
+          if (error.status === 401) {
+            console.log(error);
+
+            return Observable.throw(new Error(error.status));
+          }
+
+
+        } else {
+          console.log(error);
+          //   this._nav.navigate(['/login']);
+
+          return Observable.throw(new Error(error.status));
+        }
+      });
+  }
+
+  UserDetailsUpdateWithOutPic(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Username: string) {
+    return this._http.post( this.ServerUrl + 'UserFullDetailsWithoutPic/' + Username,
+      {
+        'user_id': Username,
+        'Fname' :  FName,
+        'Lname' :  Lname,
+        'Mobile' :  Mobile,
+        'Country' :  Country,
+        'State' :  State,
+        'City' : City,
+        'Zip' :  Zip,
+        'Address' :  Address,
+
+
+      })
+      .map((res: Response) => {
+
+        if (res) {
+          if (res.status === 201 || res.status === 200) {
+            const responce_data = res.json();
+          }
+        }
+      }).catch((error: any) => {
+
+        if (error.status !== 404) {
+          if (error.status === 401) {
+            console.log(error);
+
+            return Observable.throw(new Error(error.status));
+          }
+
+
+        } else {
+          console.log(error);
+          //   this._nav.navigate(['/login']);
+
+          return Observable.throw(new Error(error.status));
+        }
+      });
+  }
+
+  changepass(username: string, currPass: string, pass1: string, pass2: string) {
+
+    return this._http.post(this.ServerUrl + 'ChangePassword', {
+      'email': username,
+      'current': currPass,
+      'pass1': pass1,
+      'pass2': pass2
+    }).map((response: Response) => response.json());
+  }
+
+
+  reset_service(email) {
+    console.log(email);
+    return this._http.post(this.EMailServerUrl + 'password/reset/', {
+      'email': email
+    }).map((response: Response) => response.json());
+  }
+
+
+  ResetPasswordConfirm(uid, token, pass1, pass2) {
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this._http.post(this.EMailServerUrl + 'password/reset/confirm/', JSON.stringify({
+        new_password1: pass1,
+        token: token,
+        new_password2: pass2,
+        uid: uid}),
+      {headers: headers}).map((response: Response) => {
+
+       return response.json();
+
+    }).catch((error: any) => {
+      console.log(error.message)
+      // alert('sfs');
+      return Observable.throw(new Error(error.status));
+    });
+
+  }
+
 
 }
