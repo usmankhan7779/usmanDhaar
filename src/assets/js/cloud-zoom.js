@@ -1,7 +1,7 @@
 jQuery(function() {
-        "use strict"
-		
-		
+        "use strict";
+
+
         jQuery(".zoom-img").imagezoomsl({
             zoomrange: [0, 3]
         })
@@ -505,4 +505,4 @@ jQuery(function() {
         var i = A(".products-list-small .slides");
         i.length > 0
     });
-	
+

@@ -7,7 +7,7 @@
 
     //FlexSlider: Object Instance
     jQuery.flexslider = function(el, options) {
-			
+
         var slider = jQuery(el);
 
         // making variables public
@@ -641,7 +641,7 @@
                     watchedEvent = "";
                 }, 3000);
             }
-        }
+        };
 
         // public methods
         slider.flexAnimate = function(target, pause, override, withSync, fromNav) {
@@ -767,7 +767,7 @@
                 // SMOOTH HEIGHT:
                 if (slider.vars.smoothHeight) methods.smoothHeight(slider.vars.animationSpeed);
             }
-        }
+        };
         slider.wrapup = function(dimension) {
             // SLIDE:
             if (!fade && !carousel) {
@@ -781,12 +781,12 @@
             slider.currentSlide = slider.animatingTo;
             // API: after() animation Callback
             slider.vars.after(slider);
-        }
+        };
 
         // SLIDESHOW:
         slider.animateSlides = function() {
                 if (!slider.animating && focused) slider.flexAnimate(slider.getTarget("next"));
-            }
+            };
             // SLIDESHOW:
         slider.pause = function() {
                 clearInterval(slider.animatedSlides);
@@ -796,7 +796,7 @@
                 if (slider.vars.pausePlay) methods.pausePlay.update("play");
                 // SYNC:
                 if (slider.syncExists) methods.sync("pause");
-            }
+            };
             // SLIDESHOW:
         slider.play = function() {
                 if (slider.playing) clearInterval(slider.animatedSlides);
@@ -806,12 +806,12 @@
                 if (slider.vars.pausePlay) methods.pausePlay.update("pause");
                 // SYNC:
                 if (slider.syncExists) methods.sync("play");
-            }
+            };
             // STOP:
         slider.stop = function() {
             slider.pause();
             slider.stopped = true;
-        }
+        };
         slider.canAdvance = function(target, fromNav) {
             // ASNAV:
             var last = (asNav) ? slider.pagingCount - 1 : slider.last;
@@ -823,7 +823,7 @@
                 (slider.atEnd && slider.currentSlide === 0 && target === last && slider.direction !== "next") ? false :
                 (slider.atEnd && slider.currentSlide === last && target === 0 && slider.direction === "next") ? false :
                 true;
-        }
+        };
         slider.getTarget = function(dir) {
             slider.direction = dir;
             if (dir === "next") {
@@ -831,7 +831,7 @@
             } else {
                 return (slider.currentSlide === 0) ? slider.last : slider.currentSlide - 1;
             }
-        }
+        };
 
         // SLIDE:
         slider.setProps = function(pos, special, dur) {
@@ -870,7 +870,7 @@
 
             slider.args[slider.prop] = target;
             if (slider.transitions || dur === undefined) slider.container.css(slider.args);
-        }
+        };
 
         slider.setup = function(type) {
             // SLIDE:
@@ -965,7 +965,7 @@
             // !CAROUSEL:
             // CANDIDATE: active slide
             if (!carousel) slider.slides.removeClass(namespace + "active-slide").eq(slider.currentSlide).addClass(namespace + "active-slide");
-        }
+        };
 
 
         slider.doMath = function() {
@@ -999,7 +999,7 @@
                 slider.last = slider.count - 1;
             }
             slider.computedW = slider.itemW - slider.boxPadding;
-        }
+        };
 
 
         slider.update = function(pos, action) {
@@ -1030,7 +1030,7 @@
             // update directionNav
             if (slider.vars.directionNav) methods.directionNav.update();
 
-        }
+        };
 
         slider.addSlide = function(obj, pos) {
             var jQueryobj = jQuery(obj);
@@ -1055,7 +1055,7 @@
 
             //FlexSlider: added() Callback
             slider.vars.added(slider);
-        }
+        };
         slider.removeSlide = function(obj) {
             var pos = (isNaN(obj)) ? slider.slides.index(jQuery(obj)) : obj;
 
@@ -1081,11 +1081,11 @@
 
             // FlexSlider: removed() Callback
             slider.vars.removed(slider);
-        }
+        };
 
         //FlexSlider: Initialize
         methods.init();
-    }
+    };
 
     // Ensure the slider isn't focussed if the window loses focus.
     jQuery(window).blur(function(e) {
@@ -1155,7 +1155,7 @@
         end: function() {}, //Callback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
         added: function() {}, //{NEW} Callback: function(slider) - Fires after a slide is added
         removed: function() {} //{NEW} Callback: function(slider) - Fires after a slide is removed
-    }
+    };
 
 
     //FlexSlider: Plugin Function

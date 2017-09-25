@@ -17,10 +17,12 @@ export class LogInComponent implements OnInit {
   SignUpDOne = false;
   StoreUpDOne = false;
   login_error = false;
+  Waitcall = false;
   logout: string;
   ProID: string;
   RedirectFromlogin: string;
   CatName: string;
+
   checkout: string;
   returnUrl: string;
 
@@ -64,7 +66,8 @@ export class LogInComponent implements OnInit {
   }
 
   loged_in(mail: string , pass: string) {
-
+    this.login_error = false;
+    this.Waitcall = true;
     this.obj.loged_in(mail, pass, this.CatName, this.ProID, this.checkout).subscribe((response) => {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
@@ -72,6 +75,7 @@ export class LogInComponent implements OnInit {
 
       },
       (err) => {
+        this.Waitcall = false;
         this.login_error = true;
         /* this function is executed when there's an ERROR */
         //   console.log("ERROR: "+err);

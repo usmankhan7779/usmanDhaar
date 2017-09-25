@@ -21,6 +21,7 @@ export class UserDetailComponent implements OnInit {
   UserTyping = false;
   Userloading= false;
   EmailExist= false;
+  Waitcall= false;
   Emailok= false;
   Emailinvalid= false;
   private base64textString= '';
@@ -145,6 +146,7 @@ export class UserDetailComponent implements OnInit {
 
   save(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string) {
     // this.
+     this.Waitcall = true;
     // (FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: string, Username: string) {
     if ( this.base64textString) {
 
@@ -157,6 +159,7 @@ export class UserDetailComponent implements OnInit {
 
         },
         (err) => {
+          this.Waitcall = false;
           this.Right = false;
           this.Error = true;
           /* this function is executed when there's an ERROR */
@@ -173,11 +176,13 @@ export class UserDetailComponent implements OnInit {
       this.obj.UserDetailsUpdateWithOutPic(FName, Lname, Country, State, City, Zip, Mobile, Address, this.USerNameID).subscribe((response) => {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);
+          this.Waitcall = false;
           this.Error = false;
           this.Right = true;
 
         },
         (err) => {
+          this.Waitcall = false;
           this.Right = false;
           this.Error = true;
 

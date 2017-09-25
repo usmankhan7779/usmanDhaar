@@ -30,7 +30,7 @@ export class ActiveAdComponent implements OnInit {
     this.r = event;
     this.pageno = event;
 
-    alert(this.pageno);
+
     this.httpService.GetAllActiveproductsBYUserID(this.pageno, sessionStorage.getItem('user_id')).subscribe(
       data => {
         this.ActiveProduct = data;

@@ -10,6 +10,7 @@ import { LoginService } from '../log-in/log-in.services';
 export class ForgetPasswordComponent implements OnInit {
   isSend = false;
   isError = false;
+  Waitcall = false;
   constructor(private obj: LoginService,
               private _nav: Router) { }
 
@@ -17,15 +18,19 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   SendEmail(id: any) {
-    alert(id);
+    this.Waitcall = true;
+    this.isSend = false;
+    this.Waitcall = false;
     this.obj.reset_service(id)
       .subscribe(
         data => {
           console.log(data);
+          this.Waitcall = false;
           this.isSend = true;
           id.reset();
         },
         error => {
+          this.Waitcall = false;
           this.isSend = false;
           this.isError = true;
           console.log(error);

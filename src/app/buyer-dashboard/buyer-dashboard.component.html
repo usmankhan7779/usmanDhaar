@@ -12,9 +12,10 @@
 
         <div class="breadCrumb ">
           <ng-container *ngIf="GetUSerDOne !== null">
-            <img *ngIf="GetUSerDOne['Pic'] !== ''"  class="breadimg" src="{{PicServrUrl + GetUSerDOne['Pic']}}" alt=""  width="70px" height="70px"> <br/>
-            <img *ngIf="GetUSerDOne['Pic'] === ''" class="breadimg" src="assets/images/defaultprofile.jpg" alt=""  width="70px" height="70px"> <br/>
-          <span *ngIf="ValueRec == true">Welcome {{ GetUSerDOne['Fname']}}</span>
+            <img *ngIf="GetUSerDOne['Pic'] === ''" class="breadimg" src="assets/images/defaultprofile.jpg" alt=""  width="70px" height="70px">
+            <img *ngIf="GetUSerDOne['Pic'] !== ''"  class="breadimg" src="{{PicServrUrl + GetUSerDOne['Pic']}}" alt=""  width="70px" height="70px">
+            <br/>
+           <span *ngIf="ValueRec == true">Welcome {{ GetUSerDOne['Fname']}}</span>
 
           </ng-container>
 
@@ -54,7 +55,7 @@
             Profile Incomplete Spend 2 minutes to complete. <a style="color: red !important;" [routerLink]="['/user-detail']">Go to Porfile Section</a>
           </div>
           </ng-container>
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad" >
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad" >
 
 
             <div class="panel panel-info">
@@ -64,8 +65,8 @@
               <div class="panel-body">
                 <div class="row">
                   <ng-container *ngIf="GetUSerDOne !== null">
-                  <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{PicServrUrl + GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
-                  <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
+                    <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
+                    <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{PicServrUrl + GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
                   <div class=" col-md-8 col-lg-8 ">
                     <table class="table table-user-information">
                       <tbody>

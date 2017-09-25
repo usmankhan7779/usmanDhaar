@@ -14,6 +14,7 @@ export class SellerSettingComponent implements OnInit {
   match = true;
   Right = false;
   Error = false;
+  Waitcall = false;
   USerNameID: any;
   SessionstoreName: any;
   constructor(private obj: LoginService,
@@ -37,19 +38,23 @@ export class SellerSettingComponent implements OnInit {
 
 
   updatePassword(old: string, new1: string, new2: string) {
-
+    this.Error = false;
+    this.Right = false;
     if (new1 === new2) {
       this.match = true;
+      this.Waitcall = true;
       this.obj.changepass(this.USerNameID, old, new1, new2).subscribe((response) => {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);
           this.Error = false;
+          this.Waitcall = false;
           this.Right = true;
 
 
         },
         (err) => {
           this.Right = false;
+          this.Waitcall = false;
           this.Error = true;
           /* this function is executed when there's an ERROR */
           //   console.log("ERROR: "+err);

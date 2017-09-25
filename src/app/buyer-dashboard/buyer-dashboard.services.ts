@@ -51,7 +51,7 @@ export class BuyerDashboardServices {
           const responce_data = res.json();
 
           console.log('this is the id' + responce_data.id);
-          sessionStorage.setItem('InvoiceID', responce_data.id)
+          sessionStorage.setItem('InvoiceID', responce_data.id);
           if (res.status === 200) {
           }
         }
@@ -70,7 +70,7 @@ export class BuyerDashboardServices {
     })
       .map((res: Response) => {
         if (res) {
-          console.log(res.status)
+          console.log(res.status);
           if (res.status === 200) {
 
           }
@@ -93,7 +93,7 @@ export class BuyerDashboardServices {
     })
       .map((res: Response) => {
         if (res) {
-          console.log(res.status)
+          console.log(res.status);
           if (res.status === 200) {
 
           }

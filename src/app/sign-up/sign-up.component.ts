@@ -12,11 +12,12 @@ import { LoginService } from '../log-in/log-in.services';
 export class SignUpComponent implements OnInit {
   model: any = {};
   loading = false;
+  Waitcall = false;
   returnUrl: string;
   registration_ok = false;
   UserError = false;
   EmailPosterror = false;
-  recaptcha: any
+  recaptcha: any;
   UserTyping = false;
   Userloading= false;
   EmailExist= false;
@@ -37,10 +38,10 @@ export class SignUpComponent implements OnInit {
   }
   register(username: string, Email: string, Password: string , Fname: string, Lname: string, Mobile: string ) {
 
-
     if ( this.model.Agree) {
 
       if (this.recaptcha) {
+        this.Waitcall = true;
 
         if (this.Emailok) {
           this.singup.post_signup_form(username, Email, Password, Fname, Lname, Mobile).subscribe((response) => {
@@ -49,6 +50,7 @@ export class SignUpComponent implements OnInit {
               this.registration_ok = true;
             },
             (err) => {
+              this.Waitcall = false;
               this.registration_error = true;
               /* this function is executed when there's an ERROR */
               //   console.log("ERROR: "+err);
@@ -59,6 +61,7 @@ export class SignUpComponent implements OnInit {
             }
           );
         } else {
+          this.Waitcall = false;
           this.EmailPosterror = true;
         }
       } else {
@@ -202,8 +205,7 @@ export class SignUpComponent implements OnInit {
 
   }
 
-  OnPassReset()
-  {
+  OnPassReset() {
     this.PassMatch = true;
   }
 

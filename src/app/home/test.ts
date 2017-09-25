@@ -10,7 +10,7 @@ export class TimePipe implements PipeTransform {
     H: 3600,
     Min: 60,
     S: 1
-  }
+  };
 
   transform(seconds) {
     let time_string: string = '';

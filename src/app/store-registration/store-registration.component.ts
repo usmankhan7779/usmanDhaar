@@ -14,6 +14,7 @@ export class StoreRegistrationComponent implements OnInit {
   step2 = false;
   step3 = false;
   step4 = false;
+  Waitcall = false;
   step1button = false;
   step2button = false;
   UserError = false;
@@ -30,7 +31,7 @@ export class StoreRegistrationComponent implements OnInit {
 
 
     if ( this.model.terms ) {
-
+      this.Waitcall = true;
       this.obj.StoreRegistration(this.model).subscribe(
         resSlidersData => {
           // console.log('DONEDsdfnsd');

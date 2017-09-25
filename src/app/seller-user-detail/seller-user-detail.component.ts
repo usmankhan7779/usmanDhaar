@@ -17,6 +17,7 @@ export class SellerUserDetailComponent implements OnInit {
   step4 = false;
   step1button = false;
   step2button = false;
+  Waitcall = false;
   UserError = false;
   UserTyping = false;
   Userloading= false;
@@ -46,7 +47,7 @@ export class SellerUserDetailComponent implements OnInit {
 
         this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
           this.GetUSerdetails = resSlidersData;
-          console.log('fdsf');
+          // console.log('fdsf');
           console.log(this.GetUSerdetails);
         });
 
@@ -148,19 +149,22 @@ export class SellerUserDetailComponent implements OnInit {
 
   save(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string) {
     // this.
+    this.Waitcall = true;
     // (FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: string, Username: string) {
     if ( this.base64textString) {
-      alert('pic')
+
       this.obj.UserDetailsUpdate(FName, Lname, Country, State, City, Zip, Mobile, Address, this.base64textString, this.USerNameID).subscribe((response) => {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);
           this.Error = false;
+          this.Waitcall = false;
           this.Right = true;
 
 
         },
         (err) => {
           this.Right = false;
+          this.Waitcall = false;
           this.Error = true;
           /* this function is executed when there's an ERROR */
           //   console.log("ERROR: "+err);
@@ -172,16 +176,17 @@ export class SellerUserDetailComponent implements OnInit {
         }
       );
     } else {
-      alert('nopic');
       this.obj.UserDetailsUpdateWithOutPic(FName, Lname, Country, State, City, Zip, Mobile, Address, this.USerNameID).subscribe((response) => {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);
           this.Error = false;
+          this.Waitcall = false;
           this.Right = true;
 
         },
         (err) => {
           this.Right = false;
+          this.Waitcall = false;
           this.Error = true;
 
           /* this function is executed when there's an ERROR */

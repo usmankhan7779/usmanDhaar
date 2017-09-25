@@ -71,19 +71,19 @@ export class Checkout2Component implements OnInit {
                 });
         }
 
-
-
       });
     this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
 
     this.Total = 0;
-    for (const tmp of this.CartedProduct['products']) {
+    for (let tmp of this.CartedProduct['products']) {
+
       this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
     }
     this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
 
     });
+
   }
 
   onChange(qty: string, Abc: any) {

@@ -24,7 +24,7 @@ export class LoginService {
   EMailServerUrl =  'https://dhaardb.herokuapp.com/rest-auth/';
 
 
-  constructor(private _http: Http ,
+  constructor(private _http: HttpService ,
               private _nav: Router) {
 
   }
@@ -42,7 +42,6 @@ export class LoginService {
             this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
             sessionStorage.setItem('UserID', this.decoded);
               this.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
-
 
               if ( CatName !== null && ProID !== null) {
 
@@ -516,7 +515,7 @@ export class LoginService {
        return response.json();
 
     }).catch((error: any) => {
-      console.log(error.message)
+      console.log(error.message);
       // alert('sfs');
       return Observable.throw(new Error(error.status));
     });

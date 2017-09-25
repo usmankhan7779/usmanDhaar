@@ -212,6 +212,12 @@
 
 
                 <div class="nav nav-tabs">
+                  <div *ngIf="Waitcall" class="alert  alert-info">
+                    <p class="">
+                      <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
+
+                    </p>
+                  </div>
                   <input (click)="save(FName.value,Lname.value,Country.value,State.value,City.value, zipcode.value, personal.value, address.value)" type="button"    class="btn" value="Update">
                 </div>
               </div>

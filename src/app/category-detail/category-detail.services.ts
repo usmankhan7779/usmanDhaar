@@ -2,7 +2,7 @@ import 'rxjs/add/operator/map';
 import {Injectable} from '@angular/core';
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-
+import {HttpService} from '../services/http-service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 
@@ -17,7 +17,7 @@ export class  CategoryServices {
   ServerUrl = 'https://dhaardb.herokuapp.com/products/';
 
 
-  constructor(private _http: Http,
+  constructor(private _http: HttpService,
               private _nav: Router) {
   }
   GetphotoById() {

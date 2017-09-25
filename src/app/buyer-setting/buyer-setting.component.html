@@ -42,7 +42,7 @@
           <div class="userccount">
             <h5>Change Password</h5>
             <div *ngIf="Error"  class="alert alert-danger">
-              <strong>Error </strong> While updating record.
+              <strong>Error </strong> Old Password not correct. Try Again
             </div>
 
             <div *ngIf="Right" class="alert alert-success">
@@ -61,6 +61,12 @@
               </div>
               <div *ngIf="!match"  class="alert alert-danger">
                 <strong>Password not matched</strong>
+              </div>
+              <div *ngIf="Waitcall" class="alert  alert-info">
+                <p class="">
+                  <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
+
+                </p>
               </div>
               <input type="submit" (click)="updatePassword(old.value,new1.value,new2.value)" class="btn" value="Sumbit">
             </div>

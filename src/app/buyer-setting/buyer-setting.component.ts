@@ -13,6 +13,7 @@ export class BuyerSettingComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
   match = true;
   Right = false;
+  Waitcall = false;
   Error = false;
   USerNameID: any;
   constructor(private obj: LoginService,
@@ -37,17 +38,20 @@ export class BuyerSettingComponent implements OnInit {
   updatePassword(old: string, new1: string, new2: string) {
 
     if (new1 === new2) {
+      this.Waitcall = true;
       this.match = true;
       this.obj.changepass(this.USerNameID, old, new1, new2).subscribe((response) => {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);
           this.Error = false;
+          this.Waitcall = false;
           this.Right = true;
 
 
         },
         (err) => {
           this.Right = false;
+          this.Waitcall = false;
           this.Error = true;
           /* this function is executed when there's an ERROR */
           //   console.log("ERROR: "+err);

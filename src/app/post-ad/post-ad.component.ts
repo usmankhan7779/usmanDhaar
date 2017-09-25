@@ -30,6 +30,7 @@ export class PostAdComponent implements OnInit {
   Buyitnow = false;
   CatNumber: number;
   ReservePrice = false;
+  Waitcall = false;
   ReversePrice = false;
   private base64textString= '';
   sizeLimit = 2000000;
@@ -130,6 +131,7 @@ export class PostAdComponent implements OnInit {
 
   save( cateogry: any, condition: string) {
     // alert('first')
+
     const utcDate = new Date(new Date().getTime());
     const dateformat = utcDate.toString().split(' ');
     const timeNOw = dateformat[4].split(':');
@@ -147,7 +149,7 @@ export class PostAdComponent implements OnInit {
 
       this.CatId = '0' + this.CatId;
     }
-
+    this.Waitcall = true;
     const Product_ID = this.CatId + subcat[1] + subcat[3] + this.DateTime;
     // console.log('var132:' + Product_ID );
     //   alert('before');

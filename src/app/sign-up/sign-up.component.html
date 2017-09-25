@@ -42,7 +42,7 @@
             <div *ngIf="EmailPosterror==true" class="alert alert-danger">
               <strong>Error!</strong> Email Already exist.
             </div>
-            <h5>User SinUp</h5>
+            <h5>User SignUp</h5>
             <div id="wsell" class="formpanel tab-pane fade in active">
               <form role="form" class="login-form" (ngSubmit)="f.form.valid && register(Username.value,Email.value,Password.value,FName.value,LName.value,Mobile.value)" #f="ngForm" novalidate>
 
@@ -127,6 +127,12 @@
                 I have read and agree to the <a href="#" style="color: red"> Terms and Conditions</a></div>
                 <recaptcha  (resolved)="resolved($event)" siteKey="6Lfd6y8UAAAAAL_D96Onic2FcRsjy-CxP1i8forw" required=""></recaptcha>
               <br/>
+                <div *ngIf="Waitcall" class="alert  alert-info">
+                  <p class="">
+                    <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
+
+                  </p>
+                </div>
                 <input type="submit" class="btn" value="Register">
               </form>
             </div>

@@ -40,7 +40,7 @@ jQuery(document).ready( function() {
             Overlay: !0,
             CollapseMenu: !0,
             ClassName: "jtv-mobile-menu"
-        })
+        });
 
 /******************************************
      main slider
@@ -388,7 +388,7 @@ jQuery(document).ready( function() {
 
         jQuery(".subDropdown")[0] && jQuery(".subDropdown").on("click", function() {
             jQuery(this).toggleClass("plus"), jQuery(this).toggleClass("minus"), jQuery(this).parent().find("ul").slideToggle()
-        })
+        });
 
 
 /******************************************
@@ -414,7 +414,7 @@ jQuery(document).ready( function() {
                 t.closest('.slider-range').find('.amount-range-price').html(result);
             }
         });
-    })
+    });
 
 
 /******************************************
@@ -486,7 +486,7 @@ jQueryback_to_top.on('click', function(event) {
 
 
     jQuery('[data-toggle="tooltip"]').tooltip();
-})
+});
 
 /******************************************
    totop

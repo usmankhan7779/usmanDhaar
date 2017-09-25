@@ -199,7 +199,7 @@ export class HomeService {
         }
       }
     }).catch((error: any) => {
-      alert(error.toString())
+      alert(error.toString());
       console.log(error.toString());
       return Observable.throw(new Error(error.status));
     });

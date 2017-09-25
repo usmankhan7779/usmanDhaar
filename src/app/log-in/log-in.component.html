@@ -32,8 +32,10 @@
             <strong>User Registered!</strong> LogIn to your account
           </div>
           <div *ngIf="StoreUpDOne==true" class="alert alert-success">
-            <strong>Store Registered!</strong> Please Login with credentials
+            <strong>Store Registered!</strong> Please Login with same credentials into seller's account
           </div>
+
+
 
           <h5>User Login</h5>
           <!-- login form -->
@@ -59,6 +61,13 @@
 
 
             </div>
+            <div *ngIf="Waitcall" class="alert  alert-info">
+              <p class="">
+                <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
+
+              </p>
+            </div>
+
             <input type="submit" class="btn" value="Login">
 
           </div>
