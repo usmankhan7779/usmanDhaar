@@ -31,40 +31,30 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.Profile.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+    this.Profile.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
        this.ValueRec = true;
     });
-    this.Profile.verify_token().subscribe((response) => {
-        this.USerName =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
 
-
-
-      },
-      (err) => {
-        console.log('ERROR:' + err);
-        this._nav.navigate(['/login']);
-      },
-      () => {
-      }
-    );
-    if ( sessionStorage.getItem('NewPost') === 'Done') {
+    this.USerName =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+    if ( localStorage.getItem('NewPost') === 'Done') {
           this.NewPostcheck = true;
-      sessionStorage.setItem('NewPost', null);
+      localStorage.setItem('NewPost', null);
 
   }
     window.scrollTo(0, 0);
 
-    this.Profile.GetStoreInformationByUserId(sessionStorage.getItem('UserID')).subscribe(
+    this.Profile.GetStoreInformationByUserId(localStorage.getItem('UserID')).subscribe(
       data => {
         this.ActiveProduct = data;
         if (this.ActiveProduct.length > 0 ) {
-          sessionStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
-          this.HomeServics.GetallProductsOffersByStoreName(1, sessionStorage.getItem('StoreName') ).subscribe(resSlidersData => {
+          localStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
+          this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName') ).subscribe(resSlidersData => {
             this.GetUSerOffer = resSlidersData;
 
+
           });
-          this.SessionstoreName = sessionStorage.getItem('StoreName');
+          this.SessionstoreName = localStorage.getItem('StoreName');
         } else {
           this._nav.navigate(['/login']);
         }
@@ -76,7 +66,7 @@ export class DashboardComponent implements OnInit {
   }
 
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 }

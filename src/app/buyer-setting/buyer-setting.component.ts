@@ -20,18 +20,7 @@ export class BuyerSettingComponent implements OnInit {
               private _nav: Router) { }
 
   ngOnInit() {
-    this.obj.verify_token().subscribe((response) => {
-        this.USerNameID =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
-
-
-      },
-      (err) => {
-        console.log('ERROR:' + err);
-        this._nav.navigate(['/login']);
-      },
-      () => {
-      }
-    );
+    this.USerNameID =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
   }
 
 

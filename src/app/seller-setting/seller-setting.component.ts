@@ -21,19 +21,19 @@ export class SellerSettingComponent implements OnInit {
               private _nav: Router) { }
 
   ngOnInit() {
-    this.SessionstoreName = sessionStorage.getItem('StoreName');
-    this.obj.verify_token().subscribe((response) => {
-        this.USerNameID =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
-
-
-      },
-      (err) => {
-        console.log('ERROR:' + err);
-        this._nav.navigate(['/login']);
-      },
-      () => {
-      }
-    );
+    this.SessionstoreName = localStorage.getItem('StoreName');
+    // this.obj.verify_token().subscribe((response) => {
+    //     this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+    //
+    //
+    //   },
+    //   (err) => {
+    //     console.log('ERROR:' + err);
+    //     this._nav.navigate(['/login']);
+    //   },
+    //   () => {
+    //   }
+    // );
   }
 
 
@@ -77,6 +77,6 @@ export class SellerSettingComponent implements OnInit {
   }
 
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 }

@@ -38,6 +38,8 @@ import { SellerSettingComponent } from './seller-setting/seller-setting.componen
 import { BuyerSettingComponent } from './buyer-setting/buyer-setting.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ReserPasswordComponent } from './reser-password/reser-password.component';
+import { AuthGuard } from './auth-guard/auth-guard.services';
+
 
 const appRoutes: Routes = [
   {
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
@@ -81,7 +84,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'post-ad',
-    component: PostAdComponent
+    component: PostAdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'change-password',
@@ -97,11 +101,13 @@ const appRoutes: Routes = [
   },
   {
     path: 'active-ad',
-    component: ActiveAdComponent
+    component: ActiveAdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'pending-ad',
-    component: PendingAdComponent
+    component: PendingAdComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-profile',
@@ -117,40 +123,50 @@ const appRoutes: Routes = [
   },
   {
     path: 'user-detail',
-     component: UserDetailComponent
+     component: UserDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'seller-user-detail',
-     component: SellerUserDetailComponent
+     component: SellerUserDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'store-registration',
-    component: StoreRegistrationComponent
+    component: StoreRegistrationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '404',
     component: NotFoundComponent
   }, {
     path: 'buyer-dashboard',
-    component: BuyerDashboardComponent
+    component: BuyerDashboardComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'my-bids',
-    component: MyBiddsComponent
+    component: MyBiddsComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'my-bids-buyer',
-    component: MyBidsBuyerComponent
+    component: MyBidsBuyerComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'buyer-orders',
-    component: BuyerOrderComponent
+    component: BuyerOrderComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'buyer-invoice',
-    component: BuyerInvoiceComponent
+    component: BuyerInvoiceComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'seller-purchasing',
-    component: SellerPurchasingComponent
+    component: SellerPurchasingComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'seller-purchasing-invoice',
-    component: SellerPurchasingInvoiceComponent
+    component: SellerPurchasingInvoiceComponent,
+    canActivate: [AuthGuard]
   }, {
     path: 'store/:storename',
     component: StoreTemplateComponent
@@ -167,15 +183,18 @@ const appRoutes: Routes = [
   },
   {
     path: 'account-setting',
-    component: BuyerSettingComponent
+    component: BuyerSettingComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'seller-setting',
-    component: SellerSettingComponent
+    component: SellerSettingComponent,
+    canActivate: [AuthGuard]
   },
   {
       path: 'reset/:uid/:token',
-      component: ReserPasswordComponent
+      component: ReserPasswordComponent,
+
     },
 
 

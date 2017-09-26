@@ -54,7 +54,7 @@ export class PostAdComponent implements OnInit {
         // Defaults to 0 if no query param provided.
         this.CatName = params['CatName'] || '0' ;
         this.CatId  = params['CatId'] || '0';
-        this.User_ID  = sessionStorage.getItem('UserID');
+        this.User_ID  = localStorage.getItem('UserID');
 
 
       });

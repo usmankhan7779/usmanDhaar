@@ -31,7 +31,7 @@ export class PendingAdComponent implements OnInit {
     this.pageno = event;
 
     alert(this.pageno);
-    this.httpService.GetAllPendingproductsBYUserID(this.pageno, sessionStorage.getItem('UserID')).subscribe(
+    this.httpService.GetAllPendingproductsBYUserID(this.pageno, localStorage.getItem('UserID')).subscribe(
       data => {
         this.ActiveProduct = data;
       });
@@ -40,23 +40,18 @@ export class PendingAdComponent implements OnInit {
   }
   ngOnInit() {
 
-    // console.log('asdada' + sessionStorage.getItem('UserID'));
+    // console.log('asdada' + localStorage.getItem('UserID'));
 
-    if (sessionStorage.getItem('UserID') === null) {
-
-      this._nav.navigate(['/login']);
-    } else {
-      this.httpService.GetAllPendingproductsBYUserID(1, sessionStorage.getItem('UserID')).subscribe(
-        data => {
-          this.ActiveProduct = data;
-        });
-    }
+    this.httpService.GetAllPendingproductsBYUserID(1, localStorage.getItem('UserID')).subscribe(
+      data => {
+        this.ActiveProduct = data;
+      });
 
 
-    this.SessionstoreName = sessionStorage.getItem('StoreName');
+    this.SessionstoreName = localStorage.getItem('StoreName');
   }
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 }

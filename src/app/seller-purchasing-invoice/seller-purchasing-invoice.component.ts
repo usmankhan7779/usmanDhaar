@@ -46,7 +46,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
 
   ngOnInit() {
-    this.SessionstoreName = sessionStorage.getItem('StoreName');
+    this.SessionstoreName = localStorage.getItem('StoreName');
     this.sub = this.route
       .queryParams
       .subscribe(params => {
@@ -54,7 +54,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
         this.InvoicesID = params['InvoicesID'] || '0' ;
       });
 
-    if (sessionStorage.getItem('UserID') === null) {
+    if (localStorage.getItem('UserID') === null) {
 
       this._nav.navigate(['/login']);
     } else {
@@ -205,7 +205,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
   }
 
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 }

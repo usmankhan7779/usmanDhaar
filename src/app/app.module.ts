@@ -49,7 +49,7 @@ import { StoreTemplateComponent } from './store-template/store-template.componen
 import { SubCategoryDetailComponent } from './sub-category-detail/sub-category-detail.component';
 import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-category-detail.component';
 //preloader-content
-
+import { AuthGuard } from './auth-guard/auth-guard.services';
 import { XHRBackend, RequestOptions } from '@angular/http';
 import { HttpService } from './services/http-service';
 import { PreloaderService } from './services/preloader-service';
@@ -109,6 +109,7 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     SellerSettingComponent,
     SearchResultComponent,
     ReserPasswordComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -126,6 +127,7 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     ActiveAdServices,
     LoginService,
     AdService,
+    AuthGuard,
     HomeService,
     CategoryServices,
     BuyerDashboardServices,

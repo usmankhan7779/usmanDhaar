@@ -189,6 +189,6 @@ this.model.terms = true;
   }
 
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 }

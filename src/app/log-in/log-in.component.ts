@@ -45,15 +45,15 @@ export class LogInComponent implements OnInit {
 
       });
 
-     if ( sessionStorage.getItem('Reg') === 'Done') {
+     if ( localStorage.getItem('Reg') === 'Done') {
 
        this.SignUpDOne = true;
-       sessionStorage.setItem('Reg', null);
+       localStorage.setItem('Reg', null);
      }
-     if ( sessionStorage.getItem('StoreReg') === 'Done') {
+     if ( localStorage.getItem('StoreReg') === 'Done') {
 
        this.StoreUpDOne = true;
-       sessionStorage.setItem('StoreReg', null);
+       localStorage.setItem('StoreReg', null);
      }
     window.scrollTo(0, 0);
 

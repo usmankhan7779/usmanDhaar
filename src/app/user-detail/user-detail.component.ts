@@ -41,24 +41,12 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    this.obj.verify_token().subscribe((response) => {
-         this.USerNameID =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
+    this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
 
-         this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
-          this.GetUSerdetails = resSlidersData;
-           console.log('fdsf');
-          console.log(this.GetUSerdetails);
-        });
-
-      },
-      (err) => {
-        console.log('ERROR:' + err);
-        this._nav.navigate(['/login']);
-      },
-      () => {
-      }
-    );
-
+    this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
+      this.GetUSerdetails = resSlidersData;
+      
+    });
 
   }
 
@@ -199,7 +187,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 }

@@ -31,7 +31,7 @@ export class ActiveAdComponent implements OnInit {
     this.pageno = event;
 
 
-    this.httpService.GetAllActiveproductsBYUserID(this.pageno, sessionStorage.getItem('user_id')).subscribe(
+    this.httpService.GetAllActiveproductsBYUserID(this.pageno, localStorage.getItem('user_id')).subscribe(
       data => {
         this.ActiveProduct = data;
       });
@@ -40,21 +40,16 @@ export class ActiveAdComponent implements OnInit {
   }
   ngOnInit() {
 
-    if (sessionStorage.getItem('UserID') === null) {
+    this.httpService.GetAllActiveproductsBYUserID(1, localStorage.getItem('UserID')).subscribe(
+      data => {
+        this.ActiveProduct = data;
+      });
 
-      this._nav.navigate(['/login']);
-    } else {
-      this.httpService.GetAllActiveproductsBYUserID(1, sessionStorage.getItem('UserID')).subscribe(
-        data => {
-          this.ActiveProduct = data;
-        });
-    }
-
-    this.SessionstoreName = sessionStorage.getItem('StoreName');
+    this.SessionstoreName = localStorage.getItem('StoreName');
   }
 
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 }

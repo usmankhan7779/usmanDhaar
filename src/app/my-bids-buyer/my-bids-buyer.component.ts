@@ -30,7 +30,7 @@ export class MyBidsBuyerComponent implements OnInit {
     this.pageno = event;
 
     alert(this.pageno);
-    this.httpService.GetAllActiveproductsBYUserID(this.pageno, sessionStorage.getItem('user_id')).subscribe(
+    this.httpService.GetAllActiveproductsBYUserID(this.pageno, localStorage.getItem('user_id')).subscribe(
       data => {
         this.ActiveProduct = data;
       });
@@ -39,19 +39,13 @@ export class MyBidsBuyerComponent implements OnInit {
   }
   ngOnInit() {
 
-    if (sessionStorage.getItem('UserID') === null) {
-
-      this._nav.navigate(['/login']);
-    } else {
-
-      this.httpService.GetallProductdBids(1, sessionStorage.getItem('UserID')).subscribe(
-        data => {
-          this.ActiveProduct = data;
-          console.log(this.ActiveProduct);
-        });
-    }
+    this.httpService.GetallProductdBids(1, localStorage.getItem('UserID')).subscribe(
+      data => {
+        this.ActiveProduct = data;
+        console.log(this.ActiveProduct);
+      });
   }
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 }

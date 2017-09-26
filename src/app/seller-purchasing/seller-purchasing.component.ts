@@ -27,22 +27,16 @@ export class SellerPurchasingComponent implements OnInit {
 
 
   ngOnInit() {
-    this.SessionstoreName = sessionStorage.getItem('StoreName');
-    if (sessionStorage.getItem('UserID') === null) {
-
-      this._nav.navigate(['/login']);
-    } else {
-
-      this.httpService.GetallInvoiceIDByUser(sessionStorage.getItem('UserID')).subscribe(
-        data => {
-          this.ActiveProduct = data;
-          console.log(this.ActiveProduct);
-        });
-    }
+    this.SessionstoreName = localStorage.getItem('StoreName');
+    this.httpService.GetallInvoiceIDByUser(localStorage.getItem('UserID')).subscribe(
+      data => {
+        this.ActiveProduct = data;
+        console.log(this.ActiveProduct);
+      });
   }
 
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 }

@@ -60,26 +60,26 @@ export class Checkout2Component implements OnInit {
 
         if ( this.login === 'yes' ) {
           this.orderreview = false;
-          this.LoginName = sessionStorage.getItem('UserName');
+          this.LoginName = localStorage.getItem('UserName');
           this.LoggedIn = true;
           this.PaymentMethod = true;
                 this.BillingMethod = true;
-                this.user = sessionStorage.getItem('UserID');
-                this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+                this.user = localStorage.getItem('UserID');
+                this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
                   this.GetUSerDOne = resSlidersData;
 
                 });
         }
 
       });
-    this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
 
     this.Total = 0;
     for (let tmp of this.CartedProduct['products']) {
 
       this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
     }
-    this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+    this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
 
     });
@@ -109,7 +109,7 @@ export class Checkout2Component implements OnInit {
       if ( tmp.ProductID === Abc ) {
         console.log(tmp);
         this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
-        sessionStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+        localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
       }
 
     }
@@ -127,12 +127,12 @@ export class Checkout2Component implements OnInit {
              if (response) {
 
                this.LoggedIn = true;
-               this.LoginName = sessionStorage.getItem('UserName');
+               this.LoginName = localStorage.getItem('UserName');
                this.PaymentMethod = true;
                this.BillingMethod = true;
-               this.user = sessionStorage.getItem('UserID');
-               this.LoginName = sessionStorage.getItem('UserName');
-               this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+               this.user = localStorage.getItem('UserID');
+               this.LoginName = localStorage.getItem('UserName');
+               this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
                  this.GetUSerDOne = resSlidersData;
 
 
@@ -174,7 +174,7 @@ export class Checkout2Component implements OnInit {
 
         console.log( this.CartedProduct['products']);
         for (const item of this.CartedProduct['products']) {
-          this.httpbuyerService.InvoiceProducts(sessionStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty).subscribe(
+          this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty).subscribe(
             data => {
 
 
@@ -189,12 +189,12 @@ export class Checkout2Component implements OnInit {
             },
           );
         }
-        this.httpbuyerService.CustomerInvoiceShippingAddress(sessionStorage.getItem('InvoiceID'), this.GetUSerDOne['Fname'],  this.GetUSerDOne['Lname'], this.GetUSerDOne['user_id'], this.GetUSerDOne['State'], this.GetUSerDOne['State'], this.GetUSerDOne['City'], this.GetUSerDOne['Zip'], this.GetUSerDOne['Address'], this.GetUSerDOne['Mobile'], '01').subscribe(
+        this.httpbuyerService.CustomerInvoiceShippingAddress(localStorage.getItem('InvoiceID'), this.GetUSerDOne['Fname'],  this.GetUSerDOne['Lname'], this.GetUSerDOne['user_id'], this.GetUSerDOne['State'], this.GetUSerDOne['State'], this.GetUSerDOne['City'], this.GetUSerDOne['Zip'], this.GetUSerDOne['Address'], this.GetUSerDOne['Mobile'], '01').subscribe(
           data => {
 
            this.OrderPlaced  = true;
 
-            this.InvoiceIDSet =  sessionStorage.getItem('InvoiceID');
+            this.InvoiceIDSet =  localStorage.getItem('InvoiceID');
 
 
           }, (err) => {
@@ -226,14 +226,14 @@ export class Checkout2Component implements OnInit {
     //
     // this.httpService.loged_No_redirect(this.mymodel.username, this.mymodel.Loginpassword).subscribe(
     //   data => {
-    //     const User = (sessionStorage.getItem('UserID')) || 0;
+    //     const User = (localStorage.getItem('UserID')) || 0;
     //     if (User ) {
     //
     //       this.LoggedIn = true;
     //       this.PaymentMethod = true;
     //       this.BillingMethod = true;
-    //       this.user = sessionStorage.getItem('UserID');
-    //       this.httpService.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+    //       this.user = localStorage.getItem('UserID');
+    //       this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
     //         this.GetUSerDOne = resSlidersData;
     //
     //       });

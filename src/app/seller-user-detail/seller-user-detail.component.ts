@@ -41,24 +41,14 @@ export class SellerUserDetailComponent implements OnInit {
               private _nav: Router) { }
 
   ngOnInit() {
-    this.SessionstoreName = sessionStorage.getItem('StoreName');
-    this.obj.verify_token().subscribe((response) => {
-        this.USerNameID =  this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id'];
+    this.SessionstoreName = localStorage.getItem('StoreName');
+    this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
 
-        this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
-          this.GetUSerdetails = resSlidersData;
-          // console.log('fdsf');
-          console.log(this.GetUSerdetails);
-        });
-
-      },
-      (err) => {
-        console.log('ERROR:' + err);
-        this._nav.navigate(['/login']);
-      },
-      () => {
-      }
-    );
+    this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
+      this.GetUSerdetails = resSlidersData;
+      // console.log('fdsf');
+      console.log(this.GetUSerdetails);
+    });
 
 
   }
@@ -132,7 +122,7 @@ export class SellerUserDetailComponent implements OnInit {
 
   }
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
   checkButtonStep1() {
     if (this.model.storename != null && this.model.email != null && this.model.ownername != null && this.model.city != null && this.model.zipcode != null && this.model.personal != null && this.model.address != null && this.model.ownername != null) {
@@ -149,10 +139,10 @@ export class SellerUserDetailComponent implements OnInit {
 
   save(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string) {
     // this.
-    this.Waitcall = true;
+
     // (FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: string, Username: string) {
     if ( this.base64textString) {
-
+      this.Waitcall = true;
       this.obj.UserDetailsUpdate(FName, Lname, Country, State, City, Zip, Mobile, Address, this.base64textString, this.USerNameID).subscribe((response) => {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);
@@ -176,6 +166,7 @@ export class SellerUserDetailComponent implements OnInit {
         }
       );
     } else {
+      this.Waitcall = true;
       this.obj.UserDetailsUpdateWithOutPic(FName, Lname, Country, State, City, Zip, Mobile, Address, this.USerNameID).subscribe((response) => {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);

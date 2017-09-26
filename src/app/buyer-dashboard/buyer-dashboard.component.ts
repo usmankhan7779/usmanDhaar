@@ -20,33 +20,14 @@ export class BuyerDashboardComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-   if (sessionStorage.getItem('Authorization') !== null) {
-     this.obj.verify_token().subscribe((response) => {
-         //  this.USerName =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
-       },
-       (err) => {
-         console.log('ERROR:' + err);
-         this._nav.navigate(['/login']);
-       },
-       () => {
-       }
-     );
-
-     if (sessionStorage.getItem('Authorization') === null) {
-       console.log('ERROR:sdfsd');
-       this._nav.navigate(['/login']);
-     } else {
-       this.obj.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
-         this.GetUSerDOne = resSlidersData;
-         this.ValueRec = true;
-       });
-     }
-
-   }
+    this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+      this.GetUSerDOne = resSlidersData;
+      this.ValueRec = true;
+    });
 
   }
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 

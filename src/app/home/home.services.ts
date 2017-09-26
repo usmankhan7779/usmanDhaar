@@ -176,7 +176,7 @@ export class HomeService {
     return this._http.post(this.ServerUrl + 'ProductsOffersInsert',
       {
 
-        'User_Id': sessionStorage.getItem('UserID') ,
+        'User_Id': localStorage.getItem('UserID') ,
         'Product_Id': Product_ID,
         'StoreName': StoreName,
         'Cat_Name': Cat_Name,

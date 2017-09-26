@@ -31,22 +31,24 @@ export class LoginService {
 
 
   loged_in(mail: any , pass: any, CatName: any, ProID: any, checkout: any) {
-
-
     return this._http.post(this.ServerUrl + 'user-token-auth/', {'username': mail, 'password': pass})
       .map((res: Response) => {
         if (res) {
+          // let user =  { username: mail, token: res.json().token};
+          // if (user && user.token) {
+          //   localStorage.setItem('currentUser', JSON.stringify(user));
+          // }
           if (res.status === 200) {
-            sessionStorage.setItem('Authorization', res.json().token);
-            sessionStorage.setItem('UserName', mail);
+            localStorage.setItem('Authorization', res.json().token);
+            localStorage.setItem('UserName', mail);
             this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
-            sessionStorage.setItem('UserID', this.decoded);
-              this.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
+            localStorage.setItem('UserID', this.decoded);
+              this.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
 
               if ( CatName !== null && ProID !== null) {
 
                 this._nav.navigate(['/single-product'], {queryParams: { CatName:  CatName, ProID: ProID, Redirect: 'MakeOffer' } });
-              } else if(checkout === 'yes') {
+              } else if (checkout === 'yes') {
                 this._nav.navigate(['/checkout2'], {queryParams: { login:  'yes' } });
               } else {
 
@@ -75,10 +77,10 @@ export class LoginService {
       .map((res: Response) => {
         if (res) {
           if (res.status === 200) {
-            sessionStorage.setItem('Authorization', res.json().token);
-            sessionStorage.setItem('UserName', mail);
+            localStorage.setItem('Authorization', res.json().token);
+            localStorage.setItem('UserName', mail);
             this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
-            sessionStorage.setItem('UserID', this.decoded);
+            localStorage.setItem('UserID', this.decoded);
 
           }
         }
@@ -95,8 +97,8 @@ export class LoginService {
   }
 
   loged_out() {
-    sessionStorage.setItem('UserID', null);
-    return this._http.post(this.ServerUrl + 'api-token-refresh/', {'token': sessionStorage.getItem('Authorization')});
+    localStorage.setItem('UserID', null);
+    return this._http.post(this.ServerUrl + 'api-token-refresh/', {'token': localStorage.getItem('Authorization')});
   }
 
 
@@ -109,7 +111,7 @@ export class LoginService {
           if (res.status === 201 || res.status === 200) {
             // localStorage.setItem('account_created' , '1' );
             const responce_data = res.json();
-            sessionStorage.setItem('Reg', 'Done');
+            localStorage.setItem('Reg', 'Done');
             //  alert(localStorage.getItem('id'));
             //  console.log(responce_data.id);
             //  console.log('ok submited');
@@ -203,7 +205,7 @@ export class LoginService {
   }
 
   verify_token() {
-  return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': sessionStorage.getItem('Authorization')})
+  return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
 .map((res: Response) => {
   if (res) {
     console.log('Done');
@@ -238,7 +240,7 @@ export class LoginService {
 }
   verify_tokenWithNoRedirict() {
 
-    return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': sessionStorage.getItem('Authorization')})
+    return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
       .map(response => {
             const token = response.json() && response.json().token;
             if (token) {
@@ -267,7 +269,7 @@ export class LoginService {
       console.log(model['strn']);
 
     }
-    return this._http.post( this.StoreServerUrl + 'GetStoreInformation/' + sessionStorage.getItem('UserID'),
+    return this._http.post( this.StoreServerUrl + 'GetStoreInformation/' + localStorage.getItem('UserID'),
       {
         'StoreName' :  model['storename'],
         'OwnerName':  model['ownername'],
@@ -281,7 +283,7 @@ export class LoginService {
         'LegalName':  model['fbrname'],
         'NTN':  model['cnic'],
         'STRN':  model['strn'],
-        'UserID': sessionStorage.getItem('UserID'),
+        'UserID': localStorage.getItem('UserID'),
 
       })
       .map((res: Response) => {
@@ -291,7 +293,7 @@ export class LoginService {
             // localStorage.setItem('account_created' , '1' );
             // const responce_data = res.json();
             // localStorage.setItem('Reg', 'Done');
-            //  alert(sessionStorage.getItem('id'));
+            //  alert(localStorage.getItem('id'));
 
             this.StoreBankRegistration(model).subscribe(data => {
               console.log(data);
@@ -323,7 +325,7 @@ export class LoginService {
 
  StoreBankRegistration(model: any []) {
 
-   return this._http.post( this.StoreServerUrl + 'GetStoreBankInformation/' + sessionStorage.getItem('UserID'),
+   return this._http.post( this.StoreServerUrl + 'GetStoreBankInformation/' + localStorage.getItem('UserID'),
      {
        'StoreID' :  model['storename'],
        'AccountTitle':  model['acount_title'],
@@ -337,7 +339,7 @@ export class LoginService {
          console.log(res);
          if (res.status === 201 || res.status === 200) {
            // const responce_data = res.json();
-            sessionStorage.setItem('StoreReg', 'Done');
+            localStorage.setItem('StoreReg', 'Done');
            this._nav.navigate(['/login']);
          }
        }
@@ -503,7 +505,7 @@ export class LoginService {
 
   ResetPasswordConfirm(uid, token, pass1, pass2) {
 
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this._http.post(this.EMailServerUrl + 'password/reset/confirm/', JSON.stringify({
         new_password1: pass1,
@@ -521,6 +523,18 @@ export class LoginService {
     });
 
   }
+  sendmail(email) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this._http.post(this.ServerUrl + 'confirm/email/',
+      JSON.stringify({
+        email: email
+      }), {headers: headers})
+      .map((response: Response) => {
+        console.log(response);
+      });
+  }
+
 
 
 }

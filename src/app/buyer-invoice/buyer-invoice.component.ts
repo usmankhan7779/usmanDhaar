@@ -51,7 +51,7 @@ export class BuyerInvoiceComponent implements OnInit {
         this.InvoicesID = params['InvoicesID'] || '0' ;
         });
 
-    if (sessionStorage.getItem('UserID') === null) {
+    if (localStorage.getItem('UserID') === null) {
 
       this._nav.navigate(['/login']);
     } else {
@@ -201,6 +201,6 @@ export class BuyerInvoiceComponent implements OnInit {
     }
   }
   clearSessionstoreage() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 }

@@ -135,8 +135,15 @@
 
           <li class="col-md-2 col-sm-4 col-xs-6">
             <div class="inbox"> <i class="fa fa-bullhorn" aria-hidden="true"></i>
+              <ng-container *ngIf="!this.GetUSerOffer.length">
+              <h6>0</h6>
+              </ng-container>
+              <ng-container *ngIf="this.GetUSerOffer.length">
               <h6>{{GetUSerOffer['results'].length}}</h6>
-              <strong>Best Offers</strong> </div>
+              </ng-container>
+              <strong>Best Offers</strong>
+
+            </div>
           </li>
           <!--<li class="col-md-2 col-sm-4 col-xs-6">-->
           <!--<div class="inbox"> <i class="fa fa-envelope-o" aria-hidden="true"></i>-->

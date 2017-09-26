@@ -27,17 +27,11 @@ export class BuyerOrderComponent implements OnInit {
 
   ngOnInit() {
 
-    if (sessionStorage.getItem('UserID') === null) {
-
-      this._nav.navigate(['/login']);
-    } else {
-
-      this.httpService.GetallInvoiceIDByUser(sessionStorage.getItem('UserID')).subscribe(
-        data => {
-          this.ActiveProduct = data;
-          console.log(this.ActiveProduct);
-        });
-    }
+    this.httpService.GetallInvoiceIDByUser(sessionStorage.getItem('UserID')).subscribe(
+      data => {
+        this.ActiveProduct = data;
+        console.log(this.ActiveProduct);
+      });
   }
   clearSessionstoreage() {
     sessionStorage.clear();

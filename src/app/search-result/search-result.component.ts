@@ -65,7 +65,7 @@ export class SearchResultComponent implements OnInit {
     }
 
 
-    this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
     if (this.CartedProduct === null) {
       this.Cart = true;
     }
@@ -87,13 +87,13 @@ export class SearchResultComponent implements OnInit {
       if ( tmp.ProductID === Abc ) {
 
         this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
-        sessionStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+        localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
 
 
       }
 
     }
-    this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
     if (this.CartedProduct === null) {
       this.Cart = true;
     }

@@ -40,13 +40,13 @@ export class HeaderComponent implements OnInit {
     // alert(val);
   }
   ngOnInit() {
-    // console.log('fdsfsdfdsgj' + sessionStorage.getItem('UserID'));
-    if (sessionStorage.getItem('UserID') !== null) {
+    // console.log('fdsfsdfdsgj' + localStorage.getItem('UserID'));
+    if (localStorage.getItem('UserID') !== null) {
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {
 
           if (response) {
 
-            this.obj.GetUSerdetailsByUserId(sessionStorage.getItem('UserID')).subscribe(resSlidersData => {
+            this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
               this.GetUSerDOne = resSlidersData;
               this.ValueRec = true;
 
@@ -72,7 +72,7 @@ export class HeaderComponent implements OnInit {
 
      }
 
-    this.CartedProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
 
     if (this.CartedProduct) {
 
@@ -89,7 +89,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ValueReset() {
-    sessionStorage.clear();
+    localStorage.clear();
     this.obj.loged_out();
     this.ValueRec = false;
     this._nav.navigate(['/login']);
@@ -98,7 +98,7 @@ export class HeaderComponent implements OnInit {
 
   gotodashboard() {
 
-    this.obj.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(sessionStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
+    this.obj.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
 
         if ( resSlidersData['Vendor'] === true) {
           this._nav.navigate(['/dashboard']);

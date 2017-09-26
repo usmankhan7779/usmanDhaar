@@ -71,7 +71,7 @@ export class SingleProductComponent implements OnInit {
     // }, 1000);
 
 
-    if (sessionStorage.getItem('UserID') !== null) {
+    if (localStorage.getItem('UserID') !== null) {
       this.LoginID = true;
     } else {
       this.LoginID = false;
@@ -292,7 +292,7 @@ export class SingleProductComponent implements OnInit {
 
     if (this.model.UserPriceBid > MaxPrice) {
       this.MinBidPrice = false;
-      this.GetAdd.InsertUserBid(sessionStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
+      this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
         this.GeProductBiding = resSlidersData;
         if (this.CatName === '0') {
           this.router.navigate(['/login']);
@@ -374,12 +374,12 @@ export class SingleProductComponent implements OnInit {
       try {
 
 
-        // this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+        // this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
         // alert(this.TmpresultProduct['products']);
 
-        if (sessionStorage.getItem('Cartdata') !== null ) {
+        if (localStorage.getItem('Cartdata') !== null ) {
 
-          this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+          this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
           for (const ABCC of this.TmpresultProduct['products']) {
 
             if (ABCC.ProductID === this.ProID) {
@@ -390,9 +390,9 @@ export class SingleProductComponent implements OnInit {
           if (this.NewCart === false) {
 
             this.resultProduct[0].itemsqty = +Abc;
-            this.TmpresultProduct = JSON.parse(sessionStorage.getItem('Cartdata'));
+            this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
             this.TmpresultProduct['products'].push(this.resultProduct[0]);
-            sessionStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+            localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
             // console.log(this.products);
             this.router.navigate(['/checkout2']);
           } else {
@@ -402,14 +402,14 @@ export class SingleProductComponent implements OnInit {
 
           this.resultProduct[0].itemsqty = +Abc;
           this.TmpresultProduct['products'].push(this.resultProduct[0]);
-          sessionStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+          localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
           // console.log(this.products);
           this.router.navigate(['/checkout2']);
         }
       } catch  (e) {
         this.resultProduct[0].itemsqty = +Abc;
          this.TmpresultProduct['products'].push(this.resultProduct[0]);
-           sessionStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+           localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
       // console.log(this.products);
             this.router.navigate(['/checkout2']);
       }
@@ -419,12 +419,12 @@ export class SingleProductComponent implements OnInit {
   }
 
   ClearSession() {
-    sessionStorage.clear();
+    localStorage.clear();
     alert('clear');
   }
 
   MakeAnOffer() {
-    if (sessionStorage.getItem('Authorization') !== null) {
+    if (localStorage.getItem('Authorization') !== null) {
       this.LOginObj.verify_tokenWithNoRedirict().subscribe((response) => {
 
           if (response) {
