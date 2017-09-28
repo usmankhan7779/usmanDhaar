@@ -45,7 +45,7 @@ export class UserDetailComponent implements OnInit {
 
     this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
       this.GetUSerdetails = resSlidersData;
-      
+
     });
 
   }

@@ -42,7 +42,10 @@ export class BuyerDashboardServices {
   Invoice(invID: any , invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
 
 
-    return this._http.post(this.saleServerUrl + 'AddcustomerInvoice', {'InvoicesID': invID, 'InvoicesBalance': invBalance, 'InvoicesPayment': invPay,
+    return this._http.post(this.saleServerUrl + 'AddcustomerInvoice', {
+      'InvoicesID': invID,
+      'InvoicesBalance': invBalance,
+      'InvoicesPayment': invPay,
       'InvoicesAsGuest': invGuest,
       'InvoicesAsUserID': invUserID
     })
@@ -66,7 +69,10 @@ export class BuyerDashboardServices {
   InvoiceProducts(invID: any , prodID: any, Quantity: any) {
 
 
-    return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceProduct', {'InvoicesID': invID, 'ProductID': prodID, 'Qty': Quantity
+    return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceProduct', {
+      'InvoicesID': invID,
+      'ProductID': prodID,
+      'Qty': Quantity
     })
       .map((res: Response) => {
         if (res) {
@@ -84,10 +90,9 @@ export class BuyerDashboardServices {
 
 
   CustomerInvoiceShippingAddress(invID: any , fname: any, lname: any, email: any, state: any, country: any, city: any, zip: any, address: any, telephone: any, fax: any) {
-
-
-    return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceShippingAddrres', {'InvoicesID': invID, 'First_Name': fname, 'Last_Name': lname
-      , 'Email': email      , 'State': state
+    return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceShippingAddrres', {
+      'InvoicesID': invID, 'First_Name': fname, 'Last_Name': lname
+      , 'Email': email, 'State': state
       , 'Country': country, 'City': city, 'Zip': zip, 'Address': address,  'Telephon': telephone, 'Fax': fax
 
     })

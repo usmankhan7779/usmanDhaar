@@ -25,6 +25,7 @@ export class ReserPasswordComponent implements OnInit {
               private _nav: Router) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.sub = this.route.params.subscribe(params => {
       this.uid = params['uid'] || '0';
       this.token = params['token'] || '0';

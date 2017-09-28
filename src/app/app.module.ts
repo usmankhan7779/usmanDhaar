@@ -48,9 +48,11 @@ import { SellerPurchasingInvoiceComponent } from './seller-purchasing-invoice/se
 import { StoreTemplateComponent } from './store-template/store-template.component';
 import { SubCategoryDetailComponent } from './sub-category-detail/sub-category-detail.component';
 import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-category-detail.component';
-//preloader-content
 import { AuthGuard } from './auth-guard/auth-guard.services';
 import { XHRBackend, RequestOptions } from '@angular/http';
+export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions, preloaderService: PreloaderService) {
+  return new HttpService(backend, defaultOptions, preloaderService);
+}
 import { HttpService } from './services/http-service';
 import { PreloaderService } from './services/preloader-service';
 import { PostService } from './services/post-service';
@@ -62,9 +64,8 @@ import { SellerSettingComponent } from './seller-setting/seller-setting.componen
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ReserPasswordComponent } from './reser-password/reser-password.component';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
-export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions, preloaderService: PreloaderService) {
-  return new HttpService(backend, defaultOptions, preloaderService);
-}
+import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
+
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     SellerSettingComponent,
     SearchResultComponent,
     ReserPasswordComponent,
+    VerfiyEmailComponent,
 
   ],
   imports: [

@@ -39,7 +39,7 @@ import { BuyerSettingComponent } from './buyer-setting/buyer-setting.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ReserPasswordComponent } from './reser-password/reser-password.component';
 import { AuthGuard } from './auth-guard/auth-guard.services';
-
+import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 
 const appRoutes: Routes = [
   {
@@ -195,7 +195,15 @@ const appRoutes: Routes = [
       path: 'reset/:uid/:token',
       component: ReserPasswordComponent,
 
-    },
+  },
+  {
+      path: 'VerfiyEmail',
+      component: VerfiyEmailComponent,
+
+  },
+
+
+
 
 
 

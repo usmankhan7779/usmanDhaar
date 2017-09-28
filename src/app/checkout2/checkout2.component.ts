@@ -169,17 +169,10 @@ export class Checkout2Component implements OnInit {
     console.log(this.model);
     this.httpbuyerService.Invoice(this.id, this.Total, false, true, this.user).subscribe(
       data => {
-
-
-
-        console.log( this.CartedProduct['products']);
+        // console.log( this.CartedProduct['products']);
         for (const item of this.CartedProduct['products']) {
           this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty).subscribe(
             data => {
-
-
-
-
             }, (err) => {
 
               alert(err);

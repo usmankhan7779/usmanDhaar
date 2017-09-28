@@ -42,8 +42,6 @@ export class StoreRegistrationComponent implements OnInit {
   }
 
   onChange(username: string) {
-
-
     if (username !== '') {
 
 

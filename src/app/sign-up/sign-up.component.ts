@@ -10,6 +10,7 @@ import { LoginService } from '../log-in/log-in.services';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  public mask = [  /\d/, /\d/, /\d/, /\d/, '-' , /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
   model: any = {};
   loading = false;
   Waitcall = false;

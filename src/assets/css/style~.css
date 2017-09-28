@@ -503,8 +503,6 @@ input:focus {
 }
 .header-top a {
 	color: #eee;
-	font-size:15px;
-	font-weight:600px;
 }
 .header-top a:hover {
 	color: #f98180;
@@ -634,7 +632,6 @@ input:focus {
 }
 .language-currency-wrapper .block.block-currency {
 	margin-left: 15px;
-	font-size:15px;
 	color: rgba(255,255,255,0.8);
 }
 .language-currency-wrapper .block.block-currency>ul {
@@ -696,7 +693,7 @@ input:focus {
 	text-align: left;
 }
 .offer-content-text p {
-	font-size: 15px;
+	font-size: 12px;
 	color: #eee;
 	padding: 4px 0px 0px;
 	margin: auto;
@@ -1320,12 +1317,12 @@ ul#cart-sidebar {
 	color: #000000;
 	margin-right: 0px;
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 14px;
 	transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 	padding: 0 20px;
-	font-weight: 500;
+	font-weight: 400;
 	letter-spacing: 0.5px;
-	
+	text-transform: uppercase;
 }
 .home-product-tabs li.active a {
 	background: none repeat scroll 0 0 #fff;
@@ -1340,7 +1337,6 @@ ul#cart-sidebar {
 	border: 0px solid #999;
 	padding: 0px 7px;
 	background: #fff;
-	font-weight:600;
 }
 .home-product-tabs li:first-child a {
 	padding-left: 0px;
@@ -1865,8 +1861,8 @@ ul#cart-sidebar {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	padding: 0 10px;
-	font-size: 18px;
-	font-weight: 500;
+	font-size: 15px;
+	font-weight: 400;
 	text-transform: none;
 	letter-spacing: 0.5px;
 }
@@ -5001,15 +4997,15 @@ ul.products-list .sale-left {
 	padding: 0px 0px 20px 22px;
 }
 .product-view-area .product-name h1 {
-	font-size: 32px;
+	font-size: 34px;
 	margin: 0 0 18px;
 	text-align: left;
-	line-height: 36px;
+	line-height: 25px;
 	padding-bottom: 15px;
 	letter-spacing: normal;
 	font-weight: 600;
 	border-bottom: 1px solid #e5e5e5;
-
+	text-transform: uppercase;
 }
 .product-view-area .short-description {
 	font-size: 13px;
@@ -5193,13 +5189,13 @@ button.button.pro-add-to-cart span i {
 .product-cart-option ul li a {
 	color: #636363;
 	display: block;
-	font-size: 14px;
-	font-weight: 800;
+	font-size: 11px;
+	font-weight: 700;
 	line-height: 22px;
 	margin: 0;
 	text-align: center;
 	text-decoration: none;
-
+	text-transform: uppercase
 }
 .product-cart-option ul li a:hover, .product-cart-option ul li a:hover i {
 	color: #f23534

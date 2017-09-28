@@ -164,10 +164,10 @@ a.meanmenu-reveal {
 .main-menu ul li a {
 	color: #333333;
 	display: inline-block;
-	font-size: 18px;
+	font-size: 14px;
 	line-height: 18px;
 	text-transform: capitalize;
-	font-weight: 800;
+	font-weight: 600;
 	padding: 16px 25px;
 	text-transform: capitalize;
 	transition: all 0.3s ease 0s;
@@ -177,8 +177,8 @@ a.meanmenu-reveal {
 .main-menu ul li .mega-menu li a {
 	color: #333;
 	display: inline-block;
-	font-size: 16px;
-	font-weight: 500;
+	font-size: 13px;
+	font-weight: 400;
 	letter-spacing: 0.5px;
 	padding: 0px;
 	text-transform: capitalize;
@@ -323,7 +323,7 @@ a.meanmenu-reveal {
 	text-transform: capitalize;
 	width: 100%;
 	padding-bottom: 5px;
-	font-size: 17px;
+	font-size: 15px;
 }
 .main-menu ul li .mega-menu span.mega-menu-img.left {
 	width: 25%;

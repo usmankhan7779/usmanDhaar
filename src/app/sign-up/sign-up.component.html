@@ -118,7 +118,12 @@
                 <div class="formrow label-overlay">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Mobile.valid }">
                     <div *ngIf="f.submitted && !Mobile.valid" class="help-block">Mobile is required</div>
-                    <input type="text" class="form-control" name="Mobile"  placeholder="Mobile No." [(ngModel)]="model.Mobile" #Mobile="ngModel" required>
+                    <input type="text" class="form-control" name="Mobile"
+                          placeholder="03001234567"
+                           [textMask]="{mask: mask}"
+                           [(ngModel)]="model.Mobile"
+
+                           #Mobile="ngModel" required>
                   </div><!-- End .form-group -->
                 </div>
 

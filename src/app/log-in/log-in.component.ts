@@ -72,7 +72,6 @@ export class LogInComponent implements OnInit {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
 
-
       },
       (err) => {
         this.Waitcall = false;

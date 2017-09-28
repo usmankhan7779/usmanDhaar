@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 
 
 
+
 @Injectable()
 
 export class LoginService {
@@ -34,16 +35,17 @@ export class LoginService {
     return this._http.post(this.ServerUrl + 'user-token-auth/', {'username': mail, 'password': pass})
       .map((res: Response) => {
         if (res) {
-          // let user =  { username: mail, token: res.json().token};
-          // if (user && user.token) {
-          //   localStorage.setItem('currentUser', JSON.stringify(user));
-          // }
+
           if (res.status === 200) {
-            localStorage.setItem('Authorization', res.json().token);
-            localStorage.setItem('UserName', mail);
+
             this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
             localStorage.setItem('UserID', this.decoded);
-              this.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
+              this.GetUSerdetailsByUserId(this.decoded).subscribe(resSlidersData => {
+              if (resSlidersData['ISConfirmed'] === true) {
+                localStorage.setItem('Authorization', res.json().token);
+                localStorage.setItem('password', null);
+                localStorage.setItem('Username', null);
+                localStorage.setItem('UserName', mail);
 
               if ( CatName !== null && ProID !== null) {
 
@@ -51,17 +53,25 @@ export class LoginService {
               } else if (checkout === 'yes') {
                 this._nav.navigate(['/checkout2'], {queryParams: { login:  'yes' } });
               } else {
-
+                    // alert(resSlidersData['Vendor']);
                 if (resSlidersData['Vendor'] === true) {
                   this._nav.navigate(['/dashboard']);
                 } else {
                   this._nav.navigate(['/buyer-dashboard']);
                 }
               }
+            } else {
 
+                this.GetEmailById(this.decoded).subscribe(resSlidersData1 => {
+                  localStorage.setItem('Usernamae', mail);
+                  localStorage.setItem('email', resSlidersData1['email']);
+                  localStorage.setItem('password', pass);
+                });
 
-            }
-              );
+                this._nav.navigate(['/VerfiyEmail']);
+              }
+
+                });
            }
         }
       }).catch((error: any) => {
@@ -97,9 +107,11 @@ export class LoginService {
   }
 
   loged_out() {
-    localStorage.setItem('UserID', null);
+    // localStorage.setItem('UserID', null);
+    localStorage.clear();
     return this._http.post(this.ServerUrl + 'api-token-refresh/', {'token': localStorage.getItem('Authorization')});
   }
+
 
 
   post_signup_form(username: string, email: string , password: string, Fname, LName, Mobile) {
@@ -111,12 +123,16 @@ export class LoginService {
           if (res.status === 201 || res.status === 200) {
             // localStorage.setItem('account_created' , '1' );
             const responce_data = res.json();
-            localStorage.setItem('Reg', 'Done');
+             localStorage.setItem('Usernamae', username);
+             localStorage.setItem('email', email);
+             localStorage.setItem('password', password);
             //  alert(localStorage.getItem('id'));
             //  console.log(responce_data.id);
             //  console.log('ok submited');
-            this._nav.navigate(['/login']);
+            this.sendmail(email).subscribe();
+
             this.register_customer(responce_data.id, Fname, LName, Mobile).subscribe();
+            this._nav.navigate(['/VerfiyEmail']);
           }
         }
       }).catch((error: any) => {
@@ -145,17 +161,19 @@ export class LoginService {
         'Lname':  LName,
         'Mobile':  Mobile,
         'Vendor':  false,
+        'ISConfirmed': false,
       }).map((res: Response) => {
       if (res) {
+
         if (res.status === 201 || res.status === 200) {
-          console.log('ok submited');
+
         }
       }
     }).catch((error: any) => {
       console.log(error);
       if (error.status !== 404) {
         if (error.status === 401) {
-          console.log(error);
+          // console.log(error);
 
           return Observable.throw(new Error(error.status));
         }
@@ -197,7 +215,6 @@ export class LoginService {
 
   check_email_unique(email) {
     return this._http.get(this.ServerUrl + 'email_verify/' + email).map((response: Response) => response.json());
-
   }
   GetStoreInformationByUserId(email) {
     return this._http.get(this.StoreServerUrl + 'GetStoreInformationByUserId/' + email).map((response: Response) => response.json());
@@ -395,8 +412,13 @@ export class LoginService {
   }
   GetUserDetailByName(USerid) {
     return this._http.get(this.ServerUrl + 'UserFullDetails/' + USerid).map((response: Response) => response.json());
-
   }
+
+   GetEmailById(USerid) {
+    return this._http.get(this.ServerUrl + 'Get_EmailByID/' + USerid).map((response: Response) => response.json());
+  }
+
+
 
 
   UserDetailsUpdate(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: any, Username: string) {
@@ -528,13 +550,48 @@ export class LoginService {
     headers.append('Content-Type', 'application/json');
     return this._http.post(this.ServerUrl + 'confirm/email/',
       JSON.stringify({
-        email: email
+        email: email,
+        username: localStorage.getItem('Usernamae')
       }), {headers: headers})
       .map((response: Response) => {
-        console.log(response);
+
+        // console.log(response);
       });
   }
+  checkcode(key, email) {
+    console.log(key);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this._http.post(this.ServerUrl + 'verify/email/',
+      JSON.stringify({
+        email: email,
+        username: localStorage.getItem('Usernamae'),
+        key: key
+      }), {headers: headers})
+      .map((response: Response) => {
 
+        if (response) {
+
+           }
+
+      }).catch((error: any) => {
+
+        if (error.status !== 404) {
+          if (error.status === 401) {
+            console.log(error);
+
+            return Observable.throw(new Error(error.status));
+          }
+
+
+        } else {
+          console.log(error);
+          //   this._nav.navigate(['/login']);
+
+          return Observable.throw(new Error(error.status));
+        }
+      });
+  }
 
 
 }
