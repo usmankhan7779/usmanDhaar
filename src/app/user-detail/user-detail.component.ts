@@ -10,10 +10,12 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class UserDetailComponent implements OnInit {
   model: any = {};
+  public mask = [  /\d/, /\d/, /\d/, /\d/, '-' , /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
   jwtHelper: JwtHelper = new JwtHelper();
   step1 = true;
   step2 = false;
   step3 = false;
+  sub: any;
   step4 = false;
   step1button = false;
   step2button = false;
@@ -21,6 +23,7 @@ export class UserDetailComponent implements OnInit {
   UserTyping = false;
   Userloading= false;
   EmailExist= false;
+  Inc= false;
   Waitcall= false;
   Emailok= false;
   Emailinvalid= false;
@@ -37,9 +40,17 @@ export class UserDetailComponent implements OnInit {
   Error= false;
   Right= false;
   constructor(private obj: LoginService,
-              private _nav: Router) { }
+              private _nav: Router,
+              private _nav1: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.sub = this._nav1
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.Inc = params['Inc'] || false;
+      });
 
     this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
 
@@ -142,7 +153,9 @@ export class UserDetailComponent implements OnInit {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);
           this.Error = false;
+          this.Waitcall = false;
           this.Right = true;
+
 
 
         },

@@ -71,7 +71,7 @@
                         </div>
                         <input type="text" [(ngModel)]="model.storename"
                                pattern="^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$"
-                               placeholder="mySotre"
+                               placeholder="mysotre"
                                (keyup)=checkButtonStep1()
                                (ngModelChange)="onChange($event)"
                                #storename="ngModel" name="storename" class="input form-control"
@@ -102,7 +102,7 @@
                                #ownername="ngModel" name="ownername"
                                (keyup)=checkButtonStep1()
                                required class="input form-control"
-                               placeholder="my name"
+                               placeholder="your name"
                                id="company_name">
 
                       </div>
@@ -125,7 +125,7 @@
                                (keyup)=checkButtonStep1()
                                (ngModelChange)="OnEmailChangeEvent()"
                                (focusout)="checkEmail(email.value)"
-                               placeholder="somename@gmail.com"
+                               placeholder="your email address"
                                [(ngModel)]="model.email" #email="ngModel" name="email"
                                id="email_address">
 
@@ -149,7 +149,8 @@
                         <input class="input form-control" type="text"
                                pattern="([0-9])+$"
                                (keyup)=checkButtonStep1()
-                               placeholder="55560"
+                               placeholder="your zip Code"
+                               maxlength="10"
                                 [(ngModel)]="model.zipcode" #zipcode="ngModel" name="zipcode" id="postal_code">
                       </div>
                     </div><!--/ [col] -->
@@ -162,7 +163,7 @@
 
                         <input class="input form-control"
                                (keyup)=checkButtonStep1()
-                            placeholder="lahore"
+                            placeholder="your city"
                                pattern="^([A-Za-z])+$"
                                type="text" required [(ngModel)]="model.city" #city="ngModel" name="city" id="city">
                       </div>
@@ -183,11 +184,10 @@
                         </div>
 
                         <input class="input form-control"
-                               pattern="([0-9])+$"
-                               maxlength="11"
-                               minlength="11"
+
+                               [textMask]="{mask: mask}"
                                (keyup)=checkButtonStep1()
-                               placeholder="03001112223"
+                               placeholder="your mobile number"
                                type="text" required [(ngModel)]="model.personal" #personal="ngModel" name="personal"
                                id="telephone">
                       </div>
@@ -203,9 +203,9 @@
 
                           <input class="input form-control"
                                  pattern="([0-9])+$"
-                                 placeholder="03001234567"
+                                 placeholder="Second contact Number"
                                  maxlength="11"
-                                 minlength="11"
+
                                  (keyup)=checkButtonStep1()
                                  type="text" [(ngModel)]="model.business" #business="ngModel" name="business"
                                  id="telepone">

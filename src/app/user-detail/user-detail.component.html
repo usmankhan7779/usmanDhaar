@@ -39,12 +39,9 @@
       <form role="form" class="login-form" >
 
         <div class="col-md-9 col-sm-8">
-          <div *ngIf="Error"  class="alert alert-danger">
-            <strong>Error </strong> While updating record.
-          </div>
 
-          <div *ngIf="Right" class="alert alert-success">
-            <strong>Profile Updated!</strong>
+          <div *ngIf="Inc" class="alert alert-info">
+            <strong>Incomplete Account Data!</strong>
           </div>
 
 
@@ -97,7 +94,7 @@
                     <div class="col-sm-6">
 
                         <label   class="required">Select Your Country(*) </label>
-                       <select  class="form-control"  ng-Model="model.Country" #Country name="Country" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                       <select  class="form-control"  ng-Model="model.Country" #Country name="Country" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                          <option value="Pakistan" selected>Pakistan</option>
 
                         </select>
@@ -110,7 +107,7 @@
                     <div class="col-sm-6">
 
                         <label  class="required">Select Your State/Province(*)</label>
-                        <select  class="form-control"  ng-Model="model.State" #State name="State" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                        <select  class="form-control"  ng-Model="model.State" #State name="State" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                           <option value="Punjab" selected>Punjab</option>
 
                           <option value="Sindh" >Sindh</option>
@@ -165,10 +162,9 @@
 
 
                         <input class="input form-control"
-                               pattern="([0-9])+$"
-                               maxlength="11"
-                               minlength="11"
-                               placeholder="03001234567"
+
+                               [textMask]="{mask: mask}"
+                               placeholder="your contact number"
                                type="text" required ng-Model="model.personal" #personal name="personal"
                                id="telephone"
                                value="{{GetUSerdetails[0].Mobile}}">
@@ -212,6 +208,13 @@
 
 
                 <div class="nav nav-tabs">
+                  <div *ngIf="Error"  class="alert alert-danger">
+                    <strong>Error </strong> While updating record.
+                  </div>
+
+                  <div *ngIf="Right" class="alert alert-success">
+                    <strong>Profile Updated!</strong>
+                  </div>
                   <div *ngIf="Waitcall" class="alert  alert-info">
                     <p class="">
                       <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>

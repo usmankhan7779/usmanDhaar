@@ -11,6 +11,7 @@ import { JwtHelper } from 'angular2-jwt';
 export class SellerUserDetailComponent implements OnInit {
   model: any = {};
   jwtHelper: JwtHelper = new JwtHelper();
+  public mask = [  /\d/, /\d/, /\d/, /\d/, '-' , /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
   step1 = true;
   step2 = false;
   step3 = false;

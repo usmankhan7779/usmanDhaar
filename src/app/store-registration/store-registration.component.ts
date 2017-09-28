@@ -9,7 +9,7 @@ import { LoginService } from '../log-in/log-in.services';
 })
 export class StoreRegistrationComponent implements OnInit {
   model: any = {};
-
+  public mask = [  /\d/, /\d/, /\d/, /\d/, '-' , /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
   step1 = true;
   step2 = false;
   step3 = false;

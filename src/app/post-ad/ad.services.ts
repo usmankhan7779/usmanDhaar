@@ -151,7 +151,7 @@ export class AdService {
         'ReservePrice': ReservePrice,
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
-        'StoreName': sessionStorage.getItem('StoreName'),
+        'StoreName': localStorage.getItem('StoreName'),
         'Quantity': Quantity,
         'MaxQuantity': Quantity,
         'Active': false,
@@ -163,7 +163,7 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
         // /  this.ProductImages(Product_ID, basex64).subscribe();
-          sessionStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
 
@@ -196,7 +196,7 @@ export class AdService {
         'Buyitnow': Buyitnow,
         'AuctionListing': AuctionListing,
         'ReservePrice': ReservePrice,
-        'StoreName': sessionStorage.getItem('StoreName'),
+        'StoreName': localStorage.getItem('StoreName'),
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
         'Quantity': Quantity,
@@ -217,7 +217,7 @@ export class AdService {
           // this.ProductImages(Product_ID, basex64).subscribe();
 
 
-          sessionStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
         }
@@ -247,7 +247,7 @@ export class AdService {
         'MaxBidPrice': Starting_Price,
         'Buyitnow': Buyitnow,
         'AuctionListing': AuctionListing,
-        'StoreName': sessionStorage.getItem('StoreName'),
+        'StoreName': localStorage.getItem('StoreName'),
         'ReservePrice': ReservePrice,
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
@@ -266,7 +266,7 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
           // this.ProductImages(Product_ID, basex64).subscribe();
-          sessionStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
         }
@@ -292,7 +292,7 @@ export class AdService {
         'P_Des':  Addetail,
         'P_Condition':  condition,
         'Auction': Auction,
-        'StoreName': sessionStorage.getItem('StoreName'),
+        'StoreName': localStorage.getItem('StoreName'),
         'SrartingPrice': Starting_Price,
         'MaxBidPrice': Starting_Price,
         'Buyitnow': Buyitnow,
@@ -316,7 +316,7 @@ export class AdService {
           const responce_data = res.json();
 
           // this.ProductImages(Product_ID, basex64).subscribe();
-          sessionStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
           return [{ status: res.status, json: res }];
@@ -345,7 +345,7 @@ export class AdService {
         'Auction': Auction,
         'SrartingPrice': Starting_Price,
         'MaxBidPrice': Starting_Price,
-        'StoreName': sessionStorage.getItem('StoreName'),
+        'StoreName': localStorage.getItem('StoreName'),
         'Buyitnow': Buyitnow,
         'AuctionListing': AuctionListing,
         'ReservePrice': ReservePrice,
@@ -365,7 +365,7 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
           // this.ProductImages(Product_ID, basex64).subscribe();
-          sessionStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
         }
@@ -390,7 +390,7 @@ export class AdService {
         'P_Title':  Title,
         'P_Des':  Addetail,
         'P_Condition':  condition,
-        'StoreName': sessionStorage.getItem('StoreName'),
+        'StoreName': localStorage.getItem('StoreName'),
         'Auction': Auction,
         'SrartingPrice': Starting_Price,
         'MaxBidPrice': Starting_Price,
@@ -415,7 +415,7 @@ export class AdService {
 
          // this.ProductImages(Product_ID, basex64).subscribe();
 
-          sessionStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
           return [{ status: res.status, json: res }];

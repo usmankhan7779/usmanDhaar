@@ -51,7 +51,11 @@ export class LoginService {
 
                 this._nav.navigate(['/single-product'], {queryParams: { CatName:  CatName, ProID: ProID, Redirect: 'MakeOffer' } });
               } else if (checkout === 'yes') {
-                this._nav.navigate(['/checkout2'], {queryParams: { login:  'yes' } });
+                if (resSlidersData['Complete'] === true) {
+                  this._nav.navigate(['/checkout2'], {queryParams: {login: 'yes'}});
+                } else {
+                  this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
+                }
               } else {
                     // alert(resSlidersData['Vendor']);
                 if (resSlidersData['Vendor'] === true) {

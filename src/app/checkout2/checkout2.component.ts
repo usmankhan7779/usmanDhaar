@@ -67,6 +67,10 @@ export class Checkout2Component implements OnInit {
                 this.user = localStorage.getItem('UserID');
                 this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
                   this.GetUSerDOne = resSlidersData;
+                  if ( this.GetUSerDOne['Complete'] === false) {
+                    this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
+                  }
+
 
                 });
         }
@@ -135,6 +139,9 @@ export class Checkout2Component implements OnInit {
                this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
                  this.GetUSerDOne = resSlidersData;
 
+                 if ( this.GetUSerDOne['Complete'] === false) {
+                   this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
+                 }
 
                });
 
