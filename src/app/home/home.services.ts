@@ -28,6 +28,12 @@ export class HomeService {
     // console.log(this.CateDeatils)
   }
 
+  GetAllProductPicture(pk: string) {
+
+    return this._http.get(this.ServerUrl + 'Getproductimages/' + pk).map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
+
 
   GetWomenFashionProducts4() {
 

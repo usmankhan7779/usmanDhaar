@@ -30,7 +30,7 @@ export class VerfiyEmailComponent implements OnInit {
   }
 
   resedcode( ) {
-    this.Waitcall = true
+    this.Waitcall = true;
     this.obj.sendmail(localStorage.getItem('email'))
       .subscribe(
         data => {

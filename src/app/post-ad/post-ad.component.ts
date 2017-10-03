@@ -26,19 +26,27 @@ export class PostAdComponent implements OnInit {
   User_ID: string;
   CatName: string;
   SubCat_ID: string;
+  arrayIndex = 0;
   uploadFile: any;
   Buyitnow = false;
   CatNumber: number;
   ReservePrice = false;
+  PictureCheck = false;
+  MaxPictureCheck = false;
+  ShowPictureError = false;
   Waitcall = false;
   ReversePrice = false;
   private base64textString= '';
+  private base64textString1= '';
   sizeLimit = 2000000;
   Fixed = true;
   base64textStringforPic: any [];
+  ALLbase64textStringforPic= {0: 'dfghjk'};
+
   Addbestoffer = false;
   Auction = true;
   file: any;
+  file1: any;
   files: FileList;
   constructor(
     private route: ActivatedRoute,
@@ -131,90 +139,100 @@ export class PostAdComponent implements OnInit {
 
   save( cateogry: any, condition: string) {
     // alert('first')
+    this.ShowPictureError = false;
+    if(this.PictureCheck) {
 
-    const utcDate = new Date(new Date().getTime());
-    const dateformat = utcDate.toString().split(' ');
-    const timeNOw = dateformat[4].split(':');
-    const Monthlist = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const monthind = Monthlist.indexOf(dateformat[1]) ;
-    const  monthindex = monthind + 1;
-    console.log('month' + monthindex);
-    this.DateTime = monthindex  + dateformat[2] + dateformat[3] + timeNOw[0] + timeNOw[1] + timeNOw[2];
-    console.log('month' + this.DateTime );
-    const subcat = this.model.subcat.split('!');
 
-    this.CatNumber = + this.CatId;
+      const utcDate = new Date(new Date().getTime());
+      const dateformat = utcDate.toString().split(' ');
+      const timeNOw = dateformat[4].split(':');
+      const Monthlist = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const monthind = Monthlist.indexOf(dateformat[1]);
+      const monthindex = monthind + 1;
+      console.log('month' + monthindex);
+      this.DateTime = monthindex + dateformat[2] + dateformat[3] + timeNOw[0] + timeNOw[1] + timeNOw[2];
+      console.log('month' + this.DateTime);
+      const subcat = this.model.subcat.split('!');
 
-    if ( this.CatNumber < 10) {
+      this.CatNumber = +this.CatId;
 
-      this.CatId = '0' + this.CatId;
-    }
-    this.Waitcall = true;
-    const Product_ID = this.CatId + subcat[1] + subcat[3] + this.DateTime;
-    // console.log('var132:' + Product_ID );
-    //   alert('before');
-    //   alert(this.CatName);
-    if ( this.Auction === true ) {
-           // alert('dasdasd');
-      this.model.FixedPrice = 0;
-      this.model.AddBestOffer = 0;
-      this.model.Quantity = 0;
-      if (this.model.ReservePrice == null) {
-        this.model.ReservePrice = 0;
+      if (this.CatNumber < 10) {
+
+        this.CatId = '0' + this.CatId;
       }
-      if (this.model.Buyitnow == null) {
+      this.Waitcall = true;
+      const Product_ID = this.CatId + subcat[1] + subcat[3] + this.DateTime;
+      // console.log('var132:' + Product_ID );
+      //   alert('before');
+      //   alert(this.CatName);
+      if (this.Auction === true) {
+        // alert('dasdasd');
+        this.model.FixedPrice = 0;
+        this.model.AddBestOffer = 0;
+        this.model.Quantity = 0;
+        if (this.model.ReservePrice == null) {
+          this.model.ReservePrice = 0;
+        }
+        if (this.model.Buyitnow == null) {
+          this.model.Buyitnow = 0;
+        }
+
+        if (this.CatName === 'Phones & Tablets') {
+
+          console.log('ABC');
+
+          //  console.log('Phones & Tablets')
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'Women\'s Fashion') {
+          // console.log('Women\'s Fashion')
+          this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'Men\'s Fashion') {
+          this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'TV, Audio & Video') {
+          // console.log('TV, Audio & Video')
+          this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'Computing & Laptops') {
+          this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'Home Appliances') {
+          this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        }
+      } else {
+
+
+        this.model.Starting_Price = 0;
         this.model.Buyitnow = 0;
-      }
+        this.model.ReservePrice = 0;
+        this.model.AuctionListing = 0;
 
-      if (this.CatName === 'Phones & Tablets') {
-      //  console.log('Phones & Tablets')
-        this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'Women\'s Fashion') {
-       // console.log('Women\'s Fashion')
-        this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'Men\'s Fashion') {
-        this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'TV, Audio & Video') {
-       // console.log('TV, Audio & Video')
-        this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'Computing & Laptops') {
-        this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'Home Appliances') {
-        this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
+        if (this.model.AddBestOffer == null) {
+          this.model.AddBestOffer = 0;
+        }
+        // console.log('catName:'+ this.CatName);
+        if (this.CatName === 'Phones & Tablets') {
+
+
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'Women\'s Fashion') {
+
+          this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'Men\'s Fashion') {
+          this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'TV, Audio & Video') {
+          // console.log('TV, Audio & Video')
+          this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'Computing & Laptops') {
+          this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        } else if (this.CatName === 'Home Appliances') {
+          // alert('Home');
+          this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+        }
+
+
       }
     } else {
-
-
-      this.model.Starting_Price = 0;
-      this.model.Buyitnow = 0;
-      this.model.ReservePrice = 0;
-      this.model.AuctionListing = 0;
-
-      if (this.model.AddBestOffer == null) {
-        this.model.AddBestOffer = 0;
-      }
-      // console.log('catName:'+ this.CatName);
-      if (this.CatName === 'Phones & Tablets') {
-        //console.log('Phones & Tablets');
-        this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'Women\'s Fashion') {
-        //console.log('Women\'s Fashion')
-        this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'Men\'s Fashion') {
-        this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'TV, Audio & Video') {
-       // console.log('TV, Audio & Video')
-        this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'Computing & Laptops') {
-        this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      } else if (this.CatName === 'Home Appliances') {
-        // alert('Home');
-        this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-      }
-
+      this.ShowPictureError = true;
 
     }
-
 
    // console.log(day);
 
@@ -243,30 +261,61 @@ export class PostAdComponent implements OnInit {
     const binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
 
-
-
-
-
   }
 
   onChange(event: EventTarget) {
 
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-     this.files = target.files;
-    this.file = this.files[0];
-    console.log(this.files);
-
-    const reader = new FileReader();
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsBinaryString(this.file);
- }
 
 
+      const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+      const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+      this.files = target.files;
+    if (this.files.length >= 1 && this.files.length < 5) {
+
+      this.MaxPictureCheck = false;
+      this.file = this.files[0];
+
+      this.PictureCheck = true;
+      const reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(this.file);
+
+      if (this.files.length > 1 && this.files.length < 5) {
+
+        for (let a = 1; a < (this.files.length); a++) {
+          // alert(a);
+          this.file1 = this.files[a];
+          const reader1 = new FileReader();
+          reader1.onload = (e: any) => {
+            this._handleReaderLoadedforALl(e, a - 1);
+          }
+          // this._handleReaderLoadedforALl.bind(this.file1, a-1);
+          reader1.readAsBinaryString(this.file1);
+        }
+        console.log("fsdfsdf");
+        console.log(this.ALLbase64textStringforPic);
+      }
+    }else {
+      this.MaxPictureCheck = true;
+    }
 
 
+   }
 
 
+  _handleReaderLoadedforALl(readerEvt, index) {
+    // console.log('attt  ',index);
+    const binaryString = readerEvt.target.result;
+    // console.log('123456');
+    // console.log('asdfghjk   ',btoa(binaryString))
+    // // this.arrayIndex=0;
+
+    this.ALLbase64textStringforPic[index] = btoa(binaryString);
+    // console.log(this.ALLbase64textStringforPic);
+    this.arrayIndex += 1;
+
+
+  }
 }
 
 

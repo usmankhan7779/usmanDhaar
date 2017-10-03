@@ -42,13 +42,7 @@
       <form role="form" class="login-form" >
 
         <div class="col-md-9 col-sm-8">
-          <div *ngIf="Error"  class="alert alert-danger">
-            <strong>Error </strong> While updating record.
-          </div>
 
-          <div *ngIf="Right" class="alert alert-success">
-            <strong>Profile Updated!</strong>
-          </div>
 
 
           <div class="userccount">
@@ -213,6 +207,13 @@
 
 
                   <div class="nav nav-tabs">
+                    <div *ngIf="Error"  class="alert alert-danger">
+                      <strong>Error </strong> While updating record.
+                    </div>
+
+                    <div *ngIf="Right" class="alert alert-success">
+                      <strong>Profile Updated!  <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go to Dashboard Section</a></strong>
+                    </div>
                     <div *ngIf="Waitcall" class="alert  alert-info">
                       <p class="">
                         <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>

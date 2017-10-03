@@ -38,10 +38,10 @@
 
                     <label style="color: black" class="help-block">Title</label>
                     <div *ngIf="f.submitted && !Title.valid" class="help-block">Title required</div>
-                    <input type="text" class="form-control" name="Title" placeholder="Product Title" [(ngModel)]="model.Title" #Title="ngModel"  required>
+                    <input type="text" class="form-control" maxlength="90" name="Title" placeholder="Product Title" [(ngModel)]="model.Title" #Title="ngModel"  required>
 
                   </div>
-                  <span class="help-block">A Good title needs Maximum 60 characters. </span>
+                  <span class="help-block">A Good title needs Maximum 90 characters. </span>
                   <!--<input type="text" name="jobtitle" class="form-control" placeholder="Ad Title ">-->
                 </div>
               </div>
@@ -87,7 +87,7 @@
 
                     <label style="color: black" class="help-block">Ad Detail*</label>
                     <div *ngIf="f.submitted && !Addetail.valid" class="help-block">Ad-details required</div>
-                    <textarea class="form-control" name="Addetail" placeholder="Ad Detail" [(ngModel)]="model.Addetail" #Addetail="ngModel"  required></textarea>
+                    <textarea maxlength="1500" class="form-control" name="Addetail" placeholder="Ad Detail" [(ngModel)]="model.Addetail" #Addetail="ngModel"  required></textarea>
                 </div>
                 </div>
               </div>
@@ -117,9 +117,20 @@
 
                     </label>
                   </div>
-                  <div *ngFor="let item_file of files"  class="fileattached"> <img src="images/ads/01.jpg" alt=""> <span> {{ item_file.name }}</span> <i class="fa fa-check-circle" aria-hidden="true"></i>
+                  <ng-container *ngIf="!MaxPictureCheck" >
+                  <ng-container *ngFor="let item_file of files; let i= index">
+                  <div  *ngIf="i<4"  class="fileattached"> <img src="images/ads/01.jpg" alt=""> <span> {{ item_file.name }}</span> <i class="fa fa-check-circle" aria-hidden="true"></i>
                     <div class="clearfix"></div>
                   </div>
+                  </ng-container>
+                  </ng-container>
+
+                  <ng-container *ngIf="MaxPictureCheck">
+                    <div  class="alert alert-danger">
+                      <strong>Maximum 4 Picture Allowed. Try Again  </strong>
+                    </div>
+
+                  </ng-container>
 
                 </div>
               </div>
@@ -158,7 +169,8 @@
                       <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control" placeholder="Reserve Price">
                     </div>
                       <div class="formrow">
-                        <select [(ngModel)]="model.AuctionListing" class="col-md-push-6" name="listing" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                        <label  style="color: black" class="help-block">Select Your Listing</label>
+                        <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                           <option value="10" selected>10 Days</option>
                           <option value="7">7 Days</option>
                           <option value="5">5 Days</option>
@@ -206,6 +218,12 @@
 
             </div>
             <br>
+              <ng-container *ngIf="ShowPictureError">
+                <div  class="alert alert-danger">
+                  <strong>Upload atleast 1 Product Photo </strong>
+                </div>
+
+              </ng-container>
               <div *ngIf="Waitcall" class="alert  alert-info">
                 <p class="">
                   <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>

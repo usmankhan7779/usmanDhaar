@@ -46,6 +46,7 @@ export class SingleProductComponent implements OnInit {
   TmpresultProduct: any = {'products': []};
   GeProductBiding: any = [];
   ProductPrice: any = [];
+  ProductPictures: any = [];
   CatName: string;
   starp: any = 0;
   starq: any;
@@ -78,6 +79,8 @@ export class SingleProductComponent implements OnInit {
     }
 
 
+
+
     this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
       this.GetallPhoneProduct = resSlidersData;
     });
@@ -94,6 +97,11 @@ export class SingleProductComponent implements OnInit {
           if (this.RedirectFromlogin === 'MakeOffer') {
             this.amountoffer = true;
           }
+        }
+        if (this.ProID !== '0') {
+        this.GetAdd.GetAllProductPicture(this.ProID).subscribe(resSlidersData => {
+          this.ProductPictures = resSlidersData;
+        });
         }
 
         this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {

@@ -119,7 +119,7 @@
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Mobile.valid }">
                     <div *ngIf="f.submitted && !Mobile.valid" class="help-block">Mobile is required</div>
                     <input type="text" class="form-control" name="Mobile"
-                          placeholder="03001234567"
+                          placeholder="Your Mobile Number"
                            [textMask]="{mask: mask}"
                            [(ngModel)]="model.Mobile"
 

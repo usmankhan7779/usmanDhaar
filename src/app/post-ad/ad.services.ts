@@ -96,41 +96,32 @@ export class AdService {
 
 
   }
-  ProductImages( Pidd: any, Pic: any) {
 
+  ProductImages( Pidd: any, ALLbase64textStringforPic) {
+        return this._http.post(this.ServerUrl + 'productimages', {'Pic': ALLbase64textStringforPic, 'ProID': Pidd})
+          .map((res: Response) => {
+            if (res) {
+              // console.log('testing res');
+              if (res.status === 200 || res.status === 201) {
 
+                const responce_data = res.json();
+                // console.log('this isinsertion ' + responce_data.id);
+                // this.UPload_PIc2(Sub2_cat, title, des, con, cat, sub_cat, Sub_Subcat, this.id).subscribe();
+                //            localStorage.setItem('Authorization', res.json().token);
+                //          this._nav.navigate(['/profile']);
+                return [{status: res.status, json: res}];
+              }
+            }
+          }).catch((error: any) => {
+            console.log('errors ');
+            alert(error)
+            return Observable.throw(new Error(error.status));
+          });
 
-//    console.log('testing 123 ' + Pidd);
-    return this._http.post(this.ServerUrl + 'productimages', { 'Pic': Pic, 'ProID': Pidd })
-      .map((res: Response) => {
-        if (res) {
-         // console.log('testing res');
-          if (res.status === 200 || res.status === 201) {
-
-            const responce_data = res.json();
-           // console.log('this isinsertion ' + responce_data.id);
-            // this.UPload_PIc2(Sub2_cat, title, des, con, cat, sub_cat, Sub_Subcat, this.id).subscribe();
-            //            localStorage.setItem('Authorization', res.json().token);
-            //          this._nav.navigate(['/profile']);
-            return [{ status: res.status, json: res }];
-          }
-        }
-      }).catch((error: any) => {
-
-        if (error.status === 404) {
-          console.log('errors 404');
-        } else {
-          console.log('errors ');
-        }
-        console.log( error);
-        console.log(error.text);
-        return Observable.throw(new Error(error.status));
-      });
 
   }
-
-  Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
-    let headers = new Headers();
+  Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex) {
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     return this._http.post(this.ServerUrl + 'phoneandtablets',
@@ -162,7 +153,14 @@ export class AdService {
 
         if (res.status === 201) {
           const responce_data = res.json();
-        // /  this.ProductImages(Product_ID, basex64).subscribe();
+
+          for (let a = 0; a < arrayIndex; a++) {
+            console.log(a);
+            this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+          }
+
+
+
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
@@ -178,7 +176,7 @@ export class AdService {
 
 
   }
-  Add_WomenFashion_Product(Product_ID: any,  User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
+  Add_WomenFashion_Product(Product_ID: any,  User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex) {
 
     return this._http.post(this.ServerUrl + 'womenfashion',
       {
@@ -214,7 +212,10 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
 
-          // this.ProductImages(Product_ID, basex64).subscribe();
+          for (let a = 0; a < arrayIndex; a++) {
+            console.log(a);
+            this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+          }
 
 
           localStorage.setItem('NewPost', 'Done');
@@ -229,7 +230,7 @@ export class AdService {
 
 
   }
-  Add_MenFashion_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
+  Add_MenFashion_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex ) {
 
 
     return this._http.post(this.ServerUrl + 'menfashion',
@@ -265,7 +266,11 @@ export class AdService {
         console.log('abc');
         if (res.status === 201) {
           const responce_data = res.json();
-          // this.ProductImages(Product_ID, basex64).subscribe();
+          for (let a = 0; a < arrayIndex; a++) {
+            console.log(a);
+            this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+          }
+
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
@@ -278,7 +283,7 @@ export class AdService {
 
 
   }
-  Add_TVAudioVideo_Product(Product_ID: any, User_ID,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
+  Add_TVAudioVideo_Product(Product_ID: any, User_ID,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex ) {
 
 
     return this._http.post(this.ServerUrl + 'TVAudioVideo',
@@ -315,7 +320,11 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
 
-          // this.ProductImages(Product_ID, basex64).subscribe();
+          for (let a = 0; a < arrayIndex; a++) {
+            console.log(a);
+            this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+          }
+
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
 
@@ -329,7 +338,7 @@ export class AdService {
 
 
   }
-  Add_ComputingLaptops_Product(Product_ID: any, User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
+  Add_ComputingLaptops_Product(Product_ID: any, User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex  ) {
    // console.log('fsdfsfgsahd' + SubSubCat);
 
     return this._http.post(this.ServerUrl + 'ComputingLaptops',
@@ -364,7 +373,11 @@ export class AdService {
         console.log('abc');
         if (res.status === 201) {
           const responce_data = res.json();
-          // this.ProductImages(Product_ID, basex64).subscribe();
+          for (let a = 0; a < arrayIndex; a++) {
+            console.log(a);
+            this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+          }
+
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
@@ -377,7 +390,7 @@ export class AdService {
 
 
   }
-  Add_HomeAppliances_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any ) {
+  Add_HomeAppliances_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex ) {
 
 
     return this._http.post(this.ServerUrl + 'HomeAppliances',
@@ -413,7 +426,11 @@ export class AdService {
         if (res.status === 201) {
           const responce_data = res.json();
 
-         // this.ProductImages(Product_ID, basex64).subscribe();
+          for (let a = 0; a < arrayIndex; a++) {
+            console.log(a);
+            this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+          }
+
 
           localStorage.setItem('NewPost', 'Done');
           this._nav.navigate(['/dashboard']);

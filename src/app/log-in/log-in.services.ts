@@ -134,7 +134,6 @@ export class LoginService {
             //  console.log(responce_data.id);
             //  console.log('ok submited');
             this.sendmail(email).subscribe();
-
             this.register_customer(responce_data.id, Fname, LName, Mobile).subscribe();
             this._nav.navigate(['/VerfiyEmail']);
           }
