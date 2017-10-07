@@ -1325,7 +1325,7 @@ ul#cart-sidebar {
 	padding: 0 20px;
 	font-weight: 500;
 	letter-spacing: 0.5px;
-	
+
 }
 .home-product-tabs li.active a {
 	background: none repeat scroll 0 0 #fff;
@@ -5763,7 +5763,7 @@ input.input-text, select, textarea {
 	border: 1px #f1f1f1 solid;
 	padding: 8px 10px;
 	outline: none;
-	color: #aaa;
+	
 }
 #wishlist-table textarea {
 	padding: 8px 10px;

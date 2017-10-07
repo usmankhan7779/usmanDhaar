@@ -425,8 +425,6 @@ export class LoginService {
 
 
   UserDetailsUpdate(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: any, Username: string) {
-
-
     return this._http.post( this.ServerUrl + 'UserFullDetails/' + Username,
       {
         'user_id': Username,
