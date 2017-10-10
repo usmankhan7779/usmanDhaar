@@ -595,4 +595,13 @@ export class LoginService {
   }
 
 
+
+  NewsLatterEmail(email) {
+
+      return this._http.post(this.ServerUrl + 'subscription', {
+        'Email': email
+      }).map((response: Response) => response.json());
+    }
+
+
 }

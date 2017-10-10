@@ -85,11 +85,7 @@
                           </div>
                           <div class="item-content">
                             <div class="rating">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star-o"></i>
-                              <i class="fa fa-star-o"></i>
-                              <i class="fa fa-star-o"></i>
+                              <p> Seller: <a [routerLink]="['/store', phoneProducts.StoreName]"> {{phoneProducts.StoreName}}</a></p>
                             </div>
                             <div *ngIf="phoneProducts.Auction == true" class="item-price">
 

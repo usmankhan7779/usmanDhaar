@@ -503,8 +503,8 @@ input:focus {
 }
 .header-top a {
 	color: #eee;
-	font-size:15px;
-	font-weight:600px;
+	font-size:16px;
+	font-weight:600;
 }
 .header-top a:hover {
 	color: #f98180;
@@ -634,7 +634,8 @@ input:focus {
 }
 .language-currency-wrapper .block.block-currency {
 	margin-left: 15px;
-	font-size:15px;
+	font-size:16px;
+	font-weight:600;
 	color: rgba(255,255,255,0.8);
 }
 .language-currency-wrapper .block.block-currency>ul {
@@ -760,11 +761,13 @@ input:focus {
 #search input {
 	height: 45px;
 	display: inline-block;
-	width: 55%;
+	width: 85%;
 	border: none;
 	background: #f5f5f5;
 	box-shadow: none;
 	color: #000000;
+	font-size: 24px;
+    font-weight: 600;
 }
 .form-control::-moz-placeholder {
 color: #000000;
@@ -1325,7 +1328,7 @@ ul#cart-sidebar {
 	padding: 0 20px;
 	font-weight: 500;
 	letter-spacing: 0.5px;
-
+	
 }
 .home-product-tabs li.active a {
 	background: none repeat scroll 0 0 #fff;
@@ -3475,7 +3478,7 @@ footer .phone .fa-phone:before {
 .footer-newsletter .newsletter-email {
 	float: left;
 	font-size: 13px;
-	font-weight: 400;
+	font-weight: 500;
 	border: 1px solid #eaeaea;
 	background: #fff;
 	color: #666;
@@ -3494,14 +3497,14 @@ button.subscribe:before {
 	padding-right: 8px
 }
 .footer-newsletter .subscribe {
-	text-transform: uppercase;
-	font-size: 14px;
-	font-weight: 400;
+	
+	font-size: 16px;
+	font-weight: 600;
 	float: left;
 	color: #fff;
 	text-decoration: none;
 	background: #f23534;
-	padding: 11px 25px 11px 18px;
+	padding: 13px 25px 11px 18px;
 	border: 0px #000000 solid;
 	border-radius: 0px 50px 50px 0px;
 }
@@ -5763,7 +5766,7 @@ input.input-text, select, textarea {
 	border: 1px #f1f1f1 solid;
 	padding: 8px 10px;
 	outline: none;
-	
+	color: #aaa;
 }
 #wishlist-table textarea {
 	padding: 8px 10px;

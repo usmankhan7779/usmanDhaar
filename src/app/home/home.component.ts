@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   getcomputinglaptopsproduct8: any = [];
   WomenFashionProducts4: any = [];
   MenFashionProducts4: any = [];
+  getFashionProduct: any = [];
   GetALLProductss: any = [];
   GetALLFeaturedProductss: any = [];
   GetALLAuctionProductss: any = [];
@@ -76,6 +77,13 @@ export class HomeComponent implements OnInit {
     this.GetProducts.GetMenFashionProducts4().subscribe(resSlidersData => {
 
       this.MenFashionProducts4 = resSlidersData;
+      // console.log('Start');
+      // console.log(this.TvVideoaudio8);
+
+    });
+   this.GetProducts.getFashionProduct().subscribe(resSlidersData => {
+
+      this.getFashionProduct = resSlidersData;
       // console.log('Start');
       // console.log(this.TvVideoaudio8);
 

@@ -66,7 +66,10 @@
 
             </div>
             <div class="ratings">
-              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+              <div class="rating">
+
+                <p> Seller: <a [routerLink]="['/store', productToshow.StoreName]"> {{productToshow.StoreName}}</a></p>
+                 </div>
               <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Your Review</a> </p>
               <p class="availability in-stock pull-right">Availability: <span>In Stock</span></p>
             </div>
@@ -479,11 +482,9 @@
                         </div>
                         <div class="item-content">
                           <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
+                            <p> Seller: <a [routerLink]="['/store', phoneProducts.StoreName]"> {{phoneProducts.StoreName}}</a></p>
+
+
                           </div>
                           <div *ngIf="phoneProducts.Auction == true" class="item-price">
 

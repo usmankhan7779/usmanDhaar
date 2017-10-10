@@ -415,13 +415,7 @@
                                 <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
                               </div>
                               <div class="item-content">
-                                <div class="rating">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                  <i class="fa fa-star-o"></i>
-                                </div>
+
                                 <div *ngIf="phoneProducts.Auction == true" class="item-price">
 
                                   <div  class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</span> </span> </div>

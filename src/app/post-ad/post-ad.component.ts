@@ -292,7 +292,7 @@ export class PostAdComponent implements OnInit {
           // this._handleReaderLoadedforALl.bind(this.file1, a-1);
           reader1.readAsBinaryString(this.file1);
         }
-        console.log("fsdfsdf");
+        // console.log("fsdfsdf");
         console.log(this.ALLbase64textStringforPic);
       }
     }else {

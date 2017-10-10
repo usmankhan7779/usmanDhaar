@@ -10,10 +10,23 @@
               <h3 class="">Sign up for newsletter</h3>
               <span>Get the latest deals and special offers</span></div>
             <div class="col-md-5 col-sm-7">
-              <form id="newsletter-validate-detail" method="post" action="#">
+
+              <form  role="form"  id="newsletter-validate-detail" (ngSubmit)="f.form.valid && loged_in(Email.value)" #f="ngForm" novalidate>
                 <div class="newsletter-inner">
-                  <input class="newsletter-email" name='Email' placeholder='Enter Your Email'/>
+                  <span *ngIf="Waitcall" style="color: green !important;">Thanks For Subscribing!</span>
+                  <span *ngIf="login_error" style="color: red !important;">Email already exist</span>
+
+
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Email.valid }">
+                      <div class="form-group label-overlay">
+                      <div *ngIf="f.submitted && !Email.valid" class="help-block"><span style="color: white !important;">Email is required</span></div>
+
+                      <input type="email" class="newsletter-email"  (ngModelChange)="OnEmailChangeEvent()" name='Email' placeholder='Enter Your Email' [(ngModel)]="model.Email" #Email="ngModel" required/>
+                    </div>
+
+                  </div><!-- End .form-group -->
                   <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
+
                 </div>
               </form>
             </div>

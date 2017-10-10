@@ -443,11 +443,8 @@
                             </div>
                             <div class="item-content">
                               <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
+                               <p> Saller: <a [routerLink]="['/store',phoneProducts.StoreName]"> {{phoneProducts.StoreName}}</a></p>
+
                               </div>
                               <div *ngIf="phoneProducts.Auction == true" class="item-price">
 
@@ -477,39 +474,69 @@
 
                 </div>
                 <div class="tab-pane fade" id="men">
-                  <div class="product-item col-md-3 col-sm-6">
-                    <div class="item-inner">
-                      <div class="product-thumbnail">
-                        <div class="icon-sale-label sale-left">Sale</div>
-                        <div class="box-hover">
-                          <div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>
-                          <div class="add-to-links" data-role="add-to-links"> <a href="wishlist.html" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="compare.html" class="action add-to-compare" title="Add to Compare"></a> </div>
-                        </div>
-                        <a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img11.jpg" alt=""></a> </div>
-                      <div class="pro-box-info">
-                        <div class="item-info">
-                          <div class="info-inner">
-                            <div class="item-title">
-                              <h4> <a title="Product Title Here" href="single_product.html">Product Title Here </a></h4>
-                            </div>
-                            <div class="item-content">
-                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                              <div class="item-price">
-                                <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+
+                  <ng-container *ngFor="let phoneProducts of getFashionProduct">
+                    <div class="product-item col-md-3 col-sm-6">
+                      <div class="item-inner">
+                        <div class="product-thumbnail">
+                          <!--<div class="icon-sale-label sale-left">Sale</div>-->
+                          <!--<div class="box-hover">-->
+                          <!--<div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>-->
+                          <!--<div class="add-to-links" data-role="add-to-links"> <a href="#" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="#" class="action add-to-compare" title="Add to Compare"></a> </div>-->
+                          <!--</div>-->
+                          <div class="slider-items-products">
+                            <div id="pro2-slider12" class="product-flexslider hidden-buttons">
+                              <div class="slider-items slider-width-col6">
+
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="300" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.pic }}"></a>
+                                <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
+                                <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
+
+                                <!--<div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">-->
+                                <!--<div class="countbox_1 jtv-timer-grid">-->
+
+                                <!--</div>-->
+                                <!--</div>-->
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="box-hover">
-                          <div class="product-item-actions">
-                            <div class="pro-actions">
-                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                        <div class="pro-box-info">
+                          <div class="item-info">
+                            <div class="info-inner">
+                              <div class="item-title">
+                                <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
+                              </div>
+                              <div class="item-content">
+                                <div class="rating">
+                                  <p> Seller: <a [routerLink]="['/store', phoneProducts.StoreName]"> {{phoneProducts.StoreName}}</a></p>
+
+                                </div>
+                                <div *ngIf="phoneProducts.Auction == true" class="item-price">
+
+                                  <div  class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0' }}</span> </span> </div>
+
+                                </div>
+                                <div *ngIf="phoneProducts.Auction == false" class="item-price">
+                                  <div class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.FixedPrice | number:'.0-0' }}</span> </span> </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="box-hover">
+                            <div class="product-item-actions">
+                              <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
+                              </div>
+                              <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button> </a>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </ng-container>
 
                 </div>
                 <div class="tab-pane fade" id="kids">
@@ -537,7 +564,9 @@
                               <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">{{ TvVideoaudio88.P_Title }} </a></h4>
                             </div>
                             <div class="item-content">
-                              <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                              <div class="rating">
+                                <p> Saller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]"> {{TvVideoaudio88.StoreName}}</a></p>
+                                </div>
 
                               <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
@@ -644,7 +673,12 @@
                                 <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">{{ TvVideoaudio88.P_Title }} </a></h4>
                               </div>
                               <div class="item-content">
-                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                <div class="rating">
+
+                                  <p> Saller: <a [routerLink]="['/store',TvVideoaudio88.StoreName]" > {{TvVideoaudio88.StoreName}}</a></p>
+                                          </div>
+
+
 
                                 <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
@@ -704,7 +738,10 @@
                                 <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">{{ TvVideoaudio88.P_Title }} </a></h4>
                               </div>
                               <div class="item-content">
-                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                <div class="rating">
+
+                                  <p> Saller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]"> {{TvVideoaudio88.StoreName}}</a></p>
+                                    </div>
 
                                 <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 

@@ -40,6 +40,11 @@ export class HomeService {
     return this._http.get(this.ServerUrl + 'getwomenfashionproducts4').map(response => response.json());
     // console.log(this.CateDeatils)
   }
+  getFashionProduct() {
+
+    return this._http.get(this.ServerUrl + 'getFashionProduct').map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
 
   GetMenFashionProducts4() {
 

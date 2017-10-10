@@ -68,13 +68,13 @@
           <div id="search">
             <form >
               <div class="input-group">
-                <select class="cate-dropdown hidden-xs hidden-sm" name="category_id">
-                  <option>All Categories</option>
-                  <ng-container *ngFor="let item_cat of GetallCat">
-                    <option value="{{item_cat.Cat_Name}}">{{item_cat.Cat_Name}}</option>
+                <!--<select class="cate-dropdown hidden-xs hidden-sm" name="category_id">-->
+                  <!--<option>All Categories</option>-->
+                  <!--<ng-container *ngFor="let item_cat of GetallCat">-->
+                    <!--<option value="{{item_cat.Cat_Name}}">{{item_cat.Cat_Name}}</option>-->
 
-                  </ng-container>
-                </select>
+                  <!--</ng-container>-->
+                <!--</select>-->
                 <!--id="institutenameid"-->
                 <input type="text"  ng-Model="model.search" (keydown)="navigate($event, search.value )" #search class="form-control"  placeholder="Search" name="search">
 
