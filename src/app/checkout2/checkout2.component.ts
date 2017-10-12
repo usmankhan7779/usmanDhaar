@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer  } from '@angular/core';
 import { LoginService } from '../log-in/log-in.services';
+import { ActiveAdServices } from '../active-ad/active-ad.services';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
@@ -16,9 +17,13 @@ export class Checkout2Component implements OnInit {
   public mask = [ /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public phonemask = [ /\d/, /\d/, /\d/,  /\d/,  '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
   private sub: any;
-
+  seconds: any;
+  minutes: any;
+  hours: any;
+  days: any;
   model: any = {};
   GetUSerDOne: any = [];
+  GetUSallerCoupon: any = [];
   mymodel: any = {};
   PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   LoginName: string;
@@ -44,6 +49,7 @@ export class Checkout2Component implements OnInit {
               private route: ActivatedRoute,
               private _nav: Router,
               private httpService: LoginService,
+              private httpServiceads: ActiveAdServices,
               private Profile: LoginService,
               private httpbuyerService: BuyerDashboardServices) {
 
@@ -79,7 +85,7 @@ export class Checkout2Component implements OnInit {
     this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
 
     this.Total = 0;
-    for (let tmp of this.CartedProduct['products']) {
+    for (const tmp of this.CartedProduct['products']) {
 
       this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
     }
@@ -108,19 +114,56 @@ export class Checkout2Component implements OnInit {
   TrashcartElement(Abc: any) {
 
     for (const tmp of this.CartedProduct['products']) {
-
-
       if ( tmp.ProductID === Abc ) {
         console.log(tmp);
         this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
         localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
       }
-
     }
 
 
 
   }
+
+  Applycoupon (abc: string) {
+    alert(abc);
+    if ( this.CartedProduct['products'] ) {
+      console.log(this.CartedProduct['products']);
+      this.httpServiceads.GetOnecouponsByID(this.CartedProduct['products'][0]['StoreName'], abc).subscribe(resSlidersData => {
+        this.GetUSallerCoupon = resSlidersData;
+
+        const auctiondays = +this.GetUSallerCoupon[0]['Day'] * 86400000;
+        const time0 = new Date(); //86400000
+        const time1 = new Date(this.GetUSallerCoupon[0].CreatedDate);
+        const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
+        // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
+        let x = time3 / 1000;
+        this.seconds = Math.floor(x % 60);
+        x /= 60;
+        this.minutes = Math.floor(x % 60);
+        x /= 60;
+        this.hours = Math.floor(x % 24);
+        x /= 24;
+        this.days = Math.floor(x);
+
+        if ( this.days > 0 ) {
+
+          console.log( this.CartedProduct['products'][0]['StoreName'])
+          for ( let abc of this.GetUSallerCoupon)
+          {
+
+          }
+
+        }
+
+
+
+      });
+    }
+
+  }
+
+
 
   ContinuetoCHeckout() {
     this.orderreview = false;
@@ -180,6 +223,7 @@ export class Checkout2Component implements OnInit {
         for (const item of this.CartedProduct['products']) {
           this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty).subscribe(
             data => {
+
             }, (err) => {
 
               alert(err);

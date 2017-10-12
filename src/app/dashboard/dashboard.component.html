@@ -38,11 +38,11 @@
           <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
           <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i>List An Item</a></li>
           <li class="active"><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
-
           <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
           <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
           <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
           <li><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
+          <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
           <li><a [routerLink]="['/seller-user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/seller-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
           <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
@@ -155,6 +155,7 @@
 
         </ul>
 
+
         <div class="main container">
           <div class="row">
 
@@ -190,6 +191,71 @@
                           <td>  {{ abc.Qty}}</td>
                           <td>  {{ abc.Price}}</td>
                           <td>  {{ abc.CreatedDate.substr(0,10)}}</td>
+
+                          <td> <button  class="button"><span>Accept</span></button>  <button  class="button"><span>Send an Email</span></button></td>
+
+
+                        </tr>
+                      </ng-container>
+                      </tbody>
+                      <tfoot>
+
+                      <tr>
+
+
+                      </tr>
+
+                      </tfoot>
+                    </table>
+                  </div>
+
+                </div>
+
+
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+
+
+
+        <div class="main container">
+          <div class="row">
+
+            <div class="col-xs-10">
+              <div class="page-content checkout-page">
+                <div class="page-title">
+                  <h2>Discount Coupons</h2>
+                </div>
+
+                <!--<h4 class="checkout-sep">Biding History</h4>-->
+                <div class="box-border">
+                  <div class="table-responsive">
+                    <table class="table table-bordered cart_summary">
+                      <thead>
+                      <tr>
+                        <th>Sr.</th>
+                        <th>Coupons</th>
+                        <th>Discount %</th>
+                        <th>Status</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+
+                      <ng-container  *ngFor="let abc of GetUSerOffer['results']; let i = index">
+                        <tr>
+                          <td> {{i+1}} <span style="color: red !important;">-</span> {{ abc.Product_Id}} <span style="color: red !important;"> <a style="color: red !important;" [routerLink]="['/single-product']" [queryParams]="{ ProID:  abc.Product_Id, CatName: abc.Cat_Name }"> View Ad </a></span></td>
+                          <td>{{ abc.User_Id}}</td>
+                          <td>  {{ abc.Message}}</td>
+                          <td>  {{ abc.Qty}}</td>
+
 
                           <td> <button  class="button"><span>Accept</span></button>  <button  class="button"><span>Send an Email</span></button></td>
 

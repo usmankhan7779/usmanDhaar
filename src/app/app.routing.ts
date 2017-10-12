@@ -40,7 +40,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { ReserPasswordComponent } from './reser-password/reser-password.component';
 import { AuthGuard } from './auth-guard/auth-guard.services';
 import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
-
+import { ManageCouponsComponent } from './manage-coupons/manage-coupons.component';
 const appRoutes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
@@ -189,6 +189,11 @@ const appRoutes: Routes = [
   {
     path: 'seller-setting',
     component: SellerSettingComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'manage-coupons',
+    component: ManageCouponsComponent,
     canActivate: [AuthGuard]
   },
   {

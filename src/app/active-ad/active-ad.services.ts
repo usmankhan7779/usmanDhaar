@@ -47,4 +47,51 @@ export class ActiveAdServices {
 
   }
 
+
+
+  GetAllcoupons(decoded: any) {
+
+    return this._http.get(this.ServerUrl + 'GetAllcoupons/' + decoded).map(response => response.json());
+  }
+ GetOnecouponsByID(store: any, coded: any) {
+
+    return this._http.get(this.ServerUrl + 'GetOnecouponsBycode/' + store + '/' + coded).map(response => response.json());
+  }
+
+  VerifyProductID(pk: any, store: any) {
+
+    return this._http.get(this.ServerUrl + 'VerifyProducts/' + pk + '/' + store).map(response =>  response.json());
+  }
+
+
+
+  InsertDisCountcoupons(Qty: string, Discount: string , Day: string, StoreName) {
+    return this._http.post( this.ServerUrl + 'insertdiscountcoupons/',
+      {'Qty' :  Qty,  'Discount':  Discount, 'Day':  Day, 'StoreName':  StoreName })
+      .map((res: Response) => {
+
+        if (res) {
+          if (res.status === 201 || res.status === 200) {
+
+          }
+        }
+      }).catch((error: any) => {
+
+        if (error.status !== 404) {
+          if (error.status === 401) {
+            console.log(error);
+
+            return Observable.throw(new Error(error.status));
+          }
+
+
+        } else {
+          console.log(error);
+          //   this._nav.navigate(['/login']);
+
+          return Observable.throw(new Error(error.status));
+        }
+      });
+  }
+
 }

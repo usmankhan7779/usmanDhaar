@@ -14,6 +14,7 @@ export class SellerSettingComponent implements OnInit {
   match = true;
   Right = false;
   Error = false;
+  notsame = false;
   Waitcall = false;
   USerNameID: any;
   SessionstoreName: any;
@@ -40,6 +41,10 @@ export class SellerSettingComponent implements OnInit {
   updatePassword(old: string, new1: string, new2: string) {
     this.Error = false;
     this.Right = false;
+
+    if (old === new1 || old === new2) {
+        this.notsame = true;
+    } else {
     if (new1 === new2) {
       this.match = true;
       this.Waitcall = true;
@@ -72,7 +77,7 @@ export class SellerSettingComponent implements OnInit {
 
       this.match = false;
     }
-
+    }
 
   }
 

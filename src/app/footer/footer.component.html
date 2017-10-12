@@ -6,22 +6,29 @@
       <div class="footer-newsletter">
         <div class="container">
           <div class="row">
-            <div class="col-md-3 col-sm-5">
+            <div style="margin-top: 10px;" class="col-md-3 col-sm-5">
               <h3 class="">Sign up for newsletter</h3>
               <span>Get the latest deals and special offers</span></div>
             <div class="col-md-5 col-sm-7">
 
               <form  role="form"  id="newsletter-validate-detail" (ngSubmit)="f.form.valid && loged_in(Email.value)" #f="ngForm" novalidate>
                 <div class="newsletter-inner">
-                  <span *ngIf="Waitcall" style="color: green !important;">Thanks For Subscribing!</span>
-                  <span *ngIf="login_error" style="color: red !important;">Email already exist</span>
+                  <span *ngIf="Waitcall" style="color: white !important;">Thanks For Subscribing!</span>
+                  <span *ngIf="login_error" style="color: white !important;">Email already exist</span>
+                  <div *ngIf="f.submitted && !Email.valid" class="help-block"><span style="color: white !important;">Valid Email is required</span></div>
+
+                  <!--<div  *ngIf="f.submitted && Email.errors  && !Email.valid" >-->
+                    <!--Email is invalid-->
+                  <!--</div>-->
 
 
                     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Email.valid }">
                       <div class="form-group label-overlay">
-                      <div *ngIf="f.submitted && !Email.valid" class="help-block"><span style="color: white !important;">Email is required</span></div>
 
-                      <input type="email" class="newsletter-email"  (ngModelChange)="OnEmailChangeEvent()" name='Email' placeholder='Enter Your Email' [(ngModel)]="model.Email" #Email="ngModel" required/>
+                      <input type="email" class="newsletter-email"
+                             pattern="^(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+                             (ngModelChange)="OnEmailChangeEvent()" name='Email' placeholder='Enter Your Email' [(ngModel)]="model.Email" #Email="ngModel" required/>
+
                     </div>
 
                   </div><!-- End .form-group -->

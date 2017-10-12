@@ -110,6 +110,8 @@ export class LoginService {
     return this._http.get(this.ServerUrl + 'Get_User_details/' + decoded).map(response => response.json());
   }
 
+
+
   loged_out() {
     // localStorage.setItem('UserID', null);
     localStorage.clear();

@@ -42,7 +42,7 @@
             <div *ngIf="EmailPosterror==true" class="alert alert-danger">
               <strong>Error!</strong> Email Already exist.
             </div>
-            <h5>User SignUp</h5>
+            <h5 style="color:#ed2424; ">User SignUp</h5>
             <div id="wsell" class="formpanel tab-pane fade in active">
               <form role="form" class="login-form" (ngSubmit)="f.form.valid && register(Username.value,Email.value,Password.value,FName.value,LName.value,Mobile.value)" #f="ngForm" novalidate>
 

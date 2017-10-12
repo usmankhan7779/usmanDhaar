@@ -50,7 +50,9 @@
             <div *ngIf="Error"  class="alert alert-danger">
               <strong>Error </strong> While updating record.
             </div>
-
+            <div *ngIf="notsame"  class="alert alert-danger">
+              <strong>Error! </strong>New password must be different.
+            </div>
             <div *ngIf="Right" class="alert alert-success">
               <strong>Password Updated!</strong>
             </div>

@@ -64,10 +64,12 @@
                 <tfoot>
 
                 <tr>
-                  <td colspan="2" rowspan="2"><input type="text" class="button col-lg-6" style="font-size: 20px" name=""
+
+                  <td colspan="2" rowspan="2"><input [(ngModel)]="mymodel.coupon" #coupon="ngModel" type="text" class="button col-lg-6" style="font-size: 20px" name=""
                                                      id="first_name"><span class="col-lg-push-3">-</span>
-                    <button class="button col-lg-push-6"><span>Apply Coupon</span></button>
+                    <button type="submit" (click)="Applycoupon(coupon.value)" class="button col-lg-push-6"><span>Apply Coupon</span></button>
                   </td>
+
                   <td colspan="3">Total products (tax incl.)</td>
                   <td colspan="2">Rs: {{ Total | number:'.0-0'}}</td>
                 </tr>

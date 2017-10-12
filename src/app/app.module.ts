@@ -66,6 +66,7 @@ import { ReserPasswordComponent } from './reser-password/reser-password.componen
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 import {ImageZoomModule} from 'angular2-image-zoom';
+import { ManageCouponsComponent } from './manage-coupons/manage-coupons.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import {ImageZoomModule} from 'angular2-image-zoom';
     SearchResultComponent,
     ReserPasswordComponent,
     VerfiyEmailComponent,
+    ManageCouponsComponent,
 
   ],
   imports: [
