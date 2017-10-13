@@ -65,13 +65,21 @@
 
                 <tr>
 
-                  <td colspan="2" rowspan="2"><input [(ngModel)]="mymodel.coupon" #coupon="ngModel" type="text" class="button col-lg-6" style="font-size: 20px" name=""
+                  <td colspan="2" rowspan="2">
+
+                    <input [(ngModel)]="mymodel.coupon" #coupon="ngModel" type="text" class="button col-lg-6" style="font-size: 20px" name=""
                                                      id="first_name"><span class="col-lg-push-3">-</span>
                     <button type="submit" (click)="Applycoupon(coupon.value)" class="button col-lg-push-6"><span>Apply Coupon</span></button>
+                    <br/>
                   </td>
 
-                  <td colspan="3">Total products (tax incl.)</td>
-                  <td colspan="2">Rs: {{ Total | number:'.0-0'}}</td>
+                  <td *ngIf="!TotalDiscount"  colspan="3">Total products (tax incl.)</td>
+                  <td *ngIf="!TotalDiscount" colspan="2">Rs: {{ Total | number:'.0-0'}}</td>
+
+                  <td *ngIf="TotalDiscount>0"  colspan="3">Coupon Discount</td>
+                  <td *ngIf="TotalDiscount>0" colspan="2">Rs: -{{ TotalDiscount | number:'.0-2'}}</td>
+
+
                 </tr>
                 <tr>
                   <td colspan="3"><strong>Total</strong></td>
@@ -94,10 +102,10 @@
             <div *ngIf="LoggedIn === false" class="box-border">
               <div class="row">
                 <div class="col-sm-6">
-                  <h5>Checkout as a Guest or Sign up </h5>
-                  <p>Register with us for future convenience:</p>
+                  <h5>Checkout with Sign up </h5>
+                  <!--<p>Register with us for future convenience:</p>-->
                   <ul>
-                    <li><label><input type="radio" #Guest name="radio1">Checkout as Guest</label></li>
+                    <!--<li><label><input type="radio" #Guest name="radio1">Checkout as Guest</label></li>-->
                     <li><label><input type="radio" #Register name="radio1">Sign up</label></li>
                   </ul>
                   <br>
@@ -106,7 +114,7 @@
                   <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
                   <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
                   <ng-container *ngIf="GuestButton === true">
-                    <button (click)="RegisterOrGuest(Guest.checked,Register.checked)" class="button"><i
+                    <button (click)="RegisterOrGuest(Register.checked)" class="button"><i
                       class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
                   </ng-container>
                 </div>

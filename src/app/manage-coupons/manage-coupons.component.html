@@ -111,7 +111,7 @@
 
             <div class="formrow">
               <input type="radio" (click)="AllProductfuc()"  value="agree text" name="agree" />
-             Selective Products
+             Specfic Products
               <br/>
               <br/>
             </div>
@@ -127,14 +127,14 @@
             <div *ngIf="Right2" class="alert alert-success">
               <strong>Product Verified </strong>
             </div>
-            <div *ngIf="AllProduct === true" class="formrow">
+            <div *ngIf="AllProduct === true" class="formpanel">
               <label  style="color: black" class="help-block">Enter Product ID</label>
-              <input type="text" (keyup)="verifyproductfromDB(Product.value)" [(ngModel)]="model.Product" #Product="ngModel" name="name5" class="form-control" placeholder="Enter Your Product ID">
+              <input type="text"  [(ngModel)]="model.Product" #Product="ngModel" name="name5" class="form-control" placeholder="Enter Your Product ID">
              <br/>
              <br/>
-
-              <input style="background: #f23534; color: white" type="button"  (click)="verifProduct(Product.value)" class="btn" value="Generate Coupons">
-
+              <div class="col-xs-5">
+              <input style="background: #f23534; color: white" (click)="verifProduct(Product.value)" class="btn" value="Generate Coupons">
+              </div>
             </div>
 
 
@@ -167,6 +167,7 @@
                           <th>Sr.</th>
                           <th>Discount %</th>
                           <th>Coupons</th>
+                          <th>Product ID (If)</th>
                           <th>Time</th>
                           <th>Day</th>
 
@@ -182,6 +183,7 @@
                             <td> {{i+1}} </td>
                             <td>{{ abc.Discount}}%</td>
                             <td>  {{ abc.CouponsCode}}</td>
+                            <td>  {{ abc.ProductID}}</td>
                             <td>  {{ abc.Times}}</td>
                             <td>  {{ abc.Day}}</td>
 

@@ -45,25 +45,48 @@ export class ManageCouponsComponent implements OnInit {
 verifProduct (abc: string) {
 
   this.Error2 = false;
-  this.Error2 = false;
+  this.Right2 = false;
 
     this.Waitcall2 = true;
 
+  this.obj.VerifyProductID(abc, this.SessionstoreName )
+    .subscribe(
+      data => {
+        this.MyProduct = data;
 
-
-    this.obj.VerifyProductID(abc.substr(0, abc.length), this.SessionstoreName)
-      .map(response => {
-        alert('safsd');
-        if (response.status === 302) {
-          this.Waitcall2 = false;
-          this.Right2 = true;
-
+        console.log(this.MyProduct['results']['0']);
+        if (this.MyProduct['results']['0']) {
+          this.obj.InsertDisCountcoupons(this.model['Qty'], this.model['Discount'], this.model['AuctionListing'],   this.SessionstoreName, abc )
+            .subscribe(
+              data => {
+                this.Waitcall2 = false;
+                this.Waitcall = false;
+                // this.alertService.success('Registration successful', true);
+                this.Right  = true;
+                // alert('success')
+              },
+              error => {
+                this.Waitcall2 = false;
+                this.Waitcall = false;
+                this.Error = true;
+                // this.alertService.error(error);
+                // this.loading = false;
+                // alert(error);
+              });
 
         } else {
           this.Waitcall2 = false;
           this.Error2 = true;
         }
-      }).subscribe();
+      },
+      error => {
+        this.Waitcall2 = false;
+        this.Error2 = true;
+        // this.alertService.error(error);
+        // this.loading = false;
+        // alert(error);
+      });
+
 
 
 
@@ -71,9 +94,12 @@ verifProduct (abc: string) {
 }
   updatePassword() {
     this.Error = false;
+    this.Error2 = false;
     this.Right  = false;
+    this.Right2  = false;
     this.Waitcall = true;
-    this.obj.InsertDisCountcoupons(this.model['Qty'], this.model['Discount'], this.model['AuctionListing'],   this.SessionstoreName )
+    this.Waitcall2 = false;
+    this.obj.InsertDisCountcoupons(this.model['Qty'], this.model['Discount'], this.model['AuctionListing'],   this.SessionstoreName, "" )
       .subscribe(
         data => {
           this.Waitcall = false;

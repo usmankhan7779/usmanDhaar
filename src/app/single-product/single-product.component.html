@@ -70,7 +70,7 @@
 
                 <p> Seller: <a [routerLink]="['/store', productToshow.StoreName]"> {{productToshow.StoreName}}</a></p>
                  </div>
-              <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Your Review</a> </p>
+
               <p class="availability in-stock pull-right">Availability: <span>In Stock</span></p>
             </div>
             <div class="short-description">
@@ -223,9 +223,7 @@
             <div class="product-cart-option">
               <ul>
                 <li *ngIf="productToshow.Auction"><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{ BidingProduct.length}})</span></a></li>
-                <li><a href="#"><i class="fa fa-heart"></i><span>Add to Wishlist</span></a></li>
-                <li><a href="#"><i class="fa fa-retweet"></i><span>Add to Compare</span></a></li>
-                <li><a href="#Bidhistory"><i class="fa fa-envelope"></i><span>Email to a Friend</span></a></li>
+                <li><a href="#Bidhistory"><i class="fa fa-envelope"></i><span>Share</span></a></li>
               </ul>
             </div>
           </div>
@@ -245,7 +243,7 @@
                 <div id="productTabContent" class="tab-content">
                   <div class="tab-pane fade in active" id="description">
                     <div class="std">
-                      <p>{{ productToshow.P_Des}} </p> </div>
+                      <p style="font-size: 20px;">{{ productToshow.P_Des}} </p> </div>
                   </div>
                   <div id="reviews" class="tab-pane fade">
                     <div class="col-sm-5 col-lg-5 col-md-5">

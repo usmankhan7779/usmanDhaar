@@ -14,6 +14,7 @@ import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.servi
 export class Checkout2Component implements OnInit {
   CartedProduct: any = [];
   Total: number;
+  TotalDiscount: number;
   public mask = [ /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   public phonemask = [ /\d/, /\d/, /\d/,  /\d/,  '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
   private sub: any;
@@ -126,7 +127,7 @@ export class Checkout2Component implements OnInit {
   }
 
   Applycoupon (abc: string) {
-    alert(abc);
+
     if ( this.CartedProduct['products'] ) {
       console.log(this.CartedProduct['products']);
       this.httpServiceads.GetOnecouponsByID(this.CartedProduct['products'][0]['StoreName'], abc).subscribe(resSlidersData => {
@@ -148,9 +149,45 @@ export class Checkout2Component implements OnInit {
 
         if ( this.days > 0 ) {
 
-          console.log( this.CartedProduct['products'][0]['StoreName'])
-          for ( let abc of this.GetUSallerCoupon)
-          {
+
+         const pid = this.GetUSallerCoupon[0]['ProductID'];
+
+          if (pid === '') {
+
+
+            const Discountperc = +this.GetUSallerCoupon[0]['Discount'];
+            // alert(Discountperc)
+            // alert(this.Total)
+
+            const disamount  =  this.Total * Discountperc;
+            // alert(disamount);
+            this.TotalDiscount  =   disamount / 100;
+
+            // alert(disamount1)
+            this.Total = this.Total - this.TotalDiscount ;
+
+
+          } else {
+            const Discountperc = +this.GetUSallerCoupon[0]['Discount'];
+
+
+            for ( const abc of this.CartedProduct['products'] )
+            {
+
+              if(abc.ProductID === pid )
+              {
+                const disamount  =  abc.FixedPrice * Discountperc;
+                this.TotalDiscount  =   disamount / 100;
+
+                // alert(disamount1)
+                abc.FixedPrice = abc.FixedPrice - this.TotalDiscount ;
+
+              }
+
+
+            }
+
+
 
           }
 

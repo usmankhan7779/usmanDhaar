@@ -50,7 +50,7 @@
                 <div class="formrow">
 
                   <label  style="color: black" class="help-block">Product condition</label>
-                  <select   [(ngModel)]="model.condition" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                  <select   [(ngModel)]="model.condition" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                     <option value="New" selected>New</option>
                     <option value="Used">Used</option>
 
@@ -66,7 +66,7 @@
                 <div class="formrow">
 
                     <label  style="color: black" class="help-block">Select Sub Catgory</label>
-                    <select   [(ngModel)]="model.subcat" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                    <select   [(ngModel)]="model.subcat" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                       <optgroup *ngFor="let item of GetAllSubCat"  label="{{ item.Sub_Cat_Name}}">
                         <ng-container *ngFor="let item_sub of GetAllSubSubCat">
                         <option  *ngIf="item.Sub_Cat_Name == item_sub.Sub_Cat_ID" [value]="item.Sub_Cat_Name +'!' +item.id+ '!'+item_sub.Sub_Sub_Cat_Name+ '!' + item_sub.id"> {{ item_sub.Sub_Sub_Cat_Name }}</option>
@@ -87,7 +87,7 @@
 
                     <label style="color: black" class="help-block">Ad Detail*</label>
                     <div *ngIf="f.submitted && !Addetail.valid" class="help-block">Ad-details required</div>
-                    <textarea maxlength="1500" class="form-control" name="Addetail" placeholder="Ad Detail" [(ngModel)]="model.Addetail" #Addetail="ngModel"  required></textarea>
+                    <textarea style="font-size: 20px !important;" maxlength="1500" class="form-control" name="Addetail" placeholder="Ad Detail" [(ngModel)]="model.Addetail" #Addetail="ngModel"  required></textarea>
                 </div>
                 </div>
               </div>
@@ -170,7 +170,7 @@
                     </div>
                       <div class="formrow">
                         <label  style="color: black" class="help-block">Select Your Listing</label>
-                        <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                        <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                           <option value="10" selected>10 Days</option>
                           <option value="7">7 Days</option>
                           <option value="5">5 Days</option>

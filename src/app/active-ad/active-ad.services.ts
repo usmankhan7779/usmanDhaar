@@ -65,9 +65,10 @@ export class ActiveAdServices {
 
 
 
-  InsertDisCountcoupons(Qty: string, Discount: string , Day: string, StoreName) {
+  InsertDisCountcoupons(Qty: string, Discount: string , Day: string, StoreName, PID) {
+
     return this._http.post( this.ServerUrl + 'insertdiscountcoupons/',
-      {'Qty' :  Qty,  'Discount':  Discount, 'Day':  Day, 'StoreName':  StoreName })
+      {'Qty' :  Qty,  'Discount':  Discount, 'Day':  Day, 'StoreName':  StoreName , 'ProductID':  PID })
       .map((res: Response) => {
 
         if (res) {

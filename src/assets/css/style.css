@@ -2525,7 +2525,7 @@ article.jtv-entry {
 }
 .rating {
 	color: #999;
-	font-size: 12px
+	font-size: 18px;
 }
 .rating .fa-star {
 	color: #FC0
@@ -5030,7 +5030,7 @@ ul.products-list .sale-left {
 	font-weight: bold
 }
 .product-view-area .short-description p {
-	font-size: 14px
+	font-size: 17px
 }
 .product-view-area .product-details-area .ratings {
 	padding: 5px 0 0;
@@ -5165,11 +5165,16 @@ ul.products-list .sale-left {
 	float: left
 }
 button.button.pro-add-to-cart {
+	
+	/*
 	background: #ff7474;
 	color: #fff;
 	padding: 7px 22px;
 	border: 2px #ff7474 solid;
+*/
 }
+
+
 button.button.pro-add-to-cart:hover {
 	background: #ed2424;
 	border: 2px #ed2424 solid;
@@ -5198,8 +5203,8 @@ button.button.pro-add-to-cart span i {
 .product-cart-option ul li a {
 	color: #636363;
 	display: block;
-	font-size: 14px;
-	font-weight: 800;
+	font-size: 17px;
+	font-weight: 600;
 	line-height: 22px;
 	margin: 0;
 	text-align: center;
