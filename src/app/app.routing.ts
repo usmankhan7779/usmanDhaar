@@ -41,6 +41,7 @@ import { ReserPasswordComponent } from './reser-password/reser-password.componen
 import { AuthGuard } from './auth-guard/auth-guard.services';
 import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 import { ManageCouponsComponent } from './manage-coupons/manage-coupons.component';
+import { AcceptOfferComponent } from './accept-offer/accept-offer.component';
 const appRoutes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
@@ -206,6 +207,12 @@ const appRoutes: Routes = [
       component: VerfiyEmailComponent,
 
   },
+    {
+        path: 'accept-offer/:uid',
+        component: AcceptOfferComponent,
+        canActivate: [AuthGuard]
+
+    },
 
 
 

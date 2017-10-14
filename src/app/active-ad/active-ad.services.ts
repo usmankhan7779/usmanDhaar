@@ -57,6 +57,10 @@ export class ActiveAdServices {
 
     return this._http.get(this.ServerUrl + 'GetOnecouponsBycode/' + store + '/' + coded).map(response => response.json());
   }
+ GetOfferStatus(pk: any, us: any) {
+
+    return this._http.get(this.ServerUrl + 'GetOfferStatus/' + pk + '/' + us).map(response => response.json());
+  }
 
   VerifyProductID(pk: any, store: any) {
 

@@ -28,7 +28,7 @@
     </div>
   </div>
 </div>
-<!-- Page Title End -->
+
 
 <div class="inner-page">
   <div class="container">
@@ -192,7 +192,7 @@
                           <td>  {{ abc.Price}}</td>
                           <td>  {{ abc.CreatedDate.substr(0,10)}}</td>
 
-                          <td> <button  class="button"><span>Accept</span></button>  <button  class="button"><span>Send an Email</span></button></td>
+                          <td> <button  class="button"><span>Accept</span></button>  <button  class="button"><span>Send an Email</span></button><button  class="button"><span>Counter Offer</span></button></td>
 
 
                         </tr>
@@ -223,69 +223,6 @@
         </div>
 
 
-
-
-        <div class="main container">
-          <div class="row">
-
-            <div class="col-xs-10">
-              <div class="page-content checkout-page">
-                <div class="page-title">
-                  <h2>Discount Coupons</h2>
-                </div>
-
-                <!--<h4 class="checkout-sep">Biding History</h4>-->
-                <div class="box-border">
-                  <div class="table-responsive">
-                    <table class="table table-bordered cart_summary">
-                      <thead>
-                      <tr>
-                        <th>Sr.</th>
-                        <th>Coupons</th>
-                        <th>Discount %</th>
-                        <th>Status</th>
-
-                      </tr>
-                      </thead>
-                      <tbody>
-
-                      <ng-container  *ngFor="let abc of GetUSerOffer['results']; let i = index">
-                        <tr>
-                          <td> {{i+1}} <span style="color: red !important;">-</span> {{ abc.Product_Id}} <span style="color: red !important;"> <a style="color: red !important;" [routerLink]="['/single-product']" [queryParams]="{ ProID:  abc.Product_Id, CatName: abc.Cat_Name }"> View Ad </a></span></td>
-                          <td>{{ abc.User_Id}}</td>
-                          <td>  {{ abc.Message}}</td>
-                          <td>  {{ abc.Qty}}</td>
-
-
-                          <td> <button  class="button"><span>Accept</span></button>  <button  class="button"><span>Send an Email</span></button></td>
-
-
-                        </tr>
-                      </ng-container>
-                      </tbody>
-                      <tfoot>
-
-                      <tr>
-
-
-                      </tr>
-
-                      </tfoot>
-                    </table>
-                  </div>
-
-                </div>
-
-
-
-
-              </div>
-
-            </div>
-
-
-          </div>
-        </div>
 
 
       </div>

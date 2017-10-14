@@ -363,6 +363,7 @@ export class LoginService {
            // const responce_data = res.json();
             localStorage.setItem('StoreReg', 'Done');
            this._nav.navigate(['/login']);
+           localStorage.clear();
          }
        }
      }).catch((error: any) => {
