@@ -77,11 +77,8 @@ export class Checkout2Component implements OnInit {
                   if ( this.GetUSerDOne['Complete'] === false) {
                     this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
                   }
-
-
                 });
         }
-
       });
     this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
 
@@ -253,7 +250,7 @@ export class Checkout2Component implements OnInit {
 
   ShippingDetails() {
 
-    console.log(this.model);
+    // console.log(this.model);
     this.httpbuyerService.Invoice(this.id, this.Total, false, true, this.user).subscribe(
       data => {
         // console.log( this.CartedProduct['products']);

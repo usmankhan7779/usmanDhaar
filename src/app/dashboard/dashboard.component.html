@@ -48,12 +48,12 @@
           <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 
         </ul>
-        <div class="adimages"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </div>
+        <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
       </div>
 
       <div class="col-md-9 col-sm-8">
         <div *ngIf="NewPostcheck == true" class="alert alert-success">
-          <strong>Product</strong> product successfully added to your shop
+          Your product has been successfully listed on your Dhaar store.
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0  toppad" >

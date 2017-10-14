@@ -26,6 +26,10 @@ export class BuyerDashboardServices {
     return this._http.get( this.saleServerUrl + 'GetallInvoiceIDByUser/' + UserID  ).map(response => response.json());
   }
 
+  GetallIDByUser( PId: any, UserID: any) {
+      return this._http.get( this.saleServerUrl + 'ActiveReviewsByUserId/' + PId + '/' + UserID ).map(response => response.json());
+    }
+
 
   GetInvoiceByInvoiceID( UserID: any) {
     return this._http.get( this.saleServerUrl + 'GetInvoiceByInvoiceID/' + UserID  ).map(response => response.json());
@@ -54,7 +58,7 @@ export class BuyerDashboardServices {
           const responce_data = res.json();
 
           console.log('this is the id' + responce_data.id);
-          sessionStorage.setItem('InvoiceID', responce_data.id);
+          localStorage.setItem('InvoiceID', responce_data.id);
           if (res.status === 200) {
           }
         }
@@ -72,6 +76,7 @@ export class BuyerDashboardServices {
     return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceProduct', {
       'InvoicesID': invID,
       'ProductID': prodID,
+      'UserID': localStorage.getItem('UserID'),
       'Qty': Quantity
     })
       .map((res: Response) => {

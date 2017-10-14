@@ -1783,7 +1783,7 @@ ul#cart-sidebar {
 	background: #fff;
 	border: 1px solid #cccccc;
 	color: #444444;
-	font-size: 11px;
+	font-size: 13px;
 	font-weight: 400;
 	padding: 0 15px;
 	line-height: 32px;
@@ -1800,7 +1800,7 @@ ul#cart-sidebar {
 	transition: all 0.4s ease-out 0s;
 }
 .product-item .item-inner .pro-box-info .pro-actions .action.add-to-cart:before {
-	content: "\f07a";
+
 	display: inline-block;
 	font-family: Hind,sans-serif;
 	margin-right: 4px;
@@ -3345,7 +3345,7 @@ footer {
 	font-weight: 300;
 }
 footer h3 {
-	font-size: 18px;
+	font-size: 21px;
 	margin: 0 0 8px;
 	padding: 0 0 6px;
 	letter-spacing: 1px;
@@ -3358,11 +3358,12 @@ footer .footer-links ul {
 footer .footer-links ul li {
 	list-style-type: none;
 	padding: 0px 0 12px;
+	font-size: 15px;
 }
 footer .footer-links ul li a:before {
-	content: "\f105";
+	
 	font-family: Hind,sans-serif;
-	font-size: 14px;
+	font-size: 16px;
 	display: inline-block;
 	cursor: pointer;
 	line-height: 20px;
@@ -3379,7 +3380,7 @@ footer .footer-links ul li a:hover {
 }
 .footer-logo {
 	text-align: left;
-	margin: 0px 0 15px;
+	
 	display: block;
 }
 .footer-logo p {
@@ -3455,7 +3456,6 @@ footer .phone .fa-phone:before {
 }
 .newsletter-inner {
 	display: inline-block;
-	margin-top: 15px;
 	width: 100%;
 }
 .footer-newsletter h3 {
@@ -3493,7 +3493,7 @@ footer .phone .fa-phone:before {
 	float: left
 }
 button.subscribe:before {
-	content: "\f0e0";
+	
 	font-family: Hind,sans-serif;
 	font-size: 13px;
 	padding-right: 8px

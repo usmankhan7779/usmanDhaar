@@ -46,7 +46,7 @@
 
               <div>
                 <div  *ngIf="NewBidInserted == true" class="alert alert-success">
-                  <strong>Bid</strong> inserted successfully
+                  Bid successful.
                 </div>
               </div>
 
@@ -142,18 +142,21 @@
                </ng-container>
                 <ng-container *ngIf="LoginID === true">
                   <div *ngIf="MinBidPrice === true" class="alert alert-danger">
-                    <strong>Error!</strong> Minimum Price for Bid  {{ productToshow.MaxBidPrice + 1 | number:'.0-0' }}
+                    Minimum Bid Amount - Rs:  {{ productToshow.MaxBidPrice + 1 | number:'.0-0' }}
                   </div>
-
-                <input *ngIf="this.Timeclose === false" type="number" class="form-control" style="margin-bottom: 15px;"  placeholder="Minimum Price for Bid  {{ productToshow.MaxBidPrice+1 | number:'.0-0' }}" name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
+                  <ng-container *ngIf="!ourproduct">
+                <input *ngIf="this.Timeclose === false" type="number" class="form-control" style="margin-bottom: 15px;"  placeholder="Minimum Bid Amount - Rs: {{ productToshow.MaxBidPrice+1 | number:'.0-0' }}" name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
 
                 <div>
+
                 <div *ngIf="this.Timeclose === false" class="cart-plus-minus">
                   <label for="qty">Place your Bid:</label>
                 </div>
 
                 <button *ngIf="this.Timeclose === false" class="button pro-add-to-cart" (click)="InsertBid(productToshow.SrartingPrice, productToshow.MaxBidPrice)" title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
+
                 </div>
+                  </ng-container>
                 </ng-container>
               </form>
             </div>
@@ -162,10 +165,10 @@
             <div *ngIf="!productToshow.Auction" class="product-variation">
               <form action="#" method="post">
                 <div *ngIf="minOffer"  class="alert alert-danger">
-                  <strong>Offer Decline. </strong>  Amount not meet minimum requirement
+                  Offer declined. Your offer was below minimum amount set by seller.
                 </div>
                 <div  *ngIf="minOfferDone == true" class="alert alert-success">
-                  <strong>Offer Sent</strong> Please Wait for seller response.  Email will be sent After seller reviewing your offer.
+                  Your offer has been sent to the seller. Please wait for the seller to respond.
                 </div>
                 <div *ngIf="amountoffer">
                 <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="OfferAmount" [(ngModel)]="model.OfferAmount" placeholder="Your Offer Amount" required>
@@ -181,42 +184,20 @@
                   </div>
                 </div>
                 <div *ngIf="!amountoffer">
+
+
+                    <ng-container *ngIf="!ourproduct">
+
+
                 <button class="button pro-add-to-cart" (click)="Addtocart(qty.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
 
                   <button *ngIf="productToshow.Addbestoffer > 0" class="button pro-add-to-cart" style="margin-left: 5px;" (click)="MakeAnOffer(qty.value)" title="Add to Cart" type="button"><span><i class="fa fa-bullhorn"></i> Make Offer</span></button>
+                    </ng-container>
                 </div>
 
                 <button *ngIf="amountoffer" class="button pro-add-to-cart" style="margin-left: 5px;" (click)="SubmitOffer(qty.value)" title="Submit Offer" type="button"><span><i class="fa fa-paper-plane"></i>Submit Offer</span></button>
                   <br/>
                   <br/>
-                <!--Newsletter Popup Start -->
-                <div id="myModal" class="modal fade">
-                  <div class="modal-dialog newsletter-popup">
-                    <div class="modal-content">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <div class="modal-body">
-                        <h2 class="modal-title">Top Fashion</h2>
-                        <form id="newsletter-form" method="post" action="#">
-                          <div class="content-subscribe">
-                            <div class="form-subscribe-header">
-                              <label>Register now to get updates on discount & coupons</label>
-                            </div>
-                            <div class="input-box">
-                              <input type="text" class="input-text newsletter-subscribe" title="Sign up for our newsletter" name="email" placeholder="Enter your email address">
-                            </div>
-                            <div class="actions">
-                              <button class="button-subscribe" title="Subscribe" type="submit">Subscribe</button>
-                            </div>
-                          </div>
-                        </form>
-                        <div class="subscribe-bottom">
-                          <input name="notshowpopup" id="notshowpopup" type="checkbox">
-                          Don’t show this popup again </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--End of Newsletter Popup-->
 
               </form>
             </div>
@@ -276,6 +257,8 @@
                          </ng-container>
                       </div>
                     </div>
+
+                    <ng-container *ngIf="openreviews">
                     <div class="col-sm-7 col-lg-7 col-md-7">
                       <div class="reviews-content-right">
                         <h2>Write Your Own Review</h2>
@@ -341,6 +324,7 @@
                         </form>
                       </div>
                     </div>
+                    </ng-container>
                   </div>
                   <div class="tab-pane fade " id="Bidhistory">
                     <div class="main container">
@@ -497,12 +481,14 @@
                     </div>
                     <div class="box-hover">
                       <div class="product-item-actions">
+                        <ng-container *ngIf="!ourproduct">
                         <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
                           <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
                         </div>
                         <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
                           <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button> </a>
                         </div>
+                        </ng-container>
                       </div>
                     </div>
                   </div>

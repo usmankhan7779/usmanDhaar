@@ -83,8 +83,8 @@
 
                 <div class="formrow label-overlay">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Password.valid }">
-                    <div *ngIf="f.submitted && !Password.valid" class="help-block">Password is required</div>
-                    <input type="Password" class="form-control"  (ngModelChange)="OnPassReset()" name="Password" placeholder="Password" [(ngModel)]="model.Password" #Password="ngModel" required>
+                    <div *ngIf="f.submitted && !Password.valid" class="help-block">Password must be 5 characters long</div>
+                    <input type="Password" class="form-control" minlength="5" (ngModelChange)="OnPassReset()" name="Password" placeholder="Password" [(ngModel)]="model.Password" #Password="ngModel" required>
                   </div><!-- End .form-group -->
                 </div>
 

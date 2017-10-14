@@ -45,6 +45,8 @@ export class LogInComponent implements OnInit {
 
       });
 
+
+
      if ( localStorage.getItem('Reg') === 'Done') {
 
        this.SignUpDOne = true;

@@ -22,19 +22,21 @@
         <ul class="usernavdash">
           <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
           <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Post an Ad</a></li>
-          <li><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
 
           <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
           <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
           <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
           <li class="active"><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
+
+          <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
           <li><a [routerLink]="['/seller-user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/seller-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
 
           <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 
         </ul>
-        <div class="adimages"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </div>
+        <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
       </div>
 
       <br/><br/><br/>

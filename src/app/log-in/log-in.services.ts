@@ -230,9 +230,10 @@ export class LoginService {
   return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
 .map((res: Response) => {
   if (res) {
-    console.log('Done');
+
     if (res.status === 201) {
       // return true;
+
     }
     else if (res.status === 200) {
       // return true;
@@ -260,6 +261,43 @@ export class LoginService {
   }
 });
 }
+
+
+  verify_tokenForlogin() {
+    return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
+      .map((res: Response) => {
+        const token = res.json() && res.json().token;
+        if (token) {
+          this._nav.navigate(['/home']);
+        } else {
+          this._nav.navigate(['/login']);
+        }
+      }).catch((error: any) => {
+        if (error.status === 404) {
+          console.log('ok not submited submite');
+          this._nav.navigate(['/login']);
+          return Observable.throw(new Error(error.status));
+        }
+        else if (error.status === 400) {
+          console.log('Not');
+          this._nav.navigate(['/owner_login']);
+          return Observable.throw(new Error(error.status));
+        }
+        else if (error.status === 401) {
+          console.log('ok not submited submite');
+          this._nav.navigate(['/login']);
+          return Observable.throw(new Error(error.status));
+        }
+        else  {
+
+          this._nav.navigate(['/login']);
+        }
+      });
+  }
+
+
+
+
   verify_tokenWithNoRedirict() {
 
     return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})

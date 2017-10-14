@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 // import './single-product.js';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 import { HomeService } from '../home/home.services';
 import { LoginService } from '../log-in/log-in.services';
 
@@ -32,6 +32,8 @@ export class SingleProductComponent implements OnInit {
   amountoffer = false ;
   AuctionTest = true;
   minOffer = false;
+  openreviews = false;
+  ourproduct = false;
   minOfferDone = false;
   AuctionProductPrice: number;
 
@@ -47,6 +49,7 @@ export class SingleProductComponent implements OnInit {
   GeProductBiding: any = [];
   ProductPrice: any = [];
   ProductPictures: any = [];
+  invoice: any = [];
   CatName: string;
   starp: any = 0;
   starq: any;
@@ -63,6 +66,7 @@ export class SingleProductComponent implements OnInit {
   constructor( private route: ActivatedRoute,
                private GetAdd: HomeService,
                private LOginObj: LoginService,
+               private httpService: BuyerDashboardServices,
                private router: Router) { }
   ngOnInit() {
     setInterval(() => {this.timer(this.element); }, 1000);
@@ -77,7 +81,6 @@ export class SingleProductComponent implements OnInit {
     } else {
       this.LoginID = false;
     }
-
 
 
 
@@ -98,6 +101,17 @@ export class SingleProductComponent implements OnInit {
             this.amountoffer = true;
           }
         }
+
+        this.httpService.GetallIDByUser( this.ProID, localStorage.getItem('UserID')).subscribe(
+          data => {
+            this.invoice = data;
+            if ( this.invoice['0']['id'] !== null ) {
+              this.openreviews = true;
+
+            }
+
+          });
+
         if (this.ProID !== '0') {
         this.GetAdd.GetAllProductPicture(this.ProID).subscribe(resSlidersData => {
           this.ProductPictures = resSlidersData;
@@ -132,10 +146,14 @@ export class SingleProductComponent implements OnInit {
       this.router.navigate(['/login']);
     } else {
       if (this.CatName === 'Phones & Tablets') {
-        console.log('Phones & Tablets');
 
         this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
           this.resultProduct = resSlidersData;
+
+          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
+            this.ourproduct = true;
+
+          }
           this.LocalStoreName = this.resultProduct[0].StoreName;
           this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
           if ( this.resultProduct[0].Auction ) {
@@ -154,6 +172,8 @@ export class SingleProductComponent implements OnInit {
             this.hours = Math.floor(x % 24);
             x /= 24;
             this.days = Math.floor(x);
+
+
           }
 
         });
@@ -161,7 +181,10 @@ export class SingleProductComponent implements OnInit {
         // console.log('Women\'s Fashion')
          this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData => {
           this.resultProduct = resSlidersData;
+           if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
+             this.ourproduct = true;
 
+           }
           this.LocalStoreName = this.resultProduct[0].StoreName;
           this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
           if ( this.resultProduct[0].Auction ) {
@@ -187,6 +210,10 @@ export class SingleProductComponent implements OnInit {
       } else if (this.CatName === 'Men\'s Fashion') {
         this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData => {
           this.resultProduct = resSlidersData;
+          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
+            this.ourproduct = true;
+
+          }
           this.LocalStoreName = this.resultProduct[0].StoreName;
           this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
           if ( this.resultProduct[0].Auction ) {
@@ -211,6 +238,10 @@ export class SingleProductComponent implements OnInit {
         // console.log('TV, Audio & Video')
         this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData => {
           this.resultProduct = resSlidersData;
+          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
+            this.ourproduct = true;
+
+          }
           this.LocalStoreName = this.resultProduct[0].StoreName;
           this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
           if ( this.resultProduct[0].Auction ) {
@@ -234,6 +265,10 @@ export class SingleProductComponent implements OnInit {
       } else if (this.CatName === 'Computing & Laptops') {
         this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData => {
           this.resultProduct = resSlidersData;
+          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
+            this.ourproduct = true;
+
+          }
           this.LocalStoreName = this.resultProduct[0].StoreName;
           this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
           if ( this.resultProduct[0].Auction ) {
@@ -257,6 +292,10 @@ export class SingleProductComponent implements OnInit {
       } else if (this.CatName === 'Home Appliances') {
         this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData => {
           this.resultProduct = resSlidersData;
+          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
+            this.ourproduct = true;
+
+          }
           this.LocalStoreName = this.resultProduct[0].StoreName;
           this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
           if ( this.resultProduct[0].Auction ) {
@@ -278,7 +317,14 @@ export class SingleProductComponent implements OnInit {
           }
         });
       }
+
+
+
     }
+
+
+
+
   }
   getValueq(event) {
     // //alert(event)
