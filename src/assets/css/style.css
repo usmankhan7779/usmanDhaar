@@ -705,7 +705,7 @@ input:focus {
 }
 .offer-content-text span {
 	font-weight: 400;
-	color: #f98180;
+	
 }
 .offer-content-text i {
 	font-size: 14px;
@@ -758,7 +758,7 @@ input:focus {
 }
 .top-search {
 	padding-right: 0px;
-	margin-top:10px;
+	margin-top:5px;
 }
 #search input {
 	height: 45px;
@@ -899,6 +899,7 @@ select {
 .logo {
 	vertical-align: middle;
 	margin: 22px 0px;
+	margin-top:28px;
 }
 .menu-sticky .logo {
 	margin: 10px 0px
@@ -930,9 +931,9 @@ select {
 	transform: scaleY(1);
 }
 .top-cart {
-	float: right;
+	
 	padding-left: 0px;
-	margin-top: 24px;
+	margin-top: 29px;
 }
 .mini-products-list .product-image {
 	float: left;
@@ -3380,7 +3381,7 @@ footer .footer-links ul li a:hover {
 }
 .footer-logo {
 	text-align: left;
-	
+	margin-bottom:15px;
 	display: block;
 }
 .footer-logo p {

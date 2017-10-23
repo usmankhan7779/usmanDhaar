@@ -13,7 +13,7 @@
 
               <form  role="form"  id="newsletter-validate-detail" (ngSubmit)="f.form.valid && loged_in(Email.value)" #f="ngForm" novalidate>
                 <div class="newsletter-inner">
-                  <span *ngIf="Waitcall" style="color: white !important;">Thanks For Subscribing!</span>
+                  <span *ngIf="Waitcall" style="color: white !important;">Thank you for Subscribing!</span>
                   <span *ngIf="login_error" style="color: white !important;">Email already exist</span>
                   <div *ngIf="f.submitted && !Email.valid" class="help-block"><span style="color: white !important;">Valid Email is required</span></div>
 
@@ -34,6 +34,14 @@
                   </div><!-- End .form-group -->
                   <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
 
+
+
+
+
+
+
+
+
                 </div>
               </form>
             </div>
@@ -53,7 +61,7 @@
         </div>
       </div>
       <div class="col-sm-6 col-md-4 col-xs-12 col-lg-3">
-        <div class="footer-logo"><a href="index.html"><img src="assets/images/dhaar1.png" alt="fotter logo"></a> </div>
+        <div class="footer-logo"><a href="index.html"><img src="assets/images/newdhaarwhite.png" alt="fotter logo"></a> </div>
         <div class="footer-content">
           <div class="email"> <i class="fa fa-envelope"></i>
             <p>info AT Dhaar DOT com</p>

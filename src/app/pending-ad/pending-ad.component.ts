@@ -14,7 +14,7 @@ export class PendingAdComponent implements OnInit {
   r: any;
   pageno: any;
   sub: any;
-  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
+  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media';
   modelNo: any;
   ActiveProduct: any = [];
   GetPhotos: any = [];

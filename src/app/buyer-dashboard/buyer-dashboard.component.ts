@@ -12,7 +12,7 @@ import {NgForm} from '@angular/forms';
 })
 export class BuyerDashboardComponent implements OnInit {
   GetUSerDOne: any [];
-  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
+  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media';
   ValueRec: Boolean = false;
   constructor(private obj: LoginService,
               private _nav: Router,

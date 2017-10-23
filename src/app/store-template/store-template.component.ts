@@ -12,7 +12,7 @@ export class StoreTemplateComponent implements OnInit {
   Trend: any = [];
   pageno: any;
 
-  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
+  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media';
   StoreName: any;
   StoreInfo: any = [];
   constructor(private route: ActivatedRoute,

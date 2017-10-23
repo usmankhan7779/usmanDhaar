@@ -14,8 +14,8 @@ export class ActiveAdServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
-  StoreServerUrl = 'https://dhaardb.herokuapp.com/store/';
+  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
+  StoreServerUrl = 'http://ns519750.ip-158-69-23.net:7600/store/';
 
   constructor(private _http: Http,
               private _nav: Router) {

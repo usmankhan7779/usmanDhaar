@@ -23,7 +23,7 @@ export class SingleProductComponent implements OnInit {
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
   ProID: string;
-  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
+  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media';
   Getphoto: any = [];
   NewBidInserted = false ;
   NewCart = false ;

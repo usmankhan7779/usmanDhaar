@@ -20,9 +20,9 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'https://dhaardb.herokuapp.com/user/';
-  StoreServerUrl =  'https://dhaardb.herokuapp.com/store/';
-  EMailServerUrl =  'https://dhaardb.herokuapp.com/rest-auth/';
+  ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/user/';
+  StoreServerUrl =  'http://ns519750.ip-158-69-23.net:7600/store/';
+  EMailServerUrl =  'http://ns519750.ip-158-69-23.net:7600/rest-auth/';
 
 
   constructor(private _http: HttpService ,
@@ -195,9 +195,11 @@ export class LoginService {
   }
 
   verify_username(username:  string) {
-    //console.log(username);
 
-    return this._http.get( this.ServerUrl + 'verifyusername/' + username)
+    //console.log(username);
+    const headers = new Headers();
+    headers.append('content-type', 'application/json');
+    return this._http.get( this.ServerUrl + 'verifyusername/' + username, {headers: headers})
       .map((res: Response) => {
         if (res) {
           if (res.status === 201 || res.status === 200) {
@@ -221,6 +223,7 @@ export class LoginService {
   check_email_unique(email) {
     return this._http.get(this.ServerUrl + 'email_verify/' + email).map((response: Response) => response.json());
   }
+
   GetStoreInformationByUserId(email) {
     return this._http.get(this.StoreServerUrl + 'GetStoreInformationByUserId/' + email).map((response: Response) => response.json());
 
@@ -454,6 +457,9 @@ export class LoginService {
     return this._http.get(this.StoreServerUrl + 'emailverifyforStore/' + email).map((response: Response) => response.json());
 
   }
+
+
+
   GetUserDetailByName(USerid) {
     return this._http.get(this.ServerUrl + 'UserFullDetails/' + USerid).map((response: Response) => response.json());
   }

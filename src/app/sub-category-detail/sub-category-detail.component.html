@@ -19,8 +19,61 @@
                 </div></div></div>
 
           </div>
-          <!--<div class="page-title">-->
-            <!--<h2>{{CatName}} <i class="fa fa-angle-left"></i> <h3>{{Subcat}} </h3></h2>-->
+
+          <div class="page-title">
+            <h3>{{Subcat}} </h3>
+          </div>
+          <div class="toolbar">
+            <!--<div class="view-mode">-->
+            <!--<ul>-->
+            <!--<li class="active"> <a href="shop_grid.html"> <i class="fa fa-th-large"></i> </a> </li>-->
+            <!--<li> <a href="shop_list.html"> <i class="fa fa-th-list"></i> </a> </li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <div class="sorter">
+              <div class="col-lg-8">
+
+                <!--<span (click)="listView()"  onmouseleave="this.style='border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555" >List - <span class="fa fa-list" ></span></span>-->
+
+                <span *ngIf="AllListing" (click)="AllListingFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >All Listings</span>
+                <span *ngIf="!AllListing" (click)="AllListingFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555; font-family: Hind,sans-serif;"   >All Listings</span>
+
+                <span *ngIf="BuyItNow" (click)="BuyItNowFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >Buy It Now</span>
+                <span *ngIf="!BuyItNow" (click)="BuyItNowFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555; font-family: Hind,sans-serif;"   >Buy It Now</span>
+
+                <span *ngIf="thisAuction" (click)="thisAuctionFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >Auction</span>
+                <span *ngIf="!thisAuction" (click)="thisAuctionFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555; font-family: Hind,sans-serif;"   >Auction</span>
+
+
+                <span *ngIf="AcceptOffer" (click)="AcceptOfferFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >Accept Offers</span>
+                <span *ngIf="!AcceptOffer" (click)="AcceptOfferFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555;font-family: Hind,sans-serif;"   >Accept Offers</span>
+
+
+                <label>&nbsp;</label>
+                <!--<select>-->
+                <!--<option selected="selected">Grid<span class="fa fa-list" ></span></option>-->
+                <!--<option>List <span class="fa fa-list" aria-hidden="true"></span> </option>-->
+
+                <!--</select>-->
+              </div>
+              <div class="short-by page">
+                <label>View:</label>
+
+                <!--<span (click)="listView()"  onmouseleave="this.style='border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555" >List - <span class="fa fa-list" ></span></span>-->
+                <span *ngIf="View" (click)="listView()"  onmouseleave="this.style='font-size: 20px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 20px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 20px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white" >List - <span class="fa fa-list" ></span></span>
+                <span *ngIf="!View" (click)="listView()"  onmouseleave="this.style='font-size: 20px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 20px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 20px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555" >List - <span class="fa fa-list" ></span></span>
+
+                <span *ngIf="!View" (click)="GridView()" onmouseleave="this.style='font-size: 20px; border: 1px #555 solid;  padding: 5px;  background-color:#ed2424;  color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 20px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 20px; border: 1px #555 solid;  padding: 5px; cursor:pointer; background-color:#ed2424; color: white"   >Grid - <span class="fa fa-th" ></span></span>
+                <span *ngIf="View" (click)="GridView()" onmouseleave="this.style='font-size: 20px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 20px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 20px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555"   >Grid - <span class="fa fa-th" ></span></span>
+                <label>&nbsp;</label>
+                <!--<select>-->
+                <!--<option selected="selected">Grid<span class="fa fa-list" ></span></option>-->
+                <!--<option>List <span class="fa fa-list" aria-hidden="true"></span> </option>-->
+
+                <!--</select>-->
+              </div>
+            </div>
+          </div>
 
           <!--</div>-->
           <!--<div class="toolbar">-->
@@ -51,89 +104,159 @@
           <!--</div>-->
           <!--</div>-->
           <!--</div>-->
-          <div class="product-grid-area">
-            <ul class="products-grid">
-              <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
-                <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                  <div class="product-item">
-                    <div class="item-inner">
-                      <div class="product-thumbnail">
-                        <!--<div class="icon-sale-label sale-left">Sale</div>-->
-                        <!--<div class="box-hover">-->
-                        <!--<div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>-->
-                        <!--<div class="add-to-links" data-role="add-to-links"> <a href="#" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="#" class="action add-to-compare" title="Add to Compare"></a> </div>-->
-                        <!--</div>-->
-                        <div class="slider-items-products">
-                          <div id="pro2-slider" class="product-flexslider hidden-buttons">
-                            <div class="slider-items slider-width-col6">
-                              <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
+          <div *ngIf="Waitcall" class="alert  alert-info">
+            <p class="">
+              <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
 
-                              <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
-                              <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
+            </p>
+          </div>
+          <ng-container *ngIf="!errormessage" >
+            <div *ngIf="!View" class="product-grid-area">
+              <ul class="products-grid">
+                <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
+                  <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="product-item">
+                      <div class="item-inner">
+                        <div class="product-thumbnail">
+                          <!--<div class="icon-sale-label sale-left">Sale</div>-->
+                          <!--<div class="box-hover">-->
+                          <!--<div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>-->
+                          <!--<div class="add-to-links" data-role="add-to-links"> <a href="#" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="#" class="action add-to-compare" title="Add to Compare"></a> </div>-->
+                          <!--</div>-->
+                          <div class="slider-items-products">
+                            <div id="pro2-slider" class="product-flexslider hidden-buttons">
+                              <div class="slider-items slider-width-col6">
+                                <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
 
-                              <!--<div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">-->
-                              <!--<div class="countbox_1 jtv-timer-grid"></div>-->
-                              <!--</div>-->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="pro-box-info">
-                        <div class="item-info">
-                          <div class="info-inner">
-                            <div class="item-title">
-                              <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
-                            </div>
-                            <div class="item-content">
-                              <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                              </div>
-                              <div *ngIf="phoneProducts.Auction == true" class="item-price">
+                                <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
+                                <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 
-                                <div  class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</span> </span> </div>
-
-                              </div>
-                              <div *ngIf="phoneProducts.Auction == false" class="item-price">
-                                <div class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.FixedPrice | number:'.0-0' }}</span> </span> </div>
+                                <!--<div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">-->
+                                <!--<div class="countbox_1 jtv-timer-grid"></div>-->
+                                <!--</div>-->
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="box-hover">
-                          <div class="product-item-actions">
-                            <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
-                              <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
+                        <div class="pro-box-info">
+                          <div class="item-info">
+                            <div class="info-inner">
+                              <div class="item-title">
+                                <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
+                              </div>
+                              <div class="item-content">
+                                <div class="rating">
+                                  <p> Seller: <a [routerLink]="['/store', phoneProducts.StoreName]"> {{phoneProducts.StoreName}}</a></p>
+                                </div>
+                                <div *ngIf="phoneProducts.Auction == true" class="item-price">
+
+                                  <div  class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0' }}</span> </span> </div>
+
+                                </div>
+                                <div *ngIf="phoneProducts.Auction == false" class="item-price">
+                                  <div class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.FixedPrice | number:'.0-0' }}</span> </span> </div>
+                                </div>
+                              </div>
                             </div>
-                            <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                              <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button> </a>
+                          </div>
+                          <div class="box-hover">
+                            <div class="product-item-actions">
+                              <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
+                              </div>
+                              <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button> </a>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </li>
+
+
+                </ng-container>
+
+              </ul>
+
+
+            </div>
+
+            <div *ngIf="View" class="product-grid-area">
+              <div class="myads">
+                <!--<h3>My Active Ads</h3>-->
+                <ul class="searchList">
+                  <!-- ad start -->
+
+
+                  <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id2' }">
+                    <li>
+                      <div class="row">
+                        <div class="col-md-2 col-sm-4">
+                          <div class="adimg"><img src="{{ PicServrUrl + phoneProducts.Pic  }}" alt="Ad Name"></div>
+                        </div>
+                        <div class="col-md-10 col-sm-8">
+                          <div class="jobinfo">
+                            <div class="row">
+                              <div class="col-md-8 col-sm-7">
+                                <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >{{ phoneProducts.P_Title }}</a></h3>
+                                <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name }}</a>   </div>
+                                <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                                <div class="clearfix"></div>
+                                <p>
+                                  <span> Auction: <span style="color: red !important;"  *ngIf="phoneProducts.Auction === true">Yes </span><span style="color: red !important;" *ngIf="phoneProducts.Auction === false">No</span> </span>
+                                </p>
+
+
+                                <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                              </div>
+                              <div class="col-md-4 col-sm-5 text-right">
+                                <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>
+                                <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs {{ phoneProducts.FixedPrice | number:'.0-0'}}</div>
+                                <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ng-container>
+
+                  <div class="col-sm-4 col-sm-push-8">
+                    <pagination-controls id="trend-id2" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
+                                         nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
+
                   </div>
-                </li>
 
 
-              </ng-container>
+                  <!-- ad end -->
+                </ul>
+              </div>
+            </div>
 
-            </ul>
+
+            <div class="col-sm-4 col-sm-push-8">
+              <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
+                                   nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
+
+            </div>
+
+          </ng-container>
+          <ng-container *ngIf="errormessage"  >
+
+            <div class="alert alert-danger">
+              <h3 align="center">No Product Found</h3>
+            </div>
 
 
-          </div>
+          </ng-container>
 
-          <div class="col-sm-4 col-sm-push-8">
-            <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
-                                 nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
 
-          </div>
         </div>
 
       </div>
+
+
       <aside class="sidebar col-sm-3 col-xs-12 col-sm-pull-9">
         <div class="block shop-by-side">
           <div class="sidebar-bar-title">

@@ -16,7 +16,7 @@ export class AdService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
+  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
 
   constructor(private _http: Http,
               private _nav: Router) {

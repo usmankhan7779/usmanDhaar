@@ -14,7 +14,7 @@ export class  CategoryServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
+  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
 
 
   constructor(private _http: HttpService,
@@ -67,6 +67,19 @@ export class  CategoryServices {
   getAllSubPhoneAndTabletProduct(page: any, subcat: string) {
     return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProduct/' + subcat + '?page=' + page, ).map(response => response.json());
   }
+  getAllSubPhoneAndTabletProductoffer(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductoffer/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
+  getAllSubPhoneAndTabletProductauction(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
+  getAllSubPhoneAndTabletProductbuy(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
+
   getAllSubPhoneAndTabletProductType(page: any, subcat: string, Auction: boolean) {
     return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
   }
@@ -111,6 +124,13 @@ export class  CategoryServices {
 
   getAllSubWomenFashionProduct(page: any, subcat: string) {
     return this._http.get( this.ServerUrl + 'getAllSubWomenFashionProduct/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+  getAllSubWomenFashionProductauction(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubWomenFashionProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
+  getAllSubWomenFashionProductbuy(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubWomenFashionProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
   }
   getAllSubWomenFashionProductType(page: any, subcat: string, Auction: boolean) {
     return this._http.get( this.ServerUrl + 'getAllSubWomenFashionProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
@@ -163,6 +183,13 @@ export class  CategoryServices {
   getAllSublMenFashionProduct(page: any, subcat: string) {
     return this._http.get( this.ServerUrl + 'getAllSublMenFashionProduct/' + subcat + '?page=' + page, ).map(response => response.json());
   }
+  getAllSublMenFashionProductauction(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSublMenFashionProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
+  getAllSublMenFashionProductbuy(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSublMenFashionProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
   getAllSublMenFashionProductType(page: any, subcat: string, Auction: boolean) {
     return this._http.get( this.ServerUrl + 'getAllSubMenFashionProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
   }
@@ -209,6 +236,15 @@ export class  CategoryServices {
   getAllSubTVAudioVideoProduct(page: any, subcat: string) {
     return this._http.get( this.ServerUrl + 'getAllSubTVAudioVideoProduct/' + subcat + '?page=' + page, ).map(response => response.json());
   }
+
+  getAllSubTVAudioVideoProductauction(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubTVAudioVideoProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
+  getAllSubTVAudioVideoProductbuy(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubTVAudioVideoProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
   getAllSubTVAudioVideoProductType(page: any, subcat: string, Auction: boolean) {
     return this._http.get( this.ServerUrl + 'getAllSubTVAudioVideoProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
   }
@@ -256,6 +292,15 @@ export class  CategoryServices {
   getAllSubComputingLaptopsProduct(page: any, subcat: string) {
     return this._http.get( this.ServerUrl + 'getAllSubComputingLaptopsProduct/' + subcat + '?page=' + page, ).map(response => response.json());
   }
+  //Computing sub
+  getAllSubComputingLaptopsProductauction(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubComputingLaptopsProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+  //Computing sub
+  getAllSubComputingLaptopsProductbuy(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubComputingLaptopsProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
   getAllSubComputingLaptopsProductType(page: any, subcat: string, Auction: boolean) {
     return this._http.get( this.ServerUrl + 'getAllSubComputingLaptopsProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
   }
@@ -308,6 +353,16 @@ export class  CategoryServices {
   getAllSubHomeAppliancesProduct(page: any, subcat: string) {
     return this._http.get( this.ServerUrl + 'getAllSubHomeAppliancesProduct/' + subcat + '?page=' + page, ).map(response => response.json());
   }
+  //Home sub
+  getAllSubHomeAppliancesProductauction(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubHomeAppliancesProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
+  //Home sub
+  getAllSubHomeAppliancesProductbuy(page: any, subcat: string) {
+    return this._http.get( this.ServerUrl + 'getAllSubHomeAppliancesProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
+  }
+
   getAllSubHomeAppliancesProductType(page: any, subcat: string, Auction: boolean) {
     return this._http.get( this.ServerUrl + 'getAllSubHomeAppliancesProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
   }

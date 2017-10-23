@@ -80,6 +80,7 @@
 
             </p>
           </div>
+          <ng-container *ngIf="!errormessage" >
           <div *ngIf="!View" class="product-grid-area">
             <ul class="products-grid">
               <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
@@ -150,6 +151,7 @@
 
 
           </div>
+
           <div *ngIf="View" class="product-grid-area">
             <div class="myads">
               <!--<h3>My Active Ads</h3>-->
@@ -196,13 +198,11 @@
 
                 </div>
 
+
                 <!-- ad end -->
               </ul>
             </div>
           </div>
-
-
-
 
 
           <div class="col-sm-4 col-sm-push-8">
@@ -210,6 +210,16 @@
                                  nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
 
           </div>
+
+          </ng-container>
+          <ng-container *ngIf="errormessage"  >
+
+            <div class="alert alert-danger">
+              <h3 align="center">No Product Found</h3>
+            </div>
+
+
+          </ng-container>
         </div>
 
       </div>
@@ -217,13 +227,12 @@
 
         <div class="block shop-by-side">
           <div class="sidebar-bar-title">
-            <h3>Shop By</h3>
+            <h3>Product Type</h3>
           </div>
           <div class="block-content">
-            <p class="block-subtitle">Shopping Options</p>
+
             <br/>
             <div class="layered-Category">
-              <h2 class="saider-bar-title">Product Type</h2>
               <div class="layered-content">
                 <ul class="check-box-list">
                   <li>
