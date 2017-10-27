@@ -42,6 +42,7 @@ import { AuthGuard } from './auth-guard/auth-guard.services';
 import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 import { ManageCouponsComponent } from './manage-coupons/manage-coupons.component';
 import { AcceptOfferComponent } from './accept-offer/accept-offer.component';
+
 const appRoutes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'

@@ -26,7 +26,7 @@ export class Checkout2Component implements OnInit {
   GetUSerDOne: any = [];
   GetUSallerCoupon: any = [];
   mymodel: any = {};
-  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media';
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
   LoginName: string;
   login: string;
   CheckoutMethod = false;

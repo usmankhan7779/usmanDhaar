@@ -14,7 +14,7 @@ export class  CategoryServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
+  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
 
 
   constructor(private _http: HttpService,

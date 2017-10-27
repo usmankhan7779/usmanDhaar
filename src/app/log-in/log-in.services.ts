@@ -20,9 +20,9 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/user/';
-  StoreServerUrl =  'http://ns519750.ip-158-69-23.net:7600/store/';
-  EMailServerUrl =  'http://ns519750.ip-158-69-23.net:7600/rest-auth/';
+  ServerUrl =  'https://dhaardb.herokuapp.com/user/';
+  StoreServerUrl =  'https://dhaardb.herokuapp.com/store/';
+  EMailServerUrl =  'https://dhaardb.herokuapp.com/rest-auth/';
 
 
   constructor(private _http: HttpService ,

@@ -4,7 +4,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import {HttpService} from '../services/http-service';
 @Injectable()
 export class AuthGuard implements CanActivate {
-  ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/user/';
+  ServerUrl =  'https://dhaardb.herokuapp.com/user/';
   constructor(private _http: HttpService ,
               private router: Router) { }
 

@@ -14,8 +14,8 @@ export class BuyerDashboardServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
-  saleServerUrl = 'http://ns519750.ip-158-69-23.net:7600/sale/';
+  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
+  saleServerUrl = 'https://dhaardb.herokuapp.com/sale/';
 
   constructor(private _http: Http,
               private _nav: Router) {
