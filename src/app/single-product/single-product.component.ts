@@ -31,6 +31,8 @@ export class SingleProductComponent implements OnInit {
   MinBidPrice = false ;
   amountoffer = false ;
   AuctionTest = true;
+  noreview = false;
+
   minOffer = false;
   openreviews = false;
   ourproduct = false;
@@ -120,6 +122,12 @@ export class SingleProductComponent implements OnInit {
 
         this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
           this.GetallProductReview = resSlidersData;
+
+
+          if(this.GetallProductReview.length === 0) {
+            this.noreview = true;
+
+          }
         });
 
         this.GetAdd.GetallBidsProductdbyProductID( this.ProID).subscribe(resSlidersData => {
