@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     window.scrollTo(0, 0);
     // phone and tablets
+
     this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
       this.GetallPhoneProduct = resSlidersData;
 
