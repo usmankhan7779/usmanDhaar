@@ -10,8 +10,8 @@ import { Router, RouterModule, ActivatedRoute } from '@angular/router';
   styleUrls: ['./buyer-order.component.css']
 })
 export class BuyerOrderComponent implements OnInit {
-  r: any;
 
+  r: any;
   pageno: any;
   sub: any;
   PicServrUrl = 'https://dhaardb.herokuapp.com/media';
