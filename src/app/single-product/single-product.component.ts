@@ -32,6 +32,7 @@ export class SingleProductComponent implements OnInit {
   amountoffer = false ;
   AuctionTest = true;
   noreview = false;
+  Solddd = false;
 
   minOffer = false;
   openreviews = false;
@@ -103,15 +104,12 @@ export class SingleProductComponent implements OnInit {
             this.amountoffer = true;
           }
         }
-
         this.httpService.GetallIDByUser( this.ProID, localStorage.getItem('UserID')).subscribe(
           data => {
             this.invoice = data;
             if ( this.invoice['0']['id'] !== null ) {
               this.openreviews = true;
-
             }
-
           });
 
         if (this.ProID !== '0') {
@@ -168,7 +166,7 @@ export class SingleProductComponent implements OnInit {
             this.DbDate = this.resultProduct[0].CreatedDate;
             this.AuctionDayDB = this.resultProduct[0].AuctionListing;
             const auctiondays = +this.AuctionDayDB * 86400000;
-            const time0 = new Date(); //86400000
+            const time0 = new Date();
             const time1 = new Date(this.DbDate);
             const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
             // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
@@ -565,6 +563,8 @@ export class SingleProductComponent implements OnInit {
             this.days -= 1;
             if (this.days <= 0) {
               this.Timeclose = true;
+              this.Solddd = true;
+
               this.seconds = 0;
               this.minutes = 0;
               this.hours = 0;
