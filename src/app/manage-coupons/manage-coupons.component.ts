@@ -1,6 +1,10 @@
 
+<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { Router, ActivatedRoute } from '@angular/router';
 import { ActiveAdServices } from '../active-ad/active-ad.services';
 import { JwtHelper } from 'angular2-jwt';
@@ -30,6 +34,7 @@ export class ManageCouponsComponent implements OnInit {
   Coupons: any = [];
   MyProduct: any = [];
   SessionstoreName: any;
+<<<<<<< HEAD
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: ActiveAdServices,
               private _nav: Router) { }
@@ -37,6 +42,13 @@ export class ManageCouponsComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
       this.SessionstoreName = localStorage.getItem('StoreName');
+=======
+  constructor(private obj: ActiveAdServices,
+              private _nav: Router) { }
+
+  ngOnInit() {
+    this.SessionstoreName = localStorage.getItem('StoreName');
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.obj.GetAllcoupons(this.SessionstoreName).subscribe(
       data => {
         this.Coupons = data;
@@ -44,7 +56,10 @@ export class ManageCouponsComponent implements OnInit {
       });
 
   }
+<<<<<<< HEAD
   }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 verifProduct (abc: string) {
 
@@ -60,7 +75,10 @@ verifProduct (abc: string) {
 
         console.log(this.MyProduct['results']['0']);
         if (this.MyProduct['results']['0']) {
+<<<<<<< HEAD
           console.log('Yahoooo111111', this.model['Qty'], this.model['Discount'], this.model['AuctionListing']);
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           this.obj.InsertDisCountcoupons(this.model['Qty'], this.model['Discount'], this.model['AuctionListing'],   this.SessionstoreName, abc )
             .subscribe(
               data => {
@@ -137,8 +155,12 @@ verifProduct (abc: string) {
 
 
   clearSessionstoreage() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
       localStorage.clear();
     }
+=======
+    localStorage.clear();
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 }

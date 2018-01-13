@@ -50,7 +50,10 @@
           <!--</div>-->
           <!--</div>-->
           <!--</div>-->
+<<<<<<< HEAD
           <ng-container *ngIf="!errormessage">
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           <div class="product-grid-area">
             <ul class="products-grid">
               <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
@@ -126,6 +129,7 @@
 
           </div>
 
+<<<<<<< HEAD
           </ng-container>
           <ng-container *ngIf="errormessage"  >
 
@@ -135,6 +139,8 @@
             <div>{{message()}}</div>
           </ng-container>
 
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           <div class="col-sm-4 col-sm-push-8">
             <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
                                  nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>

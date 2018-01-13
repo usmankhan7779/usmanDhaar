@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtHelper } from 'angular2-jwt';
 import {HostListener} from '@angular/core';
@@ -14,7 +18,10 @@ import { LoginService } from '../log-in/log-in.services';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+<<<<<<< HEAD
   model: any = {};
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   GetallCat: any = [];
   jwtHelper: JwtHelper = new JwtHelper();
   ValueRec: Boolean = false;
@@ -24,8 +31,12 @@ export class HeaderComponent implements OnInit {
 
   public filteredList = [];
   public elementRef;
+<<<<<<< HEAD
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
+=======
+  constructor(private obj: LoginService,
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               private PostAdd: AdService,
               private _nav: Router) { }
 
@@ -37,15 +48,22 @@ export class HeaderComponent implements OnInit {
   //   }
   // }
   go() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
     window.location.href = '/home';
     }
+=======
+    window.location.href = '/home';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
   TextChange(val) {
     // alert(val);
   }
   ngOnInit() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     // console.log('fdsfsdfdsgj' + localStorage.getItem('UserID'));
     if (localStorage.getItem('UserID') !== null) {
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {
@@ -93,20 +111,31 @@ export class HeaderComponent implements OnInit {
     this.PostAdd.GetAllCategories().subscribe(resSlidersData => this.GetallCat = resSlidersData);
 
   }
+<<<<<<< HEAD
   }
 
   ValueReset() {
     if (isPlatformBrowser(this.platformId)){
+=======
+
+  ValueReset() {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     localStorage.clear();
     this.obj.loged_out();
     this.ValueRec = false;
     this._nav.navigate(['/login']);
+<<<<<<< HEAD
     }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 
   gotodashboard() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
     this.obj.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
 
@@ -119,6 +148,7 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
+<<<<<<< HEAD
     }
   }
 
@@ -133,6 +163,20 @@ export class HeaderComponent implements OnInit {
       this._nav.navigate(['/search-results'], { queryParams: { Search: search }});
     }
 
+=======
+  }
+
+
+  navigate(event, search: string) {
+    //
+
+    if(event.keyCode === 13) {
+
+
+
+    this._nav.navigate(['/search-resuls'], { queryParams: { Search: search }});
+  }
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 

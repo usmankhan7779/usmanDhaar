@@ -55,7 +55,11 @@
               <ng-container *ngIf="productToshow.Auction == true">
 
               <p class="special-price"> <span class="price-label">Price</span>
+<<<<<<< HEAD
                 <span class="price"> Rs: {{ productToshow.SrartingPrice | number:'.0-0' }}   </span> </p>
+=======
+                <span class="price"> Rs: {{ productToshow.MaxBidPrice | number:'.0-0' }}   </span> </p>
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               </ng-container>
           <ng-container *ngIf="productToshow.Auction == false">
 
@@ -70,6 +74,7 @@
 
                 <p> Seller: <a [routerLink]="['/store', productToshow.StoreName]"> {{productToshow.StoreName}}</a></p>
                  </div>
+<<<<<<< HEAD
               <ng-container *ngIf="productToshow.Auction == true">
 
                 <p class="availability in-stock pull-right" style="font-size: larger">Availability: <span *ngIf="!Solddd" style=" background-color: white;color: green;font-weight: bolder; font-size: xx-large">In Stock</span> <span *ngIf="Solddd" style=" background-color: white;color: red;font-weight: bolder; font-size: xx-large">Sold Out</span></p>
@@ -78,6 +83,10 @@
 
                 <p class="availability in-stock pull-right" style="font-size: larger">Availability: <span *ngIf="!soldfix" style=" background-color: white;color: green;font-weight: bolder; font-size: xx-large">In Stock</span> <span *ngIf="soldfix" style=" background-color: white;color: red;font-weight: bolder; font-size: xx-large">Sold Out</span></p>
               </ng-container>
+=======
+
+              <p class="availability in-stock pull-right">Availability: <span *ngIf="!Solddd">In Stock</span> <span *ngIf="Solddd">Closed</span></p>
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
             </div>
             <div class="short-description">
               <h4>Quick Overview</h4>
@@ -278,7 +287,11 @@
                             <input type="radio" id="star4halfq" name="rating" value="4 and a half"
                                    (click)="getValueq(4.5)"/><label class="half" for="star4halfq"
                                                                     title="Pretty good - 4.5 stars"></label>
+<<<<<<< HEAD
                             <input type="radio" id="starq" name="rating" value="4" (click)="getValueq(4)"/><label
+=======
+                            <input type="radio" id="starq" name="rating" value="4" (click)="getValueq(4.5)"/><label
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                             class="full" for="starq" title="Pretty good - 4 stars"></label>
                             <input type="radio" id="star3halfq" name="rating" value="3 and a half"
                                    (click)="getValueq(3.5)"/><label class="half" for="star3halfq"

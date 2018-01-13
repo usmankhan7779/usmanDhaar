@@ -1,6 +1,10 @@
 import 'rxjs/add/operator/map';
+<<<<<<< HEAD
 import {Injectable, Inject, PLATFORM_ID} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import {Injectable} from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 
@@ -15,11 +19,18 @@ export class BuyerDashboardServices {
   private head: any;
   public login: any;
   returnUrl: string;
+<<<<<<< HEAD
   ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
   saleServerUrl = 'http://ns519750.ip-158-69-23.net:7600/sale/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http,
+=======
+  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
+  saleServerUrl = 'https://dhaardb.herokuapp.com/sale/';
+
+  constructor(private _http: Http,
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               private _nav: Router) {
   }
 
@@ -60,9 +71,13 @@ export class BuyerDashboardServices {
           const responce_data = res.json();
 
           console.log('this is the id' + responce_data.id);
+<<<<<<< HEAD
           if (isPlatformBrowser(this.platformId)){
           localStorage.setItem('InvoiceID', responce_data.id);
           }
+=======
+          localStorage.setItem('InvoiceID', responce_data.id);
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           if (res.status === 200) {
           }
         }
@@ -76,6 +91,7 @@ export class BuyerDashboardServices {
 
   InvoiceProducts(invID: any , prodID: any, Quantity: any) {
 
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)) {
       return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceProduct', {
         'InvoicesID': invID,
@@ -104,6 +120,14 @@ export class BuyerDashboardServices {
       , 'Email': email, 'State': state
       , 'Country': country, 'City': city, 'Zip': zip, 'Address': address,  'Telephon': telephone, 'Fax': fax
 
+=======
+
+    return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceProduct', {
+      'InvoicesID': invID,
+      'ProductID': prodID,
+      'UserID': localStorage.getItem('UserID'),
+      'Qty': Quantity
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     })
       .map((res: Response) => {
         if (res) {
@@ -113,12 +137,17 @@ export class BuyerDashboardServices {
           }
         }
       }).catch((error: any) => {
+<<<<<<< HEAD
 
+=======
+        alert(error);
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
         return Observable.throw(new Error(error.status));
       });
 
   }
 
+<<<<<<< HEAD
   PhoneAndTabletQuantity(proID: any, quantity: any) {
     return this._http.post(this.ServerUrl + 'getAllPhoneAndTabletProductQuantity', {
       'ProductID': proID,
@@ -286,6 +315,19 @@ export class BuyerDashboardServices {
       .map((res: Response) => {
         if (res) {
           console.log('statusresponse',res.status);
+=======
+
+  CustomerInvoiceShippingAddress(invID: any , fname: any, lname: any, email: any, state: any, country: any, city: any, zip: any, address: any, telephone: any, fax: any) {
+    return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceShippingAddrres', {
+      'InvoicesID': invID, 'First_Name': fname, 'Last_Name': lname
+      , 'Email': email, 'State': state
+      , 'Country': country, 'City': city, 'Zip': zip, 'Address': address,  'Telephon': telephone, 'Fax': fax
+
+    })
+      .map((res: Response) => {
+        if (res) {
+          console.log(res.status);
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           if (res.status === 200) {
 
           }
@@ -294,6 +336,7 @@ export class BuyerDashboardServices {
 
         return Observable.throw(new Error(error.status));
       });
+<<<<<<< HEAD
   }
   InsertComputingMaxBid(proID: any, MaxPrice: any) {
     return this._http.post(this.ServerUrl + 'ComputingLaptopsProductMaxBid', {
@@ -329,6 +372,11 @@ export class BuyerDashboardServices {
         return Observable.throw(new Error(error.status));
       });
   }
+=======
+
+  }
+
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
 }

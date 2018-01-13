@@ -40,18 +40,30 @@
               <strong>Error!</strong> Account creation failed please try again.
             </div>
             <div *ngIf="EmailPosterror==true" class="alert alert-danger">
+<<<<<<< HEAD
               <strong>Error!</strong> Please Enter Correct Email.
             </div>
             <h5 style="color:#ed2424; ">User SignUp</h5>
             <div id="wsell" class="formpanel tab-pane fade in active">
               <form role="form" class="login-form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+=======
+              <strong>Error!</strong> Email Already exist.
+            </div>
+            <h5 style="color:#ed2424; ">User SignUp</h5>
+            <div id="wsell" class="formpanel tab-pane fade in active">
+              <form role="form" class="login-form" (ngSubmit)="f.form.valid && register(Username.value,Email.value,Password.value,FName.value,LName.value,Mobile.value)" #f="ngForm" novalidate>
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
                 <div class="formrow label-overlay form-group has-feedback">
 
                   <div class="formrow" [ngClass]="{ 'has-error': f.submitted && !Username.valid }">
                     <div *ngIf="f.submitted && !Username.valid" class="help-block">Username is required</div>
 
+<<<<<<< HEAD
                     <input type="text" class="form-control" name="Username" placeholder="Username" [(ngModel)]="model.Username" (focusout)="onChange(Username.value)" #Username="ngModel" required>
+=======
+                    <input type="text" class="form-control" name="Username" placeholder="Username" [(ngModel)]="model.Username" (ngModelChange)="onChange($event)" #Username="ngModel" required>
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                     <span *ngIf="Userloading == true && UserTyping == true" style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate form-control-feedback"></span>
                     <span *ngIf="UserError == true && UserTyping == true && Userloading == false" style="color: green" class="glyphicon glyphicon-ok-sign form-control-feedback"></span>
 
@@ -69,11 +81,19 @@
                 <!--</div>-->
 
 
+<<<<<<< HEAD
                 <div class="formrow label-overlay form-group has-feedback"  tabindex="-1" >
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Email.valid }">
                     <div *ngIf="f.submitted && !Email.valid" class="help-block">Email is required</div>
 
                     <input type="email" class="form-control" name="Email" placeholder="Email" [(ngModel)]="model.Email"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  (ngModelChange)="OnEmailChangeEvent()" (focusout)="checkEmail(Email.value)" #Email="ngModel" required>
+=======
+                <div class="formrow label-overlay form-group has-feedback">
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Email.valid }">
+                    <div *ngIf="f.submitted && !Email.valid" class="help-block">Email is required</div>
+
+                    <input type="email" class="form-control" name="Email" placeholder="Email" [(ngModel)]="model.Email"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  (ngModelChange)="OnEmailChangeEvent()"  (focusout)="checkEmail(Email.value)" #Email="ngModel" required>
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                     <span *ngIf="Emailok == true " style="color: green" class="glyphicon glyphicon-ok-sign form-control-feedback"></span>
                     <div *ngIf=" EmailExist == true "  class="help-block"  style="color: red" >Email is Already Exist. <a [routerLink]="['/login']" style="color: blue !important;">Click Here</a> to login</div>
                     <!--<div *ngIf="f.submitted && !username.valid" class="help-block">Email is required</div>-->
@@ -91,7 +111,11 @@
                 <div class="formrow label-overlay">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !RePassword.valid}">
                     <div *ngIf="f.submitted && !Password.valid" class="help-block">Re-Password is required</div>
+<<<<<<< HEAD
                     <input type="Password" class="form-control" (ngModelChange)="OnPassReset()" name="RePassword" (blur)="checkPassowed(RePassword.value, Password.value)" placeholder="RePassword" [(ngModel)]="model.RePassword" data-ng-match="Password" #RePassword="ngModel" required>
+=======
+                    <input type="Password" class="form-control" (ngModelChange)="OnPassReset()" name="RePassword" (focusout)="checkPassowed(RePassword.value, Password.value)" placeholder="RePassword" [(ngModel)]="model.RePassword" data-ng-match="Password" #RePassword="ngModel" required>
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                     <div *ngIf=" PassMatch == false "  class="help-block"  style="color: red" >Password Not Matched.</div>
                   </div><!-- End .form-group -->
                 </div>
@@ -118,6 +142,7 @@
                 <div class="formrow label-overlay">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Mobile.valid }">
                     <div *ngIf="f.submitted && !Mobile.valid" class="help-block">Mobile is required</div>
+<<<<<<< HEAD
                     <input type="text" class="form-control" name="Mobile" placeholder="Your Mobile Number" [textMask]="{mask: mask}" [(ngModel)]="model.Mobile" #Mobile="ngModel" required>
                   </div><!-- End .form-group -->
                   <!--[textMask]="{mask: mask}"-->
@@ -142,6 +167,24 @@
                   <p class="">
 
 
+=======
+                    <input type="text" class="form-control" name="Mobile"
+                          placeholder="Your Mobile Number"
+                           [textMask]="{mask: mask}"
+                           [(ngModel)]="model.Mobile"
+
+                           #Mobile="ngModel" required>
+                  </div><!-- End .form-group -->
+                </div>
+
+              <div class="formrow">
+                <input type="checkbox" [(ngModel)]="model.Agree" #Agree="ngModel"  value="agree text" name="agree" />
+                I have read and agree to the <a href="#" style="color: red"> Terms and Conditions</a></div>
+                <recaptcha  (resolved)="resolved($event)" siteKey="6Lfd6y8UAAAAAL_D96Onic2FcRsjy-CxP1i8forw" required=""></recaptcha>
+              <br/>
+                <div *ngIf="Waitcall" class="alert  alert-info">
+                  <p class="">
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                     <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
 
                   </p>

@@ -1,12 +1,20 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
+<<<<<<< HEAD
     "name": "universal-demo-v5"
+=======
+    "name": "dhaar-front"
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   },
   "apps": [
     {
       "root": "src",
+<<<<<<< HEAD
       "outDir": "dist/browser",
+=======
+      "outDir": "dist",
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
       "assets": [
         "assets",
         "favicon.ico"
@@ -19,6 +27,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+<<<<<<< HEAD
         "styles.scss",
         "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
         "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
@@ -45,6 +54,10 @@
       "tsconfig": "tsconfig.server.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
+=======
+        "styles.css"
+      ],
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -60,6 +73,7 @@
   },
   "lint": [
     {
+<<<<<<< HEAD
       "project": "src/tsconfig.app.json",
       "exclude": "**/node_modules/**"
     },
@@ -70,6 +84,15 @@
     {
       "project": "e2e/tsconfig.e2e.json",
       "exclude": "**/node_modules/**"
+=======
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     }
   ],
   "test": {
@@ -78,7 +101,11 @@
     }
   },
   "defaults": {
+<<<<<<< HEAD
     "styleExt": "scss",
+=======
+    "styleExt": "css",
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     "component": {}
   }
 }

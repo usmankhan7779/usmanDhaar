@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import {Component, OnInit, Inject, PLATFORM_ID} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import {Component, OnInit} from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import {CategoryServices} from './category-detail.services';
 import {Ng2PaginationModule} from 'ng2-pagination';
 
@@ -16,7 +20,11 @@ export class CategoryDetailComponent implements OnInit {
   pageno: any;
   CoverPix: any;
   sub: any;
+<<<<<<< HEAD
   PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+=======
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   modelNo: any;
   Trend: any = [];
   GetPhotos: any = [];
@@ -36,8 +44,12 @@ export class CategoryDetailComponent implements OnInit {
   CartedProduct: any = [];
   Total: number;
 
+<<<<<<< HEAD
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav: Router,
+=======
+  constructor(private _nav: Router,
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               private route: ActivatedRoute,
               private httpService: CategoryServices) {
   }
@@ -47,7 +59,11 @@ export class CategoryDetailComponent implements OnInit {
     this.r = event;
     this.pageno = event;
 
+<<<<<<< HEAD
     // alert(this.pageno);
+=======
+    alert(this.pageno);
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.httpService.getAllPhoneAndTabletProduct(this.pageno).subscribe(
       data => {
         this.Trend = data;
@@ -150,9 +166,14 @@ export class CategoryDetailComponent implements OnInit {
       this._nav.navigate(['/404']);
     }
 
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
     this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
     }
+=======
+
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     if (this.CartedProduct === null) {
       this.Cart = true;
     }
@@ -169,9 +190,12 @@ export class CategoryDetailComponent implements OnInit {
 
 
   }
+<<<<<<< HEAD
   message(){
     this.errormessage = !this.errormessage;
   }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
   listView() {
@@ -476,6 +500,7 @@ export class CategoryDetailComponent implements OnInit {
       if (tmp.ProductID === Abc) {
 
         this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1);
+<<<<<<< HEAD
         if (isPlatformBrowser(this.platformId)) {
         localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
         }
@@ -485,6 +510,15 @@ export class CategoryDetailComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
     this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
     }
+=======
+        localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+
+
+      }
+
+    }
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     if (this.CartedProduct === null) {
       this.Cart = true;
     }
@@ -634,7 +668,11 @@ export class CategoryDetailComponent implements OnInit {
   }
 
 
+<<<<<<< HEAD
   ProductPrice(pk1: any, pk2: any) {
+=======
+  ProductPrice(pk1: string, pk2: string) {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.errormessage = false;
     this.Waitcall = true;
     if (this.CatName === 'Phones & Tablets') {

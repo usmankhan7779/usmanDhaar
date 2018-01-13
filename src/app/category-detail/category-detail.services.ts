@@ -14,7 +14,11 @@ export class  CategoryServices {
   private head: any;
   public login: any;
   returnUrl: string;
+<<<<<<< HEAD
   ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
+=======
+  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
   constructor(private _http: HttpService,
@@ -181,21 +185,33 @@ export class  CategoryServices {
   //man sub
 
   getAllSublMenFashionProduct(page: any, subcat: string) {
+<<<<<<< HEAD
     return this._http.get( this.ServerUrl + 'getAllSubMenFashionProduct/' + subcat + '?page=' + page, ).map(response => response.json());
+=======
+    return this._http.get( this.ServerUrl + 'getAllSublMenFashionProduct/' + subcat + '?page=' + page, ).map(response => response.json());
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
   getAllSublMenFashionProductauction(page: any, subcat: string) {
     return this._http.get( this.ServerUrl + 'getAllSublMenFashionProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
   }
 
   getAllSublMenFashionProductbuy(page: any, subcat: string) {
+<<<<<<< HEAD
     return this._http.get( this.ServerUrl + 'getAllSubMenFashionProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
+=======
+    return this._http.get( this.ServerUrl + 'getAllSublMenFashionProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
   getAllSublMenFashionProductType(page: any, subcat: string, Auction: boolean) {
     return this._http.get( this.ServerUrl + 'getAllSubMenFashionProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
   }
   getAllSublMenFashionProductPriceWithPrice(page: any, catname: string, pk1: string, pk2: string) {
 
+<<<<<<< HEAD
     return this._http.get( this.ServerUrl + 'getAllSubMenFashionProductPrice/' + catname + '/' + pk1 + '/' + pk2 + '?page=' + page, ).map(response => response.json());
+=======
+    return this._http.get( this.ServerUrl + 'getAllSublMenFashionProductPrice/' + catname + '/' + pk1 + '/' + pk2 + '?page=' + page, ).map(response => response.json());
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
   //man sub SUb
 

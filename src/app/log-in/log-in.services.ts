@@ -1,6 +1,10 @@
 import 'rxjs/add/operator/map';
+<<<<<<< HEAD
 import {Injectable, Inject, PLATFORM_ID} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import {Injectable} from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { JwtHelper } from 'angular2-jwt';
@@ -21,6 +25,7 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
+<<<<<<< HEAD
   ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/user/';
   StoreServerUrl =  'http://ns519750.ip-158-69-23.net:7600/store/';
   EMailServerUrl =  'http://ns519750.ip-158-69-23.net:7600/rest-auth/';
@@ -28,13 +33,24 @@ export class LoginService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: HttpService ,
+=======
+  ServerUrl =  'https://dhaardb.herokuapp.com/user/';
+  StoreServerUrl =  'https://dhaardb.herokuapp.com/store/';
+  EMailServerUrl =  'https://dhaardb.herokuapp.com/rest-auth/';
+
+
+  constructor(private _http: HttpService ,
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               private _nav: Router) {
 
   }
 
 
   loged_in(mail: any , pass: any, CatName: any, ProID: any, checkout: any) {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.post(this.ServerUrl + 'user-token-auth/', {'username': mail, 'password': pass})
       .map((res: Response) => {
         if (res) {
@@ -86,10 +102,16 @@ export class LoginService {
         return Observable.throw(new Error(error.status));
       });
 
+<<<<<<< HEAD
     }
   }
   loged_No_redirect(mail: any , pass: any) {
     if (isPlatformBrowser(this.platformId)){
+=======
+  }
+  loged_No_redirect(mail: any , pass: any) {
+
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
     return this._http.post(this.ServerUrl + 'user-token-auth/', {'username': mail, 'password': pass})
       .map((res: Response) => {
@@ -107,7 +129,10 @@ export class LoginService {
         return Observable.throw(new Error(error.status));
       });
 
+<<<<<<< HEAD
     }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
   GetUSerdetailsByUserId(decoded: any) {
@@ -118,17 +143,26 @@ export class LoginService {
 
 
   loged_out() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
     // localStorage.setItem('UserID', null);
     localStorage.clear();
     return this._http.post(this.ServerUrl + 'api-token-refresh/', {'token': localStorage.getItem('Authorization')});
     }
+=======
+    // localStorage.setItem('UserID', null);
+    localStorage.clear();
+    return this._http.post(this.ServerUrl + 'api-token-refresh/', {'token': localStorage.getItem('Authorization')});
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 
 
   post_signup_form(username: string, email: string , password: string, Fname, LName, Mobile) {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.post( this.ServerUrl + 'addUser/',
       {'username' :  username,  'email':  email, 'password':  password, })
       .map((res: Response) => {
@@ -165,11 +199,17 @@ export class LoginService {
           return Observable.throw(new Error(error.status));
         }
       });
+<<<<<<< HEAD
     }
   }
 
   register_customer(responce_data, Fname, LName, Mobile) {
 
+=======
+  }
+
+  register_customer(responce_data, Fname, LName, Mobile) {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.post(this.ServerUrl + 'addUserDetails/',
       { 'user_id': responce_data,
         'Fname':  Fname,
@@ -231,7 +271,10 @@ export class LoginService {
   }
 
   check_email_unique(email) {
+<<<<<<< HEAD
     console.log('sdsdd');
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.get(this.ServerUrl + 'email_verify/' + email).map((response: Response) => response.json());
   }
 
@@ -241,7 +284,10 @@ export class LoginService {
   }
 
   verify_token() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
 .map((res: Response) => {
   if (res) {
@@ -275,6 +321,7 @@ export class LoginService {
     this._nav.navigate(['/login']);
   }
 });
+<<<<<<< HEAD
   }
   }
 
@@ -311,12 +358,52 @@ export class LoginService {
           }
         });
     }
+=======
+}
+
+
+  verify_tokenForlogin() {
+    return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
+      .map((res: Response) => {
+        const token = res.json() && res.json().token;
+        if (token) {
+          this._nav.navigate(['/home']);
+        } else {
+          this._nav.navigate(['/login']);
+        }
+      }).catch((error: any) => {
+        if (error.status === 404) {
+          console.log('ok not submited submite');
+          this._nav.navigate(['/login']);
+          return Observable.throw(new Error(error.status));
+        }
+        else if (error.status === 400) {
+          console.log('Not');
+          this._nav.navigate(['/owner_login']);
+          return Observable.throw(new Error(error.status));
+        }
+        else if (error.status === 401) {
+          console.log('ok not submited submite');
+          this._nav.navigate(['/login']);
+          return Observable.throw(new Error(error.status));
+        }
+        else  {
+
+          this._nav.navigate(['/login']);
+        }
+      });
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 
 
+<<<<<<< HEAD
   verify_tokenWithNoRedirict() {
     if (isPlatformBrowser(this.platformId)){
+=======
+
+  verify_tokenWithNoRedirict() {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
     return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
       .map(response => {
@@ -330,11 +417,17 @@ export class LoginService {
         )
           .catch(err => Observable.of(false));
       }
+<<<<<<< HEAD
   }
 
 
   StoreRegistration(model: any []) {
     if (isPlatformBrowser(this.platformId)){
+=======
+
+
+  StoreRegistration(model: any []) {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     console.log(model['fbrunregister']);
     if (model['fbrunregister'] === true ) {
 
@@ -399,13 +492,19 @@ export class LoginService {
         }
       });
   }
+<<<<<<< HEAD
   }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   // Vendorshipchange(userid: string) {
   //   return this._http.get(this.ServerUrl + 'Vendorship/' + userid).map(response => response.json());
   // }
 
  StoreBankRegistration(model: any []) {
+<<<<<<< HEAD
    if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
    return this._http.post( this.StoreServerUrl + 'GetStoreBankInformation/' + localStorage.getItem('UserID'),
      {
@@ -444,7 +543,10 @@ export class LoginService {
        }
      });
  }
+<<<<<<< HEAD
   }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
 
@@ -614,7 +716,10 @@ export class LoginService {
 
   }
   sendmail(email) {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this._http.post(this.ServerUrl + 'confirm/email/',
@@ -627,9 +732,13 @@ export class LoginService {
         // console.log(response);
       });
   }
+<<<<<<< HEAD
   }
   checkcode(key, email) {
     if (isPlatformBrowser(this.platformId)){
+=======
+  checkcode(key, email) {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     console.log(key);
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -663,7 +772,10 @@ export class LoginService {
         }
       });
   }
+<<<<<<< HEAD
   }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
 

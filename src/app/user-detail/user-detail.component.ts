@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { JwtHelper } from 'angular2-jwt';
@@ -40,12 +44,17 @@ export class UserDetailComponent implements OnInit {
   files: FileList;
   Error= false;
   Right= false;
+<<<<<<< HEAD
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
+=======
+  constructor(private obj: LoginService,
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               private _nav: Router,
               private _nav1: ActivatedRoute) { }
 
   ngOnInit() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)) {
       this.sub = this._nav1
         .queryParams
@@ -62,6 +71,23 @@ export class UserDetailComponent implements OnInit {
 
       });
     }
+=======
+
+    this.sub = this._nav1
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.Inc = params['Inc'] || false;
+      });
+
+    this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+
+    this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
+      this.GetUSerdetails = resSlidersData;
+
+    });
+
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
   OnEmailChangeEvent() {
@@ -203,9 +229,13 @@ export class UserDetailComponent implements OnInit {
   }
 
   clearSessionstoreage() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
     }
+=======
+    localStorage.clear();
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 }

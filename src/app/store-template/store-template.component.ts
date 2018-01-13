@@ -12,7 +12,11 @@ export class StoreTemplateComponent implements OnInit {
   Trend: any = [];
   pageno: any;
 
+<<<<<<< HEAD
   PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+=======
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   StoreName: any;
   StoreInfo: any = [];
   constructor(private route: ActivatedRoute,
@@ -53,7 +57,11 @@ export class StoreTemplateComponent implements OnInit {
     this.r = event;
     this.pageno = event;
 
+<<<<<<< HEAD
     // alert(this.pageno);
+=======
+    alert(this.pageno);
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.Getstoreinfo.getAll_ProductBYStoreName(this.pageno, this.StoreName).subscribe(
       data => {
         this.Trend = data;

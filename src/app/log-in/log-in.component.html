@@ -1,6 +1,10 @@
 
 <app-header></app-header>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 <!-- Page Title start -->
 <div class="pageTitle">
   <div class="container">
@@ -23,6 +27,13 @@
       <div class="col-md-6 col-md-offset-3">
 
         <div class="userccount">
+<<<<<<< HEAD
+=======
+          <div *ngIf="login_error==true" class="alert alert-danger">
+            <strong>Error!</strong> Invalid Login Details
+          </div>
+
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           <div *ngIf="SignUpDOne==true" class="alert alert-success">
             <strong>User Registered!</strong> LogIn to your account
           </div>
@@ -34,6 +45,7 @@
 
           <h5 style="color:#ed2424; ">Login</h5>
           <!-- login form -->
+<<<<<<< HEAD
 
           <div *ngIf="login_error==true" class="alert alert-danger">
             <strong>Error!</strong> Invalid Login Details
@@ -42,6 +54,9 @@
           <!--<input type="Password" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.Password" placeholder="Password" required>-->
           <!--<button class="button pro-add-to-cart col-md-push-6 " (click)="loged_in()" title="Bid Now" type="button"><span> Login</span></button>-->
             <form role="form" class="login-form"  (ngSubmit)="f.form.valid && loged_in(username.value, password.value)" #f="ngForm" novalidate>
+=======
+            <form role="form" class="login-form" (ngSubmit)="f.form.valid && loged_in(username.value, password.value)" #f="ngForm" novalidate>
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
           <div class="formpanel">
             <div class="formrow">
@@ -81,6 +96,7 @@
             </p>
           </div>
           </div>
+<<<<<<< HEAD
 
 
           <!--<div *ngIf="user">-->
@@ -94,10 +110,13 @@
             <!--<button class="btn btn-danger" (click)="signOut()">Sign out</button>-->
 
           <!--</div>-->
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           <!-- login form  end-->
 
           <!-- sign up form -->
           <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a  [routerLink]="['/sign-up']">Register Here</a></div>
+<<<<<<< HEAD
 
           <!--<div *ngIf="!user">-->
             <!--<div class="socialLogin">-->
@@ -108,6 +127,8 @@
             <!--&lt;!&ndash;<button  (click)="signInWithGoogle()"><i class="fa fa-google-plus"></i></button>&ndash;&gt;-->
 
           <!--</div>-->
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           <!-- sign up form end-->
 
           <!--<div class="socialLogin">-->

@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AdService } from './ad.services';
+<<<<<<< HEAD
 import {LoginService} from '../log-in/log-in.services';
 import {HomeService} from '../home/home.services';
 import {and} from '@angular/router/src/utils/collection';
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 @Component({
   selector: 'app-post-ad',
@@ -28,7 +35,10 @@ export class PostAdComponent implements OnInit {
   page: number;
   CatId: string;
   User_ID: string;
+<<<<<<< HEAD
   StoreName: string;
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   CatName: string;
   SubCat_ID: string;
   arrayIndex = 0;
@@ -40,9 +50,12 @@ export class PostAdComponent implements OnInit {
   MaxPictureCheck = false;
   ShowPictureError = false;
   Waitcall = false;
+<<<<<<< HEAD
   ActiveProduct: any = [];
   GetUSerOffer: any[] = [];
   SessionstoreName: any;
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   ReversePrice = false;
   private base64textString= '';
   private base64textString1= '';
@@ -57,9 +70,12 @@ export class PostAdComponent implements OnInit {
   file1: any;
   files: FileList;
   constructor(
+<<<<<<< HEAD
     @Inject(PLATFORM_ID) private platformId: Object,
     private HomeServics: HomeService,
     private Profile: LoginService,
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     private route: ActivatedRoute,
     private PostAdd: AdService,
 
@@ -67,7 +83,10 @@ export class PostAdComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.sub = this.route
       .queryParams
       .subscribe(params => {
@@ -88,6 +107,7 @@ export class PostAdComponent implements OnInit {
       console.log(this.GetAllSubCat);
 
     this.PostAdd.GetAllSubSubCategoriesByCatID(this.CatId).subscribe(resSlidersData => this.GetAllSubSubCat = resSlidersData);
+<<<<<<< HEAD
 
     this.Profile.GetStoreInformationByUserId(localStorage.getItem('UserID')).subscribe(
       data => {
@@ -108,6 +128,9 @@ export class PostAdComponent implements OnInit {
   }
   }
 
+=======
+  }
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   EnableAuction() {
 
     if ( this.Auction === false ) {
@@ -171,7 +194,11 @@ export class PostAdComponent implements OnInit {
   save( cateogry: any, condition: string) {
     // alert('first')
     this.ShowPictureError = false;
+<<<<<<< HEAD
     if (this.PictureCheck) {
+=======
+    if(this.PictureCheck) {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
       const utcDate = new Date(new Date().getTime());
@@ -200,7 +227,11 @@ export class PostAdComponent implements OnInit {
         // alert('dasdasd');
         this.model.FixedPrice = 0;
         this.model.AddBestOffer = 0;
+<<<<<<< HEAD
         this.model.Quantity = 1;
+=======
+        this.model.Quantity = 0;
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
         if (this.model.ReservePrice == null) {
           this.model.ReservePrice = 0;
         }
@@ -319,7 +350,11 @@ export class PostAdComponent implements OnInit {
           const reader1 = new FileReader();
           reader1.onload = (e: any) => {
             this._handleReaderLoadedforALl(e, a - 1);
+<<<<<<< HEAD
           };
+=======
+          }
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           // this._handleReaderLoadedforALl.bind(this.file1, a-1);
           reader1.readAsBinaryString(this.file1);
         }

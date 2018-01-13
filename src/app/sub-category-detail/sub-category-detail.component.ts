@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { CategoryServices } from '../category-detail/category-detail.services';
 import { Ng2PaginationModule } from 'ng2-pagination';
 
@@ -16,7 +20,11 @@ export class SubCategoryDetailComponent implements OnInit {
   r: any;
   pageno: any;
   sub: any;
+<<<<<<< HEAD
   PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+=======
+  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   modelNo: any;
   Trend: any = [];
   GetPhotos: any = [];
@@ -37,8 +45,12 @@ export class SubCategoryDetailComponent implements OnInit {
   AcceptOffer = false;
 
 
+<<<<<<< HEAD
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private _nav: Router,
+=======
+  constructor( private _nav: Router,
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                private route: ActivatedRoute,
                private httpService: CategoryServices) { }
 
@@ -54,6 +66,7 @@ export class SubCategoryDetailComponent implements OnInit {
       });
   }
   ngOnInit() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)) {
       this.sub = this.route.params.subscribe(params => {
         this.CatName = params['CatName'];
@@ -161,6 +174,111 @@ export class SubCategoryDetailComponent implements OnInit {
     this.errormessage = !this.errormessage;
   }
 
+=======
+    this.sub = this.route.params.subscribe(params => {
+        this.CatName = params['CatName'];
+        this.Subcat = params['SubCat'];
+        // alert(this.CatName);
+      if (this.CatName === 'Phones & Tablets') {
+        this.CoverPix = 'PT';
+      } else if (this.CatName === 'Women\'s Fashion') {
+        this.CoverPix = 'WF';
+      } else if (this.CatName === 'Men\'s Fashion') {
+        this.CoverPix = 'MF';
+      } else if (this.CatName === 'TV, Audio & Video') {
+        this.CoverPix = 'TAV';
+      } else if (this.CatName === 'Computing & Laptops') {
+        this.CoverPix = 'CL';
+      } else if (this.CatName === 'Home Appliances') {
+        this.CoverPix = 'HA';
+      } else if (this.CatName === 'Online Services') {
+        this.CoverPix = 'OS';
+      }
+
+
+      if (this.CatName === 'Phones & Tablets') {
+        //  console.log('Phones & Tablets')
+        this.httpService.getAllSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Women\'s Fashion') {
+        // console.log('Women\'s Fashion')
+        this.httpService.getAllSubWomenFashionProduct(1, this.Subcat).subscribe(
+          data => {
+            this.Trend = data;
+
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Men\'s Fashion') {
+        this.httpService.getAllSublMenFashionProduct(1, this.Subcat).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'TV, Audio & Video') {
+        // console.log('TV, Audio & Video')
+        this.httpService.getAllSubTVAudioVideoProduct(1, this.Subcat).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Computing & Laptops') {
+        this.httpService.getAllSubComputingLaptopsProduct(1, this.Subcat).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Home Appliances') {
+        this.httpService.getAllSubHomeAppliancesProduct(1, this.Subcat).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      }  else {
+
+        this._nav.navigate(['/404']);
+      }
+      this.Waitcall = false;
+
+      });
+    if (this.CatName === '0') {
+      this._nav.navigate(['/404']);
+    }
+
+
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+    if (this.CartedProduct === null) {
+      this.Cart = true;
+    }
+    this.Total = 0;
+    for (const tmp of this.CartedProduct['products']) {
+      this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
+    }
+
+
+    this.httpService.GetphotoById().subscribe(resSlidersData => {
+      this.GetPhotos = resSlidersData;
+
+    });
+
+  }
+
+
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   listView() {
     this.View = true;
   }
@@ -568,6 +686,7 @@ export class SubCategoryDetailComponent implements OnInit {
   }
 
   TrashcartElement(Abc: any) {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)) {
       for (const tmp of this.CartedProduct['products']) {
         if (tmp.ProductID === Abc) {
@@ -592,6 +711,31 @@ export class SubCategoryDetailComponent implements OnInit {
   }
 
   ProductPrice(pk1: any, pk2: any) {
+=======
+    for (const tmp of this.CartedProduct['products']) {
+      if ( tmp.ProductID === Abc ) {
+
+        this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
+        localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+
+
+      }
+
+    }
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+    if (this.CartedProduct === null) {
+      this.Cart = true;
+    }
+    this.Total = 0;
+    for (const tmp of this.CartedProduct['products']) {
+      this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
+    }
+
+
+  }
+
+  ProductPrice(pk1: string, pk2: string) {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.Waitcall = true;
     if (this.CatName === 'Phones & Tablets') {
       //  console.log('Phones & Tablets')

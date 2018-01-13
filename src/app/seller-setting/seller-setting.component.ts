@@ -1,6 +1,10 @@
 
+<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { JwtHelper } from 'angular2-jwt';
@@ -19,12 +23,19 @@ export class SellerSettingComponent implements OnInit {
   Waitcall = false;
   USerNameID: any;
   SessionstoreName: any;
+<<<<<<< HEAD
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
+=======
+  constructor(private obj: LoginService,
+              private _nav: Router) { }
+
+  ngOnInit() {
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.SessionstoreName = localStorage.getItem('StoreName');
     // this.obj.verify_token().subscribe((response) => {
          this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
@@ -39,7 +50,10 @@ export class SellerSettingComponent implements OnInit {
     //   }
     // );
   }
+<<<<<<< HEAD
   }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
   updatePassword(old: string, new1: string, new2: string) {
@@ -86,8 +100,12 @@ export class SellerSettingComponent implements OnInit {
   }
 
   clearSessionstoreage() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
     }
+=======
+    localStorage.clear();
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 }

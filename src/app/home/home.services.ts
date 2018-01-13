@@ -1,6 +1,10 @@
 import 'rxjs/add/operator/map';
+<<<<<<< HEAD
 import {Injectable, Inject, PLATFORM_ID} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import {Injectable} from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {HttpService} from '../services/http-service';
@@ -16,11 +20,18 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
+<<<<<<< HEAD
   ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/products/';
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: HttpService ,
+=======
+  ServerUrl =  'https://dhaardb.herokuapp.com/products/';
+
+
+  constructor(private _http: HttpService ,
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               private _nav: Router) {
   }
 
@@ -186,7 +197,10 @@ export class HomeService {
 
 
   ProductOffers(Product_ID: any, StoreName: any, Cat_Name: any, Qty: any, model: any) {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.post(this.ServerUrl + 'ProductsOffersInsert',
       {
 
@@ -220,7 +234,10 @@ export class HomeService {
 
 
   }
+<<<<<<< HEAD
   }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
 

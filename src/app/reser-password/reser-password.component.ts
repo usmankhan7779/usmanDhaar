@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 
@@ -21,14 +25,22 @@ export class ReserPasswordComponent implements OnInit {
   token: any;
   is_set = false;
   is_match_error = false;
+<<<<<<< HEAD
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
+=======
+  constructor(private obj: LoginService,
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               private route: ActivatedRoute,
               private _nav: Router) { }
 
   ngOnInit() {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
       window.scrollTo(0, 0);
+=======
+    window.scrollTo(0, 0);
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.sub = this.route.params.subscribe(params => {
       this.uid = params['uid'] || '0';
       this.token = params['token'] || '0';
@@ -38,7 +50,10 @@ export class ReserPasswordComponent implements OnInit {
       this._nav.navigate(['/login']);
     }
   }
+<<<<<<< HEAD
   }
+=======
+>>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
 
