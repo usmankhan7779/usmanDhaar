@@ -102,17 +102,10 @@
             <div *ngIf="LoggedIn === false" class="box-border">
               <div class="row">
                 <div class="col-sm-6">
-<<<<<<< HEAD
                   <h5>Checkout as a Guest</h5>
                   <!--<p>Register with us for future convenience:</p>-->
                   <ul>
                     <li><label><input type="radio" #Guest name="radio1">Checkout as Guest</label></li>
-=======
-                  <h5>Checkout with Sign up </h5>
-                  <!--<p>Register with us for future convenience:</p>-->
-                  <ul>
-                    <!--<li><label><input type="radio" #Guest name="radio1">Checkout as Guest</label></li>-->
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                     <li><label><input type="radio" #Register name="radio1">Sign up</label></li>
                   </ul>
                   <br>
@@ -121,11 +114,7 @@
                   <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
                   <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
                   <ng-container *ngIf="GuestButton === true">
-<<<<<<< HEAD
                     <button (click)="RegisterOrGuest(Guest.checked,Register.checked)" class="button"><i
-=======
-                    <button (click)="RegisterOrGuest(Register.checked)" class="button"><i
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                       class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
                   </ng-container>
                 </div>
@@ -573,11 +562,7 @@
       <h4 style="color: green">Thank you for your Order! Invoice ID: {{InvoiceIDSet}} </h4>
 
       <div class="error-msg">
-<<<<<<< HEAD
         <p>Your order has been placed and being processed. When the item(s) are shipped, you will receive an email with the details. you can track this order through <a [routerLink]="['/buyer-order']">My Order</a> page</p>
-=======
-        <p>Your order has been placed and being processed. When the item(s) are shipped, you will receive an email with the details. you can track this order through <a [routerLink]="['/login']">My Order</a> page</p>
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
         <a [routerLink]="['/home']" class="btn">Go to Home Page</a> </div>
     </div>
   </div>

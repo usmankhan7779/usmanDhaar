@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
+
 import { HomeService } from './home.services';
 @Component({
   selector: 'app-home',
@@ -11,11 +8,7 @@ import { HomeService } from './home.services';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-<<<<<<< HEAD
   PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
-=======
-  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   GetallPhoneProduct: any = [];
   getcomputinglaptopsproduct8: any = [];
   WomenFashionProducts4: any = [];
@@ -42,18 +35,13 @@ export class HomeComponent implements OnInit {
   Getphoto: any = [];
   GetallphotsProduct: any = [];
 
-<<<<<<< HEAD
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private GetProducts: HomeService) {
-=======
-  constructor(private GetProducts: HomeService) {
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 
   }
 
   ngOnInit() {
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
       // phone and tablets
@@ -123,77 +111,6 @@ export class HomeComponent implements OnInit {
 
 
     }
-=======
-    window.scrollTo(0, 0);
-    // phone and tablets
-
-    this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
-      this.GetallPhoneProduct = resSlidersData;
-
-    });
-
-    // tv vidoe audio
-    this.GetProducts.GetWomenFashionProducts4().subscribe(resSlidersData => {
-
-      this.WomenFashionProducts4 = resSlidersData;
-      // console.log('Start');
-      // console.log(this.TvVideoaudio8);
-
-    });
-
-    this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
-
-      this.GetALLProductss = resSlidersData;
-      // console.log('Start');
-
-
-    });
-    this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
-
-      this.GetALLAuctionProductss = resSlidersData;
-      // console.log('Start');
-    });
-    this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
-
-      this.GetALLFeaturedProductss = resSlidersData;
-      // console.log('Start');
-    });
-
-    // tv vidoe audio
-    this.GetProducts.GetMenFashionProducts4().subscribe(resSlidersData => {
-
-      this.MenFashionProducts4 = resSlidersData;
-      // console.log('Start');
-      // console.log(this.TvVideoaudio8);
-
-    });
-   this.GetProducts.getFashionProduct().subscribe(resSlidersData => {
-
-      this.getFashionProduct = resSlidersData;
-      // console.log('Start');
-      // console.log(this.TvVideoaudio8);
-
-    });
-
-    // tv vidoe audio
-    this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
-
-      this.getcomputinglaptopsproduct8 = resSlidersData;
-
-
-    });
-
-
-    // picture
-    this.GetProducts.GetphotoById().subscribe(resSlidersData => {
-      this.Getphoto = resSlidersData;
-
-    });
-
-
-
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 

@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import { Component, OnInit,  Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { JwtHelper } from 'angular2-jwt';
@@ -22,7 +19,6 @@ export class BuyerSettingComponent implements OnInit {
   Waitcall = false;
   Error = false;
   USerNameID: any;
-<<<<<<< HEAD
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router) { }
@@ -31,13 +27,6 @@ export class BuyerSettingComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)){
     this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
     }
-=======
-  constructor(private obj: LoginService,
-              private _nav: Router) { }
-
-  ngOnInit() {
-    this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 
@@ -81,12 +70,8 @@ export class BuyerSettingComponent implements OnInit {
   }
 
   clearSessionstoreage() {
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
     }
-=======
-    localStorage.clear();
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 }

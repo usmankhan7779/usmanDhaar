@@ -1,10 +1,6 @@
-
-<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
+
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 import { AdService } from '../post-ad/ad.services';
 import { HomeService } from '../home/home.services';
@@ -23,11 +19,8 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
   pageno: any;
   sub: any;
-<<<<<<< HEAD
   PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
-=======
-  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
+
   modelNo: any;
   ShipingInvoice: any = [];
   InvoiceData: any = [];
@@ -47,12 +40,9 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
 
 
-<<<<<<< HEAD
+
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private _nav: Router,
-=======
-  constructor( private _nav: Router,
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                private route: ActivatedRoute,
                private CatServices: AdService,
                private GetOneProduct: HomeService,
@@ -60,10 +50,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
 
   ngOnInit() {
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.SessionstoreName = localStorage.getItem('StoreName');
     this.sub = this.route
       .queryParams
@@ -221,18 +208,12 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
     }
   }
-<<<<<<< HEAD
   }
 
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
     }
-=======
-
-  clearSessionstoreage() {
-    localStorage.clear();
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 }

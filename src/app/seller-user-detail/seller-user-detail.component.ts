@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { JwtHelper } from 'angular2-jwt';
@@ -43,7 +39,6 @@ export class SellerUserDetailComponent implements OnInit {
   files: FileList;
   Error= false;
   Right= false;
-<<<<<<< HEAD
   match = true;
   notsame = false;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -61,21 +56,6 @@ export class SellerUserDetailComponent implements OnInit {
         console.log(this.GetUSerdetails);
       });
     }
-=======
-  constructor(private obj: LoginService,
-              private _nav: Router) { }
-
-  ngOnInit() {
-    this.SessionstoreName = localStorage.getItem('StoreName');
-    this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
-
-    this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
-      this.GetUSerdetails = resSlidersData;
-      // console.log('fdsf');
-      console.log(this.GetUSerdetails);
-    });
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
   }
 
@@ -147,13 +127,7 @@ export class SellerUserDetailComponent implements OnInit {
     this.base64textString = btoa(binaryString);
 
   }
-<<<<<<< HEAD
 
-=======
-  clearSessionstoreage() {
-    localStorage.clear();
-  }
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   checkButtonStep1() {
     if (this.model.storename != null && this.model.email != null && this.model.ownername != null && this.model.city != null && this.model.zipcode != null && this.model.personal != null && this.model.address != null && this.model.ownername != null) {
 
@@ -222,7 +196,6 @@ export class SellerUserDetailComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
   updatePassword(old: string, new1: string, new2: string) {
     this.Error = false;
     this.Right = false;
@@ -271,7 +244,4 @@ export class SellerUserDetailComponent implements OnInit {
       localStorage.clear();
     }
   }
-
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 }

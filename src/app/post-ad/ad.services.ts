@@ -1,10 +1,6 @@
 import 'rxjs/add/operator/map';
-<<<<<<< HEAD
 import {Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-=======
-import {Injectable} from '@angular/core';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 
@@ -21,17 +17,11 @@ export class AdService {
   private head: any;
   public login: any;
   returnUrl: string;
-<<<<<<< HEAD
   ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
   StoreUrl =  'http://ns519750.ip-158-69-23.net:7600/store/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http,
-=======
-  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
-
-  constructor(private _http: Http,
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               private _nav: Router) {
 
   }
@@ -43,11 +33,8 @@ export class AdService {
 
 
   }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   GetAllSubCategoriesByCatID(pk: string) {
 
 
@@ -141,10 +128,7 @@ export class AdService {
   Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
     return this._http.post(this.ServerUrl + 'phoneandtablets',
       {
@@ -198,14 +182,9 @@ export class AdService {
 
 
   }
-<<<<<<< HEAD
   }
   Add_WomenFashion_Product(Product_ID: any,  User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex) {
     if (isPlatformBrowser(this.platformId)){
-=======
-  Add_WomenFashion_Product(Product_ID: any,  User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex) {
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.post(this.ServerUrl + 'womenfashion',
       {
         'ProductID': Product_ID,
@@ -258,16 +237,10 @@ export class AdService {
 
 
   }
-<<<<<<< HEAD
   }
   Add_MenFashion_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex ) {
 
     if (isPlatformBrowser(this.platformId)){
-=======
-  Add_MenFashion_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex ) {
-
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.post(this.ServerUrl + 'menfashion',
       {
         'ProductID': Product_ID,
@@ -318,16 +291,10 @@ export class AdService {
 
 
   }
-<<<<<<< HEAD
   }
   Add_TVAudioVideo_Product(Product_ID: any, User_ID,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex ) {
 
     if (isPlatformBrowser(this.platformId)){
-=======
-  Add_TVAudioVideo_Product(Product_ID: any, User_ID,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex ) {
-
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.post(this.ServerUrl + 'TVAudioVideo',
       {
         'ProductID': Product_ID,
@@ -380,7 +347,6 @@ export class AdService {
 
 
   }
-<<<<<<< HEAD
   }
   Add_ComputingLaptops_Product(Product_ID: any, User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex  ) {
    // console.log('fsdfsfgsahd' + SubSubCat);
@@ -432,67 +398,11 @@ export class AdService {
         return Observable.throw(new Error(error.status));
       });
     }
-=======
-  Add_ComputingLaptops_Product(Product_ID: any, User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex  ) {
-   // console.log('fsdfsfgsahd' + SubSubCat);
-
-    return this._http.post(this.ServerUrl + 'ComputingLaptops',
-      {
-        'ProductID': Product_ID,
-        'Cat_Name': CatName ,
-        'Sub_Cat_Name': SubCat,
-        'User_ID': User_ID,
-        'Sub_Sub_Cat_Name': SubSubCat,
-        'P_Title':  Title,
-        'P_Des':  Addetail,
-        'P_Condition':  condition,
-        'Auction': Auction,
-        'SrartingPrice': Starting_Price,
-        'MaxBidPrice': Starting_Price,
-        'StoreName': localStorage.getItem('StoreName'),
-        'Buyitnow': Buyitnow,
-        'AuctionListing': AuctionListing,
-        'ReservePrice': ReservePrice,
-        'FixedPrice': FixedPrice,
-        'Addbestoffer': AddBestOffer,
-        'Quantity': Quantity,
-        'MaxQuantity': Quantity,
-        'Active': false,
-        'Sold': false,
-        'Pic': basex64,
-
-
-        //    'Pidd':  Pidd,
-      }).map((res: Response) => {
-      if (res) {
-        console.log('abc');
-        if (res.status === 201) {
-          const responce_data = res.json();
-          for (let a = 0; a < arrayIndex; a++) {
-            console.log(a);
-            this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
-          }
-
-          localStorage.setItem('NewPost', 'Done');
-          this._nav.navigate(['/dashboard']);
-          return [{ status: res.status, json: res }];
-        }
-      }
-    }).catch((error: any) => {
-      console.log(error.toString());
-      return Observable.throw(new Error(error.status));
-    });
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
   }
   Add_HomeAppliances_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any, ALLbase64textStringforPic, arrayIndex ) {
 
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
-=======
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     return this._http.post(this.ServerUrl + 'HomeAppliances',
       {
         'ProductID': Product_ID,
@@ -545,9 +455,6 @@ export class AdService {
 
 
   }
-<<<<<<< HEAD
   }
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 }

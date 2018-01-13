@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import { Component, OnInit, EventEmitter, Inject, PLATFORM_ID} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-=======
-import { Component, OnInit, EventEmitter } from '@angular/core';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
+
 // import './single-product.js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
@@ -28,11 +25,7 @@ export class SingleProductComponent implements OnInit {
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
   ProID: string;
-<<<<<<< HEAD
   PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
-=======
-  PicServrUrl = 'https://dhaardb.herokuapp.com/media';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   Getphoto: any = [];
   NewBidInserted = false ;
   NewCart = false ;
@@ -42,16 +35,10 @@ export class SingleProductComponent implements OnInit {
   AuctionTest = true;
   noreview = false;
   Solddd = false;
-<<<<<<< HEAD
   soldfix = false;
 
   minOffer = false;
   openreviews = true;
-=======
-
-  minOffer = false;
-  openreviews = false;
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   ourproduct = false;
   minOfferDone = false;
   AuctionProductPrice: number;
@@ -82,18 +69,13 @@ export class SingleProductComponent implements OnInit {
   LocalStoreName: any;
   MinimumbestOffer: any;
   AuctionDayDB: string;
-<<<<<<< HEAD
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private route: ActivatedRoute,
-=======
-  constructor( private route: ActivatedRoute,
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                private GetAdd: HomeService,
                private LOginObj: LoginService,
                private httpService: BuyerDashboardServices,
                private router: Router) { }
   ngOnInit() {
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)) {
       setInterval(() => {
         this.timer(this.element);
@@ -372,267 +354,6 @@ export class SingleProductComponent implements OnInit {
 
     }
 
-=======
-    setInterval(() => {this.timer(this.element); }, 1000);
-    // window.setInterval(function () {
-    //
-    //
-    // }, 1000);
-
-
-    if (localStorage.getItem('UserID') !== null) {
-      this.LoginID = true;
-    } else {
-      this.LoginID = false;
-    }
-
-
-
-    this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
-      this.GetallPhoneProduct = resSlidersData;
-    });
-
-    window.scrollTo(0, 0);
-    this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        // Defaults to 0 if no query param provided.
-        this.CatName = params['CatName'] || '0' ;
-        this.ProID  = params['ProID'] || '0';
-        this.RedirectFromlogin = params['Redirect'] || null ;
-        if (this.RedirectFromlogin !== null) {
-          if (this.RedirectFromlogin === 'MakeOffer') {
-            this.amountoffer = true;
-          }
-        }
-        this.httpService.GetallIDByUser( this.ProID, localStorage.getItem('UserID')).subscribe(
-          data => {
-            this.invoice = data;
-            if ( this.invoice['0']['id'] !== null ) {
-              this.openreviews = true;
-            }
-          });
-
-        if (this.ProID !== '0') {
-        this.GetAdd.GetAllProductPicture(this.ProID).subscribe(resSlidersData => {
-          this.ProductPictures = resSlidersData;
-        });
-        }
-
-        this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
-          this.GetallProductReview = resSlidersData;
-
-
-          if(this.GetallProductReview.length === 0) {
-            this.noreview = true;
-
-          }
-        });
-
-        this.GetAdd.GetallBidsProductdbyProductID( this.ProID).subscribe(resSlidersData => {
-
-          this.BidingProduct = resSlidersData;
-
-          this.BidingProduct.sort(function(a, b) {
-             // alert('first')
-            if (a.Price > b.Price) {
-              return -1;
-            } else if (a.Price < b.Price) {
-              return 1;
-            } else {
-              return 0;
-            }
-          });
-        });
-      });
-    this.GetAdd.GetphotoById().subscribe(resSlidersData => {
-      this.Getphoto = resSlidersData;
-    });
-
-    if (this.CatName === '0') {
-      this.router.navigate(['/login']);
-    } else {
-      if (this.CatName === 'Phones & Tablets') {
-
-        this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
-          this.resultProduct = resSlidersData;
-
-          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-            this.ourproduct = true;
-
-          }
-          this.LocalStoreName = this.resultProduct[0].StoreName;
-          this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-          if ( this.resultProduct[0].Auction ) {
-            this.DbDate = this.resultProduct[0].CreatedDate;
-            this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-            const auctiondays = +this.AuctionDayDB * 86400000;
-            const time0 = new Date();
-            const time1 = new Date(this.DbDate);
-            const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-            // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-            let x = time3 / 1000;
-            this.seconds = Math.floor(x % 60);
-            x /= 60;
-            this.minutes = Math.floor(x % 60);
-            x /= 60;
-            this.hours = Math.floor(x % 24);
-            x /= 24;
-            this.days = Math.floor(x);
-
-
-          }
-
-        });
-      } else if (this.CatName === 'Women\'s Fashion') {
-        // console.log('Women\'s Fashion')
-         this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData => {
-          this.resultProduct = resSlidersData;
-           if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-             this.ourproduct = true;
-
-           }
-          this.LocalStoreName = this.resultProduct[0].StoreName;
-          this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-          if ( this.resultProduct[0].Auction ) {
-            this.DbDate = this.resultProduct[0].CreatedDate;
-            this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-            const auctiondays = +this.AuctionDayDB * 86400000;
-            const time0 = new Date(); //86400000
-            const time1 = new Date(this.DbDate);
-            const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-            // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-            let x = time3 / 1000;
-            this.seconds = Math.floor(x % 60);
-            x /= 60;
-            this.minutes = Math.floor(x % 60);
-            x /= 60;
-            this.hours = Math.floor(x % 24);
-            x /= 24;
-            this.days = Math.floor(x);
-          }
-        });
-
-
-      } else if (this.CatName === 'Men\'s Fashion') {
-        this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData => {
-          this.resultProduct = resSlidersData;
-          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-            this.ourproduct = true;
-
-          }
-          this.LocalStoreName = this.resultProduct[0].StoreName;
-          this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-          if ( this.resultProduct[0].Auction ) {
-            this.DbDate = this.resultProduct[0].CreatedDate;
-            this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-            const auctiondays = +this.AuctionDayDB * 86400000;
-            const time0 = new Date(); //86400000
-            const time1 = new Date(this.DbDate);
-            const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-            // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-            let x = time3 / 1000;
-            this.seconds = Math.floor(x % 60);
-            x /= 60;
-            this.minutes = Math.floor(x % 60);
-            x /= 60;
-            this.hours = Math.floor(x % 24);
-            x /= 24;
-            this.days = Math.floor(x);
-          }
-        });
-      } else if (this.CatName === 'TV, Audio & Video') {
-        // console.log('TV, Audio & Video')
-        this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData => {
-          this.resultProduct = resSlidersData;
-          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-            this.ourproduct = true;
-
-          }
-          this.LocalStoreName = this.resultProduct[0].StoreName;
-          this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-          if ( this.resultProduct[0].Auction ) {
-            this.DbDate = this.resultProduct[0].CreatedDate;
-            this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-            const auctiondays = +this.AuctionDayDB * 86400000;
-            const time0 = new Date(); //86400000
-            const time1 = new Date(this.DbDate);
-            const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-            // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-            let x = time3 / 1000;
-            this.seconds = Math.floor(x % 60);
-            x /= 60;
-            this.minutes = Math.floor(x % 60);
-            x /= 60;
-            this.hours = Math.floor(x % 24);
-            x /= 24;
-            this.days = Math.floor(x);
-          }
-        });
-      } else if (this.CatName === 'Computing & Laptops') {
-        this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData => {
-          this.resultProduct = resSlidersData;
-          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-            this.ourproduct = true;
-
-          }
-          this.LocalStoreName = this.resultProduct[0].StoreName;
-          this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-          if ( this.resultProduct[0].Auction ) {
-            this.DbDate = this.resultProduct[0].CreatedDate;
-            this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-            const auctiondays = +this.AuctionDayDB * 86400000;
-            const time0 = new Date(); //86400000
-            const time1 = new Date(this.DbDate);
-            const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-            // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-            let x = time3 / 1000;
-            this.seconds = Math.floor(x % 60);
-            x /= 60;
-            this.minutes = Math.floor(x % 60);
-            x /= 60;
-            this.hours = Math.floor(x % 24);
-            x /= 24;
-            this.days = Math.floor(x);
-          }
-        });
-      } else if (this.CatName === 'Home Appliances') {
-        this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData => {
-          this.resultProduct = resSlidersData;
-          if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-            this.ourproduct = true;
-
-          }
-          this.LocalStoreName = this.resultProduct[0].StoreName;
-          this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-          if ( this.resultProduct[0].Auction ) {
-            this.DbDate = this.resultProduct[0].CreatedDate;
-            this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-            const auctiondays = +this.AuctionDayDB * 86400000;
-            const time0 = new Date(); //86400000
-            const time1 = new Date(this.DbDate);
-            const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-            // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-            let x = time3 / 1000;
-            this.seconds = Math.floor(x % 60);
-            x /= 60;
-            this.minutes = Math.floor(x % 60);
-            x /= 60;
-            this.hours = Math.floor(x % 24);
-            x /= 24;
-            this.days = Math.floor(x);
-          }
-        });
-      }
-
-
-
-    }
-
-
-
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
   getValueq(event) {
     // //alert(event)
@@ -651,7 +372,6 @@ export class SingleProductComponent implements OnInit {
   }
   InsertBid(startingPrice: number, MaxPrice: number ) {
 
-<<<<<<< HEAD
     console.log('max', this.resultProduct[0]);
     console.log('start', startingPrice);
 
@@ -699,34 +419,6 @@ export class SingleProductComponent implements OnInit {
       //   }
       //
       // });
-=======
-
-    if (this.model.UserPriceBid > MaxPrice) {
-      this.MinBidPrice = false;
-      this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
-        this.GeProductBiding = resSlidersData;
-        if (this.CatName === '0') {
-          this.router.navigate(['/login']);
-        } else {
-          if (this.CatName === 'Phones & Tablets') {
-            this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-          } else if (this.CatName === 'Women\'s Fashion') {
-            // console.log('Women\'s Fashion')
-            this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-          } else if (this.CatName === 'Men\'s Fashion') {
-            this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-          } else if (this.CatName === 'TV, Audio & Video') {
-            // console.log('TV, Audio & Video')
-            this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-          } else if (this.CatName === 'Computing & Laptops') {
-            this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-          } else if (this.CatName === 'Home Appliances') {
-            this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-          }
-        }
-
-      });
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
       console.log(this.GeProductBiding);
       // this.someMethod(true, this.ProID, startingPrice );
       this.NewBidInserted = true;
@@ -776,7 +468,6 @@ export class SingleProductComponent implements OnInit {
   }
 
   Addtocart(Abc: any) {
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)) {
       // alert('Message of error');
       // console.log(Abc);
@@ -822,56 +513,18 @@ export class SingleProductComponent implements OnInit {
           } else {
 
             this.resultProduct[0].itemsqty = +Abc;
-=======
-
-    if (Abc === '') {
-    alert('Please Select Product Quantity first');
-    } else {
-
-
-
-      try {
-
-
-        // this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
-        // alert(this.TmpresultProduct['products']);
-
-        if (localStorage.getItem('Cartdata') !== null ) {
-
-          this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
-          for (const ABCC of this.TmpresultProduct['products']) {
-
-            if (ABCC.ProductID === this.ProID) {
-              this.NewCart = true;
-
-            }
-          }
-          if (this.NewCart === false) {
-
-            this.resultProduct[0].itemsqty = +Abc;
-            this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
             this.TmpresultProduct['products'].push(this.resultProduct[0]);
             localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
             // console.log(this.products);
             this.router.navigate(['/checkout2']);
-<<<<<<< HEAD
           }
         } catch (e) {
-=======
-          } else {
-            this.router.navigate(['/checkout2']);
-          }
-        } else {
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
           this.resultProduct[0].itemsqty = +Abc;
           this.TmpresultProduct['products'].push(this.resultProduct[0]);
           localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
           // console.log(this.products);
           this.router.navigate(['/checkout2']);
         }
-<<<<<<< HEAD
 
       }
     }
@@ -915,63 +568,10 @@ export class SingleProductComponent implements OnInit {
         this.router.navigate(['/login'], {queryParams: {CatName: this.CatName, ProID: this.ProID}});
       }
     }
-=======
-      } catch  (e) {
-        this.resultProduct[0].itemsqty = +Abc;
-         this.TmpresultProduct['products'].push(this.resultProduct[0]);
-           localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
-      // console.log(this.products);
-            this.router.navigate(['/checkout2']);
-      }
-
-      }
-
-  }
-
-  ClearSession() {
-    localStorage.clear();
-    alert('clear');
-  }
-
-  MakeAnOffer() {
-    if (localStorage.getItem('Authorization') !== null) {
-      this.LOginObj.verify_tokenWithNoRedirict().subscribe((response) => {
-
-          if (response) {
-
-            this.amountoffer = true;
-          } else {
-
-
-            this.router.navigate(['/login'], {queryParams: { CatName:  this.CatName, ProID: this.ProID } });
-
-          }
-        },
-        (err) => {
-
-          console.log('ERROR:' + err);
-          alert(err);
-          // this._nav.navigate(['/login']);
-        },
-        () => {
-        }
-      );
-
-
-    } else {
-
-      this.router.navigate(['/login'], {queryParams: { CatName:  this.CatName, ProID: this.ProID } });
-    }
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   }
 
 
   SubmitOffer(Qty: any) {
-<<<<<<< HEAD
-
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.minOfferDone = false;
     this.minOffer = false;
     if ( this.model.OfferAmount !== null  ) {

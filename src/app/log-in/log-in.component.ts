@@ -1,35 +1,22 @@
-<<<<<<< HEAD
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './log-in.services';
 import { NgModel } from '@angular/forms';
 import {NgForm} from '@angular/forms';
 
-<<<<<<< HEAD
 // import { AuthService } from 'angular4-social-login';
 // import { SocialUser } from 'angular4-social-login';
 // import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
 
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
-<<<<<<< HEAD
   styleUrls: ['./log-in.component.css'],
 })
 export class LogInComponent implements OnInit {
   // user: SocialUser;
-=======
-  styleUrls: ['./log-in.component.css']
-})
-export class LogInComponent implements OnInit {
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   model: any = {};
   private sub: any;
   loading = false;
@@ -48,24 +35,17 @@ export class LogInComponent implements OnInit {
 
 
 
-<<<<<<< HEAD
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                // private authService: AuthService,
                private obj: LoginService,
-=======
-  constructor( private obj: LoginService,
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
                private _nav: Router,
                private route: ActivatedRoute) { }
 
   ngOnInit() {
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
       // this.authService.authState.subscribe((user) => {
       //   this.user = user;
       // });
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     this.sub = this.route
       .queryParams
       .subscribe(params => {
@@ -98,7 +78,6 @@ export class LogInComponent implements OnInit {
     // get return url from route parameters or default to '/'
     // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
   }
-<<<<<<< HEAD
   }
 
   // signInWithGoogle(): void {
@@ -119,15 +98,6 @@ export class LogInComponent implements OnInit {
         // console.log("VALUE RECEIVED: "+response);
         this.login_error = false;
         this.Waitcall = true;
-=======
-
-  loged_in(mail: string , pass: string) {
-    this.login_error = false;
-    this.Waitcall = true;
-    this.obj.loged_in(mail, pass, this.CatName, this.ProID, this.checkout).subscribe((response) => {
-        /* this function is executed every time there's a new output */
-        // console.log("VALUE RECEIVED: "+response);
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
       },
       (err) => {
@@ -146,10 +116,7 @@ export class LogInComponent implements OnInit {
 
 
   LogOutClick() {
-<<<<<<< HEAD
     if (isPlatformBrowser(this.platformId)){
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
    // console.log('Before');
     console.log(localStorage.getItem('Authorization'));
   //  this.obj.loged_out();
@@ -159,10 +126,6 @@ export class LogInComponent implements OnInit {
     console.log(localStorage.getItem('Authorization'));
     this._nav.navigate(['/login']);
   }
-<<<<<<< HEAD
   }
-=======
-
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 }

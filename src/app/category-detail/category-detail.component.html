@@ -83,11 +83,7 @@
           <ng-container *ngIf="!errormessage" >
           <div *ngIf="!View" class="product-grid-area">
             <ul class="products-grid">
-<<<<<<< HEAD
               <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 4,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
-=======
-              <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
               <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="product-item">
                   <div class="item-inner">
@@ -216,7 +212,6 @@
           </div>
 
           </ng-container>
-<<<<<<< HEAD
           <ng-container *ngIf="errormessage" >
             <div class="alert alert-danger">
               <h3 align="center">No Product Found</h3>
@@ -233,16 +228,6 @@
                                  nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
 
           </div>
-=======
-          <ng-container *ngIf="errormessage"  >
-
-            <div class="alert alert-danger">
-              <h3 align="center">No Product Found</h3>
-            </div>
-
-
-          </ng-container>
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
         </div>
 
       </div>

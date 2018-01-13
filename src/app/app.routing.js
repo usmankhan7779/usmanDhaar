@@ -21,7 +21,6 @@ var category_detail_component_1 = require("./category-detail/category-detail.com
 var user_detail_component_1 = require("./user-detail/user-detail.component");
 var store_registration_component_1 = require("./store-registration/store-registration.component");
 var appRoutes = [
-<<<<<<< HEAD
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
   },
@@ -101,87 +100,6 @@ var appRoutes = [
     path: 'store-registration',
     component: store_registration_component_1.StoreRegistrationComponent
   }
-=======
-    {
-        path: '', redirectTo: '/home', pathMatch: 'full'
-    },
-    {
-        path: 'dashboard',
-        component: dashboard_component_1.DashboardComponent
-    },
-    {
-        path: 'home',
-        component: home_component_1.HomeComponent
-    },
-    {
-        path: 'login',
-        component: log_in_component_1.LogInComponent
-    },
-    {
-        path: 'sign-up',
-        component: sign_up_component_1.SignUpComponent
-    },
-    {
-        path: 'select-category',
-        component: select_category_component_1.SelectCategoryComponent
-    },
-    {
-        path: 'single-product',
-        component: single_product_component_1.SingleProductComponent
-    },
-    {
-        path: 'checkout',
-        component: checkout_component_1.CheckoutComponent
-    },
-    {
-        path: 'forget-password',
-        component: forget_password_component_1.ForgetPasswordComponent
-    },
-    {
-        path: 'post-ad',
-        component: post_ad_component_1.PostAdComponent
-    },
-    {
-        path: 'change-password',
-        component: change_password_component_1.ChangePasswordComponent
-    },
-    {
-        path: 'ad-listing',
-        component: ad_listing_component_1.AdListingComponent
-    },
-    {
-        path: 'ad-detail',
-        component: ad_detail_component_1.AdDetailComponent
-    },
-    {
-        path: 'active-ad',
-        component: active_ad_component_1.ActiveAdComponent
-    },
-    {
-        path: 'pending-ad',
-        component: pending_ad_component_1.PendingAdComponent
-    },
-    {
-        path: 'edit-profile',
-        component: edit_profile_component_1.EditProfileComponent
-    },
-    {
-        path: 'contact-us',
-        component: contact_us_component_1.ContactUsComponent
-    },
-    {
-        path: 'category-detail',
-        component: category_detail_component_1.CategoryDetailComponent
-    },
-    {
-        path: 'user-detail',
-        component: user_detail_component_1.UserDetailComponent
-    },
-    {
-        path: 'store-registration',
-        component: store_registration_component_1.StoreRegistrationComponent
-    }
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 ];
 exports.AppRoutingProvider = [];
 exports.Routing = router_1.RouterModule.forRoot(appRoutes);

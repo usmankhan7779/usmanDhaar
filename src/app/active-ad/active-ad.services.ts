@@ -14,13 +14,8 @@ export class ActiveAdServices {
   private head: any;
   public login: any;
   returnUrl: string;
-<<<<<<< HEAD
   ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
   StoreServerUrl = 'http://ns519750.ip-158-69-23.net:7600/store/';
-=======
-  ServerUrl = 'https://dhaardb.herokuapp.com/products/';
-  StoreServerUrl = 'https://dhaardb.herokuapp.com/store/';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
   constructor(private _http: Http,
               private _nav: Router) {
@@ -75,7 +70,6 @@ export class ActiveAdServices {
 
 
   InsertDisCountcoupons(Qty: string, Discount: string , Day: string, StoreName, PID) {
-<<<<<<< HEAD
     console.log('Yahoooo22222222', Qty, Discount, Day, StoreName, PID);
     return this._http.post( this.ServerUrl + 'insertdiscountcoupons/', {
 
@@ -86,11 +80,6 @@ export class ActiveAdServices {
       'ProductID':  PID
 
     })
-=======
-
-    return this._http.post( this.ServerUrl + 'insertdiscountcoupons/',
-      {'Qty' :  Qty,  'Discount':  Discount, 'Day':  Day, 'StoreName':  StoreName , 'ProductID':  PID })
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
       .map((res: Response) => {
 
         if (res) {

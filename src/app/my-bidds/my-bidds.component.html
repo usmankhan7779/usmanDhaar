@@ -44,10 +44,7 @@
 
           <ul class="searchList">
             <!-- ad start -->
-<<<<<<< HEAD
             <ng-container *ngIf="!errormessage">
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
             <ng-container *ngFor="let phoneProducts of ActiveProduct.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
               <li>
                 <div class="row">
@@ -75,15 +72,12 @@
                 </div>
               </li>
             </ng-container>
-<<<<<<< HEAD
             </ng-container>
             <ng-container *ngIf="errormessage">
               <div class="alert alert-danger">
                 <h3 align="center">No Active Bids Found</h3>
               </div>
             </ng-container>
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
             <!-- ad end -->
 
             <div class="col-sm-4 col-sm-push-8">
