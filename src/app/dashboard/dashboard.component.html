@@ -1,0 +1,237 @@
+<app-header></app-header>
+
+<!-- Page Title start -->
+<div class="pageTitle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">Seller Dashboard</h1>
+      </div>
+      <div class="col-md-6 col-sm-6">
+
+
+        <div class="breadCrumb ">
+          <ng-container *ngIf="GetUSerDOne !== null">
+            <a [routerLink]="['/seller-user-detail']">
+            <img *ngIf="GetUSerDOne['Pic'] !== ''"  class="breadimg" src="{{PicServrUrl + GetUSerDOne['Pic']}}" alt=""  width="70px" height="70px"> <br/>
+            <img *ngIf="GetUSerDOne['Pic'] === ''" class="breadimg" src="assets/images/defaultprofile.jpg" alt=""  width="70px" height="70px"> <br/>
+            <span *ngIf="ValueRec == true">Welcome {{ GetUSerDOne['Fname']}}</span>
+            </a>
+          </ng-container>
+
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="inner-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <ul class="usernavdash">
+          <li ><a [routerLink]="['/store', storename]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
+          <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i>List An Item</a></li>
+          <li class="active"><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
+          <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
+          <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
+          <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
+          <li><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
+          <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
+          <li><a [routerLink]="['/seller-user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
+          <li><a [routerLink]="['/seller-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
+          <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+
+        </ul>
+        <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
+      </div>
+
+      <div class="col-md-9 col-sm-8">
+        <div *ngIf="NewPostcheck == true" class="alert alert-success">
+          Your product has been successfully listed.
+          <a [routerLink]="['/store', storename]">Click Here To View</a>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0  toppad" >
+
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">My details</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <ng-container *ngIf="GetUSerDOne !== null">
+                  <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{PicServrUrl + GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
+                  <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
+                  <div class=" col-md-8 col-lg-8 ">
+                    <table class="table table-user-information">
+                      <tbody>
+                      <tr>
+                        <td>Name:</td>
+                        <td>{{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}</td>
+                      </tr>
+                      <tr>
+                        <td>Mobile:</td>
+                        <td>{{GetUSerDOne['Mobile']}}</td>
+                      </tr>
+                      <tr>
+                        <td>Address:</td>
+                        <td>{{GetUSerDOne['Address']}}</td>
+                      </tr>
+
+                      <tr>
+                      <tr>
+                        <td>City:</td>
+                        <td>{{ GetUSerDOne['City'] +' ' +GetUSerDOne['Zip'] }}</td>
+                      </tr>
+                      <tr>
+                        <td>State</td>
+                        <td>{{GetUSerDOne['State'] }} </td>
+                      </tr>
+                      <tr>
+                        <td>Country</td>
+                        <td>{{GetUSerDOne['Country'] }}</td>
+                      </tr>
+
+
+                      </tbody>
+                    </table>
+
+
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <a [routerLink]="['/seller-user-detail']" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+              <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
+              <span class="pull-right">
+                         </span>
+            </div>
+
+          </div>
+        </div>
+        <ul class="row profilestat">
+          <!--<li class="col-md-2 col-sm-4 col-xs-6">-->
+          <!--<div class="inbox"> <i class="fa fa-eye" aria-hidden="true"></i>-->
+          <!--<h6>0</h6>-->
+          <!--<strong>Ad Views</strong> </div>-->
+          <!--</li>-->
+          <!--<li class="col-md-2 col-sm-4 col-xs-6">-->
+          <!--<div class="inbox"> <i class="fa fa-tachometer" aria-hidden="true"></i>-->
+          <!--<h6>0 <span>hr</span></h6>-->
+          <!--<strong>Respond Time</strong> </div>-->
+          <!--</li>-->
+          <!--<li class="col-md-2 col-sm-4 col-xs-6">-->
+          <!--<div class="inbox"> <i class="fa fa-clock-o" aria-hidden="true"></i>-->
+          <!--<h6>0</h6>-->
+          <!--<strong>Ad Expire</strong> </div>-->
+          <!--</li>-->
+
+          <li class="col-md-2 col-sm-4 col-xs-6">
+            <div class="inbox"> <i class="fa fa-bullhorn" aria-hidden="true"></i>
+              <ng-container *ngIf="!this.GetUSerOffer.length">
+              <h6>0</h6>
+              </ng-container>
+              <ng-container *ngIf="this.GetUSerOffer.length">
+              <h6>{{GetUSerOffer['results'].length}}</h6>
+              </ng-container>
+              <strong>Best Offers</strong>
+
+            </div>
+          </li>
+          <!--<li class="col-md-2 col-sm-4 col-xs-6">-->
+          <!--<div class="inbox"> <i class="fa fa-envelope-o" aria-hidden="true"></i>-->
+          <!--<h6>0</h6>-->
+          <!--<strong>Messages</strong> </div>-->
+          <!--</li>-->
+
+
+
+        </ul>
+
+
+        <div class="main container">
+          <div class="row">
+
+            <div class="col-xs-10">
+              <div class="page-content checkout-page">
+                <div class="page-title">
+                  <h2>Best Offers</h2>
+                </div>
+
+                <!--<h4 class="checkout-sep">Biding History</h4>-->
+                <div class="box-border">
+                  <div class="table-responsive">
+                    <table class="table table-bordered cart_summary">
+                      <thead>
+                      <tr>
+                        <th>Product ID</th>
+                        <th>User Email</th>
+                        <th>User Message</th>
+                        <th>Qty</th>
+                        <th>Offer Amount</th>
+                        <th>Offer Date</th>
+                        <th></th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+
+                      <ng-container  *ngFor="let abc of GetUSerOffer['results']; let i = index">
+                        <tr>
+                          <td> {{i+1}} <span style="color: red !important;">-</span> {{ abc.Product_Id}} <span style="color: red !important;"> <a style="color: red !important;" [routerLink]="['/single-product']" [queryParams]="{ ProID:  abc.Product_Id, CatName: abc.Cat_Name }"> View Ad </a></span></td>
+                          <td>{{ abc.User_Id}}</td>
+                          <td>  {{ abc.Message}}</td>
+                          <td>  {{ abc.Qty}}</td>
+                          <td>  {{ abc.Price}}</td>
+                          <td>  {{ abc.CreatedDate.substr(0,10)}}</td>
+
+                          <td> <button  class="button"><span>Accept</span></button>  <button  class="button"><span>Send an Email</span></button><button  class="button"><span>Counter Offer</span></button></td>
+
+
+                        </tr>
+                      </ng-container>
+                      </tbody>
+                      <tfoot>
+
+                      <tr>
+
+
+                      </tr>
+
+                      </tfoot>
+                    </table>
+                  </div>
+
+                </div>
+
+
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

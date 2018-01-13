@@ -1,0 +1,573 @@
+<app-header></app-header>
+
+
+
+<section *ngIf="OrderPlaced == false"  class="main-container col2-right-layout">
+  <div class="main container">
+    <div class="row">
+
+      <div class="col-main col-xs-12">
+        <div class="page-content checkout-page">
+          <div class="page-title">
+            <h2>Checkout</h2>
+          </div>
+
+          <h4 class="checkout-sep">Order Review</h4>
+          <div class="box-border">
+            <div class="table-responsive">
+              <table class="table table-bordered cart_summary">
+                <thead>
+                <tr>
+                  <th class="cart_product">Product</th>
+                  <th>Description</th>
+                  <th>Avail.</th>
+                  <th>Unit price</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                  <th class="action"><i class="fa fa-trash-o"></i></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <ng-container *ngIf="Total > 0">
+                  <ng-container *ngFor="let abc of CartedProduct.products">
+                  <tr>
+                    <td class="cart_product">
+                      <a href="#"><img src="{{ PicServrUrl + abc.Pic }}" alt="products" alt="Product"></a>
+                    </td>
+                    <td class="cart_description">
+                      <p class="product-name"><a href="#">{{ abc.P_Title }} </a></p>
+                      <!--<small><a href="#">Color : Beige</a></small><br>-->
+                      <!--<small><a href="#">Size : S</a></small>-->
+                    </td>
+                    <td class="cart_avail"><span class="label label-success">In stock</span></td>
+                    <td class="price"><span>Rs: {{ abc.FixedPrice | number:'.0-0' }}</span></td>
+                    <td class="qty">
+                      <form role="form">
+                        <input maxlength="3" (ngModelChange)="onChange($event, abc.ProductID)" name="qty"
+                               [(ngModel)]="model.qty" #qty="ngModel" class="form-control input-sm" type="number"
+                               placeholder="{{  abc.itemsqty }}">
+                      </form>
+                    </td>
+                    <td class="price">
+                      <span>Rs: {{ abc.FixedPrice * abc.itemsqty | number:'.0-0' }} </span>
+                    </td>
+                    <td class="action">
+                      <a (click)="TrashcartElement(abc.ProductID)"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                  </tr>
+
+                </ng-container>
+                </ng-container>
+
+                </tbody>
+                <tfoot>
+
+                <tr>
+
+                  <td colspan="2" rowspan="2">
+
+                    <input [(ngModel)]="mymodel.coupon" #coupon="ngModel" type="text" class="button col-lg-6" style="font-size: 20px" name=""
+                                                     id="first_name"><span class="col-lg-push-3">-</span>
+                    <button type="submit" (click)="Applycoupon(coupon.value)" class="button col-lg-push-6"><span>Apply Coupon</span></button>
+                    <br/>
+                  </td>
+
+                  <td *ngIf="!TotalDiscount"  colspan="3">Total products (tax incl.)</td>
+                  <td *ngIf="!TotalDiscount" colspan="2">Rs: {{ Total | number:'.0-0'}}</td>
+
+                  <td *ngIf="TotalDiscount>0"  colspan="3">Coupon Discount</td>
+                  <td *ngIf="TotalDiscount>0" colspan="2">Rs: -{{ TotalDiscount | number:'.0-2'}}</td>
+
+
+                </tr>
+                <tr>
+                  <td colspan="3"><strong>Total</strong></td>
+                  <td colspan="2"><strong>Rs: {{ Total | number:'.0-0'}} </strong></td>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <ng-container *ngIf="orderreview === true">
+              <button (click)="ContinuetoCHeckout()" class="button pull-right"><span>Continue to Checkout </span>
+              </button>
+            </ng-container>
+          </div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <ng-container *ngIf="CheckoutMethod === true">
+            <h4 class="checkout-sep">Checkout Method</h4>
+            <div *ngIf="LoggedIn === false" class="box-border">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5>Checkout as a Guest</h5>
+                  <!--<p>Register with us for future convenience:</p>-->
+                  <ul>
+                    <li><label><input type="radio" #Guest name="radio1">Checkout as Guest</label></li>
+                    <li><label><input type="radio" #Register name="radio1">Sign up</label></li>
+                  </ul>
+                  <br>
+                  <h4>Sign up and save time!</h4>
+                  <p>Sign up with us for future convenience:</p>
+                  <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
+                  <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
+                  <ng-container *ngIf="GuestButton === true">
+                    <button (click)="RegisterOrGuest(Guest.checked,Register.checked)" class="button"><i
+                      class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
+                  </ng-container>
+                </div>
+                <div class="col-sm-6">
+                  <h5>Login</h5>
+                  <p>Already registered? Please click on login:</p>
+                  <form (ngSubmit)="f.form.valid  && LoginUser()" #f="ngForm" novalidate>
+
+                    <!--<label>User name</label>-->
+                    <!--<input id="LoginEmailAddress" [(ngModel)]="mymodel.username"-->
+                           <!--pattern="^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$"-->
+                           <!--#username="ngModel" type="text" name="username" class="form-control input" required>-->
+
+                    <!--<div *ngIf="f.submitted && username.errors " class="help-block">Please fill username-->
+                    <!--</div>-->
+
+                    <!--<label>Password</label>-->
+                    <!--<input [(ngModel)]="mymodel.Loginpassword" name="Loginpassword" #Loginpassword="ngModel"-->
+                           <!--type="password" required class="form-control input">-->
+                    <!--<div *ngIf="f.submitted && !Loginpassword.valid " class="help-block">Password required-->
+                    <!--</div>-->
+                    <!--<div *ngIf="status == 2  " class="help-block" style="color: red">Something went wrong-->
+                    <!--</div>-->
+
+                    <!--<p><a href="#">Forgot your password?</a></p>-->
+                    <button class="button"><i class="icon-login"></i>&nbsp; <span>Login</span></button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+
+          </ng-container>
+          <div *ngIf="LoggedIn === true" class="box-border">
+            <div class="row">
+              <h4 class="col-lg-4">Logged in as <a style="color: red">{{ LoginName }}</a></h4>
+            </div>
+          </div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <ng-container *ngIf="BillingMethod === true">
+            <h4 class="checkout-sep">Shipping Information</h4>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad" >
+
+
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h3 class="panel-title">My details</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <ng-container *ngIf="GetUSerDOne !== null">
+                      <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{PicServrUrl + GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
+                      <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
+                      <div class=" col-md-8 col-lg-8 ">
+                        <table class="table table-user-information">
+                          <tbody>
+                          <tr>
+                            <td>Name:</td>
+                            <td>{{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>Mobile:</td>
+                            <td>{{GetUSerDOne['Mobile']}}</td>
+                          </tr>
+                          <tr>
+                            <td>Address:</td>
+                            <td>{{GetUSerDOne['Address']}}</td>
+                          </tr>
+
+                          <tr>
+                          <tr>
+                            <td>City:</td>
+                            <td>{{ GetUSerDOne['City'] +' ' +GetUSerDOne['Zip'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>State</td>
+                            <td>{{GetUSerDOne['State'] }} </td>
+                          </tr>
+                          <tr>
+                            <td>Country</td>
+                            <td>{{GetUSerDOne['Country'] }}</td>
+                          </tr>
+
+
+                          </tbody>
+                        </table>
+
+
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="panel-footer">
+                  <a [routerLink]="['/user-detail']" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                  <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
+                  <span class="pull-right">
+                         </span>
+                </div>
+
+              </div>
+            </div>
+
+            <form (ngSubmit)="f.form.valid  && ShippingDetails()" #f="ngForm" novalidate>
+
+              <!--<div class="box-border">-->
+                <!--<ul>-->
+
+                  <!--<li class="row">-->
+
+                    <!--<div class="col-sm-6">-->
+
+                      <!--<label for="first_name_1" class="required">First Name  {{GetUSerDOne['Fname']}} </label>-->
+                      <!--<input [(ngModel)]="model.first_name" #first_name="ngModel" ng-Model="model.last_name"-->
+                             <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
+                             <!--class="input form-control" type="text" value="{{GetUSerDOne['Fname']}}" name="first_name" required id="first_name_1">-->
+
+                      <!--<div *ngIf="f.submitted && !first_name.valid && first_name.errors "  style="color:red" class="help-block">First name is-->
+                        <!--required-->
+
+                      <!--</div>-->
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+
+                    <!--<div class="col-sm-6">-->
+
+                      <!--<label for="last_name_1" class="required">Last Name</label>-->
+                      <!--<input [(ngModel)]="model.last_name" #last_name="ngModel" ng-Model="model.last_name"-->
+                             <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
+                             <!--class="input form-control" type="text"-->
+                             <!--value="{{GetUSerDOne['Lname']}}"-->
+                             <!--name="last_name" id="last_name_1">-->
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+
+                  <!--<li class="row">-->
+
+
+                    <!--<div class="col-sm-6">-->
+                      <!--&lt;!&ndash;pattern="^(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"&ndash;&gt;-->
+                      <!--<label for="email_address_1" class="required">Email Address Or Dhaar Username </label>-->
+                      <!--<input [(ngModel)]="model.email_address" ng-Model="model.email_address"-->
+                             <!--value="{{LoginName}}"-->
+                             <!--#email_address="ngModel" class="input form-control"-->
+                             <!--type="email" name="email_address" id="email_address_1" required>-->
+
+                      <!--<div style="color:red" *ngIf="f.submitted && email_address.errors  && !email_address.valid" class="help-block">-->
+                        <!--Email is invalid-->
+                      <!--</div>-->
+
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+
+                  <!--<li class="row">-->
+
+                    <!--<div class="col-sm-6">-->
+
+                      <!--<label class="required">state province</label>-->
+
+                      <!--<div class="custom_select">-->
+
+                        <!--<select [(ngModel)]="model.state" ng-Model="model.state"  #state="ngModel" class="input form-control" required-->
+                                <!--name="state">-->
+                          <!--<option selected value="{{GetUSerDOne['State']}}">{{GetUSerDOne['State']}}</option>-->
+                          <!--<option  value="Punjab">Punjab</option>-->
+                          <!--<option value="Balochistan">Islamabad Capital Territory</option>-->
+                          <!--<option value="Sindh">Sindh</option>-->
+                          <!--<option value="Balochistan">Balochistan</option>-->
+                          <!--<option value="Azad Jammu and Kashmir">Azad Jammu and Kashmir</option>-->
+                          <!--<option value="Balochistan">Balochistan</option>-->
+                          <!--<option value="Gilgit–Baltistan">Gilgit–Baltistan</option>-->
+                          <!--<option value="GKhyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>-->
+
+
+                        <!--</select>-->
+                        <!--<div style="color:red" *ngIf="f.submitted  && !state.valid" class="help-block">-->
+                          <!--State is required-->
+                        <!--</div>-->
+
+                      <!--</div>-->
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+                    <!--<div class="col-sm-6">-->
+
+                      <!--<label class="required">Country</label>-->
+
+                      <!--<div class="custom_select">-->
+
+                        <!--<select [(ngModel)]="model.Country"   #Country="ngModel" class="input form-control" name="Country"-->
+                                <!--required>-->
+
+                          <!--<option selected value="Pakistan">Pakistan</option>-->
+
+
+                        <!--</select>-->
+                        <!--<div style="color:red" *ngIf="f.submitted  && !Country.valid" class="help-block">-->
+                          <!--Country is required-->
+                        <!--</div>-->
+                      <!--</div>-->
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+
+                  <!--<li class="row">-->
+
+                    <!--<div class="col-sm-6">-->
+
+                      <!--<label for="postal_code_1"  class="required">City</label>-->
+                      <!--<input [(ngModel)]="model.City" #City="ngModel"-->
+                             <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
+                             <!--value="{{GetUSerDOne['City']}}"-->
+                             <!--ng-Model="model.City"-->
+                             <!--class="input form-control" type="text" name="City" required-->
+                             <!--id="postal_code_1">-->
+                      <!--<div style="color:red" *ngIf="f.submitted  && !City.valid && City.errors" class="help-block">-->
+                        <!--City is required-->
+                      <!--</div>-->
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+                    <!--<div class="col-sm-6">-->
+
+                      <!--<label for="postal_code_1" class="required">Zip/Postal Code</label>-->
+                      <!--<input [(ngModel)]="model.Zip" #Zip="ngModel" class="input form-control"-->
+                             <!--type="text" name="Zip"-->
+                             <!--pattern="([0-9])+$"-->
+                             <!--required-->
+                             <!--ng-Model="model.Zip"-->
+                             <!--value="{{GetUSerDOne['Zip']}}"-->
+                             <!--maxlength="6"-->
+                             <!--id="po">-->
+                      <!--<div style="color:red" *ngIf="f.submitted  && !Zip.valid && Zip.errors" class="help-block">-->
+                        <!--Zip code is required-->
+                      <!--</div>-->
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+                  <!--<li class="row">-->
+
+                    <!--<div class="col-xs-12">-->
+
+                      <!--<label for="address_1" class="required">Address</label>-->
+                      <!--<input [(ngModel)]="model.Address" #Address="ngModel" class="input form-control"-->
+                             <!--type="text"-->
+                             <!--ng-Model="model.Address"-->
+                             <!--value="{{GetUSerDOne['Address']}}"-->
+                             <!--name="Address" id="address_1" required>-->
+
+                      <!--<div style="color:red" *ngIf="f.submitted  && !Address.valid" class="help-block">-->
+                        <!--Address is required-->
+                      <!--</div>-->
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+
+
+                  <!--<li class="row">-->
+
+                    <!--<div class="col-sm-6">-->
+
+                      <!--<label for="telephone_1" class="required">Telephone</label>-->
+                      <!--<input [(ngModel)]="model.telephone" #telephone="ngModel"-->
+                             <!--[textMask]="{mask: phonemask}"-->
+                             <!--value="{{GetUSerDOne['Mobile']}}"-->
+                             <!--ng-Model="model.Mobile"-->
+                             <!--class="input form-control" type="text"-->
+                             <!--name="telephone" id="telephone_1">-->
+
+                      <!--<div style="color:red" *ngIf="f.submitted  && !telephone.valid" class="help-block">-->
+                        <!--Telephone is required-->
+                      <!--</div>-->
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+                    <!--<div class="col-sm-6">-->
+
+                      <!--<label for="fax_1">Fax</label>-->
+                      <!--<input [(ngModel)]="model.fax" #fax="ngModel" class="input form-control" type="number" name="fax"-->
+                             <!--id="fax_1">-->
+
+                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+                  <!--</li>-->
+
+
+
+                  <!--<li>-->
+                <!--</ul>-->
+              <!--</div>-->
+
+                    <h4 class="checkout-sep">Payment Method</h4>
+                <div class="box-border">
+                  <ul>
+                    <li>
+
+                    <div class="box-border">
+                      <ul class="shipping_method">
+                        <li>
+                          <div class="col-sm-12">
+                            <label for="radio_button_4"><input (click)="Paymentdisplay(home.checked, online.check)"
+                                                               #online
+                                                               type="radio" checked name="radio_3" id="radio_button_4">Online
+                              Payment</label>
+                          </div>
+                          <ng-container *ngIf="PaymentatHme === false">
+                            <div class="col-sm-12">
+                              <div class="col-sm-6">
+                                <br/>
+
+                                <label for="first_name_1" class="required">Name on the Card</label>
+                                <input
+                                  [(ngModel)]="model.card_name" #card_name="ngModel"
+                                  pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                                  class="input form-control" type="text" name="card_name" required
+                                  name="card_name" placeholder="">
+                                <div style="color:red" *ngIf="f.submitted  && !card_name.valid" class="help-block">
+                                  This field is required
+                                </div>
+
+                              </div>
+                            </div><!--/ [col] -->
+                            <div class="col-sm-12">
+                              <div class="col-sm-6">
+                                <br/>
+                                <label for="first_name_1" class="required">Card Number</label>
+                                <input
+                                  [(ngModel)]="model.card_number" #card_number="ngModel"
+                                  required
+                                  [textMask]="{mask: mask}"
+                                  class="input form-control" type="text" name="card_number" placeholder="">
+                                <div style="color:red" *ngIf="f.submitted  && !card_number.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+
+                            </div><!--/ [col] -->
+
+
+                            <div class="col-sm-12">
+
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="expiry_month"
+
+                                       class="required">Expiry month</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.expiry_month" #expiry_month="ngModel"
+                                       required
+                                       maxlength="2"
+                                       minlength="2"
+                                       pattern="([0-9])+$"
+                                       type="text" name="expiry_month" placeholder="05">
+                                <div style="color:red" *ngIf="f.submitted  && !expiry_month.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="expiry_year" class="required">Expiry Year</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.expiry_year" #expiry_year="ngModel"
+                                       required
+                                       maxlength="4"
+                                       minlength="4"
+                                       pattern="([0-9])+$"
+                                       type="text" name="expiry_year" placeholder="2025">
+                                <div style="color:red" *ngIf="f.submitted  && !expiry_year.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="cvv" class="required">CVV Number</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.cvv" #cvv="ngModel"
+                                       required
+                                       maxlength="3"
+                                       minlength="3"
+                                       pattern="([0-9])+$"
+                                       type="text" name="cvv" placeholder="365">
+                                <div style="color:red" *ngIf="f.submitted  && !cvv.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                            </div><!--/ [col] -->
+                          </ng-container>
+
+                        </li>
+
+
+                        <li>
+
+                          <div class="col-sm-12">
+                            <br/>
+                            <br/>
+                            <label for="radio_button_3"><input (click)="Paymentdisplay(home.checked, online.check)"
+                                                               #home
+                                                               type="radio" name="radio_3" id="radio_button_3">Payment
+                              At
+                              Home</label>
+                          </div>
+                        </li>
+                      </ul>
+
+                      <br/>
+                      <button class="button col-lg-12 "><i class="fa fa-angle-double-right"></i>&nbsp;
+                        <span>Place Order </span>
+                      </button>
+                    </div>
+                  </li><!--/ .row -->
+
+                </ul>
+
+                <!--<ng-container *ngIf="BillingMethodButton === true;">-->
+                <!--<button (click)="BillingInfo()" class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>-->
+                <!--</ng-container>-->
+              </div>
+            </form>
+          </ng-container>
+          <br/>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+
+
+<div *ngIf="OrderPlaced == true" class="error-page-wrap">
+  <div class="container">
+    <div class="errormain">
+      <h4 style="color: green">Thank you for your Order! Invoice ID: {{InvoiceIDSet}} </h4>
+
+      <div class="error-msg">
+        <p>Your order has been placed and being processed. When the item(s) are shipped, you will receive an email with the details. you can track this order through <a [routerLink]="['/buyer-order']">My Order</a> page</p>
+        <a [routerLink]="['/home']" class="btn">Go to Home Page</a> </div>
+    </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>

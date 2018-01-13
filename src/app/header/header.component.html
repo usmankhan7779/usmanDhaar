@@ -1,0 +1,616 @@
+<!-- Header -->
+<header id="header">
+  <div class="header-container">
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-sm-5 col-xs-6 hidden-xs">
+            <div class="slider-items-products">
+              <div id="offer-slider" class="product-flexslider hidden-buttons">
+                <div class="slider-items slider-width-col4">
+                  <div class="offer-content-text">
+                    <p><i class="pe-7s-like2"></i> Only the <span>Best Quality</span> and brands</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- top links -->
+          <div class="headerlinkmenu col-md-7 col-sm-7 col-xs-12">
+            <!-- Default Welcome Message -->
+            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs">Welcome {{ GetUSerDOne['Fname']}},</div>
+            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs" ><a [routerLink]="['/login']" (click)="gotodashboard()" style="color: #f23534 !important;" > My Account </a></div>
+            <!--<div class="welcome-msg hidden-xs">Welcome to msg! </div>-->
+            <ul class="links">
+              <li *ngIf="ValueRec == true"><a [routerLink]="['/checkout2']">Checkout</a></li>
+              <li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']">Sign Up</a></li>
+              <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']">Log In</a></li>
+              <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" >Logout</a></li>
+
+            </ul>
+            <div class="language-currency-wrapper pull-right">
+              <div class="inner-cl">
+                <!--<div class="block block-language form-language">-->
+                  <!--<div class="lg-cur"> <span> <span class="lg-fr">English</span> <i class="fa fa-angle-down"></i> </span> </div>-->
+                  <!--<ul>-->
+                    <!--<li> <a href="#"><span>German</span> </a> </li>-->
+                    <!--<li> <a href="#"><span>Brazil</span> </a> </li>-->
+                    <!--<li> <a href="#"><span>Chile</span> </a> </li>-->
+                    <!--<li> <a href="#"><span>Spain</span> </a> </li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <div class="block block-currency">
+                  <div class="item-cur"> <span>Rs </span> </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-bottom: 20px; margin-top: 10px;">
+      <div class="row">
+        <!-- Header Logo -->
+        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-3">
+          <div class="logo">
+
+            <a [routerLink]="['/home']" title="Dhaar">
+              <img src="assets/images/newdhaar.png" alt="dhaar3">
+            </a>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-6 col-md-6 top-search">
+          <!-- Search -->
+          <!--top-search-->
+          <div id="search">
+            <form >
+              <div class="input-group">
+                <!--<select class="cate-dropdown hidden-xs hidden-sm" name="category_id">-->
+                  <!--<option>All Categories</option>-->
+                  <!--<ng-container *ngFor="let item_cat of GetallCat">-->
+                    <!--<option value="{{item_cat.Cat_Name}}">{{item_cat.Cat_Name}}</option>-->
+
+                  <!--</ng-container>-->
+                <!--</select>-->
+                <!--id="institutenameid"-->
+                <input type="text"  ng-Model="model.search" (keydown)="navigate($event, search.value, 1 )" #search class="form-control"  placeholder="Search" name="search">
+
+                <button (click)="navigate($event, search.value, 0)"  class="btn-search" type="button"><i class="fa fa-search"></i></button>
+              </div>
+
+            </form>
+          </div>
+
+
+
+
+          <!-- End Search -->
+        </div>
+        <div class="col-lg-2 col-sm-3 col-xs-12 top-cart">
+          <!-- Begin shopping cart trigger  -->
+          <div id="shopping-cart-trigger"> <a [routerLink]="['/checkout2']" class="cart-icon" title="Shopping Cart" > <i class="fa fa-shopping-bag"></i> <span class="cart-num">{{ItemInCart}}</span></a> </div>
+          <!-- End shopping cart trigger -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Header Logo -->
+
+  <nav>
+    <!-- Start Menu Area -->
+    <div class="menu-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="main-menu">
+              <div class="mm-toggle-wrap hidden-lg hidden-md hidden-sm">
+                <div class="mm-toggle"> <i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
+              </div>
+              <ul class="hidden-xs">
+                <li  class="active custom-menu"><a [routerLink]="['/home']">Home</a>
+
+                </li>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }">Phones & Tablets</a>
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block-1">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Phones & Tablets','Phones']">Phones<span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Smartphones']" >Smartphones</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Featured Phones']">Featured Phones </a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Phones & Tablets','Mobile Accessories']">Mobile Accessories<span class="menu-item-tag menu-item-tag-hot">Sale</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Screen Protector']">Screen Protector</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Power Banks']">Power Banks</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Memory Cards']"><span>Memory Cards</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Mobile Covers']"><span>Mobile Covers</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Ear Phones']">Ear Phones </a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Selfie Sticks']">Selfie Sticks</a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Phones & Tablets','Tablets']">Tablets</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Phones & Tablets','Below 7']">Below 7</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Phones & Tablets','Above 7']">Above 7</a> </li>
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Phones & Tablets','Tablets Accessories']">Tablets Accessories</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Tablet Cases & Covers']">Tablet Cases & Covers</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Tablet Chargers']">Tablet Chargers</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','	iPad Cables & Adapters']">	iPad Cables & Adapters</a></li>
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Phones & Tablets','Landlines']">Landlines </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Phones & Tablets','Corded']">Corded</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Phones & Tablets','Cordless']">Cordless </a> </li>
+
+                        </ul>
+
+                      </div>
+                      <div class="menu-block-3 hidden-sm">
+                        <div class="mega-menu-img"> <a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }"><img src="assets/images/mobilegif.gif" height="310" alt="Bannar 1"></a> </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" >Women's Fashion</a>
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block-1">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Women\'s Fashion','Clothing']">Clothing <span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Casual shirt']">Casual shirt</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Kurta & Shalwar Kameez']">Kurta & Shalwar Kameez</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Unstitched Fabric']">Unstitched Fabric</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Jeans']">Jeans</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Sundresses']">Sundresses</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Formal Wear']">Formal Wear</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Women\'s Tops']">Women's Tops</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Dupattas Ccarves & Stoles']">Dupattas Ccarves & Stoles</a></li>
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Women\'s Fashion','Jewellery']">Jewellery <span class="menu-item-tag menu-item-tag-hot">Sale</span></a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Gold']">Gold</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Platinum']">Platinum</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Rings']">Rings </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Neckwear']">Neckwear </a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Women\'s Fashion','Shoes']">Shoes </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Heels']">Heels</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Flats & Sandals']">Flats & Sandals</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Sports & Outdoor']">Sports & Outdoor</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Mocassins']">Mocassins</a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Sneakers']">Sneakers </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Formal Shoes']">Formal Shoes </a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Women\'s Fashion','Accessories']">Accessories </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Handbags']">Handbags</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Sunglasses']">Sunglasses</a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Clutches']">Clutches </a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Watches']">Watches </a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Women\'s Fashion','Backpacks']">Backpacks </a> </li>
+                        </ul>
+
+
+
+
+                      </div>
+                      <div class="menu-block-3 hidden-sm">
+                        <div class="mega-menu-img"> <a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }"><img src="assets/images/womenfashion.jpg" height="310" alt="Bannar 1"></a> </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }">Men's Fashion</a>
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block-1">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Men\'s Fashion','Men\'s Clothing']">Men's Clothing <span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Shirts']">Men's Shirts</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s T-Shirts']">Men's T-Shirts</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Polo Shirts']">Men's Polo Shirts</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Jeans']">Men's Jeans</a></li>
+
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Kurtas & Shalwar Kameez']">Men's Kurtas & Shalwar Kameez</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Shorts & Cargos']">Men's Shorts & Cargos</a></li>
+
+                        </ul>
+
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Men\'s Fashion','Men\'s Shoes']">Men's Shoes </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Sandals & Slippers']">Men's Sandals & Slippers</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Boots']">Men's Boots</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Sports & Outdoor']">Men's Sports & Outdoor</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Mocassins']">Men's Mocassins</a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Sneakers']">Men's Sneakers </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Formal Shoes']">Men's Formal Shoes </a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Men\'s Fashion','Men\'s Accessories']">Men's Accessories </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Eyewear']">Men's Eyewear</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Bags']">Men's Bags</a> </li>
+                          <li> <a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Belts']">Men's Belts</a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Watches']">Men's Watches </a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','Men\'s Fashion','Men\'s Ties & Cufflinks']">Men's Ties & Cufflinks </a> </li>
+                        </ul>
+                      </div>
+                      <div class="menu-block-3 hidden-sm">
+                        <div class="mega-menu-img"> <a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }"><img src="assets/images/mens.png" height="310" alt="Bannar 1"></a> </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'TV, Audio & Video' }">TV, Audio & Video</a>
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block-1">
+                        <ul>
+                          <li class="menu-banner"><a href="#"><img src="assets/images/e-img1.jpg" alt="menu-banner"></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','TV, Audio & Video','Television']">Television </a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','LED Tv\'s']">LED Tv's</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Smart Tv\'s']">Smart Tv's</a></li>
+
+                        </ul>
+                        <ul>
+                          <li class="menu-banner"><a href="#"><img src="assets/images/e-img2.jpg" alt="menu-banner"></a></li>
+                          <!--<span class="menu-item-tag menu-item-tag-hot">Sale</span>-->
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','TV, Audio & Video','Musical Instruments']">Musical Instruments</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Drums & Percussion']">Drums & Percussion</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Guitars']"><span>Guitars</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Keyboard & Piano']"><span>Keyboard & Piano</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Live & Studio']">Live & Studio</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Instrument Accessories']">Instrument Accessories</a></li>
+                        </ul>
+                        <ul>
+                          <li class="menu-banner"><a href="#"><img src="assets/images/e-img3.jpg" alt="menu-banner"></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','TV, Audio & Video','Cameras']"> Cameras </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Canon']">Canon</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Nikon']">Nikon</a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Lens']">Lens </a></li>
+
+                        </ul>
+                        <ul>
+                          <li class="menu-banner"><a href="#"><img src="assets/images/e-img4.jpg" alt="menu-banner"></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','TV, Audio & Video','Headphone']">Headphone</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Backpacks']">Backpacks</a> </li>
+                          <li><a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Ray-Ban']">Ray-Ban</a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Opium']">Opium </a></li>
+                          <li> <a [routerLink]="['/subsub-category-detail','TV, Audio & Video','Joe Black']">Joe Black </a> </li>
+                        </ul>
+                      </div>
+                      <div class="menu-block-3 hidden-sm">
+                        <div class="mega-menu-img"> <a href="shop_grid.html"><img src="assets/images/menu-img4.jpg" alt="Bannar 1"></a> </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Computing & Laptops' }">Computing & Laptops</a>
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Computing & Laptops','Laptops']">Laptops</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Refurbished Laptops']">Refurbished Laptops</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Notebooks']">Notebooks</a></li>
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title"  [routerLink]="['/sub-category-detail','Computing & Laptops','Printers & Scanners']">Printers & Scanners </a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','All in One Printers']"><span>All in One Printers</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Laser Printers']">Laser Printers</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Scanners']"><span>Scanners</span></a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Computing & Laptops','Storage']">Storage </a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','All in One Printers']"><span>External Hard Drives</span></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','USB']">USB</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','SSD']"><span>SSD</span></a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Computing & Laptops','Components & Parts']">Components & Parts</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Webcams']">Webcams</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Laptop Bags ']">Laptop Bags</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Laptop Battery']">Laptop Battery</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Computing & Laptops','Graphic Cards']">Graphic Cards</a></li>
+                        </ul>
+                        <div class="mega-menu-img-box"><a href="#"><img src="assets/images/Laptop1.png" alt="Bannar 1"></a> </div>
+                        <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/menu-img3.jpg" alt="Bannar 3"></a> </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Home Appliances' }">Home Appliances</a>
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooking']">Cooking</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Floorcare']">Floorcare</a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']">Mixing & Blending</a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']">Other Small Appliances</a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Washers & Dryers']">Washers & Dryers</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Refrigerators & Freezers']">Refrigerators & Freezers</a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooling & Heating']">Cooling & Heating</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Large Appliances']">Other Large Appliances</a></li>
+                        </ul>
+                        <div class="mega-menu-img-box"><a href="#"><img src="assets/images/banner31-1000x300.jpg" alt="Bannar 1"></a> </div>
+                        <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/homeApplianceNav.png" alt="Bannar 3"></a> </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!--<li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Online Services' }">Online Services</a>-->
+                  <!--<div class="mega-menu">-->
+                    <!--<div class="menu-block menu-block-center">-->
+                      <!--<div class="menu-block">-->
+                        <!--<ul>-->
+                          <!--<li> <a class="mega-title" href="#">Laptops<span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>-->
+                          <!--<li><a href="#">Refurbished Laptops</a></li>-->
+                          <!--<li><a href="#">Notebooks</a></li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                          <!--<li> <a class="mega-title" href="#">Printers & Scanners </a></li>-->
+                          <!--<li><a href="#"><span>All in One Printers</span></a></li>-->
+                          <!--<li><a href="#">Laser Printers</a></li>-->
+                          <!--<li><a href="#"><span>Scanners<span class="tip">New</span></span></a></li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                          <!--<li> <a class="mega-title" href="#">Storage </a></li>-->
+                          <!--<li><a href="#"><span>External Hard Drives<span class="tip hot">Hot</span></span></a></li>-->
+                          <!--<li><a href="#">USB</a></li>-->
+                          <!--<li><a href="#"><span>SSD<span class="tip hot">Hot</span></span></a></li>-->
+                        <!--</ul>-->
+                        <!--<ul>-->
+                          <!--<li> <a class="mega-title" href="#">Components & Parts</a></li>-->
+                          <!--<li><a href="#">Laptop Battery</a></li>-->
+                          <!--<li><a href="#">Graphic Cards</a></li>-->
+                        <!--</ul>-->
+                        <!--<div class="mega-menu-img-box"><a href="#"><img src="assets/images/Laptop1.png" alt="Bannar 1"></a> </div>-->
+                        <!--<div class="mega-menu-img-box1"><a href="#"><img src="assets/images/menu-img3.jpg" alt="Bannar 3"></a> </div>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</li>-->
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- end header -->
+
+
+<!-- mobile menu -->
+<div id="jtv-mobile-menu" class="jtv-mobile-menu">
+  <ul>
+    <li class=""><a href="index.html">Home</a>
+      <ul class="sub-menu">
+        <li><a href="../index.html">Home Version 1</a></li>
+        <li><a href="index.html">Home Version 2</a></li>
+
+      </ul>
+    </li>
+    <li><a href="shop_grid.html">Pages</a>
+      <ul>
+        <li><a href="shop_grid.html" class="">Shop Pages </a>
+          <ul>
+            <li> <a href="shop_grid.html"> Shop grid </a> </li>
+            <li> <a href="shop_grid_right_sidebar.html"> Shop grid right sidebar</a> </li>
+            <li> <a href="shop_list.html"> Shop list </a> </li>
+            <li> <a href="shop_list_right_sidebar.html"> Shop list right sidebar</a> </li>
+            <li> <a href="shop_grid_full_width.html"> Shop Full width </a> </li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">Ecommerce Pages </a>
+          <ul>
+            <li> <a href="wishlist.html"> Wishlists </a> </li>
+            <li> <a href="checkout.html"> Checkout </a> </li>
+            <li> <a href="compare.html"> Compare </a> </li>
+            <li> <a href="shopping_cart.html"> Shopping cart </a> </li>
+          </ul>
+        </li>
+        <li> <a href="shop_grid.html">Static Pages </a>
+          <ul>
+            <li> <a href="create_account_page.html"> Create Account Page </a> </li>
+            <li> <a href="about_us.html"> About Us </a> </li>
+            <li> <a href="contact_us.html"> Contact us </a> </li>
+            <li> <a href="404error.html"> Error 404 </a> </li>
+            <li> <a href="faq.html"> FAQ </a> </li>
+            <li> <a href="register_page.html"> Register Page </a> </li>
+          </ul>
+        </li>
+        <li> <a href="shop_grid.html">Single Product Pages </a>
+          <ul>
+            <li><a href="single_product.html"> single product </a> </li>
+            <li> <a href="single_product_left_sidebar.html"> single product left sidebar</a> </li>
+            <li> <a href="single_product_right_sidebar.html"> single product right sidebar</a> </li>
+            <li> <a href="single_product_magnific_popup.html"> single product magnific popup</a> </li>
+            <li> <a href="cat-4-col.html"> 4 Column Sidebar</a> </li>
+          </ul>
+        </li>
+        <li> <a href="shop_grid.html"> Blog Pages </a>
+          <ul>
+            <li><a href="blog_right_sidebar.html">Blog – Right sidebar </a></li>
+            <li><a href="blog_left_sidebar.html">Blog – Left sidebar </a></li>
+            <li><a href="blog_full_width.html">Blog_ - Full width</a></li>
+            <li><a href="single_post.html">Single post </a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="shop_grid.html">Women</a>
+      <ul class="">
+        <li><a href="#">Clother</a>
+          <ul>
+            <li><a href="shop_grid.html">Cocktail</a></li>
+            <li><a href="shop_grid.html">Day</a></li>
+            <li><a href="shop_grid.html">Evening</a></li>
+            <li><a href="shop_grid.html">Sports</a></li>
+            <li><a href="shop_grid.html">Sexy Dress</a></li>
+            <li><a href="shop_grid.html">Fsshion Skirt</a></li>
+            <li><a href="shop_grid.html">Evening Dress</a></li>
+            <li><a href="shop_grid.html">Children's Clothing</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">Dress and skirt</a>
+          <ul>
+            <li><a href="shop_grid.html">Sports</a></li>
+            <li><a href="shop_grid.html">Run</a></li>
+            <li><a href="shop_grid.html">Sandals</a></li>
+            <li><a href="shop_grid.html">Books</a></li>
+            <li><a href="shop_grid.html">A-line Dress</a></li>
+            <li><a href="shop_grid.html">Lacy Looks</a></li>
+            <li><a href="shop_grid.html">Shirts-T-Shirts</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">shoes</a>
+          <ul>
+            <li><a href="shop_grid.html">blazers</a></li>
+            <li><a href="shop_grid.html">table</a></li>
+            <li><a href="shop_grid.html">coats</a></li>
+            <li><a href="shop_grid.html">Sports</a></li>
+            <li><a href="shop_grid.html">kids</a></li>
+            <li><a href="shop_grid.html">Sweater</a></li>
+            <li><a href="shop_grid.html">Coat</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class=""><a href="shop_grid.html">Men</a>
+      <ul class="">
+        <li><a href="shop_grid.html">Bages</a>
+          <ul>
+            <li><a href="shop_grid.html">Bootes Bages</a></li>
+            <li><a href="shop_grid.html">Blazers</a></li>
+            <li><a href="shop_grid.html">Mermaid</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">Clothing</a>
+          <ul>
+            <li><a href="shop_grid.html">coats</a></li>
+            <li><a href="shop_grid.html">T-shirt</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">lingerie</a>
+          <ul>
+            <li><a href="shop_grid.html">brands</a></li>
+            <li><a href="shop_grid.html">furniture</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="shop_grid.html">Handbags</a>
+      <ul class="">
+        <li><a href="shop_grid.html">Footwear Man</a>
+          <ul>
+            <li><a href="shop_grid.html">Gold Rigng</a></li>
+            <li><a href="shop_grid.html">paltinum Rings</a></li>
+            <li><a href="shop_grid.html">Silver Ring</a></li>
+            <li><a href="shop_grid.html">Tungsten Ring</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">Footwear Womens</a>
+          <ul>
+            <li><a href="shop_grid.html">Brand Gold</a></li>
+            <li><a href="shop_grid.html">paltinum Rings</a></li>
+            <li><a href="shop_grid.html">Silver Ring</a></li>
+            <li><a href="shop_grid.html">Tungsten Ring</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">Band</a>
+          <ul>
+            <li><a href="shop_grid.html">Platinum Necklaces</a></li>
+            <li><a href="shop_grid.html">Gold Ring</a></li>
+            <li><a href="shop_grid.html">silver ring</a></li>
+            <li><a href="shop_grid.html">Diamond Bracelets</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="shop_grid.html">Shoes</a>
+      <ul class="">
+        <li><a href="shop_grid.html">Rings</a>
+          <ul>
+            <li><a href="shop_grid.html">Coats & jackets</a></li>
+            <li><a href="shop_grid.html">blazers</a></li>
+            <li><a href="shop_grid.html">raincoats</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">Dresses</a>
+          <ul>
+            <li><a href="shop_grid.html">footwear</a></li>
+            <li><a href="shop_grid.html">blazers</a></li>
+            <li><a href="shop_grid.html">clog sandals</a></li>
+            <li><a href="shop_grid.html">combat boots</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">Accessories</a>
+          <ul>
+            <li><a href="shop_grid.html">bootees Bags</a></li>
+            <li><a href="shop_grid.html">blazers</a></li>
+            <li><a href="shop_grid.html">jackets</a></li>
+            <li><a href="shop_grid.html">kids</a></li>
+            <li><a href="shop_grid.html">shoes</a></li>
+          </ul>
+        </li>
+        <li><a href="shop_grid.html">Top</a>
+          <ul>
+            <li><a href="shop_grid.html">briefs</a></li>
+            <li><a href="shop_grid.html">camis</a></li>
+            <li><a href="shop_grid.html">nigthwear</a></li>
+            <li><a href="shop_grid.html">kids</a></li>
+            <li><a href="shop_grid.html">shapewer</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div aria-hidden="false" role="dialog" tabindex="-1" class="modal fade example-modal-lg search-wrapper in">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <p class="clearfix"><button data-dismiss="modal" class="close" type="button"><span class="icon_close color-main" aria-hidden="true"></span></button></p>
+
+      <form role="form" class="form-inline form-search">
+        <div class="form-group">
+          <!--<label for="textsearch" style="font-weight: 800;font-size: xx-large;" class="sr-only">Enter text search</label>-->
+       <!--needs an attension     (keyup)=filter()-->   <input autofocus type="text" name="query" [(ngModel)]="model.quer" #quer="ngModel"  style="font-weight: 800;font-size:larger" placeholder="Enter keywords or ISBN or UPC for comparitive shopping" id="textsearch"
+                 class="form-control input-lg font-main font-weight-normal color-main">
+        </div>
+
+        <button id="search1" data-dismiss="modal" class="btn btn-white font-additional font-weight-normal color-main text-uppercase hover-focus-bg"
+                 type="submit">Search</button> <!--  (click)="filter()" -->
+      </form>
+
+
+    </div>
+  </div>
+</div>

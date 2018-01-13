@@ -1,0 +1,130 @@
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="footer-newsletter">
+        <div class="container">
+          <div class="row">
+            <div style="margin-top: 10px;" class="col-md-3 col-sm-5">
+              <h3 class="">Sign up for newsletter</h3>
+              <span>Get the latest deals and special offers</span></div>
+            <div class="col-md-5 col-sm-7">
+
+              <form  role="form"  id="newsletter-validate-detail" (ngSubmit)="f.form.valid && loged_in(Email.value)" #f="ngForm" novalidate>
+                <div class="newsletter-inner">
+                  <span *ngIf="Waitcall" style="color: white !important;">Thank you for Subscribing!</span>
+                  <span *ngIf="login_error" style="color: red !important; font-size: x-large">Email already exist!</span>
+                  <div *ngIf="f.submitted && !Email.valid" class="help-block"><span style="color: white !important;">Valid Email is required</span></div>
+
+                  <!--<div  *ngIf="f.submitted && Email.errors  && !Email.valid" >-->
+                    <!--Email is invalid-->
+                  <!--</div>-->
+
+
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Email.valid }">
+                      <div class="form-group label-overlay">
+
+                      <input type="email" class="newsletter-email"
+                             pattern="^(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+                             (ngModelChange)="OnEmailChangeEvent()" name='Email' placeholder='Subscribe to Dhaar' [(ngModel)]="model.Email" #Email="ngModel" required/>
+
+                    </div>
+
+                  </div><!-- End .form-group -->
+                  <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
+
+
+
+
+
+
+
+
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-xs-12 col-lg-3">
+        <div class="footer-logo"><a href="index.html"><img src="assets/images/newdhaarwhite.png" alt="fotter logo"></a> </div>
+        <div class="footer-content">
+          <div class="email"> <i class="fa fa-envelope"></i>
+            <p>info AT Dhaar DOT com</p>
+          </div>
+          <div class="phone"> <i class="fa fa-phone"></i>
+            <p>+92 (42) 364-00960</p>
+          </div>
+          <div class="address"> <i class="fa fa-map-marker"></i>
+            <p>Al-Hafeez Heights
+              13th Floor, 65-D Ghalib Road,
+              Gulberg III
+              Lahore, Pakistan</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3 collapsed-block">
+        <div class="footer-links">
+          <h3 class="links-title">Quick Links<a class="expander visible-xs" href="#TabBlock-1">+</a></h3>
+          <div class="tabBlock" id="TabBlock-1">
+            <ul class="list-links list-unstyled">
+              <li><a [routerLink]="['/about-us']">Who Are We?</a></li>
+              <li><a href="#">What is Dhaar?</a></li>
+              <li><a href="#">How it works</a></li>
+              <li><a [routerLink]="['/contact-us']">Establish Contact</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3 collapsed-block">
+        <div class="footer-links">
+          <h3 class="links-title">My Dhaar<a class="expander visible-xs" href="#TabBlock-3">+</a></h3>
+          <div class="tabBlock" id="TabBlock-3">
+            <ul class="list-links list-unstyled">
+              <li> <a [routerLink]="['/sign-up']"> Signup </a> </li>
+              <li> <a [routerLink]="['/login']">Login</a> </li>
+              <li> <a [routerLink]="['/store-registration']">Store Registration</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2 col-xs-12 col-lg-3 collapsed-block">
+        <div class="footer-links">
+          <h3 class="links-title">Stalk Us<a class="expander visible-xs" href="#TabBlock-4">+</a></h3>
+          <div class="tabBlock" id="TabBlock-4">
+              <div class="social">
+                <ul class="inline-mode">
+                  <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                  <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
+                  <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                  <li class="social-network googleplus"><a title="Connect us on Pinterest" target="_blank" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-coppyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 coppyright"> Copyright © 2018 All Rights Reserved.   <a href="#">Terms of Use</a> and <a href="#">Privacy</a></div>
+        <div class="col-sm-6 col-xs-12">
+          <div class="payment">
+            <ul>
+              <li><a href="#"><img title="Visa" alt="Visa" src="assets/images/visa.png"></a></li>
+              <li><a href="#"><img title="Paypal" alt="Paypal" src="assets/images/paypal.png"></a></li>
+              <li><a href="#"><img title="Discover" alt="Discover" src="assets/images/discover.png"></a></li>
+              <li><a href="#"><img title="Master Card" alt="Master Card" src="assets/images/master-card.png"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="#" class="totop"> </a>
+<!-- End Footer -->

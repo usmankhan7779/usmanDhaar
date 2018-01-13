@@ -1,14 +1,147 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
+
   <meta charset="utf-8">
-  <title>UniversalDemoV5</title>
+  <title>Dhaar.pk</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <link rel="stylesheet" href="assets/style.css">
+
+  <!--<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">-->
+  <script src="assets/js/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <!-- owl.carousel.min js -->
+  <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+  <!-- Mean Menu js -->
+  <script type="text/javascript" src="assets/js/jquery.meanmenu.min.js"></script>
+  <!--jquery-ui.min js -->
+  <script type="text/javascript" src="assets/js/jquery-ui.js"></script>
+  <!-- countdown js -->
+  <script type="text/javascript" src="assets/js/countdown.js"></script>
+  <!-- wow JS -->
+  <script type="text/javascript" src="assets/js/wow.min.js"></script>
+  <!-- mobile menu JS -->
+  <script type="text/javascript" src="assets/js/jtv-mobile-menu.js"></script>
+  <!-- main js -->
+  <script type="text/javascript" src="assets/js/main.js"></script>
+  <!-- nivo slider js -->
+  <script type="text/javascript" src="assets/js/jquery.nivo.slider.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+  <!-- Owl carousel
+  <link href="assets/assets2/css/owl.carousel.css" rel="stylesheet">
+
+  <!-- Bootstrap
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome
+  <link href="assets/assets2/css/font-awesome.css" rel="stylesheet">
+
+  <!-- Custom Style -->
+  <link href="assets/assets2/css/main.css" rel="stylesheet">
+
+
+
 </head>
-<body>
-  <app-root></app-root>
+
+
+<body class="cms-index-index cms-home-page">
+
+<app-root>  Loading...</app-root>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDcKfHxeSFkdexBXGJI93xvzHMj8DzgIJo",
+    authDomain: "dhaar-project.firebaseapp.com",
+    databaseURL: "https://dhaar-project.firebaseio.com",
+    projectId: "dhaar-project",
+    storageBucket: "dhaar-project.appspot.com",
+    messagingSenderId: "167334140612"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<script src="assets/js/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- owl.carousel.min js -->
+<script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+<!-- Mean Menu js -->
+<script type="text/javascript" src="assets/js/jquery.meanmenu.min.js"></script>
+<!--jquery-ui.min js -->
+<script type="text/javascript" src="assets/js/jquery-ui.js"></script>
+<!-- countdown js -->
+<script type="text/javascript" src="assets/js/countdown.js"></script>
+<!-- wow JS -->
+<script type="text/javascript" src="assets/js/wow.min.js"></script>
+<!-- mobile menu JS -->
+<script type="text/javascript" src="assets/js/jtv-mobile-menu.js"></script>
+<!-- main js -->
+<script type="text/javascript" src="assets/js/main.js"></script>
+<!-- nivo slider js -->
+<script type="text/javascript" src="assets/js/jquery.nivo.slider.js"></script>
+
+
+
+<!-- Hot Deals Timer 1-->
+<script type="text/javascript">
+
+
+
+
+
+
+  var dthen1 = new Date("11/25/17 11:59:00 PM");
+  start = "08/04/16 03:02:11 AM";
+  start_date = Date.parse(start);
+  var dnow1 = new Date(start_date);
+  if(CountStepper>0)
+    ddiff= new Date((dnow1)-(dthen1));
+  else
+    ddiff = new Date((dthen1)-(dnow1));
+  gsecs1 = Math.floor(ddiff.valueOf()/1000);
+
+  var iid1 = "countbox_1";
+  CountBack_slider(gsecs1,"countbox_1", 1);
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+
+<script src="js/html5shiv.min.js"></script>
+<script src="js/respond.min.js"></script>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<script src="js/owl.carousel.js"></script>
+
+
+<script src="js/script.js"></script>
+
+-->
+
 </body>
 </html>
