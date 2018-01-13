@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-=======
-import { BrowserModule } from '@angular/platform-browser';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DatePipe   } from '@angular/common';
 import {Routing , AppRoutingProvider} from './app.routing';
-<<<<<<< HEAD
 // import { SocialLoginModule } from 'angular4-social-login';
 // import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
 
@@ -26,10 +21,7 @@ import {Routing , AppRoutingProvider} from './app.routing';
 // import { RecaptchaModule } from 'ng-recaptcha';
 import { AppComponent } from './app.component';
 import { TimePipe } from './home/test';
-=======
-import { RecaptchaModule } from 'ng2-recaptcha';
-import { AppComponent } from './app.component';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
+
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
@@ -66,11 +58,7 @@ import { Checkout2Component } from './checkout2/checkout2.component';
 import { BuyerOrderComponent } from './buyer-order/buyer-order.component';
 import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
 import { TextMaskModule } from 'angular2-text-mask';
-<<<<<<< HEAD
 // import { CarouselModule } from 'ngx-bootstrap';
-=======
-import { CarouselModule } from 'ngx-bootstrap';
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 import { SellerPurchasingComponent } from './seller-purchasing/seller-purchasing.component';
 import { SellerPurchasingInvoiceComponent } from './seller-purchasing-invoice/seller-purchasing-invoice.component';
 import { StoreTemplateComponent } from './store-template/store-template.component';
@@ -96,11 +84,8 @@ import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 import {ImageZoomModule} from 'angular2-image-zoom';
 import { ManageCouponsComponent } from './manage-coupons/manage-coupons.component';
 import { AcceptOfferComponent } from './accept-offer/accept-offer.component';
-<<<<<<< HEAD
 import { AboutUsComponent } from './about-us/about-us.component';
 
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
 
 @NgModule({
   declarations: [
@@ -148,7 +133,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
     VerfiyEmailComponent,
     ManageCouponsComponent,
     AcceptOfferComponent,
-<<<<<<< HEAD
     AboutUsComponent,
     TimePipe,
   ],
@@ -158,24 +142,13 @@ import { AboutUsComponent } from './about-us/about-us.component';
     BrowserTransferStateModule,
     // CarouselModule.forRoot(),
     // RecaptchaModule.forRoot(),
-=======
-
-  ],
-  imports: [
-    BrowserModule,
-    CarouselModule.forRoot(),
-    RecaptchaModule.forRoot(),
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     Ng2PaginationModule,
     FormsModule,
     HttpModule,
     ImageZoomModule,
     Ng2AutoCompleteModule,
     TextMaskModule,
-<<<<<<< HEAD
     // SocialLoginModule.initialize(config),
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
     Routing
   ],
   providers: [
@@ -199,7 +172,3 @@ import { AboutUsComponent } from './about-us/about-us.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-<<<<<<< HEAD
-
-=======
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef

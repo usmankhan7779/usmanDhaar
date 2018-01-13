@@ -8,11 +8,7 @@
   },
   "exclude": [
     "test.ts",
-<<<<<<< HEAD
     "**/*.spec.ts",
     "server.ts"
-=======
-    "**/*.spec.ts"
->>>>>>> e99eebff4fb93b30118a716514b7c1e302e551ef
   ]
 }
