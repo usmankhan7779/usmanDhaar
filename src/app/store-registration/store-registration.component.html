@@ -73,7 +73,7 @@
                                pattern="^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$"
                                placeholder="mystore"
                                (keyup)=checkButtonStep1()
-                               (ngModelChange)="onChange($event)"
+                               (ngModelChange)="onChangeuser($event)"
                                #storename="ngModel" name="storename" class="input form-control"
                                id="Store _name"
                                required>
@@ -229,7 +229,17 @@
                                #address="ngModel" name="address" id="address">
                       </div>
                     </div><!--/ [col] -->
-                  </li><!-- / .row -->
+                  </li>
+
+                  <div class="form-group">
+
+                    <label for="telephone" class="required">Upload Your Profile Picture</label>
+
+
+                    <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture multiple ng-files="getTheFiles($files)" />
+
+
+                  </div>
 
 
                 </ul>
@@ -489,5 +499,5 @@
 </div>
 
 
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->
 

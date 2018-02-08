@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ContactUsServices {
 
-  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/user/';
+  ServerUrl = 'https://apis.dhaar.pk/user/';
 
   constructor(private _http: HttpService,
               private _nav: Router) {

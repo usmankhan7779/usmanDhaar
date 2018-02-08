@@ -1,12 +1,12 @@
 import { Component, OnInit, EventEmitter, Inject, PLATFORM_ID} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-
+import { ImageZoomModule } from 'angular2-image-zoom';
 // import './single-product.js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 import { HomeService } from '../home/home.services';
 import { LoginService } from '../log-in/log-in.services';
-
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class SingleProductComponent implements OnInit {
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
   ProID: string;
-  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+  PicServrUrl = 'https://apis.dhaar.pk/media/';
   Getphoto: any = [];
   NewBidInserted = false ;
   NewCart = false ;
@@ -36,7 +36,7 @@ export class SingleProductComponent implements OnInit {
   noreview = false;
   Solddd = false;
   soldfix = false;
-
+  WatchStatus = false;
   minOffer = false;
   openreviews = true;
   ourproduct = false;
@@ -88,6 +88,7 @@ export class SingleProductComponent implements OnInit {
 
       if (localStorage.getItem('UserID') !== null) {
         this.LoginID = true;
+        this.WatchObserver();
       } else {
         this.LoginID = false;
       }
@@ -110,6 +111,8 @@ export class SingleProductComponent implements OnInit {
               this.amountoffer = true;
             }
           }
+
+
           this.httpService.GetallIDByUser(this.ProID, localStorage.getItem('UserID')).subscribe(
             data => {
               this.invoice = data;
@@ -169,7 +172,7 @@ export class SingleProductComponent implements OnInit {
             if (this.resultProduct[0].Quantity <= 0) {
               this.soldfix = true;
             }
-            // console.log('ssssssssssssss',this.resultProduct[0]);
+            console.log('Product attributes', this.resultProduct[0]);
             this.LocalStoreName = this.resultProduct[0].StoreName;
             this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
             if (this.resultProduct[0].Auction) {
@@ -351,9 +354,51 @@ export class SingleProductComponent implements OnInit {
         }
 
       }
-
     }
 
+  }
+
+  WatchObserver() {
+    if (isPlatformBrowser(this.platformId)) {
+    this.httpService.WatchStatus(this.ProID, localStorage.getItem('UserID')).subscribe( data => {
+      console.log('checkkkkkkkkkkk  ',data);
+      this.WatchStatus=data.Res
+    });
+    }
+  }
+
+  WatchProduct() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.GetAdd.WatchProduct(
+        this.resultProduct[0]['ProductID'],
+        localStorage.getItem('UserID'),
+        this.resultProduct[0]['Cat_Name'],
+      ).subscribe(data => {
+          // console.log(data);
+          // this.WatchStatus=false;
+          this.WatchObserver();
+        },
+        error => {
+          // console.log(error);
+          // this.WatchStatus=true;
+        });
+    }
+  }
+  UnwatchProduct() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.GetAdd.UnwatchProduct(
+        this.resultProduct[0]['ProductID'],
+        localStorage.getItem('UserID'),
+      ).subscribe(data => {
+          // console.log(data);
+          // this.WatchStatus=false;
+          this.WatchObserver();
+        },
+        error => {
+          // console.log(error);
+          // this.WatchStatus=true;
+        });
+    }
   }
   getValueq(event) {
     // //alert(event)
@@ -370,11 +415,13 @@ export class SingleProductComponent implements OnInit {
     this.starv = event;
     // //alert(this.star)
   }
+
+
   InsertBid(startingPrice: number, MaxPrice: number ) {
 
     console.log('max', this.resultProduct[0]);
     console.log('start', startingPrice);
-
+    // console.log('UserId is ',this.resultProduct[0]['User_ID']);
 
     if (this.model.UserPriceBid > MaxPrice) {
       this.MinBidPrice = false;
@@ -475,9 +522,9 @@ export class SingleProductComponent implements OnInit {
       // console.log(this.resultProduct['Quantity']);
 
       if (Abc === '') {
-        alert('Please Select Product Quantity first');
+        swal('Please Select Product Quantity first','','error');
       } else if (Abc > this.resultProduct[0].Quantity) {
-        alert('You are exceding from Maximum Quantity of product available');
+        swal('You are exceding from Maximum Quantity of product available','','error');
       } else {
 
 
@@ -531,12 +578,15 @@ export class SingleProductComponent implements OnInit {
   }
 
   ClearSession() {
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
     localStorage.clear();
     alert('clear');
     }
   }
 
+  CancelOffer() {
+   this.amountoffer=false;
+  }
   MakeAnOffer() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('Authorization') !== null) {
@@ -571,17 +621,18 @@ export class SingleProductComponent implements OnInit {
   }
 
 
-  SubmitOffer(Qty: any) {
+  SubmitOffer() {
     this.minOfferDone = false;
     this.minOffer = false;
-    if ( this.model.OfferAmount !== null  ) {
+    // console.log('offer amount is', this.model.OfferAmount);
+    // console.log('offer Quantity is', this.model.QuantityProduct);
+    if ( this.model.OfferAmount && this.model.QuantityProduct ) {
 
-     if (this.model.OfferAmount >=  this.MinimumbestOffer) {
-
-       this.GetAdd.ProductOffers(this.ProID, this.LocalStoreName, this.CatName, Qty, this.model).subscribe((response) => {
+       this.GetAdd.ProductOffers(this.ProID, this.LocalStoreName,this.resultProduct[0]['P_Title'], this.CatName, this.model).subscribe((response) => {
            /* this function is executed every time there's a new output */
            // console.log("VALUE RECEIVED: "+response);
          // alert('inserted');
+           swal('Your offer has been sent to the seller. Please wait for the seller to respond.','','success');
            this.minOfferDone = true;
          },
          (err) => {
@@ -593,11 +644,7 @@ export class SingleProductComponent implements OnInit {
          }
        );
      } else {
-       this.minOffer = true;
-     }
-
-
-    } else {
+      swal('Please Enter both Fields, Quantiy and Price per Quantity','','error');
 
     }
 
@@ -635,7 +682,8 @@ export class SingleProductComponent implements OnInit {
   }
 
   SubmitReview() {
-    this.GetAdd.InsertProductReviews(this.model.YourName, this.model.YourEmail, this.model.YourReview, this.ProID, this.starp).subscribe(resSlidersData => {
+    console.log('Store Name is', this.resultProduct[0]['StoreName']);
+    this.GetAdd.InsertProductReviews(this.model.YourName, this.model.YourEmail, this.model.YourReview, this.ProID, this.starp, this.resultProduct[0]['StoreName']).subscribe(resSlidersData => {
         alert('Done');
       },
       (err) => {

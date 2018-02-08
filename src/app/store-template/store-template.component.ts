@@ -12,9 +12,10 @@ export class StoreTemplateComponent implements OnInit {
   Trend: any = [];
   pageno: any;
 
-  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+  PicServrUrl = 'https://apis.dhaar.pk/media/';
   StoreName: any;
   StoreInfo: any = [];
+  StoreInfoo: any = [];
   constructor(private route: ActivatedRoute,
               private Getstoreinfo: ActiveAdServices,
               private _nav: Router
@@ -29,6 +30,8 @@ export class StoreTemplateComponent implements OnInit {
         this.Getstoreinfo.GetStoreInformation(this.StoreName).subscribe(
           data => {
             this.StoreInfo = data;
+            console.log('Store info', this.StoreInfo);
+            this.StoreInfoo = this.StoreInfo[0];
             if ( this.StoreInfo.length === 0) {
               this._nav.navigate(['/404']);
             } else {

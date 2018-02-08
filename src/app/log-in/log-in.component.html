@@ -77,38 +77,40 @@
           <div class="formpanel">
           <div class="formrow">
             <p style="text-align: right !important; color: red !important;">
-             <a [routerLink]="['/forget-password']"> Forgot Password ? </a>
+             <a [routerLink]="['/forget-password']" style="font-weight: 600"> Forgot Password ? </a>
             </p>
           </div>
           </div>
 
 
-          <!--<div *ngIf="user">-->
+          <div *ngIf="user">
 
-            <!--<img src="{{ user.photoUrl }}">-->
-            <!--<div>-->
-              <!--<h4>{{ user.name }}</h4>-->
-              <!--<p>{{ user.email }}</p>-->
-            <!--</div>-->
+            <img src="{{ user.photoUrl }}">
+            <div>
+              <h4>{{ user.firstName }}</h4><br>
+              <h4>{{ user.lastName }}</h4>
+              <h4>{{ user.name }}</h4>
+              <p>{{ user.email }}</p>
+            </div>
 
-            <!--<button class="btn btn-danger" (click)="signOut()">Sign out</button>-->
+            <button class="btn btn-danger" (click)="signOut()">Sign out</button>
 
-          <!--</div>-->
+          </div>
 
           <!-- login form  end-->
 
           <!-- sign up form -->
           <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a  [routerLink]="['/sign-up']">Register Here</a></div>
 
-          <!--<div *ngIf="!user">-->
-            <!--<div class="socialLogin">-->
-              <!--<h5>Login Or Register with Social</h5>-->
-              <!--<a (click)="signInWithFB()" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a (click)="signInWithGoogle()" class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>-->
+          <div *ngIf="!user">
+            <div class="socialLogin">
+              <h5>Login Or Register with Social</h5>
+              <a (click)="signInWithFB()" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a (click)="signInWithGoogle()" class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
 
-            <!--&lt;!&ndash;<button  (click)="signInWithFB()"><i class="fa fa-facebook"></i></button>&ndash;&gt;-->
-            <!--&lt;!&ndash;<button  (click)="signInWithGoogle()"><i class="fa fa-google-plus"></i></button>&ndash;&gt;-->
+            <!--<button  (click)="signInWithFB()"><i class="fa fa-facebook"></i></button>-->
+            <!--<button  (click)="signInWithGoogle()"><i class="fa fa-google-plus"></i></button>-->
 
-          <!--</div>-->
+          </div>
           <!-- sign up form end-->
 
           <!--<div class="socialLogin">-->
@@ -123,6 +125,6 @@
     </div>
   </div>
 </div>
+</div>
 
-
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->

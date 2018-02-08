@@ -135,7 +135,7 @@
                             <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
                           </div>
                           <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                            <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button> </a>
+                            <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button> </a>
                           </div>
                         </div>
                       </div>
@@ -192,11 +192,11 @@
                   </li>
                 </ng-container>
 
-                <div class="col-sm-4 col-sm-push-8">
-                  <pagination-controls id="trend-id2" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
-                                       nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
+                <!--<div class="col-sm-4 col-sm-push-8">-->
+                  <!--<pagination-controls id="trend-id2" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"-->
+                                       <!--nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>-->
 
-                </div>
+                <!--</div>-->
 
 
                 <!-- ad end -->
@@ -205,7 +205,7 @@
           </div>
 
 
-          <div class="col-sm-4 col-sm-push-8">
+          <div class="pagination-control">
             <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
                                  nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
 
@@ -218,16 +218,16 @@
               <div>{{message()}}</div>
             </div>
           </ng-container>
-          <div class="col-sm-4 col-sm-push-8">
-            <pagination-controls id="trend-id2" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
-                                 nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
+          <!--<div class="col-sm-4 col-sm-push-8">-->
+            <!--<pagination-controls id="trend-id2" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"-->
+                                 <!--nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>-->
 
-          </div>
-          <div class="col-sm-4 col-sm-push-8">
-            <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
-                                 nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
+          <!--</div>-->
+          <!--<div class="col-sm-4 col-sm-push-8">-->
+            <!--<pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"-->
+                                 <!--nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>-->
 
-          </div>
+          <!--</div>-->
         </div>
 
       </div>
@@ -488,4 +488,4 @@
 </div>
 <!-- our clients Slider -->
 
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->

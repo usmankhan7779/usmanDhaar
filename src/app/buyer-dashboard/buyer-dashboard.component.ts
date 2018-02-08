@@ -27,7 +27,7 @@ export class BuyerDashboardComponent implements OnInit {
   Mobile: string;
   Address: string;
   GetUSerDOne: any [];
-  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+  PicServrUrl = 'https://apis.dhaar.pk/media/';
   ValueRec: Boolean = false;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
@@ -39,14 +39,14 @@ export class BuyerDashboardComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)){
     this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
-      this.FName = this.GetUSerDOne['Fname'];
-      this.LName = this.GetUSerDOne['Lname'];
-      this.Country = this.GetUSerDOne['Country'];
-      this.State = this.GetUSerDOne['State'];
-      this.City = this.GetUSerDOne['City'];
-      this.Zip = this.GetUSerDOne['Zip'];
-      this.Mobile = this.GetUSerDOne['Mobile'];
-      this.Address = this.GetUSerDOne['Address'];
+      // this.FName = this.GetUSerDOne['Fname'];
+      // this.LName = this.GetUSerDOne['Lname'];
+      // this.Country = this.GetUSerDOne['Country'];
+      // this.State = this.GetUSerDOne['State'];
+      // this.City = this.GetUSerDOne['City'];
+      // this.Zip = this.GetUSerDOne['Zip'];
+      // this.Mobile = this.GetUSerDOne['Mobile'];
+      // this.Address = this.GetUSerDOne['Address'];
       this.ValueRec = true;
     });
     }
@@ -70,10 +70,10 @@ export class BuyerDashboardComponent implements OnInit {
     this.base64textString = btoa(binaryString);
 
   }
-  save() {
-    if (isPlatformBrowser(this.platformId)){
-    this.obj.UserDetailsUpdate(this.FName, this.LName, this.Country, this.State, this.City, this.Zip, this.Mobile, this.Address, this.base64textString, localStorage.getItem('UserID')).subscribe(data => this.GetallCat = data);}
-  }
+  // save() {
+  //   if (isPlatformBrowser(this.platformId)){
+  //   this.obj.UserDetailsUpdate(this.FName, this.LName, this.Country, this.State, this.City, this.Zip, this.Mobile, this.Address, this.base64textString, localStorage.getItem('UserID')).subscribe(data => this.GetallCat = data);}
+  // }
 
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){

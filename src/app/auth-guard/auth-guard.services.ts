@@ -7,7 +7,7 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import {HttpService} from '../services/http-service';
 @Injectable()
 export class AuthGuard implements CanActivate {
-  ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/user/';
+  ServerUrl =  'https://apis.dhaar.pk/user/';
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: HttpService ,
               private router: Router) { }

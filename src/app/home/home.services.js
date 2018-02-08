@@ -14,7 +14,7 @@ var HomeService = (function () {
     function HomeService(_http, _nav) {
         this._http = _http;
         this._nav = _nav;
-        this.ServerUrl = 'http://127.0.0.1:8000/products/';
+        this.ServerUrl = 'https://apis.dhaar.pk/products/';
     }
     HomeService.prototype.GetAllPhoneandtabletsProducts = function () {
         return this._http.get(this.ServerUrl + 'getphoneproducts8').map(function (response) { return response.json(); });

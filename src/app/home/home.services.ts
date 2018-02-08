@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Rx';
 import {HttpService} from '../services/http-service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
+import swal from "sweetalert2";
 
 
 
@@ -16,7 +17,7 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/products/';
+  ServerUrl =  'https://apis.dhaar.pk/products/';
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -120,6 +121,9 @@ export class HomeService {
     return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat').map(response => response.json());
     // console.log(this.CateDeatils)
   }
+  GetBuyNowProductsfromAllCat() {
+    return this._http.get(this.ServerUrl + 'getBuyNowProductsfromAllCat').map(response => response.json());
+  }
    GetAllFeaturedProducts( ) {
 
     return this._http.get(this.ServerUrl + 'getallfeaturedProducts').map(response => response.json());
@@ -135,10 +139,89 @@ export class HomeService {
   }
 
   GetallUserReviewsBYProductId(pID: any) {
-    return this._http.get( this.ServerUrl + 'InsertUserReviews/' + pID  ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'GetUserReviewsByProductID/' + pID  ).map(response => response.json());
+  }
+  UnwatchProduct(Product_ID: any,  User_ID: any) {
+
+    return this._http.delete(this.ServerUrl + 'unwatchProduct/' + Product_ID + '/' + User_ID).map((res:Response) => {
+      if (res) {
+
+        if (res.status === 204) {
+          const responce_data = res.json();
+          return [{ status: res.status, json: res }];
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+  }
+  WatchProduct(Product_ID: any,  User_ID: any, CatName: any) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    if (isPlatformBrowser(this.platformId)){
+
+      return this._http.post(this.ServerUrl + 'watchList',
+        {
+          'ProductID': Product_ID,
+          'Cat_Name': CatName ,
+          'User_ID': User_ID,
+        }, { headers: headers }).map((res: Response) => {
+        if (res) {
+
+          if (res.status === 201) {
+            const responce_data = res.json();
+            return [{ status: res.status, json: res }];
+          }
+        }
+      }).catch((error: any) => {
+        console.log(error.toString());
+        return Observable.throw(new Error(error.status));
+      });
+
+
+    }
   }
 
-
+  // WatchProduct(pID: any, catName: any, UserID: any, Store: any, SubCat: any, SubsubCat: any, pTiltle: any, pDes: any, pCon: any, Auction: any, SPrice: any, Active: any, sold: any, MPrice: any, BuyitNow: any, ReservePrice: any, AuctionList: any, FPrice: any, AddBestOffer: any, Quantity: any, MaxQuantity: any, Pic: any) {
+  //   const headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this._http.post('http://127.0.0.1:8000/products/' + 'watchList/' + UserID, {
+  //     'ProductID': pID,
+  //     'Cat_Name': catName,
+  //     'User_ID': UserID,
+  //     'StoreName': Store,
+  //     'Sub_Cat_Name': SubCat,
+  //     'Sub_Sub_Cat_Name': SubsubCat,
+  //     'P_Title': pTiltle,
+  //     'P_Des': pDes,
+  //     'P_Condition': pCon,
+  //     'Auction': Auction,
+  //     'SrartingPrice': SPrice,
+  //     'Active': Active,
+  //     'Sold': sold,
+  //     'MaxBidPrice': MPrice,
+  //     'Buyitnow': BuyitNow,
+  //     'ReservePrice': ReservePrice,
+  //     'AuctionListing': AuctionList,
+  //     'FixedPrice': FPrice,
+  //     'Addbestoffer': AddBestOffer,
+  //     'Quantity': Quantity,
+  //     'MaxQuantity': MaxQuantity,
+  //     'Pic': Pic,
+  //   },{ headers: headers }).map((res: Response) => {
+  //     if (res) {
+  //       // console.log('abc');
+  //       if (res.status === 201) {
+  //         const responce_data = res.json();
+  //         return [{ status: res.status, json: res }];
+  //       }
+  //     }
+  //   }).catch((error: any) => {
+  //     return Observable.throw(new Error(error.status));
+  //   });
+  // }
 
   InsertUserBid(User_Id: any, Product_ID: any, Price: any) {
     return this._http.post(this.ServerUrl + 'InsertUserBid/' + Product_ID,
@@ -161,12 +244,13 @@ export class HomeService {
 
   }
 
-  InsertProductReviews(Name: any, Email: any, Reviews: any, Product_ID: any, RateNUmber: any) {
-    return this._http.post(this.ServerUrl + 'InsertUserReviews/' + Product_ID,
+  InsertProductReviews(Name: any, Email: any, Reviews: any, Product_ID: any, RateNUmber: any, StoreName: any) {
+    return this._http.post(this.ServerUrl + 'InsertUserReview/' + Product_ID,
       {
         'Name': Name ,
         'Email': Email ,
         'Product_Id': Product_ID,
+        'StoreName': StoreName,
         'Rating': RateNUmber,
         'Reviews': Reviews,
       }).map((res: Response) => {
@@ -185,18 +269,21 @@ export class HomeService {
   }
 
 
-  ProductOffers(Product_ID: any, StoreName: any, Cat_Name: any, Qty: any, model: any) {
+  ProductOffers(Product_ID: any, StoreName: any,Title: any, Cat_Name: any, model: any) {
     if (isPlatformBrowser(this.platformId)){
     return this._http.post(this.ServerUrl + 'ProductsOffersInsert',
       {
 
-        'User_Id': localStorage.getItem('UserID') ,
-        'Product_Id': Product_ID,
+        'User_ID': localStorage.getItem('UserID') ,
+        'Product_ID': Product_ID,
         'StoreName': StoreName,
+        'P_Title': Title,
         'Cat_Name': Cat_Name,
-        'Price': model.OfferAmount,
-        'Status': 'Open',
-        'Qty': Qty,
+        'PricePerQuantity': model.OfferAmount,
+        'Status': true,
+        'Accept': false,
+        'Quantity': model.QuantityProduct,
+        'CounterStatus':false,
         'Message': model.message,
 
         //    'Pidd':  Pidd,
@@ -213,7 +300,7 @@ export class HomeService {
         }
       }
     }).catch((error: any) => {
-      alert(error.toString());
+      swal('Your Offer has been Updated','','success');
       console.log(error.toString());
       return Observable.throw(new Error(error.status));
     });

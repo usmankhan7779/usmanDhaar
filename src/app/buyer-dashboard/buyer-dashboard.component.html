@@ -40,7 +40,9 @@
           <li class="active"><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
           <li><a [routerLink]="['/my-bids-buyer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
           <li ><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
+          <li ><a [routerLink]="['/buyer-offer']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Offers</a></li>
           <li><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dhaar.pk</a></li>
+          <li><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
           <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
 
@@ -68,15 +70,15 @@
                   <ng-container *ngIf="GetUSerDOne !== null">
                     <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
                     <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{PicServrUrl + GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
-                    <form (ngSubmit)="save()">
-                    <div class="form-group">
-                      <!--<input class="file" (change)="onChange($event)" type="file" placeholder="Upload image" data-preview-file-type="text" id="file1" name="file" #Picture ng-files="getTheFiles($files)" />-->
-                      <!--<label for="file1">Upload image</label>-->
-                      <input id="f02" type="file" placeholder="Upload Image" (change)="onChange($event)"/>
-                      <label for="f02">Upload Image</label>
-                      <input type="submit">
-                    </div>
-                    </form>
+                    <!--<form (ngSubmit)="save()">-->
+                    <!--<div class="form-group">-->
+                      <!--&lt;!&ndash;<input class="file" (change)="onChange($event)" type="file" placeholder="Upload image" data-preview-file-type="text" id="file1" name="file" #Picture ng-files="getTheFiles($files)" />&ndash;&gt;-->
+                      <!--&lt;!&ndash;<label for="file1">Upload image</label>&ndash;&gt;-->
+                      <!--<input id="f02" type="file" placeholder="Upload Image" (change)="onChange($event)"/>-->
+                      <!--<label for="f02">Upload Image</label>-->
+                      <!--<input type="submit">-->
+                    <!--</div>-->
+                    <!--</form>-->
                     <div class=" col-md-8 col-lg-8 ">
                     <table class="table table-user-information">
                       <tbody>
@@ -169,4 +171,4 @@
 </div>
 
 
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->

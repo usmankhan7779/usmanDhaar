@@ -13,7 +13,7 @@ var CategoryServices = (function () {
     function CategoryServices(_http, _nav) {
         this._http = _http;
         this._nav = _nav;
-        this.ServerUrl = 'http://127.0.0.1:8000/products/';
+        this.ServerUrl = 'https://apis.dhaar.pk/products/';
     }
     CategoryServices.prototype.getAllPhoneAndTabletProduct = function (page) {
         return this._http.get(this.ServerUrl + 'getAllPhoneAndTabletProduct?page=' + page).map(function (response) { return response.json(); });

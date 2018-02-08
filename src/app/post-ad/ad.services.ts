@@ -17,8 +17,8 @@ export class AdService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
-  StoreUrl =  'http://ns519750.ip-158-69-23.net:7600/store/';
+  ServerUrl = 'https://apis.dhaar.pk/products/';
+  StoreUrl =  'https://apis.dhaar.pk/store/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http,

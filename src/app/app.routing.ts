@@ -1,235 +1,53 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { SelectCategoryComponent } from './select-category/select-category.component';
-import { SingleProductComponent } from './single-product/single-product.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { PostAdComponent } from './post-ad/post-ad.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { AdListingComponent } from './ad-listing/ad-listing.component';
-import { AdDetailComponent } from './ad-detail/ad-detail.component';
-import { ActiveAdComponent } from './active-ad/active-ad.component';
-import { PendingAdComponent } from './pending-ad/pending-ad.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { CategoryDetailComponent } from './category-detail/category-detail.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
-import { StoreRegistrationComponent } from './store-registration/store-registration.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
-import { MyBiddsComponent } from './my-bidds/my-bidds.component';
-import { Checkout2Component } from './checkout2/checkout2.component';
-import { BuyerOrderComponent } from './buyer-order/buyer-order.component';
-import { BuyerInvoiceComponent } from './buyer-invoice/buyer-invoice.component';
-import { MyBidsBuyerComponent } from './my-bids-buyer/my-bids-buyer.component';
-import { SellerPurchasingComponent } from './seller-purchasing/seller-purchasing.component';
-import { SellerPurchasingInvoiceComponent } from './seller-purchasing-invoice/seller-purchasing-invoice.component';
-import { StoreTemplateComponent } from './store-template/store-template.component';
-import { SubCategoryDetailComponent } from './sub-category-detail/sub-category-detail.component';
-import { SubsubCategoryDetailComponent } from './subsub-category-detail/subsub-category-detail.component';
-import { SellerUserDetailComponent } from './seller-user-detail/seller-user-detail.component';
-import { SellerSettingComponent } from './seller-setting/seller-setting.component';
-import { BuyerSettingComponent } from './buyer-setting/buyer-setting.component';
-import { SearchResultComponent } from './search-result/search-result.component';
-import { ReserPasswordComponent } from './reser-password/reser-password.component';
 import { AuthGuard } from './auth-guard/auth-guard.services';
-import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
-import { ManageCouponsComponent } from './manage-coupons/manage-coupons.component';
-import { AcceptOfferComponent } from './accept-offer/accept-offer.component';
-import {AboutUsComponent} from './about-us/about-us.component';
+import {LayoutComponent} from "./layout/layout.component";
 
 const appRoutes: Routes = [
   {
-    path: '', redirectTo: '/home', pathMatch: 'full'
+    path: '', component: LayoutComponent,
+    children:[
+      { path: '', loadChildren: './home/home.module#HomeModule'},
+      { path: 'home', loadChildren: './home/home.module#HomeModule'},
+      { path: 'login', loadChildren: './log-in/log-in.module#LoginModule'},
+      { path: 'sign-up', loadChildren: './sign-up/sign-up.module#SignUpModule'},
+      { path: 'select-category', loadChildren: './select-category/select-category.module#SelectCategoryModule'},
+      { path: 'single-product', loadChildren: './single-product/single-product.module#SingleProductModule'},
+      { path: 'checkout2', loadChildren: './checkout2/checkout2.module#Checkout2Module'},
+      { path: 'forget-password', loadChildren: './forget-password/forget-password.module#ForgetPasswordModule'},
+      { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutModule'},
+      { path: 'change-password', loadChildren: './change-password/change-password.module#ChangePasswordModule'},
+      { path: 'post-ad', loadChildren: './post-ad/post-ad.module#PostAdModule', canActivate:[AuthGuard]},
+      { path: 'about-us', loadChildren: './about-us/about-us.module#AboutUsModule'},
+      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard]},
+      { path: 'active-ad', loadChildren: './active-ad/active-ad.module#ActiveAdModule', canActivate: [AuthGuard]},
+      { path: 'pending-ad', loadChildren: './pending-ad/pending-ad.module#PendingAdModule', canActivate: [AuthGuard]},
+      { path: 'contact-us', loadChildren: './contact-us/contact-us.module#ContactUsModule'},
+      { path: 'category-detail', loadChildren: './category-detail/category-detail.module#CategoryDetailModule'},
+      { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard]},
+      { path: 'seller-user-detail', loadChildren: './seller-user-detail/seller-user-detail.module#SellerUserDetailModule', canActivate: [AuthGuard]},
+      { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard]},
+      { path: '404', loadChildren: './not-found/not-found.module#NotFoundModule'},
+      { path: 'buyer-dashboard', loadChildren: './buyer-dashboard/buyer-dashboard.module#BuyerDashboardModule', canActivate: [AuthGuard]},
+      { path: 'my-bids', loadChildren: './my-bids/my-bids.module#MyBidsModule', canActivate: [AuthGuard]},
+      { path: 'my-bids-buyer', loadChildren: './my-bids-buyer/my-bids-buyer.module#MyBidsBuyerModule', canActivate: [AuthGuard]},
+      { path: 'buyer-orders', loadChildren: './buyer-order/buyer-order.module#BuyerOrderModule', canActivate: [AuthGuard]},
+      { path: 'buyer-invoice', loadChildren: './buyer-invoice/buyer-invoice.module#BuyerInvoiceModule', canActivate: [AuthGuard]},
+      { path: 'seller-purchasing', loadChildren: './seller-purchasing/seller-purchasing.module#SellerPurchasingModule', canActivate: [AuthGuard]},
+      { path: 'seller-purchasing-invoice', loadChildren: './seller-purchasing-invoice/seller-purchasing-invoice.module#SellerPurchasingInvoiceModule', canActivate: [AuthGuard]},
+      { path: 'store/:storename', loadChildren: './store-template/store-template.module#StoreTemplateModule'},
+      { path: 'sub-category-detail/:CatName/:SubCat', loadChildren: './sub-category-detail/sub-category-detail.module#SubCategoryDetailModule'},
+      { path: 'subsub-category-detail/:CatName/:SubsubCat', loadChildren: './subsub-category-detail/subsub-category-detail.module#SubsubCategoryDetailModule'},
+      { path: 'account-setting', loadChildren: './buyer-setting/buyer-setting.module#BuyerSettingModule', canActivate: [AuthGuard]},
+      { path: 'seller-setting', loadChildren: './seller-setting/seller-setting.module#SellerSettingModule', canActivate: [AuthGuard]},
+      { path: 'manage-coupons', loadChildren: './manage-coupons/manage-coupons.module#ManageCouponsModule', canActivate: [AuthGuard]},
+      { path: 'reset/:uid/:token', loadChildren: './reset-password/reset-password.module#ResetPasswordModule',},
+      { path: 'VerfiyEmail', loadChildren: './verify-email/verify-email.module#VerfiyEmailModule',},
+      { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule',},
+      { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard]},
+      { path: 'seller-offer', loadChildren: './seller-offer/seller-offer.module#SellerOfferModule', canActivate: [AuthGuard]},
+    ]
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'about-us',
-    component: AboutUsComponent,
-  },
-  {
-    path: 'login',
-    component: LogInComponent
-  },
-  {
-    path: 'sign-up',
-    component: SignUpComponent
-  },
-  {
-    path: 'select-category',
-    component: SelectCategoryComponent
-  },
-  {
-    path: 'single-product',
-    component: SingleProductComponent
-  },
-  {
-    path: 'checkout',
-    component: CheckoutComponent
-  },
-  {
-    path: 'checkout2',
-    component: Checkout2Component
-  },
-  {
-    path: 'forget-password',
-    component: ForgetPasswordComponent
-  },
-  {
-    path: 'post-ad',
-    component: PostAdComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'change-password',
-    component: ChangePasswordComponent
-  },
-  {
-    path: 'ad-listing',
-    component: AdListingComponent
-  },
-  {
-    path: 'ad-detail',
-    component: AdDetailComponent
-  },
-  {
-    path: 'active-ad',
-    component: ActiveAdComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'pending-ad',
-    component: PendingAdComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'edit-profile',
-    component: EditProfileComponent
-  },
-  {
-    path: 'contact-us',
-    component: ContactUsComponent
-  },
-  {
-    path: 'category-detail',
-    component: CategoryDetailComponent
-  },
-  {
-    path: 'user-detail',
-    component: UserDetailComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'seller-user-detail',
-    component: SellerUserDetailComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'store-registration',
-    component: StoreRegistrationComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: '404',
-    component: NotFoundComponent
-  }, {
-    path: 'buyer-dashboard',
-    component: BuyerDashboardComponent,
-    canActivate: [AuthGuard]
-  }, {
-    path: 'my-bids',
-    component: MyBiddsComponent,
-    canActivate: [AuthGuard]
-  }, {
-    path: 'my-bids-buyer',
-    component: MyBidsBuyerComponent,
-    canActivate: [AuthGuard]
-  }, {
-    path: 'buyer-orders',
-    component: BuyerOrderComponent,
-    canActivate: [AuthGuard]
-  }, {
-    path: 'buyer-invoice',
-    component: BuyerInvoiceComponent,
-    canActivate: [AuthGuard]
-  }, {
-    path: 'seller-purchasing',
-    component: SellerPurchasingComponent,
-    canActivate: [AuthGuard]
-  }, {
-    path: 'seller-purchasing-invoice',
-    component: SellerPurchasingInvoiceComponent,
-    canActivate: [AuthGuard]
-  }, {
-    path: 'store/:storename',
-    component: StoreTemplateComponent
-  }, {
-    path: 'sub-category-detail/:CatName/:SubCat',
-    component: SubCategoryDetailComponent
-  }, {
-    path: 'subsub-category-detail/:CatName/:SubsubCat',
-    component: SubsubCategoryDetailComponent
-  },
-  {
-    path: 'search-results',
-    component: SearchResultComponent
-  },
-  {
-    path: 'account-setting',
-    component: BuyerSettingComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'seller-setting',
-    component: SellerSettingComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'manage-coupons',
-    component: ManageCouponsComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'reset/:uid/:token',
-    component: ReserPasswordComponent,
-
-  },
-  {
-    path: 'VerfiyEmail',
-    component: VerfiyEmailComponent,
-
-  },
-  {
-    path: 'accept-offer/:uid',
-    component: AcceptOfferComponent,
-    canActivate: [AuthGuard]
-
-  },
-
-
-
-
-
-
-
-
-
-
-
 ];
 
 export const AppRoutingProvider: any[] = [];

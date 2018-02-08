@@ -13,7 +13,7 @@ var DashboardComponent = (function () {
         this._http = _http;
         this.Profile = Profile;
         this._nav = _nav;
-        this.ServerUrl = 'http://127.0.0.1:8000/';
+        this.ServerUrl = 'https://apis.dhaar.pk/';
         this.NewPostcheck = false;
     }
     DashboardComponent.prototype.ngOnInit = function () {

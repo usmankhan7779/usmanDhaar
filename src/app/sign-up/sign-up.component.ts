@@ -4,7 +4,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { isPlatformBrowser } from '@angular/common';
-
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -47,6 +47,7 @@ export class SignUpComponent implements OnInit {
 
     if (this.model.Agree) {
 
+
       // if (this.recaptcha) {
       //   this.Waitcall = true;
 
@@ -54,9 +55,15 @@ export class SignUpComponent implements OnInit {
           this.singup.post_signup_form(this.model.Username, this.model.Email, this.model.Password, this.model.FName, this.model.LName, this.model.Mobile).subscribe((response) => {
               /* this function is executed every time there's a new output */
               // console.log("VALUE RECEIVED: "+response);
+              swal(
+                'Registered!',
+                'You have successfully Registered',
+                'success'
+              );
               this.registration_ok = true;
             },
             (err) => {
+              swal('Oops...', 'Something went wrong!', 'error');
               this.Waitcall = false;
               this.registration_error = true;
               /* this function is executed when there's an ERROR */
@@ -68,6 +75,7 @@ export class SignUpComponent implements OnInit {
             }
           );
         } else {
+          swal('Email already Exist', '','error');
           this.Waitcall = false;
           this.EmailPosterror = true;
         }
@@ -76,6 +84,7 @@ export class SignUpComponent implements OnInit {
       //
       // }
     } else {
+      console.log('agree is ', this.model.Agree);
       alert('You must agree to the terms  first.');
     }
 

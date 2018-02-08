@@ -16,8 +16,8 @@ export class BuyerDashboardServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
-  saleServerUrl = 'http://ns519750.ip-158-69-23.net:7600/sale/';
+  ServerUrl = 'https://apis.dhaar.pk/products/';
+  saleServerUrl = 'https://apis.dhaar.pk/sale/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http,
@@ -44,6 +44,9 @@ export class BuyerDashboardServices {
 
   GetShippingByInvoiceId( InvoiceId: any) {
     return this._http.get( this.saleServerUrl + 'GetShippingByInvoiceId/' + InvoiceId  ).map(response => response.json());
+  }
+  WatchStatus(PID: any, User_ID: any) {
+    return this._http.get(this.ServerUrl + 'verifyWatchStatus/' + PID + "/" + User_ID).map(response => response.json());
   }
 
   Invoice(invID: any , invBalance: any, invPay: any,  invGuest: any, invUserID: any) {

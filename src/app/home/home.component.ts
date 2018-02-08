@@ -1,15 +1,44 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import {Component, OnInit, Inject, PLATFORM_ID, ViewChild} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { HomeService } from './home.services';
+import {OwlCarousel} from "ngx-owl-carousel";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
-  GetallPhoneProduct: any = [];
+  // public brands= [
+  //   {
+  //     image:'../../assets/images/slider/Slide1.png',
+  //     name:'Hot Deals  of day',
+  //     link:'all'
+  //   },
+  //   {
+  //     image:'../../assets/images/slider/Slide1.png',
+  //     name:'Deals of day',
+  //     link:'Ebay'
+  //   },
+  //   {
+  //     image:'../../assets/images/slider/Slide1.png',
+  //     name:'Deals of day',
+  //     link:'Walmart'
+  //   },
+  //   {
+  //     image:'../../assets/images/slider/Slide1.png',
+  //     name:'Deals of day',
+  //     link:'Groupon'
+  //   },{
+  //     image:'../../assets/images/slider/Slide1.png',
+  //     name:'Deals of day',
+  //     link:'BestBuy'
+  //   },
+  // ];
+  GetallCat: any = [];
+  PicServrUrl = 'https://apis.dhaar.pk/media/';
+  ServrUrl: string = 'assets/assets2/images/category/';
+  public GetallPhoneProduct: any = [];
   getcomputinglaptopsproduct8: any = [];
   WomenFashionProducts4: any = [];
   MenFashionProducts4: any = [];
@@ -17,6 +46,7 @@ export class HomeComponent implements OnInit {
   GetALLProductss: any = [];
   GetALLFeaturedProductss: any = [];
   GetALLAuctionProductss: any = [];
+  GetALLBuyNowProductss: any = [];
   ProductPrice: any = [];
   NewBidInserted = false;
   Tmp_ProID: any;
@@ -49,6 +79,9 @@ export class HomeComponent implements OnInit {
       this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
         this.GetallPhoneProduct = resSlidersData;
 
+        // console.log('Phone products are:', this.GetallPhoneProduct);
+        // console.log('Brands Are:', this.brands);
+
       });
 
       // tv vidoe audio
@@ -72,9 +105,19 @@ export class HomeComponent implements OnInit {
         this.GetALLAuctionProductss = resSlidersData;
         // console.log('Start');
       });
+
+      this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
+
+        this.GetALLBuyNowProductss = resSlidersData;
+        // console.log('Start');
+      });
+
       this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
 
         this.GetALLFeaturedProductss = resSlidersData;
+        if( this.GetALLFeaturedProductss.totalItems === 0) {
+
+        }
         // console.log('Start');
       });
 
@@ -112,7 +155,6 @@ export class HomeComponent implements OnInit {
 
     }
   }
-
 
   timer(end_date: string) {
     return ((new Date(end_date).getTime().valueOf() - new Date().getTime().valueOf()) / (1000)).toFixed(0);

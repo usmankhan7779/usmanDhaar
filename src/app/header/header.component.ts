@@ -7,6 +7,9 @@ import { AdService } from '../post-ad/ad.services';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { LoginService } from '../log-in/log-in.services';
+import {CategoryServices} from "../category-detail/category-detail.services";
+
+declare const $: any;
 
 @Component({
   selector: 'app-header',
@@ -14,6 +17,10 @@ import { LoginService } from '../log-in/log-in.services';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  Trend: any = [];
+  query: any;
+  Courses: any;
+  opSearch: number = 0;
   model: any = {};
   GetallCat: any = [];
   jwtHelper: JwtHelper = new JwtHelper();
@@ -21,13 +28,15 @@ export class HeaderComponent implements OnInit {
   GetUSerDOne: any [];
   CartedProduct: any = [];
   ItemInCart: any ;
-
   public filteredList = [];
   public elementRef;
+  Searchres = false;
+  PicServrUrl='https://apis.dhaar.pk/media/';
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private PostAdd: AdService,
-              private _nav: Router) { }
+              private _nav: Router,
+              private httpService: CategoryServices) { }
 
   // @HostListener('window:popstate', ['$event'])
   // onPopState(event) {
@@ -95,6 +104,34 @@ export class HeaderComponent implements OnInit {
   }
   }
 
+  closeSearch1(event) {
+    // console.log('Event is: ', event)
+    if(event.key === "Escape") {
+      if (this.opSearch === 1) {
+        this.opSearch = 0;
+        this.query = '';
+        this.Trend = '';
+        $('#wrapper').removeClass('search-active');
+      }
+    }
+  }
+  closeSearch() {
+      if (this.opSearch === 1) {
+        this.opSearch = 0;
+        this.query = '';
+        this.Trend = '';
+        $('#wrapper').removeClass('search-active');
+      }
+  }
+
+  openSearch() {
+    this.opSearch = 1;
+    $('#wrapper').addClass('search-active');
+    setTimeout(function () {
+      $('#textsearch1').focus();
+    },200);
+  }
+
   ValueReset() {
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
@@ -123,15 +160,22 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  navigate(event, search, action) {
+  navigate(search) {
+
+    console.log('search value is',search)
+    this.Searchres = true;
+    this.httpService.getAllSearchProducts(1, search).subscribe(
+      data => {
+        this.Trend = data;
+      });
     //
-    if (action==1) {
-      if (event.key === "Enter") {
-        this._nav.navigate(['/search-results'], { queryParams: { Search: search }});
-      }
-    } else {
-      this._nav.navigate(['/search-results'], { queryParams: { Search: search }});
-    }
+    // if (action==1) {
+    //   if (event.key === "Enter") {
+    //     this._nav.navigate(['/search-results'], { queryParams: { Search: search }});
+      // }
+    // } else {
+      // this._nav.navigate(['/search-results'], { queryParams: { Search: search }});
+    // }
   }
 
 

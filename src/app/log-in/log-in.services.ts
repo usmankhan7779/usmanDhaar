@@ -21,9 +21,9 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/user/';
-  StoreServerUrl =  'http://ns519750.ip-158-69-23.net:7600/store/';
-  EMailServerUrl =  'http://ns519750.ip-158-69-23.net:7600/rest-auth/';
+  ServerUrl =  'https://apis.dhaar.pk/user/';
+  StoreServerUrl =  'https://apis.dhaar.pk/store/';
+  EMailServerUrl =  'https://apis.dhaar.pk/rest-auth/';
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -35,7 +35,7 @@ export class LoginService {
 
   loged_in(mail: any , pass: any, CatName: any, ProID: any, checkout: any) {
 
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
     return this._http.post(this.ServerUrl + 'user-token-auth/', {'username': mail, 'password': pass})
       .map((res: Response) => {
         if (res) {
@@ -90,7 +90,7 @@ export class LoginService {
     }
   }
   loged_No_redirect(mail: any , pass: any) {
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
 
     return this._http.post(this.ServerUrl + 'user-token-auth/', {'username': mail, 'password': pass})
       .map((res: Response) => {
@@ -120,7 +120,7 @@ export class LoginService {
 
 
   loged_out() {
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
     // localStorage.setItem('UserID', null);
     localStorage.clear();
     return this._http.post(this.ServerUrl + 'api-token-refresh/', {'token': localStorage.getItem('Authorization')});
@@ -131,10 +131,15 @@ export class LoginService {
 
   post_signup_form(username: string, email: string , password: string, Fname, LName, Mobile) {
 
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
 
-    return this._http.post( this.ServerUrl + 'addUser/',
-      {'username' :  username,  'email':  email, 'password':  password, })
+    return this._http.post( this.ServerUrl + 'addUser/', {
+      'username' :  username,
+      'email':  email,
+      'first_name': Fname,
+      'last_name': LName,
+      'password':  password,
+    })
       .map((res: Response) => {
 
         if (res) {
@@ -145,7 +150,7 @@ export class LoginService {
              localStorage.setItem('email', email);
              localStorage.setItem('password', password);
             //  alert(localStorage.getItem('id'));
-            //  console.log(responce_data.id);
+             console.log('Responce Data is: ',responce_data.id);
             //  console.log('ok submited');
             this.sendmail(email).subscribe();
             this.register_customer(responce_data.id, Fname, LName, Mobile).subscribe();
@@ -175,7 +180,8 @@ export class LoginService {
   register_customer(responce_data, Fname, LName, Mobile) {
 
     return this._http.post(this.ServerUrl + 'addUserDetails/',
-      { 'user_id': responce_data,
+      {
+        'user_id': responce_data,
         'Fname':  Fname,
         'Lname':  LName,
         'Mobile':  Mobile,
@@ -246,7 +252,7 @@ export class LoginService {
   }
 
   verify_token() {
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
 
   return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
 .map((res: Response) => {
@@ -255,8 +261,7 @@ export class LoginService {
     if (res.status === 201) {
       // return true;
 
-    }
-    else if (res.status === 200) {
+    } else if (res.status === 200) {
       // return true;
     }
   }
@@ -265,18 +270,15 @@ export class LoginService {
     console.log('ok not submited submite');
     this._nav.navigate(['/login']);
     return Observable.throw(new Error(error.status));
-  }
-  else if (error.status === 400) {
+  } else if (error.status === 400) {
     console.log('Not');
     this._nav.navigate(['/owner_login']);
     return Observable.throw(new Error(error.status));
-  }
-  else if (error.status === 401) {
+  } else if (error.status === 401) {
     console.log('ok not submited submite');
     this._nav.navigate(['/login']);
     return Observable.throw(new Error(error.status));
-  }
-  else  {
+  } else  {
 
     this._nav.navigate(['/login']);
   }
@@ -300,18 +302,15 @@ export class LoginService {
             console.log('ok not submited submite');
             this._nav.navigate(['/login']);
             return Observable.throw(new Error(error.status));
-          }
-          else if (error.status === 400) {
+          } else if (error.status === 400) {
             console.log('Not');
             this._nav.navigate(['/owner_login']);
             return Observable.throw(new Error(error.status));
-          }
-          else if (error.status === 401) {
+          } else if (error.status === 401) {
             console.log('ok not submited submite');
             this._nav.navigate(['/login']);
             return Observable.throw(new Error(error.status));
-          }
-          else {
+          } else {
 
             this._nav.navigate(['/login']);
           }
@@ -321,7 +320,7 @@ export class LoginService {
 
 
   verify_tokenWithNoRedirict() {
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
 
     return this._http.post(this.ServerUrl + 'api-token-verify/' , {'token': localStorage.getItem('Authorization')})
       .map(response => {
@@ -339,7 +338,7 @@ export class LoginService {
 
 
   StoreRegistration(model: any []) {
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
 
     console.log(model['fbrunregister']);
     if (model['fbrunregister'] === true ) {
@@ -407,12 +406,84 @@ export class LoginService {
   }
   }
 
+  StoreRegistrationPic(model: any [], Pic: any) {
+    if (isPlatformBrowser(this.platformId)) {
+
+      console.log(model['fbrunregister']);
+      if (model['fbrunregister'] === true ) {
+
+        model['fbrregister'] = false;
+        model['fbrname'] = '-';
+        model['cnic'] = '-';
+        model['strn'] = '-';
+
+        console.log(model['fbrregister']);
+        console.log(model['fbrname']);
+        console.log(model['cnic']);
+        console.log(model['strn']);
+
+      }
+
+      return this._http.post( this.StoreServerUrl + 'GetStoreInformationWithPic/' + localStorage.getItem('UserID'),
+        {
+          'StoreName' :  model['storename'],
+          'OwnerName':  model['ownername'],
+          'BusinessEmail':  model['email'],
+          'Zip':  model['zipcode'],
+          'City':  model['city'],
+          'OwnerContactNum':  model['personal'],
+          'BusinessPhone':  model['business'],
+          'Address':  model['address'],
+          'FbrRegister':  model['fbrregister'],
+          'LegalName':  model['fbrname'],
+          'NTN':  model['cnic'],
+          'STRN':  model['strn'],
+          'UserID': localStorage.getItem('UserID'),
+          'Pic': Pic,
+
+        })
+        .map((res: Response) => {
+          console.log('Storing with pic');
+
+          if (res) {
+            if (res.status === 201 || res.status === 200) {
+              // localStorage.setItem('account_created' , '1' );
+              // const responce_data = res.json();
+              // localStorage.setItem('Reg', 'Done');
+              //  alert(localStorage.getItem('id'));
+
+              this.StoreBankRegistration(model).subscribe(data => {
+                console.log(data);
+              });
+              // this.register_customer(responce_data.id, Fname, LName, Mobile).subscribe();
+            }
+          }
+        }).catch((error: any) => {
+          console.log(error);
+          if (error.status !== 404) {
+            if (error.status === 401) {
+              console.log(error);
+
+              return Observable.throw(new Error(error.status));
+            }
+
+
+          } else {
+            console.log(error);
+            //   this._nav.navigate(['/login']);
+
+            return Observable.throw(new Error(error.status));
+          }
+        });
+    }
+  }
+
   // Vendorshipchange(userid: string) {
   //   return this._http.get(this.ServerUrl + 'Vendorship/' + userid).map(response => response.json());
   // }
 
  StoreBankRegistration(model: any []) {
-   if (isPlatformBrowser(this.platformId)){
+   if (isPlatformBrowser(this.platformId)) {
 
 
    return this._http.post( this.StoreServerUrl + 'GetStoreBankInformation/' + localStorage.getItem('UserID'),
@@ -624,7 +695,7 @@ export class LoginService {
   }
   sendmail(email) {
 
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -640,7 +711,7 @@ export class LoginService {
   }
   }
   checkcode(key, email) {
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
 
     console.log(key);
     const headers = new Headers();

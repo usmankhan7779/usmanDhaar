@@ -28,7 +28,7 @@ export class Checkout2Component implements OnInit {
   GetUSerDOne: any = [];
   GetUSallerCoupon: any = [];
   mymodel: any = {};
-  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+  PicServrUrl = 'https://apis.dhaar.pk/media/';
   LoginName: string;
   login: string;
   CheckoutMethod = false;
@@ -61,22 +61,24 @@ export class Checkout2Component implements OnInit {
 
 
   ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
 
+
+      console.log('Yahoooo', this.OrderPlaced);
     this.sub = this.route
       .queryParams
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.login = params['login'] || '0' ;
+        console.log('Yahoooo', this.login);
 
         if ( this.login === 'yes' ) {
           this.orderreview = false;
-          if (isPlatformBrowser(this.platformId)) {
           this.LoginName = localStorage.getItem('UserName');
-          }
+
           this.LoggedIn = true;
           this.PaymentMethod = true;
                 this.BillingMethod = true;
-                if (isPlatformBrowser(this.platformId)) {
                   this.user = localStorage.getItem('UserID');
                 this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
                   this.GetUSerDOne = resSlidersData;
@@ -84,19 +86,17 @@ export class Checkout2Component implements OnInit {
                     this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
                   }
                 });
-                }
+
         }
       });
-    if (isPlatformBrowser(this.platformId)) {
       this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
-    }
+
 
     this.Total = 0;
     for (const tmp of this.CartedProduct['products']) {
 
       this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
     }
-    if (isPlatformBrowser(this.platformId)){
     this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
 
@@ -121,18 +121,16 @@ export class Checkout2Component implements OnInit {
 
   TrashcartElement(Abc: any) {
 
+    if (isPlatformBrowser(this.platformId)){
+
     for (const tmp of this.CartedProduct['products']) {
       if ( tmp.ProductID === Abc ) {
         console.log(tmp);
         this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
-        if (isPlatformBrowser(this.platformId)){
         localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
         }
       }
     }
-
-
-
   }
 
   Applycoupon (abc: string) {
@@ -212,63 +210,65 @@ export class Checkout2Component implements OnInit {
 
 
   ContinuetoCHeckout() {
-    // console.log('itemsqty',this.CartedProduct['products'][0]['itemsqty']);
-    // console.log('Quantity',this.CartedProduct['products'][0]['Quantity']);
+    if (isPlatformBrowser(this.platformId)) {
+      // console.log('itemsqty',this.CartedProduct['products'][0]['itemsqty']);
+      // console.log('Quantity',this.CartedProduct['products'][0]['Quantity']);
 
-    if (this.CartedProduct['products'][0]['itemsqty'] > this.CartedProduct['products'][0]['Quantity']){
-      alert('You are exceding from Maximum Quantity of product available');
-    } else {
-      this.orderreview = false;
-      if (this.Total > 0) {
-
-        this.Profile.verify_tokenWithNoRedirict().subscribe((response) => {
-
-            if (response) {
-              if (isPlatformBrowser(this.platformId)){
-
-              this.LoggedIn = true;
-              this.LoginName = localStorage.getItem('UserName');
-              this.PaymentMethod = true;
-              this.BillingMethod = true;
-              this.user = localStorage.getItem('UserID');
-              this.LoginName = localStorage.getItem('UserName');
-              this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
-                this.GetUSerDOne = resSlidersData;
-
-                if (this.GetUSerDOne['Complete'] === false) {
-                  this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
-                }
-
-              });
-              }
-
-            } else {
-
-              this.CheckoutMethod = true;
-
-            }
-          },
-          (err) => {
-            console.log('ERROR:' + err);
-            alert(err);
-            // this._nav.navigate(['/login']);
-          },
-          () => {
-          }
-        );
-
-
-        // this.model.LoginEMail;
-        // this.Renderer123.selectRootElement('#LoginEmailAddress').focus();
-
+      if (this.CartedProduct['products'][0]['itemsqty'] > this.CartedProduct['products'][0]['Quantity']) {
+        alert('You are exceding from Maximum Quantity of product available');
       } else {
-        alert('No sufficient Amount');
-      }
+        this.orderreview = false;
+        if (this.Total > 0) {
 
+          this.Profile.verify_tokenWithNoRedirict().subscribe((response) => {
+
+              if (response) {
+
+                this.LoggedIn = true;
+                this.LoginName = localStorage.getItem('UserName');
+                this.PaymentMethod = true;
+                this.BillingMethod = true;
+                this.user = localStorage.getItem('UserID');
+                this.LoginName = localStorage.getItem('UserName');
+                this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+                  this.GetUSerDOne = resSlidersData;
+
+                  if (this.GetUSerDOne['Complete'] === false) {
+                    this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
+                  }
+
+                });
+
+              } else {
+
+                this.CheckoutMethod = true;
+
+              }
+            },
+            (err) => {
+              console.log('ERROR:' + err);
+              alert(err);
+              // this._nav.navigate(['/login']);
+            },
+            () => {
+            }
+          );
+
+
+          // this.model.LoginEMail;
+          // this.Renderer123.selectRootElement('#LoginEmailAddress').focus();
+
+        } else {
+          alert('No sufficient Amount');
+        }
+
+      }
     }
   }
 
   ShippingDetails() {
+
+    if (isPlatformBrowser(this.platformId)) {
 
     for (const itm of this.CartedProduct['products']) {
 
@@ -303,7 +303,6 @@ export class Checkout2Component implements OnInit {
       data => {
         // console.log( this.CartedProduct['products']);
         for (const item of this.CartedProduct['products']) {
-          if (isPlatformBrowser(this.platformId)){
           this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty).subscribe(
             data => {
 
@@ -315,9 +314,7 @@ export class Checkout2Component implements OnInit {
               //   console.log("ERROR: "+err);
             },
           );
-          }
         }
-        if (isPlatformBrowser(this.platformId)){
         this.httpbuyerService.CustomerInvoiceShippingAddress(localStorage.getItem('InvoiceID'), this.GetUSerDOne['Fname'],  this.GetUSerDOne['Lname'], this.GetUSerDOne['user_id'], this.GetUSerDOne['State'], this.GetUSerDOne['State'], this.GetUSerDOne['City'], this.GetUSerDOne['Zip'], this.GetUSerDOne['Address'], this.GetUSerDOne['Mobile'], '01').subscribe(
           data => {
 
@@ -334,7 +331,7 @@ export class Checkout2Component implements OnInit {
             //   console.log("ERROR: "+err);
           },
         );
-        }
+
 
       }, (err) => {
 
@@ -350,13 +347,9 @@ export class Checkout2Component implements OnInit {
     //     this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), this.CartedProduct['products'].length );
     //     localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
     // }
-    if (isPlatformBrowser(this.platformId)) {
     localStorage.removeItem('Cartdata');
+
     }
-
-
-
-
   }
 
   LoginUser() {

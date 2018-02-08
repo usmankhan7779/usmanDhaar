@@ -77,6 +77,7 @@ export class PostAdComponent implements OnInit {
         this.CatName = params['CatName'] || '0' ;
         this.CatId  = params['CatId'] || '0';
         this.User_ID  = localStorage.getItem('UserID');
+        // console.log('this.User_ID is',this.User_ID);
 
 
       });
@@ -188,6 +189,7 @@ export class PostAdComponent implements OnInit {
       const subcat = this.model.subcat.split('!');
 
       this.CatNumber = +this.CatId;
+      console.log('CatNumber value is', this.CatNumber);
 
       if (this.CatNumber < 10) {
 

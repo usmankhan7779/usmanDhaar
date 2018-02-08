@@ -14,12 +14,13 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class DashboardComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
-  ServerUrl =  'http://ns519750.ip-158-69-23.net:7600/';
-  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+  ServerUrl =  'https://apis.dhaar.pk/';
+  PicServrUrl = 'https://apis.dhaar.pk/media/';
   NewPostcheck = false ;
   ValueRec: Boolean = false;
   ActiveProduct: any = [];
   GetUSerDOne: any = [];
+  offerLength: any;
 
   GetUSerOffer: any[] = [];
   USerName: any;
@@ -54,6 +55,7 @@ export class DashboardComponent implements OnInit {
             localStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
             this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName')).subscribe(resSlidersData => {
               this.GetUSerOffer = resSlidersData;
+              // this.offerLength = GetUSerOffer['results'].length;
 
 
             });

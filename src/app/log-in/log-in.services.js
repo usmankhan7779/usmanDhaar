@@ -16,7 +16,7 @@ var LoginService = (function () {
         this._http = _http;
         this._nav = _nav;
         this.jwtHelper = new angular2_jwt_1.JwtHelper();
-        this.ServerUrl = 'http://127.0.0.1:8000/user/';
+        this.ServerUrl = 'https://apis.dhaar.pk/user/';
     }
     LoginService.prototype.loged_in = function (mail, pass) {
         var _this = this;

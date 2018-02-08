@@ -11,7 +11,8 @@
         <div class="logo">
 
           <a [routerLink]="['/home']" title="Dhaar">
-            <img src="assets/images/companylogo.jpg" width="250" height="150" alt="dhaar3">
+            <img src="{{ PicServrUrl + StoreInfoo.Pic }}" width="1200" height="230" alt="dhaar3">
+            <!--{{ PicServrUrl + StoreInfo[0].Pic }}-->
           </a>
         </div>
       </div>
@@ -372,7 +373,7 @@
                         <div class="box-hover">
                           <div class="product-item-actions">
                             <div class="pro-actions">
-                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button>
                             </div>
                           </div>
                         </div>
@@ -395,7 +396,7 @@
                             <div id="pro2-slider1" class="product-flexslider hidden-buttons">
                               <div class="slider-items slider-width-col6">
 
-                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="300" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.pic }}"></a>
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.pic }}"></a>
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 
@@ -433,7 +434,7 @@
                                 <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
                               </div>
                               <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button> </a>
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button> </a>
                               </div>
                             </div>
                           </div>
@@ -475,7 +476,7 @@
                         <div class="box-hover">
                           <div class="product-item-actions">
                             <div class="pro-actions">
-                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Add to Cart</span> </button>
+                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button>
                             </div>
                           </div>
                         </div>
@@ -510,7 +511,7 @@
   </div>
 
 
-  <app-footer></app-footer>
+  <!--<app-footer></app-footer>-->
 
   <div id="modal-cart" class="modal modal-right fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -637,7 +638,7 @@
                     <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
                   </div>
                 </div>
-                <button class="button pro-add-to-cart" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button>
+                <button class="button pro-add-to-cart" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Buy Now</span></button>
               </form>
             </div>
             <div class="product-cart-option">

@@ -25,8 +25,9 @@
           <li ><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
           <li><a [routerLink]="['/my-bids-buyer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
           <li class="active"><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
-
+          <li ><a [routerLink]="['/buyer-offer']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Offers</a></li>
           <li  ><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dhaar.pk</a></li>
+          <li><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
           <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
           <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
@@ -79,4 +80,4 @@
   </div>
 </div>
 
-<app-footer></app-footer>
+<!--<app-footer></app-footer>-->

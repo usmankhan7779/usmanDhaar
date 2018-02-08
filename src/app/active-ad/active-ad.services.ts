@@ -5,6 +5,8 @@ import {Observable} from 'rxjs/Rx';
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
+import swal from "sweetalert2";
+import {isPlatformBrowser} from "@angular/common";
 
 
 
@@ -14,8 +16,8 @@ export class ActiveAdServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://ns519750.ip-158-69-23.net:7600/products/';
-  StoreServerUrl = 'http://ns519750.ip-158-69-23.net:7600/store/';
+  ServerUrl = 'https://apis.dhaar.pk/products/';
+  StoreServerUrl = 'https://apis.dhaar.pk/store/';
 
   constructor(private _http: Http,
               private _nav: Router) {
@@ -42,8 +44,12 @@ export class ActiveAdServices {
     return this._http.get( this.ServerUrl + 'GetallProductdBids/' + UserID + '?page=' + page, ).map(response => response.json());
   }
 
+  GetallWatchProducts(page: any, UserID: any) {
+    return this._http.get( this.ServerUrl + 'GetallWatchProducts/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
+
   GetStoreInformation(storename) {
-    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + storename).map((response: Response) => response.json());
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformationWithPic/' + storename).map((response: Response) => response.json());
 
   }
 
@@ -67,7 +73,138 @@ export class ActiveAdServices {
     return this._http.get(this.ServerUrl + 'VerifyProducts/' + pk + '/' + store).map(response =>  response.json());
   }
 
+  OfferProducts(id:any) {
+    return this._http.get(this.ServerUrl + 'ProductOfferstatus/'+ id).map(response => response.json());
+  }
 
+  GetStoreOffers(st:any) {
+    return this._http.get(this.ServerUrl + 'GetallProductsOffersByStoreName/' + st).map(response => response.json());
+  }
+
+  DeleteOffer(pk:any, st:any) {
+    return this._http.delete(this.ServerUrl + 'deleteOffer/' + pk + '/' + st).map(response => response.json());
+  }
+
+  SellerCounterOffers(pk:any, st:any, model: any) {
+    return this._http.put(this.ServerUrl + 'counterOfferSeller/' + pk + '/' + st,
+      {
+        'PricePerQuantity': model.OfferAmount,
+        'Quantity': model.QuantityProduct,
+        'Message': model.message,
+        'Status' : true,
+        'Accept' : false,
+        'CounterStatus' : true
+      }).map((res: Response) => {
+      if (res) {
+        // console.log('abc');
+        if (res.status === 201) {
+          const responce_data = res.json();
+
+          return [{ status: res.status, json: res }];
+        }
+      }
+    }).catch((error: any) => {
+      swal('Your Offer has been Updated','','success');
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+  BuyerCounterOffers(pk:any, st:any, model: any) {
+    return this._http.put(this.ServerUrl + 'counterOfferBuyer/' + pk + '/' + st,
+      {
+        'PricePerQuantity': model.OfferAmount,
+        'Quantity': model.QuantityProduct,
+        'Message': model.message,
+        'Status' : true,
+        'Accept' : true,
+        'CounterStatus' : true
+      }).map((res: Response) => {
+      if (res) {
+        // console.log('abc');
+        if (res.status === 201) {
+          const responce_data = res.json();
+
+          return [{ status: res.status, json: res }];
+        }
+      }
+    }).catch((error: any) => {
+      swal('Your Offer has been Updated','','success');
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+
+  rejectOffer(pk:any, st:any){
+    return this._http.put(this.ServerUrl + 'rejectOffer/' + pk + '/' +st,
+      {
+        'Accept': false,
+        'Status': false,
+        'CounterStatus': false
+      }).map((res: Response) => {
+      console.log('Helllooo i am in map');
+
+      if (res) {
+        if (res.status === 201 || res.status === 200) {
+
+        }
+      }
+    }).catch((error: any) => {
+
+      if (error.status !== 404) {
+        if (error.status === 401) {
+          console.log(error);
+
+          return Observable.throw(new Error(error.status));
+        }
+
+
+      } else {
+        console.log(error);
+        //   this._nav.navigate(['/login']);
+
+        return Observable.throw(new Error(error.status));
+      }
+    });
+  }
+
+  acceptOffer(pk:any, st:any){
+    console.log('Helllooo i am in service function');
+    return this._http.put(this.ServerUrl + 'acceptOffer/' + pk + '/' + st,
+      {
+        'Accept': true,
+        'Status': true,
+        'CounterStatus': false
+    })
+      .map((res: Response) => {
+        console.log('Helllooo i am in map');
+
+        if (res) {
+          if (res.status === 201 || res.status === 200) {
+
+          }
+        }
+      }).catch((error: any) => {
+
+        if (error.status !== 404) {
+          if (error.status === 401) {
+            console.log(error);
+
+            return Observable.throw(new Error(error.status));
+          }
+
+
+        } else {
+          console.log(error);
+          //   this._nav.navigate(['/login']);
+
+          return Observable.throw(new Error(error.status));
+        }
+      });
+  }
 
   InsertDisCountcoupons(Qty: string, Discount: string , Day: string, StoreName, PID) {
     console.log('Yahoooo22222222', Qty, Discount, Day, StoreName, PID);
@@ -105,5 +242,35 @@ export class ActiveAdServices {
         }
       });
   }
+
+  ProductOffers(user:any, pro:any, model: any) {
+      return this._http.put(this.ServerUrl + 'changeOffer/' + user + '/' + pro,
+        {
+
+          'PricePerQuantity': model.OfferAmount,
+          'Quantity': model.QuantityProduct,
+          'Message': model.message,
+
+          //    'Pidd':  Pidd,
+        }).map((res: Response) => {
+        if (res) {
+          // console.log('abc');
+          if (res.status === 201) {
+            const responce_data = res.json();
+
+            // console.log('this is the id' + responce_data.id);
+            // localStorage.setItem('Authorization', res.json().token);
+
+            return [{ status: res.status, json: res }];
+          }
+        }
+      }).catch((error: any) => {
+        swal('Your Offer has been Updated','','success');
+        console.log(error.toString());
+        return Observable.throw(new Error(error.status));
+      });
+
+
+    }
 
 }

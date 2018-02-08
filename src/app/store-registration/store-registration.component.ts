@@ -23,26 +23,105 @@ export class StoreRegistrationComponent implements OnInit {
   EmailExist= false;
   Emailok= false;
   Emailinvalid= false;
+  uploadFile: any;
+  sizeLimit = 2000000;
+  ALLbase64textStringforPic= {0: 'dfghjk'};
+  file: any;
+  file1: any;
+  files: FileList;
+  private base64textString= '';
 
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private obj: LoginService) {
   }
 
-  save() {
+  handleUpload(data): void {
+    if (data && data.response) {
+      data = JSON.parse(data.response);
+      this.uploadFile = data;
+    }
+  }
 
+  beforeUpload(uploadingFile): void {
+    if (uploadingFile.size > this.sizeLimit) {
+      uploadingFile.setAbort();
+      alert('File is too large');
+    }
+  }
+
+  _handleReaderLoaded(readerEvt) {
+    const binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+
+  }
+
+
+  onChange(event: EventTarget) {
+
+
+
+    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    this.files = target.files;
+    if (this.files.length >= 1 && this.files.length < 5) {
+      this.file = this.files[0];
+      const reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(this.file);
+
+      if (this.files.length > 1 && this.files.length < 5) {
+
+        for (let a = 1; a < (this.files.length); a++) {
+          // alert(a);
+          this.file1 = this.files[a];
+          const reader1 = new FileReader();
+          reader1.onload = (e: any) => {
+            this._handleReaderLoadedforALl(e, a - 1);
+          };
+          // this._handleReaderLoadedforALl.bind(this.file1, a-1);
+          reader1.readAsBinaryString(this.file1);
+        }
+        // console.log("fsdfsdf");
+        console.log(this.ALLbase64textStringforPic);
+      }
+    }
+
+
+  }
+
+
+  _handleReaderLoadedforALl(readerEvt, index) {
+    // console.log('attt  ',index);
+    const binaryString = readerEvt.target.result;
+    // console.log('123456');
+    // console.log('asdfghjk   ',btoa(binaryString))
+    // // this.arrayIndex=0;
+
+    this.ALLbase64textStringforPic[index] = btoa(binaryString);
+    // console.log(this.ALLbase64textStringforPic);
+
+
+  }
+
+  save() {
 
     if ( this.model.terms ) {
       this.Waitcall = true;
-      this.obj.StoreRegistration(this.model).subscribe(
-        resSlidersData => {
-          // console.log('DONEDsdfnsd');
-        });
+      if ( this.base64textString) {
+        console.log('Inside base 64');
+        this.obj.StoreRegistrationPic(this.model, this.base64textString).subscribe();
+      } else {
+        this.obj.StoreRegistration(this.model).subscribe(
+          resSlidersData => {
+            // console.log('DONEDsdfnsd');
+          });
+      }
     } else {
       alert('You must agree to the terms  first.');
     }
   }
 
-  onChange(username: string) {
+  onChangeuser(username: string) {
     if (username !== '') {
 
 
@@ -97,6 +176,8 @@ export class StoreRegistrationComponent implements OnInit {
     }
 
   }
+
+
 
   checkEmail(email: string) {
 

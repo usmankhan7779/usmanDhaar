@@ -1,0 +1,120 @@
+<app-header></app-header>
+
+<!-- Page Title start -->
+<div class="pageTitle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">My Watchlist</h1>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="breadCrumb"><a href="#">Dashboard</a> <span>My Watchlist</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Title End -->
+
+<div class="inner-page">
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="seller === false">
+      <div class="col-md-3 col-sm-4">
+        <ul class="usernavdash">
+          <li><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
+          <li><a [routerLink]="['/my-bids-buyer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
+          <li><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
+          <li ><a [routerLink]="['/buyer-offer']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Offers</a></li>
+          <li><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dhaar.pk</a></li>
+          <li class="active"><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
+          <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
+          <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
+
+          <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+
+        </ul>
+        <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
+      </div>
+      </ng-container>
+      <ng-container *ngIf="seller === true">
+        <div class="col-md-3 col-sm-4">
+          <ul class="usernavdash">
+            <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
+            <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Post an Ad</a></li>
+            <li ><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
+            <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
+            <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
+            <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
+            <li><a [routerLink]="['/seller-offer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Offers</a></li>
+            <li><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
+            <li class="active"><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
+            <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
+            <li><a [routerLink]="['/seller-user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
+            <li><a [routerLink]="['/seller-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
+            <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+          </ul>
+          <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
+        </div>
+      </ng-container>
+      <div class="col-md-9 col-sm-8">
+        <div class="myads">
+          <h3>My Watch Products</h3>
+
+          <ul class="searchList">
+            <!-- ad start -->
+            <ng-container *ngIf="!errormessage">
+              <ng-container *ngFor="let phoneProducts of ActiveProduct.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                <li>
+                  <div class="row">
+                    <div class="col-md-2 col-sm-4">
+                      <div class="adimg"><img src="{{ PicServrUrl + phoneProducts.Pic  }}" alt="Ad Name"></div>
+                    </div>
+                    <div class="col-md-10 col-sm-8">
+                      <div class="jobinfo">
+                        <div class="row">
+                          <div class="col-md-8 col-sm-7">
+                            <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >{{ phoneProducts.P_Title }}</a></h3>
+                            <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name }}</a> </div>
+                            <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                            <div class="clearfix"></div>
+                            <p>{{phoneProducts.P_Des}}</p>
+                            <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                          </div>
+                          <div class="col-md-4 col-sm-5 text-right">
+                            <ng-container *ngIf="phoneProducts.Auction === true">
+                            <div class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>
+                            </ng-container>
+                            <ng-container *ngIf="phoneProducts.Auction === false">
+                              <div class="adprice">Rs {{ phoneProducts.FixedPrice | number:'.0-0'}}</div>
+                            </ng-container>
+                            <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="errormessage">
+              <div class="alert alert-danger">
+                <h3 align="center">Found No Product in Watchlist</h3>
+              </div>
+            </ng-container>
+            <!-- ad end -->
+
+            <div class="col-sm-4 col-sm-push-8">
+              <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
+                                   nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
+
+            </div>
+            <!-- ad end -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<app-footer></app-footer>-->

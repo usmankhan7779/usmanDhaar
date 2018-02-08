@@ -17,7 +17,7 @@ export class BuyerInvoiceComponent implements OnInit {
 
   pageno: any;
   sub: any;
-  PicServrUrl = 'http://ns519750.ip-158-69-23.net:7600/media/';
+  PicServrUrl = 'https://apis.dhaar.pk/media/';
   modelNo: any;
   ShipingInvoice: any = [];
   InvoiceData: any = [];
