@@ -46,6 +46,7 @@ const appRoutes: Routes = [
       { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule',},
       { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard]},
       { path: 'seller-offer', loadChildren: './seller-offer/seller-offer.module#SellerOfferModule', canActivate: [AuthGuard]},
+      { path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule'},
     ]
   },
 ];

@@ -422,56 +422,59 @@ export class SingleProductComponent implements OnInit {
     console.log('max', this.resultProduct[0]);
     console.log('start', startingPrice);
     // console.log('UserId is ',this.resultProduct[0]['User_ID']);
+    if (localStorage.getItem('UserID')) {
+      if (this.model.UserPriceBid > MaxPrice) {
+        this.MinBidPrice = false;
+        if (this.resultProduct[0]['Cat_Name'] === null) {
+          this.router.navigate(['/login']);
+        } else if (this.resultProduct[0]['Cat_Name'] === 'Phones & Tablets') {
+          this.httpService.InsertPhoneMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
+        } else if (this.resultProduct[0]['Cat_Name'] === 'Women\'s Fashion') {
+          this.httpService.InsertWomenMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
+        } else if (this.resultProduct[0]['Cat_Name'] === 'Men\'s Fashion') {
+          this.httpService.InsertMenMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
+        } else if (this.resultProduct[0]['Cat_Name'] === 'TV, Audio & Video') {
+          this.httpService.InsertTVMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
+        } else if (this.resultProduct[0]['Cat_Name'] === 'Computing & Laptops') {
+          this.httpService.InsertComputingMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
+        } else if (this.resultProduct[0]['Cat_Name'] === 'Home Appliances') {
+          this.httpService.InsertHomeMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
+        }
 
-    if (this.model.UserPriceBid > MaxPrice) {
-      this.MinBidPrice = false;
-      if (this.resultProduct[0]['Cat_Name'] === null) {
-        this.router.navigate(['/login']);
-      } else if (this.resultProduct[0]['Cat_Name'] === 'Phones & Tablets') {
-            this.httpService.InsertPhoneMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
-      } else if (this.resultProduct[0]['Cat_Name'] === 'Women\'s Fashion') {
-            this.httpService.InsertWomenMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
-      } else if (this.resultProduct[0]['Cat_Name'] === 'Men\'s Fashion') {
-        this.httpService.InsertMenMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
-      } else if (this.resultProduct[0]['Cat_Name'] === 'TV, Audio & Video') {
-        this.httpService.InsertTVMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
-      } else if (this.resultProduct[0]['Cat_Name'] === 'Computing & Laptops') {
-        this.httpService.InsertComputingMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
-      } else if (this.resultProduct[0]['Cat_Name'] === 'Home Appliances') {
-        this.httpService.InsertHomeMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
+        this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe();
+
+        // this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
+        //   this.GeProductBiding = resSlidersData;
+        //   if (this.CatName === '0') {
+        //     this.router.navigate(['/login']);
+        //   } else {
+        //     if (this.CatName === 'Phones & Tablets') {
+        //       this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+        //     } else if (this.CatName === 'Women\'s Fashion') {
+        //       // console.log('Women\'s Fashion')
+        //       this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+        //     } else if (this.CatName === 'Men\'s Fashion') {
+        //       this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+        //     } else if (this.CatName === 'TV, Audio & Video') {
+        //       // console.log('TV, Audio & Video')
+        //       this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+        //     } else if (this.CatName === 'Computing & Laptops') {
+        //       this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+        //     } else if (this.CatName === 'Home Appliances') {
+        //       this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
+        //     }
+        //   }
+        //
+        // });
+        console.log(this.GeProductBiding);
+        // this.someMethod(true, this.ProID, startingPrice );
+        this.NewBidInserted = true;
+
+      } else {
+        this.MinBidPrice = true;
       }
-
-      this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe();
-
-      // this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
-      //   this.GeProductBiding = resSlidersData;
-      //   if (this.CatName === '0') {
-      //     this.router.navigate(['/login']);
-      //   } else {
-      //     if (this.CatName === 'Phones & Tablets') {
-      //       this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-      //     } else if (this.CatName === 'Women\'s Fashion') {
-      //       // console.log('Women\'s Fashion')
-      //       this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-      //     } else if (this.CatName === 'Men\'s Fashion') {
-      //       this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-      //     } else if (this.CatName === 'TV, Audio & Video') {
-      //       // console.log('TV, Audio & Video')
-      //       this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-      //     } else if (this.CatName === 'Computing & Laptops') {
-      //       this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-      //     } else if (this.CatName === 'Home Appliances') {
-      //       this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData1 => this.resultProduct = resSlidersData1);
-      //     }
-      //   }
-      //
-      // });
-      console.log(this.GeProductBiding);
-      // this.someMethod(true, this.ProID, startingPrice );
-      this.NewBidInserted = true;
-
     } else {
-      this.MinBidPrice = true;
+      swal('Login Required','','error')
     }
 
 
@@ -684,7 +687,7 @@ export class SingleProductComponent implements OnInit {
   SubmitReview() {
     console.log('Store Name is', this.resultProduct[0]['StoreName']);
     this.GetAdd.InsertProductReviews(this.model.YourName, this.model.YourEmail, this.model.YourReview, this.ProID, this.starp, this.resultProduct[0]['StoreName']).subscribe(resSlidersData => {
-        alert('Done');
+        swal('Your Review has been submitted','','success');
       },
       (err) => {
         alert('Error');

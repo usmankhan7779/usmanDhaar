@@ -39,8 +39,12 @@ export class SellerOfferComponent implements OnInit {
       }
       this.SessionstoreName = localStorage.getItem('StoreName');
 
-      this.httpService.GetStoreOffers(this.SessionstoreName).subscribe(data => {
+      this.httpService.OfferProducts(localStorage.getItem('UserID')).subscribe(data => {
         this.ProductOffer = data;
+        console.log('yahooooo', this.ProductOffer);
+        if (this.ProductOffer === 0) {
+          this.errormessage = true;
+        }
       });
 
     }
@@ -62,16 +66,48 @@ export class SellerOfferComponent implements OnInit {
       swal('This Offer has been Rejected', '', 'success')
     });
   }
+
+  DeleteOffer(user: any, pro: any) {
+    this.user = user;
+    this. Product = pro;
+    this.httpService.DeleteOffer(this.user, this.Product).subscribe(data => {
+      swal('Your offer has been Deleted.','','success');
+    });
+  }
+
   CounterOffer(user: any, pro: any) {
     this.user = user;
     this.Product = pro;
     console.log('Hahahahahaha',this.user,this.Product);
   }
 
+  UpdateOffer() {
+    if ( this.model.OfferAmount && this.model.QuantityProduct ) {
+
+      this.httpService.ProductOffers(this.user,this.Product,this.model).subscribe((response) => {
+          /* this function is executed every time there's a new output */
+          // console.log("VALUE RECEIVED: "+response);
+          // alert('inserted');
+          swal('Your offer has been Updated. Please wait for the seller to respond.','','success');
+        },
+        (err) => {
+          //erro
+        },
+        () => {
+          /* this function is executed when the observable ends (completes) its stream */
+          //   console.log("COMPLETED");
+        }
+      );
+    } else {
+      swal('Please Enter both Fields, Quantiy and Price per Quantity','','error');
+
+    }
+  }
+
   UpdateCounterOffer() {
     if ( this.model.OfferAmount && this.model.QuantityProduct ) {
 
-      this.httpService.SellerCounterOffers(this.user,this.Product,this.model).subscribe((response) => {
+      this.httpService.BuyerCounterOffers(this.user,this.Product,this.model).subscribe((response) => {
           /* this function is executed every time there's a new output */
           // console.log("VALUE RECEIVED: "+response);
           // alert('inserted');

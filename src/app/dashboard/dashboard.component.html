@@ -163,66 +163,182 @@
 
         <div class="main container">
           <div class="row">
+            <div class="col-md-9 col-sm-8">
+              <div class="myads">
+                <h3>Offers Dashboard</h3>
+                <br/>
+                <br/>
+                <div class="tab-info">
+                  <div class="nav home-nav-tabs home-product-tabs">
+                    <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#pendingoffers" data-toggle="tab" aria-expanded="false">Pending Offers</a></h3>
+                    <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#acceptedoffers" data-toggle="tab" aria-expanded="false">Accepted Offers</a></h3>
+                    <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#rejectedoffers" data-toggle="tab" aria-expanded="false">Rejected Offers</a></h3>
+                    <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#mycounteroffer" data-toggle="tab" aria-expanded="false">My Counter Offer</a></h3>
+                    <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#buyercounteroffer" data-toggle="tab" aria-expanded="false">Buyer Counter Offer</a></h3>
 
-            <div class="col-xs-10">
-              <div class="page-content checkout-page">
-                <div class="page-title">
-                  <h2>Best Offers</h2>
-                </div>
-
-                <!--<h4 class="checkout-sep">Biding History</h4>-->
-                <div class="box-border">
-                  <div class="table-responsive">
-                    <table class="table table-bordered cart_summary">
-                      <thead>
-                      <tr>
-                        <th>Product ID</th>
-                        <th>User Email</th>
-                        <th>User Message</th>
-                        <th>Qty</th>
-                        <th>Offer Amount</th>
-                        <th>Offer Date</th>
-                        <th></th>
-
-                      </tr>
-                      </thead>
-                      <tbody>
-
-                      <ng-container  *ngFor="let abc of GetUSerOffer['results']; let i = index">
-                        <tr>
-                          <td> {{i+1}} <span style="color: red !important;">-</span> {{ abc.Product_Id}} <span style="color: red !important;"> <a style="color: red !important;" [routerLink]="['/single-product']" [queryParams]="{ ProID:  abc.Product_Id, CatName: abc.Cat_Name }"> View Ad </a></span></td>
-                          <td>{{ abc.User_Id}}</td>
-                          <td>  {{ abc.Message}}</td>
-                          <td>  {{ abc.Qty}}</td>
-                          <td>  {{ abc.Price}}</td>
-                          <td>  {{ abc.CreatedDate.substr(0,10)}}</td>
-
-                          <td> <button  class="button"><span>Accept</span></button>  <button  class="button"><span>Send an Email</span></button><button  class="button"><span>Counter Offer</span></button></td>
-
-
-                        </tr>
-                      </ng-container>
-                      </tbody>
-                      <tfoot>
-
-                      <tr>
-
-
-                      </tr>
-
-                      </tfoot>
-                    </table>
                   </div>
-
                 </div>
+                <ul class="searchList">
+                  <!-- ad start -->
+                  <div id="productTabContent" class="tab-content">
+                    <div class="tab-pane active in" id="pendingoffers">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                        <div *ngIf="phoneProducts.Status && !phoneProducts.CounterStatus && !phoneProducts.Accept">
+                          <li>
+                            <div class="row">
+                              <div class="col-md-12 col-sm-12">
+                                <div class="jobinfo">
+                                  <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                      <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
+                                      <div class="cateName"> <a [routerLink]="['/category-detail']" [queryParams]="{CatName: phoneProducts.Cat_Name}">{{ phoneProducts.Cat_Name }}</a></div>
+                                      <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                                      <div class="clearfix"></div>
+                                      <div class="">Offered Quantity: {{ phoneProducts.Quantity}}</div>
+                                      <div class="">Offered Price/Quantity: {{ phoneProducts.PricePerQuantity}}</div>
+
+                                      <div class="listbtn offer-btn">
+                                        <a (click)="AcceptOffer(phoneProducts.User_ID,phoneProducts.Product_ID)" style="cursor: pointer">Aceept Offer</a>
+                                        <a (click)="RejectOffer(phoneProducts.User_ID,phoneProducts.Product_ID)" style="cursor: pointer">Reject Offer</a>
+                                        <a data-toggle="modal" (click)="CounterOffer(phoneProducts.User_ID,phoneProducts.Product_ID)" data-target="#myModal" style="cursor: pointer">Counter Offer</a>
+                                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <div class="tab-pane fade" id="mycounteroffer">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                        <div *ngIf="phoneProducts.Status && phoneProducts.CounterStatus && !phoneProducts.Accept">
+                          <li>
+                            <div class="row">
+                              <div class="col-md-12 col-sm-12">
+                                <div class="jobinfo">
+                                  <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                      <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
+                                      <div class="cateName"> <a [routerLink]="['/category-detail']" [queryParams]="{CatName: phoneProducts.Cat_Name}">{{ phoneProducts.Cat_Name }}</a></div>
+                                      <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                                      <div class="clearfix">My Counter Offers</div>
+                                      <div class="">Offered Quantity: {{ phoneProducts.Quantity}}</div>
+                                      <div class="">Offered Price/Quantity: {{ phoneProducts.PricePerQuantity}}</div>
+
+                                      <div class="listbtn offer-btn">
+                                        <p style="font-weight: bolder; color: red; float: left; font-size: 30px; margin-right: 3px; margin-top: 6px">You Have made a counter Offer</p>
+                                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <div class="tab-pane fade" id="buyercounteroffer">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                        <div *ngIf="phoneProducts.Status && phoneProducts.CounterStatus && phoneProducts.Accept">
+                          <li>
+                            <div class="row">
+                              <div class="col-md-12 col-sm-12">
+                                <div class="jobinfo">
+                                  <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                      <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
+                                      <div class="cateName"> <a [routerLink]="['/category-detail']" [queryParams]="{CatName: phoneProducts.Cat_Name}">{{ phoneProducts.Cat_Name }}</a></div>
+                                      <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                                      <div class="clearfix">Buyer Has made a Counter Offer</div>
+                                      <div class="">Offered Quantity: {{ phoneProducts.Quantity}}</div>
+                                      <div class="">Offered Price/Quantity: {{ phoneProducts.PricePerQuantity}}</div>
+
+                                      <div class="listbtn offer-btn">
+                                        <a (click)="AcceptOffer(phoneProducts.User_ID,phoneProducts.Product_ID)" style="cursor: pointer">Aceept Offer</a>
+                                        <a (click)="RejectOffer(phoneProducts.User_ID,phoneProducts.Product_ID)" style="cursor: pointer">Reject Offer</a>
+                                        <a data-toggle="modal" (click)="CounterOffer(phoneProducts.User_ID,phoneProducts.Product_ID)" data-target="#myModal" style="cursor: pointer">Counter Offer</a>
+                                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <div class="tab-pane fade" id="rejectedoffers">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                        <div *ngIf="!phoneProducts.Status && !phoneProducts.CounterStatus && !phoneProducts.Accept">
+                          <li>
+                            <div class="row">
+                              <div class="col-md-12 col-sm-12">
+                                <div class="jobinfo">
+                                  <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                      <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
+                                      <div class="cateName"> <a [routerLink]="['/category-detail']" [queryParams]="{CatName: phoneProducts.Cat_Name}">{{ phoneProducts.Cat_Name }}</a></div>
+                                      <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                                      <div class="clearfix"></div>
+                                      <div class="">Offered Quantity: {{ phoneProducts.Quantity}}</div>
+                                      <div class="">Offered Price/Quantity: {{ phoneProducts.PricePerQuantity}}</div>
+
+                                      <div class="listbtn offer-btn">
+                                        <p style="font-weight: bolder; color: red; float: left; font-size: 30px; margin-right: 3px; margin-top: 6px">This Offer has been Rejected</p>
+                                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <div class="tab-pane fade" id="acceptedoffers">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                        <div *ngIf="phoneProducts.Status && !phoneProducts.CounterStatus && phoneProducts.Accept">
+                          <li>
+                            <div class="row">
+                              <div class="col-md-12 col-sm-12">
+                                <div class="jobinfo">
+                                  <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                      <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
+                                      <div class="cateName"> <a [routerLink]="['/category-detail']" [queryParams]="{CatName: phoneProducts.Cat_Name}">{{ phoneProducts.Cat_Name }}</a></div>
+                                      <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                                      <div class="clearfix"></div>
+                                      <div class="">Offered Quantity: {{ phoneProducts.Quantity}}</div>
+                                      <div class="">Offered Price/Quantity: {{ phoneProducts.PricePerQuantity}}</div>
+
+                                      <div class="listbtn offer-btn">
+                                        <p style="font-weight: bolder; color: red; float: left; font-size: 30px; margin-right: 3px; margin-top: 6px">This Offer has been Accepted</p>
+                                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <!-- ad end -->
 
 
+                  <!-- ad end -->
 
-
+                </ul>
               </div>
-
             </div>
-
 
           </div>
         </div>
@@ -237,3 +353,23 @@
 
 
 <!--<app-footer></app-footer>-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Counter Offer</h4>
+      </div>
+      <div class="modal-body">
+        <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="QuantityProduct" [(ngModel)]="model.QuantityProduct" placeholder="Enter Quantity Of Product" required>
+        <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="OfferAmount" [(ngModel)]="model.OfferAmount" placeholder="Your Offer Amount per Product" required>
+
+        <textarea type="text" class="form-control" style="margin-bottom: 15px;"  name="SellerMessage" [(ngModel)]="model.message" placeholder="Message for Seller" ></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="UpdateCounterOffer()">Submit Counter Offer</button>
+      </div>
+    </div>
+  </div>
+</div>

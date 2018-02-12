@@ -7,6 +7,8 @@ import { HomeService } from '../home/home.services';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 import { JwtHelper } from 'angular2-jwt';
+import {ActiveAdServices} from "../active-ad/active-ad.services";
+import swal from "sweetalert2";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,16 +23,22 @@ export class DashboardComponent implements OnInit {
   ActiveProduct: any = [];
   GetUSerDOne: any = [];
   offerLength: any;
-
+  r:any;
   GetUSerOffer: any[] = [];
   USerName: any;
   storename: any;
+  model: any = {};
+  ProductOffer: any = [];
+  user: any;
+  Product: any;
+  sessionstore: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http ,
               private Profile: LoginService,
               private HomeServics: HomeService,
-              private _nav: Router) {
+              private _nav: Router,
+              private httpService: ActiveAdServices) {
   }
 
   ngOnInit() {
@@ -46,6 +54,7 @@ export class DashboardComponent implements OnInit {
         localStorage.setItem('NewPost', null);
 
       }
+
       window.scrollTo(0, 0);
 
       this.Profile.GetStoreInformationByUserId(localStorage.getItem('UserID')).subscribe(
@@ -64,7 +73,59 @@ export class DashboardComponent implements OnInit {
             this._nav.navigate(['/login']);
           }
         });
+      this.sessionstore = localStorage.getItem('StoreName');
+      console.log('storename is', this.sessionstore);
+      this.httpService.GetStoreOffers(this.sessionstore).subscribe(data => {
+        this.ProductOffer = data;
+        console.log('product offer is: ',this.ProductOffer);
+      });
 
+
+    }
+  }
+
+  AcceptOffer(user: any, pro: any) {
+    this.user = user;
+    this.Product = pro;
+    console.log('Hahahahahaha',this.user,this.Product);
+    this.httpService.acceptOffer(this.user,this.Product).subscribe( data => {
+      swal('This Offer has been Accepted', '', 'success')
+    });
+  }
+
+  RejectOffer(user: any, pro: any) {
+    this.user = user;
+    this.Product = pro;
+    console.log('Hahahahahaha',this.user,this.Product);
+    this.httpService.rejectOffer(this.user,this.Product).subscribe( data => {
+      swal('This Offer has been Rejected', '', 'success')
+    });
+  }
+
+  CounterOffer(user: any, pro: any) {
+    this.user = user;
+    this.Product = pro;
+    console.log('Hahahahahaha',this.user,this.Product);
+  }
+  UpdateCounterOffer() {
+    if ( this.model.OfferAmount && this.model.QuantityProduct ) {
+
+      this.httpService.SellerCounterOffers(this.user,this.Product,this.model).subscribe((response) => {
+          /* this function is executed every time there's a new output */
+          // console.log("VALUE RECEIVED: "+response);
+          // alert('inserted');
+          swal('Your offer has been Updated. Please wait for the seller to respond.','','success');
+        },
+        (err) => {
+          //erro
+        },
+        () => {
+          /* this function is executed when the observable ends (completes) its stream */
+          //   console.log("COMPLETED");
+        }
+      );
+    } else {
+      swal('Please Enter both Fields, Quantiy and Price per Quantity','','error');
 
     }
   }
