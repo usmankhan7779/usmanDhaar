@@ -73,8 +73,7 @@
           <div class="tabBlock" id="TabBlock-1">
             <ul class="list-links list-unstyled">
               <li><a [routerLink]="['/about-us']">Who Are We?</a></li>
-              <li><a href="#">What is Dhaar?</a></li>
-              <li><a href="#">How it works</a></li>
+              <li><a [routerLink]="['/dhaar']">What is Dhaar?</a></li>
               <li><a [routerLink]="['/contact-us']">Establish Contact</a></li>
 
             </ul>
@@ -115,7 +114,7 @@
   <div class="footer-coppyright">
     <div class="container">
       <div class="row">
-        <div class="col-sm-6 col-xs-12 coppyright"> Copyright © 2018 All Rights Reserved.   <a href="#">Terms of Use</a> and <a [routerLink]="['/privacy-policy']">Privacy</a></div>
+        <div class="col-sm-6 col-xs-12 coppyright"> Copyright © 2018 All Rights Reserved.   <a [routerLink]="['/terms-use']">Terms of Use</a> and <a [routerLink]="['/privacy-policy']">Privacy</a></div>
 
         <div class="col-sm-6 col-xs-12">
           <div class="payment">

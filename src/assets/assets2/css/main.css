@@ -771,3 +771,8 @@ ul.orderlist li{float:none;width:auto;}
 .usernav li{width:50%;text-align:center;}
 .storelabel{font-size:20px;margin-bottom:10px;}
 }
+.content-setting{background:#fff;border:1px solid #ddd;padding:25px 30px;}
+.content-setting p{text-align:justify;margin-bottom:15px; line-height:24px;color:black;}
+.content-setting h5{font-size:20px;color:#555;font-weight:600;margin-bottom:30px; margin-top: 30px; text-align: center}
+.content-setting h4{font-size:25px;color:#555;font-weight:600;margin-bottom:30px; margin-top: 30px; text-align: center}
+.content-setting h3{font-size:30px;color:black;font-weight:700;margin-bottom:30px; margin-top: 30px; text-align: center}

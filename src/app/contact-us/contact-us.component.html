@@ -1,6 +1,14 @@
 
 <app-header></app-header>
-
+<div class="pageTitle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">Contact Us</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Main Container -->
 <section class="main-container col1-layout">
@@ -10,63 +18,54 @@
 
         <div id="contact" class="page-content page-contact">
           <div class="page-title">
-            <h2>Contact Us</h2>
           </div>
-          <div id="message-box-conact">We're available for new projects</div>
           <div class="row">
             <div class="col-xs-12 col-sm-6" id="contact_form_map">
               <h3 class="page-subheading">Let's get in touch</h3>
-              <p>Lorem ipsum dolor sit amet onsectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor dapibus eget. Mauris tincidunt aliquam lectus sed vestibulum. Vestibulum bibendum suscipit mattis.</p>
+              <p>Dhaar provides optimal solutions to the customers online shopping spree. Our customer service agents are available 24/7 to provide you instant support.</p><br>
+              <p>Store our contact details for faster services.</p>
               <br/>
-              <ul>
-                <li>Praesent nec tincidunt turpis.</li>
-                <li>Aliquam et nisi risus.&nbsp;Cras ut varius ante.</li>
-                <li>Ut congue gravida dolor, vitae viverra dolor.</li>
-              </ul>
+              <br>
+              <h3 class="page-subheading">Visit Our Social Media Pages</h3>
+              <div class="social-contact">
+                <ul class="inline-mode">
+                  <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                  <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
+                  <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                  <li class="social-network googleplus"><a title="Connect us on Pinterest" target="_blank" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                </ul>
+              </div>
               <br/>
+              <br>
               <ul class="store_info">
-                <li><i class="fa fa-home"></i>7064 Lorem Ipsum Vestibulum 666/13</li>
-                <li><i class="fa fa-phone"></i><span>+ 012 315 678 1234</span></li>
-                <li><i class="fa fa-fax"></i><span>+39 0035 356 765</span></li>
-                <li><i class="fa fa-envelope"></i>Email: <span><a href="mailto:support@justtheme.com">support@justthemevalley.com</a></span></li>
+                <li><i class="fa fa-home"></i>AL-Hafeez Heights 13th Floor, 65 D<p style="margin-left: 28px">Ghalib Road, Gulberg lll</p><p style="margin-left: 28px">Lahore, Pakistan</p></li>
+                <li><i class="fa fa-phone"></i><span>+92 (42) 364-00960</span></li>
+                <li><i class="fa fa-envelope"></i>Email: <span><a href="mailto:contact@dhaar.pk">contact@dhaar.pk</a></span></li>
               </ul>
             </div>
             <div class="col-sm-6">
               <h3 class="page-subheading">Make an enquiry</h3>
-              <form role="form"  (ngSubmit)="f.form.valid && contact_log(name.value,email.value,phone.value, message.value)" #f="ngForm" novalidate>
-              <div class="contact-form-box">
-                <div class="form-selector">
-                  <label>Name</label>
-                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && name.valid }">
-                    <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
-                  <input type="text" class="form-control input-sm" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+              <form role="form" #f="ngForm" novalidate>
+
+                <div class="formpanel">
+                  <div class="formrow">
+                    <label>Name</label>
+                      <input type="text" class="form-control input-sm" name="name" [(ngModel)]="model.name"  #name="ngModel" required>
                   </div>
-                </div>
-                <div class="form-selector">
-                  <label>Email</label>
-                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && email.valid }">
-                    <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
-                  <input type="text" class="form-control input-sm" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+                  <div class="formrow">
+                    <label>Email</label>
+                      <input type="email" class="form-control input-sm" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.email"  #email="ngModel" required>
                   </div>
-                </div>
-                <div class="form-selector">
-                  <label>Phone</label>
-                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && phone.valid }">
-                    <div *ngIf="f.submitted && !phone.valid" class="help-block">Phone is required</div>
-                  <input type="text" class="form-control input-sm" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required>
+                  <div class="formrow">
+                    <label>Mobile</label>
+                      <input type="text" class="form-control input-sm" name="mobile" [(ngModel)]="model.mobile"  #mobile="ngModel" required>
                   </div>
-                </div>
-                <div class="form-selector">
-                  <label>Message</label>
-                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && message.valid }">
-                    <div *ngIf="f.submitted && !message.valid" class="help-block">Message is required</div>
-                  <textarea class="form-control input-sm" rows="10" name="message" [(ngModel)]="model.message" #message="ngModel" required></textarea>
+                  <div class="formrow">
+                    <label>Message</label>
+                      <textarea class="form-control input-sm" name="message" [(ngModel)]="model.message"  #message="ngModel" required></textarea>
                   </div>
+                  <button (click)="contact_log()" class="button"><i class="fa fa-send"></i>&nbsp; <span>Send Message</span></button>
                 </div>
-                <div class="form-selector">
-                  <button type="submit" class="button"><i class="fa fa-send"></i>&nbsp; <span>Send Message</span></button>
-                </div>
-              </div>
               </form>
             </div>
           </div>

@@ -1294,3 +1294,18 @@ label[for="rememberme"]{margin-left:0.75em;}
 .offertab {
   font-size: 12px;
 }
+.social-contact ul.inline-mode li a:before{content:""}
+.social-contact ul.inline-mode li a{border:0px solid #666;border-radius:0px;color:#fff;font-size:25px;height:40px;line-height:36px;width:40px;display:inline-grid;text-align:center;border-radius:30px;}
+.social-contact .fb a:hover, .social .tw a:hover, .social .googleplus a:hover, .social .rss a:hover, .social .instagram a:hover, .social .linkedin a:hover{background:#ed2424;}
+.social-contact .fb a{background:#3C5B9B}
+.social-contact .tw a{background:#359BED}
+.social-contact .googleplus a{background:#E33729}
+.social-contact .rss a{background:#FD9F13}
+.social-contact .instagram a{background:#3f729b}
+.social-contact .linkedin a{background:#027ba5}
+.social-contact h4{margin:25px 0 5px}
+.social-contact{margin-top:18px;text-align:center;}
+.social-contact ul{margin:0;list-style:none;text-align:left;}
+.social-contact ul li{margin-left:20px;display:inline-block}
+.social-contact ul li:first-child{margin-left:0px;}
+.social-contact a{transition:background 400ms ease-in-out;-webkit-transition:background 400ms ease-in-out;-moz-transition:background 400ms ease-in-out;-o-transition:background 400ms ease-in-out}

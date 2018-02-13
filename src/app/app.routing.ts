@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth-guard/auth-guard.services';
 import {LayoutComponent} from "./layout/layout.component";
+import {TermsUseModule} from './terms-use/terms-use.module';
 
 const appRoutes: Routes = [
   {
@@ -47,6 +48,8 @@ const appRoutes: Routes = [
       { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard]},
       { path: 'seller-offer', loadChildren: './seller-offer/seller-offer.module#SellerOfferModule', canActivate: [AuthGuard]},
       { path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule'},
+      { path: 'terms-use', loadChildren: './terms-use/terms-use.module#TermsUseModule'},
+      { path: 'dhaar', loadChildren: './dhaar/dhaar.module#DhaarModule'},
     ]
   },
 ];
