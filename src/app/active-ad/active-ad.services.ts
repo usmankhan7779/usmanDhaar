@@ -44,6 +44,11 @@ export class ActiveAdServices {
     return this._http.get( this.ServerUrl + 'GetallProductdBids/' + UserID + '?page=' + page, ).map(response => response.json());
   }
 
+  GetSuccessfulBids(page: any, UserID: any) {
+    return this._http.get( this.ServerUrl + 'GetWinProductdBids/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
+
+
   GetallWatchProducts(page: any, UserID: any) {
     return this._http.get( this.ServerUrl + 'GetallWatchProducts/' + UserID + '?page=' + page, ).map(response => response.json());
   }

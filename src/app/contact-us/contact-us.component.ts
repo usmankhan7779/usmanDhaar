@@ -30,7 +30,10 @@ export class ContactUsComponent implements OnInit {
       if(this.model.email.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')) {
         if(this.model.mobile) {
           if(this.model.message){
-            this.obj.contact_us(this.model.name, this.model.email, this.model.mobile, this.model.message).subscribe(data => this.model = data );
+            this.obj.contact_us(this.model.name, this.model.email, this.model.mobile, this.model.message).subscribe(data => {
+              this.model = data;
+              swal('Your Message has been Submitted','','success')
+            });
           } else {
             swal('Please Enter Your Message','','error');
           }

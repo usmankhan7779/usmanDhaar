@@ -65,6 +65,8 @@ export class SingleProductComponent implements OnInit {
   minutes: any;
   hours: any;
   days: any;
+  user: any;
+  product:any;
   RedirectFromlogin: string;
   LocalStoreName: any;
   MinimumbestOffer: any;
@@ -140,6 +142,8 @@ export class SingleProductComponent implements OnInit {
           this.GetAdd.GetallBidsProductdbyProductID(this.ProID).subscribe(resSlidersData => {
 
             this.BidingProduct = resSlidersData;
+            // console.log('Bidding Products are:', this.BidingProduct[0].Price);
+
 
             this.BidingProduct.sort(function (a, b) {
               // alert('first')
@@ -151,6 +155,7 @@ export class SingleProductComponent implements OnInit {
                 return 0;
               }
             });
+            console.log('Bidding Products are:', this.BidingProduct[0]['Price']);
           });
         });
       this.GetAdd.GetphotoById().subscribe(resSlidersData => {
@@ -179,9 +184,19 @@ export class SingleProductComponent implements OnInit {
               this.DbDate = this.resultProduct[0].CreatedDate;
               this.AuctionDayDB = this.resultProduct[0].AuctionListing;
               const auctiondays = +this.AuctionDayDB * 86400000;
+              console.log('Auction days:', auctiondays);
               const time0 = new Date();
+              console.log('time0:', time0);
               const time1 = new Date(this.DbDate);
+              console.log('time1:',time1);
               const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
+              console.log('time3:',time3);
+              if(time3<=0){
+                console.log('This Bidder wins:', this.BidingProduct[0]);
+                this.user=this.BidingProduct[0]['User_Id']
+                this.product=this.BidingProduct[0]['Product_Id']
+                this.GetAdd.InsertwinnerBid(this.user, this.product).subscribe();
+              }
               // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
               let x = time3 / 1000;
               this.seconds = Math.floor(x % 60);

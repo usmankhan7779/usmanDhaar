@@ -57,7 +57,7 @@
       <div class="col-md-9 col-sm-8">
         <div *ngIf="NewPostcheck == true" class="alert alert-success">
           Your product has been successfully listed.
-          <a [routerLink]="['/store', storename]">Click Here To View</a>
+          <a [routerLink]="['/single-product']" [queryParams]="{ ProID: ProductID, CatName: CatName }">Preview Your Item</a>
 
         </div>
 

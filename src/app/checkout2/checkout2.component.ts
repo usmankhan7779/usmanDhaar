@@ -82,6 +82,7 @@ export class Checkout2Component implements OnInit {
                   this.user = localStorage.getItem('UserID');
                 this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
                   this.GetUSerDOne = resSlidersData;
+                  console.log('User done info are:', this.GetUSerDOne);
                   if ( this.GetUSerDOne['Complete'] === false) {
                     this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
                   }
@@ -397,7 +398,7 @@ export class Checkout2Component implements OnInit {
       if ( Guest === true) {
 
         this.GuestButton = false;
-        this.BillingMethod =  true;
+        // this.BillingMethod =  true;
       } else {
         this._nav.navigate(['/sign-up']);
 

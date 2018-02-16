@@ -20,7 +20,7 @@
             <!-- Default Welcome Message -->
             <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs">Welcome {{ GetUSerDOne['Fname']}},</div>
             <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs"><a [routerLink]="['/select-category']">Post On Dhaar</a></div>
-            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs" ><a [routerLink]="['/login']" (click)="gotodashboard()" style="color: #f23534 !important;" ><i class="fa fa-user header-icons-setting"></i>My Account </a></div>
+            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs" ><a (click)="gotodashboard()" style="color: #f23534 !important; cursor: pointer" ><i class="fa fa-user header-icons-setting"></i>My Account </a></div>
             <!--<div class="welcome-msg hidden-xs">Welcome to msg! </div>-->
             <ul class="links">
               <li *ngIf="ValueRec == true"><a [routerLink]="['/checkout2']"><i class="fa fa-check-square-o header-icons-setting"></i>Checkout</a></li>

@@ -32,6 +32,8 @@ export class DashboardComponent implements OnInit {
   user: any;
   Product: any;
   sessionstore: any;
+  ProductID:any;
+  CatName: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http ,
@@ -49,9 +51,14 @@ export class DashboardComponent implements OnInit {
       });
 
       this.USerName = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+      console.log('NewPost is:', localStorage.getItem('NewPost'));
+      this.ProductID = localStorage.getItem('NewProduct');
+      this.CatName = localStorage.getItem('NewCat');
       if (localStorage.getItem('NewPost') === 'Done') {
         this.NewPostcheck = true;
         localStorage.setItem('NewPost', null);
+        localStorage.setItem('NewProduct', null);
+        localStorage.setItem('NewCat', null);
 
       }
 

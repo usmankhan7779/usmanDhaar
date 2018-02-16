@@ -19,6 +19,7 @@ export class MyBidsBuyerComponent implements OnInit {
   PicServrUrl = 'https://apis.dhaar.pk/media/';
   modelNo: any;
   ActiveProduct: any = [];
+  successbid: any = [];
   GetPhotos: any = [];
   CatName: any;
 
@@ -50,6 +51,12 @@ export class MyBidsBuyerComponent implements OnInit {
           this.errormessage = true;
         }
       });
+    this.httpService.GetSuccessfulBids(1, localStorage.getItem('UserID')).subscribe( data => {
+      this.successbid = data;
+      if (this.successbid['totalItems'] === 0) {
+        this.errormessage = true;
+      }
+    });
   }
   }
   clearSessionstoreage() {

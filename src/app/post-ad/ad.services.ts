@@ -165,9 +165,9 @@ export class AdService {
             this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
           }
 
-
-
           localStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewProduct', Product_ID);
+          localStorage.setItem('NewCat', CatName);
           this._nav.navigate(['/dashboard']);
 
 
@@ -226,6 +226,8 @@ export class AdService {
 
 
           localStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewProduct', Product_ID);
+          localStorage.setItem('NewCat', CatName);
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
         }
@@ -280,6 +282,8 @@ export class AdService {
           }
 
           localStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewProduct', Product_ID);
+          localStorage.setItem('NewCat', CatName);
           this._nav.navigate(['/dashboard']);
           return [{ status: res.status, json: res }];
         }
@@ -335,6 +339,8 @@ export class AdService {
           }
 
           localStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewProduct', Product_ID);
+          localStorage.setItem('NewCat', CatName);
           this._nav.navigate(['/dashboard']);
 
           return [{ status: res.status, json: res }];
@@ -389,6 +395,8 @@ export class AdService {
             }
 
             localStorage.setItem('NewPost', 'Done');
+            localStorage.setItem('NewProduct', Product_ID);
+            localStorage.setItem('NewCat', CatName);
             this._nav.navigate(['/dashboard']);
             return [{status: res.status, json: res}];
           }
@@ -443,6 +451,8 @@ export class AdService {
 
 
           localStorage.setItem('NewPost', 'Done');
+          localStorage.setItem('NewProduct', Product_ID);
+          localStorage.setItem('NewCat', CatName);
           this._nav.navigate(['/dashboard']);
 
           return [{ status: res.status, json: res }];

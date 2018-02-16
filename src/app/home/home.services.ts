@@ -22,6 +22,7 @@ export class HomeService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: HttpService ,
+              private http: Http,
               private _nav: Router) {
   }
 
@@ -223,12 +224,30 @@ export class HomeService {
   //   });
   // }
 
+  InsertwinnerBid(user: any, product:any) {
+    return this.http.put(this.ServerUrl + 'InsertWinnerBid/' + user + '/' + product,
+      {
+        'win': true,
+      }).map((res: Response) => {
+      if (res) {
+        // console.log('abc');
+        if (res.status === 201) {
+          const responce_data = res.json();
+          return [{ status: res.status, json: res }];
+        }
+      }
+    }).catch((error: any) => {
+      return Observable.throw(new Error(error.status));
+    });
+  }
+
   InsertUserBid(User_Id: any, Product_ID: any, Price: any) {
     return this._http.post(this.ServerUrl + 'InsertUserBid/' + Product_ID,
       {
         'User_Id': User_Id ,
         'Product_Id': Product_ID,
         'Price': Price,
+        'win': false
       }).map((res: Response) => {
       if (res) {
        // console.log('abc');
