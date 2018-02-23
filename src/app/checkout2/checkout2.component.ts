@@ -33,6 +33,7 @@ export class Checkout2Component implements OnInit {
   login: string;
   CheckoutMethod = false;
   BillingMethod = false;
+  GuestBillingMethod = false;
 
   PaymentMethod = false;
   status= 1;
@@ -40,9 +41,10 @@ export class Checkout2Component implements OnInit {
   LoggedIn = false;
   user: any;
   BillingMethodButton= true;
-  GuestButton = true;
+  GuestButton = false;
   PaymentatHme = false;
   OrderPlaced = false;
+  GuestOrderPlaced = false;
 
   InvoiceIDSet: any;
   id: any;
@@ -211,6 +213,7 @@ export class Checkout2Component implements OnInit {
 
 
   ContinuetoCHeckout() {
+
     if (isPlatformBrowser(this.platformId)) {
       // console.log('itemsqty',this.CartedProduct['products'][0]['itemsqty']);
       // console.log('Quantity',this.CartedProduct['products'][0]['Quantity']);
@@ -267,44 +270,104 @@ export class Checkout2Component implements OnInit {
     }
   }
 
+  GuestShippingDetails() {
+    if (isPlatformBrowser(this.platformId)) {
+      console.log(this.model);
+      console.log('id value is:', this.id);
+      this.httpbuyerService.Invoice(this.id, this.Total, false, true, 'Guest').subscribe(
+        data => {
+          // console.log( this.CartedProduct['products']);
+          for (const item of this.CartedProduct['products']) {
+            this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, 'Guest').subscribe(
+              data => {
+
+              }, (err) => {
+
+                alert(err);
+                this.status = 2;
+                /* this function is executed when there's an ERROR */
+                //   console.log("ERROR: "+err);
+              },
+            );
+          }
+          this.httpbuyerService.CustomerInvoiceShippingAddress(localStorage.getItem('InvoiceID'),this.model.fname,this.model.lname,this.model.email,this.model.state,this.model.country,this.model.city, this.model.zip, this.model.address, this.model.mobile, '01').subscribe(
+            data => {
+
+              this.GuestOrderPlaced  = true;
+
+              this.InvoiceIDSet =  localStorage.getItem('InvoiceID');
+
+
+
+              for (const itm of this.CartedProduct['products']) {
+
+                if (itm.Cat_Name === 'Phones & Tablets') {
+
+                  this.httpbuyerService.PhoneAndTabletQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+                } else if (itm.Cat_Name === 'Women\'s Fashion') {
+
+                  this.httpbuyerService.WomenFashionQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+                } else if (itm.Cat_Name === 'Men\'s Fashion') {
+
+                  this.httpbuyerService.MenFashionQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+                } else if (itm.Cat_Name === 'TV, Audio & Video') {
+
+                  this.httpbuyerService.TVAudioVideoQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+                } else if (itm.Cat_Name === 'Computing & Laptops') {
+
+                  this.httpbuyerService.ComputingLaptopsQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+                } else if (itm.Cat_Name === 'Home Appliances') {
+
+                  this.httpbuyerService.HomeAppliancesQuantity(itm.ProductID, itm.itemsqty).subscribe();
+                }
+              }
+
+
+
+            }, (err) => {
+
+              alert(err);
+              this.status = 2;
+              /* this function is executed when there's an ERROR */
+              //   console.log("ERROR: "+err);
+            },
+          );
+
+
+        }, (err) => {
+
+          alert('false');
+          this.status = 2;
+          /* this function is executed when there's an ERROR */
+          //   console.log("ERROR: "+err);
+        },
+      );
+
+      // for (const tmp of this.CartedProduct['products']) {
+      //     console.log(tmp);
+      //     this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), this.CartedProduct['products'].length );
+      //     localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+      // }
+      localStorage.removeItem('Cartdata');
+
+    }
+  }
+
   ShippingDetails() {
 
     if (isPlatformBrowser(this.platformId)) {
-
-    for (const itm of this.CartedProduct['products']) {
-
-      if (itm.Cat_Name === 'Phones & Tablets') {
-
-        this.httpbuyerService.PhoneAndTabletQuantity(itm.ProductID, itm.itemsqty).subscribe();
-
-      } else if (itm.Cat_Name === 'Women\'s Fashion') {
-
-        this.httpbuyerService.WomenFashionQuantity(itm.ProductID, itm.itemsqty).subscribe();
-
-      } else if (itm.Cat_Name === 'Men\'s Fashion') {
-
-        this.httpbuyerService.MenFashionQuantity(itm.ProductID, itm.itemsqty).subscribe();
-
-      } else if (itm.Cat_Name === 'TV, Audio & Video') {
-
-        this.httpbuyerService.TVAudioVideoQuantity(itm.ProductID, itm.itemsqty).subscribe();
-
-      } else if (itm.Cat_Name === 'Computing & Laptops') {
-
-        this.httpbuyerService.ComputingLaptopsQuantity(itm.ProductID, itm.itemsqty).subscribe();
-
-      } else if (itm.Cat_Name === 'Home Appliances') {
-
-        this.httpbuyerService.HomeAppliancesQuantity(itm.ProductID, itm.itemsqty).subscribe();
-      }
-    }
-
-    // console.log(this.model);
+    console.log(this.model);
+    console.log('id value is:', this.id);
     this.httpbuyerService.Invoice(this.id, this.Total, false, true, this.user).subscribe(
       data => {
         // console.log( this.CartedProduct['products']);
         for (const item of this.CartedProduct['products']) {
-          this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty).subscribe(
+          this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
             data => {
 
             }, (err) => {
@@ -322,6 +385,37 @@ export class Checkout2Component implements OnInit {
            this.OrderPlaced  = true;
 
             this.InvoiceIDSet =  localStorage.getItem('InvoiceID');
+
+
+
+            for (const itm of this.CartedProduct['products']) {
+
+              if (itm.Cat_Name === 'Phones & Tablets') {
+
+                this.httpbuyerService.PhoneAndTabletQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+              } else if (itm.Cat_Name === 'Women\'s Fashion') {
+
+                this.httpbuyerService.WomenFashionQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+              } else if (itm.Cat_Name === 'Men\'s Fashion') {
+
+                this.httpbuyerService.MenFashionQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+              } else if (itm.Cat_Name === 'TV, Audio & Video') {
+
+                this.httpbuyerService.TVAudioVideoQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+              } else if (itm.Cat_Name === 'Computing & Laptops') {
+
+                this.httpbuyerService.ComputingLaptopsQuantity(itm.ProductID, itm.itemsqty).subscribe();
+
+              } else if (itm.Cat_Name === 'Home Appliances') {
+
+                this.httpbuyerService.HomeAppliancesQuantity(itm.ProductID, itm.itemsqty).subscribe();
+              }
+            }
+
 
 
           }, (err) => {
@@ -390,6 +484,10 @@ export class Checkout2Component implements OnInit {
 
   }
 
+  GuestCheck() {
+    this.GuestBillingMethod = true;
+  }
+
   RegisterOrGuest(Guest: boolean, Register: boolean) {
 
     if ( Guest === false && Register === false ) {
@@ -397,8 +495,8 @@ export class Checkout2Component implements OnInit {
     } else {
       if ( Guest === true) {
 
-        this.GuestButton = false;
-        // this.BillingMethod =  true;
+        this.GuestButton = true;
+        // this.GuestBillingMethod =  true;
       } else {
         this._nav.navigate(['/sign-up']);
 

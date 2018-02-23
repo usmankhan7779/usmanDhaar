@@ -113,7 +113,7 @@
                   <p>Sign up with us for future convenience:</p>
                   <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
                   <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
-                  <ng-container *ngIf="GuestButton === true">
+                  <ng-container *ngIf="GuestButton === false">
                     <button (click)="RegisterOrGuest(Guest.checked,Register.checked)" class="button"><i
                       class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
                   </ng-container>
@@ -158,107 +158,484 @@
           <br/>
           <br/>
 
-          <ng-container *ngIf="GuestButton == false">
-            <h4 class="checkout-sep">2. Billing Infomations</h4>
-            <div class="box-border">
-              <ul>
+          <ng-container *ngIf="GuestButton == true">
+            <h4 class="checkout-sep">Shipping Infomations</h4>
+            <form role="form" class="login-form"  (ngSubmit)="f.form.valid && GuestCheck()" #f="ngForm" novalidate>
+              <div class="formpanel">
+                <ul>
                 <li class="row">
                   <div class="col-sm-6">
-                    <label for="first_name" class="required">First Name</label>
-                    <input type="text" class="input form-control" name="" id="first_name">
-                  </div><!--/ [col] -->
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fname.valid }">
+                      <input type="text" class="form-control" placeholder="First Name" name="fname" [(ngModel)]="model.fname" #fname="ngModel" required>
+                      <div *ngIf="f.submitted && !fname.valid" class="help-block">First Name is required</div>
+                    </div>
+
+                  </div><!-- End .form-group -->
+
+                <!--<div class="formrow">-->
                   <div class="col-sm-6">
-                    <label for="last_name" class="required">Last Name</label>
-                    <input type="text" name="" class="input form-control" id="last_name">
-                  </div><!--/ [col] -->
-                </li><!--/ .row -->
-                <li class="row">
-                  <div class="col-sm-6">
-                    <label for="company_name">Company Name</label>
-                    <input type="text" name="" class="input form-control" id="company_name">
-                  </div><!--/ [col] -->
-                  <div class="col-sm-6">
-                    <label for="email_address" class="required">Email Address</label>
-                    <input type="text" class="input form-control" name="" id="email_address">
-                  </div><!--/ [col] -->
-                </li><!--/ .row -->
-                <li class="row">
-                  <div class="col-xs-12">
+                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lname.valid }">
+                    <input type="text" class="form-control" placeholder="Last Name" name="lname" [(ngModel)]="model.lname"  #lname="ngModel" required>
+                    <div *ngIf="f.submitted && !lname.valid" class="help-block">Last Name is required</div>
+                  <!--</div>-->
+                  </div>
+                  </div>
 
-                    <label for="address" class="required">Address</label>
-                    <input type="text" class="input form-control" name="" id="address">
 
-                  </div><!--/ [col] -->
-
-                </li><!-- / .row -->
-
-                <li class="row">
-
-                  <div class="col-sm-6">
-
-                    <label for="city" class="required">City</label>
-                    <input class="input form-control" type="text" name="" id="city">
-
-                  </div><!--/ [col] -->
-
-                  <div class="col-sm-6">
-                    <label class="required">State/Province</label>
-                    <select class="input form-control" name="">
-                      <option value="Alabama">Alabama</option>
-                      <option value="Illinois">Illinois</option>
-                      <option value="Kansas">Kansas</option>
-                    </select>
-                  </div><!--/ [col] -->
-                </li><!--/ .row -->
-
-                <li class="row">
-
-                  <div class="col-sm-6">
-
-                    <label for="postal_code" class="required">Zip/Postal Code</label>
-                    <input class="input form-control" type="text" name="" id="postal_code">
-                  </div><!--/ [col] -->
-
-                  <div  class="col-sm-6">
-                    <label class="required">Country</label>
-                    <select class="input form-control" name="">
-                      <option value="USA">USA</option>
-                      <option value="Australia">Australia</option>
-                      <option value="Austria">Austria</option>
-                      <option value="Argentina">Argentina</option>
-                      <option value="Canada">Canada</option>
-                    </select>
-                  </div><!--/ [col] -->
-                </li><!--/ .row -->
-                <li class="row">
-                  <div class="col-sm-6">
-                    <label for="telephone" class="required">Telephone</label>
-                    <input class="input form-control" type="text" name="" id="telephone">
-                  </div><!--/ [col] -->
-
-                  <div class="col-sm-6">
-                    <label for="fax">Fax</label>
-                    <input class="input form-control" type="text" name="" id="fax">
-                  </div><!--/ [col] -->
-
-                </li><!--/ .row -->
-
-                <li class="row">
-                  <div class="col-sm-6">
-                    <label for="password" class="required">Password</label>
-                    <input class="input form-control" type="password" name="" id="password">
-                  </div><!--/ [col] -->
-
-                  <div class="col-sm-6">
-                    <label for="confirm" class="required">Confirm Password</label>
-                    <input class="input form-control" type="password" name="" id="confirm">
-                  </div><!--/ [col] -->
-                </li><!--/ .row -->
-                <li>
-                  <button class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>
                 </li>
+                  <li class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                        <input type="email" class="form-control" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+                        <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                      </div>
+
+                    </div><!-- End .form-group -->
+
+                    <!--<div class="formrow">-->
+                    <div class="col-sm-6">
+                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !mobile.valid }">
+                        <input type="text" class="form-control" placeholder="Mobile" name="mobile" [(ngModel)]="model.mobile"  #mobile="ngModel" required>
+                        <div *ngIf="f.submitted && !mobile.valid" class="help-block">Mobile is required</div>
+                        <!--</div>-->
+                      </div>
+                    </div>
+
+
+                  </li>
+                  <li class="formrow">
+                    <!--<div class="col-sm-6">-->
+                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !address.valid }">
+                        <input type="text" class="form-control" placeholder="Shipping Address" name="address" [(ngModel)]="model.address" #address="ngModel" required>
+                        <div *ngIf="f.submitted && !address.valid" class="help-block">Shipping Address is required</div>
+                      </div>
+                    <!--</div>-->
+                  </li>
+
+                  <li class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !country.valid }">
+                        <input type="text" class="form-control" placeholder="Country" name="country" [(ngModel)]="model.country" #country="ngModel" required>
+                        <div *ngIf="f.submitted && !country.valid" class="help-block">Country is required</div>
+                      </div>
+
+                    </div><!-- End .form-group -->
+
+                    <!--<div class="formrow">-->
+                    <div class="col-sm-6">
+                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !state.valid }">
+                        <input type="text" class="form-control" placeholder="State" name="state" [(ngModel)]="model.state"  #state="ngModel" required>
+                        <div *ngIf="f.submitted && !state.valid" class="help-block">State is required</div>
+                        <!--</div>-->
+                      </div>
+                    </div>
+
+
+                  </li>
+                  <li class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !city.valid }">
+                        <input type="text" class="form-control" placeholder="City" name="city" [(ngModel)]="model.city" #city="ngModel" required>
+                        <div *ngIf="f.submitted && !city.valid" class="help-block">City is required</div>
+                      </div>
+
+                    </div><!-- End .form-group -->
+
+                    <!--<div class="formrow">-->
+                    <div class="col-sm-6">
+                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !zip.valid }">
+                        <input type="text" class="form-control" placeholder="Zip" name="zip" [(ngModel)]="model.zip"  #zip="ngModel" required>
+                        <div *ngIf="f.submitted && !zip.valid" class="help-block">Zip is required</div>
+                        <!--</div>-->
+                      </div>
+                    </div>
+
+
+                  </li>
+
+                <input type="submit" class="btn" value="Continue">
               </ul>
+              </div>
+            </form>
+          </ng-container>
+
+
+          <ng-container *ngIf="GuestBillingMethod === true">
+            <br>
+            <br>
+            <h4 class="checkout-sep">Shipping Information</h4>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad" >
+
+
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h3 class="panel-title">My details</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                      <div class=" col-md-8 col-lg-8 ">
+                        <table class="table table-user-information">
+                          <tbody>
+                          <tr>
+                            <td>Name:</td>
+                            <td>{{model.fname+' '+ model.lname }}</td>
+                          </tr>
+                          <tr>
+                            <td>Mobile:</td>
+                            <td>{{model.mobile}}</td>
+                          </tr>
+                          <tr>
+                            <td>Address:</td>
+                            <td>{{model.address}}</td>
+                          </tr>
+
+                          <tr>
+                          <tr>
+                            <td>City:</td>
+                            <td>{{ model.city +' ' +model.zip }}</td>
+                          </tr>
+                          <tr>
+                            <td>State</td>
+                            <td>{{model.state }} </td>
+                          </tr>
+                          <tr>
+                            <td>Country</td>
+                            <td>{{model.country }}</td>
+                          </tr>
+
+
+                          </tbody>
+                        </table>
+
+
+                      </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <form (ngSubmit)="f.form.valid  && GuestShippingDetails()" #f="ngForm" novalidate>
+
+              <!--<div class="box-border">-->
+              <!--<ul>-->
+
+              <!--<li class="row">-->
+
+              <!--<div class="col-sm-6">-->
+
+              <!--<label for="first_name_1" class="required">First Name  {{GetUSerDOne['Fname']}} </label>-->
+              <!--<input [(ngModel)]="model.first_name" #first_name="ngModel" ng-Model="model.last_name"-->
+              <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
+              <!--class="input form-control" type="text" value="{{GetUSerDOne['Fname']}}" name="first_name" required id="first_name_1">-->
+
+              <!--<div *ngIf="f.submitted && !first_name.valid && first_name.errors "  style="color:red" class="help-block">First name is-->
+              <!--required-->
+
+              <!--</div>-->
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+
+              <!--<div class="col-sm-6">-->
+
+              <!--<label for="last_name_1" class="required">Last Name</label>-->
+              <!--<input [(ngModel)]="model.last_name" #last_name="ngModel" ng-Model="model.last_name"-->
+              <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
+              <!--class="input form-control" type="text"-->
+              <!--value="{{GetUSerDOne['Lname']}}"-->
+              <!--name="last_name" id="last_name_1">-->
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+              <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+
+              <!--<li class="row">-->
+
+
+              <!--<div class="col-sm-6">-->
+              <!--&lt;!&ndash;pattern="^(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"&ndash;&gt;-->
+              <!--<label for="email_address_1" class="required">Email Address Or Dhaar Username </label>-->
+              <!--<input [(ngModel)]="model.email_address" ng-Model="model.email_address"-->
+              <!--value="{{LoginName}}"-->
+              <!--#email_address="ngModel" class="input form-control"-->
+              <!--type="email" name="email_address" id="email_address_1" required>-->
+
+              <!--<div style="color:red" *ngIf="f.submitted && email_address.errors  && !email_address.valid" class="help-block">-->
+              <!--Email is invalid-->
+              <!--</div>-->
+
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+              <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+
+              <!--<li class="row">-->
+
+              <!--<div class="col-sm-6">-->
+
+              <!--<label class="required">state province</label>-->
+
+              <!--<div class="custom_select">-->
+
+              <!--<select [(ngModel)]="model.state" ng-Model="model.state"  #state="ngModel" class="input form-control" required-->
+              <!--name="state">-->
+              <!--<option selected value="{{GetUSerDOne['State']}}">{{GetUSerDOne['State']}}</option>-->
+              <!--<option  value="Punjab">Punjab</option>-->
+              <!--<option value="Balochistan">Islamabad Capital Territory</option>-->
+              <!--<option value="Sindh">Sindh</option>-->
+              <!--<option value="Balochistan">Balochistan</option>-->
+              <!--<option value="Azad Jammu and Kashmir">Azad Jammu and Kashmir</option>-->
+              <!--<option value="Balochistan">Balochistan</option>-->
+              <!--<option value="Gilgit–Baltistan">Gilgit–Baltistan</option>-->
+              <!--<option value="GKhyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>-->
+
+
+              <!--</select>-->
+              <!--<div style="color:red" *ngIf="f.submitted  && !state.valid" class="help-block">-->
+              <!--State is required-->
+              <!--</div>-->
+
+              <!--</div>-->
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+              <!--<div class="col-sm-6">-->
+
+              <!--<label class="required">Country</label>-->
+
+              <!--<div class="custom_select">-->
+
+              <!--<select [(ngModel)]="model.Country"   #Country="ngModel" class="input form-control" name="Country"-->
+              <!--required>-->
+
+              <!--<option selected value="Pakistan">Pakistan</option>-->
+
+
+              <!--</select>-->
+              <!--<div style="color:red" *ngIf="f.submitted  && !Country.valid" class="help-block">-->
+              <!--Country is required-->
+              <!--</div>-->
+              <!--</div>-->
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+              <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+
+              <!--<li class="row">-->
+
+              <!--<div class="col-sm-6">-->
+
+              <!--<label for="postal_code_1"  class="required">City</label>-->
+              <!--<input [(ngModel)]="model.City" #City="ngModel"-->
+              <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
+              <!--value="{{GetUSerDOne['City']}}"-->
+              <!--ng-Model="model.City"-->
+              <!--class="input form-control" type="text" name="City" required-->
+              <!--id="postal_code_1">-->
+              <!--<div style="color:red" *ngIf="f.submitted  && !City.valid && City.errors" class="help-block">-->
+              <!--City is required-->
+              <!--</div>-->
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+              <!--<div class="col-sm-6">-->
+
+              <!--<label for="postal_code_1" class="required">Zip/Postal Code</label>-->
+              <!--<input [(ngModel)]="model.Zip" #Zip="ngModel" class="input form-control"-->
+              <!--type="text" name="Zip"-->
+              <!--pattern="([0-9])+$"-->
+              <!--required-->
+              <!--ng-Model="model.Zip"-->
+              <!--value="{{GetUSerDOne['Zip']}}"-->
+              <!--maxlength="6"-->
+              <!--id="po">-->
+              <!--<div style="color:red" *ngIf="f.submitted  && !Zip.valid && Zip.errors" class="help-block">-->
+              <!--Zip code is required-->
+              <!--</div>-->
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+              <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+              <!--<li class="row">-->
+
+              <!--<div class="col-xs-12">-->
+
+              <!--<label for="address_1" class="required">Address</label>-->
+              <!--<input [(ngModel)]="model.Address" #Address="ngModel" class="input form-control"-->
+              <!--type="text"-->
+              <!--ng-Model="model.Address"-->
+              <!--value="{{GetUSerDOne['Address']}}"-->
+              <!--name="Address" id="address_1" required>-->
+
+              <!--<div style="color:red" *ngIf="f.submitted  && !Address.valid" class="help-block">-->
+              <!--Address is required-->
+              <!--</div>-->
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+              <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+
+
+              <!--<li class="row">-->
+
+              <!--<div class="col-sm-6">-->
+
+              <!--<label for="telephone_1" class="required">Telephone</label>-->
+              <!--<input [(ngModel)]="model.telephone" #telephone="ngModel"-->
+              <!--[textMask]="{mask: phonemask}"-->
+              <!--value="{{GetUSerDOne['Mobile']}}"-->
+              <!--ng-Model="model.Mobile"-->
+              <!--class="input form-control" type="text"-->
+              <!--name="telephone" id="telephone_1">-->
+
+              <!--<div style="color:red" *ngIf="f.submitted  && !telephone.valid" class="help-block">-->
+              <!--Telephone is required-->
+              <!--</div>-->
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+
+              <!--<div class="col-sm-6">-->
+
+              <!--<label for="fax_1">Fax</label>-->
+              <!--<input [(ngModel)]="model.fax" #fax="ngModel" class="input form-control" type="number" name="fax"-->
+              <!--id="fax_1">-->
+
+              <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+              <!--</li>-->
+
+
+
+              <!--<li>-->
+              <!--</ul>-->
+              <!--</div>-->
+
+              <h4 class="checkout-sep">Payment Method</h4>
+              <div class="box-border">
+                <ul>
+                  <li>
+
+                    <div class="box-border">
+                      <ul class="shipping_method">
+                        <li>
+                          <div class="col-sm-12">
+                            <label for="radio_button_4"><input (click)="Paymentdisplay(home.checked, online.check)"
+                                                               #online
+                                                               type="radio" checked name="radio_3" id="radio_button_4">Online
+                              Payment</label>
+                          </div>
+                          <ng-container *ngIf="PaymentatHme === false">
+                            <div class="col-sm-12">
+                              <div class="col-sm-6">
+                                <br/>
+
+                                <label for="first_name_1" class="required">Name on the Card</label>
+                                <input
+                                  [(ngModel)]="model.card_name" #card_name="ngModel"
+                                  pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                                  class="input form-control" type="text" name="card_name" required
+                                  name="card_name" placeholder="">
+                                <div style="color:red" *ngIf="f.submitted  && !card_name.valid" class="help-block">
+                                  This field is required
+                                </div>
+
+                              </div>
+                            </div><!--/ [col] -->
+                            <div class="col-sm-12">
+                              <div class="col-sm-6">
+                                <br/>
+                                <label for="first_name_1" class="required">Card Number</label>
+                                <input
+                                  [(ngModel)]="model.card_number" #card_number="ngModel"
+                                  required
+                                  [textMask]="{mask: mask}"
+                                  class="input form-control" type="text" name="card_number" placeholder="">
+                                <div style="color:red" *ngIf="f.submitted  && !card_number.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+
+                            </div><!--/ [col] -->
+
+
+                            <div class="col-sm-12">
+
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="expiry_month"
+
+                                       class="required">Expiry month</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.expiry_month" #expiry_month="ngModel"
+                                       required
+                                       maxlength="2"
+                                       minlength="2"
+                                       pattern="([0-9])+$"
+                                       type="text" name="expiry_month" placeholder="05">
+                                <div style="color:red" *ngIf="f.submitted  && !expiry_month.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="expiry_year" class="required">Expiry Year</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.expiry_year" #expiry_year="ngModel"
+                                       required
+                                       maxlength="4"
+                                       minlength="4"
+                                       pattern="([0-9])+$"
+                                       type="text" name="expiry_year" placeholder="2025">
+                                <div style="color:red" *ngIf="f.submitted  && !expiry_year.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                              <div class="col-sm-1">
+                                <br/>
+                                <label for="cvv" class="required">CVV Number</label>
+                                <input class="input form-control"
+                                       [(ngModel)]="model.cvv" #cvv="ngModel"
+                                       required
+                                       maxlength="3"
+                                       minlength="3"
+                                       pattern="([0-9])+$"
+                                       type="text" name="cvv" placeholder="365">
+                                <div style="color:red" *ngIf="f.submitted  && !cvv.valid" class="help-block">
+                                  This field is required
+                                </div>
+                              </div>
+                            </div><!--/ [col] -->
+                          </ng-container>
+
+                        </li>
+
+
+                        <li>
+
+                          <div class="col-sm-12">
+                            <br/>
+                            <br/>
+                            <label for="radio_button_3"><input (click)="Paymentdisplay(home.checked, online.check)"
+                                                               #home
+                                                               type="radio" name="radio_3" id="radio_button_3">Payment
+                              At
+                              Home</label>
+                          </div>
+                        </li>
+                      </ul>
+
+                      <br/>
+                      <button class="button col-lg-12 "><i class="fa fa-angle-double-right"></i>&nbsp;
+                        <span>Place Order </span>
+                      </button>
+                    </div>
+                  </li><!--/ .row -->
+
+                </ul>
+
+                <!--<ng-container *ngIf="BillingMethodButton === true;">-->
+                <!--<button (click)="BillingInfo()" class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>-->
+                <!--</ng-container>-->
+              </div>
+            </form>
           </ng-container>
 
 
@@ -668,6 +1045,18 @@
 
       <div class="error-msg">
         <p>Your order has been placed and being processed. When the item(s) are shipped, you will receive an email with the details. you can track this order through <a [routerLink]="['/buyer-order']">My Order</a> page</p>
+        <a [routerLink]="['/home']" class="btn">Go to Home Page</a> </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="GuestOrderPlaced == true" class="error-page-wrap">
+  <div class="container">
+    <div class="errormain">
+      <h4 style="color: green">Thank you for your Order! Invoice ID: {{InvoiceIDSet}} </h4>
+
+      <div class="error-msg">
+        <p>Your order has been placed and being processed. When the item(s) are shipped, you will receive an email from the seller with the details.</p>
         <a [routerLink]="['/home']" class="btn">Go to Home Page</a> </div>
     </div>
   </div>

@@ -78,13 +78,13 @@ export class BuyerDashboardServices {
   }
 
 
-  InvoiceProducts(invID: any , prodID: any, Quantity: any) {
+  InvoiceProducts(invID: any , prodID: any, Quantity: any, UserID: any) {
 
     if (isPlatformBrowser(this.platformId)) {
       return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceProduct', {
         'InvoicesID': invID,
         'ProductID': prodID,
-        'UserID': localStorage.getItem('UserID'),
+        'UserID': UserID,
         'Qty': Quantity
       })
         .map((res: Response) => {

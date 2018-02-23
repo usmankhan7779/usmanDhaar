@@ -22,6 +22,7 @@ export class MyBidsComponent implements OnInit {
   modelNo: any;
   ActiveProduct: any = [];
   GetPhotos: any = [];
+  successbid: any = [];
   CatName: any;
   SessionstoreName: any;
   errormessage = false;
@@ -48,13 +49,18 @@ export class MyBidsComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
       this.SessionstoreName = localStorage.getItem('StoreName');
-    this.httpService.GetallProductdBids(1, localStorage.getItem('UserID')).subscribe(
-      data => {
-        this.ActiveProduct = data;
-        if (this.ActiveProduct['totalItems'] ===0 ) {
+      this.httpService.GetallProductdBids(1, localStorage.getItem('UserID')).subscribe(
+        data => {
+          this.ActiveProduct = data;
+          if (this.ActiveProduct['totalItems'] === 0) {
+            this.errormessage = true;
+          }
+        });
+      this.httpService.GetSuccessfulBids(1, localStorage.getItem('UserID')).subscribe( data => {
+        this.successbid = data;
+        if (this.successbid['totalItems'] === 0) {
           this.errormessage = true;
         }
-        console.log(this.ActiveProduct);
       });
   }
   }

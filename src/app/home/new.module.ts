@@ -1,43 +1,40 @@
 import {Routes, RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {HomeComponent} from "./home.component";
-import { OwlModule} from "ngx-owl-carousel";
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import {HeaderModule} from "../header/header.module";
 import {CategoryDetailComponent} from '../category-detail/category-detail.component';
 import {SingleProductComponent} from '../single-product/single-product.component';
 import {Ng2PaginationModule} from 'ng2-pagination';
 import {ImageZoomModule} from 'angular2-image-zoom';
-import {NewModule} from './new.module';
-import {PreloaderFullModule} from '../components/preloader-full/preloader-full.module';
+import {HeaderComponent} from '../header/header.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HeaderModule} from '../header/header.module';
 const loginRoutes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: 'hahah', component: HeaderComponent }
 ];
 
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    CategoryDetailComponent,
+    SingleProductComponent,
   ],
 
   imports: [
     CommonModule,
-    OwlModule,
-    HeaderModule,
-    NewModule,
-    PreloaderFullModule,
+    FormsModule,
     Ng2PaginationModule,
     ImageZoomModule,
-    FormsModule,
+    HeaderModule,
+    // HomeModule,
     ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)
   ],
 
   providers: [],
-  exports: []
+  exports: [CategoryDetailComponent,
+  SingleProductComponent]
 })
 
-export class HomeModule {
+export class NewModule {
 
 }

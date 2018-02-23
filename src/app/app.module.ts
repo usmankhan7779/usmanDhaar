@@ -53,7 +53,7 @@ import { OwlModule} from "ngx-owl-carousel";
   declarations: [
     AppComponent,
     FooterComponent,
-    PreloaderFull,
+    // PreloaderFull,
     PreloaderSmall,
     TimePipe,
     LayoutComponent,

@@ -1,35 +1,35 @@
 <app-header></app-header>
 
 <!-- Page Title start -->
-<div class="pageTitle">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-sm-6">
-        <h1 class="page-heading">Dashboard</h1>
-      </div>
-      <div class="col-md-6 col-sm-6">
+<!--<div class="pageTitle">-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-6 col-sm-6">-->
+        <!--<h1 class="page-heading">Dashboard</h1>-->
+      <!--</div>-->
+      <!--<div class="col-md-6 col-sm-6">-->
 
 
-        <div class="breadCrumb ">
-          <ng-container *ngIf="GetUSerDOne !== null">
-            <a [routerLink]="['/user-detail']">
-            <img *ngIf="GetUSerDOne['Pic'] === ''" class="breadimg" src="assets/images/defaultprofile.jpg" alt=""  width="70px" height="70px">
-            <img *ngIf="GetUSerDOne['Pic'] !== ''"  class="breadimg" src="{{PicServrUrl + GetUSerDOne['Pic']}}" alt=""  width="70px" height="70px">
-            <br/>
-           <span *ngIf="ValueRec == true">Welcome {{ GetUSerDOne['Fname']}}</span>
-            </a>
-          </ng-container>
+        <!--<div class="breadCrumb ">-->
+          <!--<ng-container *ngIf="GetUSerDOne !== null">-->
+            <!--<a [routerLink]="['/user-detail']">-->
+            <!--<img *ngIf="GetUSerDOne['Pic'] === ''" class="breadimg" src="assets/images/defaultprofile.jpg" alt=""  width="70px" height="70px">-->
+            <!--<img *ngIf="GetUSerDOne['Pic'] !== ''"  class="breadimg" src="{{PicServrUrl + GetUSerDOne['Pic']}}" alt=""  width="70px" height="70px">-->
+            <!--<br/>-->
+           <!--<span *ngIf="ValueRec == true">Welcome {{ GetUSerDOne['Fname']}}</span>-->
+            <!--</a>-->
+          <!--</ng-container>-->
 
 
-        </div>
+        <!--</div>-->
 
 
 
 
-      </div>
-    </div>
-  </div>
-</div>
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 <!-- Page Title End -->
 
 <div class="inner-page">

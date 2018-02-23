@@ -65,6 +65,40 @@ export class HomeComponent implements OnInit {
   Getphoto: any = [];
   GetallphotsProduct: any = [];
 
+  images = [
+    "assets/images/slider/5-min.png",
+    "assets/images/slider/menslider.png",
+    "assets/images/slider/womenslider.png",
+    "assets/images/slider/2-min.png",
+    "assets/images/slider/4-min.png"
+  ];
+  categories = [
+    {
+      "image":"assets/images/phone-and-tablet-min.png",
+      "name":"Phones & Tablets",
+    },
+    {
+      "image":"assets/images/Mens-min.png",
+      "name":"Men\'s Fashion",
+    },
+    {
+      "image":"assets/images/Womens-2-min.png",
+      "name":"Women\'s Fashion",
+    },
+    {
+      "image":"assets/images/Audio-video-2-min.png",
+      "name":"TV, Audio & Video",
+    },
+    {
+      "image":"assets/images/Computing-laptop-min.png",
+      "name":"Computing & Laptops",
+    },
+    {
+      "image":"assets/images/Home-Appliance-min.png",
+      "name":"Home Appliances",
+    }
+  ];
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private GetProducts: HomeService) {
 

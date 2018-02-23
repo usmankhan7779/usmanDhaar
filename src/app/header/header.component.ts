@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   CartedProduct: any = [];
   ItemInCart: any ;
   public filteredList = [];
+  fname:any;
   public elementRef;
   Searchres = false;
   PicServrUrl='https://apis.dhaar.pk/media/';
@@ -57,12 +58,14 @@ export class HeaderComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)){
     // console.log('fdsfsdfdsgj' + localStorage.getItem('UserID'));
     if (localStorage.getItem('UserID') !== null) {
+      this.ValueRec = true;
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {
 
           if (response) {
 
             this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
               this.GetUSerDOne = resSlidersData;
+              this.fname= this.GetUSerDOne['Fname'];
               this.ValueRec = true;
 
               //  console.log('saqib hanif');

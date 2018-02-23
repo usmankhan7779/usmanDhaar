@@ -1,86 +1,71 @@
 <!-- Header -->
 <header id="header">
   <div class="header-container">
-    <div class="header-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5 col-sm-5 col-xs-6 hidden-xs">
-            <div class="slider-items-products">
-              <div id="offer-slider" class="product-flexslider hidden-buttons">
-                <div class="slider-items slider-width-col4">
-                  <div class="offer-content-text">
-                    <p><i class="pe-7s-like2"></i> Only the <span>Best Quality</span> and brands</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- top links -->
-          <div class="headerlinkmenu col-md-7 col-sm-7 col-xs-12">
-            <!-- Default Welcome Message -->
-            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs">Welcome {{ GetUSerDOne['Fname']}},</div>
-            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs"><a [routerLink]="['/select-category']">Post On Dhaar</a></div>
-            <div *ngIf="ValueRec == true" class="welcome-msg hidden-xs" ><a (click)="gotodashboard()" style="color: #f23534 !important; cursor: pointer" ><i class="fa fa-user header-icons-setting"></i>My Account </a></div>
-            <!--<div class="welcome-msg hidden-xs">Welcome to msg! </div>-->
-            <ul class="links">
-              <li *ngIf="ValueRec == true"><a [routerLink]="['/checkout2']"><i class="fa fa-check-square-o header-icons-setting"></i>Checkout</a></li>
-              <li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']"><i class="fa fa-lock header-icons-setting"></i>Sign Up</a></li>
-              <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']"><i class="fa fa-500px header-icons-setting"></i>Log In</a></li>
-              <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-setting"></i>Logout</a></li>
-
-            </ul>
-            <div class="language-currency-wrapper pull-right">
-              <div class="inner-cl">
-                <!--<div class="block block-language form-language">-->
-                  <!--<div class="lg-cur"> <span> <span class="lg-fr">English</span> <i class="fa fa-angle-down"></i> </span> </div>-->
-                  <!--<ul>-->
-                    <!--<li> <a href="#"><span>German</span> </a> </li>-->
-                    <!--<li> <a href="#"><span>Brazil</span> </a> </li>-->
-                    <!--<li> <a href="#"><span>Chile</span> </a> </li>-->
-                    <!--<li> <a href="#"><span>Spain</span> </a> </li>-->
-                  <!--</ul>-->
+    <!--<div class="header-top">-->
+      <!--<div class="container">-->
+        <!--<div class="row">-->
+          <!--<div class="col-md-5 col-sm-5 col-xs-6 hidden-xs">-->
+            <!--<div class="slider-items-products">-->
+              <!--<div id="offer-slider" class="product-flexslider hidden-buttons">-->
+                <!--<div class="slider-items slider-width-col4">-->
+                  <!--<div class="offer-content-text">-->
+                    <!--<p><i class="pe-7s-like2"></i> Only the <span>Best Quality</span> and brands</p>-->
+                  <!--</div>-->
                 <!--</div>-->
-                <!--<div class="block block-currency">-->
-                  <!--<div class="item-cur"> <span>Rs </span> </div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; top links &ndash;&gt;-->
+          <!--<div class="headerlinkmenu col-md-7 col-sm-7 col-xs-12">-->
+            <!--&lt;!&ndash; Default Welcome Message &ndash;&gt;-->
+            <!--<div *ngIf="ValueRec == true" class="welcome-msg hidden-xs">Welcome {{ GetUSerDOne['Fname']}},</div>-->
+            <!--<div *ngIf="ValueRec == true" class="welcome-msg hidden-xs"><a [routerLink]="['/select-category']">Post On Dhaar</a></div>-->
+            <!--<div *ngIf="ValueRec == true" class="welcome-msg hidden-xs" ><a (click)="gotodashboard()" style="color: #f23534 !important; cursor: pointer" ><i class="fa fa-user header-icons-setting"></i>My Account </a></div>-->
+            <!--&lt;!&ndash;<div class="welcome-msg hidden-xs">Welcome to msg! </div>&ndash;&gt;-->
+            <!--<ul class="links">-->
+              <!--<li *ngIf="ValueRec == true"><a [routerLink]="['/checkout2']"><i class="fa fa-check-square-o header-icons-setting"></i>Checkout</a></li>-->
+              <!--<li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']"><i class="fa fa-lock header-icons-setting"></i>Sign Up</a></li>-->
+              <!--<li *ngIf="ValueRec == false"><a  [routerLink]="['/login']"><i class="fa fa-500px header-icons-setting"></i>Log In</a></li>-->
+              <!--<li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-setting"></i>Logout</a></li>-->
 
-                <!--</div>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container" style="margin-bottom: 20px; margin-top: 10px;">
+            <!--</ul>-->
+            <!--<div class="language-currency-wrapper pull-right">-->
+              <!--<div class="inner-cl">-->
+                <!--&lt;!&ndash;<div class="block block-language form-language">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="lg-cur"> <span> <span class="lg-fr">English</span> <i class="fa fa-angle-down"></i> </span> </div>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<ul>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li> <a href="#"><span>German</span> </a> </li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li> <a href="#"><span>Brazil</span> </a> </li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li> <a href="#"><span>Chile</span> </a> </li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<li> <a href="#"><span>Spain</span> </a> </li>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="block block-currency">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<div class="item-cur"> <span>Rs </span> </div>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="container">
       <div class="row">
         <!-- Header Logo -->
         <div class="col-xs-12 col-lg-3 col-md-3 col-sm-3">
           <div class="logo">
 
             <a [routerLink]="['/home']" title="Dhaar">
-              <img src="assets/images/newdhaar.png" alt="dhaar3">
+              <img src="assets/images/dhaarlogo.png" alt="dhaar3">
             </a>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-6 col-md-6 top-search">
+        <div class="col-xs-12 col-sm-5 col-md-3 col-md-6">
           <!-- Search -->
           <!--top-search-->
-          <div id="search">
-            <form >
-              <div class="input-group">
-                <!--<select class="cate-dropdown hidden-xs hidden-sm" name="category_id">-->
-                  <!--<option>All Categories</option>-->
-                  <!--<ng-container *ngFor="let item_cat of GetallCat">-->
-                    <!--<option value="{{item_cat.Cat_Name}}">{{item_cat.Cat_Name}}</option>-->
-
-                  <!--</ng-container>-->
-                <!--</select>-->
-                <!--id="institutenameid"-->
-                <input type="text"  ng-Model="model.search"  (click)="openSearch()" #search class="form-control"  placeholder="Search" name="search">
-
-                <!--<button (click)="navigate(search.value)"  class="btn-search" type="button"><i class="fa fa-search"></i></button>-->
-              </div>
-
-            </form>
+          <div id="search" style="text-align: center">
+                <button type="button" (click)="openSearch()">Search<i class="fa fa-search header-icons-leftsetting"></i></button>
           </div>
 
           <!--(keydown)="navigate($event, search.value, 1 )"-->
@@ -111,7 +96,7 @@
                           <div class="slider-items-products">
                             <div id="pro2-slider" class="product-flexslider hidden-buttons">
                               <div class="slider-items slider-width-col6">
-                                <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
+                                <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo" (click)="closeSearch()"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
 
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
@@ -127,7 +112,7 @@
                           <div class="item-info">
                             <div class="info-inner">
                               <div class="item-title">
-                                <h4> <a title="Product Title Here" style="color: black" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
+                                <h4> <a title="Product Title Here" style="color: black" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" (click)="closeSearch()">{{ phoneProducts.P_Title }}  </a></h4>
                               </div>
                               <div class="item-content">
                                 <div class="rating">
@@ -151,10 +136,10 @@
                           <div class="box-hover">
                             <div class="product-item-actions">
                               <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
-                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" (click)="closeSearch()">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
                               </div>
                               <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button> </a>
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" (click)="closeSearch()">    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button> </a>
                               </div>
                             </div>
                           </div>
@@ -171,7 +156,22 @@
           </div>
           <!-- End Search -->
         </div>
-        <div class="col-lg-2 col-sm-3 col-xs-12 top-cart">
+        <div class="col-md-6 col-sm-3 col-xs-12 top-cart">
+
+          <ul class="menu-registration-links">
+            <li><a [routerLink]="['/select-category']"><i class="fa fa-camera header-icons-rightsetting"></i>Sell on Dhaar</a></li>
+            <li *ngIf="ValueRec == true"><a class="menu-register-margin" (click)="gotodashboard()" style="color: #f23534 !important; cursor: pointer" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Account </a></li>
+            <!--<li *ngIf="ValueRec == true" class="welcome-msg hidden-xs">{{ GetUSerDOne['Fname']}}</li>-->
+            <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']" class="menu-register-margin"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>
+            <li *ngIf="ValueRec == false" class="last-child-link" ><a  [routerLink]="['/sign-up']"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>
+            <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
+
+          </ul>
+          <!--<div *ngIf="ValueRec == true"><a [routerLink]="['/checkout2']"><i class="fa fa-check-square-o header-icons-setting"></i>Checkout</a></div>-->
+
+          <!--<div *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-setting"></i>Logout</a></div>-->
+
+
           <!-- Begin shopping cart trigger  -->
           <div id="shopping-cart-trigger"> <a [routerLink]="['/checkout2']" class="cart-icon" title="Shopping Cart" > <i class="fa fa-shopping-bag"></i> <span class="cart-num">{{ItemInCart}}</span></a> </div>
           <!-- End shopping cart trigger -->
@@ -188,14 +188,14 @@
         <div class="row">
           <div class="col-md-12">
             <div class="main-menu">
-              <div class="mm-toggle-wrap hidden-lg hidden-md hidden-sm">
-                <div class="mm-toggle"> <i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
-              </div>
+              <!--<div class="mm-toggle-wrap hidden-lg hidden-md hidden-sm">-->
+                <!--<div class="mm-toggle"> <i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>-->
+              <!--</div>-->
               <ul class="hidden-xs">
                 <!--<li  class="active custom-menu"><a [routerLink]="['/home']">Home</a>-->
 
                 <!--</li>-->
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }"><i><img src="../../assets/assets2/images/category/catNav/01.png" width="20px" height="20px" style="vertical-align: text-bottom"> </i>Phones & Tablets</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }"><i class="fa fa-mobile header-icons-rightsettingnew"></i>Phones & Tablets</a>
                   <!--class="fa fa-mobile-phone header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -241,7 +241,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" ><i class="header-icons-setting"><img src="../../assets/assets2/images/category/catNav/02.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Women's Fashion</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" ><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/02.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Women's Fashion</a>
                   <!--class="fa fa-female header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -293,7 +293,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }"><i class="header-icons-setting"><img src="../../assets/assets2/images/category/catNav/03.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Men's Fashion</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }"><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/03.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Men's Fashion</a>
                   <!--class="fa fa-male header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -336,7 +336,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'TV, Audio & Video' }"><i class="header-icons-setting"><img src="../../assets/assets2/images/category/catNav/04.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>TV, Audio & Video</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'TV, Audio & Video' }"><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/04.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>TV, Audio & Video</a>
                   <!--class="fa fa-headphones header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -381,7 +381,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Computing & Laptops' }"><i class="header-icons-setting"><img src="../../assets/assets2/images/category/catNav/05.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Computing & Laptops</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Computing & Laptops' }"><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/05.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Computing & Laptops</a>
                   <!--class="fa fa-laptop header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -417,7 +417,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Home Appliances' }"><i class="header-icons-setting"><img src="../../assets/assets2/images/category/catNav/06.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Home Appliances</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Home Appliances' }"><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/06.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Home Appliances</a>
                   <!--class="fa fa-home header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">

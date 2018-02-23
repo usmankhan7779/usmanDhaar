@@ -9,12 +9,19 @@ import { AdService } from '../post-ad/ad.services';
 })
 export class SelectCategoryComponent implements OnInit {
   GetallCat: any = [];
+  user = false;
   ServrUrl: string = 'assets/assets2/images/category/';
   constructor(
     private PostAdd: AdService,
   ) { }
 
   ngOnInit() {
+
+    if(localStorage.getItem('UserID')) {
+      this.user = true;
+    } else {
+      this.user = false;
+    }
 
     this.PostAdd.GetAllCategories().subscribe(resSlidersData => this.GetallCat = resSlidersData);
 

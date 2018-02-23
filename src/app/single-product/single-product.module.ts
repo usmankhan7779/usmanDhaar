@@ -5,6 +5,7 @@ import {SingleProductComponent} from "./single-product.component";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {ImageZoomModule} from "angular2-image-zoom";
 import {HeaderModule} from "../header/header.module";
+import {NewModule} from '../home/new.module';
 const loginRoutes: Routes = [
   { path: '', component: SingleProductComponent }
 ];
@@ -12,7 +13,6 @@ const loginRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    SingleProductComponent
   ],
 
   imports: [
@@ -20,6 +20,7 @@ const loginRoutes: Routes = [
     FormsModule,
     HeaderModule,
     ImageZoomModule,
+    NewModule,
 
     // ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)

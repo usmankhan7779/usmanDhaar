@@ -191,7 +191,8 @@ export class SingleProductComponent implements OnInit {
               console.log('time1:',time1);
               const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
               console.log('time3:',time3);
-              if(time3<=0){
+              console.log('Bidding Products Are:', this.BidingProduct)
+              if(time3<=0 && this.BidingProduct.length !==0){
                 console.log('This Bidder wins:', this.BidingProduct[0]);
                 this.user=this.BidingProduct[0]['User_Id']
                 this.product=this.BidingProduct[0]['Product_Id']
@@ -200,12 +201,16 @@ export class SingleProductComponent implements OnInit {
               // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
               let x = time3 / 1000;
               this.seconds = Math.floor(x % 60);
+              console.log('Seconds are:', this.seconds);
               x /= 60;
               this.minutes = Math.floor(x % 60);
+              console.log('Minutes are:', this.minutes);
               x /= 60;
               this.hours = Math.floor(x % 24);
+              console.log('Hours are:', this.hours);
               x /= 24;
               this.days = Math.floor(x);
+              console.log('Days are:', this.days);
 
 
             }
