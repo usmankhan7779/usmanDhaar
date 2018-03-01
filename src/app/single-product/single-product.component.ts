@@ -7,6 +7,7 @@ import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.servi
 import { HomeService } from '../home/home.services';
 import { LoginService } from '../log-in/log-in.services';
 import swal from 'sweetalert2';
+import {FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -17,7 +18,6 @@ import swal from 'sweetalert2';
 })
 export class SingleProductComponent implements OnInit {
   private sub: any;
-
   model: any = {};
   GetallPhoneProduct: any = [];
   GetallProductReview: any = [];
@@ -708,6 +708,9 @@ export class SingleProductComponent implements OnInit {
     console.log('Store Name is', this.resultProduct[0]['StoreName']);
     this.GetAdd.InsertProductReviews(this.model.YourName, this.model.YourEmail, this.model.YourReview, this.ProID, this.starp, this.resultProduct[0]['StoreName']).subscribe(resSlidersData => {
         swal('Your Review has been submitted','','success');
+        // this.model.YourName=this.model.YourEmail=this.model.YourReview=''
+        const selectElement = <HTMLSelectElement>document.getElementById('reviewsForm');
+        selectElement.reset();
       },
       (err) => {
         alert('Error');

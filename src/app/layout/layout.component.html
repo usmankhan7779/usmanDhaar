@@ -3,7 +3,7 @@
 <!--<app-home-slider *ngIf=" islogin=='false'"></app-home-slider>-->
 <!--<app-home-slider></app-home-slider>-->
 <div id="wrapper">
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="onActivate($event, outlet)" #outlet></router-outlet>
 </div>
 <!--<div class="dropup-holder" [ngClass]="{'active': chatVar === 1 || GlobalChatVar === 1}" [ngStyle]="{'display':LoggedIn === 1 ? 'block' : 'none' }">-->
 <!--<button class="btn chatbutton" type="button" name="btnChat" (click)="openChat()">-->

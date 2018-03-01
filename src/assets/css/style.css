@@ -150,9 +150,9 @@ select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-p
 .top-my-account, .top-compare{display:inline-block;vertical-align:top;width:45px;height:45px;background:#fff;border:1px solid #ccc;border-radius:100px;-webkit-border-radius:100px;-moz-border-radius:100px;text-align:center;font-size:16px;transition:all .2s ease-in;-moz-transition:all .2s ease-in;-webkit-transition:all .2s ease-in;padding:11px 0 0;margin:0px 0px 0 16px;float:right;}
 .top-compare{margin:0px;}
 .top-my-account:hover, .top-compare:hover{background:#ed2424;border:1px solid #ed2424;color:#fff;}
-.logo{vertical-align:middle;margin:22px 0px;margin-top:15px;}
-.menu-sticky .logo{margin:10px 0px}
-.menu-sticky .logo a img{height:35px;-webkit-transition:all .300s;-moz-transition:all .300s;-o-transition:all .300s;transition:all .300s;}
+.logo{vertical-align:middle;margin-top:5px;}
+/*.menu-sticky .logo{margin:10px 0px}*/
+/*.menu-sticky .logo a img{height:35px;-webkit-transition:all .300s;-moz-transition:all .300s;-o-transition:all .300s;transition:all .300s;}*/
 .top-cart-contain .top-cart-content{opacity:0;transform-origin:0 0 0;transition:all 0.5s ease 0s;-ms-transform:scaleY(0);-webkit-transform:scaleY(0);-moz-transform:scaleY(0);-o-transform:scaleY(0);transform:scaleY(0);}
 .top-cart-contain .mini-cart:hover .top-cart-content{opacity:1;-ms-transform:scaleY(1);-webkit-transform:scaleY(1);-moz-transform:scaleY(1);-o-transform:scaleY(1);transform:scaleY(1);}
 .top-cart{padding-left:0px;margin-top:15px;}
@@ -277,7 +277,7 @@ ul#cart-sidebar{padding:3px 15px 6px;margin:auto;max-height:195px;overflow:auto;
 .product-item .item-inner .pro-box-info .box-hover .add-to-links .action.add-to-compare:before{content:"\f012";}
 .product-item .item-inner .pro-box-info .pro-actions{display:inline-block;background:#fff;position:relative;z-index:2;}
 .product-item .item-inner .pro-box-info .pro-actions .action.add-to-cart{background:#1b2c39 !important;border:1px solid #cccccc;color:white;font-size:13px;font-weight:400;padding:0 15px;line-height:32px;letter-spacing:0.5px;text-transform:inherit;border-radius:0;transition:all 0.4s ease-out 0s;border-radius:50px;}
-.product-item .item-inner:hover .pro-box-info .pro-actions .action.add-to-cart{color:#fff;background:#ed2424;border:1px solid #ed2424;transition:all 0.4s ease-out 0s;}
+.product-item .item-inner:hover .pro-box-info .pro-actions .action.add-to-cart{color:#fff;background:#ed2424 !important;border:1px solid #ed2424;transition:all 0.4s ease-out 0s;}
 .product-item .item-inner .pro-box-info .pro-actions .action.add-to-cart:before{display:inline-block;font-family:Hind,sans-serif;margin-right:4px;line-height:31px;font-size:12px;}
 .add-to-cart-mt{background:#ed2424;border:0 none;bottom:0;font-size:12px;left:-100%;line-height:10px;position:absolute;text-align:center;text-transform:uppercase;transition:all .5s ease-out 0s;width:100%;padding:12px 0;color:#000000;}
 .add-to-cart-mt:hover{background:#fe0100;color:#fff;}
@@ -1281,7 +1281,7 @@ label[for="rememberme"]{margin-left:0.75em;}
 }
 .img-size-carousal{max-height:520px;margin:0 auto;}
 .header-icons-rightsetting{margin-right:5px; }
-.header-icons-rightsettingnew{margin-right:5px;font-size: larger; color: #cb1d1d}
+.header-icons-rightsettingnew{margin-right:3px;font-size: x-large; color: #cb1d1d}
 .header-icons-leftsetting{margin-left: 10px;}
 .pagination-control{clear:both;text-align:center;margin:48px 0 0;width:100%;float:left;}
 #wrapper{position:relative;}
@@ -1315,11 +1315,11 @@ label[for="rememberme"]{margin-left:0.75em;}
 .menu-registration-links li{display: inline;}
 .menu-registration-links{    position: relative;
   top: 15px;font-size: 25px; font-weight: bold; text-align: left}
-.menu-registration-links li a{padding-right: 7px;}
-.menu-register-margin{margin-left: 30px}
+.menu-registration-links li a{padding-right: 8px;}
 .last-child-link{
   border-left: solid 2px #616161;
   padding-left: 15px;
 }
+.login-header{padding-left: 10px}
 .cat-slider-set{text-align: center;font-size: 20px;font-weight: 500;color: #444444;}
 .cat-slider-head{text-align: center;font-size: 20px;font-weight: 500;color: #444444;}

@@ -50,6 +50,7 @@ const appRoutes: Routes = [
       { path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule'},
       { path: 'terms-use', loadChildren: './terms-use/terms-use.module#TermsUseModule'},
       { path: 'dhaar', loadChildren: './dhaar/dhaar.module#DhaarModule'},
+      { path: 'file-uploads', loadChildren: './file-uploads/file-uploads.module#FileUploadsModule'},
     ]
   },
 ];

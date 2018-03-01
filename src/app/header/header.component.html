@@ -1,5 +1,6 @@
 <!-- Header -->
 <header id="header">
+  <nav>
   <div class="header-container">
     <!--<div class="header-top">-->
       <!--<div class="container">-->
@@ -56,8 +57,8 @@
         <div class="col-xs-12 col-lg-3 col-md-3 col-sm-3">
           <div class="logo">
 
-            <a [routerLink]="['/home']" title="Dhaar">
-              <img src="assets/images/dhaarlogo.png" alt="dhaar3">
+            <a [routerLink]="['/']" title="Dhaar">
+              <img src="../../assets/images/dhaarlogo.png" alt="dhaar3">
             </a>
           </div>
         </div>
@@ -159,13 +160,13 @@
         <div class="col-md-6 col-sm-3 col-xs-12 top-cart">
 
           <ul class="menu-registration-links">
-            <li><a [routerLink]="['/select-category']"><i class="fa fa-camera header-icons-rightsetting"></i>Sell on Dhaar</a></li>
-            <li *ngIf="ValueRec == true"><a class="menu-register-margin" (click)="gotodashboard()" style="color: #f23534 !important; cursor: pointer" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Account </a></li>
+            <li><a [routerLink]="['/select-category']"><i class="fa fa-camera header-icons-rightsetting"></i>Sell</a></li>
+            <li><a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Categories</a></li>
+            <li *ngIf="ValueRec == true"><a (click)="gotodashboard()" style="color: #f23534 !important; cursor: pointer" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Dhaar </a></li>
             <!--<li *ngIf="ValueRec == true" class="welcome-msg hidden-xs">{{ GetUSerDOne['Fname']}}</li>-->
-            <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']" class="menu-register-margin"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>
+            <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']" class="login-header"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>
             <li *ngIf="ValueRec == false" class="last-child-link" ><a  [routerLink]="['/sign-up']"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>
             <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
-
           </ul>
           <!--<div *ngIf="ValueRec == true"><a [routerLink]="['/checkout2']"><i class="fa fa-check-square-o header-icons-setting"></i>Checkout</a></div>-->
 
@@ -181,8 +182,8 @@
   </div>
   <!-- End Header Logo -->
 
-  <nav>
     <!-- Start Menu Area -->
+    <div *ngIf="ProNav">
     <div class="menu-area">
       <div class="container">
         <div class="row">
@@ -195,7 +196,7 @@
                 <!--<li  class="active custom-menu"><a [routerLink]="['/home']">Home</a>-->
 
                 <!--</li>-->
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }"><i class="fa fa-mobile header-icons-rightsettingnew"></i>Phones & Tablets</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }"><i class="fa fa-tablet header-icons-rightsettingnew"></i>Phones & Tablets</a>
                   <!--class="fa fa-mobile-phone header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -241,7 +242,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" ><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/02.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Women's Fashion</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" ><i class="fa fa-shopping-bag header-icons-rightsettingnew"></i>Women's Fashion</a>
                   <!--class="fa fa-female header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -293,7 +294,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }"><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/03.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Men's Fashion</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }"><i class="fa fa-user-secret header-icons-rightsettingnew"></i>Men's Fashion</a>
                   <!--class="fa fa-male header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -336,7 +337,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'TV, Audio & Video' }"><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/04.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>TV, Audio & Video</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'TV, Audio & Video' }"><i class="fa fa-music header-icons-rightsettingnew"></i>TV, Audio & Video</a>
                   <!--class="fa fa-headphones header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -381,7 +382,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Computing & Laptops' }"><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/05.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Computing & Laptops</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Computing & Laptops' }"><i class="fa fa-laptop header-icons-rightsettingnew"></i>Computing & Laptops</a>
                   <!--class="fa fa-laptop header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -417,7 +418,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Home Appliances' }"><i class="header-icons-rightsetting"><img src="../../assets/assets2/images/category/catNav/06.png" width="20px" height="20px" style="vertical-align: text-bottom"></i>Home Appliances</a>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Home Appliances' }"><i class="fa fa-home header-icons-rightsettingnew"></i>Home Appliances</a>
                   <!--class="fa fa-home header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -434,7 +435,7 @@
 
                           <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']"><i class="	fa fa-angle-double-right">Mixing & Blending</i></a></li>
 
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']"><i class="	fa fa-angle-double-right">Other Small Appliances</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Small Appliances']"><i class="	fa fa-angle-double-right">Other Small Appliances</i></a></li>
                         </ul>
                         <ul>
                           <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
@@ -493,6 +494,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </nav>
 </header>

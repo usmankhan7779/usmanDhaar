@@ -131,7 +131,7 @@
 
               <div class="formrow label-overlay">
 
-                <input type="checkbox" name="Agree" placeholder="Your Mobile Number" [(ngModel)]="model.Agree" #Agree="ngModel" required>I have read and agree to the <a href="#" style="color: red"> Terms and Conditions</a><!-- End .form-group -->
+                <input type="checkbox" name="Agree" placeholder="Your Mobile Number" [(ngModel)]="model.Agree" #Agree="ngModel" >I have read and agree to the <a [routerLink]="['/terms-use']" style="color: red"> Terms and Conditions</a><!-- End .form-group -->
                 <!--[textMask]="{mask: mask}"-->
               </div>
 

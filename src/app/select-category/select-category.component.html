@@ -47,7 +47,7 @@
   </div>
 </div>
 </div>
-<div *ngIf="!user">
+<div *ngIf="!user && seller">
   <div class="section catewrap">
     <div class="container">
       <!-- title start -->
@@ -55,6 +55,18 @@
         <h3>User is not Loged In</h3>
         <p>Selling on Dhaar is easy and absolutely free. All you need is to register, list your catalogue and start selling your products.</p>
         <p>To login to your account <a [routerLink]="['/login']"><span style="color: red">Click Here</span></a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!seller">
+  <div class="section catewrap">
+    <div class="container">
+      <!-- title start -->
+      <div class="titleTop">
+        <h3>You are not registered as a Seller on Dhaar.pk</h3>
+        <p>Selling on Dhaar is easy and absolutely free. All you need is to register, list your catalogue and start selling your products.</p>
+        <p>To register as a seller <a [routerLink]="['/store-registration']"><span style="color: red">Click Here</span></a></p>
       </div>
     </div>
   </div>

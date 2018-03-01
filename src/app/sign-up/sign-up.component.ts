@@ -13,7 +13,7 @@ import swal from 'sweetalert2';
 })
 export class SignUpComponent implements OnInit {
   public mask = [  /\d/, /\d/, /\d/, /\d/, '-' , /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
-  model: any = {};
+  model: any = {"Agree": false};
   loading = false;
   Waitcall = false;
   returnUrl: string;
@@ -44,6 +44,7 @@ export class SignUpComponent implements OnInit {
   }
   register() {
     if (isPlatformBrowser(this.platformId)) {
+      console.log('agree value is:',this.model.Agree);
 
     if (this.model.Agree) {
 
@@ -85,7 +86,7 @@ export class SignUpComponent implements OnInit {
       // }
     } else {
       console.log('agree is ', this.model.Agree);
-      alert('You must agree to the terms  first.');
+      swal('You must agree to the terms  first.','','error');
     }
 
 

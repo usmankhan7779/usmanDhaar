@@ -8,6 +8,7 @@ import {ImageZoomModule} from 'angular2-image-zoom';
 import {HeaderComponent} from '../header/header.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderModule} from '../header/header.module';
+import {PreloaderFullModule} from '../components/preloader-full/preloader-full.module';
 const loginRoutes: Routes = [
   { path: 'hahah', component: HeaderComponent }
 ];
@@ -25,6 +26,7 @@ const loginRoutes: Routes = [
     Ng2PaginationModule,
     ImageZoomModule,
     HeaderModule,
+    PreloaderFullModule,
     // HomeModule,
     ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)

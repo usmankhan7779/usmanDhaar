@@ -22,9 +22,6 @@ export class CategoryDetailComponent implements OnInit {
   GetPhotos: any = [];
   Cart = false;
   View = false;
-
-
-
   BuyItNow = false;
   AllListing = true;
   Auction = false;
@@ -35,6 +32,12 @@ export class CategoryDetailComponent implements OnInit {
   CatName: any;
   CartedProduct: any = [];
   Total: number;
+  ProType = false;
+  ProStatus = false;
+  Price1: string;
+  Price2: string;
+  PriceStatus = false;
+  BothCheck = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav: Router,
@@ -503,8 +506,11 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   BothAbove() {
+    console.log('I am In Product Both Above');
+    this.BothCheck = true;
     this.Waitcall = true;
     this.errormessage = false;
+    if (this.PriceStatus === false) {
     if (this.CatName === 'Phones & Tablets') {
       //  console.log('Phones & Tablets')
       this.httpService.getAllPhoneAndTabletProduct(1).subscribe(
@@ -568,12 +574,73 @@ export class CategoryDetailComponent implements OnInit {
 
       this._nav.navigate(['/404']);
     }
+    } else if(this.PriceStatus === true) {
+      if (this.CatName === 'Phones & Tablets') {
+        //  console.log('Phones & Tablets')
+        this.httpService.getAllPhoneAndTabletProductWithPrice(1, this.Price1, this.Price2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Women\'s Fashion') {
+        // console.log('Women\'s Fashion')
+        this.httpService.getAllWomenFashionProductWithPrice(1, this.Price1, this.Price2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Men\'s Fashion') {
+        this.httpService.getAllMenFashionProductWithPrice(1, this.Price1, this.Price2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'TV, Audio & Video') {
+        // console.log('TV, Audio & Video')
+        this.httpService.getAllTVAudioVideoProductWithPrice(1, this.Price1, this.Price2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Computing & Laptops') {
+        this.httpService.getAllComputingLaptopsProductWithPrice(1, this.Price1, this.Price2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Home Appliances') {
+        this.httpService.getAllHomeAppliancesProductWithPrice(1, this.Price1, this.Price2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else {
+
+        this._nav.navigate(['/404']);
+      }
+    }
     this.Waitcall = false;
   }
 
   ProductType(abc: boolean) {
+    console.log('I am In Product Type');
+    this.ProType = true;
+    this.ProStatus = abc;
     this.Waitcall = true;
     this.errormessage = false;
+    if (this.PriceStatus === false) {
     if (this.CatName === 'Phones & Tablets') {
       //  console.log('Phones & Tablets')
       this.httpService.getAllPhoneAndTabletProductWithType(1, abc).subscribe(
@@ -629,70 +696,204 @@ export class CategoryDetailComponent implements OnInit {
 
       this._nav.navigate(['/404']);
     }
+    } else if (this.PriceStatus === true) {
+      if (this.CatName === 'Phones & Tablets') {
+        //  console.log('Phones & Tablets')
+        this.httpService.getAllPhoneAndTabletProductWithFilter(1, this.Price1,this.Price2,abc).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Women\'s Fashion') {
+        // console.log('Women\'s Fashion')
+        this.httpService.getAllWomenFashionProductFilter(1, this.Price1,this.Price2,abc).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Men\'s Fashion') {
+        this.httpService.getAllMenFashionProductFilter(1, this.Price1,this.Price2,abc).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'TV, Audio & Video') {
+        // console.log('TV, Audio & Video')
+        this.httpService.getAllTVAudioVideoProductFilter(1, this.Price1,this.Price2,abc).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Computing & Laptops') {
+        this.httpService.getAllComputingLaptopsProductFilter(1, this.Price1,this.Price2,abc).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Home Appliances') {
+        this.httpService.getAllHomeAppliancesProductFilter(1, this.Price1,this.Price2,abc).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else {
+
+        this._nav.navigate(['/404']);
+      }
+    }
     this.Waitcall = false;
 
   }
 
 
   ProductPrice(pk1: any, pk2: any) {
+    console.log('I am In Product Price');
+    if(this.BothCheck === true) {
+      this.ProType = false;
+    }
+    if (pk1 === 'all' && pk2 ==='all') {
+      this.PriceStatus = false;
+      console.log('I am In Product Price All');
+      if (this.ProType === true) {
+        console.log('I am In Product Price Protype True');
+        this.ProductType(this.ProStatus);
+      } else {
+        console.log('I am In Product Price Both Above');
+        this.BothAbove();
+      }
+    } else {
+    this.PriceStatus = true;
+    this.Price1 = pk1;
+    this.Price2 = pk2;
     this.errormessage = false;
     this.Waitcall = true;
-    if (this.CatName === 'Phones & Tablets') {
-      //  console.log('Phones & Tablets')
-      this.httpService.getAllPhoneAndTabletProductWithPrice(1, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'Women\'s Fashion') {
-      // console.log('Women\'s Fashion')
-      this.httpService.getAllWomenFashionProductWithPrice(1, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'Men\'s Fashion') {
-      this.httpService.getAllMenFashionProductWithPrice(1, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'TV, Audio & Video') {
-      // console.log('TV, Audio & Video')
-      this.httpService.getAllTVAudioVideoProductWithPrice(1, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'Computing & Laptops') {
-      this.httpService.getAllComputingLaptopsProductWithPrice(1, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'Home Appliances') {
-      this.httpService.getAllHomeAppliancesProductWithPrice(1, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else {
+    if (this.ProType === false){
+      if (this.CatName === 'Phones & Tablets') {
+        //  console.log('Phones & Tablets')
+        this.httpService.getAllPhoneAndTabletProductWithPrice(1, pk1, pk2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Women\'s Fashion') {
+        // console.log('Women\'s Fashion')
+        this.httpService.getAllWomenFashionProductWithPrice(1, pk1, pk2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Men\'s Fashion') {
+        this.httpService.getAllMenFashionProductWithPrice(1, pk1, pk2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'TV, Audio & Video') {
+        // console.log('TV, Audio & Video')
+        this.httpService.getAllTVAudioVideoProductWithPrice(1, pk1, pk2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Computing & Laptops') {
+        this.httpService.getAllComputingLaptopsProductWithPrice(1, pk1, pk2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Home Appliances') {
+        this.httpService.getAllHomeAppliancesProductWithPrice(1, pk1, pk2).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else {
 
-      this._nav.navigate(['/404']);
+        this._nav.navigate(['/404']);
+      }
+  } else if(this.ProType === true) {
+      if (this.CatName === 'Phones & Tablets') {
+        //  console.log('Phones & Tablets')
+        this.httpService.getAllPhoneAndTabletProductWithFilter(1, pk1, pk2,this.ProStatus).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Women\'s Fashion') {
+        // console.log('Women\'s Fashion')
+        this.httpService.getAllWomenFashionProductFilter(1, pk1, pk2,this.ProStatus).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Men\'s Fashion') {
+        this.httpService.getAllMenFashionProductFilter(1, pk1, pk2,this.ProStatus).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'TV, Audio & Video') {
+        // console.log('TV, Audio & Video')
+        this.httpService.getAllTVAudioVideoProductFilter(1, pk1, pk2,this.ProStatus).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Computing & Laptops') {
+        this.httpService.getAllComputingLaptopsProductFilter(1, pk1, pk2,this.ProStatus).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else if (this.CatName === 'Home Appliances') {
+        this.httpService.getAllHomeAppliancesProductFilter(1, pk1, pk2,this.ProStatus).subscribe(
+          data => {
+            this.Trend = data;
+            if (this.Trend['results'].length === 0) {
+              this.errormessage = true;
+            }
+          });
+      } else {
+
+        this._nav.navigate(['/404']);
+      }
     }
     this.Waitcall = false;
+  }
   }
 
 }

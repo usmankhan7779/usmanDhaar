@@ -6,6 +6,7 @@ import { ActiveAdServices } from '../active-ad/active-ad.services';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout2',
@@ -383,6 +384,7 @@ export class Checkout2Component implements OnInit {
           data => {
 
            this.OrderPlaced  = true;
+           swal('Your Order Has Been Placed','','success');
 
             this.InvoiceIDSet =  localStorage.getItem('InvoiceID');
 

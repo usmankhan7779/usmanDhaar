@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit {
   fname:any;
   public elementRef;
   Searchres = false;
+  ProNav = false;
   PicServrUrl='https://apis.dhaar.pk/media/';
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
@@ -127,12 +128,18 @@ export class HeaderComponent implements OnInit {
       }
   }
 
+  ProductNav() {
+    this.ProNav = !this.ProNav;
+  }
   openSearch() {
-    this.opSearch = 1;
-    $('#wrapper').addClass('search-active');
-    setTimeout(function () {
-      $('#textsearch1').focus();
-    },200);
+    if (isPlatformBrowser(this.platformId)){
+      window.scroll(0,0);
+      this.opSearch = 1;
+      $('#wrapper').addClass('search-active');
+      setTimeout(function () {
+        $('#textsearch1').focus();
+      },200);
+    }
   }
 
   ValueReset() {

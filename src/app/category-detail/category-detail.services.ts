@@ -61,6 +61,25 @@ export class  CategoryServices {
   getAllPhoneAndTabletProductWithPrice(page: any, pk1: string, pk2: string) {
     return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductPrice/' + pk1 + '/' + pk2 + '?page=' + page, ).map(response => response.json());
   }
+  getAllPhoneAndTabletProductWithFilter(page: any, pk1: string, pk2: string,pk3:any) {
+    return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductFilter/' + pk1 + '/' + pk2 +'/'+pk3+ '?page=' + page, ).map(response => response.json());
+  }
+  getAllWomenFashionProductFilter(page: any, pk1: string, pk2: string,pk3:any) {
+    return this._http.get( this.ServerUrl + 'getAllWomenFashionProductFilter/' + pk1 + '/' + pk2 +'/'+pk3+ '?page=' + page, ).map(response => response.json());
+  }
+  getAllMenFashionProductFilter(page: any, pk1: string, pk2: string,pk3:any) {
+    return this._http.get( this.ServerUrl + 'getAllMenFashionProductFilter/' + pk1 + '/' + pk2 +'/'+pk3+ '?page=' + page, ).map(response => response.json());
+  }
+  getAllTVAudioVideoProductFilter(page: any, pk1: string, pk2: string,pk3:any) {
+    return this._http.get( this.ServerUrl + 'getAllTVAudioVideoProductFilter/' + pk1 + '/' + pk2 +'/'+pk3+ '?page=' + page, ).map(response => response.json());
+  }
+  getAllComputingLaptopsProductFilter(page: any, pk1: string, pk2: string,pk3:any) {
+    return this._http.get( this.ServerUrl + 'getAllComputingLaptopsProductFilter/' + pk1 + '/' + pk2 +'/'+pk3+ '?page=' + page, ).map(response => response.json());
+  }
+  getAllHomeAppliancesProductFilter(page: any, pk1: string, pk2: string,pk3:any) {
+    return this._http.get( this.ServerUrl + 'getAllHomeAppliancesProductFilter/' + pk1 + '/' + pk2 +'/'+pk3+ '?page=' + page, ).map(response => response.json());
+  }
+
 
   //PhoneSUb
 

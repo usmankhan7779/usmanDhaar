@@ -1,3 +1,5 @@
+<preloader-full></preloader-full>
+
 <app-header></app-header>
 
 
@@ -83,7 +85,7 @@
           <ng-container *ngIf="!errormessage" >
           <div *ngIf="!View" class="product-grid-area">
             <ul class="products-grid">
-              <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 4,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
+              <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
               <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="product-item">
                   <div class="item-inner">
@@ -359,6 +361,10 @@
                 <li>
                   <input (click)="ProductPrice(500001,999999999)" type="radio" id="p15" name="cc" />
                   <label for="p15"> <span class="button"></span> Rs 5,00,001 < ... </label>
+                </li>
+                <li>
+                  <input (click)="ProductPrice('all','all')" type="radio" id="p16" name="cc" />
+                  <label for="p16"> <span class="button"></span> All Prices</label>
                 </li>
 
               </ul>
