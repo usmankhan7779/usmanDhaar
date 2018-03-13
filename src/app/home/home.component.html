@@ -491,8 +491,8 @@
                             <a [routerLink]="['/single-product']"
                                [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"
                                class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                                src="{{ PicServrUrl + phoneProducts.Pic }}"
-                                                                alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
+                                                                src="{{ phoneProducts.Pic }}"
+                                                                alt="{{ phoneProducts.Pic }}"></a>
 
                             <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                             <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
@@ -624,6 +624,7 @@
                 <!--</div>-->
                 <div class="tab-pane active in" id="phonetablet">
                   <ng-container *ngFor="let phoneProducts of GetallPhoneProduct">
+                    <ng-container *ngIf="phoneProducts.Active">
                     <div class="product-item col-md-3 col-sm-6">
                       <div class="item-inner">
                         <div class="product-thumbnail">
@@ -640,8 +641,8 @@
                                 <a [routerLink]="['/single-product']"
                                    [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"
                                    class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                                    src="{{ PicServrUrl + phoneProducts.Pic }}"
-                                                                    alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
+                                                                    src="{{phoneProducts.Pic }}"
+                                                                    alt="{{phoneProducts.Pic }}"></a>
 
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
@@ -706,7 +707,7 @@
                       </div>
                     </div>
                   </ng-container>
-
+                  </ng-container>
                 </div>
                 <div class="tab-pane fade" id="fashion">
 
@@ -727,8 +728,8 @@
                                 <a [routerLink]="['/single-product']"
                                    [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"
                                    class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                                    src="{{ PicServrUrl + phoneProducts.Pic }}"
-                                                                    alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
+                                                                    src="{{phoneProducts.Pic }}"
+                                                                    alt="{{phoneProducts.Pic }}"></a>
 
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
@@ -807,8 +808,8 @@
                           <a [routerLink]="['/single-product']"
                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
                              class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                              src="{{ PicServrUrl + TvVideoaudio88.Pic }}"
-                                                              alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
+                                                              src="{{ TvVideoaudio88.Pic }}"
+                                                              alt="{{ TvVideoaudio88.Pic }}"></a>
 
 
                           <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->
@@ -943,8 +944,8 @@
                           <a [routerLink]="['/single-product']"
                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
                              class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                              src="{{ PicServrUrl + TvVideoaudio88.Pic }}"
-                                                              alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
+                                                              src="{{TvVideoaudio88.Pic }}"
+                                                              alt="{{TvVideoaudio88.Pic }}"></a>
 
 
                           <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->
@@ -1026,8 +1027,8 @@
                           <a [routerLink]="['/single-product']"
                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
                              class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                              src="{{ PicServrUrl + TvVideoaudio88.Pic }}"
-                                                              alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
+                                                              src="{{TvVideoaudio88.Pic }}"
+                                                              alt="{{TvVideoaudio88.Pic }}"></a>
 
 
                           <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->
@@ -1108,8 +1109,8 @@
                           <a [routerLink]="['/single-product']"
                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
                              class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                              src="{{ PicServrUrl + TvVideoaudio88.Pic }}"
-                                                              alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
+                                                              src="{{TvVideoaudio88.Pic }}"
+                                                              alt="{{TvVideoaudio88.Pic }}"></a>
 
 
                           <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->
@@ -1395,8 +1396,8 @@
                           <a [routerLink]="['/single-product']"
                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
                              class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                              src="{{ PicServrUrl + TvVideoaudio88.Pic }}"
-                                                              alt="{{ PicServrUrl + TvVideoaudio88.Pic }}"></a>
+                                                              src="{{TvVideoaudio88.Pic }}"
+                                                              alt="{{TvVideoaudio88.Pic }}"></a>
 
 
                           <!--<div *ngIf="TvVideoaudio88.Auction == true" class="jtv-box-timer">-->

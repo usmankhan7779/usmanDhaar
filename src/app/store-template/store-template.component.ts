@@ -11,8 +11,6 @@ export class StoreTemplateComponent implements OnInit {
   r: any;
   Trend: any = [];
   pageno: any;
-
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   StoreName: any;
   StoreInfo: any = [];
   StoreInfoo: any = [];

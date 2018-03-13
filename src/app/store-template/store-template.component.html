@@ -11,7 +11,7 @@
         <div class="logo">
 
           <a [routerLink]="['/home']" title="Dhaar">
-            <img src="{{ PicServrUrl + StoreInfoo.Pic }}" width="1200" height="230" alt="dhaar3">
+            <img src="{{StoreInfoo.Pic }}" width="1200" height="230" alt="dhaar3">
             <!--{{ PicServrUrl + StoreInfo[0].Pic }}-->
           </a>
         </div>
@@ -396,7 +396,7 @@
                             <div id="pro2-slider1" class="product-flexslider hidden-buttons">
                               <div class="slider-items slider-width-col6">
 
-                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.pic }}"></a>
+                                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{phoneProducts.Pic }}" alt="{{phoneProducts.pic }}"></a>
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                                 <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 

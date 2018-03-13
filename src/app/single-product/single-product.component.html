@@ -13,11 +13,14 @@
         <div class="product-view-area">
           <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
             <!--<div class="icon-sale-label sale-left">Sale</div>-->
-            <div class="large-image"> <a class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img imageZoom="{{ PicServrUrl + productToshow.Pic }}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{ PicServrUrl + productToshow.Pic }}" alt="products"> </a> </div>
+            <div class="large-image"> <a class="cloud-zoom" id="zoom1" rel="useWrapper: true, adjustY:0, adjustX:0"> <img imageZoom="{{ProPics[0]}}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{ProPics[0]}}" alt="products"> </a> </div>
             <div class="flexslider-thumb">
               <ul class="previews-list slides">
-                <ng-container *ngFor="let ProductPix of ProductPictures">
-                <li><a href='{{ PicServrUrl + ProductPix.Pic }}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{{ PicServrUrl + ProductPix.Pic }}' "><img   src="{{ PicServrUrl + ProductPix.Pic }}" alt = "Thumbnail 2"/></a></li>
+                <ng-container *ngIf="ProPics[1]">
+                <li><a class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{{ProPics[1] }}' "><img  imageZoom="{{ProPics[1]}}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{ProPics[1]}}" alt = "Thumbnail 2"/></a></li>
+                </ng-container>
+                <ng-container *ngIf="ProPics[2]">
+                  <li><a class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '{{ProPics[2] }}' "><img  imageZoom="{{ProPics[2]}}" lensWidth="300" lensHeight="300" lensStyle="window" src="{{ProPics[2]}}" alt = "Thumbnail 2"/></a></li>
                 </ng-container>
               </ul>
             </div>
@@ -456,7 +459,7 @@
                       <div id="pro2-slider1" class="product-flexslider hidden-buttons">
                         <div class="slider-items slider-width-col6">
 
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.pic }}"></a>
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" alt="{{phoneProducts.pic }}"></a>
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 

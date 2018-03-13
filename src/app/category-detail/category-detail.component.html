@@ -98,7 +98,7 @@
                       <div class="slider-items-products">
                         <div id="pro2-slider" class="product-flexslider hidden-buttons">
                           <div class="slider-items slider-width-col6">
-                               <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ PicServrUrl + phoneProducts.Pic }}" alt="{{ PicServrUrl + phoneProducts.Pic }}"></a>
+                               <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" alt="{{ phoneProducts.Pic }}"></a>
 
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
@@ -165,7 +165,7 @@
                 <li>
                     <div class="row">
                       <div class="col-md-2 col-sm-4">
-                        <div class="adimg"><img src="{{ PicServrUrl + phoneProducts.Pic  }}" alt="Ad Name"></div>
+                        <div class="adimg"><img src="{{phoneProducts.Pic  }}" alt="Ad Name"></div>
                       </div>
                       <div class="col-md-10 col-sm-8">
                         <div class="jobinfo">
@@ -380,7 +380,7 @@
             <p class="amount">There are <a href="">{{ CartedProduct.products.length }} items</a> in your cart.</p>
             <ul>
               <ng-container *ngFor="let abc of CartedProduct.products">
-              <li class="item"> <a  title="Sample Product" class="product-image"><img src="{{ PicServrUrl + abc.Pic }}" alt="Sample Product "></a>
+              <li class="item"> <a  title="Sample Product" class="product-image"><img src="{{abc.Pic }}" alt="Sample Product "></a>
                 <div class="product-details">
                   <div class="access"> <a (click)="TrashcartElement(abc.ProductID)" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a></div>
                   <p class="product-name"> <a href="shopping_cart.html">{{ abc.P_Title }}{{ abc.P_Title }}</a> </p>

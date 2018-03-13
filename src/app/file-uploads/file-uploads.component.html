@@ -79,7 +79,7 @@
                   <!--</div>-->
                   <!--Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete-->
                 <!--</div>-->
-                <input type="file" #fileImportInput  id="txtFileUpload" class="form-control" (change)="handleFileInput($event.target.files)" >
+                <input type="file" #fileImportInput  id="txtFileUpload" class="form-control" (change)="handleFileInput($event.target.files)" accept="image/*" multiple="multiple">
               </div>
 
             <!--</div>-->

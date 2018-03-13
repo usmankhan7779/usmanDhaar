@@ -5,6 +5,8 @@ import {PostAdComponent} from "./post-ad.component";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {TextMaskModule} from "angular2-text-mask";
 import {HeaderModule} from "../header/header.module";
+import {UploadItemService} from '../file-uploads/upload-item-service';
+import {NgUploaderModule} from 'ngx-uploader';
 const loginRoutes: Routes = [
   { path: '', component: PostAdComponent }
 ];
@@ -19,13 +21,14 @@ const loginRoutes: Routes = [
     CommonModule,
     FormsModule,
     HeaderModule,
+    NgUploaderModule,
     // TextMaskModule,
 
     // ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)
   ],
 
-  providers: [],
+  providers: [UploadItemService],
   exports: []
 })
 

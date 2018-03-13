@@ -25,7 +25,6 @@ export class SingleProductComponent implements OnInit {
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
   ProID: string;
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   Getphoto: any = [];
   NewBidInserted = false ;
   NewCart = false ;
@@ -46,6 +45,7 @@ export class SingleProductComponent implements OnInit {
   istimer = true;
 
   resultProduct: any = [];
+  ProPics: any = [];
   BidingProduct: any[] = [];
   // onePeoduct: Productlist[];
   onePeoduct: any = [];
@@ -169,7 +169,9 @@ export class SingleProductComponent implements OnInit {
 
           this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
             this.resultProduct = resSlidersData;
-
+            console.log('Pics are:', this.resultProduct[0]['Pic']);
+            this.ProPics = this.resultProduct[0]['Pic'].split(',');
+            console.log('Pics are:', this.ProPics);
             if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
               this.ourproduct = true;
 
@@ -220,6 +222,7 @@ export class SingleProductComponent implements OnInit {
           // console.log('Women\'s Fashion')
           this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData => {
             this.resultProduct = resSlidersData;
+            this.ProPics = this.resultProduct[0]['Pic'].split(',');
             if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
               this.ourproduct = true;
 
@@ -252,6 +255,10 @@ export class SingleProductComponent implements OnInit {
         } else if (this.CatName === 'Men\'s Fashion') {
           this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData => {
             this.resultProduct = resSlidersData;
+
+            console.log('Pic attribute isssssssssS:', this.resultProduct[0]['Pic']);
+            this.ProPics = this.resultProduct[0]['Pic'].split(',');
+            console.log('ProPics isssss:', this.ProPics);
             if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
               this.ourproduct = true;
 
@@ -283,6 +290,7 @@ export class SingleProductComponent implements OnInit {
           // console.log('TV, Audio & Video')
           this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData => {
             this.resultProduct = resSlidersData;
+            this.ProPics = this.resultProduct[0]['Pic'].split(',');
             if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
               this.ourproduct = true;
 
@@ -313,6 +321,7 @@ export class SingleProductComponent implements OnInit {
         } else if (this.CatName === 'Computing & Laptops') {
           this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData => {
             this.resultProduct = resSlidersData;
+            this.ProPics = this.resultProduct[0]['Pic'].split(',');
             if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
               this.ourproduct = true;
 
@@ -343,6 +352,7 @@ export class SingleProductComponent implements OnInit {
         } else if (this.CatName === 'Home Appliances') {
           this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData => {
             this.resultProduct = resSlidersData;
+            this.ProPics = this.resultProduct[0]['Pic'].split(',');
             if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
               this.ourproduct = true;
 

@@ -47,10 +47,15 @@ export class ActiveAdComponent implements OnInit {
     this.httpService.GetAllActiveproductsBYUserID(1, localStorage.getItem('UserID')).subscribe(
       data => {
         this.ActiveProduct = data;
+        console.log('active products are::::', this.ActiveProduct);
       });
     if (isPlatformBrowser(this.platformId)){
       this.SessionstoreName = localStorage.getItem('StoreName');
     }
+  }
+
+  DisableProduct(CatName,Product_ID) {
+    this.httpService.DisableProduct(CatName,Product_ID).subscribe()
   }
 
   clearSessionstoreage() {

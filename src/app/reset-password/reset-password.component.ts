@@ -44,6 +44,7 @@ export class ResetPasswordComponent implements OnInit {
 
   UPdatePassword(pass1: any, pass2: any) {
     if ( pass1 === pass2 ) {
+      console.log('pass:',pass1,pass2,'uid is:', this.uid,'Token is:', this.token);
     this.obj.ResetPasswordConfirm(this.uid, this.token, pass1, pass2)
       .subscribe(
         data => {

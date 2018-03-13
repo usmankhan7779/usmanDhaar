@@ -17,7 +17,6 @@ export class SubsubCategoryDetailComponent implements OnInit {
   r: any;
   pageno: any;
   sub: any;
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   modelNo: any;
   Trend: any = [];
   GetPhotos: any = [];

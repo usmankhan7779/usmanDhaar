@@ -7,6 +7,8 @@ import { AdService } from './ad.services';
 import {LoginService} from '../log-in/log-in.services';
 import {HomeService} from '../home/home.services';
 import {and} from '@angular/router/src/utils/collection';
+import {UploadItemService} from '../file-uploads/upload-item-service';
+import swal from "sweetalert2";
 
 
 @Component({
@@ -52,12 +54,18 @@ export class PostAdComponent implements OnInit {
   Fixed = true;
   base64textStringforPic: any [];
   ALLbase64textStringforPic= {0: 'dfghjk'};
-
   Addbestoffer = false;
   Auction = true;
   file: any;
   file1: any;
   files: FileList;
+  fileToUpload: File = null;
+  fileToUpload1: File = null;
+  fileToUpload2: File = null;
+  filetoup:any=[];
+  fileName = '';
+  ImgSrc: any = [];
+  fileList: any = [];
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private HomeServics: HomeService,
@@ -65,7 +73,7 @@ export class PostAdComponent implements OnInit {
     private route: ActivatedRoute,
     private PostAdd: AdService,
 
-
+    private itemUploadService: UploadItemService,
     private router: Router) {}
 
   ngOnInit() {
@@ -200,6 +208,16 @@ export class PostAdComponent implements OnInit {
       // console.log('var132:' + Product_ID );
       //   alert('before');
       //   alert(this.CatName);
+      this.uploadItemsToActivity(this.SessionstoreName,Product_ID);
+      const baseurl = 'https://storage.dhaar.pk/';
+      for (let i=0;i<this.filetoup.length;i++) {
+        if (i ===0){
+          this.fileName = baseurl + this.SessionstoreName + '/' +Product_ID+'/'+ this.filetoup[i].name;
+        } else {
+          this.fileName += ',' + baseurl + this.SessionstoreName + '/' +Product_ID+'/'+ this.filetoup[i].name;
+        }
+      }
+      console.log('File Name is:', this.fileName);
       if (this.Auction === true) {
         // alert('dasdasd');
         this.model.FixedPrice = 0;
@@ -217,19 +235,19 @@ export class PostAdComponent implements OnInit {
           console.log('ABC');
 
           //  console.log('Phones & Tablets')
-          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'Women\'s Fashion') {
           // console.log('Women\'s Fashion')
-          this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'Men\'s Fashion') {
-          this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'TV, Audio & Video') {
           // console.log('TV, Audio & Video')
-          this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'Computing & Laptops') {
-          this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'Home Appliances') {
-          this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         }
       } else {
 
@@ -246,20 +264,20 @@ export class PostAdComponent implements OnInit {
         if (this.CatName === 'Phones & Tablets') {
 
 
-          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'Women\'s Fashion') {
 
-          this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'Men\'s Fashion') {
-          this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'TV, Audio & Video') {
           // console.log('TV, Audio & Video')
-          this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'Computing & Laptops') {
-          this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         } else if (this.CatName === 'Home Appliances') {
           // alert('Home');
-          this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID, this.base64textString, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity, this.ALLbase64textStringforPic, this.arrayIndex).subscribe();
+          this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
         }
 
 
@@ -276,80 +294,185 @@ export class PostAdComponent implements OnInit {
   }
 
 
-  handleUpload(data): void {
-    if (data && data.response) {
-      data = JSON.parse(data.response);
-      this.uploadFile = data;
-    }
-  }
+  // handleUpload(data): void {
+  //   if (data && data.response) {
+  //     data = JSON.parse(data.response);
+  //     this.uploadFile = data;
+  //   }
+  // }
+  //
+  // beforeUpload(uploadingFile): void {
+  //   if (uploadingFile.size > this.sizeLimit) {
+  //     uploadingFile.setAbort();
+  //     alert('File is too large');
+  //   }
+  // }
+  //
+  //
+  //
+  // _handleReaderLoaded(readerEvt) {
+  //   const binaryString = readerEvt.target.result;
+  //   this.base64textString = btoa(binaryString);
+  //
+  // }
 
-  beforeUpload(uploadingFile): void {
-    if (uploadingFile.size > this.sizeLimit) {
-      uploadingFile.setAbort();
-      alert('File is too large');
-    }
-  }
+  // onChange(event: EventTarget) {
+  //
+  //
+  //
+  //     const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+  //     const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+  //     this.files = target.files;
+  //   if (this.files.length >= 1 && this.files.length < 5) {
+  //
+  //     this.MaxPictureCheck = false;
+  //     this.file = this.files[0];
+  //
+  //     this.PictureCheck = true;
+  //     const reader = new FileReader();
+  //     reader.onload = this._handleReaderLoaded.bind(this);
+  //     reader.readAsBinaryString(this.file);
+  //
+  //     if (this.files.length > 1 && this.files.length < 5) {
+  //
+  //       for (let a = 1; a < (this.files.length); a++) {
+  //         // alert(a);
+  //         this.file1 = this.files[a];
+  //         const reader1 = new FileReader();
+  //         reader1.onload = (e: any) => {
+  //           this._handleReaderLoadedforALl(e, a - 1);
+  //         };
+  //         // this._handleReaderLoadedforALl.bind(this.file1, a-1);
+  //         reader1.readAsBinaryString(this.file1);
+  //       }
+  //       // console.log("fsdfsdf");
+  //       console.log(this.ALLbase64textStringforPic);
+  //     }
+  //   }else {
+  //     this.MaxPictureCheck = true;
+  //   }
+  //
+  //
+  //  }
 
 
+  // _handleReaderLoadedforALl(readerEvt, index) {
+  //   // console.log('attt  ',index);
+  //   const binaryString = readerEvt.target.result;
+  //   // console.log('123456');
+  //   // console.log('asdfghjk   ',btoa(binaryString))
+  //   // // this.arrayIndex=0;
+  //
+  //   this.ALLbase64textStringforPic[index] = btoa(binaryString);
+  //   // console.log(this.ALLbase64textStringforPic);
+  //   this.arrayIndex += 1;
+  //
+  //
+  // }
 
-  _handleReaderLoaded(readerEvt) {
-    const binaryString = readerEvt.target.result;
-    this.base64textString = btoa(binaryString);
+  // onRemove(file: FileHolder) {
+  //   console.log('Removed file is:', file.file);
+  //   // for(let i=0;i<this.filetoup.length;i++) {
+  //     console.log('Removed file is:', this.filetoup);
+  //   // }
+  // }
 
-  }
+  // handleFileInput1(files: FileList) {
+  //   this.PictureCheck=true;
+  //   this.filetoup = files;
+  //   console.log('thisssssssssssss', this.filetoup);
+  // }
 
+  // handleFileInput1(files: FileList) {
+  //   this.PictureCheck = true;
+  //   this.filetoup.push(files.item(0));
+  //   console.log('Files are:yessss', this.filetoup);
+  // }
+  // handleFileInput2(files: FileList) {
+  //
+  //   this.filetoup.push(files.item(0));
+  //   console.log('Files are:', this.filetoup);
+  // }
+  // handleFileInput3(files: FileList) {
+  //
+  //   this.filetoup.push(files.item(0));
+  //   console.log('Files are:', this.filetoup);
+  // }
+
+  // handleFileInput(files: FileList) {
+  //   if (files.length>3){
+  //     swal('You can upload maximum 2 images','','error')
+  //   } else {
+  //     this.PictureCheck=true;
+  //     this.filetoup = files;
+  //     console.log('Files are:', this.filetoup);
+  //   }
+  // }
   onChange(event: EventTarget) {
 
-
-
-      const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-      const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-      this.files = target.files;
-    if (this.files.length >= 1 && this.files.length < 5) {
-
-      this.MaxPictureCheck = false;
-      this.file = this.files[0];
-
-      this.PictureCheck = true;
-      const reader = new FileReader();
-      reader.onload = this._handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(this.file);
-
-      if (this.files.length > 1 && this.files.length < 5) {
-
-        for (let a = 1; a < (this.files.length); a++) {
-          // alert(a);
-          this.file1 = this.files[a];
-          const reader1 = new FileReader();
-          reader1.onload = (e: any) => {
-            this._handleReaderLoadedforALl(e, a - 1);
-          };
-          // this._handleReaderLoadedforALl.bind(this.file1, a-1);
-          reader1.readAsBinaryString(this.file1);
-        }
-        // console.log("fsdfsdf");
-        console.log(this.ALLbase64textStringforPic);
+    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    this.files = target.files;
+    if (this.files.length > 3) {
+      swal('Maximum 3 Images are allow','','error');
+    } else {
+      // if (this.fileList.indexOf(this.files[0]) === -1) {
+      this.PictureCheck=true;
+      for (let i = 0; i < this.files.length; i++) {
+        this.filetoup[i]=(this.files[i]);
       }
-    }else {
-      this.MaxPictureCheck = true;
+      console.log('filelist', this.filetoup);
+      console.log('raeder');
+      // const reader = new FileReader();
+      // reader.onload = this._handleReaderLoaded.bind(this);
+      // reader.readAsBinaryString(this.fileList[(this.fileList.length - 1)]);
+      // }
+      // const reader1 = new FileReader();
+      // reader1.onload = (e: any) => {
+      //   if (this.ImgSrc.indexOf(e.target.result) === -1) {
+      //     this.ImgSrc.push(e.target.result);
+      //     console.log('image array is:', this.ImgSrc);
+      //   }
+      // };
+      //
+      // reader1.readAsDataURL(this.filetoup[(this.filetoup.length - 1)]);
     }
+  }
+  // removeItem(ind) {
+  //   this.fileList.splice(ind, 1);
+  //   this.ImgSrc.splice(ind, 1);
+  //   console.log('files are:', this.fileList);
+  // }
 
-
-   }
-
-
-  _handleReaderLoadedforALl(readerEvt, index) {
-    // console.log('attt  ',index);
-    const binaryString = readerEvt.target.result;
-    // console.log('123456');
-    // console.log('asdfghjk   ',btoa(binaryString))
-    // // this.arrayIndex=0;
-
-    this.ALLbase64textStringforPic[index] = btoa(binaryString);
-    // console.log(this.ALLbase64textStringforPic);
-    this.arrayIndex += 1;
-
-
+  uploadItemsToActivity(StoreName,ProductID) {
+    if (this.filetoup.length === 1) {
+      console.log('I am in 1 Component');
+      this.itemUploadService.postOneImage(this.filetoup, StoreName, ProductID).subscribe(
+        data => {
+          console.log('Successs')
+        },
+        error => {
+          console.log(error);
+        });
+    } else if (this.filetoup.length === 2) {
+      console.log('I am in 2 Component');
+      this.itemUploadService.postTwoImage(this.filetoup, StoreName,ProductID).subscribe(
+        data => {
+          console.log('Successs')
+        },
+        error => {
+          console.log(error);
+        });
+    } else {
+      console.log('I am in 3 Component');
+      this.itemUploadService.postThreeImage(this.filetoup, StoreName,ProductID).subscribe(
+        data => {
+          console.log('Successs')
+        },
+        error => {
+          console.log(error);
+        });
+    }
   }
 }
 

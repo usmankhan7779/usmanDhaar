@@ -50,7 +50,7 @@
               <li>
                 <div class="row">
                   <div class="col-md-2 col-sm-4">
-                    <div class="adimg"><img src="{{ PicServrUrl + phoneProducts.Pic  }}" alt="Ad Name"></div>
+                    <div class="adimg"><img src="{{phoneProducts.Pic  }}" alt="Ad Name"></div>
                   </div>
                   <div class="col-md-10 col-sm-8">
                     <div class="jobinfo">
@@ -67,12 +67,13 @@
                             <span *ngIf="phoneProducts.Auction === true"> Sold: <span style="color: red !important;"  *ngIf="phoneProducts.Sold === true">Yes </span><span style="color: red !important;" *ngIf="phoneProducts.Sold === false">No</span> </span>
                           </p>
                           <p>
-                            <span *ngIf="phoneProducts.Auction === false"> Sold: <span style="color: red !important;">{{phoneProducts.MaxQuantity - phoneProducts.Quantity}} </span> </span>
+                            <span *ngIf="phoneProducts.Auction === false"> Sold: <span style="color: red !important;"  *ngIf="phoneProducts.Sold === true">Yes </span><span style="color: red !important;" *ngIf="phoneProducts.Sold === false">No</span> </span>
                           </p>
                           <p>
                             <span *ngIf="phoneProducts.Auction === false">Remaning Qty: <span style="color: red !important;"> {{phoneProducts.Quantity}} </span> </span>
                           </p>
                           <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                          <div class="listbtn"><a (click)="DisableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Remove Product</a></div>
                         </div>
                         <div class="col-md-4 col-sm-5 text-right">
                           <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>

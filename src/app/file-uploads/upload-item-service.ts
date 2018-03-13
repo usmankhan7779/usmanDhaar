@@ -11,12 +11,48 @@ export class UploadItemService {
 
   }
 
-  postItems(fileToUpload: File, productID): Observable<boolean> {
+  postOneImage(fileToUpload: FileList,StoreName, ProductID): Observable<boolean> {
+    console.log('I am in 1 Service');
     const formData: FormData = new FormData();
-    formData.append('input_file', fileToUpload, fileToUpload.name);
-    formData.append('productID', productID);
+    console.log('File to upload in service is:', fileToUpload);
+    formData.append('input_file0', fileToUpload[0]);
+    formData.append('ProductID', ProductID);
+    formData.append('StoreName', StoreName);
 
-    return this._http.post(this.ServerUrl+'picUploadTest', formData)
+    return this._http.post(this.ServerUrl+'onePicUpload', formData)
+      .map((d) => { return true; })
+      .catch((e) => {
+        return Observable.throw(e.statusText);
+      });
+  }
+
+  postTwoImage(fileToUpload: FileList,StoreName, ProductID): Observable<boolean> {
+    console.log('I am in 2 Service');
+    const formData: FormData = new FormData();
+    console.log('File to upload in service is:', fileToUpload);
+    formData.append('input_file0', fileToUpload[0]);
+    formData.append('input_file1', fileToUpload[1]);
+    formData.append('ProductID', ProductID);
+    formData.append('StoreName', StoreName);
+
+    return this._http.post(this.ServerUrl+'twoPicUpload', formData)
+      .map((d) => { return true; })
+      .catch((e) => {
+        return Observable.throw(e.statusText);
+      });
+  }
+
+  postThreeImage(fileToUpload: FileList,StoreName, ProductID): Observable<boolean> {
+    console.log('I am in 3 Service');
+    const formData: FormData = new FormData();
+    console.log('File to upload in service is:', fileToUpload);
+    formData.append('input_file0', fileToUpload[0]);
+    formData.append('input_file1', fileToUpload[1]);
+    formData.append('input_file2', fileToUpload[2]);
+    formData.append('ProductID', ProductID);
+    formData.append('StoreName', StoreName);
+
+    return this._http.post(this.ServerUrl+'threePicUpload', formData)
       .map((d) => { return true; })
       .catch((e) => {
         return Observable.throw(e.statusText);

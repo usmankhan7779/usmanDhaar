@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
   //   },
   // ];
   GetallCat: any = [];
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   ServrUrl: string = 'assets/assets2/images/category/';
   public GetallPhoneProduct: any = [];
   getcomputinglaptopsproduct8: any = [];
@@ -112,6 +111,10 @@ export class HomeComponent implements OnInit {
 
       this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
         this.GetallPhoneProduct = resSlidersData;
+        // for (const itm of this.GetallPhoneProduct) {
+        //   this.GetallphotsProduct = itm['Pic'].split(',');
+        //   console.log('Photo urlsssssss', this.GetallphotsProduct);
+        // }
 
         // console.log('Phone products are:', this.GetallPhoneProduct);
         // console.log('Brands Are:', this.brands);
