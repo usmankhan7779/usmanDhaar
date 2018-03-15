@@ -118,6 +118,36 @@ export class ActiveAdServices {
       }
     });
   }
+  EnableProduct(CatName: any, ProductID: any) {
+    return this._http.post(this.ServerUrl + 'DisableProduct/'+ProductID + '/' + CatName,
+      {
+        'Active': true
+      }).map((res: Response) => {
+      console.log('Helllooo i am in map');
+
+      if (res) {
+        if (res.status === 201 || res.status === 200) {
+
+        }
+      }
+    }).catch((error: any) => {
+
+      if (error.status !== 404) {
+        if (error.status === 401) {
+          console.log(error);
+
+          return Observable.throw(new Error(error.status));
+        }
+
+
+      } else {
+        console.log(error);
+        //   this._nav.navigate(['/login']);
+
+        return Observable.throw(new Error(error.status));
+      }
+    });
+  }
 
   SellerCounterOffers(pk:any, st:any, model: any) {
     return this._http.put(this.ServerUrl + 'counterOfferSeller/' + pk + '/' + st,

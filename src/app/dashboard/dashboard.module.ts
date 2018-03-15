@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {TextMaskModule} from "angular2-text-mask";
 import {HeaderModule} from "../header/header.module";
 import {Ng2PaginationModule} from "ng2-pagination";
+import {UploadItemService} from '../file-uploads/upload-item-service';
 const loginRoutes: Routes = [
   { path: '', component: DashboardComponent }
 ];
@@ -27,7 +28,7 @@ const loginRoutes: Routes = [
     RouterModule.forChild(loginRoutes)
   ],
 
-  providers: [],
+  providers: [UploadItemService],
   exports: []
 })
 

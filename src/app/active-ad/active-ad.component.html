@@ -73,7 +73,8 @@
                             <span *ngIf="phoneProducts.Auction === false">Remaning Qty: <span style="color: red !important;"> {{phoneProducts.Quantity}} </span> </span>
                           </p>
                           <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
-                          <div class="listbtn"><a (click)="DisableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Remove Product</a></div>
+                          <div class="listbtn"><a (click)="DisableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Disable This Ad</a></div>
+                          <!--<div *ngIf="!phoneProducts.Active" class="listbtn"><a (click)="EnableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Enable This Ad</a></div>-->
                         </div>
                         <div class="col-md-4 col-sm-5 text-right">
                           <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>

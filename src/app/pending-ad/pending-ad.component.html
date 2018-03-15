@@ -47,7 +47,7 @@
               <li>
                 <div class="row">
                   <div class="col-md-2 col-sm-4">
-                    <div class="adimg"><img src="{{ PicServrUrl + phoneProducts.Pic  }}" alt="Ad Name"></div>
+                    <div class="adimg"><img src="{{ phoneProducts.Pic  }}" alt="Ad Name"></div>
                   </div>
                   <div class="col-md-10 col-sm-8">
                     <div class="jobinfo">
@@ -59,6 +59,7 @@
                           <div class="clearfix"></div>
                           <p>{{phoneProducts.P_Des}}</p>
                           <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                          <div class="listbtn"><a (click)="EnableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Enable This Ad</a></div>
                         </div>
                         <div class="col-md-4 col-sm-5 text-right">
                           <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>

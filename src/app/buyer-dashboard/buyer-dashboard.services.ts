@@ -232,6 +232,7 @@ export class BuyerDashboardServices {
   }
 
   InsertPhoneMaxBid(proID: any, MaxPrice: any) {
+    console.log('In service', MaxPrice);
     return this._http.post(this.ServerUrl + 'PhoneAndTabletProductMaxBid', {
       'ProductID': proID,
       'MaxBidPrice': MaxPrice,

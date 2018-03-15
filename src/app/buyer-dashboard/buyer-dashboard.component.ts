@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { NgModel } from '@angular/forms';
 import {NgForm} from '@angular/forms';
+import {UploadItemService} from '../file-uploads/upload-item-service';
 
 
 @Component({
@@ -29,9 +30,12 @@ export class BuyerDashboardComponent implements OnInit {
   GetUSerDOne: any [];
   PicServrUrl = 'https://apis.dhaar.pk/media/';
   ValueRec: Boolean = false;
+  filetoup: FileList;
+  fileName: any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router,
+              private itemUploadService: UploadItemService
 
               ) { }
 
@@ -39,6 +43,7 @@ export class BuyerDashboardComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)){
     this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
+      console.log('User Id is:', this.GetUSerDOne);
       // this.FName = this.GetUSerDOne['Fname'];
       // this.LName = this.GetUSerDOne['Lname'];
       // this.Country = this.GetUSerDOne['Country'];
@@ -51,6 +56,30 @@ export class BuyerDashboardComponent implements OnInit {
     });
     }
   }
+
+  handleFileInput(files: FileList) {
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
+
+    this.fileName= 'https://storage.dhaar.pk/UserPics/' + localStorage.getItem('UserID') + '/' + this.filetoup[0].name;
+    console.log('File Name is:' ,this.fileName);
+    this.uploadItemsToActivity();
+
+  }
+
+  uploadItemsToActivity() {
+    console.log('I am in 1 Component');
+    this.itemUploadService.postOneImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
+      data => {
+        this.obj.UserDetailsUpdatePic(this.GetUSerDOne['user_id'],this.fileName).subscribe();
+        console.log('Successs')
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+
   onChange(event: EventTarget) {
 
     const eventObj: MSInputMethodContext = <MSInputMethodContext> event;

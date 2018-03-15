@@ -141,10 +141,10 @@ export class SubsubCategoryDetailComponent implements OnInit {
       }
 
 
-      this.httpService.GetphotoById().subscribe(resSlidersData => {
-        this.GetPhotos = resSlidersData;
-
-      });
+      // this.httpService.GetphotoById().subscribe(resSlidersData => {
+      //   this.GetPhotos = resSlidersData;
+      //
+      // });
     }
   }
 

@@ -20,11 +20,11 @@ export class  CategoryServices {
   constructor(private _http: HttpService,
               private _nav: Router) {
   }
-  GetphotoById() {
-
-    return this._http.get(this.ServerUrl + 'GetProductPic').map(response => response.json());
-    // console.log(this.CateDeatils)
-  }
+  // GetphotoById() {
+  //
+  //   return this._http.get(this.ServerUrl + 'GetProductPic').map(response => response.json());
+  //   // console.log(this.CateDeatils)
+  // }
 
 
   //Phone

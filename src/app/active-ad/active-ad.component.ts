@@ -24,7 +24,8 @@ export class ActiveAdComponent implements OnInit {
   SessionstoreName: any;
 
 
-  constructor( @Inject(PLATFORM_ID) private platformId: Object,private _nav: Router,
+  constructor( @Inject(PLATFORM_ID) private platformId: Object,
+               private _nav: Router,
                private route: ActivatedRoute,
                private httpService: ActiveAdServices) { }
 
@@ -57,6 +58,7 @@ export class ActiveAdComponent implements OnInit {
   DisableProduct(CatName,Product_ID) {
     this.httpService.DisableProduct(CatName,Product_ID).subscribe()
   }
+
 
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){

@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import { JwtHelper } from 'angular2-jwt';
 import {ActiveAdServices} from "../active-ad/active-ad.services";
 import swal from "sweetalert2";
+import {UploadItemService} from '../file-uploads/upload-item-service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -34,13 +35,16 @@ export class DashboardComponent implements OnInit {
   sessionstore: any;
   ProductID:any;
   CatName: any;
+  filetoup: FileList;
+  fileName: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http ,
               private Profile: LoginService,
               private HomeServics: HomeService,
               private _nav: Router,
-              private httpService: ActiveAdServices) {
+              private httpService: ActiveAdServices,
+              private itemUploadService: UploadItemService) {
   }
 
   ngOnInit() {
@@ -89,6 +93,27 @@ export class DashboardComponent implements OnInit {
 
 
     }
+  }
+  handleFileInput(files: FileList) {
+      this. filetoup = files;
+      console.log('uploaded filetoup  ', this.filetoup);
+
+      this.fileName= 'https://storage.dhaar.pk/UserPics/' + localStorage.getItem('UserID') + '/' + this.filetoup[0].name;
+      console.log('File Name is:' ,this.fileName);
+      this.uploadItemsToActivity();
+
+  }
+
+  uploadItemsToActivity() {
+      console.log('I am in 1 Component');
+      this.itemUploadService.postOneImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
+        data => {
+          this.Profile.UserDetailsUpdatePic(this.GetUSerDOne.user_id,this.fileName).subscribe();
+          console.log('Successs')
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   AcceptOffer(user: any, pro: any) {

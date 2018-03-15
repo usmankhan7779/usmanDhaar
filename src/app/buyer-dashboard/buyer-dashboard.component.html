@@ -68,8 +68,16 @@
               <div class="panel-body">
                 <div class="row">
                   <ng-container *ngIf="GetUSerDOne !== null">
-                    <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
-                    <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{PicServrUrl + GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
+                    <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 upload-img-wrapper" align="center">
+                      <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive">
+                      <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+                      <i class="fa fa-camera upload-cam-img"></i>
+                    </div>
+                    <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 upload-img-wrapper" align="center">
+                      <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive">
+                      <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+                      <i class="fa fa-camera upload-cam-img"></i>
+                    </div>
                     <!--<form (ngSubmit)="save()">-->
                     <!--<div class="form-group">-->
                       <!--&lt;!&ndash;<input class="file" (change)="onChange($event)" type="file" placeholder="Upload image" data-preview-file-type="text" id="file1" name="file" #Picture ng-files="getTheFiles($files)" />&ndash;&gt;-->

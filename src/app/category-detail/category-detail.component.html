@@ -86,7 +86,8 @@
           <div *ngIf="!View" class="product-grid-area">
             <ul class="products-grid">
               <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
-              <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              <ng-container *ngIf="phoneProducts.Active">
+                <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="product-item">
                   <div class="item-inner">
                     <div class="product-thumbnail">
@@ -146,7 +147,7 @@
                 </div>
               </li>
 
-
+              </ng-container>
               </ng-container>
 
             </ul>
@@ -162,7 +163,8 @@
 
 
                 <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id2' }">
-                <li>
+                <ng-container *ngIf="phoneProducts.Active">
+                  <li>
                     <div class="row">
                       <div class="col-md-2 col-sm-4">
                         <div class="adimg"><img src="{{phoneProducts.Pic  }}" alt="Ad Name"></div>
@@ -192,6 +194,7 @@
                       </div>
                     </div>
                   </li>
+                </ng-container>
                 </ng-container>
 
                 <!--<div class="col-sm-4 col-sm-push-8">-->

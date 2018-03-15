@@ -458,6 +458,7 @@ export class SingleProductComponent implements OnInit {
         if (this.resultProduct[0]['Cat_Name'] === null) {
           this.router.navigate(['/login']);
         } else if (this.resultProduct[0]['Cat_Name'] === 'Phones & Tablets') {
+          console.log('In Phone bid: vlaue is bid is:', this.model.UserPriceBid);
           this.httpService.InsertPhoneMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
         } else if (this.resultProduct[0]['Cat_Name'] === 'Women\'s Fashion') {
           this.httpService.InsertWomenMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
@@ -471,7 +472,9 @@ export class SingleProductComponent implements OnInit {
           this.httpService.InsertHomeMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
         }
 
-        this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe();
+        this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(data => {
+          this.RefreshBids();
+        });
 
         // this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(resSlidersData => {
         //   this.GeProductBiding = resSlidersData;

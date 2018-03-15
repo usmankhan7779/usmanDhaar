@@ -184,10 +184,10 @@ export class HomeComponent implements OnInit {
 
 
       // picture
-      this.GetProducts.GetphotoById().subscribe(resSlidersData => {
-        this.Getphoto = resSlidersData;
-
-      });
+      // this.GetProducts.GetphotoById().subscribe(resSlidersData => {
+      //   this.Getphoto = resSlidersData;
+      //
+      // });
 
 
     }

@@ -164,10 +164,10 @@ export class CategoryDetailComponent implements OnInit {
     }
 
 
-    this.httpService.GetphotoById().subscribe(resSlidersData => {
-      this.GetPhotos = resSlidersData;
-
-    });
+    // this.httpService.GetphotoById().subscribe(resSlidersData => {
+    //   this.GetPhotos = resSlidersData;
+    //
+    // });
 
 
   }

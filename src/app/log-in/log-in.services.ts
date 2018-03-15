@@ -568,7 +568,15 @@ export class LoginService {
     return this._http.get(this.ServerUrl + 'Get_EmailByID/' + USerid).map((response: Response) => response.json());
   }
 
-
+  UserDetailsUpdatePic(Username: string,Pic: any) {
+    return this._http.post( 'http://127.0.0.1:8000/user/' + 'UserFullDetailsPicUpload/' + Username,
+      {
+        'Pic' : Pic,
+      })
+      .map((res: Response) => {
+        console.log('Response:', res);
+      });
+  }
 
 
   UserDetailsUpdate(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: any, Username: string) {
@@ -688,7 +696,6 @@ export class LoginService {
 
     }).catch((error: any) => {
       console.log(error.message);
-      console.log('hellllloooo');
       // alert('sfs');
       return Observable.throw(new Error(error.status));
     });
