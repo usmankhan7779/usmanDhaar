@@ -1,18 +1,18 @@
 import {Routes, RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {AboutUsComponent} from "./about-us.component";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {TextMaskModule} from "angular2-text-mask";
 import {HeaderModule} from "../header/header.module";
+import {AboutUssComponent} from './about-uss.component';
 const loginRoutes: Routes = [
-  { path: '', component: AboutUsComponent }
+  { path: '', component: AboutUssComponent }
 ];
 
 
 @NgModule({
   declarations: [
-    AboutUsComponent
+    AboutUssComponent
   ],
 
   imports: [
@@ -29,6 +29,6 @@ const loginRoutes: Routes = [
   exports: []
 })
 
-export class AboutUsModule {
+export class AboutUssModule {
 
 }

@@ -48,6 +48,7 @@ import {ImageZoomModule} from 'angular2-image-zoom';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { LayoutComponent } from './layout/layout.component';
 import { OwlModule} from "ngx-owl-carousel";
+import { AboutUssComponent } from './about-uss/about-uss.component';
 
 @NgModule({
   declarations: [

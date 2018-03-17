@@ -19,7 +19,7 @@ const appRoutes: Routes = [
       { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutModule'},
       { path: 'change-password', loadChildren: './change-password/change-password.module#ChangePasswordModule'},
       { path: 'post-ad', loadChildren: './post-ad/post-ad.module#PostAdModule', canActivate:[AuthGuard]},
-      { path: 'about-us', loadChildren: './about-us/about-us.module#AboutUsModule'},
+      { path: 'about-us', loadChildren: './about-uss/about-uss.module#AboutUssModule'},
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard]},
       { path: 'active-ad', loadChildren: './active-ad/active-ad.module#ActiveAdModule', canActivate: [AuthGuard]},
       { path: 'pending-ad', loadChildren: './pending-ad/pending-ad.module#PendingAdModule', canActivate: [AuthGuard]},

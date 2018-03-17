@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../log-in/log-in.services';
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -21,6 +22,9 @@ export class FooterComponent implements OnInit {
 
     this.GetProducts.NewsLatterEmail(mail).subscribe((response) => {
         this.Waitcall = true;
+        swal('Your Email has been subscribed Successfully','','success');
+        const selectElement = <HTMLSelectElement>document.getElementById('newsletter-validate-detail');
+        selectElement.reset();
       },
       (err) => {
         this.Waitcall = false;

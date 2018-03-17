@@ -1,66 +1,48 @@
-
-/* Playing with the methods outlined here
-https://csswizardry.com/2011/02/css-powered-ribbons-the-clean-way/ */
-
-body {
-  margin: 40px;
-  padding: 20px;
-  border: 1px solid #999;
+.how-it-works-box {
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.3);
+  background: #fff;
+  border-radius: 6px;
+  padding: 30px 0px;
+  margin-bottom: 20px;
 }
-%ribbon {
-  position:relative;
-  float:left;
-  clear:both;
-  padding:10px 10px 10px 20px;
-  margin-left:-40px;
-  margin-bottom:20px;
-  -moz-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
-  -webkit-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
-  -o-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
-  box-shadow:2px 2px 0 rgba(0,0,0,0.1);
-  &:before {
-    content:" ";
-    border-style: solid;
-    border-width: 10px;
-    display:block;
-    position:absolute;
-    bottom: -10px;
-    left:0;
-    margin-bottom:-10px;
-    z-index:-1;
-  }
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-h2.ribbon {
-  @extend %ribbon;
-  color:#fff;
-  background:#ed2424;
-  text-shadow:0 -1px darken(#ed2424, 15%), 0 1px darken(#ed2424, 15%);
-  &:before {
-    border-color: #ed2424 #ed2424 transparent transparent;
-  }
+div {
+  display: block;
 }
-h3.ribbon {
-  @extend %ribbon;
-  color:#fff;
-  background: #ed2424;
-  text-shadow:0 -1px darken(#ed2424, 15%), 0 1px darken(#ed2424, 15%);
-  &:before {
-    border-color: #ed2424 #ed2424 transparent transparent;
-  }
+.how-it-works-wrapper1 {
+  background:url("../../assets/images/backcover.jpg/title-background.32fef2fdaa817cd71569.jpg") ;
+  background-position: 50%;
+  background-size: cover;
+  text-align: center;
+  padding: 50px;
 }
-h4.ribbon {
-  @extend %ribbon;
-  color: #333;
-  background: #feec2d;
-  text-shadow:0 -1px darken(#feec2d, 15%), 0 1px darken(#feec2d, 15%);
-  &:before {
-    border-color: #e1d100 #e1d100 transparent transparent;
-  }
+.how-it-works-wrapper1 h1{color: #fff;font-weight: 900;}
+.how-it-works-wrapper1 p{color: #fff;font-weight: 900;}
+.how-it-works-wrapper {
+  text-align: center;
 }
-.ribbon + p {
-  clear: both;
+.how-it-works-box:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0 5px 25px 0 rgba(64, 64, 64, .3);
+  -moz-box-shadow: 0 5px 25px 0 rgba(64, 64, 64, .3);
+  box-shadow: 0 5px 25px 0 rgba(64, 64, 64, .3);
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
 }
-
-p {
-  margin-bottom: 8px;
+.wpb_wrapper{
+  background: #c00;
+  color: white;
+}
+.footer{
+  font-family: Roboto;
 }
