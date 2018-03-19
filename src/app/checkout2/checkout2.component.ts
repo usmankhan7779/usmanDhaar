@@ -49,6 +49,7 @@ export class Checkout2Component implements OnInit {
 
   InvoiceIDSet: any;
   id: any;
+  ProPics: any=[];
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -94,6 +95,13 @@ export class Checkout2Component implements OnInit {
         }
       });
       this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+      console.log('Carted products are:', this.CartedProduct);
+      for (const tmp1 of this.CartedProduct['products']) {
+        console.log('Temp1 is:', tmp1);
+        console.log('Values are:',tmp1['Pic']);
+        this.ProPics.push(tmp1['Pic'].split(',')[0]);
+      }
+      console.log('Pics are are:', this.ProPics);
 
 
     this.Total = 0;

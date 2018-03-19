@@ -20,7 +20,7 @@ export class PostAdComponent implements OnInit {
   _nav: any;
 
   private sub: any;
-  model: any = {};
+  model: any = {"AddBestOffer":false};
 
   subcatNsubScat: any = [];
   GetAllSubSubCat: any = [];
@@ -208,7 +208,7 @@ export class PostAdComponent implements OnInit {
       // console.log('var132:' + Product_ID );
       //   alert('before');
       //   alert(this.CatName);
-      this.uploadItemsToActivity(this.SessionstoreName,Product_ID);
+      // this.uploadItemsToActivity(this.SessionstoreName,Product_ID);
       const baseurl = 'https://storage.dhaar.pk/';
       for (let i=0;i<this.filetoup.length;i++) {
         if (i ===0){
@@ -221,7 +221,7 @@ export class PostAdComponent implements OnInit {
       if (this.Auction === true) {
         // alert('dasdasd');
         this.model.FixedPrice = 0;
-        this.model.AddBestOffer = 0;
+        this.model.AddBestOffer = false;
         this.model.Quantity = 1;
         if (this.model.ReservePrice == null) {
           this.model.ReservePrice = 0;
@@ -257,9 +257,9 @@ export class PostAdComponent implements OnInit {
         this.model.ReservePrice = 0;
         this.model.AuctionListing = 0;
 
-        if (this.model.AddBestOffer == null) {
-          this.model.AddBestOffer = 0;
-        }
+        // if (this.model.AddBestOffer == null) {
+        //   this.model.AddBestOffer = 0;
+        // }
         // console.log('catName:'+ this.CatName);
         if (this.CatName === 'Phones & Tablets') {
 

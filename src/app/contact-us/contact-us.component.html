@@ -46,26 +46,72 @@
             </div>
             <div class="col-sm-6">
               <h3 class="page-subheading">Make an enquiry</h3>
-              <form role="form" #f="ngForm" novalidate>
+              <!--<form role="form" #f="ngForm" novalidate>-->
+
+                <!--<div class="formpanel">-->
+                  <!--<div class="formrow">-->
+                    <!--<label>Name</label>-->
+                      <!--<input type="text" class="form-control input-sm" name="name" [(ngModel)]="model.name"  #name="ngModel" required>-->
+                  <!--</div>-->
+                  <!--<div class="formrow">-->
+                    <!--<label>Email</label>-->
+                      <!--<input type="email" class="form-control input-sm" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.email"  #email="ngModel" required>-->
+                  <!--</div>-->
+                  <!--<div class="formrow">-->
+                    <!--<label>Mobile</label>-->
+                      <!--<input type="text" class="form-control input-sm" name="mobile" [(ngModel)]="model.mobile"  #mobile="ngModel" required>-->
+                  <!--</div>-->
+                  <!--<div class="formrow">-->
+                    <!--<label>Message</label>-->
+                      <!--<textarea class="form-control input-sm" name="message" [(ngModel)]="model.message"  #message="ngModel" required></textarea>-->
+                  <!--</div>-->
+                  <!--<button (click)="contact_log()" class="button"><i class="fa fa-send"></i>&nbsp; <span>Send Message</span></button>-->
+                <!--</div>-->
+              <!--</form>-->
+
+              <form role="form" class="login-form" id="contact_form" (ngSubmit)="f.form.valid && contact_log(name.value, email.value,phone.value,message.value)" #f="ngForm" novalidate>
 
                 <div class="formpanel">
                   <div class="formrow">
-                    <label>Name</label>
-                      <input type="text" class="form-control input-sm" name="name" [(ngModel)]="model.name"  #name="ngModel" required>
+                    <div class="form-group label-overlay">
+                      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                        <input type="text" class="form-control" placeholder="Name" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+                        <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
+                      </div>
+
+                    </div><!-- End .form-group -->
                   </div>
                   <div class="formrow">
-                    <label>Email</label>
-                      <input type="email" class="form-control input-sm" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.email"  #email="ngModel" required>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                      <input type="email" class="form-control" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email" name="email" [(ngModel)]="model.email"  #email="ngModel" required>
+                      <div *ngIf="f.submitted && !email.valid" class="help-block">Valid Email is required</div>
+                    </div>
+
                   </div>
                   <div class="formrow">
-                    <label>Mobile</label>
-                      <input type="text" class="form-control input-sm" name="mobile" [(ngModel)]="model.mobile"  #mobile="ngModel" required>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
+                      <input type="text" class="form-control" placeholder="Mobile" name="phone" [(ngModel)]="model.phone"  #phone="ngModel" required>
+                      <div *ngIf="f.submitted && !phone.valid" class="help-block">Password is required</div>
+                    </div>
+
                   </div>
                   <div class="formrow">
-                    <label>Message</label>
-                      <textarea class="form-control input-sm" name="message" [(ngModel)]="model.message"  #message="ngModel" required></textarea>
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !message.valid }">
+                      <textarea class="form-control" placeholder="Message" name="message" [(ngModel)]="model.message"  #message="ngModel" required></textarea>
+                      <div *ngIf="f.submitted && !message.valid" class="help-block">Password is required</div>
+                    </div>
+
                   </div>
-                  <button (click)="contact_log()" class="button"><i class="fa fa-send"></i>&nbsp; <span>Send Message</span></button>
+                  <button type="submit" class="button"><i class="fa fa-send"></i>&nbsp; <span>Send Message</span></button>
+                  <!--<div *ngIf="Waitcall" class="alert  alert-info">-->
+                    <!--<p class="">-->
+                      <!--<span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>-->
+
+                    <!--</p>-->
+                  <!--</div>-->
+
+                  <!--<input type="submit" class="btn" value="Login">-->
+
                 </div>
               </form>
             </div>

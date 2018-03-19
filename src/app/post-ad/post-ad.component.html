@@ -208,12 +208,12 @@
                       </div>
 
                       <div class="formrow">
-                        <input type="checkbox" (click)="AddbestofferFun()"  value="agree text" name="agree" />
-                        Add Best Offer
+                        <input type="checkbox" [(ngModel)]="model.AddBestOffer" value="agree text" name="agree" />
+                        Make Offer on this Product?
                       </div>
-                      <div *ngIf="Addbestoffer == true" class="formrow">
-                        <input type="number" [(ngModel)]="model.AddBestOffer" name="name5" class="form-control" placeholder="Offer">
-                      </div>
+                      <!--<div *ngIf="Addbestoffer == true" class="formrow">-->
+                        <!--<input type="radio" [(ngModel)]="model.AddBestOffer" name="name5" class="form-control" placeholder="Offer">-->
+                      <!--</div>-->
 
                       <div class="formrow">
                         <input type="number" [(ngModel)]="model.Quantity" name="name6" class="form-control" placeholder="Quantity">

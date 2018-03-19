@@ -24,29 +24,13 @@ export class ContactUsComponent implements OnInit {
   }
 
 
-  contact_log() {
-    console.log('dfdcusdbjhaaaaaaaaaaaaaaaaaaaaaaaaa')
-    if(this.model.name) {
-      if(this.model.email.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')) {
-        if(this.model.mobile) {
-          if(this.model.message){
-            this.obj.contact_us(this.model.name, this.model.email, this.model.mobile, this.model.message).subscribe(data => {
-              this.model = data;
-              swal('Your Message has been Submitted','','success')
-            });
-          } else {
-            swal('Please Enter Your Message','','error');
-          }
-        } else {
-          swal('Please Enter Your Mobile Number','','error');
-        }
-      } else {
-        swal('Please Enter Valid Email','','error');
-      }
-    } else {
-      swal('Please Enter Your Name','','error');
-    }
-
+  contact_log(name,email,phone,message) {
+    console.log('dfdcusdbjhaaaaaaaaaaaaaaaaaaaaaaaaa');
+    this.obj.contact_us(name, email, phone,message).subscribe(data => {
+      const selectElement = <HTMLSelectElement>document.getElementById('contact_form');
+      selectElement.reset();
+      swal('Your Message has been Submitted','','success');
+    });
   }
 
 }

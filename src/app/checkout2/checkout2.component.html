@@ -30,10 +30,10 @@
                 <tbody>
 
                 <ng-container *ngIf="Total > 0">
-                  <ng-container *ngFor="let abc of CartedProduct.products">
+                  <ng-container *ngFor="let abc of CartedProduct.products; let i=index">
                   <tr>
                     <td class="cart_product">
-                      <a href="#"><img src="{{ PicServrUrl + abc.Pic }}" alt="products" alt="Product"></a>
+                      <a href="#"><img src="{{ ProPics[i]}}" alt="products" alt="Product"></a>
                     </td>
                     <td class="cart_description">
                       <p class="product-name"><a href="#">{{ abc.P_Title }} </a></p>
@@ -651,7 +651,7 @@
                 <div class="panel-body">
                   <div class="row">
                     <ng-container *ngIf="GetUSerDOne !== null">
-                      <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{PicServrUrl + GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
+                      <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
                       <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
                       <div class=" col-md-8 col-lg-8 ">
                         <table class="table table-user-information">

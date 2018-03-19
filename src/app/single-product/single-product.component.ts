@@ -142,7 +142,7 @@ export class SingleProductComponent implements OnInit {
           this.GetAdd.GetallBidsProductdbyProductID(this.ProID).subscribe(resSlidersData => {
 
             this.BidingProduct = resSlidersData;
-            // console.log('Bidding Products are:', this.BidingProduct[0].Price);
+            // console.log('Bidding Products are:', this.BidingProduct);
 
 
             this.BidingProduct.sort(function (a, b) {
@@ -155,7 +155,7 @@ export class SingleProductComponent implements OnInit {
                 return 0;
               }
             });
-            console.log('Bidding Products are:', this.BidingProduct[0]['Price']);
+            // console.log('Bidding Products are:', this.BidingProduct[0]['Price']);
           });
         });
       this.GetAdd.GetphotoById().subscribe(resSlidersData => {
