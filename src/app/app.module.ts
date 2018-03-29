@@ -7,6 +7,7 @@ import { DatePipe   } from '@angular/common';
 import {Routing , AppRoutingProvider} from './app.routing';
 import { SocialLoginModule } from 'angular4-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 const config = new AuthServiceConfig([
   {
@@ -72,6 +73,7 @@ import { AboutUssComponent } from './about-uss/about-uss.component';
     Ng2AutoCompleteModule,
     TextMaskModule,
     SocialLoginModule,
+    RecaptchaModule.forRoot(),
     OwlModule,
     Routing
   ],

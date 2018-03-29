@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './log-in.services';
-import { NgModel } from '@angular/forms';
+import {FormControl, NgModel, Validators} from '@angular/forms';
 import {NgForm} from '@angular/forms';
 import {HttpService} from '../services/http-service';
 import { Headers} from "@angular/http";
@@ -34,6 +34,11 @@ export class LogInComponent implements OnInit {
 
   checkout: string;
   returnUrl: string;
+  captcha = false;
+
+  // CaptchaForm = new FormControl(
+  // Validators.required,
+  // );
 
 
 
@@ -95,6 +100,10 @@ export class LogInComponent implements OnInit {
 
   signOut(): void {
     this.authService.signOut();
+  }
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    this.captcha= true;
   }
 
   loged_in(username: any, password: any) {

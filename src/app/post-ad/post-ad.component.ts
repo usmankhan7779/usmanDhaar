@@ -208,7 +208,7 @@ export class PostAdComponent implements OnInit {
       // console.log('var132:' + Product_ID );
       //   alert('before');
       //   alert(this.CatName);
-      // this.uploadItemsToActivity(this.SessionstoreName,Product_ID);
+      this.uploadItemsToActivity(this.SessionstoreName,Product_ID);
       const baseurl = 'https://storage.dhaar.pk/';
       for (let i=0;i<this.filetoup.length;i++) {
         if (i ===0){
@@ -230,25 +230,12 @@ export class PostAdComponent implements OnInit {
           this.model.Buyitnow = 0;
         }
 
-        if (this.CatName === 'Phones & Tablets') {
 
           console.log('ABC');
 
           //  console.log('Phones & Tablets')
           this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'Women\'s Fashion') {
-          // console.log('Women\'s Fashion')
-          this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'Men\'s Fashion') {
-          this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'TV, Audio & Video') {
-          // console.log('TV, Audio & Video')
-          this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'Computing & Laptops') {
-          this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'Home Appliances') {
-          this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        }
+
       } else {
 
 
@@ -261,25 +248,9 @@ export class PostAdComponent implements OnInit {
         //   this.model.AddBestOffer = 0;
         // }
         // console.log('catName:'+ this.CatName);
-        if (this.CatName === 'Phones & Tablets') {
 
 
           this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'Women\'s Fashion') {
-
-          this.PostAdd.Add_WomenFashion_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'Men\'s Fashion') {
-          this.PostAdd.Add_MenFashion_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'TV, Audio & Video') {
-          // console.log('TV, Audio & Video')
-          this.PostAdd.Add_TVAudioVideo_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'Computing & Laptops') {
-          this.PostAdd.Add_ComputingLaptops_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        } else if (this.CatName === 'Home Appliances') {
-          // alert('Home');
-          this.PostAdd.Add_HomeAppliances_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
-        }
-
 
       }
     } else {

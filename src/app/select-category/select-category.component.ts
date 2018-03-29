@@ -11,7 +11,7 @@ export class SelectCategoryComponent implements OnInit {
   GetallCat: any = [];
   user = false;
   seller = true;
-  ServrUrl: string = 'assets/assets2/images/category/';
+  ServrUrl: string = 'assets/images/';
   constructor(
     private PostAdd: AdService,
   ) { }

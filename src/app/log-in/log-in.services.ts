@@ -569,7 +569,7 @@ export class LoginService {
   }
 
   UserDetailsUpdatePic(Username: string,Pic: any) {
-    return this._http.post( 'http://127.0.0.1:8000/user/' + 'UserFullDetailsPicUpload/' + Username,
+    return this._http.post( this.ServerUrl + 'UserFullDetailsPicUpload/' + Username,
       {
         'Pic' : Pic,
       })

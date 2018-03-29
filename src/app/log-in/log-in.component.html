@@ -41,27 +41,29 @@
           <!--<input type="text" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="UserPriceBid" [(ngModel)]="model.Username" placeholder="Username" required>-->
           <!--<input type="Password" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.Password" placeholder="Password" required>-->
           <!--<button class="button pro-add-to-cart col-md-push-6 " (click)="loged_in()" title="Bid Now" type="button"><span> Login</span></button>-->
-            <form role="form" class="login-form"  (ngSubmit)="f.form.valid && loged_in(username.value, password.value)" #f="ngForm" novalidate>
+            <form role="form" class="login-form"  (ngSubmit)="f.form.valid && captcha && loged_in(username.value, password.value)" #f="ngForm" novalidate>
 
           <div class="formpanel">
             <div class="formrow">
               <div class="form-group label-overlay">
                 <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-                  <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
                   <input type="text" class="form-control" placeholder="Username" name="username" [(ngModel)]="model.username" #username="ngModel" required>
-
+                  <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
                 </div>
 
               </div><!-- End .form-group -->
             </div>
             <div class="formrow">
               <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
                 <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="model.password"  #password="ngModel" required>
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
               </div>
 
-
-
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !captcha}">
+              <re-captcha (resolved)="resolved($event)" siteKey="6LcMeE4UAAAAAORPbOfwjGczzxsz843f24BA92IN" required></re-captcha>
+              <div *ngIf="f.submitted && !captcha" class="help-block">ReCaptcha is required</div>
+              <!--[(ngModel)]="model.recaptcha" #recaptcha="ngModel"-->
+            </div>
             </div>
             <div *ngIf="Waitcall" class="alert  alert-info">
               <p class="">

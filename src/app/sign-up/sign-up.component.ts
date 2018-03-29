@@ -30,6 +30,7 @@ export class SignUpComponent implements OnInit {
   termsAggre= false;
   PassMatch= true;
   registration_error = false;
+  captcha = false;
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private singup: LoginService,
                private route: ActivatedRoute,
@@ -41,6 +42,10 @@ export class SignUpComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/log-in';
     }
+  }
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    this.captcha= true;
   }
   register() {
     if (isPlatformBrowser(this.platformId)) {

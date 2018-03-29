@@ -38,9 +38,9 @@ export class  CategoryServices {
   getAllPhoneAndTabletProductAuction(page: any) {
       return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductauction?page=' + page, ).map(response => response.json());
   }
-  getAllPhoneAndTabletProductoffer(page: any) {
-        return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductoffer?page=' + page, ).map(response => response.json());
-    }
+  // getAllPhoneAndTabletProductoffer(page: any) {
+  //       return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductoffer?page=' + page, ).map(response => response.json());
+  //   }
 
 
   getAllSearchProducts(page: any, query: string) {
@@ -128,9 +128,9 @@ export class  CategoryServices {
  getAllWomenFashionProductAuction(page: any) {
     return this._http.get( this.ServerUrl + 'getAllWomenFashionProductauction?page=' + page, ).map(response => response.json());
   }
- getAllWomenFashionProductoffer(page: any) {
-    return this._http.get( this.ServerUrl + 'getAllWomenFashionProductoffer?page=' + page, ).map(response => response.json());
-  }
+ // getAllWomenFashionProductoffer(page: any) {
+ //    return this._http.get( this.ServerUrl + 'getAllWomenFashionProductoffer?page=' + page, ).map(response => response.json());
+ //  }
 
   getAllWomenFashionProductWithType(page: any, Type: boolean) {
     return this._http.get( this.ServerUrl + 'getAllWomenFashionProduct/' + Type + '?page=' + page, ).map(response => response.json());
@@ -186,9 +186,9 @@ export class  CategoryServices {
   getAllMenFashionProductauction(page: any) {
     return this._http.get( this.ServerUrl + 'getAllMenFashionProductauction?page=' + page, ).map(response => response.json());
   }
-  getAllMenFashionProductoffer(page: any) {
-    return this._http.get( this.ServerUrl + 'getAllMenFashionProductoffer?page=' + page, ).map(response => response.json());
-  }
+  // getAllMenFashionProductoffer(page: any) {
+  //   return this._http.get( this.ServerUrl + 'getAllMenFashionProductoffer?page=' + page, ).map(response => response.json());
+  // }
 
   getAllMenFashionProductWithType(page: any, Type: boolean) {
     return this._http.get( this.ServerUrl + 'getAllMenFashionProduct/' + Type + '?page=' + page, ).map(response => response.json());
@@ -243,9 +243,9 @@ export class  CategoryServices {
   getAllTVAudioVideoProductAuction(page: any) {
     return this._http.get( this.ServerUrl + 'getAllTVAudioVideoProductauction?page=' + page, ).map(response => response.json());
   }
-  getAllTVAudioVideoProductoffer(page: any) {
-    return this._http.get( this.ServerUrl + 'getAllTVAudioVideoProductoffer?page=' + page, ).map(response => response.json());
-  }
+  // getAllTVAudioVideoProductoffer(page: any) {
+  //   return this._http.get( this.ServerUrl + 'getAllTVAudioVideoProductoffer?page=' + page, ).map(response => response.json());
+  // }
   getAllTVAudioVideoProductWithType(page: any, Type: boolean) {
     return this._http.get( this.ServerUrl + 'getAllTVAudioVideoProduct/' + Type + '?page=' + page, ).map(response => response.json());
   }
@@ -298,9 +298,9 @@ export class  CategoryServices {
   getAllComputingLaptopsProductaucion(page: any) {
     return this._http.get( this.ServerUrl + 'getAllComputingLaptopsProductauction?page=' + page, ).map(response => response.json());
   }
-   getAllComputingLaptopsProductoffer(page: any) {
-      return this._http.get( this.ServerUrl + 'getAllComputingLaptopsProductoffer?page=' + page, ).map(response => response.json());
-    }
+   // getAllComputingLaptopsProductoffer(page: any) {
+   //    return this._http.get( this.ServerUrl + 'getAllComputingLaptopsProductoffer?page=' + page, ).map(response => response.json());
+   //  }
 
  getAllComputingLaptopsProductWithType(page: any, Type: boolean) {
     return this._http.get( this.ServerUrl + 'getAllComputingLaptopsProduct/' + Type + '?page=' + page, ).map(response => response.json());
@@ -355,9 +355,9 @@ export class  CategoryServices {
   }
 
   //Home
-  getAllHomeAppliancesProductoffer(page: any) {
-    return this._http.get( this.ServerUrl + 'getAllHomeAppliancesProductoffer?page=' + page, ).map(response => response.json());
-  }
+  // getAllHomeAppliancesProductoffer(page: any) {
+  //   return this._http.get( this.ServerUrl + 'getAllHomeAppliancesProductoffer?page=' + page, ).map(response => response.json());
+  // }
   //Home
   getAllHomeAppliancesProductauction(page: any) {
     return this._http.get( this.ServerUrl + 'getAllHomeAppliancesProductauction?page=' + page, ).map(response => response.json());

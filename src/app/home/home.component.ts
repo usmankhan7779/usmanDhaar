@@ -3,6 +3,8 @@ import { isPlatformBrowser } from '@angular/common';
 
 import { HomeService } from './home.services';
 import {OwlCarousel} from "ngx-owl-carousel";
+import {AdService} from '../post-ad/ad.services';
+declare const $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -99,12 +101,14 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
-              private GetProducts: HomeService) {
+              private GetProducts: HomeService,
+              private GetCat:AdService) {
 
 
   }
 
   ngOnInit() {
+
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
       // phone and tablets
@@ -182,6 +186,48 @@ export class HomeComponent implements OnInit {
 
       });
 
+      this.GetCat.GetAllCategories().subscribe(data => {
+        this.GetallCat = data;
+        console.log('Categories Are:', this.GetallCat);
+        $('.homeSlider').fadeOut(0);
+        if (this.GetallCat) {
+          setTimeout(function () {
+            $('.homeSlider').slick({
+              infinite: true,
+              slidesToShow: 5,
+              slidesToScroll: 1,
+              autoplay: false,
+              prevArrow: '<button class="leftRs">&lt;</button>',
+              nextArrow: '<button class="rightRs">&lt;</button>',
+              responsive: [
+                {
+                  breakpoint: 1199,
+                  settings: {
+                    slidesToShow: 3,
+                    infinite: true
+                  }
+                },
+                {
+                  breakpoint: 767,
+                  settings: {
+                    slidesToShow: 2,
+                  }
+                },
+                {
+                  breakpoint: 639,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
+                }
+
+              ]
+            });
+          }, 0);
+        }
+        $('.homeSlider').fadeIn(500).delay(200);
+      });
+
 
       // picture
       // this.GetProducts.GetphotoById().subscribe(resSlidersData => {
@@ -193,7 +239,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   timer(end_date: string) {
+
     return ((new Date(end_date).getTime().valueOf() - new Date().getTime().valueOf()) / (1000)).toFixed(0);
   }
 

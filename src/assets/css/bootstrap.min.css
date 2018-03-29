@@ -330,7 +330,7 @@ a:focus, a:hover{color:#23527c;text-decoration:underline}
 a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}
 figure{margin:0}
 img{vertical-align:middle}
-.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img{display:block;max-width:100%;height:auto;position:relative;border-radius:15px;}
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img{display:block;max-width:100%;height:auto;position:relative;}
 .img-rounded{border-radius:6px}
 .img-thumbnail{display:inline-block;max-width:100%;height:auto;padding:4px;line-height:1.42857143;background-color:#fff;border:1px solid #e0e0e0;border-radius:4px;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out}
 .img-circle{border-radius:50%}
@@ -936,7 +936,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 .nav .nav-divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}
 .nav > li > a > img{max-width:none}
 .nav-tabs{border-bottom:1px solid #e0e0e0}
-.nav-tabs > li{float:left;margin-bottom:-1px}
+.nav-tabs > li{float:left;margin-bottom:-1px; font-size: 24px;width: 25%}
 .nav-tabs > li > a{margin-right:2px;line-height:1.42857143;border:1px solid transparent;border-radius:4px 4px 0 0}
 .nav-tabs > li > a:hover{border-color:#eee #eee #ddd}
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{color:#555;cursor:default;background-color:#fff;border:1px solid #e0e0e0;border-bottom-color:transparent}

@@ -11,7 +11,7 @@
   box-shadow: inset 0px 1px 0px rgba(255,255,255,.3),
   inset 0px 0px 20px rgba(0,0,0,0.1),
   0px 1px 1px rgba(0,0,0,0.4);
-  background: -webkit-linear-gradient(top,#cb1d1d, #cb1d1d);
+  background: -webkit-linear-gradient(top,red, red);
   display: inline-block;
 }
 
@@ -21,7 +21,7 @@
   bottom:-.5em;
   position:absolute;
   display:block;
-  border: .9em solid #cb1d1d;
+  border: .9em solid red;
   box-shadow:0px 1px 0px rgba(0,0,0,0.4);
   z-index:-2;
 }
@@ -44,7 +44,7 @@
   position:absolute;
   display:block;
   border-style:solid;
-  border-color: #cb1d1d transparent transparent transparent;
+  border-color: red transparent transparent transparent;
   z-index:-1;
 }
 
@@ -56,4 +56,47 @@
 #content:after {
   right: 0;
   border-width: .5em .5em 0 0;
+}
+
+
+
+
+a:hover,a:focus{
+  text-decoration: none;
+  outline: none;
+}
+.nav-tabs {
+  position: relative;
+}
+.nav-tabs > li:hover:after,
+.nav-tabs .active:after{
+  content: "";
+  border-top: 10px solid red;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  position: absolute;
+  top:56px;
+  right: 38%;
+}
+.nav-tabs > li > a{
+  border-radius: 0px;
+  background: #272d33;
+  padding:10px 20px ;
+  color:#fff;
+}
+.nav-tabs > li > a:hover{
+  border-color:transparent;
+  background: red;
+  transition:0.3s ease;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover{
+  background:red;
+  color:#fff;
+}
+@media only screen and (max-width: 360px){
+  .nav-tabs > li > a{
+    padding: 10px;
+  }
 }

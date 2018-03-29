@@ -242,7 +242,8 @@ export class HomeService {
   }
 
   InsertUserBid(User_Id: any, Product_ID: any, Price: any) {
-    return this._http.post(this.ServerUrl + 'InsertUserBid/' + Product_ID,
+    console.log('userId:', User_Id, 'ProductId is:', Product_ID,'Price is:', Price);
+    return this._http.post(this.ServerUrl + 'InsertUserBid',
       {
         'User_Id': User_Id ,
         'Product_Id': Product_ID,
@@ -251,7 +252,7 @@ export class HomeService {
       }).map((res: Response) => {
       if (res) {
        // console.log('abc');
-        if (res.status === 201) {
+        if (res.status === 201 || res.status === 200) {
           const responce_data = res.json();
           return [{ status: res.status, json: res }];
         }

@@ -404,73 +404,73 @@ export class CategoryDetailComponent implements OnInit {
 
   }
 
-  AcceptOfferFuc() {
-    this.AllListing = false;
-    this.BuyItNow = false;
-    this.thisAuction = false;
-    this.errormessage = false;
-    this.AcceptOffer = true;
-    this.Waitcall = true;
-
-    // alert(this.CatName);
-    if (this.CatName === 'Phones & Tablets') {
-      //  console.log('Phones & Tablets')
-      this.httpService.getAllPhoneAndTabletProductoffer(1).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'Women\'s Fashion') {
-      // console.log('Women\'s Fashion')
-      this.httpService.getAllWomenFashionProductoffer(1).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'Men\'s Fashion') {
-      this.httpService.getAllMenFashionProductoffer(1).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'TV, Audio & Video') {
-      // console.log('TV, Audio & Video')
-      this.httpService.getAllTVAudioVideoProductoffer(1).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'Computing & Laptops') {
-      this.httpService.getAllComputingLaptopsProductoffer(1).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else if (this.CatName === 'Home Appliances') {
-      this.httpService.getAllHomeAppliancesProductoffer(1).subscribe(
-        data => {
-          this.Trend = data;
-          if (this.Trend['results'].length === 0) {
-            this.errormessage = true;
-          }
-        });
-    } else {
-
-      this._nav.navigate(['/404']);
-    }
-    this.Waitcall = false;
-
-  }
+  // AcceptOfferFuc() {
+  //   this.AllListing = false;
+  //   this.BuyItNow = false;
+  //   this.thisAuction = false;
+  //   this.errormessage = false;
+  //   this.AcceptOffer = true;
+  //   this.Waitcall = true;
+  //
+  //   // alert(this.CatName);
+  //   if (this.CatName === 'Phones & Tablets') {
+  //     //  console.log('Phones & Tablets')
+  //     this.httpService.getAllPhoneAndTabletProductoffer(1).subscribe(
+  //       data => {
+  //         this.Trend = data;
+  //         if (this.Trend['results'].length === 0) {
+  //           this.errormessage = true;
+  //         }
+  //       });
+  //   } else if (this.CatName === 'Women\'s Fashion') {
+  //     // console.log('Women\'s Fashion')
+  //     this.httpService.getAllWomenFashionProductoffer(1).subscribe(
+  //       data => {
+  //         this.Trend = data;
+  //         if (this.Trend['results'].length === 0) {
+  //           this.errormessage = true;
+  //         }
+  //       });
+  //   } else if (this.CatName === 'Men\'s Fashion') {
+  //     this.httpService.getAllMenFashionProductoffer(1).subscribe(
+  //       data => {
+  //         this.Trend = data;
+  //         if (this.Trend['results'].length === 0) {
+  //           this.errormessage = true;
+  //         }
+  //       });
+  //   } else if (this.CatName === 'TV, Audio & Video') {
+  //     // console.log('TV, Audio & Video')
+  //     this.httpService.getAllTVAudioVideoProductoffer(1).subscribe(
+  //       data => {
+  //         this.Trend = data;
+  //         if (this.Trend['results'].length === 0) {
+  //           this.errormessage = true;
+  //         }
+  //       });
+  //   } else if (this.CatName === 'Computing & Laptops') {
+  //     this.httpService.getAllComputingLaptopsProductoffer(1).subscribe(
+  //       data => {
+  //         this.Trend = data;
+  //         if (this.Trend['results'].length === 0) {
+  //           this.errormessage = true;
+  //         }
+  //       });
+  //   } else if (this.CatName === 'Home Appliances') {
+  //     this.httpService.getAllHomeAppliancesProductoffer(1).subscribe(
+  //       data => {
+  //         this.Trend = data;
+  //         if (this.Trend['results'].length === 0) {
+  //           this.errormessage = true;
+  //         }
+  //       });
+  //   } else {
+  //
+  //     this._nav.navigate(['/404']);
+  //   }
+  //   this.Waitcall = false;
+  //
+  // }
 
 
   TrashcartElement(Abc: any) {

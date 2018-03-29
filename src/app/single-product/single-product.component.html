@@ -1,4 +1,4 @@
-<preloader-full></preloader-full>
+<!--<preloader-full></preloader-full>-->
 
 <app-header></app-header>
 
@@ -142,8 +142,11 @@
                 <ng-container *ngIf="LoginID === true">
                   <ng-container *ngIf="AuctionTest == true">
                     <div>
-                      <div  *ngIf="NewBidInserted == true" class="alert alert-success">
-                        Bid successful.
+                      <div  *ngIf="highestbid == true" class="alert alert-success">
+                        "Congrats. You are the current High Bidder."
+                      </div>
+                      <div  *ngIf="!highestbid" class="alert alert-danger">
+                        "You have been outbid by someone else' Maximum Bid. You can still win by bidding again."
                       </div>
                     </div>
                   </ng-container>

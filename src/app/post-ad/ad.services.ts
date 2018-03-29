@@ -183,288 +183,288 @@ export class AdService {
 
   }
   }
-  Add_WomenFashion_Product(Product_ID: any,  User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
-    if (isPlatformBrowser(this.platformId)){
-    return this._http.post(this.ServerUrl + 'womenfashion',
-      {
-        'ProductID': Product_ID,
-        'Cat_Name': CatName ,
-        'Sub_Cat_Name': SubCat,
-        'User_ID': User_ID,
-        'Sub_Sub_Cat_Name': SubSubCat,
-        'P_Title':  Title,
-        'P_Des':  Addetail,
-        'P_Condition':  condition,
-        'Auction': Auction,
-        'SrartingPrice': Starting_Price,
-        'MaxBidPrice': Starting_Price,
-        'Buyitnow': Buyitnow,
-        'AuctionListing': AuctionListing,
-        'ReservePrice': ReservePrice,
-        'StoreName': localStorage.getItem('StoreName'),
-        'FixedPrice': FixedPrice,
-        'Addbestoffer': AddBestOffer,
-        'Quantity': Quantity,
-        'MaxQuantity': Quantity,
-        'Active': true,
-        'Sold': false,
-        'Pic': basex64,
-
-
-
-        //    'Pidd':  Pidd,
-      }).map((res: Response) => {
-      if (res) {
-        console.log('abc');
-        if (res.status === 201) {
-          const responce_data = res.json();
-
-          // for (let a = 0; a < arrayIndex; a++) {
-          //   console.log(a);
-          //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
-          // }
-
-
-          localStorage.setItem('NewPost', 'Done');
-          localStorage.setItem('NewProduct', Product_ID);
-          localStorage.setItem('NewCat', CatName);
-          this._nav.navigate(['/dashboard']);
-          return [{ status: res.status, json: res }];
-        }
-      }
-    }).catch((error: any) => {
-      console.log(error.toString());
-      return Observable.throw(new Error(error.status));
-    });
-
-
-  }
-  }
-  Add_MenFashion_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
-
-    if (isPlatformBrowser(this.platformId)){
-    return this._http.post(this.ServerUrl + 'menfashion',
-      {
-        'ProductID': Product_ID,
-        'Cat_Name': CatName ,
-        'Sub_Cat_Name': SubCat,
-        'User_ID': User_ID,
-        'Sub_Sub_Cat_Name': SubSubCat,
-        'P_Title':  Title,
-        'P_Des':  Addetail,
-        'P_Condition':  condition,
-        'Auction': Auction,
-        'SrartingPrice': Starting_Price,
-        'MaxBidPrice': Starting_Price,
-        'Buyitnow': Buyitnow,
-        'AuctionListing': AuctionListing,
-        'StoreName': localStorage.getItem('StoreName'),
-        'ReservePrice': ReservePrice,
-        'FixedPrice': FixedPrice,
-        'Addbestoffer': AddBestOffer,
-        'Quantity': Quantity,
-        'MaxQuantity': Quantity,
-        'Active': true,
-        'Sold': false,
-        'Pic': basex64,
-
-
-
-        //    'Pidd':  Pidd,
-      }).map((res: Response) => {
-      if (res) {
-        console.log('abc');
-        if (res.status === 201) {
-          const responce_data = res.json();
-          // for (let a = 0; a < arrayIndex; a++) {
-          //   console.log(a);
-          //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
-          // }
-
-          localStorage.setItem('NewPost', 'Done');
-          localStorage.setItem('NewProduct', Product_ID);
-          localStorage.setItem('NewCat', CatName);
-          this._nav.navigate(['/dashboard']);
-          return [{ status: res.status, json: res }];
-        }
-      }
-    }).catch((error: any) => {
-      console.log(error.toString());
-      return Observable.throw(new Error(error.status));
-    });
-
-
-  }
-  }
-  Add_TVAudioVideo_Product(Product_ID: any, User_ID,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
-
-    if (isPlatformBrowser(this.platformId)){
-    return this._http.post(this.ServerUrl + 'TVAudioVideo',
-      {
-        'ProductID': Product_ID,
-        'Cat_Name': CatName ,
-        'Sub_Cat_Name': SubCat,
-        'User_ID': User_ID,
-        'Sub_Sub_Cat_Name': SubSubCat,
-        'P_Title':  Title,
-        'P_Des':  Addetail,
-        'P_Condition':  condition,
-        'Auction': Auction,
-        'StoreName': localStorage.getItem('StoreName'),
-        'SrartingPrice': Starting_Price,
-        'MaxBidPrice': Starting_Price,
-        'Buyitnow': Buyitnow,
-        'AuctionListing': AuctionListing,
-        'ReservePrice': ReservePrice,
-        'FixedPrice': FixedPrice,
-        'Addbestoffer': AddBestOffer,
-        'Quantity': Quantity,
-        'MaxQuantity': Quantity,
-        'Active': true,
-        'Sold': false,
-        'Pic': basex64,
-
-
-
-        //    'Pidd':  Pidd,
-      }).map((res: Response) => {
-      if (res) {
-        console.log('abc');
-        if (res.status === 201) {
-          const responce_data = res.json();
-
-          // for (let a = 0; a < arrayIndex; a++) {
-          //   console.log(a);
-          //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
-          // }
-
-          localStorage.setItem('NewPost', 'Done');
-          localStorage.setItem('NewProduct', Product_ID);
-          localStorage.setItem('NewCat', CatName);
-          this._nav.navigate(['/dashboard']);
-
-          return [{ status: res.status, json: res }];
-        }
-      }
-    }).catch((error: any) => {
-      console.log(error.toString());
-      return Observable.throw(new Error(error.status));
-    });
-
-
-  }
-  }
-  Add_ComputingLaptops_Product(Product_ID: any, User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
-   // console.log('fsdfsfgsahd' + SubSubCat);
-    if (isPlatformBrowser(this.platformId)) {
-      return this._http.post(this.ServerUrl + 'ComputingLaptops',
-        {
-          'ProductID': Product_ID,
-          'Cat_Name': CatName,
-          'Sub_Cat_Name': SubCat,
-          'User_ID': User_ID,
-          'Sub_Sub_Cat_Name': SubSubCat,
-          'P_Title': Title,
-          'P_Des': Addetail,
-          'P_Condition': condition,
-          'Auction': Auction,
-          'SrartingPrice': Starting_Price,
-          'MaxBidPrice': Starting_Price,
-          'StoreName': localStorage.getItem('StoreName'),
-          'Buyitnow': Buyitnow,
-          'AuctionListing': AuctionListing,
-          'ReservePrice': ReservePrice,
-          'FixedPrice': FixedPrice,
-          'Addbestoffer': AddBestOffer,
-          'Quantity': Quantity,
-          'MaxQuantity': Quantity,
-          'Active': true,
-          'Sold': false,
-          'Pic': basex64,
-
-
-          //    'Pidd':  Pidd,
-        }).map((res: Response) => {
-        if (res) {
-          console.log('abc');
-          if (res.status === 201) {
-            const responce_data = res.json();
-            // for (let a = 0; a < arrayIndex; a++) {
-            //   console.log(a);
-            //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
-            // }
-
-            localStorage.setItem('NewPost', 'Done');
-            localStorage.setItem('NewProduct', Product_ID);
-            localStorage.setItem('NewCat', CatName);
-            this._nav.navigate(['/dashboard']);
-            return [{status: res.status, json: res}];
-          }
-        }
-      }).catch((error: any) => {
-        console.log(error.toString());
-        return Observable.throw(new Error(error.status));
-      });
-    }
-
-  }
-  Add_HomeAppliances_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
-
-    if (isPlatformBrowser(this.platformId)){
-    return this._http.post(this.ServerUrl + 'HomeAppliances',
-      {
-        'ProductID': Product_ID,
-        'Cat_Name': CatName ,
-        'Sub_Cat_Name': SubCat,
-        'User_ID': User_ID,
-        'Sub_Sub_Cat_Name': SubSubCat,
-        'P_Title':  Title,
-        'P_Des':  Addetail,
-        'P_Condition':  condition,
-        'StoreName': localStorage.getItem('StoreName'),
-        'Auction': Auction,
-        'SrartingPrice': Starting_Price,
-        'MaxBidPrice': Starting_Price,
-        'Buyitnow': Buyitnow,
-        'AuctionListing': AuctionListing,
-        'ReservePrice': ReservePrice,
-        'FixedPrice': FixedPrice,
-        'Addbestoffer': AddBestOffer,
-        'Quantity': Quantity,
-        'MaxQuantity': Quantity,
-        'Active': true,
-        'Sold': false,
-        'Pic': basex64,
-
-
-        //    'Pidd':  Pidd,
-      }).map((res: Response) => {
-      if (res) {
-        console.log('abc');
-        if (res.status === 201) {
-          const responce_data = res.json();
-
-          // for (let a = 0; a < arrayIndex; a++) {
-          //   console.log(a);
-          //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
-          // }
-
-
-          localStorage.setItem('NewPost', 'Done');
-          localStorage.setItem('NewProduct', Product_ID);
-          localStorage.setItem('NewCat', CatName);
-          this._nav.navigate(['/dashboard']);
-
-          return [{ status: res.status, json: res }];
-        }
-      }
-    }).catch((error: any) => {
-      console.log(error.toString());
-      return Observable.throw(new Error(error.status));
-    });
-
-
-  }
-  }
+  // Add_WomenFashion_Product(Product_ID: any,  User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
+  //   if (isPlatformBrowser(this.platformId)){
+  //   return this._http.post(this.ServerUrl + 'womenfashion',
+  //     {
+  //       'ProductID': Product_ID,
+  //       'Cat_Name': CatName ,
+  //       'Sub_Cat_Name': SubCat,
+  //       'User_ID': User_ID,
+  //       'Sub_Sub_Cat_Name': SubSubCat,
+  //       'P_Title':  Title,
+  //       'P_Des':  Addetail,
+  //       'P_Condition':  condition,
+  //       'Auction': Auction,
+  //       'SrartingPrice': Starting_Price,
+  //       'MaxBidPrice': Starting_Price,
+  //       'Buyitnow': Buyitnow,
+  //       'AuctionListing': AuctionListing,
+  //       'ReservePrice': ReservePrice,
+  //       'StoreName': localStorage.getItem('StoreName'),
+  //       'FixedPrice': FixedPrice,
+  //       'Addbestoffer': AddBestOffer,
+  //       'Quantity': Quantity,
+  //       'MaxQuantity': Quantity,
+  //       'Active': true,
+  //       'Sold': false,
+  //       'Pic': basex64,
+  //
+  //
+  //
+  //       //    'Pidd':  Pidd,
+  //     }).map((res: Response) => {
+  //     if (res) {
+  //       console.log('abc');
+  //       if (res.status === 201) {
+  //         const responce_data = res.json();
+  //
+  //         // for (let a = 0; a < arrayIndex; a++) {
+  //         //   console.log(a);
+  //         //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+  //         // }
+  //
+  //
+  //         localStorage.setItem('NewPost', 'Done');
+  //         localStorage.setItem('NewProduct', Product_ID);
+  //         localStorage.setItem('NewCat', CatName);
+  //         this._nav.navigate(['/dashboard']);
+  //         return [{ status: res.status, json: res }];
+  //       }
+  //     }
+  //   }).catch((error: any) => {
+  //     console.log(error.toString());
+  //     return Observable.throw(new Error(error.status));
+  //   });
+  //
+  //
+  // }
+  // }
+  // Add_MenFashion_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
+  //
+  //   if (isPlatformBrowser(this.platformId)){
+  //   return this._http.post(this.ServerUrl + 'menfashion',
+  //     {
+  //       'ProductID': Product_ID,
+  //       'Cat_Name': CatName ,
+  //       'Sub_Cat_Name': SubCat,
+  //       'User_ID': User_ID,
+  //       'Sub_Sub_Cat_Name': SubSubCat,
+  //       'P_Title':  Title,
+  //       'P_Des':  Addetail,
+  //       'P_Condition':  condition,
+  //       'Auction': Auction,
+  //       'SrartingPrice': Starting_Price,
+  //       'MaxBidPrice': Starting_Price,
+  //       'Buyitnow': Buyitnow,
+  //       'AuctionListing': AuctionListing,
+  //       'StoreName': localStorage.getItem('StoreName'),
+  //       'ReservePrice': ReservePrice,
+  //       'FixedPrice': FixedPrice,
+  //       'Addbestoffer': AddBestOffer,
+  //       'Quantity': Quantity,
+  //       'MaxQuantity': Quantity,
+  //       'Active': true,
+  //       'Sold': false,
+  //       'Pic': basex64,
+  //
+  //
+  //
+  //       //    'Pidd':  Pidd,
+  //     }).map((res: Response) => {
+  //     if (res) {
+  //       console.log('abc');
+  //       if (res.status === 201) {
+  //         const responce_data = res.json();
+  //         // for (let a = 0; a < arrayIndex; a++) {
+  //         //   console.log(a);
+  //         //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+  //         // }
+  //
+  //         localStorage.setItem('NewPost', 'Done');
+  //         localStorage.setItem('NewProduct', Product_ID);
+  //         localStorage.setItem('NewCat', CatName);
+  //         this._nav.navigate(['/dashboard']);
+  //         return [{ status: res.status, json: res }];
+  //       }
+  //     }
+  //   }).catch((error: any) => {
+  //     console.log(error.toString());
+  //     return Observable.throw(new Error(error.status));
+  //   });
+  //
+  //
+  // }
+  // }
+  // Add_TVAudioVideo_Product(Product_ID: any, User_ID,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
+  //
+  //   if (isPlatformBrowser(this.platformId)){
+  //   return this._http.post(this.ServerUrl + 'TVAudioVideo',
+  //     {
+  //       'ProductID': Product_ID,
+  //       'Cat_Name': CatName ,
+  //       'Sub_Cat_Name': SubCat,
+  //       'User_ID': User_ID,
+  //       'Sub_Sub_Cat_Name': SubSubCat,
+  //       'P_Title':  Title,
+  //       'P_Des':  Addetail,
+  //       'P_Condition':  condition,
+  //       'Auction': Auction,
+  //       'StoreName': localStorage.getItem('StoreName'),
+  //       'SrartingPrice': Starting_Price,
+  //       'MaxBidPrice': Starting_Price,
+  //       'Buyitnow': Buyitnow,
+  //       'AuctionListing': AuctionListing,
+  //       'ReservePrice': ReservePrice,
+  //       'FixedPrice': FixedPrice,
+  //       'Addbestoffer': AddBestOffer,
+  //       'Quantity': Quantity,
+  //       'MaxQuantity': Quantity,
+  //       'Active': true,
+  //       'Sold': false,
+  //       'Pic': basex64,
+  //
+  //
+  //
+  //       //    'Pidd':  Pidd,
+  //     }).map((res: Response) => {
+  //     if (res) {
+  //       console.log('abc');
+  //       if (res.status === 201) {
+  //         const responce_data = res.json();
+  //
+  //         // for (let a = 0; a < arrayIndex; a++) {
+  //         //   console.log(a);
+  //         //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+  //         // }
+  //
+  //         localStorage.setItem('NewPost', 'Done');
+  //         localStorage.setItem('NewProduct', Product_ID);
+  //         localStorage.setItem('NewCat', CatName);
+  //         this._nav.navigate(['/dashboard']);
+  //
+  //         return [{ status: res.status, json: res }];
+  //       }
+  //     }
+  //   }).catch((error: any) => {
+  //     console.log(error.toString());
+  //     return Observable.throw(new Error(error.status));
+  //   });
+  //
+  //
+  // }
+  // }
+  // Add_ComputingLaptops_Product(Product_ID: any, User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
+  //  // console.log('fsdfsfgsahd' + SubSubCat);
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     return this._http.post(this.ServerUrl + 'ComputingLaptops',
+  //       {
+  //         'ProductID': Product_ID,
+  //         'Cat_Name': CatName,
+  //         'Sub_Cat_Name': SubCat,
+  //         'User_ID': User_ID,
+  //         'Sub_Sub_Cat_Name': SubSubCat,
+  //         'P_Title': Title,
+  //         'P_Des': Addetail,
+  //         'P_Condition': condition,
+  //         'Auction': Auction,
+  //         'SrartingPrice': Starting_Price,
+  //         'MaxBidPrice': Starting_Price,
+  //         'StoreName': localStorage.getItem('StoreName'),
+  //         'Buyitnow': Buyitnow,
+  //         'AuctionListing': AuctionListing,
+  //         'ReservePrice': ReservePrice,
+  //         'FixedPrice': FixedPrice,
+  //         'Addbestoffer': AddBestOffer,
+  //         'Quantity': Quantity,
+  //         'MaxQuantity': Quantity,
+  //         'Active': true,
+  //         'Sold': false,
+  //         'Pic': basex64,
+  //
+  //
+  //         //    'Pidd':  Pidd,
+  //       }).map((res: Response) => {
+  //       if (res) {
+  //         console.log('abc');
+  //         if (res.status === 201) {
+  //           const responce_data = res.json();
+  //           // for (let a = 0; a < arrayIndex; a++) {
+  //           //   console.log(a);
+  //           //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+  //           // }
+  //
+  //           localStorage.setItem('NewPost', 'Done');
+  //           localStorage.setItem('NewProduct', Product_ID);
+  //           localStorage.setItem('NewCat', CatName);
+  //           this._nav.navigate(['/dashboard']);
+  //           return [{status: res.status, json: res}];
+  //         }
+  //       }
+  //     }).catch((error: any) => {
+  //       console.log(error.toString());
+  //       return Observable.throw(new Error(error.status));
+  //     });
+  //   }
+  //
+  // }
+  // Add_HomeAppliances_Product(Product_ID: any, User_ID: any, basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
+  //
+  //   if (isPlatformBrowser(this.platformId)){
+  //   return this._http.post(this.ServerUrl + 'HomeAppliances',
+  //     {
+  //       'ProductID': Product_ID,
+  //       'Cat_Name': CatName ,
+  //       'Sub_Cat_Name': SubCat,
+  //       'User_ID': User_ID,
+  //       'Sub_Sub_Cat_Name': SubSubCat,
+  //       'P_Title':  Title,
+  //       'P_Des':  Addetail,
+  //       'P_Condition':  condition,
+  //       'StoreName': localStorage.getItem('StoreName'),
+  //       'Auction': Auction,
+  //       'SrartingPrice': Starting_Price,
+  //       'MaxBidPrice': Starting_Price,
+  //       'Buyitnow': Buyitnow,
+  //       'AuctionListing': AuctionListing,
+  //       'ReservePrice': ReservePrice,
+  //       'FixedPrice': FixedPrice,
+  //       'Addbestoffer': AddBestOffer,
+  //       'Quantity': Quantity,
+  //       'MaxQuantity': Quantity,
+  //       'Active': true,
+  //       'Sold': false,
+  //       'Pic': basex64,
+  //
+  //
+  //       //    'Pidd':  Pidd,
+  //     }).map((res: Response) => {
+  //     if (res) {
+  //       console.log('abc');
+  //       if (res.status === 201) {
+  //         const responce_data = res.json();
+  //
+  //         // for (let a = 0; a < arrayIndex; a++) {
+  //         //   console.log(a);
+  //         //   this.ProductImages(Product_ID, ALLbase64textStringforPic[a]).subscribe();
+  //         // }
+  //
+  //
+  //         localStorage.setItem('NewPost', 'Done');
+  //         localStorage.setItem('NewProduct', Product_ID);
+  //         localStorage.setItem('NewCat', CatName);
+  //         this._nav.navigate(['/dashboard']);
+  //
+  //         return [{ status: res.status, json: res }];
+  //       }
+  //     }
+  //   }).catch((error: any) => {
+  //     console.log(error.toString());
+  //     return Observable.throw(new Error(error.status));
+  //   });
+  //
+  //
+  // }
+  // }
 
 }

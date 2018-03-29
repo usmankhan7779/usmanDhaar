@@ -41,6 +41,7 @@ export class BuyerDashboardComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
+      console.log('hahaha', localStorage.getItem('UserID'));
     this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
       console.log('User Id is:', this.GetUSerDOne);

@@ -44,7 +44,7 @@
             </div>
             <h5 style="color:#ed2424; ">User Sign up</h5>
             <div id="wsell" class="formpanel tab-pane fade in active">
-              <form role="form" class="login-form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+              <form role="form" class="login-form" (ngSubmit)="f.form.valid && captcha && register()" #f="ngForm" novalidate>
 
                 <div class="formrow label-overlay form-group has-feedback">
 
@@ -141,7 +141,10 @@
 
                 <!--I have read and agree to the <a href="#" style="color: red"> Terms and Conditions</a>-->
               <!--</div>-->
-                <!--<recaptcha  (resolved)="resolved($event)" siteKey="6Lfd6y8UAAAAAL_D96Onic2FcRsjy-CxP1i8forw" required=""></recaptcha>-->
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !captcha}">
+                <re-captcha  (resolved)="resolved($event)" siteKey="6LcMeE4UAAAAAORPbOfwjGczzxsz843f24BA92IN" required></re-captcha>
+                <div *ngIf="f.submitted && !captcha" class="help-block">Recaptcha is required</div>
+                </div>
               <br/>
                 <div *ngIf="Waitcall" class="alert  alert-info">
                   <p class="">
