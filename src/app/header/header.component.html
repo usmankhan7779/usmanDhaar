@@ -51,7 +51,7 @@
         <!--</div>-->
       <!--</div>-->
     <!--</div>-->
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <!-- Header Logo -->
         <div class="col-xs-12 col-lg-3 col-md-3 col-sm-3">
@@ -62,7 +62,7 @@
             </a>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-3 col-md-6">
+        <div class="col-xs-12 col-sm-5 col-md-2 col-md-6">
           <!-- Search -->
           <!--top-search-->
           <div id="search" style="text-align: center">
@@ -159,24 +159,56 @@
           </div>
           <!-- End Search -->
         </div>
-        <div class="col-md-6 col-sm-3 col-xs-12 top-cart">
+        <div class="col-md-7 col-sm-3 col-xs-12 top-cart">
+          <div class="collapse navbar-collapse" style="margin-top: 8px">
+            <ul class="nav navbar-nav">
+              <li><a [routerLink]="['/select-category']"><i class="fa fa-camera header-icons-rightsetting"></i>Sell</a></li>
+              <li class="dropdown">
+                <a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Categories<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a style="cursor: pointer"><i class="fa fa-question-circle header-icons-rightsetting"></i>Why Dhaar<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a [routerLink]="['/about-us']">What is Dhaar?</a></li>
+                  <li><a [routerLink]="['/dhaar']">How It Works</a></li>
+                  <li><a [routerLink]="['/contact-us']">Establish Contact</a></li>
+                  <li><a [routerLink]="['/contact-us']">FAQs</a></li>
+                </ul>
+              </li>
+              <li *ngIf="ValueRec == true"><a (click)="gotodashboard()" class="myDhaar" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Dhaar </a></li>
+              <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>
+              <li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>
+              <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
+              <li><a [routerLink]="['/checkout2']" title="Shopping Cart" > <span class="glyphicon glyphicon-shopping-cart"></span> <span style="color: red">{{ItemInCart}}</span></a></li>
+            </ul>
+          </div>
 
-          <ul class="menu-registration-links">
-            <li><a [routerLink]="['/select-category']"><i class="fa fa-camera header-icons-rightsetting"></i>Sell</a></li>
-            <li><a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Categories</a></li>
-            <li *ngIf="ValueRec == true"><a (click)="gotodashboard()" style="color: #f23534 !important; cursor: pointer" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Dhaar </a></li>
-            <!--<li *ngIf="ValueRec == true" class="welcome-msg hidden-xs">{{ GetUSerDOne['Fname']}}</li>-->
-            <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']" class="login-header"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>
-            <li *ngIf="ValueRec == false" class="last-child-link" ><a  [routerLink]="['/sign-up']"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>
-            <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
-          </ul>
+          <!--<ul class="menu-registration-links">-->
+            <!--<li><a [routerLink]="['/select-category']"><i class="fa fa-camera header-icons-rightsetting"></i>Sell</a></li>-->
+            <!--<li><a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Categories</a></li>-->
+            <!--<li><a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Why Dhaar?</a></li>-->
+            <!--<li *ngIf="ValueRec == true"><a (click)="gotodashboard()" style="color: #f23534 !important; cursor: pointer" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Dhaar </a></li>-->
+            <!--&lt;!&ndash;<li *ngIf="ValueRec == true" class="welcome-msg hidden-xs">{{ GetUSerDOne['Fname']}}</li>&ndash;&gt;-->
+            <!--<li *ngIf="ValueRec == false"><a  [routerLink]="['/login']" class="login-header"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>-->
+            <!--<li *ngIf="ValueRec == false" class="last-child-link" ><a  [routerLink]="['/sign-up']"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>-->
+            <!--<li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>-->
+          <!--</ul>-->
           <!--<div *ngIf="ValueRec == true"><a [routerLink]="['/checkout2']"><i class="fa fa-check-square-o header-icons-setting"></i>Checkout</a></div>-->
 
           <!--<div *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-setting"></i>Logout</a></div>-->
 
 
           <!-- Begin shopping cart trigger  -->
-          <div id="shopping-cart-trigger"> <a [routerLink]="['/checkout2']" class="cart-icon" title="Shopping Cart" > <i class="fa fa-shopping-bag"></i> <span class="cart-num">{{ItemInCart}}</span></a> </div>
+          <!--<div id="shopping-cart-trigger"> <a [routerLink]="['/checkout2']" class="cart-icon" title="Shopping Cart" > <i class="fa fa-shopping-bag"></i> <span class="cart-num">{{ItemInCart}}</span></a> </div>-->
           <!-- End shopping cart trigger -->
         </div>
       </div>

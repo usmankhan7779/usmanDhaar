@@ -4,6 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HomeService } from './home.services';
 import {OwlCarousel} from "ngx-owl-carousel";
 import {AdService} from '../post-ad/ad.services';
+import {CategoryServices} from "../category-detail/category-detail.services";
 declare const $: any;
 @Component({
   selector: 'app-home',
@@ -40,15 +41,19 @@ export class HomeComponent implements OnInit {
   GetallCat: any = [];
   ServrUrl: string = 'assets/assets2/images/category/';
   public GetallPhoneProduct: any = [];
-  getcomputinglaptopsproduct8: any = [];
-  WomenFashionProducts4: any = [];
-  MenFashionProducts4: any = [];
-  getFashionProduct: any = [];
+  getcomputinglaptopsproduct: any = [];
+  WomenFashionProducts: any = [];
+  MenFashionProducts: any = [];
+  getTvAudioVideoProduct: any = [];
   GetALLProductss: any = [];
+  gethomeappliancesproduct: any = [];
   GetALLFeaturedProductss: any = [];
   GetALLAuctionProductss: any = [];
   GetALLBuyNowProductss: any = [];
-  ProductPrice: any = [];
+  HotDealProducts: any = [];
+  RecommendedProducts: any = [];
+  ViewedProducts: any = [];
+  WatchedProducts: any = [];
   NewBidInserted = false;
   Tmp_ProID: any;
   Tmp_ProID_Array: any = [];
@@ -102,7 +107,8 @@ export class HomeComponent implements OnInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private GetProducts: HomeService,
-              private GetCat:AdService) {
+              private GetCat:AdService,
+              private Category: CategoryServices) {
 
 
   }
@@ -111,134 +117,277 @@ export class HomeComponent implements OnInit {
 
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
-      // phone and tablets
-
-      this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
-        this.GetallPhoneProduct = resSlidersData;
-        // for (const itm of this.GetallPhoneProduct) {
-        //   this.GetallphotsProduct = itm['Pic'].split(',');
-        //   console.log('Photo urlsssssss', this.GetallphotsProduct);
-        // }
-
-        // console.log('Phone products are:', this.GetallPhoneProduct);
-        // console.log('Brands Are:', this.brands);
-
-      });
-
-      // tv vidoe audio
-      this.GetProducts.GetWomenFashionProducts4().subscribe(resSlidersData => {
-
-        this.WomenFashionProducts4 = resSlidersData;
-        // console.log('Start');
-        // console.log(this.TvVideoaudio8);
-
-      });
 
       this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
         this.GetALLProductss = resSlidersData;
-        // console.log('Start');
-
-
-      });
-      this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
-
-        this.GetALLAuctionProductss = resSlidersData;
-        // console.log('Start');
       });
 
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
 
         this.GetALLBuyNowProductss = resSlidersData;
-        // console.log('Start');
+      });
+
+      this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
+
+        this.GetALLAuctionProductss = resSlidersData;
       });
 
       this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
 
         this.GetALLFeaturedProductss = resSlidersData;
-        if( this.GetALLFeaturedProductss.totalItems === 0) {
-
-        }
-        // console.log('Start');
       });
 
-      // tv vidoe audio
+      this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
+        this.GetallPhoneProduct = resSlidersData;
+      });
+
+      this.GetProducts.GetWomenFashionProducts4().subscribe(resSlidersData => {
+
+        this.WomenFashionProducts = resSlidersData;
+      });
+
       this.GetProducts.GetMenFashionProducts4().subscribe(resSlidersData => {
 
-        this.MenFashionProducts4 = resSlidersData;
-        // console.log('Start');
-        // console.log(this.TvVideoaudio8);
-
-      });
-      this.GetProducts.getFashionProduct().subscribe(resSlidersData => {
-
-        this.getFashionProduct = resSlidersData;
-        // console.log('Start');
-        // console.log(this.TvVideoaudio8);
-
+        this.MenFashionProducts = resSlidersData;
       });
 
-      // tv vidoe audio
+      this.GetProducts.getTVAudioVideoProduct().subscribe(resSlidersData => {
+
+        this.getTvAudioVideoProduct = resSlidersData;
+      });
+
       this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
 
-        this.getcomputinglaptopsproduct8 = resSlidersData;
-
-
+        this.getcomputinglaptopsproduct = resSlidersData;
       });
 
-      this.GetCat.GetAllCategories().subscribe(data => {
-        this.GetallCat = data;
-        console.log('Categories Are:', this.GetallCat);
-        $('.homeSlider').fadeOut(0);
-        if (this.GetallCat) {
-          setTimeout(function () {
-            $('.homeSlider').slick({
-              infinite: true,
-              slidesToShow: 5,
-              slidesToScroll: 1,
-              autoplay: false,
-              prevArrow: '<button class="leftRs">&lt;</button>',
-              nextArrow: '<button class="rightRs">&lt;</button>',
-              responsive: [
-                {
-                  breakpoint: 1199,
-                  settings: {
-                    slidesToShow: 3,
-                    infinite: true
-                  }
-                },
-                {
-                  breakpoint: 767,
-                  settings: {
-                    slidesToShow: 2,
-                  }
-                },
-                {
-                  breakpoint: 639,
-                  settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                  }
-                }
+      this.GetProducts.gethomeappliancesproduct8().subscribe(resSlidersData => {
 
-              ]
-            });
-          }, 0);
-        }
-        $('.homeSlider').fadeIn(500).delay(200);
+        this.gethomeappliancesproduct = resSlidersData;
       });
 
-
-      // picture
-      // this.GetProducts.GetphotoById().subscribe(resSlidersData => {
-      //   this.Getphoto = resSlidersData;
-      //
-      // });
-
-
+      this.CategorySlider();
+      this.HotDealSlider();
+      this.RecommendedSlider();
+      this.ViewedItemSlider();
+      this.WatchedItemSlider();
     }
   }
 
+
+  CategorySlider(){
+    this.GetCat.GetAllCategories().subscribe(data => {
+      this.GetallCat = data;
+      console.log('Categories Are:', this.GetallCat);
+      $('.homeSlider').fadeOut(0);
+      if (this.GetallCat) {
+        setTimeout(function () {
+          $('.homeSlider').slick({
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: false,
+            prevArrow: '<button class="leftRs">&lt;</button>',
+            nextArrow: '<button class="rightRs">&lt;</button>',
+            responsive: [
+              {
+                breakpoint: 1199,
+                settings: {
+                  slidesToShow: 3,
+                  infinite: true
+                }
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 639,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+
+            ]
+          });
+        }, 0);
+      }
+      $('.homeSlider').fadeIn(500).delay(200);
+    });
+  }
+
+  HotDealSlider(){
+    this.Category.getAllPhoneAndTabletProduct(1).subscribe(resSlidersData => {
+      this.HotDealProducts = resSlidersData;
+      $('.hotslider').fadeOut(0);
+      if (this.HotDealProducts) {
+        setTimeout(function () {
+          $('.hotslider').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            prevArrow: '<button class="leftRsBanner">&lt;</button>',
+            nextArrow: '<button class="rightRsBanner">&lt;</button>',
+            responsive: [
+              {
+                breakpoint: 1199,
+                settings: {
+                  slidesToShow: 3,
+                  infinite: true
+                }
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 639,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+
+            ]
+          });
+        }, 0);
+      }
+      $('.hotslider').fadeIn(500).delay(200);
+    });
+  }
+  RecommendedSlider(){
+    this.Category.getAllPhoneAndTabletProduct(1).subscribe(resSlidersData => {
+      this.RecommendedProducts = resSlidersData;
+      $('.recommendedslider').fadeOut(0);
+      if (this.RecommendedProducts) {
+        setTimeout(function () {
+          $('.recommendedslider').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            prevArrow: '<button class="leftRsBanner">&lt;</button>',
+            nextArrow: '<button class="rightRsBanner">&lt;</button>',
+            responsive: [
+              {
+                breakpoint: 1199,
+                settings: {
+                  slidesToShow: 3,
+                  infinite: true
+                }
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 639,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+
+            ]
+          });
+        }, 0);
+      }
+      $('.recommendedslider').fadeIn(500).delay(200);
+    });
+  }
+  ViewedItemSlider(){
+    this.Category.getAllPhoneAndTabletProduct(1).subscribe(resSlidersData => {
+      this.ViewedProducts = resSlidersData;
+      $('.viewedslider').fadeOut(0);
+      if (this.ViewedProducts) {
+        setTimeout(function () {
+          $('.viewedslider').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            prevArrow: '<button class="leftRsBanner">&lt;</button>',
+            nextArrow: '<button class="rightRsBanner">&lt;</button>',
+            responsive: [
+              {
+                breakpoint: 1199,
+                settings: {
+                  slidesToShow: 3,
+                  infinite: true
+                }
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 639,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+
+            ]
+          });
+        }, 0);
+      }
+      $('.viewedslider').fadeIn(500).delay(200);
+    });
+  }
+  WatchedItemSlider(){
+    this.Category.getAllPhoneAndTabletProduct(1).subscribe(resSlidersData => {
+      this.WatchedProducts = resSlidersData;
+      $('.watchslider').fadeOut(0);
+      if (this.WatchedProducts) {
+        setTimeout(function () {
+          $('.watchslider').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            prevArrow: '<button class="leftRsBanner">&lt;</button>',
+            nextArrow: '<button class="rightRsBanner">&lt;</button>',
+            responsive: [
+              {
+                breakpoint: 1199,
+                settings: {
+                  slidesToShow: 3,
+                  infinite: true
+                }
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 639,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+
+            ]
+          });
+        }, 0);
+      }
+      $('.watchslider').fadeIn(500).delay(200);
+    });
+  }
 
   timer(end_date: string) {
 
