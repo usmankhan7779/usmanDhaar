@@ -62,7 +62,7 @@ export class HomeService {
     // console.log(this.CateDeatils)
   }
   gethomeappliancesproduct8() {
-    return this._http.get(this.ServerUrl + 'gethomeappliancesproduct4$').map(response => response.json());
+    return this._http.get(this.ServerUrl + 'gethomeappliancesproduct4').map(response => response.json());
   }
 
   // id: string

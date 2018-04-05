@@ -166,13 +166,14 @@
               <li class="dropdown">
                 <a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Categories<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }"><i class="fa fa-tablet header-icons-rightsettingnew"></i>Phones & Tablets</a></li>
+                  <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" ><i class="fa fa-shopping-bag header-icons-rightsettingnew"></i>Women's Fashion</a></li>
+                  <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }"><i class="fa fa-black-tie header-icons-rightsettingnew"></i>Men's Fashion</a></li>
+                  <!--<li class="divider"></li>-->
+                  <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'TV, Audio & Video' }"><i class="fa fa-music header-icons-rightsettingnew"></i>TV, Audio & Video</a></li>
+                  <!--<li class="divider"></li>-->
+                  <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Computing & Laptops' }"><i class="fa fa-laptop header-icons-rightsettingnew"></i>Computing & Laptops</a></li>
+                  <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Home Appliances' }"><i class="fa fa-home header-icons-rightsettingnew"></i>Home Appliances</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -186,9 +187,9 @@
               </li>
               <li *ngIf="ValueRec == true"><a (click)="gotodashboard()" class="myDhaar" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Dhaar </a></li>
               <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>
-              <li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>
+              <li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']" style="border-left: 1px solid black;"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>
               <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
-              <li><a [routerLink]="['/checkout2']" title="Shopping Cart" > <span class="glyphicon glyphicon-shopping-cart"></span> <span style="color: red">{{ItemInCart}}</span></a></li>
+              <li class="shop-cart"><a [routerLink]="['/checkout2']" title="Shopping Cart"> <span class="glyphicon glyphicon-shopping-cart"></span> <span>{{ItemInCart}}</span></a></li>
             </ul>
           </div>
 

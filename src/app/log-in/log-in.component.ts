@@ -52,42 +52,47 @@ export class LogInComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
-      this.authService.authState.subscribe((user) => {
-        this.user = user;
-        console.log('Name of user', this.user)
-      });
-    this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        // Defaults to 0 if no query param provided.
-        this.logout = params['Logout'] || 0 ;
-        this.CatName = params['CatName'] || null ;
-        this.ProID = params['ProID'] || null ;
-        this.checkout = params['checkout'] || null ;
+      if(localStorage.getItem('UserID')){
+        this._nav.navigate(['/']);
 
-      });
+    } else {
+        this.authService.authState.subscribe((user) => {
+          this.user = user;
+          console.log('Name of user', this.user)
+        });
+        this.sub = this.route
+          .queryParams
+          .subscribe(params => {
+            // Defaults to 0 if no query param provided.
+            this.logout = params['Logout'] || 0 ;
+            this.CatName = params['CatName'] || null ;
+            this.ProID = params['ProID'] || null ;
+            this.checkout = params['checkout'] || null ;
+
+          });
 
 
 
-     if ( localStorage.getItem('Reg') === 'Done') {
+        if ( localStorage.getItem('Reg') === 'Done') {
 
-       this.SignUpDOne = true;
-       localStorage.setItem('Reg', null);
-     }
-     if ( localStorage.getItem('StoreReg') === 'Done') {
+          this.SignUpDOne = true;
+          localStorage.setItem('Reg', null);
+        }
+        if ( localStorage.getItem('StoreReg') === 'Done') {
 
-       this.StoreUpDOne = true;
-       localStorage.setItem('StoreReg', null);
-     }
-    window.scrollTo(0, 0);
+          this.StoreUpDOne = true;
+          localStorage.setItem('StoreReg', null);
+        }
+        window.scrollTo(0, 0);
 
-    if (this.logout === 'yes') {
-      this.LogOutClick();
+        if (this.logout === 'yes') {
+          this.LogOutClick();
 
+        }
+        // get return url from route parameters or default to '/'
+        // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
+      }
     }
-    // get return url from route parameters or default to '/'
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
-  }
   }
 
   signInWithGoogle(): void {

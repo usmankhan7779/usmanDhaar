@@ -20,10 +20,10 @@ const loginRoutes: Routes = [
     CommonModule,
     HeaderModule,
     // Ng2PaginationModule,
-    // FormsModule,
+    FormsModule,
     // TextMaskModule,
 
-    // ReactiveFormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)
   ],
 

@@ -41,7 +41,7 @@
         <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
       </div>
 
-      <form role="form" class="login-form">
+      <form role="form" class="login-form" (ngSubmit)="updatePassword(old.value,new1.value,new2.value)">
 
         <div class="col-md-9 col-sm-8">
 
@@ -76,7 +76,7 @@
                   <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
                 </p>
               </div>
-              <input type="submit" (click)="updatePassword(old.value,new1.value,new2.value)" class="btn" value="Sumbit">
+              <input type="submit" class="btn" value="Sumbit">
             </div>
             <!-- form  end-->
 

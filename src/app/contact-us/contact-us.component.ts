@@ -14,6 +14,7 @@ export class ContactUsComponent implements OnInit {
 
   model: any = {};
   Waitcall = false;
+  captcha = false;
 
   constructor(private obj: ContactUsServices,
               private _nav: Router,
@@ -21,6 +22,9 @@ export class ContactUsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  resolved(event){
+    this.captcha = true;
   }
 
 

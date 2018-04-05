@@ -159,8 +159,10 @@ export class CategoryDetailComponent implements OnInit {
       this.Cart = true;
     }
     this.Total = 0;
+    if (this.CartedProduct !== null) {
     for (const tmp of this.CartedProduct['products']) {
       this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
+    }
     }
 
 

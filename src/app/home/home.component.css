@@ -2,6 +2,7 @@
   padding: .34em 1em;
   /*margin-bottom: 3%;*/
   /*margin-top: 1%;*/
+  width: 85%;
   margin: 0px 75px 3% 75px;
   position:relative;
   color: #ffffff;
@@ -13,7 +14,7 @@
   inset 0px 0px 20px rgba(0,0,0,0.1),
   0px 1px 1px rgba(0,0,0,0.4);
   background: -webkit-linear-gradient(top,red, red);
-  /*display: inline-block;*/
+  display: inline-block;
 }
 
 #ribbon:before, #ribbon:after {

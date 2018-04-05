@@ -5,6 +5,8 @@ import { HomeService } from './home.services';
 import {OwlCarousel} from "ngx-owl-carousel";
 import {AdService} from '../post-ad/ad.services';
 import {CategoryServices} from "../category-detail/category-detail.services";
+import {split} from "ts-node/dist";
+import {ActiveAdServices} from "../active-ad/active-ad.services";
 declare const $: any;
 @Component({
   selector: 'app-home',
@@ -52,11 +54,10 @@ export class HomeComponent implements OnInit {
   GetALLBuyNowProductss: any = [];
   HotDealProducts: any = [];
   RecommendedProducts: any = [];
-  ViewedProducts: any = [];
+  ViewedProducts: any = {"products":[]};
   WatchedProducts: any = [];
-  NewBidInserted = false;
-  Tmp_ProID: any;
   Tmp_ProID_Array: any = [];
+  usercheck= false;
   Tmp_ProID_Array2: {
     ProID: any;
     Price: any;
@@ -108,7 +109,8 @@ export class HomeComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private GetProducts: HomeService,
               private GetCat:AdService,
-              private Category: CategoryServices) {
+              private Category: CategoryServices,
+              private GetWatch:ActiveAdServices) {
 
 
   }
@@ -171,7 +173,10 @@ export class HomeComponent implements OnInit {
       this.HotDealSlider();
       this.RecommendedSlider();
       this.ViewedItemSlider();
-      this.WatchedItemSlider();
+      if(localStorage.getItem('UserID')) {
+        this.usercheck = true;
+        this.WatchedItemSlider();
+      }
     }
   }
 
@@ -221,10 +226,10 @@ export class HomeComponent implements OnInit {
   }
 
   HotDealSlider(){
-    this.Category.getAllPhoneAndTabletProduct(1).subscribe(resSlidersData => {
+    this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
       this.HotDealProducts = resSlidersData;
       $('.hotslider').fadeOut(0);
-      if (this.HotDealProducts) {
+      if (this.HotDealProducts.length >=5) {
         setTimeout(function () {
           $('.hotslider').slick({
             infinite: true,
@@ -305,52 +310,59 @@ export class HomeComponent implements OnInit {
     });
   }
   ViewedItemSlider(){
-    this.Category.getAllPhoneAndTabletProduct(1).subscribe(resSlidersData => {
-      this.ViewedProducts = resSlidersData;
-      $('.viewedslider').fadeOut(0);
-      if (this.ViewedProducts) {
-        setTimeout(function () {
-          $('.viewedslider').slick({
-            infinite: true,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            autoplay: true,
-            prevArrow: '<button class="leftRsBanner">&lt;</button>',
-            nextArrow: '<button class="rightRsBanner">&lt;</button>',
-            responsive: [
-              {
-                breakpoint: 1199,
-                settings: {
-                  slidesToShow: 3,
-                  infinite: true
+    this.ViewedProducts = JSON.parse(localStorage.getItem('ViewedItem'));
+    if(this.ViewedProducts === null) {
+      console.log('Viewed Products Are:', this.ViewedProducts);
+    } else if(this.ViewedProducts !== null){
+        for (const tmp1 of this.ViewedProducts['products']) {
+          tmp1['Pic']=tmp1['Pic'].split(',')[0];
+        }
+        this.ViewedProducts = this.ViewedProducts['products'];
+        $('.viewedslider').fadeOut(0);
+        if (this.ViewedProducts.length >=5) {
+          setTimeout(function () {
+            $('.viewedslider').slick({
+              infinite: true,
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              autoplay: true,
+              prevArrow: '<button class="leftRsBanner">&lt;</button>',
+              nextArrow: '<button class="rightRsBanner">&lt;</button>',
+              responsive: [
+                {
+                  breakpoint: 1199,
+                  settings: {
+                    slidesToShow: 3,
+                    infinite: true
+                  }
+                },
+                {
+                  breakpoint: 767,
+                  settings: {
+                    slidesToShow: 2,
+                  }
+                },
+                {
+                  breakpoint: 639,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
                 }
-              },
-              {
-                breakpoint: 767,
-                settings: {
-                  slidesToShow: 2,
-                }
-              },
-              {
-                breakpoint: 639,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1
-                }
-              }
 
-            ]
-          });
-        }, 0);
-      }
-      $('.viewedslider').fadeIn(500).delay(200);
-    });
+              ]
+            });
+          }, 0);
+        }
+        $('.viewedslider').fadeIn(500).delay(200);
+    // });
+    }
   }
   WatchedItemSlider(){
-    this.Category.getAllPhoneAndTabletProduct(1).subscribe(resSlidersData => {
+    this.GetWatch.GetallWatchProducts(1,localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.WatchedProducts = resSlidersData;
       $('.watchslider').fadeOut(0);
-      if (this.WatchedProducts) {
+      if (this.WatchedProducts.totalItems >=5) {
         setTimeout(function () {
           $('.watchslider').slick({
             infinite: true,

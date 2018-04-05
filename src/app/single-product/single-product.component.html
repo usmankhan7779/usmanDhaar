@@ -125,6 +125,13 @@
               <div class="smalltext">Seconds</div>
             </div>
           </div>
+              <br>
+              <div class="product-cart-option">
+                <ul>
+                  <li *ngIf="productToshow.Auction"><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{ BidingProduct.length}})</span></a></li>
+                  <!--<li><a href="#Bidhistory"><i class="fa fa-envelope"></i><span>Share</span></a></li>-->
+                </ul>
+              </div>
 
 
               <form action="#" method="post" style="float: left; clear: left;">
@@ -216,12 +223,7 @@
                   <br/>
               </form>
             </div>
-            <div class="product-cart-option">
-              <ul>
-                <li *ngIf="productToshow.Auction"><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{ BidingProduct.length}})</span></a></li>
-                <!--<li><a href="#Bidhistory"><i class="fa fa-envelope"></i><span>Share</span></a></li>-->
-              </ul>
-            </div>
+
           </div>
         </div>
       </div>

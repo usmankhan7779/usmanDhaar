@@ -291,7 +291,7 @@ ul#cart-sidebar{padding:3px 15px 6px;margin:auto;max-height:195px;overflow:auto;
 .product-item .item-inner .item-info .item-title{font-size:14px;margin-bottom:6px;font-weight:400;}
 .product-item .item-inner .item-info .item-title a{display:inherit;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 10px;font-size:18px;font-weight:500;text-transform:none;letter-spacing:0.5px;}
 .product-item .item-inner{position:relative;overflow:hidden; border-radius: 15px}
-.product-item{margin:0 0px 25px;}
+.product-item{margin:0 10px 25px;}
 .home-tab .product-item{margin:0px;}
 .product-grid-area.col4 .product-item{margin:0 4px}
 .product-item .item-inner .item-info .item-title a:hover{color:#ed2424;}
@@ -855,8 +855,8 @@ button.button.pro-add-to-cart:hover{background:#ed2424;border:2px #ed2424 solid;
 button.button.pro-add-to-cart span{font-size:16px}
 button.button.pro-add-to-cart span i{margin-right:10px}
 .email-addto-box{display:inline-block;margin-top:30px}
-.product-cart-option ul{margin:auto;display:inline-block}
-.product-cart-option ul li{border-right:1px solid #e5e5e5;float:left;margin-right:15px;padding-right:15px}
+.product-cart-option ul{margin:auto;}
+.product-cart-option ul li{border-right:1px solid #e5e5e5;margin-right:15px;padding-right:15px}
 .product-cart-option ul li a{color:#636363;display:block;font-size:17px;font-weight:600;line-height:22px;margin:0;text-align:center;text-decoration:none;}
 .product-cart-option ul li a:hover, .product-cart-option ul li a:hover i{color:#ed2424}
 .product-cart-option ul li:last-child{border:none}
@@ -1281,7 +1281,8 @@ label[for="rememberme"]{margin-left:0.75em;}
 }
 .img-size-carousal{max-height:520px;margin:0 auto;}
 .header-icons-rightsetting{margin-right:5px; }
-.header-icons-rightsettingnew{margin-right:3px;font-size: x-large; color: red}
+.header-icons-rightsettingnew{margin-right:5px;font-size: x-large; color: red}
+.header-icons-rightsettingnew:hover{color: white}
 .header-icons-leftsetting{margin-left: 10px;}
 .pagination-control{clear:both;text-align:center;margin:48px 0 0;width:100%;float:left;}
 #wrapper{position:relative;}
@@ -1552,3 +1553,4 @@ label[for="rememberme"]{margin-left:0.75em;}
 .myDhaar:hover a {
   color: white;
 }
+.home-productss{margin-right: 0px!important;margin-left: 0px!important;}
