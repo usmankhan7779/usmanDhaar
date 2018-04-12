@@ -185,7 +185,7 @@
                   <li><a [routerLink]="['/contact-us']">FAQs</a></li>
                 </ul>
               </li>
-              <li *ngIf="ValueRec == true"><a (click)="gotodashboard()" class="myDhaar" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Dhaar </a></li>
+              <li *ngIf="ValueRec == true"><a  (click)="gotodashboard()" class="myDhaar" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My Dhaar </a></li>
               <li *ngIf="ValueRec == false"><a  [routerLink]="['/login']"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>
               <li *ngIf="ValueRec == false"><a  [routerLink]="['/sign-up']" style="border-left: 1px solid black;"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>
               <li *ngIf="ValueRec == true" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>

@@ -26,6 +26,7 @@
           <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
           <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Product</a></li>
           <li ><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
+          <li><a [routerLink]="['/seller-product-setting']"><i class="fa fa-cog" aria-hidden="true"></i>Seller Product Setting</a></li>
           <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
           <li ><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
           <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
@@ -40,191 +41,56 @@
         <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
       </div>
 
-      <form role="form" class="login-form">
 
-        <div class="col-md-9 col-sm-8">
-
-
-          <div class="userccount">
-            <h5>Generate Coupons</h5>
-            <div *ngIf="Error"  class="alert alert-danger">
-              <strong>Error </strong> While Creating Coupons.
-            </div>
-
-            <div *ngIf="Waitcall" class="alert  alert-info">
-              <p class="">
-                <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
-
-              </p>
-            </div>
-            <div *ngIf="Right" class="alert alert-success">
-              <strong>Coupons Created Successfully </strong>
-            </div>
-            <!-- form -->
-            <div class="formrow">
-              <label  style="color: black" class="help-block">Select Coupons Qty</label>
-              <select [(ngModel)]="model.Qty" #Qty="ngModel"  class="col-md-push-6" name="Qty" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;"  required>
-                <option value="5" selected>5</option>
-                <option value="7">7</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-              </select>
-            </div>
-            <div class="formrow">
-              <label  style="color: black" class="help-block">Select Discount %</label>
-              <select [(ngModel)]="model.Discount" #Discount="ngModel"    class="col-md-push-6" name="Discount" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" required >
-                <option value="5" selected>5%</option>
-                <option value="10">10%</option>
-                <option value="15">15%</option>
-                <option value="20">20%</option>
-                <option value="25">25%</option>
-                <option value="30">30%</option>
-                <option value="30">40%</option>
-                <option value="50">50%</option>
-              </select>
-            </div>
-            <!-- form  end-->
-            <div class="formrow">
-              <label  style="color: black" class="help-block">Coupons Expiration Time</label>
-              <select [(ngModel)]="model.AuctionListing" #AuctionListing="ngModel"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 14px; color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" required>
-                <option value="3" selected>3 Days</option>
-                <option value="5">5 Days</option>
-                <option value="7">7 Days</option>
-                <option value="10">10 Days</option>
-                <option value="15">15 Days</option>
-                <option value="30">30 Days</option>
-              </select>
-            </div>
-
-            <br/>
-
-            <div class="formrow">
-              <input type="radio" (click)="AllProductsale()" checked value="agree text" name="agree" />
-             All Products
-              <br/>
-
-            </div>
-
-            <br/>
-
-            <div class="formrow">
-              <input type="radio" (click)="AllProductfuc()"  value="agree text" name="agree" />
-             Specfic Products
-              <br/>
-              <br/>
-            </div>
-            <div *ngIf="Waitcall2" class="alert  alert-info">
-              <p class="">
-                <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Verifying Product ID ...</span>
-
-              </p>
-            </div>
-            <div *ngIf="Error2"  class="alert alert-danger">
-              <strong>Error </strong> This product not belong to your store
-            </div>
-            <div *ngIf="Right2" class="alert alert-success">
-              <strong>Product Verified </strong>
-            </div>
-            <div *ngIf="AllProduct === true" class="formpanel">
-              <label  style="color: black" class="help-block">Enter Product ID</label>
-              <input type="text"  [(ngModel)]="model.Product" #Product="ngModel" name="name5" class="form-control" placeholder="Enter Your Product ID">
-             <br/>
-             <br/>
-              <div class="col-xs-5">
-              <input style="background: #f23534; color: white" (click)="verifProduct(Product.value)" type="button" class="btn" value="Generate Coupons">
-
-              </div>
-            </div>
-
-
-            <div class="formpanel">
-              <div class="col-xs-5">
-
-            <input *ngIf="AllProductSale" type="submit" (click)="updatePassword()" class="btn" value="Generate Coupons">
-            </div>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-          </div>
+      <div class="col-md-9 col-sm-8">
+        <div class="myads">
+          <h3>My Products</h3>
           <br/>
-          <div class="main container">
-            <div class="row">
-
-              <div class="col-xs-10">
-                <div class="page-content checkout-page">
-                  <div class="page-title">
-                    <h2>Discount Coupons</h2>
+          <br/>
+          <ul class="searchList">
+            <!-- ad start -->
+            <ng-container *ngFor="let phoneProducts of ActiveProduct.results | paginate: { itemsPerPage: 12,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }; let item = index">
+              <li>
+                <div class="row">
+                  <div class="col-md-2 col-sm-4">
+                    <div class="adimg"><img src="{{ phoneProducts.Pic  }}" alt="Ad Name"></div>
                   </div>
-
-                  <!--<h4 class="checkout-sep">Biding History</h4>-->
-                  <div class="box-border">
-                    <div class="table-responsive">
-                      <table class="table table-bordered cart_summary">
-                        <thead>
-                        <tr>
-                          <th>Sr.</th>
-                          <th>Discount %</th>
-                          <th>Coupons</th>
-                          <th>Product ID (If)</th>
-                          <th>Time</th>
-                          <th>Day</th>
-
-                          <th>Created Date</th>
-                          <!--<th>Status</th>-->
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <ng-container  *ngFor="let abc of Coupons; let i = index">
-                          <tr>
-                            <td> {{i+1}} </td>
-                            <td>{{ abc.Discount}}%</td>
-                            <td>  {{ abc.CouponsCode}}</td>
-                            <td>  {{ abc.ProductID}}</td>
-                            <td>  {{ abc.Times}}</td>
-                            <td>  {{ abc.Day}}</td>
-
-                            <td>  {{ abc.CreatedDate.substr(0, 10 )}} </td>
-                            <!--<th>Status</th>-->
-
-
-
-                          </tr>
-                        </ng-container>
-                        </tbody>
-                        <tfoot>
-
-                        <tr>
-
-
-                        </tr>
-
-                        </tfoot>
-                      </table>
+                  <div class="col-md-10 col-sm-8">
+                    <div class="jobinfo">
+                      <div class="row">
+                        <div class="col-md-8 col-sm-7">
+                          <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >{{ phoneProducts.P_Title }}</a></h3>
+                          <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name }}</a> </div>
+                          <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                          <div class="clearfix"></div>
+                          <p>{{phoneProducts.P_Des}}</p>
+                          <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                          <div class="listbtn"><a (click)="SaveProduct(phoneProducts.ProductID, item)" data-toggle="modal" data-target="#myModal" >Add Coupon on this Product</a></div>
+                        </div>
+                        <div class="col-md-4 col-sm-5 text-right">
+                          <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>
+                          <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs {{ phoneProducts.FixedPrice | number:'.0-0'}}</div>
+                          <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
+                        </div>
+                      </div>
                     </div>
-
                   </div>
-
-
-
-
                 </div>
+              </li>
+            </ng-container>
 
-              </div>
-
+            <div class="col-sm-4 col-sm-push-8">
+              <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
+                                   nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
 
             </div>
-          </div>
+            <!-- ad end -->
+
+
+            <!-- ad end -->
+          </ul>
         </div>
-
-
-      </form>
-
-
-
+      </div>
 
     </div>
   </div>
@@ -233,3 +99,72 @@
 
 <!--<app-footer></app-footer>-->
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 style="font-size: 30px !important;" class="modal-title" id="myModalLabel">Add Product Coupon</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" class="login-form">
+
+          <!--<div class="col-md-9 col-sm-8">-->
+
+
+            <div class="userccount">
+              <h5>Generate Coupons</h5>
+              <!-- form -->
+              <div class="formrow">
+                <label  style="color: black" class="help-block">Enter Coupon Name</label>
+                <input type="text" [(ngModel)]="model.cname" #cname="ngModel" name="cname" style="height: 45px; font-size: 20px;width: 50%; color: black; line-height: 20px;padding: 0px 10px; border: 1px solid gray !important;" required>
+              </div>
+              <div class="formrow">
+                <label  style="color: black" class="help-block">Select Coupons Qty</label>
+                <select [(ngModel)]="model.Qty" #Qty="ngModel"  name="Qty" style="height: 45px; font-size: 20px; color: black;padding: 0px 10px; line-height: 20px; border: 1px solid gray !important;"  required>
+                  <option value="5" selected>5</option>
+                  <option value="7">7</option>
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+              <div class="formrow">
+                <label  style="color: black" class="help-block">Select Discount %</label>
+                <select [(ngModel)]="model.Discount" #Discount="ngModel" name="Discount" style="height: 45px; font-size: 20px; color: black;padding: 0px 10px; line-height: 20px; border: 1px solid gray !important;" required >
+                  <option value="5" selected>5%</option>
+                  <option value="10">10%</option>
+                  <option value="15">15%</option>
+                  <option value="20">20%</option>
+                  <option value="25">25%</option>
+                  <option value="30">30%</option>
+                  <option value="30">40%</option>
+                  <option value="50">50%</option>
+                </select>
+              </div>
+              <!-- form  end-->
+              <div class="formrow">
+                <label  style="color: black" class="help-block">Coupons Expiration Time</label>
+                <select [(ngModel)]="model.AuctionListing" #AuctionListing="ngModel" name="listing" style="height: 45px; font-size: 20px; color: black;padding: 0px 10px; line-height: 20px; border: 1px solid gray !important;" required>
+                  <option value="3" selected>3 Days</option>
+                  <option value="5">5 Days</option>
+                  <option value="7">7 Days</option>
+                  <option value="10">10 Days</option>
+                  <option value="15">15 Days</option>
+                  <option value="30">30 Days</option>
+                </select>
+              </div>
+
+              <br/>
+            </div>
+            <br/>
+          <!--</div>-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"(click)="verifProduct()" >Generate Coupons</button>
+      </div>
+    </div>
+  </div>
+</div>

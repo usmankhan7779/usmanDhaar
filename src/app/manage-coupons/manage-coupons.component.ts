@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ActiveAdServices } from '../active-ad/active-ad.services';
 import { JwtHelper } from 'angular2-jwt';
 import {tryCatch} from 'rxjs/util/tryCatch';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -13,127 +14,72 @@ import {tryCatch} from 'rxjs/util/tryCatch';
 })
 export class ManageCouponsComponent implements OnInit {
   model: any = {};
-  jwtHelper: JwtHelper = new JwtHelper();
-  match = true;
-  Right = false;
-  Right2 = false;
-  Error = false;
-  Error2 = false;
-  AllProduct = false;
-  AllProductSale = true;
-  oneProduct = false;
-  notsame = false;
-  Waitcall = false;
-  Waitcall2 = false;
-  USerNameID: any;
-  Coupons: any = [];
-  MyProduct: any = [];
   SessionstoreName: any;
+  ActiveProduct: any = [];
+  r: any;
+  pageno: any;
+  ProductID:any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: ActiveAdServices,
               private _nav: Router) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
+    //   this.SessionstoreName = localStorage.getItem('StoreName');
+    // this.obj.GetAllcoupons(this.SessionstoreName).subscribe(
+    //   data => {
+    //     this.Coupons = data;
+    //
+    //   });
       this.SessionstoreName = localStorage.getItem('StoreName');
-    this.obj.GetAllcoupons(this.SessionstoreName).subscribe(
-      data => {
-        this.Coupons = data;
-
-      });
-
+      if(this.SessionstoreName) {
+        this.obj.getBuyNow_ProductBYStoreName(1,localStorage.getItem('StoreName')).subscribe(data => {
+          this.ActiveProduct = data;
+          console.log('Active Products are:::', this.ActiveProduct);
+        });
+      } else {
+        this._nav.navigate(['/']);
+      }
   }
   }
+  pageTrendChanged(event) {
+    if (isPlatformBrowser(this.platformId)){
+      this.r = event;
+      this.pageno = event;
 
-verifProduct (abc: string) {
-
-  this.Error2 = false;
-  this.Right2 = false;
-
-    this.Waitcall2 = true;
-
-  this.obj.VerifyProductID(abc, this.SessionstoreName )
-    .subscribe(
-      data => {
-        this.MyProduct = data;
-
-        console.log(this.MyProduct['results']['0']);
-        if (this.MyProduct['results']['0']) {
-          console.log('Yahoooo111111', this.model['Qty'], this.model['Discount'], this.model['AuctionListing']);
-          this.obj.InsertDisCountcoupons(this.model['Qty'], this.model['Discount'], this.model['AuctionListing'],   this.SessionstoreName, abc )
-            .subscribe(
-              data => {
-                this.Waitcall2 = false;
-                this.Waitcall = false;
-                // this.alertService.success('Registration successful', true);
-                this.Right  = true;
-                // alert('success')
-              },
-              error => {
-                this.Waitcall2 = false;
-                this.Waitcall = false;
-                this.Error = true;
-                // this.alertService.error(error);
-                // this.loading = false;
-                // alert(error);
-              });
-
-        } else {
-          this.Waitcall2 = false;
-          this.Error2 = true;
-        }
-      },
-      error => {
-        this.Waitcall2 = false;
-        this.Error2 = true;
-        // this.alertService.error(error);
-        // this.loading = false;
-        // alert(error);
-      });
-
-
-
-
-
-}
-  updatePassword() {
-    this.Error = false;
-    this.Error2 = false;
-    this.Right  = false;
-    this.Right2  = false;
-    this.Waitcall = true;
-    this.Waitcall2 = false;
-    this.obj.InsertDisCountcoupons(this.model['Qty'], this.model['Discount'], this.model['AuctionListing'],   this.SessionstoreName, "" )
-      .subscribe(
+      alert(this.pageno);
+      this.obj.getAll_ProductBYStoreName(this.pageno, localStorage.getItem('StoreName')).subscribe(
         data => {
-          this.Waitcall = false;
-          // this.alertService.success('Registration successful', true);
-          this.Right  = true;
-          // alert('success')
-        },
+          this.ActiveProduct = data;
+        });
+    }
+  }
+
+  SaveProduct(product, index) {
+
+    this.ProductID = product;
+
+    console.log('Attributes are:', this.ProductID);
+    console.log('Index are:', index);
+  }
+
+  verifProduct () {
+
+    this.obj.InsertDisCountcoupons(this.model.cname, this.model['Qty'], this.model['Discount'], this.model['AuctionListing'],   this.SessionstoreName, this.ProductID )
+      .subscribe(data => {
+        // swal('Coupon has been added','','sucess')
+          swal({
+            title: 'Coupon has been Added',
+            html:
+            'You have added <b>bold text</b>, ' +
+            '<a href="//github.com">links</a> ' +
+            'and other HTML tags'
+          });
+      },
         error => {
-          this.Waitcall = false;
-          this.Error = true;
-          // this.alertService.error(error);
-          // this.loading = false;
-          // alert(error);
         });
 
-
   }
-
-  AllProductfuc() {
-      this.AllProduct = true;
-      this.AllProductSale = false;
-      }
-  AllProductsale() {
-    this.AllProduct = false;
-    this.AllProductSale = true;
-  }
-  verifyproductfromDB(abc: string) {
-
-  }
-
 
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){

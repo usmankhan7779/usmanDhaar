@@ -19,12 +19,6 @@ export class BuyerDashboardComponent implements OnInit {
   Error: boolean;
   private base64textString= '';
   files: FileList;
-  FName: string;
-  LName: string;
-  Country: string;
-  State: string;
-  City: string;
-  Zip: string;
   Mobile: string;
   Address: string;
   GetUSerDOne: any [];
@@ -80,26 +74,6 @@ export class BuyerDashboardComponent implements OnInit {
       });
   }
 
-
-  onChange(event: EventTarget) {
-
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-    this.files = target.files;
-    this.file = this.files[0];
-    console.log(this.files);
-
-    const reader = new FileReader();
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsBinaryString(this.file);
-  }
-
-
-  _handleReaderLoaded(readerEvt) {
-    const binaryString = readerEvt.target.result;
-    this.base64textString = btoa(binaryString);
-
-  }
   // save() {
   //   if (isPlatformBrowser(this.platformId)){
   //   this.obj.UserDetailsUpdate(this.FName, this.LName, this.Country, this.State, this.City, this.Zip, this.Mobile, this.Address, this.base64textString, localStorage.getItem('UserID')).subscribe(data => this.GetallCat = data);}

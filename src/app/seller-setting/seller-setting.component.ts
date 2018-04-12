@@ -29,6 +29,8 @@ export class SellerSettingComponent implements OnInit {
       this.SessionstoreName = localStorage.getItem('StoreName');
       // this.obj.verify_token().subscribe((response) => {
       this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+
+      console.log('Authorization is:',this.USerNameID);
       //
       //
       //   },

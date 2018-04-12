@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth-guard/auth-guard.services';
 import {LayoutComponent} from "./layout/layout.component";
 import {TermsUseModule} from './terms-use/terms-use.module';
+import {SellerProductSettingModule} from './seller-product-setting/seller-product-setting.module';
 
 const appRoutes: Routes = [
   {
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
       { path: 'terms-use', loadChildren: './terms-use/terms-use.module#TermsUseModule'},
       { path: 'dhaar', loadChildren: './dhaar/dhaar.module#DhaarModule'},
       { path: 'file-uploads', loadChildren: './file-uploads/file-uploads.module#FileUploadsModule'},
+      { path: 'seller-product-setting', loadChildren: './seller-product-setting/seller-product-setting.module#SellerProductSettingModule'},
     ]
   },
 ];

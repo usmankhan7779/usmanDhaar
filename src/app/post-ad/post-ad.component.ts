@@ -195,6 +195,7 @@ export class PostAdComponent implements OnInit {
       this.DateTime = monthindex + dateformat[2] + dateformat[3] + timeNOw[0] + timeNOw[1] + timeNOw[2];
       console.log('month' + this.DateTime);
       const subcat = this.model.subcat.split('!');
+      console.log('SubCat issss:', subcat);
 
       this.CatNumber = +this.CatId;
       console.log('CatNumber value is', this.CatNumber);

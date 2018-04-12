@@ -49,6 +49,11 @@ export class AdService {
       return this._http.get(this.ServerUrl + 'Getsubsubcat/' + pk).map(response => response.json());
     // console.log(this.CateDeatils)
   }
+  GetAllSubSubCategoriesBySubCatID(pk: string) {
+
+      return this._http.get(this.ServerUrl + 'GetsubsubcatBySubcat/' + pk).map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
 
   GetSubSubCategories(pk: string) {
 
@@ -125,6 +130,39 @@ export class AdService {
 
 
   }
+
+  Edit_PhoneAndTabletProduct_Product(model: any []) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    if (isPlatformBrowser(this.platformId)){
+
+      return this._http.put(this.ServerUrl + 'productediting/' + model['ProductID'],
+        {
+          'Cat_Name': model['Cat_Name'] ,
+          'Sub_Cat_Name': model['Sub_Cat_Name'],
+          'Sub_Sub_Cat_Name': model['Sub_Sub_Cat_Name'],
+          'P_Title':  model['P_Title'],
+          'P_Des':  model['P_Des'],
+          'P_Condition':  model['P_Condition'],
+          'Auction': model['Auction'],
+          'SrartingPrice': model['SrartingPrice'],
+          'AuctionListing': model['AuctionListing'],
+          'ReservePrice': model['ReservePrice'],
+          'FixedPrice': model['FixedPrice'],
+          'Addbestoffer': model['Addbestoffer'],
+          'Quantity': model['Quantity'],
+          'MaxQuantity': model['MaxQuantity'],
+        }, { headers: headers }).map((res: Response) => {
+
+      }).catch((error: any) => {
+        console.log(error.toString());
+        return Observable.throw(new Error(error.status));
+      });
+
+
+    }
+  }
+
   Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

@@ -34,6 +34,9 @@ export class ActiveAdServices {
   getAll_ProductBYStoreName(page: any, UserID: any) {
     return this._http.get( this.ServerUrl + 'getAll_ProductBYStoreName/' + UserID + '?page=' + page, ).map(response => response.json());
   }
+  getBuyNow_ProductBYStoreName(page: any, UserID: any) {
+    return this._http.get( this.ServerUrl + 'getBuyNow_ProductBYStoreName/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
 
   GetAllPendingproductsBYUserID(page: any, UserID: any) {
 
@@ -270,13 +273,14 @@ export class ActiveAdServices {
       });
   }
 
-  InsertDisCountcoupons(Qty: string, Discount: string , Day: string, StoreName, PID) {
-    console.log('Yahoooo22222222', Qty, Discount, Day, StoreName, PID);
+  InsertDisCountcoupons(cname: any, Qty: string, Discount: string , Day: string, StoreName, PID) {
+    console.log('Yahoooo22222222',cname, Qty, Discount, Day, StoreName, PID);
     return this._http.post( this.ServerUrl + 'insertdiscountcoupons/', {
 
       'Qty' :  Qty,
       'Discount':  Discount,
       'Day':  Day,
+      'CouponsCode': cname,
       'StoreName':  StoreName ,
       'ProductID':  PID
 
