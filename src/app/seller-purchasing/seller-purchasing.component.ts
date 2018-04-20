@@ -5,6 +5,7 @@ import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.servi
 import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-seller-purchasing',
@@ -43,6 +44,7 @@ export class SellerPurchasingComponent implements OnInit {
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
 

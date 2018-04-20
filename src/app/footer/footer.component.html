@@ -6,16 +6,16 @@
       <div class="footer-newsletter">
         <div class="container">
           <div class="row">
-            <div style="margin-top: 10px;" class="col-md-3 col-sm-5">
-              <h3 class="">Sign up for newsletter</h3>
-              <span>Get the latest deals and special offers</span></div>
+            <div class="col-md-4 col-sm-5">
+              <h3 class="">Subscribe now to receive the Latest News & Offers from Dhaar</h3>
+              <span style="color: red">The Desi Auction Marketplace</span></div>
             <div class="col-md-5 col-sm-7">
 
               <form  role="form"  id="newsletter-validate-detail" (ngSubmit)="f.form.valid && loged_in(Email.value)" #f="ngForm" novalidate>
                 <div class="newsletter-inner">
                   <span *ngIf="login_error" style="color: red !important; font-size: x-large">Email already exist!</span>
 
-                  <div *ngIf="f.submitted && !Email.valid" class="help-block"><span style="color: white !important;">Valid Email is required</span></div>
+                  <div *ngIf="f.submitted && !Email.valid" class="help-block"><span style="color: white !important;">Invalid email format.</span></div>
 
                   <!--<div  *ngIf="f.submitted && Email.errors  && !Email.valid" >-->
                     <!--Email is invalid-->
@@ -143,7 +143,7 @@
   <div class="footer-coppyright">
     <div class="container">
       <div class="row">
-        <div class="col-sm-6 col-xs-12 coppyright"> Copyright © 2018 All Rights Reserved.   <a [routerLink]="['/terms-use']" target="_blank">Terms of Use</a> and <a [routerLink]="['/privacy-policy']" target="_blank">Privacy</a></div>
+        <div class="col-sm-6 col-xs-12 coppyright"> Copyright © 2018 All Rights Reserved.   <a [routerLink]="['/terms-use']" target="_blank">Terms of Use</a> | <a [routerLink]="['/privacy-policy']" target="_blank">Privacy</a> | <a [routerLink]="['/privacy-policy']" target="_blank">Intellectual Property</a></div>
 
         <div class="col-sm-6 col-xs-12">
           <div class="payment">

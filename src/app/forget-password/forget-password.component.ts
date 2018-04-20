@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forget-password',
@@ -24,6 +25,16 @@ export class ForgetPasswordComponent implements OnInit {
     this.obj.reset_service(id)
       .subscribe(
         data => {
+          swal({
+            title: 'Please check your Inbox for Account Activation Instructions.',
+            type: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.value) {
+              this._nav.navigate(['/'])
+            }
+          })
           console.log(data);
           this.Waitcall = false;
           this.isSend = true;

@@ -115,21 +115,21 @@ export class LogInComponent implements OnInit {
     this.obj.loged_in(username, password, this.CatName, this.ProID, this.checkout).subscribe((response) => {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
-        // swal(
-        //   'Logged In!',
-        //   'You have successfully logged in',
-        //   'success'
-        // );
+        swal(
+          'Logged In!',
+          'You have successfully logged in',
+          'success'
+        );
         this.login_error = false;
         this.Waitcall = true;
 
       },
       (err) => {
-        // swal(
-        //   'Invalid Credentials',
-        //   'You have entered invalid login credentials',
-        //   'error'
-        // );
+        swal(
+          'Invalid Credentials',
+          'You have entered invalid login credentials',
+          'error'
+        );
         this.Waitcall = false;
         this.login_error = true;
         /* this function is executed when there's an ERROR */

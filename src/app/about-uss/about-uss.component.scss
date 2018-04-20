@@ -1,12 +1,11 @@
-
-/* Playing with the methods outlined here
-https://csswizardry.com/2011/02/css-powered-ribbons-the-clean-way/ */
-
-body {
-  margin: 40px;
-  padding: 20px;
-  border: 1px solid #999;
+.img{
+  margin-left: 200px;
 }
+strong{
+  color: red;
+  font-size: 20px;
+}
+
 %ribbon {
   position:relative;
   float:left;
@@ -30,40 +29,61 @@ body {
     z-index:-1;
   }
 }
+.about-text{
+  font-size: 20px;
+}
 h2.ribbon {
   @extend %ribbon;
-  color:#fff;
-  background:#ed2424;
-  text-shadow:0 -1px darken(#ed2424, 15%), 0 1px darken(#ed2424, 15%);
+  color:white;
+  background:red;
+  text-shadow:0 -1px darken(#195a7b, 15%), 0 1px darken(#195a7b, 15%);
   &:before {
-    border-color: #ed2424 #ed2424 transparent transparent;
+    border-color: #d70058 #d70058 transparent transparent;
   }
 }
 h3.ribbon {
   @extend %ribbon;
   color:#fff;
-  background: #ed2424;
-  text-shadow:0 -1px darken(#ed2424, 15%), 0 1px darken(#ed2424, 15%);
+  background: red;
+  text-shadow:0 -1px darken(#195a7b, 15%), 0 1px darken(#195a7b, 15%);
   &:before {
-    border-color: #ed2424 #ed2424 transparent transparent;
+    border-color: #004161 #004161 transparent transparent;
   }
 }
-h4.ribbon {
-  @extend %ribbon;
-  color: #333;
-  background: #feec2d;
-  text-shadow:0 -1px darken(#feec2d, 15%), 0 1px darken(#feec2d, 15%);
-  &:before {
-    border-color: #e1d100 #e1d100 transparent transparent;
-  }
+.container{
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  box-shadow: 0 1px 20px 0 rgba(0,0,0,.3);
+  //background: #b3b3b3;
+  border-radius: 6px;
+  padding: 30px 0px;
+  margin-bottom: 20px;
+
 }
-.ribbon + p {
-  clear: both;
+.item img {width: 100%; height: auto}
+//.container-fluid{
+//  transition-delay: .25s;
+//  content: '';
+//  display: block;
+//  height: 100%;
+//  left: 0;
+//  opacity: .65;
+//  position: absolute;
+//}
+//
+//
+//
+
+.back-cover {
+  background:url("../../assets/images/backcover.jpg/title-background.32fef2fdaa817cd71569.jpg") ;
+  margin-top: 74%;
+  width: 97.5%;
+  margin-left: 15px;
 }
 
-p {
-  margin-bottom: 8px;
-}
 
 
 
@@ -75,3 +95,127 @@ p {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+///* Playing with the methods outlined here
+//https://csswizardry.com/2011/02/css-powered-ribbons-the-clean-way/ */
+//
+//body {
+//  margin: 40px;
+//  padding: 20px;
+//  border: 1px solid #999;
+//}
+//%ribbon {
+//  position:relative;
+//  float:left;
+//  clear:both;
+//  padding:10px 10px 10px 20px;
+//  margin-left:-40px;
+//  margin-bottom:20px;
+//  -moz-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+//  -webkit-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+//  -o-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+//  box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+//  &:before {
+//    content:" ";
+//    border-style: solid;
+//    border-width: 10px;
+//    display:block;
+//    position:absolute;
+//    bottom: -10px;
+//    left:0;
+//    margin-bottom:-10px;
+//    z-index:-1;
+//  }
+//}
+//h2.ribbon {
+//  @extend %ribbon;
+//  color:#fff;
+//  background:#ed2424;
+//  text-shadow:0 -1px darken(#ed2424, 15%), 0 1px darken(#ed2424, 15%);
+//  &:before {
+//    border-color: #ed2424 #ed2424 transparent transparent;
+//  }
+//}
+//h3.ribbon {
+//  @extend %ribbon;
+//  color:#fff;
+//  background: #ed2424;
+//  text-shadow:0 -1px darken(#ed2424, 15%), 0 1px darken(#ed2424, 15%);
+//  &:before {
+//    border-color: #ed2424 #ed2424 transparent transparent;
+//  }
+//}
+//h4.ribbon {
+//  @extend %ribbon;
+//  color: #333;
+//  background: #feec2d;
+//  text-shadow:0 -1px darken(#feec2d, 15%), 0 1px darken(#feec2d, 15%);
+//  &:before {
+//    border-color: #e1d100 #e1d100 transparent transparent;
+//  }
+//}
+//.ribbon + p {
+//  clear: both;
+//}
+//
+//p {
+//  margin-bottom: 8px;
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//

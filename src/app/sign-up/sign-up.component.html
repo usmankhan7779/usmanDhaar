@@ -21,7 +21,19 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <div class="userccount">
+        <div class="userccount" style="    margin-top: 80px;">
+          <div class="login-form-1-header" style="margin-top: -80px">
+            <h3>Create a new account</h3>
+            <ul class="logic-from-1-sl">
+              <li><a href=""><i class="fa fa-facebook"></i></a></li>
+              <li><a href=""><i class="fa fa-twitter"></i></a></li>
+              <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+            </ul>
+            <div class="signup-header-text">
+              <b> Signed Up?</b>
+              <a routerLink='/login'><u style="color: #ffffff"> Login Here..</u></a>
+            </div>
+          </div>
 
           <!--<div class="alert alert-success" role="alert"><strong>Well done!</strong> Your account successfully created.</div>-->
           <!--<div class="alert alert-warning" role="alert"><strong>Warning!</strong> Better check yourself, you're not looking too good.</div>-->
@@ -40,8 +52,11 @@
               <strong>Error!</strong> Account creation failed please try again.
             </div>
             <div *ngIf="EmailPosterror==true" class="alert alert-danger">
-              <strong>Error!</strong> Please Enter Correct Email.
+              <strong>Error!</strong> Invalid email format.
+              .
             </div>
+
+
             <h5 style="color:#ed2424; ">User Sign up</h5>
             <div id="wsell" class="formpanel tab-pane fade in active">
               <form role="form" class="login-form" (ngSubmit)="f.form.valid && captcha && register()" #f="ngForm" novalidate>
@@ -78,7 +93,7 @@
 
                     <input type="email" class="form-control" name="Email" placeholder="Email" [(ngModel)]="model.Email"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  (ngModelChange)="OnEmailChangeEvent()" (focusout)="checkEmail(Email.value)" #Email="ngModel" required>
                     <span *ngIf="Emailok == true " style="color: green" class="glyphicon glyphicon-ok-sign form-control-feedback"></span>
-                    <div *ngIf=" EmailExist == true "  class="help-block"  style="color: red" >Email is Already Exist. <a [routerLink]="['/login']" style="color: blue !important;">Click Here</a> to login</div>
+                    <div *ngIf=" EmailExist == true "  class="help-block"  style="color: red" >Email already exists. <a [routerLink]="['/login']" style="color: blue !important;">Click Here</a> to login</div>
                     <!--<div *ngIf="f.submitted && !username.valid" class="help-block">Email is required</div>-->
 
                   </div><!-- End .form-group -->
@@ -86,14 +101,14 @@
 
                 <div class="formrow label-overlay">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Password.valid }">
-                    <div *ngIf="f.submitted && !Password.valid" class="help-block">Password must be 5 characters long</div>
+                    <div *ngIf="f.submitted && !Password.valid" class="help-block">Please enter Password.</div>
                     <input type="Password" class="form-control" minlength="5" (ngModelChange)="OnPassReset()" name="Password" placeholder="Password" [(ngModel)]="model.Password" #Password="ngModel" required>
                   </div><!-- End .form-group -->
                 </div>
 
                 <div class="formrow label-overlay">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !RePassword.valid}">
-                    <div *ngIf="f.submitted && !Password.valid" class="help-block">Re-Password is required</div>
+                    <div *ngIf="f.submitted && !Password.valid" class="help-block">Please re-enter Password.</div>
 
                     <input type="Password" class="form-control" (ngModelChange)="OnPassReset()" name="RePassword" (blur)="checkPassowed(RePassword.value, Password.value)" placeholder="RePassword" [(ngModel)]="model.RePassword" data-ng-match="Password" #RePassword="ngModel" required>
 
@@ -182,9 +197,9 @@
           <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> Already a Member? <a [routerLink]="['/login']" href="#.">Login Here</a></div>
 
 
-          <div class="socialLogin">
-            <h5>Login Or Register with Social</h5>
-            <a href="#." class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#." class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
+          <!--<div class="socialLogin">-->
+            <!--<h5>Login Or Register with Social</h5>-->
+            <!--<a href="#." class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#." class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>-->
 
 
         </div>

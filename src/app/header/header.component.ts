@@ -91,21 +91,33 @@ export class HeaderComponent implements OnInit {
 
      }
 
-    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
-
-    if (this.CartedProduct) {
-
-      this.ItemInCart = this.CartedProduct['products'].length;
-
-    } else {
-      this.ItemInCart = 0;
-
-    }
+    // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+    //
+    // if (this.CartedProduct) {
+    //
+    //   this.ItemInCart = this.CartedProduct['products'].length;
+    //
+    // } else {
+    //   this.ItemInCart = 0;
+    //
+    // }
 
 
     this.PostAdd.GetAllCategories().subscribe(resSlidersData => this.GetallCat = resSlidersData);
 
   }
+  }
+
+  cartProduct() {
+    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+
+    if (this.CartedProduct) {
+
+      return this.CartedProduct['products'].length;
+
+    } else {
+      return 0
+    }
   }
 
   closeSearch1(event) {
@@ -148,6 +160,16 @@ export class HeaderComponent implements OnInit {
     this.obj.loged_out();
     this.ValueRec = false;
     this._nav.navigate(['/login']);
+    }
+  }
+
+  loginCheck() {
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('UserID')) {
+        return true
+      } else {
+        return false
+      }
     }
   }
 

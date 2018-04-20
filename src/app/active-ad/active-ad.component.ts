@@ -6,6 +6,7 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import {PaginatePipe, PaginationService} from 'ng2-pagination';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-active-ad',
@@ -63,6 +64,7 @@ export class ActiveAdComponent implements OnInit {
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
       localStorage.clear();
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
 
   }

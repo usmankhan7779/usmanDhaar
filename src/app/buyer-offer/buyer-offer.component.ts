@@ -125,6 +125,7 @@ export class BuyerOfferComponent implements OnInit {
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
       localStorage.clear();
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
 }

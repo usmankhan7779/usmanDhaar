@@ -2,6 +2,7 @@ import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActiveAdServices} from "../active-ad/active-ad.services";
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-watch-product',
@@ -63,6 +64,7 @@ export class WatchProductComponent implements OnInit {
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
       localStorage.clear();
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
 }

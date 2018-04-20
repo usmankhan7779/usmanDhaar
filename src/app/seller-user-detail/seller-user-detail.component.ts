@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { JwtHelper } from 'angular2-jwt';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-seller-user-detail',
@@ -242,6 +243,7 @@ export class SellerUserDetailComponent implements OnInit {
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
       localStorage.clear();
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
 }

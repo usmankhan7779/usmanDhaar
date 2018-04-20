@@ -7,6 +7,7 @@ import { JwtHelper } from 'angular2-jwt';
 import {HttpService} from '../services/http-service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
+import swal from 'sweetalert2';
 
 
 
@@ -127,7 +128,31 @@ export class LoginService {
     }
   }
 
+  sendmail(email) {
 
+    if (isPlatformBrowser(this.platformId)) {
+
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      return this._http.post(this.ServerUrl + 'confirm/email/',
+        JSON.stringify({
+          email: email,
+          username: localStorage.getItem('Usernamae')
+        }), {headers: headers})
+        .map((response: Response) => {
+          swal({
+            title: 'Please check your Inbox for Account Activation Instructions.',
+            type: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.value) {
+              this._nav.navigate(['/VerfiyEmail'])
+            }
+          })
+        });
+    }
+  }
 
   post_signup_form(username: string, email: string , password: string, Fname, LName, Mobile) {
 
@@ -675,7 +700,7 @@ export class LoginService {
 
   reset_service(email) {
     console.log(email);
-    return this._http.post(this.EMailServerUrl + 'password/reset/', {
+    return this._http.post('http://127.0.0.1:8000/rest-auth/' + 'password/reset/', {
       'email': email
     }).map((response: Response) => response.json());
   }
@@ -690,34 +715,10 @@ export class LoginService {
         token: token,
         new_password2: pass2,
         uid: uid}),
-      {headers: headers}).map((response: Response) => {
-
-       return response.json();
-
-    }).catch((error: any) => {
-      console.log(error.message);
-      // alert('sfs');
-      return Observable.throw(new Error(error.status));
-    });
+      {headers: headers}).map((response: Response) => response.json())
 
   }
-  sendmail(email) {
 
-    if (isPlatformBrowser(this.platformId)) {
-
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this._http.post(this.ServerUrl + 'confirm/email/',
-      JSON.stringify({
-        email: email,
-        username: localStorage.getItem('Usernamae')
-      }), {headers: headers})
-      .map((response: Response) => {
-
-        // console.log(response);
-      });
-  }
-  }
   checkcode(key, email) {
     if (isPlatformBrowser(this.platformId)) {
 

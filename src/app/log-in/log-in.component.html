@@ -1,20 +1,95 @@
 
 <app-header></app-header>
 
-<!-- Page Title start -->
-<!--<div class="pageTitle">-->
-  <!--<div class="container">-->
-    <!--<div class="row">-->
-      <!--<div class="col-md-6 col-sm-6">-->
-        <!--<h1 class="page-heading">Login</h1>-->
+
+<!--<div class="container" style="margin-top: 30px">-->
+  <!--<div class="login-form-1-center">-->
+    <!--<form  class="login-form-1"  (ngSubmit)="captcha && loged_in(firstname.value, password.value)" #f="ngForm" >-->
+      <!--<div class="login-form-1-header">-->
+        <!--<h3>Log In to Your Account</h3>-->
+        <!--<ul class="logic-from-1-sl">-->
+          <!--<li><a href=""><i class="fa fa-facebook"></i></a></li>-->
+          <!--<li><a href=""><i class="fa fa-twitter"></i></a></li>-->
+          <!--<li><a href=""><i class="fa fa-google-plus"></i></a></li>-->
+        <!--</ul>-->
       <!--</div>-->
-      <!--<div class="col-md-6 col-sm-6">-->
-        <!--<div class="breadCrumb"><a href="#">Home</a> / <span>Login</span></div>-->
+      <!--<div class="login-form-1-body">-->
+        <!--<div class="form-group">-->
+          <!--<h3 for="firstname">Username*</h3>-->
+          <!--<input type="text"  placeholder="&#xf007; Username"  name="firstname" class="form-control fontAwesome input-lg" [(ngModel)]="model.firstname"-->
+                 <!--#firstname="ngModel" #firstname1 required   >-->
+          <!--<div class="md-errors-spacer" [hidden]="firstname.valid || firstname.untouched">-->
+            <!--<div  style="color: red"  *ngIf="!firstname.valid" class="help-block"> *Username is <strong>Require</strong></div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <!--<h3 for="Password">Password*</h3>-->
+          <!--&lt;!&ndash;(keyup.enter)=" captcha && onSubmit(f);"&ndash;&gt;-->
+          <!--<input type="password" placeholder="&#xf023; Password"  name="Password" class="form-control fontAwesome input-lg" [(ngModel)]="model.Password"-->
+                 <!--#password="ngModel" #password1 >-->
+          <!--<div class="md-errors-spacer" [hidden]="password.valid || password.untouched">-->
+            <!--<div  style="color: red"  *ngIf="!password.valid" class="help-block"> *Password is <strong>Require</strong></div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !captcha}">-->
+          <!--<re-captcha (resolved)="resolved($event)" siteKey="6LcMeE4UAAAAAORPbOfwjGczzxsz843f24BA92IN" required></re-captcha>-->
+          <!--<div *ngIf="f.submitted && !captcha" class="help-block">ReCaptcha is required</div>-->
+        <!--</div>-->
+
+        <!--<div class="checkbox" style="padding: 10px 0px">-->
+          <!--<label><input type="checkbox" value="">Stay Signed In</label>-->
+        <!--</div>-->
+
+        <!--<button [disabled]="password.untouched" value="LogIn" type="submit">Login</button>-->
+        <!--<a routerLink="/forget">Forgot Password?</a>-->
+        <!--<div style="text-align: center">Don't have an account?<a routerLink='/signup' > Sign Up </a></div>-->
       <!--</div>-->
-    <!--</div>-->
+    <!--</form>-->
   <!--</div>-->
 <!--</div>-->
-<!-- Page Title End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="listpgWraper">
   <div class="container">
@@ -22,7 +97,7 @@
 
       <div class="col-md-6 col-md-offset-3">
 
-        <div class="userccount">
+        <div class="userccount" style="margin-top: 60px;">
           <div *ngIf="SignUpDOne==true" class="alert alert-success">
             <strong>User Registered!</strong> LogIn to your account
           </div>
@@ -30,7 +105,14 @@
             <strong>Store Registered!</strong> Please Login with same credentials into seller's account
           </div>
 
-
+          <div class="login-form-1-header">
+          <h3>Log In to Your Account</h3>
+          <ul class="logic-from-1-sl">
+          <li><a href=""><i class="fa fa-facebook"></i></a></li>
+          <li><a href=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+          </ul>
+          </div>
 
           <h5 style="color:#ed2424; ">Login</h5>
           <!-- login form -->
@@ -59,11 +141,13 @@
                 <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
               </div>
 
+              <div class="formrow">
               <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !captcha}">
               <re-captcha (resolved)="resolved($event)" siteKey="6LcMeE4UAAAAAORPbOfwjGczzxsz843f24BA92IN" required></re-captcha>
               <div *ngIf="f.submitted && !captcha" class="help-block">ReCaptcha is required</div>
               <!--[(ngModel)]="model.recaptcha" #recaptcha="ngModel"-->
             </div>
+              </div>
             </div>
             <div *ngIf="Waitcall" class="alert  alert-info">
               <p class="">
@@ -104,15 +188,15 @@
           <!-- sign up form -->
           <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a  [routerLink]="['/sign-up']">Register Here</a></div>
 
-          <div *ngIf="!user">
-            <div class="socialLogin">
-              <h5>Login Or Register with Social</h5>
-              <a (click)="signInWithFB()" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a (click)="signInWithGoogle()" class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
+          <!--<div *ngIf="!user">-->
+            <!--<div class="socialLogin">-->
+              <!--<h5>Login Or Register with Social</h5>-->
+              <!--<a (click)="signInWithFB()" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a (click)="signInWithGoogle()" class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>-->
 
-            <!--<button  (click)="signInWithFB()"><i class="fa fa-facebook"></i></button>-->
-            <!--<button  (click)="signInWithGoogle()"><i class="fa fa-google-plus"></i></button>-->
+            <!--&lt;!&ndash;<button  (click)="signInWithFB()"><i class="fa fa-facebook"></i></button>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button  (click)="signInWithGoogle()"><i class="fa fa-google-plus"></i></button>&ndash;&gt;-->
 
-          </div>
+          <!--</div>-->
           <!-- sign up form end-->
 
           <!--<div class="socialLogin">-->

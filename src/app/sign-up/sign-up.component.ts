@@ -41,6 +41,7 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/log-in';
+
     }
   }
   resolved(captchaResponse: string) {

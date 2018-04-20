@@ -827,7 +827,7 @@ ul.products-list .sale-left{left:0;top:0;}
 .product-color-size-area .size-area{display:inline-block;width:40%}
 .product-view-area .product-details-area{margin-top:0;z-index:-9;padding:0px 0px 20px 22px;}
 .product-view-area .product-name h1{font-size:32px;margin:0 0 18px;text-align:left;line-height:36px;padding-bottom:15px;letter-spacing:normal;font-weight:600;border-bottom:1px solid #e5e5e5;}
-.product-view-area .short-description{font-size:13px;padding-top:12px;border-top:1px solid #e5e5e5;margin-bottom:15px}
+.product-view-area .short-description{font-size:13px;padding-top:12px;border-top:1px solid #e5e5e5;margin-bottom:15px;clear:both}
 .product-view-area .short-description h3{font-size:15px;text-transform:uppercase;color:#000000;margin-bottom:5px;font-weight:bold}
 .product-view-area .short-description p{font-size:17px}
 .product-view-area .product-details-area .ratings{padding:5px 0 0;margin:auto}
@@ -1554,3 +1554,272 @@ label[for="rememberme"]{margin-left:0.75em;}
   color: white;
 }
 .home-productss{margin-right: 0px!important;margin-left: 0px!important;}
+
+.login-form-1-center{
+  width: 35%;
+  margin: 120px auto;
+}
+
+.login-form-1{
+  background: #fafafa;
+  width: 100%;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #ccc;
+}
+
+.login-form-1-header{
+  position: relative;
+  background: #cc0000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 7px 15px #a5a5a5;
+  margin-top: -60px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.login-form-1-header h3{
+  text-align: center;
+  margin-bottom: 6px !important;
+}
+
+.logic-from-1-sl{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.logic-from-1-sl > li{
+  list-style: none;
+  margin: 15px 25px 15px 25px;
+  display: inline-block;
+}
+
+.logic-from-1-sl > li > a{
+  color: white;
+  text-decoration: none;
+  font-size: 40px;
+}
+
+.logic-from-1-sl > li > a > .fa-facebook:hover{
+  transform: rotate(360deg);
+  transition: 0.5s;
+  color: #428bca;
+}
+
+.logic-from-1-sl > li > a > .fa-twitter:hover{
+  transform: rotate(360deg);
+  transition: 0.5s;
+  color: #5bc0de;
+}
+
+.logic-from-1-sl > li > a > .fa-google-plus:hover {
+  transform: rotate(360deg);
+  transition: 0.5s;
+  color: #d34836;
+}
+
+.login-form-1-body{
+  padding-top: 30px;
+
+
+}
+
+.login-form-1-body button{
+  display: block;
+  width: 100%;
+  border: none;
+  background: #cc0000;
+  color: #fff;
+  border-radius: 30px;
+  box-sizing: border-box;
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.login-form-1-body button:hover{
+  box-shadow: 0px 7px 15px #a5a5a5;
+  transition: 0.5s all;
+}
+
+.login-form-1-body > a{
+  text-align: center;
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+  color: #3f51b5;
+  display:block;
+}
+
+.login-form-1-body > a:hover{
+  color: #25B7D3;
+  text-decoration: underline;
+}
+
+.login-form-1-body > div{
+  margin: 30px 0 5px 0;
+  font-size: 18px;
+}
+
+.login-form-1-body > div > a{
+  color: #3f51b5;
+}
+
+.login-form-1-body > div > a:hover{
+  color: #25B7D3;
+  text-decoration: underline;
+}
+.login-form-1-body input {
+  margin: 10px 0px;
+  font-size: 21px;
+}
+.login-form-1-body h3 {
+  color: #616161;
+  font-size: 17px;
+}
+.signup-header-text{
+  text-align: center;
+  font-size: 22px;
+}
+
+
+
+
+.login-form-1-center{
+  width: 35%;
+  margin: 120px auto;
+}
+
+.login-form-1{
+  background: #fafafa;
+  width: 100%;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #ccc;
+}
+
+.login-form-1-header{
+  position: relative;
+  background: #cc0000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 7px 15px #a5a5a5;
+  margin-top: -60px;
+  width: 100%;
+  margin-bottom: 40px;
+  border-radius: 5px;
+}
+
+.login-form-1-header h3{
+  text-align: center;
+  margin-bottom: 6px !important;
+}
+
+.logic-from-1-sl{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.logic-from-1-sl > li{
+  list-style: none;
+  margin: 15px 25px 15px 25px;
+  display: inline-block;
+}
+
+.logic-from-1-sl > li > a{
+  color: white;
+  text-decoration: none;
+  font-size: 40px;
+}
+
+.logic-from-1-sl > li > a > .fa-facebook:hover{
+  transform: rotate(360deg);
+  transition: 0.5s;
+  color: #428bca;
+}
+
+.logic-from-1-sl > li > a > .fa-twitter:hover{
+  transform: rotate(360deg);
+  transition: 0.5s;
+  color: #5bc0de;
+}
+
+.logic-from-1-sl > li > a > .fa-google-plus:hover {
+  transform: rotate(360deg);
+  transition: 0.5s;
+  color: #d34836;
+}
+
+.login-form-1-body{
+  padding-top: 30px;
+
+
+}
+
+.login-form-1-body button{
+  display: block;
+  width: 100%;
+  border: none;
+  background: #cc0000;
+  color: #fff;
+  border-radius: 30px;
+  box-sizing: border-box;
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.login-form-1-body button:hover{
+  box-shadow: 0px 7px 15px #a5a5a5;
+  transition: 0.5s all;
+}
+
+.login-form-1-body > a{
+  text-align: center;
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+  color: #3f51b5;
+  display:block;
+}
+
+.login-form-1-body > a:hover{
+  color: #25B7D3;
+  text-decoration: underline;
+}
+
+.login-form-1-body > div{
+  margin: 30px 0 5px 0;
+  font-size: 18px;
+}
+
+.login-form-1-body > div > a{
+  color: #3f51b5;
+}
+
+.login-form-1-body > div > a:hover{
+  color: #25B7D3;
+  text-decoration: underline;
+}
+.login-form-1-body input {
+  margin: 10px 0px;
+  font-size: 21px;
+}
+.login-form-1-body h3 {
+  color: #616161;
+  font-size: 17px;
+}
+.signup-header-text{
+  text-align: center;
+  font-size: 22px;
+}
+.bid-message{clear: left}
+hr.invis {
+  border: 0;
+  margin: 30px 0;
+}

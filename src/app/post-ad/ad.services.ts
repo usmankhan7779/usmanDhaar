@@ -168,7 +168,7 @@ export class AdService {
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
 
-    return this._http.post(this.ServerUrl + 'phoneandtablets',
+    return this._http.post(this.ServerUrl + 'postAnAd',
       {
         'ProductID': Product_ID,
         'Cat_Name': CatName ,

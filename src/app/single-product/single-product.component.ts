@@ -8,7 +8,7 @@ import { HomeService } from '../home/home.services';
 import { LoginService } from '../log-in/log-in.services';
 import swal from 'sweetalert2';
 import {FormGroup} from '@angular/forms';
-
+declare const $: any;
 
 @Component({
   selector: 'app-single-product',
@@ -47,6 +47,7 @@ export class SingleProductComponent implements OnInit {
 
   resultProduct: any = [];
   ProPics: any = [];
+  ProPDes: any = [];
   BidingProduct: any[] = [];
   // onePeoduct: Productlist[];
   onePeoduct: any = [];
@@ -55,13 +56,11 @@ export class SingleProductComponent implements OnInit {
   TmpresultProduct: any = {'products': []};
   ViewedProduct: any = {'products': []};
   GeProductBiding: any = [];
-  ProductPrice: any = [];
+  PicList: any = [];
   ProductPictures: any = [];
   invoice: any = [];
   CatName: string;
   starp: any = 0;
-  starq: any;
-  starv: any;
   DbDate: string;
   seconds: any;
   minutes: any;
@@ -72,8 +71,19 @@ export class SingleProductComponent implements OnInit {
   RedirectFromlogin: string;
   LocalStoreName: any;
   MinimumbestOffer: any;
+  opSearch: number = 0;
   AuctionDayDB: string;
   highestbid = false;
+  zerobid = false;
+  AverageRating: any=0;
+  AverageRating1: any=0;
+  TotalRating: any=0;
+  count0:any=0;
+  count1:any=0;
+  count2:any=0;
+  count3:any=0;
+  count4:any=0;
+  count5:any=0;
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private route: ActivatedRoute,
                private GetAdd: HomeService,
@@ -89,8 +99,6 @@ export class SingleProductComponent implements OnInit {
       //
       //
       // }, 1000);
-
-
 
 
 
@@ -134,9 +142,47 @@ export class SingleProductComponent implements OnInit {
 
           this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
             this.GetallProductReview = resSlidersData;
+            if (this.GetallProductReview.length !== 0){
+            // console.log('Reviewwwwssss:',this.GetallProductReview);
+            for (let itm of this.GetallProductReview) {
+              this.TotalRating = +this.TotalRating + +itm.Rating;
+              if (itm.Rating === '5.0') {
+                this.count5++;
+              }
+              if (itm.Rating === '4.0') {
+                this.count4++;
+              }
+              if (itm.Rating === '3.0') {
+                this.count3++;
+              }
+              if (itm.Rating === '2.0') {
+                this.count2++;
+              }
+              if (itm.Rating === '1.0') {
+                this.count1++;
+              }
+              if (itm.Rating === '0.0') {
+                this.count0++;
+              }
+            }
 
+            this.count5 = ((this.count5 / this.GetallProductReview.length) * 100).toFixed();
+            this.count4 = ((this.count4 / this.GetallProductReview.length) * 100).toFixed();
+            this.count3 = ((this.count3 / this.GetallProductReview.length) * 100).toFixed();
+            this.count2 = ((this.count2 / this.GetallProductReview.length) * 100).toFixed();
+            this.count1 = ((this.count1 / this.GetallProductReview.length) * 100).toFixed();
+            this.count0 = ((this.count0 / this.GetallProductReview.length) * 100).toFixed();
 
-            if (this.GetallProductReview.length === 0) {
+            console.log('Percentage is:', this.count5);
+
+            console.log('Each reviews number:', '5 is', this.count5, '4 is', this.count4, '3 is', this.count3, '2 is', this.count2, '1 is', this.count1, this.count0);
+            console.log('Total Rating is: ', this.TotalRating);
+            this.AverageRating = (this.TotalRating / this.GetallProductReview.length).toFixed(1);
+            // this.AverageRating1 = (this.TotalRating / this.GetallProductReview.length).toFixed();
+
+            console.log('Average Rating is: ', this.AverageRating);
+
+           } else if (this.GetallProductReview.length === 0) {
               this.noreview = true;
 
             }
@@ -163,6 +209,8 @@ export class SingleProductComponent implements OnInit {
               if (this.BidingProduct[0]['User_Id'] === localStorage.getItem('UserName')) {
                 this.highestbid = true;
               }
+            } else {
+              this.zerobid =true;
             }
           });
         });
@@ -195,8 +243,19 @@ export class SingleProductComponent implements OnInit {
   PhoneTablet(){
     this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
-      console.log('Pics are:', this.resultProduct[0]['Pic']);
+      console.log('Description of product is:', this.resultProduct[0]['P_Des']);
+      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
+
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
+
+      for(let i=0; i<this.ProPics.length-1; i++) {
+          this.PicList[i]=this.ProPics[i+1];
+      }
+
+      console.log('Pics Before:', this.ProPics);
+      console.log('Pics after:', this.PicList);
+
+
       console.log('Pics are:', this.ProPics);
       if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
         this.ourproduct = true;
@@ -275,7 +334,11 @@ export class SingleProductComponent implements OnInit {
   WomenFashion(){
     this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
+      for(let i=0; i<this.ProPics.length-1; i++) {
+          this.PicList[i]=this.ProPics[i+1];
+      }
       if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
         this.ourproduct = true;
 
@@ -336,7 +399,11 @@ export class SingleProductComponent implements OnInit {
       this.resultProduct = resSlidersData;
 
       console.log('Pic attribute isssssssssS:', this.resultProduct[0]['Pic']);
+      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
+      for(let i=0; i<this.ProPics.length-1; i++) {
+          this.PicList[i]=this.ProPics[i+1];
+      }
       console.log('ProPics isssss:', this.ProPics);
       if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
         this.ourproduct = true;
@@ -396,7 +463,11 @@ export class SingleProductComponent implements OnInit {
   TvAudioVideo(){
     this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
+      for(let i=0; i<this.ProPics.length-1; i++) {
+          this.PicList[i]=this.ProPics[i+1];
+      }
       if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
         this.ourproduct = true;
 
@@ -455,7 +526,11 @@ export class SingleProductComponent implements OnInit {
   ComputingLaptop(){
     this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
+      for(let i=0; i<this.ProPics.length-1; i++) {
+        this.PicList[i]=this.ProPics[i+1];
+      }
       if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
         this.ourproduct = true;
 
@@ -514,7 +589,11 @@ export class SingleProductComponent implements OnInit {
   HomeAppliances(){
     this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
+      for(let i=0; i<this.ProPics.length-1; i++) {
+          this.PicList[i]=this.ProPics[i+1];
+      }
       if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
         this.ourproduct = true;
 
@@ -616,16 +695,6 @@ export class SingleProductComponent implements OnInit {
   getValueq(event) {
     // //alert(event)
     this.starp = event;
-    // //alert(this.star)
-  }
-  getValuep(event) {
-    // //alert(event)
-    this.starq = event;
-    // //alert(this.star)
-  }
-  getValuev(event) {
-    // //alert(event)
-    this.starv = event;
     // //alert(this.star)
   }
 
@@ -760,7 +829,7 @@ export class SingleProductComponent implements OnInit {
   ClearSession() {
     if (isPlatformBrowser(this.platformId)) {
     localStorage.clear();
-    alert('clear');
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
 
@@ -865,7 +934,10 @@ export class SingleProductComponent implements OnInit {
     console.log('Store Name is', this.resultProduct[0]['StoreName']);
     this.GetAdd.InsertProductReviews(this.model.YourName, this.model.YourEmail, this.model.YourReview, this.ProID, this.starp, this.resultProduct[0]['StoreName']).subscribe(resSlidersData => {
         swal('Your Review has been submitted','','success');
-        // this.model.YourName=this.model.YourEmail=this.model.YourReview=''
+        this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
+          this.GetallProductReview = resSlidersData;
+          this.noreview = false;
+        });
         const selectElement = <HTMLSelectElement>document.getElementById('reviewsForm');
         selectElement.reset();
       },

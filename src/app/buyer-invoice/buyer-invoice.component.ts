@@ -6,6 +6,7 @@ import { HomeService } from '../home/home.services';
 import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-buyer-invoice',
   templateUrl: './buyer-invoice.component.html',
@@ -206,6 +207,7 @@ export class BuyerInvoiceComponent implements OnInit {
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
 }

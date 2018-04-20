@@ -5,6 +5,7 @@ import { LoginService } from '../log-in/log-in.services';
 import { NgModel } from '@angular/forms';
 import {NgForm} from '@angular/forms';
 import {UploadItemService} from '../file-uploads/upload-item-service';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -82,6 +83,7 @@ export class BuyerDashboardComponent implements OnInit {
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
 

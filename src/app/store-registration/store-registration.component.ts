@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { LoginService } from '../log-in/log-in.services';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-store-registration',
@@ -271,6 +272,7 @@ this.model.terms = true;
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
+      swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
 }
