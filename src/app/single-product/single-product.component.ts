@@ -58,6 +58,7 @@ export class SingleProductComponent implements OnInit {
   GeProductBiding: any = [];
   PicList: any = [];
   ProductPictures: any = [];
+  Calculation: any = [];
   invoice: any = [];
   CatName: string;
   starp: any = 0;
@@ -140,53 +141,7 @@ export class SingleProductComponent implements OnInit {
             });
           }
 
-          this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
-            this.GetallProductReview = resSlidersData;
-            if (this.GetallProductReview.length !== 0){
-            // console.log('Reviewwwwssss:',this.GetallProductReview);
-            for (let itm of this.GetallProductReview) {
-              this.TotalRating = +this.TotalRating + +itm.Rating;
-              if (itm.Rating === '5.0') {
-                this.count5++;
-              }
-              if (itm.Rating === '4.0') {
-                this.count4++;
-              }
-              if (itm.Rating === '3.0') {
-                this.count3++;
-              }
-              if (itm.Rating === '2.0') {
-                this.count2++;
-              }
-              if (itm.Rating === '1.0') {
-                this.count1++;
-              }
-              if (itm.Rating === '0.0') {
-                this.count0++;
-              }
-            }
-
-            this.count5 = ((this.count5 / this.GetallProductReview.length) * 100).toFixed();
-            this.count4 = ((this.count4 / this.GetallProductReview.length) * 100).toFixed();
-            this.count3 = ((this.count3 / this.GetallProductReview.length) * 100).toFixed();
-            this.count2 = ((this.count2 / this.GetallProductReview.length) * 100).toFixed();
-            this.count1 = ((this.count1 / this.GetallProductReview.length) * 100).toFixed();
-            this.count0 = ((this.count0 / this.GetallProductReview.length) * 100).toFixed();
-
-            console.log('Percentage is:', this.count5);
-
-            console.log('Each reviews number:', '5 is', this.count5, '4 is', this.count4, '3 is', this.count3, '2 is', this.count2, '1 is', this.count1, this.count0);
-            console.log('Total Rating is: ', this.TotalRating);
-            this.AverageRating = (this.TotalRating / this.GetallProductReview.length).toFixed(1);
-            // this.AverageRating1 = (this.TotalRating / this.GetallProductReview.length).toFixed();
-
-            console.log('Average Rating is: ', this.AverageRating);
-
-           } else if (this.GetallProductReview.length === 0) {
-              this.noreview = true;
-
-            }
-          });
+          this.ProductReviews();
 
           this.GetAdd.GetallBidsProductdbyProductID(this.ProID).subscribe(resSlidersData => {
 
@@ -238,6 +193,31 @@ export class SingleProductComponent implements OnInit {
       }
     }
 
+  }
+
+  ProductReviews(){
+    this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
+      this.GetallProductReview = resSlidersData;
+      if (this.GetallProductReview.length !== 0){
+
+        this.GetAdd.GetallUserReviewsCalculationBYProductId(this.ProID).subscribe(data => {
+          this.Calculation = data;
+          console.log('Calculation issss:', this.Calculation);
+          this.TotalRating = this.Calculation.Sum;
+          this.AverageRating=(this.Calculation.Average).toFixed(1);
+          this.AverageRating1=(this.Calculation.Average).toFixed();
+          this.count0=this.Calculation.Percentage0;
+          this.count1=this.Calculation.Percentage1;
+          this.count2=this.Calculation.Percentage2;
+          this.count3=this.Calculation.Percentage3;
+          this.count4=this.Calculation.Percentage4;
+          this.count5=this.Calculation.Percentage5;
+        });
+      } else if (this.GetallProductReview.length === 0) {
+        this.noreview = true;
+
+      }
+    });
   }
 
   PhoneTablet(){
@@ -938,6 +918,7 @@ export class SingleProductComponent implements OnInit {
           this.GetallProductReview = resSlidersData;
           this.noreview = false;
         });
+        this.ProductReviews();
         const selectElement = <HTMLSelectElement>document.getElementById('reviewsForm');
         selectElement.reset();
       },

@@ -20,15 +20,16 @@
     <div class="row">
       <div class="col-md-3 col-sm-4">
         <ul class="usernavdash">
-          <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
-          <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Product</a></li>
+          <li><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
+          <li><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Add New Product</a></li>
           <li><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
-
+          <li><a [routerLink]="['/seller-product-setting']"><i class="fa fa-cog" aria-hidden="true"></i>Seller Product Setting</a></li>
           <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
           <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
           <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
+          <li><a [routerLink]="['/seller-offer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Offers</a></li>
           <li class="active"><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
-
+          <li><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
           <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
           <li><a [routerLink]="['/seller-user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/seller-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
@@ -47,10 +48,11 @@
 
 
           <button class=" button" style="font-size: 20px !important;"><i class="fa fa-print"></i>&nbsp; <span>Print</span></button>
-          <button class="button" style="font-size: 20px !important;"><i class="fa fa-download"></i>&nbsp; <span>Download</span></button>
+          <button class="button" style="font-size: 20px !important;" (click)="downloadPDF()"><i class="fa fa-download"></i>&nbsp; <span>Download</span></button>
         </div>
 
         <br/> <br/> <br/> <br/> <br/>
+        <div id="content" #content>
         <header class="clearfix">
           <div id="logo">
             <img src="assets/images/dhaar1.png">
@@ -66,7 +68,7 @@
           <ng-container *ngFor="let Invoiceship of ShipingInvoice">
             <div id="details" class="clearfix">
               <div id="client">
-                <p class="to">INVOICE TO:</p>
+                <p class="to">SHIP TO:</p>
 
                 <h2 >{{ Invoiceship.First_Name }} {{ Invoiceship.Last_Name}}</h2>
                 <h6 >Tel: {{ Invoiceship.Telephon }} </h6>
@@ -78,9 +80,9 @@
               </div>
 
               <div id="invoice">
-                <h1>INVOICE ID</h1>
+                <h1>ORDER ID</h1>
                 <h3>{{ InvoicesID}}</h3>
-                <div class="date">Date of Invoice: {{ Invoiceship.CreatedDate.substr(0,10)}}</div>
+                <div class="date">Date of Order: {{ Invoiceship.CreatedDate.substr(0,10)}}</div>
 
               </div>
             </div>
@@ -100,11 +102,11 @@
             <ng-container>
               <tr  *ngFor="let abc of GetAllproducts; let i = index">
                 <td class="no">{{ i+1 }}</td>
-                <td class="desc"><h3>{{ abc[0].P_Title }}</h3>{{ abc[0].P_Des }}</td>
-                <td class="unit">Rs: {{ abc[0].FixedPrice | number:'.0-0'}}</td>
-                <td class="qty">{{ abc[0].Qty }}</td>
+                <td class="desc"><h3>{{ abc.P_Title }}</h3>{{ abc.P_Des }}</td>
+                <td class="unit">Rs: {{ abc.FixedPrice | number:'.0-0'}}</td>
+                <td class="qty">{{ abc.Qty }}</td>
                 <!--{{ abc.Qty}}-->
-                <td class="total">Rs: {{ abc[0].FixedPrice * abc[0].Qty | number:'.0-0' }}</td>
+                <td class="total">Rs: {{ abc.FixedPrice * abc.Qty | number:'.0-0' }}</td>
               </tr>
             </ng-container>
 
@@ -136,7 +138,8 @@
           <!--</div>-->
         </main>
         <div style="text-align: center">
-          Invoice was created on a computer and is valid without the signature and seal.
+          Order was created on a computer and is valid without the signature and seal.
+        </div>
         </div>
 
 

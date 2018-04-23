@@ -1287,7 +1287,7 @@ label[for="rememberme"]{margin-left:0.75em;}
 .pagination-control{clear:both;text-align:center;margin:48px 0 0;width:100%;float:left;}
 #wrapper{position:relative;}
 #wrapper.search-active:after{content:'';position:absolute;left:0;top:-72px;right:0;bottom:-9999px;background:rgba(0, 0, 0, 0.85);overflow:hidden;z-index:9999;}
-.search-results{padding:10px 30px;margin:15px 0 0;background:#fff;-webkit-border-radius:30px;-moz-border-radius:30px;border-radius:30px;overflow-y:scroll;max-height:480px;}
+.search-results{padding:10px 30px;margin:15px 0 0;background:#fff;-webkit-border-radius:30px;-moz-border-radius:30px;border-radius:30px;overflow-y:scroll;max-height:512px;}
 .search-results .head{padding:20px;}
 .results-found{font-size:30px;font-weight:700;}
 .singlebutton{margin-top: 33px;}

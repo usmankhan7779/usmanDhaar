@@ -192,7 +192,7 @@ export class HomeComponent implements OnInit {
             infinite: true,
             slidesToShow: 5,
             slidesToScroll: 1,
-            autoplay: false,
+            autoplay: true,
             prevArrow: '<button class="leftRs">&lt;</button>',
             nextArrow: '<button class="rightRs">&lt;</button>',
             responsive: [

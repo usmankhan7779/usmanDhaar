@@ -194,12 +194,19 @@ export class HeaderComponent implements OnInit {
 
   navigate(search) {
 
-    console.log('search value is',search)
-    this.Searchres = true;
-    this.httpService.getAllSearchProducts(1, search).subscribe(
-      data => {
-        this.Trend = data;
-      });
+    if(search) {
+
+      console.log('search value is', search)
+      this.Searchres = true;
+      this.httpService.getAllSearchProducts(1, search).subscribe(
+        data => {
+          this.Trend = data;
+        });
+    } else {
+      this.Trend.results = null;
+      this.Trend.totalItems = 0;
+      this.Searchres = false;
+    }
     //
     // if (action==1) {
     //   if (event.key === "Enter") {

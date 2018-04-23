@@ -183,8 +183,9 @@ h1 { font-size: 1.5em; margin: 10px; }
 .glyphicon { margin-right:5px;}
 .rating-num { margin-top:0px;font-size: 54px; }
 .rating .glyphicon {font-size: 22px;}
-.progress { margin-bottom: 5px;height: 20px !important;background: #ffffff !important;}
+.progress { margin-bottom: 5px;height: 25px !important;background: #ffffff !important;}
 .progress-bar { text-align: left; }
+.rating-desc{font-size: 20px;}
 .rating-desc .col-md-3 {padding-right: 0px;}
-.sr-only { margin-left: 5px;overflow: visible;clip: auto; }
+.sr-only { margin-left: 5px;margin-top: 3px;overflow: visible;clip: auto;color: black;font-size: 18px; }
 .progress .progress-bar:after{display: none;}

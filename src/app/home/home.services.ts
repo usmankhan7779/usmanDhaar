@@ -74,7 +74,11 @@ export class HomeService {
 
 
 
+  get_AnyProduct_ProductById(proId: string ) {
 
+    return this._http.get(this.ServerUrl + 'getAnyProductById/' + proId).map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
   get_PhoneAndTabletProduct_ProductById(proId: string ) {
 
     return this._http.get(this.ServerUrl + 'getphoneproductsById/' + proId).map(response => response.json());
@@ -143,7 +147,11 @@ export class HomeService {
   }
 
   GetallUserReviewsBYProductId(pID: any) {
-    return this._http.get( 'http://127.0.0.1:8000/products/' + 'GetUserReviewsByProductID/' + pID  ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'GetUserReviewsByProductID/' + pID  ).map(response => response.json());
+  }
+
+  GetallUserReviewsCalculationBYProductId (pID: any) {
+    return this._http.get(this.ServerUrl + 'GetUserReviewsCalculationByProductID/' + pID).map(response => response.json());
   }
   UnwatchProduct(Product_ID: any,  User_ID: any) {
 
@@ -268,7 +276,7 @@ export class HomeService {
   }
 
   InsertProductReviews(Name: any, Email: any, Reviews: any, Product_ID: any, RateNUmber: any, StoreName: any) {
-    return this._http.post('http://127.0.0.1:8000/products/' + 'InsertUserReview/' + Product_ID,
+    return this._http.post(this.ServerUrl + 'InsertUserReview/' + Product_ID,
       {
         'Name': Name ,
         'Email': Email ,

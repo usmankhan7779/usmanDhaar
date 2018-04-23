@@ -117,7 +117,7 @@ export class LogInComponent implements OnInit {
         // console.log("VALUE RECEIVED: "+response);
         swal(
           'Logged In!',
-          'You have successfully logged in',
+          'Successfully login to your account',
           'success'
         );
         this.login_error = false;

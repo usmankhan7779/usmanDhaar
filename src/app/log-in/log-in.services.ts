@@ -700,7 +700,7 @@ export class LoginService {
 
   reset_service(email) {
     console.log(email);
-    return this._http.post('http://127.0.0.1:8000/rest-auth/' + 'password/reset/', {
+    return this._http.post(this.EMailServerUrl + 'password/reset/', {
       'email': email
     }).map((response: Response) => response.json());
   }
