@@ -60,7 +60,7 @@
                     <div class="jobinfo">
                       <div class="row">
                         <div class="col-md-8 col-sm-7">
-                          <h3><a [routerLink]="['/seller-purchasing-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.id}" > Invoice ID : {{ phoneProducts.id }}</a></h3>
+                          <h3><a [routerLink]="['/seller-purchasing-invoice']" [queryParams]="{ InvoicesID:  phoneProducts.id}" > ORDER ID : {{ phoneProducts.id }}</a></h3>
                           <div   class="cateName">
                             <div *ngIf="phoneProducts.InvoicesPayment === true ">Paid Online</div>
                             <div *ngIf="phoneProducts.InvoicesPayment === false ">Payment at home</div>

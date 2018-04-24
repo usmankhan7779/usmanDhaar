@@ -5,7 +5,7 @@ import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.servi
 import { AdService } from '../post-ad/ad.services';
 import { HomeService } from '../home/home.services';
 import { Ng2PaginationModule } from 'ng2-pagination';
-import * as jsPDF from 'jspdf';
+// import * as jsPDF from 'jspdf';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 
@@ -50,22 +50,22 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
 
 
-  public downloadPDF() {
-    let doc = new jsPDF();
-    let specialElementHandlers = {
-      '#editor': function (element,renderer) {
-        return true;
-      }
-    };
-    let content = this.content.nativeElement;
-
-    doc.fromHTML(content.innerHTML, 15,15,{
-      'width': 190,
-      'elementHandlers': specialElementHandlers
-    },function(bla){
-      doc.save('OrderSlip.pdf');
-    });
-  }
+  // public downloadPDF() {
+  //   let doc = new jsPDF();
+  //   let specialElementHandlers = {
+  //     '#editor': function (element,renderer) {
+  //       return true;
+  //     }
+  //   };
+  //   let content = this.content.nativeElement;
+  //
+  //   doc.fromHTML(content.innerHTML, 15,15,{
+  //     'width': 190,
+  //     'elementHandlers': specialElementHandlers
+  //   },function(bla){
+  //     doc.save('OrderSlip.pdf');
+  //   });
+  // }
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
     this.SessionstoreName = localStorage.getItem('StoreName');
