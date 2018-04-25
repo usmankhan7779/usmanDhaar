@@ -16,8 +16,6 @@ export class MyBidsBuyerComponent implements OnInit {
   errormessage = false;
   pageno: any;
   sub: any;
-
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   modelNo: any;
   ActiveProduct: any = [];
   successbid: any = [];

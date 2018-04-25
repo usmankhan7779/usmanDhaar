@@ -16,7 +16,6 @@ export class SellerOfferComponent implements OnInit {
   model: any = {};
   ProductOffer: any = [];
   ActiveProduct: any = [];
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   errormessage = false;
   SessionstoreName: any;
   seller = false;

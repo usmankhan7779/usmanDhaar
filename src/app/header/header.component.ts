@@ -33,7 +33,6 @@ export class HeaderComponent implements OnInit {
   public elementRef;
   Searchres = false;
   ProNav = false;
-  PicServrUrl='https://apis.dhaar.pk/media/';
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private PostAdd: AdService,

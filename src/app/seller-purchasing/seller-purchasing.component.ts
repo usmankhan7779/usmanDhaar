@@ -17,7 +17,6 @@ export class SellerPurchasingComponent implements OnInit {
 
   pageno: any;
   sub: any;
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   modelNo: any;
   ActiveProduct: any = [];
   GetPhotos: any = [];

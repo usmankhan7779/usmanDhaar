@@ -8,6 +8,7 @@ import { HomeService } from '../home/home.services';
 import { LoginService } from '../log-in/log-in.services';
 import swal from 'sweetalert2';
 import {FormGroup} from '@angular/forms';
+import {ImageViewerModule, ImageViewerConfig, CustomEvent} from 'ngx-image-viewer';
 declare const $: any;
 
 @Component({
@@ -17,6 +18,10 @@ declare const $: any;
 
 })
 export class SingleProductComponent implements OnInit {
+  config: ImageViewerConfig = {customBtns: [{name: 'print', icon: 'fa fa-print'}]};
+// , {name: 'link', icon: 'fa fa-link'}
+  imageIndexOne = 0;
+  imageIndexTwo = 0;
   private sub: any;
   model: any = {};
   GetallPhoneProduct: any = [];
@@ -85,12 +90,17 @@ export class SingleProductComponent implements OnInit {
   count3:any=0;
   count4:any=0;
   count5:any=0;
+
+  // imageIndex = this.ProPics;
+
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private route: ActivatedRoute,
                private GetAdd: HomeService,
                private LOginObj: LoginService,
                private httpService: BuyerDashboardServices,
                private router: Router) { }
+
+
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       setInterval(() => {
@@ -218,6 +228,20 @@ export class SingleProductComponent implements OnInit {
 
       }
     });
+  }
+  handleEvent(event: CustomEvent) {
+
+      console.log(`${event.name} has been click on img ${event.imageIndex + 1}`);
+
+      switch (event.name) {
+        case 'print':
+          console.log('run print logic');
+          break;
+      }
+  }
+
+  IndexChange(index) {
+    this.imageIndexOne = index;
   }
 
   PhoneTablet(){

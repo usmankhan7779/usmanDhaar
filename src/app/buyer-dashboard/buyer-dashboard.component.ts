@@ -23,7 +23,6 @@ export class BuyerDashboardComponent implements OnInit {
   Mobile: string;
   Address: string;
   GetUSerDOne: any [];
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   ValueRec: Boolean = false;
   filetoup: FileList;
   fileName: any;

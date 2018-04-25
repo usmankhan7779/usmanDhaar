@@ -12,7 +12,6 @@ import swal from 'sweetalert2';
 export class WatchProductComponent implements OnInit {
 
   ActiveProduct: any = [];
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   errormessage = false;
   SessionstoreName: any;
   seller = false;

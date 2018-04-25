@@ -18,7 +18,6 @@ export class MyBidsComponent implements OnInit {
 
   pageno: any;
   sub: any;
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
 
   modelNo: any;
   ActiveProduct: any = [];

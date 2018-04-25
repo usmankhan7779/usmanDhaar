@@ -18,7 +18,6 @@ import {UploadItemService} from '../file-uploads/upload-item-service';
 export class DashboardComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
   ServerUrl =  'https://apis.dhaar.pk/';
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   NewPostcheck = false ;
   ValueRec: Boolean = false;
   ActiveProduct: any = [];

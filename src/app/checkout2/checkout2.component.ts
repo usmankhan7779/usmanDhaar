@@ -29,7 +29,6 @@ export class Checkout2Component implements OnInit {
   GetUSerDOne: any = [];
   GetUSallerCoupon: any = [];
   mymodel: any = {};
-  PicServrUrl = 'https://apis.dhaar.pk/media/';
   LoginName: string;
   login: string;
   CheckoutMethod = false;
