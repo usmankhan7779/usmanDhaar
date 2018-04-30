@@ -78,7 +78,7 @@ h6{font-size:16px;}
 .header .logo{display:inline-block;margin:5px 0 5px 0;}
 .navbar-default{background:none;border:none;margin-bottom:0;min-height:auto;float:right;}
 .navbar{background:none;}
-.navbar-collapse{padding:0;margin-bottom: -25px}
+.navbar-collapse{padding:0;}
 .navbar-nav>li{padding:0;}
 .navbar-nav>li>a{text-transform:uppercase;font-weight:600;padding:16px 8px;font-size: 20px}
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{background:none;}
@@ -86,6 +86,7 @@ h6{font-size:16px;}
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{background-color:#fff;}
 .dropdown-menu{border-radius:0;padding:0;}
 .navbar-nav>li:hover .dropdown-menu{display:block;}
+.navbar-nav>li:hover .display-on-lg-screen{display: none !important;}
 .dropdown-menu>li>a{font-weight:600;color:#555;padding:8px 15px;}
 .dropdown-menu>li>a:hover{background:#ed2424;color:#fff;}
 .navbar-collapse.in{overflow:inherit;height:auto;padding:0 15px;}
@@ -673,7 +674,7 @@ blockquote:after{color:#ddd;content:"\f10e";display:inline-block;font-family:Hin
 .jobslist li .applybtn{margin-top:15px;}
 .pageSearch a.btn{margin-bottom:15px}
 }
-@media screen and (max-width:990px){body{font-size:16px;}
+@media screen and (max-width:991px){body{font-size:16px;}
 .header .logo{margin-bottom:15px;}
 .navbar-default{float:none;}
 .three-plan li{padding:0 15px;margin-top:15px;}
@@ -707,6 +708,7 @@ ul.orderlist li{float:none;width:auto;}
 .listpgWraper, .inner-page{padding:50px 15px;}
 .searchList li .listbtn{margin-top:20px;}
 .instoretxt a{margin-top:20px;}
+.navbar-nav>li:hover .display-on-lg-screen{display: block !important;}
 }
 @media screen and (max-width:768px){.topsearchwrap h5{margin-top:30px;}
 .navbar-nav>li{padding:0;}

@@ -54,7 +54,7 @@
     <div class="container-fluid">
       <div class="row">
         <!-- Header Logo -->
-        <div class="col-xs-12 col-lg-3 col-md-3 col-sm-3">
+        <div class="logo-box float-left">
           <div class="logo">
 
             <a [routerLink]="['/']" title="Dhaar">
@@ -62,7 +62,7 @@
             </a>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-2 col-md-6">
+        <div class="search-box float-left">
           <!-- Search -->
           <!--top-search-->
           <div id="search" style="text-align: center">
@@ -159,13 +159,20 @@
           </div>
           <!-- End Search -->
         </div>
-        <div class="col-md-7 col-sm-3 col-xs-12 top-cart">
-          <div class="collapse navbar-collapse" style="margin-top: 8px">
+        <div class="menu-box float-left">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li><a [routerLink]="['/select-category']"><i class="fa fa-camera header-icons-rightsetting"></i>Sell</a></li>
               <li class="dropdown">
                 <a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Categories<b class="caret"></b></a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu display-on-lg-screen">
                   <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }"><i class="fa fa-tablet header-icons-rightsettingnew"></i>Phones & Tablets</a></li>
                   <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" ><i class="fa fa-shopping-bag header-icons-rightsettingnew"></i>Women's Fashion</a></li>
                   <li><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }"><i class="fa fa-black-tie header-icons-rightsettingnew"></i>Men's Fashion</a></li>
@@ -218,7 +225,7 @@
   <!-- End Header Logo -->
 
     <!-- Start Menu Area -->
-    <div *ngIf="ProNav">
+    <div *ngIf="ProNav" class="display-on-small-screen">
     <div class="menu-area">
       <div class="container">
         <div class="row">
