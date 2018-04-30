@@ -1846,6 +1846,7 @@ hr.invis {
 }
 .navbar-nav{
   float: right;
+  /*width: 149px;*/
 }
 .heading-main{
   margin-top:40px;
@@ -1866,6 +1867,9 @@ hr.invis {
 }
 
 @media (max-width: 991px) {
+  .navbar-nav{
+    width: 149px;
+  }
   .search-box{
     width: 50%;
   }
