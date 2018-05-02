@@ -177,14 +177,21 @@
         <div id="productTabContent2" class="tab-content">
           <div class="tab-pane active in" id="all2">
             <ng-container *ngFor="let TvVideoaudio88 of GetALLProductss.results">
+              <ng-container *ngIf="TvVideoaudio88.Active">
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
-                    <a [routerLink]="['/single-product']"
-                       [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                       class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                        src="{{TvVideoaudio88.Pic }}"
-                                                        alt="{{TvVideoaudio88.Pic }}"></a>
+                    <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"-->
+                       <!--class="product-item-photo"> <img class="product-image-photo" height="225"-->
+                                                        <!--src="{{TvVideoaudio88.Pic }}"-->
+                                                        <!--alt="{{TvVideoaudio88.Pic }}"></a>-->
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                      <div class="overlay">
+                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="pro-box-info">
@@ -244,7 +251,7 @@
                 </div>
               </div>
             </ng-container>
-
+            </ng-container>
           </div>
 
           <div class="tab-pane fade" id="buynow">
@@ -253,11 +260,13 @@
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
-                    <a [routerLink]="['/single-product']"
-                       [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                       class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                        src="{{TvVideoaudio88.Pic }}"
-                                                        alt="{{TvVideoaudio88.Pic }}"></a>
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                      <div class="overlay">
+                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="pro-box-info">
@@ -325,11 +334,13 @@
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner" >
                   <div class="product-thumbnail">
-                    <a [routerLink]="['/single-product']"
-                       [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                       class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                        src="{{TvVideoaudio88.Pic }}"
-                                                        alt="{{TvVideoaudio88.Pic }}"></a>
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                      <div class="overlay">
+                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="pro-box-info">
@@ -396,11 +407,13 @@
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner" >
                   <div class="product-thumbnail">
-                    <a [routerLink]="['/single-product']"
-                       [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                       class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                        src="{{TvVideoaudio88.Pic }}"
-                                                        alt="{{TvVideoaudio88.Pic }}"></a>
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                      <div class="overlay">
+                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                      </div>
+                    </div>
 
                   </div>
 
@@ -488,19 +501,14 @@
                 <div class="product-item home-productss col-md-3 col-sm-6">
                   <div class="item-inner">
                     <div class="product-thumbnail">
-                      <div class="slider-items-products">
-                        <div id="pro2-slider1" class="product-flexslider hidden-buttons">
-                          <div class="slider-items slider-width-col6">
 
-                            <a [routerLink]="['/single-product']"
-                               [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"
-                               class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                                src="{{phoneProducts.Pic }}"
-                                                                alt="{{phoneProducts.Pic }}"></a>
-
-                          </div>
-                        </div>
-                      </div>
+                            <div class="hovereffect">
+                              <img class="img-responsive" src="{{phoneProducts.Pic }}" alt="{{phoneProducts.Pic }}">
+                              <div class="overlay">
+                                <h2>{{phoneProducts.Cat_Name}}</h2>
+                                <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">Product Detail</a>
+                              </div>
+                            </div>
                     </div>
                     <div class="pro-box-info">
                       <div class="item-info">
@@ -561,17 +569,11 @@
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
-                    <div class="slider-items-products">
-                      <div id="pro2-slider12" class="product-flexslider hidden-buttons">
-                        <div class="slider-items slider-width-col6">
-
-
-                          <a [routerLink]="['/single-product']"
-                             [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"
-                             class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                              src="{{phoneProducts.Pic }}"
-                                                              alt="{{phoneProducts.Pic }}"></a>
-                        </div>
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{phoneProducts.Pic }}" alt="{{phoneProducts.Pic }}">
+                      <div class="overlay">
+                        <h2>{{phoneProducts.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">Product Detail</a>
                       </div>
                     </div>
                   </div>
@@ -632,11 +634,13 @@
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
-                    <a [routerLink]="['/single-product']"
-                       [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                       class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                        src="{{ TvVideoaudio88.Pic }}"
-                                                        alt="{{ TvVideoaudio88.Pic }}"></a>
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                      <div class="overlay">
+                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="pro-box-info">
@@ -701,11 +705,13 @@
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
-                    <a [routerLink]="['/single-product']"
-                       [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                       class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                        src="{{ TvVideoaudio88.Pic }}"
-                                                        alt="{{ TvVideoaudio88.Pic }}"></a>
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                      <div class="overlay">
+                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="pro-box-info">
@@ -770,11 +776,13 @@
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
-                    <a [routerLink]="['/single-product']"
-                       [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                       class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                        src="{{ TvVideoaudio88.Pic }}"
-                                                        alt="{{ TvVideoaudio88.Pic }}"></a>
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                      <div class="overlay">
+                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="pro-box-info">
@@ -839,11 +847,13 @@
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
-                    <a [routerLink]="['/single-product']"
-                       [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                       class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                        src="{{ TvVideoaudio88.Pic }}"
-                                                        alt="{{ TvVideoaudio88.Pic }}"></a>
+                    <div class="hovereffect">
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                      <div class="overlay">
+                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="pro-box-info">
@@ -920,11 +930,13 @@
             <div class="product-item col-md-3 col-sm-6">
               <div class="item-inner">
                 <div class="product-thumbnail">
-                  <a [routerLink]="['/single-product']"
-                     [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                     class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                      src="{{ TvVideoaudio88.Pic }}"
-                                                      alt="{{ TvVideoaudio88.Pic }}"></a>
+                  <div class="hovereffect">
+                    <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                    <div class="overlay">
+                      <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                      <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="pro-box-info">
@@ -998,11 +1010,13 @@
                 <div class="product-item col-md-3 col-sm-6">
                   <div class="item-inner">
                     <div class="product-thumbnail">
-                      <a [routerLink]="['/single-product']"
-                         [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                         class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                          src="{{ TvVideoaudio88.Pic }}"
-                                                          alt="{{ TvVideoaudio88.Pic }}"></a>
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="pro-box-info">
@@ -1074,11 +1088,13 @@
                 <div class="product-item col-md-3 col-sm-6">
                   <div class="item-inner">
                     <div class="product-thumbnail">
-                      <a [routerLink]="['/single-product']"
-                         [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                         class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                          src="{{ TvVideoaudio88.Pic }}"
-                                                          alt="{{ TvVideoaudio88.Pic }}"></a>
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="pro-box-info">
@@ -1151,11 +1167,13 @@
                 <div class="product-item col-md-3 col-sm-6">
                   <div class="item-inner">
                     <div class="product-thumbnail">
-                      <a [routerLink]="['/single-product']"
-                         [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"
-                         class="product-item-photo"> <img class="product-image-photo" height="225"
-                                                          src="{{ TvVideoaudio88.Pic }}"
-                                                          alt="{{ TvVideoaudio88.Pic }}"></a>
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">Product Detail</a>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="pro-box-info">

@@ -9,6 +9,7 @@
   border-radius: 6px;
   padding: 30px 15px;
   margin-bottom: 20px;
+  height: 250px;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -31,7 +32,6 @@ div {
   text-align: center;
 }
 .how-it-works-box:hover {
-  cursor: pointer;
   -webkit-box-shadow: 0 5px 25px 0 rgba(64, 64, 64, .3);
   -moz-box-shadow: 0 5px 25px 0 rgba(64, 64, 64, .3);
   box-shadow: 0 5px 25px 0 rgba(64, 64, 64, .3);
