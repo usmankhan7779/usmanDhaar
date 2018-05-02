@@ -90,34 +90,14 @@ export class FileUploadsComponent implements OnInit {
   }
 
   uploadItemsToActivity() {
-    if (this.filetoup.length === 1) {
-      console.log('I am in 1 Component');
-      this.itemUploadService.postOneImage(this.filetoup, 'hello', 'hh').subscribe(
-        data => {
-          console.log('Successs')
-        },
-        error => {
-          console.log(error);
-        });
-    } else if (this.filetoup.length === 2) {
-      console.log('I am in 2 Component');
-      this.itemUploadService.postTwoImage(this.filetoup, 'hello', 'hh').subscribe(
-        data => {
-          console.log('Successs')
-        },
-        error => {
-          console.log(error);
-        });
-    } else {
-      console.log('I am in 3 Component');
-      this.itemUploadService.postThreeImage(this.filetoup, 'hello', 'hh').subscribe(
-        data => {
-          console.log('Successs')
-        },
-        error => {
-          console.log(error);
-        });
-    }
+    console.log('I am in 1 Component');
+    this.itemUploadService.PostImage(this.filetoup, 'hello', 'hh').subscribe(
+      data => {
+        console.log('Successs')
+      },
+      error => {
+        console.log(error);
+      });
   }
 
 }

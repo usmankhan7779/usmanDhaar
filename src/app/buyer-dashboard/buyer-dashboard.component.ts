@@ -64,7 +64,7 @@ export class BuyerDashboardComponent implements OnInit {
 
   uploadItemsToActivity() {
     console.log('I am in 1 Component');
-    this.itemUploadService.postOneImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
+    this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
       data => {
         this.obj.UserDetailsUpdatePic(this.GetUSerDOne['user_id'],this.fileName).subscribe();
         console.log('Successs')

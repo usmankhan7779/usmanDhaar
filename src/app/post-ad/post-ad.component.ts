@@ -66,6 +66,10 @@ export class PostAdComponent implements OnInit {
   fileName = '';
   ImgSrc: any = [];
   fileList: any = [];
+  url: any=[];
+  PicCounter: any =0;
+  fileCounter = 0;
+  filetoup1:any=[];
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private HomeServics: HomeService,
@@ -380,71 +384,57 @@ export class PostAdComponent implements OnInit {
   //     console.log('Files are:', this.filetoup);
   //   }
   // }
-  onChange(event: EventTarget) {
-
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-    this.files = target.files;
-    if (this.files.length > 3) {
-      swal('Maximum 3 Images are allow','','error');
-    } else {
-      // if (this.fileList.indexOf(this.files[0]) === -1) {
-      this.PictureCheck=true;
-      for (let i = 0; i < this.files.length; i++) {
-        this.filetoup[i]=(this.files[i]);
-      }
-      console.log('filelist', this.filetoup);
-      console.log('raeder');
-      // const reader = new FileReader();
-      // reader.onload = this._handleReaderLoaded.bind(this);
-      // reader.readAsBinaryString(this.fileList[(this.fileList.length - 1)]);
-      // }
-      // const reader1 = new FileReader();
-      // reader1.onload = (e: any) => {
-      //   if (this.ImgSrc.indexOf(e.target.result) === -1) {
-      //     this.ImgSrc.push(e.target.result);
-      //     console.log('image array is:', this.ImgSrc);
-      //   }
-      // };
-      //
-      // reader1.readAsDataURL(this.filetoup[(this.filetoup.length - 1)]);
-    }
+  removepic(image:File) {
+    console.log('image isss:', image);
+    this.filetoup.splice(image,1);
+    this.url.splice(image,1);
+    this.PicCounter -=1;
+    console.log('filetoup after remove:', this.filetoup);
   }
-  // removeItem(ind) {
-  //   this.fileList.splice(ind, 1);
-  //   this.ImgSrc.splice(ind, 1);
-  //   console.log('files are:', this.fileList);
-  // }
+
+  onChange(event:FileList) {
+
+    this.PicCounter +=event.length;
+
+    console.log('PicCounter is', this.PicCounter);
+
+    if (event.length <=5 && this.PicCounter <= 5) {
+      this.PictureCheck = true;
+      console.log('Event', event);
+      for (let i = 0; i < event.length; i++) {
+        if (event) {
+          const reader = new FileReader();
+          reader.onload = (event: any) => {
+            console.log('Inner event', event);
+            this.url.push(event.target.result);
+          };
+          reader.readAsDataURL(event[i]);
+        }
+      }
+      this.filetoup1 = event;
+      for (let itm of this.filetoup1) {
+        this.filetoup.push(itm);
+      }
+      console.log('Filetoup has:', this.filetoup);
+    } else {
+      swal('Maximum 5 Pictures are allow','','error');
+      this.PicCounter -= event.length;
+    }
+
+    console.log('PicCounter at end is', this.PicCounter);
+
+  }
 
   uploadItemsToActivity(StoreName,ProductID) {
-    if (this.filetoup.length === 1) {
-      console.log('I am in 1 Component');
-      this.itemUploadService.postOneImage(this.filetoup, StoreName, ProductID).subscribe(
-        data => {
-          console.log('Successs')
-        },
-        error => {
-          console.log(error);
-        });
-    } else if (this.filetoup.length === 2) {
-      console.log('I am in 2 Component');
-      this.itemUploadService.postTwoImage(this.filetoup, StoreName,ProductID).subscribe(
-        data => {
-          console.log('Successs')
-        },
-        error => {
-          console.log(error);
-        });
-    } else {
-      console.log('I am in 3 Component');
-      this.itemUploadService.postThreeImage(this.filetoup, StoreName,ProductID).subscribe(
-        data => {
-          console.log('Successs')
-        },
-        error => {
-          console.log(error);
-        });
-    }
+    // if (this.filetoup.length === 1) {
+    console.log('I am in 1 Component');
+    this.itemUploadService.PostImage(this.filetoup, StoreName, ProductID).subscribe(
+      data => {
+        console.log('Successs')
+      },
+      error => {
+        console.log(error);
+      });
   }
 }
 
