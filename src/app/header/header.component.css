@@ -27,6 +27,8 @@
   box-shadow: 0px 0 10px 0 #ccc inset;
   background: #fefefe;
   position: relative;
+  right: 25%;
+  width: 150%;
 }
 #iconClose {
   font-size: 30px;

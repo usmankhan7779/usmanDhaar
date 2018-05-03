@@ -712,6 +712,7 @@ export class SingleProductComponent implements OnInit {
       if (this.model.UserPriceBid > MaxPrice) {
         this.MinBidPrice = false;
         this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(data => {
+          this.zerobid = false;
           this.httpService.InsertPhoneMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
           this.highestbid = true;
           this.RefreshBids();
