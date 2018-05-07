@@ -275,26 +275,16 @@ export class HomeService {
 
   }
 
-  InsertProductReviews(Name: any, Email: any, Reviews: any, Product_ID: any, RateNUmber: any, StoreName: any) {
+  InsertProductReviews(Name: any, user: any, Reviews: any, Product_ID: any, RateNUmber: any, StoreName: any) {
     return this._http.post(this.ServerUrl + 'InsertUserReview/' + Product_ID,
       {
         'Name': Name ,
-        'Email': Email ,
+        'user': user ,
         'Product_Id': Product_ID,
         'StoreName': StoreName,
         'Rating': RateNUmber,
         'Reviews': Reviews,
-      }).map((res: Response) => {
-      if (res) {
-       // console.log('abc');
-        if (res.status === 201) {
-          const responce_data = res.json();
-          return [{ status: res.status, json: res }];
-        }
-      }
-    }).catch((error: any) => {
-      return Observable.throw(new Error(error.status));
-    });
+      }).map((response: Response) => response.json());
 
 
   }

@@ -189,3 +189,73 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating-desc .col-md-3 {padding-right: 0px;}
 .sr-only { margin-left: 5px;margin-top: 3px;overflow: visible;clip: auto;color: black;font-size: 18px; }
 .progress .progress-bar:after{display: none;}
+
+
+
+.textarea-review{
+  resize: none;
+  border-color: #cccccc !important;
+  font-size: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+#contact {
+  padding-top: 60px;
+  width: 100%;
+  color: #fff;
+}
+.input-button {
+  height: 60px;
+  width: 50%;
+  margin-top: 10px;
+  font-size: 23px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  background-color: #ed2425;
+  color: white;
+  border-color: #ff0000 !important;
+  border-radius: 7px;
+}
+.content-header {
+  color: black;
+  font-size: 45px;
+}
+.section-content {
+  text-align: center;
+  color: black;
+}
+
+.contact-section {
+  padding-top: 40px
+}
+
+.form-line {
+  border-right: 1px solid #B29999
+}
+
+.form-group {
+  margin-top: 10px
+}
+
+textarea.form-control {
+  height: 240px;
+}
+.submit {
+  font-size: 25px;
+  float: right;
+  background-color: #f80000;
+  color: #fff;
+  border: none;
+  height: 55px;
+  padding: 0px 10px;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+#contact-map{
+  margin-top: 50px;
+}
+.label-review{
+  color: #000000;
+  font-weight: 700;
+  font-size: 22px;
+}

@@ -65,6 +65,7 @@ export class SingleProductComponent implements OnInit {
   ProductPictures: any = [];
   Calculation: any = [];
   invoice: any = [];
+  searchQuery:any;
   CatName: string;
   starp: any = 0;
   DbDate: string;
@@ -90,6 +91,7 @@ export class SingleProductComponent implements OnInit {
   count3:any=0;
   count4:any=0;
   count5:any=0;
+  username:any;
 
   // imageIndex = this.ProPics;
 
@@ -111,6 +113,7 @@ export class SingleProductComponent implements OnInit {
       //
       // }, 1000);
 
+      this.username= localStorage.getItem('UserName');
 
 
       this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
@@ -937,7 +940,7 @@ export class SingleProductComponent implements OnInit {
 
   SubmitReview() {
     console.log('Store Name is', this.resultProduct[0]['StoreName']);
-    this.GetAdd.InsertProductReviews(this.model.YourName, this.model.YourEmail, this.model.YourReview, this.ProID, this.starp, this.resultProduct[0]['StoreName']).subscribe(resSlidersData => {
+    this.GetAdd.InsertProductReviews(localStorage.getItem('UserName'), localStorage.getItem('UserID'), this.model.YourReview, this.ProID, this.starp, this.resultProduct[0]['StoreName']).subscribe(resSlidersData => {
         swal('Your Review has been submitted','','success');
         this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
           this.GetallProductReview = resSlidersData;
@@ -948,7 +951,9 @@ export class SingleProductComponent implements OnInit {
         selectElement.reset();
       },
       (err) => {
-        alert('Error');
+        this.searchQuery = err._body;
+        alert(this.searchQuery);
+        console.log('Error is suberror:',this.searchQuery);
       },
       () => {
         /* this function is executed when the observable ends (completes) its stream */
