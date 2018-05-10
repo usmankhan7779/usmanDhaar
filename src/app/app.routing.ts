@@ -44,7 +44,7 @@ const appRoutes: Routes = [
       { path: 'seller-setting', loadChildren: './seller-setting/seller-setting.module#SellerSettingModule', canActivate: [AuthGuard]},
       { path: 'manage-coupons', loadChildren: './manage-coupons/manage-coupons.module#ManageCouponsModule', canActivate: [AuthGuard]},
       { path: 'reset/:uid/:token', loadChildren: './reset-password/reset-password.module#ResetPasswordModule',},
-      { path: 'VerfiyEmail', loadChildren: './verify-email/verify-email.module#VerfiyEmailModule',},
+      { path: 'VerfiyEmail/:key', loadChildren: './verify-email/verify-email.module#VerfiyEmailModule',},
       { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule',},
       { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard]},
       { path: 'seller-offer', loadChildren: './seller-offer/seller-offer.module#SellerOfferModule', canActivate: [AuthGuard]},

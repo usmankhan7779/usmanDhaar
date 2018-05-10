@@ -97,6 +97,7 @@ export class LogInComponent implements OnInit {
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    console.log('HAhahahahaahahahah')
   }
 
   signInWithFB(): void {

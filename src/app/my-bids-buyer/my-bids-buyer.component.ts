@@ -14,6 +14,7 @@ import swal from 'sweetalert2';
 export class MyBidsBuyerComponent implements OnInit {
   r: any;
   errormessage = false;
+  errormessage1 = false;
   pageno: any;
   sub: any;
   modelNo: any;
@@ -46,6 +47,7 @@ export class MyBidsBuyerComponent implements OnInit {
     this.httpService.GetallProductdBids(1, localStorage.getItem('UserID')).subscribe(
       data => {
         this.ActiveProduct = data;
+        console.log('bids products are:', this.ActiveProduct);
         if (this.ActiveProduct['totalItems'] === 0) {
           this.errormessage = true;
         }
@@ -53,7 +55,7 @@ export class MyBidsBuyerComponent implements OnInit {
     this.httpService.GetSuccessfulBids(1, localStorage.getItem('UserID')).subscribe( data => {
       this.successbid = data;
       if (this.successbid['totalItems'] === 0) {
-        this.errormessage = true;
+        this.errormessage1 = true;
       }
     });
   }

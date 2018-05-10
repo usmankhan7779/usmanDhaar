@@ -97,7 +97,7 @@
             <!-- ad end -->
               </div>
               <div class="tab-pane fade" id="successfulbids">
-                <ng-container *ngIf="!errormessage">
+                <ng-container *ngIf="!errormessage1">
                   <ng-container *ngFor="let phoneProducts of successbid.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
                     <li>
                       <div class="row">
@@ -126,7 +126,7 @@
                     </li>
                   </ng-container>
                 </ng-container>
-                <ng-container *ngIf="errormessage">
+                <ng-container *ngIf="errormessage1">
                   <div class="alert alert-danger">
                     <h3 align="center">No Active Bids Found</h3>
                   </div>

@@ -46,97 +46,99 @@
         </div>
 
         <br/> <br/> <br/> <br/> <br/>
-        <header class="clearfix">
-          <div id="logo">
-            <img src="assets/images/dhaar1.png">
-          </div>
-          <div id="company">
-            <h2 class="name">Dhaar.pk</h2>
-            <div>455 Foggy Heights, AZ 85004, US</div>
-            <div>(602) 519-0450</div>
-            <div><a href="mailto:company@example.com">info@dhaar.pk</a></div>
-          </div>
-      </header>
-      <main>
-        <ng-container *ngFor="let Invoiceship of ShipingInvoice">
-        <div id="details" class="clearfix">
-          <div id="client">
-            <p class="to">INVOICE TO:</p>
+        <div id="content" #content>
+          <header class="clearfix">
+            <div id="logo">
+              <img src="../../assets/images/Check-Resolution.png">
+            </div>
+            <div id="company">
+              <h2 class="name">Dhaar.pk</h2>
+              <div>455 Foggy Heights, AZ 85004, US</div>
+              <div>(602) 519-0450</div>
+              <div><a href="mailto:company@example.com">info@dhaar.pk</a></div>
+            </div>
+          </header>
+          <main>
+            <ng-container *ngFor="let Invoiceship of ShipingInvoice">
+              <div id="details" class="clearfix">
+                <div id="client">
+                  <p class="to">SHIP TO:</p>
 
-            <h2 >{{ Invoiceship.First_Name }} {{ Invoiceship.Last_Name}}</h2>
-            <h6 >Tel: {{ Invoiceship.Telephon }} </h6>
-            <p>{{ Invoiceship.Address}}
-            <p>{{ Invoiceship.City}} ,{{ Invoiceship.Zip}} </p>
-            <p>{{ Invoiceship.State}} , {{ Invoiceship.Country }} </p>
-            <p>Fax: {{ Invoiceship.Fax }} </p>
-            <p><a href="mailto:{{ Invoiceship.Email}}">{{ Invoiceship.Email}}</a></p>
-          </div>
+                  <h2 >{{ Invoiceship.First_Name }} {{ Invoiceship.Last_Name}}</h2>
+                  <h6 >Tel: {{ Invoiceship.Telephon }} </h6>
+                  <p>{{ Invoiceship.Address}}
+                  <p>{{ Invoiceship.City}} ,{{ Invoiceship.Zip}} </p>
+                  <p>{{ Invoiceship.State}} , {{ Invoiceship.Country }} </p>
+                  <p>Fax: {{ Invoiceship.Fax }} </p>
+                  <p><a href="mailto:{{ Invoiceship.Email}}">{{ Invoiceship.Email}}</a></p>
+                </div>
 
-          <div id="invoice">
-            <h1>INVOICE ID</h1>
-            <h3>{{ InvoicesID}}</h3>
-            <div class="date">Date of Invoice: {{ Invoiceship.CreatedDate.substr(0,10)}}</div>
+                <div id="invoice">
+                  <h1>ORDER ID</h1>
+                  <h3>{{ InvoicesID}}</h3>
+                  <div class="date">Date of Order: {{ Invoiceship.CreatedDate.substr(0,10)}}</div>
 
+                </div>
+              </div>
+            </ng-container>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <thead>
+              <tr>
+                <th class="no">#</th>
+                <th class="desc">DESCRIPTION</th>
+                <th class="unit">UNIT PRICE</th>
+                <th class="qty">QUANTITY</th>
+                <th class="total">TOTAL</th>
+              </tr>
+              </thead>
+              <tbody>
+              <!--<ng-container *ngFor="let fetchedproducts of Allproducts.products">-->
+              <ng-container>
+                <tr  *ngFor="let abc of GetAllproducts; let i = index">
+                  <td class="no">{{ i+1 }}</td>
+                  <td class="desc"><h3>{{ abc.P_Title }}</h3>{{ abc.P_Des }}</td>
+                  <td class="unit">Rs: {{ abc.FixedPrice | number:'.0-0'}}</td>
+                  <td class="qty">{{ abc.Qty }}</td>
+                  <!--{{ abc.Qty}}-->
+                  <td class="total">Rs: {{ abc.FixedPrice * abc.Qty | number:'.0-0' }}</td>
+                </tr>
+              </ng-container>
+
+              </tbody>
+              <tfoot>
+              <ng-container *ngFor="let invdata of InvoiceData">
+                <tr>
+                  <td colspan="2"></td>
+                  <td colspan="2">SUBTOTAL</td>
+                  <td>Rs {{invdata.InvoicesBalance | number:'.0-0'}}</td>
+                </tr>
+                <tr>
+                  <td colspan="2"></td>
+                  <td colspan="2">TAX 0%</td>
+                  <td>Rs: 00.00</td>
+                </tr>
+                <tr>
+                  <td colspan="2"></td>
+                  <td colspan="2">GRAND TOTAL</td>
+                  <td>Rs: {{invdata.InvoicesBalance | number:'.0-0' }}</td>
+                </tr>
+              </ng-container>
+              </tfoot>
+            </table>
+            <div id="thanks">Thank you!</div>
+            <!--<div id="notices">-->
+            <!--<div>NOTICE:</div>-->
+            <!--<div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>-->
+            <!--</div>-->
+          </main>
+          <div style="text-align: center">
+            Order was created on a computer and is valid without the signature and seal.
           </div>
         </div>
-        </ng-container>
-        <table border="0" cellspacing="0" cellpadding="0">
-          <thead>
-          <tr>
-            <th class="no">#</th>
-            <th class="desc">DESCRIPTION</th>
-            <th class="unit">UNIT PRICE</th>
-            <th class="qty">QUANTITY</th>
-            <th class="total">TOTAL</th>
-          </tr>
-          </thead>
-          <tbody>
-          <!--<ng-container *ngFor="let fetchedproducts of Allproducts.products">-->
-            <ng-container>
-          <tr  *ngFor="let abc of GetAllproducts; let i = index">
-            <td class="no">{{ i+1 }}</td>
-            <td class="desc"><h3>{{ abc[0].P_Title }}</h3>{{ abc[0].P_Des }}</td>
-            <td class="unit">Rs: {{ abc[0].FixedPrice | number:'.0-0' }}</td>
-            <td class="qty">{{ abc[0].Qty }}</td>
-            <!--{{ abc.Qty}}-->
-            <td class="total">Rs: {{ abc[0].FixedPrice * abc[0].Qty  | number:'.0-0' }}</td>
-          </tr>
-          </ng-container>
-
-          </tbody>
-          <tfoot>
-          <ng-container *ngFor="let invdata of InvoiceData">
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">SUBTOTAL</td>
-            <td>Rs: {{invdata.InvoicesBalance | number:'.0-0' }}</td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">TAX 0%</td>
-            <td>Rs: 00.00</td>
-          </tr>
-          <tr>
-            <td colspan="2"></td>
-            <td colspan="2">GRAND TOTAL</td>
-            <td>Rs: {{invdata.InvoicesBalance | number:'.0-0' }}</td>
-          </tr>
-          </ng-container>
-          </tfoot>
-        </table>
-        <div id="thanks">Thank you!</div>
-        <!--<div id="notices">-->
-          <!--<div>NOTICE:</div>-->
-          <!--<div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>-->
-        <!--</div>-->
-      </main>
-     <div style="text-align: center">
-        Invoice was created on a computer and is valid without the signature and seal.
-     </div>
 
 
 
-        </div>
+      </div>
       </div>
     </div>
   </div>

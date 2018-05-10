@@ -38,6 +38,8 @@ export class ResetPasswordComponent implements OnInit {
     if ( this.uid === '0' || this.token === '0' )  {
       this._nav.navigate(['/login']);
     }
+
+    console.log('UID is:', this.uid, 'Token is:', this.token);
   }
   }
 
@@ -56,7 +58,7 @@ export class ResetPasswordComponent implements OnInit {
           // alert('success')
         },
         error => {
-          // swal(error,'','error')
+          console.log('HAhaUnforgettable.', error);
 
           this.searchQuery = JSON.parse(error._body);
           console.log('Errorrrr messsage:', this.searchQuery.new_password2);

@@ -112,6 +112,13 @@ export class Checkout2Component implements OnInit {
       this.GetUSerDOne = resSlidersData;
 
     });
+
+    for (const {item,index} of this.CartedProduct['products'].map((item,index) => ({item,index}))) {
+      if(index === this.CartedProduct['products'].length-1) {
+        console.log('item is:  ', item, '  Index is:  ', index);
+      }
+    }
+
     }
   }
 
@@ -374,7 +381,24 @@ export class Checkout2Component implements OnInit {
     this.httpbuyerService.Invoice(this.id, this.Total, false, true, this.user).subscribe(
       data => {
         // console.log( this.CartedProduct['products']);
-        for (const item of this.CartedProduct['products']) {
+        for (const {item,index} of this.CartedProduct['products'].map((item,index) => ({item,index}))) {
+          if(index === this.CartedProduct['products'].length-1) {
+            console.log('item is:  ', item, '  Index is:  ', index);
+            this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
+              data => {
+                this.httpbuyerService.SendEmail(localStorage.getItem('InvoiceID')).subscribe( data => {
+                  console.log('Email Successssssssss');
+                });
+              }, (err) => {
+
+                alert(err);
+                this.status = 2;
+                /* this function is executed when there's an ERROR */
+                //   console.log("ERROR: "+err);
+              },
+            );
+          }
+          console.log('item is:  ', item,'  Index is:  ',index);
           this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
             data => {
 

@@ -134,9 +134,9 @@ export class LoginService {
 
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      return this._http.post(this.ServerUrl + 'confirm/email/',
+      return this._http.post(this.ServerUrl + 'user_confirm/',
         JSON.stringify({
-          email: email,
+          user: email,
           username: localStorage.getItem('Usernamae')
         }), {headers: headers})
         .map((response: Response) => {
@@ -147,7 +147,7 @@ export class LoginService {
             confirmButtonText: 'OK'
           }).then((result) => {
             if (result.value) {
-              this._nav.navigate(['/VerfiyEmail'])
+              this._nav.navigate(['/VerfiyEmail/a'])
             }
           })
         });
@@ -179,7 +179,7 @@ export class LoginService {
             //  console.log('ok submited');
             this.sendmail(email).subscribe();
             this.register_customer(responce_data.id, Fname, LName, Mobile).subscribe();
-            this._nav.navigate(['/VerfiyEmail']);
+            this._nav.navigate(['/VerfiyEmail/a']);
           }
         }
       }).catch((error: any) => {
@@ -697,12 +697,64 @@ export class LoginService {
     }).map((response: Response) => response.json());
   }
 
+  UserConfirm(key:any) {
+    return this._http.post(this.ServerUrl + 'user_confirm_email/', {
+      'activation_key': key,
+    }).map((res: Response) => {
+
+      if (res) {
+        if (res.status === 201 || res.status === 200 || res.status === 202) {
+          console.log('Yahoooooo Status MAtch');
+        }
+      }
+    }).catch((error: any) => {
+
+      if (error.status !== 404) {
+        if (error.status === 401) {
+          console.log(error);
+
+          return Observable.throw(new Error(error.status));
+        }
+
+
+      } else {
+        console.log(error);
+        //   this._nav.navigate(['/login']);
+
+        return Observable.throw(new Error(error.status));
+      }
+    });
+  }
+
 
   reset_service(email) {
     console.log(email);
-    return this._http.post(this.EMailServerUrl + 'password/reset/', {
-      'email': email
-    }).map((response: Response) => response.json());
+    return this._http.post(this.ServerUrl + 'forget_password_customer/', {
+      'user': email
+    }).map((res: Response) => {
+
+      if (res) {
+        if (res.status === 201 || res.status === 200 || res.status === 202) {
+          console.log('Yahoooooo Status MAtch');
+        }
+      }
+    }).catch((error: any) => {
+
+      if (error.status !== 404) {
+        if (error.status === 401) {
+          console.log(error);
+
+          return Observable.throw(new Error(error.status));
+        }
+
+
+      } else {
+        console.log(error);
+        //   this._nav.navigate(['/login']);
+
+        return Observable.throw(new Error(error.status));
+      }
+    });
   }
 
 
@@ -710,12 +762,35 @@ export class LoginService {
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this._http.post(this.EMailServerUrl + 'password/reset/confirm/', JSON.stringify({
-        new_password1: pass1,
-        token: token,
-        new_password2: pass2,
-        uid: uid}),
-      {headers: headers}).map((response: Response) => response.json())
+    return this._http.post(this.ServerUrl + 'passowrd_reset_confirm/',{
+        'activation_key': token,
+        'password': pass2,
+        'uid': uid
+    }).map((res: Response) => {
+
+      if (res) {
+        if (res.status === 201 || res.status === 200 || res.status === 202) {
+          // const responce_data = res.json();
+          console.log('Yahoooooo Status MAtch');
+        }
+      }
+    }).catch((error: any) => {
+
+      if (error.status !== 404) {
+        if (error.status === 401) {
+          console.log(error);
+
+          return Observable.throw(new Error(error.status));
+        }
+
+
+      } else {
+        console.log(error);
+        //   this._nav.navigate(['/login']);
+
+        return Observable.throw(new Error(error.status));
+      }
+    });
 
   }
 

@@ -49,6 +49,23 @@ export class BuyerDashboardServices {
     return this._http.get(this.ServerUrl + 'verifyWatchStatus/' + PID + "/" + User_ID).map(response => response.json());
   }
 
+  SendEmail(InvID: any) {
+    return this._http.post(this.saleServerUrl + 'OrderEmail/', {
+      'InvoiceID': InvID,
+      'UserID': localStorage.getItem('UserID')
+    }).map((res: Response) => {
+      if (res) {
+        console.log(res.status);
+        if (res.status === 200) {
+
+        }
+      }
+    }).catch((error: any) => {
+      alert(error);
+      return Observable.throw(new Error(error.status));
+    });
+  }
+
   Invoice(invID: any , invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
 
 

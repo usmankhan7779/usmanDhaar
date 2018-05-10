@@ -38,7 +38,6 @@ export class ForgetPasswordComponent implements OnInit {
           console.log(data);
           this.Waitcall = false;
           this.isSend = true;
-          id.reset();
         },
         error => {
           this.Waitcall = false;

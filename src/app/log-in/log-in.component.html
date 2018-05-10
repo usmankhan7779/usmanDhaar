@@ -188,20 +188,20 @@
           <!-- sign up form -->
           <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a  [routerLink]="['/sign-up']">Register Here</a></div>
 
-          <!--<div *ngIf="!user">-->
-            <!--<div class="socialLogin">-->
-              <!--<h5>Login Or Register with Social</h5>-->
-              <!--<a (click)="signInWithFB()" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a (click)="signInWithGoogle()" class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>-->
+          <div *ngIf="!user">
+            <div class="socialLogin">
+              <h5>Login Or Register with Social</h5>
+              <a (click)="signInWithFB()" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a (click)="signInWithGoogle()" class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
 
-            <!--&lt;!&ndash;<button  (click)="signInWithFB()"><i class="fa fa-facebook"></i></button>&ndash;&gt;-->
-            <!--&lt;!&ndash;<button  (click)="signInWithGoogle()"><i class="fa fa-google-plus"></i></button>&ndash;&gt;-->
+            <!--<button  (click)="signInWithFB()"><i class="fa fa-facebook"></i></button>-->
+            <!--<button  (click)="signInWithGoogle()"><i class="fa fa-google-plus"></i></button>-->
 
-          <!--</div>-->
-          <!-- sign up form end-->
+          </div>
+           sign up form end
 
-          <!--<div class="socialLogin">-->
-            <!--<h5>Login Or Register with Social</h5>-->
-            <!--<a href="#." class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#." class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>-->
+          <div class="socialLogin">
+            <h5>Login Or Register with Social</h5>
+            <a href="#." class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#." class="gp"><i class="fa fa-google-plus" aria-hidden="true"></i></a> <a href="#." class="tw"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
         <!--</div>-->
 
       </div>

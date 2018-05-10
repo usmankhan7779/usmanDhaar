@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-verfiy-email',
@@ -16,7 +17,7 @@ export class VerfiyEmailComponent implements OnInit {
   password2;
   searchQuery;
   Waitcall = false;
-  uid: any;
+  key: any;
   email: any;
   is_set = false;
   is_send = false;
@@ -29,6 +30,27 @@ export class VerfiyEmailComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
     window.scrollTo(0, 0);
+      this.sub = this.route.params.subscribe(params => {
+        this.key = params['key'] || '0';
+      });
+      if ( this.key === '0')  {
+        this._nav.navigate(['/login']);
+      }
+
+      this.obj.UserConfirm(this.key).subscribe( data => {
+        swal({
+          title: 'Welcome Back. Thanks for verifying your account.',
+          type: 'success',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.value) {
+            this._nav.navigate(['/login'])
+          }
+        })
+      });
+
+      console.log('KEY is:', this.key);
     }
 
   }

@@ -92,6 +92,7 @@ export class SingleProductComponent implements OnInit {
   count4:any=0;
   count5:any=0;
   username:any;
+  Title: any;
 
   // imageIndex = this.ProPics;
 
@@ -250,6 +251,7 @@ export class SingleProductComponent implements OnInit {
   PhoneTablet(){
     this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.Title = this.resultProduct[0]['P_Title']
       console.log('Description of product is:', this.resultProduct[0]['P_Des']);
       this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
 
@@ -341,6 +343,7 @@ export class SingleProductComponent implements OnInit {
   WomenFashion(){
     this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.Title = this.resultProduct[0]['P_Title']
       this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
       for(let i=0; i<this.ProPics.length-1; i++) {
@@ -404,7 +407,7 @@ export class SingleProductComponent implements OnInit {
   MenFashion(){
     this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
-
+      this.Title = this.resultProduct[0]['P_Title']
       console.log('Pic attribute isssssssssS:', this.resultProduct[0]['Pic']);
       this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
@@ -470,6 +473,7 @@ export class SingleProductComponent implements OnInit {
   TvAudioVideo(){
     this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.Title = this.resultProduct[0]['P_Title']
       this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
       for(let i=0; i<this.ProPics.length-1; i++) {
@@ -533,6 +537,7 @@ export class SingleProductComponent implements OnInit {
   ComputingLaptop(){
     this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.Title = this.resultProduct[0]['P_Title']
       this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
       for(let i=0; i<this.ProPics.length-1; i++) {
@@ -596,6 +601,7 @@ export class SingleProductComponent implements OnInit {
   HomeAppliances(){
     this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
+      this.Title = this.resultProduct[0]['P_Title']
       this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
       this.ProPics = this.resultProduct[0]['Pic'].split(',');
       for(let i=0; i<this.ProPics.length-1; i++) {

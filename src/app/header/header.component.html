@@ -625,7 +625,8 @@
                           <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
                             <a [routerLink]="['/single-product']"
                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }">
-                              <button onclick="location.href='shopping_cart.html'" class="action add-to-cart"
+                              <button [routerLink]="['/single-product']"
+                                      [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }" class="action add-to-cart"
                                       type="button" title="Add to Cart"><span>Buy Now</span></button>
                             </a>
                           </div>
