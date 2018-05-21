@@ -14,7 +14,7 @@ declare const $: any;
 @Component({
   selector: 'app-single-product',
   templateUrl: './single-product.component.html',
-  styleUrls: ['./single-product.component.css'],
+  styleUrls: ['./single-product.component.scss'],
 
 })
 export class SingleProductComponent implements OnInit {
@@ -85,6 +85,7 @@ export class SingleProductComponent implements OnInit {
   AverageRating: any=0;
   AverageRating1: any=0;
   TotalRating: any=0;
+  StarPercent: any=0;
   count0:any=0;
   count1:any=0;
   count2:any=0;
@@ -105,6 +106,9 @@ export class SingleProductComponent implements OnInit {
 
 
   ngOnInit() {
+
+
+
     if (isPlatformBrowser(this.platformId)) {
       setInterval(() => {
         this.timer(this.element);
@@ -189,22 +193,8 @@ export class SingleProductComponent implements OnInit {
 
       if (this.CatName === '0') {
         this.router.navigate(['/login']);
-      } else {
-        if (this.CatName === 'Phones & Tablets') {
-          this.PhoneTablet();
-        } else if (this.CatName === 'Women\'s Fashion') {
-          this.WomenFashion();
-        } else if (this.CatName === 'Men\'s Fashion') {
-          this.MenFashion();
-        } else if (this.CatName === 'TV, Audio & Video') {
-          this.TvAudioVideo();
-        } else if (this.CatName === 'Computing & Laptops') {
-          this.ComputingLaptop();
-        } else if (this.CatName === 'Home Appliances') {
-          this.HomeAppliances();
-        }
-
       }
+      this.PhoneTablet();
     }
 
   }
@@ -218,8 +208,13 @@ export class SingleProductComponent implements OnInit {
           this.Calculation = data;
           console.log('Calculation issss:', this.Calculation);
           this.TotalRating = this.Calculation.Sum;
-          this.AverageRating=(this.Calculation.Average).toFixed(1);
-          this.AverageRating1=(this.Calculation.Average).toFixed();
+          this.AverageRating = 3.7;
+          this.AverageRating1 = (this.AverageRating *10)%10;
+          console.log('Mode number is:', this.AverageRating1);
+          this.StarPercent = (this.AverageRating1/10) * 100;
+          console.log('StarPercent is:', this.StarPercent);
+          // this.AverageRating=(this.Calculation.Average).toFixed(1);
+          // this.AverageRating1=(this.Calculation.Average).toFixed();
           this.count0=this.Calculation.Percentage0;
           this.count1=this.Calculation.Percentage1;
           this.count2=this.Calculation.Percentage2;
@@ -251,11 +246,11 @@ export class SingleProductComponent implements OnInit {
   PhoneTablet(){
     this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
-      this.Title = this.resultProduct[0]['P_Title']
-      console.log('Description of product is:', this.resultProduct[0]['P_Des']);
-      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
+      this.Title = this.resultProduct['P_Title']
+      console.log('Description of product is:', this.resultProduct['P_Des']);
+      this.ProPDes = this.resultProduct['P_Des'].split('\n');
 
-      this.ProPics = this.resultProduct[0]['Pic'].split(',');
+      this.ProPics = this.resultProduct['Pic'].split(',');
 
       for(let i=0; i<this.ProPics.length-1; i++) {
           this.PicList[i]=this.ProPics[i+1];
@@ -266,7 +261,7 @@ export class SingleProductComponent implements OnInit {
 
 
       console.log('Pics are:', this.ProPics);
-      if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
+      if (this.resultProduct['StoreName'] === localStorage.getItem('StoreName')) {
         this.ourproduct = true;
 
       }
@@ -284,28 +279,28 @@ export class SingleProductComponent implements OnInit {
           }
           if (this.ViewItemCheck === false) {
             this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-            this.ViewedProduct['products'].push(this.resultProduct[0]);
+            this.ViewedProduct['products'].push(this.resultProduct);
             localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
 
           }
         } else {
 
-          this.ViewedProduct['products'].push(this.resultProduct[0]);
+          this.ViewedProduct['products'].push(this.resultProduct);
           localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
         }
       } catch (e) {
-        this.ViewedProduct['products'].push(this.resultProduct[0]);
+        this.ViewedProduct['products'].push(this.resultProduct);
         localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
       }
-      if (this.resultProduct[0].Quantity <= 0) {
+      if (this.resultProduct.Quantity <= 0) {
         this.soldfix = true;
       }
-      console.log('Product attributes', this.resultProduct[0]);
-      this.LocalStoreName = this.resultProduct[0].StoreName;
-      this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-      if (this.resultProduct[0].Auction) {
-        this.DbDate = this.resultProduct[0].CreatedDate;
-        this.AuctionDayDB = this.resultProduct[0].AuctionListing;
+      console.log('Product attributes', this.resultProduct);
+      this.LocalStoreName = this.resultProduct.StoreName;
+      this.MinimumbestOffer = this.resultProduct.Addbestoffer;
+      if (this.resultProduct.Auction) {
+        this.DbDate = this.resultProduct.CreatedDate;
+        this.AuctionDayDB = this.resultProduct.AuctionListing;
         const auctiondays = +this.AuctionDayDB * 86400000;
         console.log('Auction days:', auctiondays);
         const time0 = new Date();
@@ -340,328 +335,6 @@ export class SingleProductComponent implements OnInit {
 
     });
   }
-  WomenFashion(){
-    this.GetAdd.getWomenFashionProductById(this.ProID).subscribe(resSlidersData => {
-      this.resultProduct = resSlidersData;
-      this.Title = this.resultProduct[0]['P_Title']
-      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
-      this.ProPics = this.resultProduct[0]['Pic'].split(',');
-      for(let i=0; i<this.ProPics.length-1; i++) {
-          this.PicList[i]=this.ProPics[i+1];
-      }
-      if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-        this.ourproduct = true;
-
-      }
-      try {
-
-        if (localStorage.getItem('ViewedItem') !== null) {
-
-          this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-          for (const ABCC of this.ViewedProduct['products']) {
-
-            if (ABCC.ProductID === this.ProID) {  // Checking if the same product also present in cart.
-              this.ViewItemCheck = true;
-
-            }
-          }
-          if (this.ViewItemCheck === false) {
-            this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-            this.ViewedProduct['products'].push(this.resultProduct[0]);
-            localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-
-          }
-        } else {
-
-          this.ViewedProduct['products'].push(this.resultProduct[0]);
-          localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-        }
-      } catch (e) {
-        this.ViewedProduct['products'].push(this.resultProduct[0]);
-        localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-      }
-      if (this.resultProduct[0].Quantity <= 0) {
-        this.soldfix = true;
-      }
-      this.LocalStoreName = this.resultProduct[0].StoreName;
-      this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-      if (this.resultProduct[0].Auction) {
-        this.DbDate = this.resultProduct[0].CreatedDate;
-        this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-        const auctiondays = +this.AuctionDayDB * 86400000;
-        const time0 = new Date(); //86400000
-        const time1 = new Date(this.DbDate);
-        const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-        // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-        let x = time3 / 1000;
-        this.seconds = Math.floor(x % 60);
-        x /= 60;
-        this.minutes = Math.floor(x % 60);
-        x /= 60;
-        this.hours = Math.floor(x % 24);
-        x /= 24;
-        this.days = Math.floor(x);
-      }
-    });
-  }
-  MenFashion(){
-    this.GetAdd.getMenFashionProductById(this.ProID).subscribe(resSlidersData => {
-      this.resultProduct = resSlidersData;
-      this.Title = this.resultProduct[0]['P_Title']
-      console.log('Pic attribute isssssssssS:', this.resultProduct[0]['Pic']);
-      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
-      this.ProPics = this.resultProduct[0]['Pic'].split(',');
-      for(let i=0; i<this.ProPics.length-1; i++) {
-          this.PicList[i]=this.ProPics[i+1];
-      }
-      console.log('ProPics isssss:', this.ProPics);
-      if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-        this.ourproduct = true;
-
-      }
-      try {
-
-        if (localStorage.getItem('ViewedItem') !== null) {
-
-          this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-          for (const ABCC of this.ViewedProduct['products']) {
-
-            if (ABCC.ProductID === this.ProID) {  // Checking if the same product also present in cart.
-              this.ViewItemCheck = true;
-
-            }
-          }
-          if (this.ViewItemCheck === false) {
-            this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-            this.ViewedProduct['products'].push(this.resultProduct[0]);
-            localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-
-          }
-        } else {
-
-          this.ViewedProduct['products'].push(this.resultProduct[0]);
-          localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-        }
-      } catch (e) {
-        this.ViewedProduct['products'].push(this.resultProduct[0]);
-        localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-      }
-      if (this.resultProduct[0].Quantity <= 0) {
-        this.soldfix = true;
-      }
-      this.LocalStoreName = this.resultProduct[0].StoreName;
-      this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-      if (this.resultProduct[0].Auction) {
-        this.DbDate = this.resultProduct[0].CreatedDate;
-        this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-        const auctiondays = +this.AuctionDayDB * 86400000;
-        const time0 = new Date(); //86400000
-        const time1 = new Date(this.DbDate);
-        const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-        // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-        let x = time3 / 1000;
-        this.seconds = Math.floor(x % 60);
-        x /= 60;
-        this.minutes = Math.floor(x % 60);
-        x /= 60;
-        this.hours = Math.floor(x % 24);
-        x /= 24;
-        this.days = Math.floor(x);
-      }
-    });
-  }
-  TvAudioVideo(){
-    this.GetAdd.geTVAudioVideoProductById(this.ProID).subscribe(resSlidersData => {
-      this.resultProduct = resSlidersData;
-      this.Title = this.resultProduct[0]['P_Title']
-      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
-      this.ProPics = this.resultProduct[0]['Pic'].split(',');
-      for(let i=0; i<this.ProPics.length-1; i++) {
-          this.PicList[i]=this.ProPics[i+1];
-      }
-      if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-        this.ourproduct = true;
-
-      }
-      try {
-
-        if (localStorage.getItem('ViewedItem') !== null) {
-
-          this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-          for (const ABCC of this.ViewedProduct['products']) {
-
-            if (ABCC.ProductID === this.ProID) {  // Checking if the same product also present in cart.
-              this.ViewItemCheck = true;
-
-            }
-          }
-          if (this.ViewItemCheck === false) {
-            this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-            this.ViewedProduct['products'].push(this.resultProduct[0]);
-            localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-
-          }
-        } else {
-
-          this.ViewedProduct['products'].push(this.resultProduct[0]);
-          localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-        }
-      } catch (e) {
-        this.ViewedProduct['products'].push(this.resultProduct[0]);
-        localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-      }
-      if (this.resultProduct[0].Quantity <= 0) {
-        this.soldfix = true;
-      }
-      this.LocalStoreName = this.resultProduct[0].StoreName;
-      this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-      if (this.resultProduct[0].Auction) {
-        this.DbDate = this.resultProduct[0].CreatedDate;
-        this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-        const auctiondays = +this.AuctionDayDB * 86400000;
-        const time0 = new Date(); //86400000
-        const time1 = new Date(this.DbDate);
-        const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-        // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-        let x = time3 / 1000;
-        this.seconds = Math.floor(x % 60);
-        x /= 60;
-        this.minutes = Math.floor(x % 60);
-        x /= 60;
-        this.hours = Math.floor(x % 24);
-        x /= 24;
-        this.days = Math.floor(x);
-      }
-    });
-  }
-  ComputingLaptop(){
-    this.GetAdd.getComputingLaptopsProductById(this.ProID).subscribe(resSlidersData => {
-      this.resultProduct = resSlidersData;
-      this.Title = this.resultProduct[0]['P_Title']
-      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
-      this.ProPics = this.resultProduct[0]['Pic'].split(',');
-      for(let i=0; i<this.ProPics.length-1; i++) {
-        this.PicList[i]=this.ProPics[i+1];
-      }
-      if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-        this.ourproduct = true;
-
-      }
-      try {
-
-        if (localStorage.getItem('ViewedItem') !== null) {
-
-          this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-          for (const ABCC of this.ViewedProduct['products']) {
-
-            if (ABCC.ProductID === this.ProID) {  // Checking if the same product also present in cart.
-              this.ViewItemCheck = true;
-
-            }
-          }
-          if (this.ViewItemCheck === false) {
-            this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-            this.ViewedProduct['products'].push(this.resultProduct[0]);
-            localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-
-          }
-        } else {
-
-          this.ViewedProduct['products'].push(this.resultProduct[0]);
-          localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-        }
-      } catch (e) {
-        this.ViewedProduct['products'].push(this.resultProduct[0]);
-        localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-      }
-      if (this.resultProduct[0].Quantity <= 0) {
-        this.soldfix = true;
-      }
-      this.LocalStoreName = this.resultProduct[0].StoreName;
-      this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-      if (this.resultProduct[0].Auction) {
-        this.DbDate = this.resultProduct[0].CreatedDate;
-        this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-        const auctiondays = +this.AuctionDayDB * 86400000;
-        const time0 = new Date(); //86400000
-        const time1 = new Date(this.DbDate);
-        const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-        // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-        let x = time3 / 1000;
-        this.seconds = Math.floor(x % 60);
-        x /= 60;
-        this.minutes = Math.floor(x % 60);
-        x /= 60;
-        this.hours = Math.floor(x % 24);
-        x /= 24;
-        this.days = Math.floor(x);
-      }
-    });
-  }
-  HomeAppliances(){
-    this.GetAdd.getHomeAppliancesProductById(this.ProID).subscribe(resSlidersData => {
-      this.resultProduct = resSlidersData;
-      this.Title = this.resultProduct[0]['P_Title']
-      this.ProPDes = this.resultProduct[0]['P_Des'].split('\n');
-      this.ProPics = this.resultProduct[0]['Pic'].split(',');
-      for(let i=0; i<this.ProPics.length-1; i++) {
-          this.PicList[i]=this.ProPics[i+1];
-      }
-      if (this.resultProduct['0']['StoreName'] === localStorage.getItem('StoreName')) {
-        this.ourproduct = true;
-
-      }
-      try {
-
-        if (localStorage.getItem('ViewedItem') !== null) {
-
-          this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-          for (const ABCC of this.ViewedProduct['products']) {
-
-            if (ABCC.ProductID === this.ProID) {  // Checking if the same product also present in cart.
-              this.ViewItemCheck = true;
-
-            }
-          }
-          if (this.ViewItemCheck === false) {
-            this.ViewedProduct = JSON.parse(localStorage.getItem('ViewedItem'));
-            this.ViewedProduct['products'].push(this.resultProduct[0]);
-            localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-
-          }
-        } else {
-
-          this.ViewedProduct['products'].push(this.resultProduct[0]);
-          localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-        }
-      } catch (e) {
-        this.ViewedProduct['products'].push(this.resultProduct[0]);
-        localStorage.setItem('ViewedItem', JSON.stringify(this.ViewedProduct));
-      }
-      if (this.resultProduct[0].Quantity <= 0) {
-        this.soldfix = true;
-      }
-      this.LocalStoreName = this.resultProduct[0].StoreName;
-      this.MinimumbestOffer = this.resultProduct[0].Addbestoffer;
-      if (this.resultProduct[0].Auction) {
-        this.DbDate = this.resultProduct[0].CreatedDate;
-        this.AuctionDayDB = this.resultProduct[0].AuctionListing;
-        const auctiondays = +this.AuctionDayDB * 86400000;
-        const time0 = new Date(); //86400000
-        const time1 = new Date(this.DbDate);
-        const time3 = ((time1.getTime() - time0.getTime()) + auctiondays);
-        // alert(time3.getDay() + '-' + time3.getMinutes() + '-' + time3.getSeconds());
-        let x = time3 / 1000;
-        this.seconds = Math.floor(x % 60);
-        x /= 60;
-        this.minutes = Math.floor(x % 60);
-        x /= 60;
-        this.hours = Math.floor(x % 24);
-        x /= 24;
-        this.days = Math.floor(x);
-      }
-    });
-  }
 
   WatchObserver() {
     if (isPlatformBrowser(this.platformId)) {
@@ -675,9 +348,9 @@ export class SingleProductComponent implements OnInit {
   WatchProduct() {
     if (isPlatformBrowser(this.platformId)) {
       this.GetAdd.WatchProduct(
-        this.resultProduct[0]['ProductID'],
+        this.resultProduct['ProductID'],
         localStorage.getItem('UserID'),
-        this.resultProduct[0]['Cat_Name'],
+        this.resultProduct['Cat_Name'],
       ).subscribe(data => {
           // console.log(data);
           // this.WatchStatus=false;
@@ -692,7 +365,7 @@ export class SingleProductComponent implements OnInit {
   UnwatchProduct() {
     if (isPlatformBrowser(this.platformId)) {
       this.GetAdd.UnwatchProduct(
-        this.resultProduct[0]['ProductID'],
+        this.resultProduct['ProductID'],
         localStorage.getItem('UserID'),
       ).subscribe(data => {
           // console.log(data);
@@ -714,15 +387,15 @@ export class SingleProductComponent implements OnInit {
 
   InsertBid(startingPrice: number, MaxPrice: number ) {
 
-    console.log('max', this.resultProduct[0]);
+    console.log('max', this.resultProduct);
     console.log('start', startingPrice);
-    // console.log('UserId is ',this.resultProduct[0]['User_ID']);
+    // console.log('UserId is ',this.resultProduct['User_ID']);
     if (localStorage.getItem('UserID')) {
       if (this.model.UserPriceBid > MaxPrice) {
         this.MinBidPrice = false;
         this.GetAdd.InsertUserBid(localStorage.getItem('UserID'), this.ProID, this.model.UserPriceBid).subscribe(data => {
           this.zerobid = false;
-          this.httpService.InsertPhoneMaxBid(this.resultProduct[0]['ProductID'], this.model.UserPriceBid).subscribe();
+          this.httpService.InsertPhoneMaxBid(this.resultProduct['ProductID'], this.model.UserPriceBid).subscribe();
           this.highestbid = true;
           this.RefreshBids();
         });
@@ -781,12 +454,12 @@ export class SingleProductComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       // alert('Message of error');
       // console.log(Abc);
-      // console.log('esssssssssss  ', this.resultProduct[0].Quantity);
+      // console.log('esssssssssss  ', this.resultProduct.Quantity);
       // console.log(this.resultProduct['Quantity']);
 
       if (Abc === '') {
         swal('Please Select Product Quantity first','','error');
-      } else if (Abc > this.resultProduct[0].Quantity) {
+      } else if (Abc > this.resultProduct.Quantity) {
         swal('You are exceding from Maximum Quantity of product available','','error');
       } else {
 
@@ -809,10 +482,10 @@ export class SingleProductComponent implements OnInit {
             }
             if (this.NewCart === false) {
 
-              // console.log('eeeeeeeee',this.resultProduct[0]);
-              this.resultProduct[0].itemsqty = +Abc;
+              // console.log('eeeeeeeee',this.resultProduct);
+              this.resultProduct.itemsqty = +Abc;
               this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
-              this.TmpresultProduct['products'].push(this.resultProduct[0]);
+              this.TmpresultProduct['products'].push(this.resultProduct);
               localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
 
               // console.log(this.products);
@@ -822,15 +495,15 @@ export class SingleProductComponent implements OnInit {
             }
           } else {
 
-            this.resultProduct[0].itemsqty = +Abc;
-            this.TmpresultProduct['products'].push(this.resultProduct[0]);
+            this.resultProduct.itemsqty = +Abc;
+            this.TmpresultProduct['products'].push(this.resultProduct);
             localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
             // console.log(this.products);
             this.router.navigate(['/checkout2']);
           }
         } catch (e) {
-          this.resultProduct[0].itemsqty = +Abc;
-          this.TmpresultProduct['products'].push(this.resultProduct[0]);
+          this.resultProduct.itemsqty = +Abc;
+          this.TmpresultProduct['products'].push(this.resultProduct);
           localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
           // console.log(this.products);
           this.router.navigate(['/checkout2']);
@@ -891,7 +564,7 @@ export class SingleProductComponent implements OnInit {
     // console.log('offer Quantity is', this.model.QuantityProduct);
     if ( this.model.OfferAmount && this.model.QuantityProduct ) {
 
-       this.GetAdd.ProductOffers(this.ProID, this.LocalStoreName,this.resultProduct[0]['P_Title'], this.CatName, this.model).subscribe((response) => {
+       this.GetAdd.ProductOffers(this.ProID, this.LocalStoreName,this.resultProduct['P_Title'], this.CatName, this.model).subscribe((response) => {
            /* this function is executed every time there's a new output */
            // console.log("VALUE RECEIVED: "+response);
          // alert('inserted');
@@ -945,8 +618,8 @@ export class SingleProductComponent implements OnInit {
   }
 
   SubmitReview() {
-    console.log('Store Name is', this.resultProduct[0]['StoreName']);
-    this.GetAdd.InsertProductReviews(localStorage.getItem('UserName'), localStorage.getItem('UserID'), this.model.YourReview, this.ProID, this.starp, this.resultProduct[0]['StoreName']).subscribe(resSlidersData => {
+    console.log('Store Name is', this.resultProduct['StoreName']);
+    this.GetAdd.InsertProductReviews(localStorage.getItem('UserName'), localStorage.getItem('UserID'), this.model.YourReview, this.ProID, this.starp, this.resultProduct['StoreName']).subscribe(resSlidersData => {
         swal('Your Review has been submitted','','success');
         this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
           this.GetallProductReview = resSlidersData;
@@ -957,8 +630,8 @@ export class SingleProductComponent implements OnInit {
         selectElement.reset();
       },
       (err) => {
-        this.searchQuery = err._body;
-        alert(this.searchQuery);
+        this.searchQuery = err;
+        // alert(this.searchQuery);
         console.log('Error is suberror:',this.searchQuery);
       },
       () => {

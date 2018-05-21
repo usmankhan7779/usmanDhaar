@@ -259,3 +259,37 @@ textarea.form-control {
   font-weight: 700;
   font-size: 22px;
 }
+
+
+
+
+.star-icon {
+  color: #ddd;
+  font-size: 2em;
+  position: relative;
+}
+.star-icon.full:before {
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+  color: #ee3b2b;
+  content: '\2605'; /* Full star in UTF-8 */
+  position: absolute;
+  left: 0;
+}
+.star-icon.half {
+  width: 20%;
+}
+.star-icon.half:before {
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+  color: #ee3b2b;
+  content: '\2605'; /* Full star in UTF-8 */
+  position: absolute;
+  left: 0;
+  width: inherit;
+  overflow: hidden;
+}
+@-moz-document url-prefix() { /* Firefox Hack :( */
+  .star-icon {
+    font-size: 50px;
+    line-height: 34px;
+  }
+}

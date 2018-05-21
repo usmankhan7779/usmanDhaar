@@ -30,7 +30,7 @@
 
     <ul class="categoryList row">
       <ng-container *ngFor="let item_cat of GetallCat">
-      <li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']" [queryParams]="{ CatName:  item_cat.Cat_Name, CatId: item_cat.id }"><img src="{{ ServrUrl + item_cat.Pic }}" alt="Cate Img" /> <span>{{ item_cat.Cat_Name }}</span></a></li>
+      <li class="col-md-2 col-sm-3 col-xs-6" style="display: inline"><a [routerLink]="['/post-ad']" [queryParams]="{ CatName:  item_cat.Cat_Name, CatId: item_cat.id }"><img src="{{ ServrUrl + item_cat.Pic }}" alt="Cate Img" /> <span>{{ item_cat.Cat_Name }}</span></a></li>
       </ng-container>
         <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']" [queryParams]="{ CatName: 'Mobiles', CatId: '1'}"><img src="assets/assets2/images/category/02.png" alt="Cate Img" /> <span>Mobiles <i>(598)</i></span></a></li>-->
         <!--<li class="col-md-2 col-sm-3 col-xs-6"><a [routerLink]="['/post-ad']"><img src="assets/assets2/images/category/03.png" alt="Cate Img" /> <span>Electronics <i>(598)</i></span></a></li>-->

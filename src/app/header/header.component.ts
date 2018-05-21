@@ -33,6 +33,8 @@ export class HeaderComponent implements OnInit {
   public elementRef;
   Searchres = false;
   ProNav = false;
+  GetallSubCat: any=[];
+  GetallSubSubCat: any=[];
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private PostAdd: AdService,
@@ -103,8 +105,41 @@ export class HeaderComponent implements OnInit {
 
 
     this.PostAdd.GetAllCategories().subscribe(resSlidersData => this.GetallCat = resSlidersData);
+    this.PostAdd.GetAllSubCategories().subscribe(resSlidersData => this.GetallSubCat = resSlidersData);
+    this.PostAdd.GetAllSubSubCategories().subscribe(resSlidersData => this.GetallSubSubCat = resSlidersData);
 
   }
+  }
+
+  Phone() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Phones & Tablets'}})
+  }
+  Women() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Women\'s Fashion'}})
+  }
+  Men() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Men\'s Fashion'}})
+  }
+  TV() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'TV, Audio & Video'}})
+  }
+  Computing() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Computing & Laptops'}})
+  }
+  Home() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Home Appliances'}})
+  }
+  Sports() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Sports Goods'}})
+  }
+  Baby() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Baby & Kids'}})
+  }
+  Vehicles() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Vehicles & GPS'}})
+  }
+  Health() {
+    this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Health & Beauty'}})
   }
 
   cartProduct() {

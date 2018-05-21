@@ -382,11 +382,11 @@ export class Checkout2Component implements OnInit {
       data => {
         // console.log( this.CartedProduct['products']);
         for (const {item,index} of this.CartedProduct['products'].map((item,index) => ({item,index}))) {
-          if(index === this.CartedProduct['products'].length-1) {
+          if (index === this.CartedProduct['products'].length - 1) {
             console.log('item is:  ', item, '  Index is:  ', index);
             this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
               data => {
-                this.httpbuyerService.SendEmail(localStorage.getItem('InvoiceID')).subscribe( data => {
+                this.httpbuyerService.SendEmail(localStorage.getItem('InvoiceID')).subscribe(data => {
                   console.log('Email Successssssssss');
                 });
               }, (err) => {
@@ -397,19 +397,20 @@ export class Checkout2Component implements OnInit {
                 //   console.log("ERROR: "+err);
               },
             );
+          } else {
+            console.log('item is:  ', item, '  Index is:  ', index);
+            this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
+              data => {
+
+              }, (err) => {
+
+                alert(err);
+                this.status = 2;
+                /* this function is executed when there's an ERROR */
+                //   console.log("ERROR: "+err);
+              },
+            );
           }
-          console.log('item is:  ', item,'  Index is:  ',index);
-          this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
-            data => {
-
-            }, (err) => {
-
-              alert(err);
-              this.status = 2;
-              /* this function is executed when there's an ERROR */
-              //   console.log("ERROR: "+err);
-            },
-          );
         }
         this.httpbuyerService.CustomerInvoiceShippingAddress(localStorage.getItem('InvoiceID'), this.GetUSerDOne['Fname'],  this.GetUSerDOne['Lname'], this.GetUSerDOne['user_id'], this.GetUSerDOne['State'], this.GetUSerDOne['State'], this.GetUSerDOne['City'], this.GetUSerDOne['Zip'], this.GetUSerDOne['Address'], this.GetUSerDOne['Mobile'], '01').subscribe(
           data => {

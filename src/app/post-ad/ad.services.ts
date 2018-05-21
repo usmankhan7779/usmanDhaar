@@ -18,6 +18,7 @@ export class AdService {
   public login: any;
   returnUrl: string;
   ServerUrl = 'https://apis.dhaar.pk/products/';
+  ServerUrlLocal = 'http://127.0.0.1:8000/products/';
   StoreUrl =  'https://apis.dhaar.pk/store/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -29,9 +30,14 @@ export class AdService {
   GetAllCategories() {
 
     return this._http.get(this.ServerUrl + 'Getallcat').map(response => response.json());
+  }
+  GetAllSubCategories() {
 
+    return this._http.get(this.ServerUrl + 'Getallsubcat').map(response => response.json());
+  }
+  GetAllSubSubCategories() {
 
-
+    return this._http.get(this.ServerUrl + 'Getallsubsubcat').map(response => response.json());
   }
 
 

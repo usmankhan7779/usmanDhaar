@@ -52,6 +52,7 @@ const appRoutes: Routes = [
       { path: 'terms-use', loadChildren: './terms-use/terms-use.module#TermsUseModule'},
       { path: 'dhaar', loadChildren: './dhaar/dhaar.module#DhaarModule'},
       { path: 'file-uploads', loadChildren: './file-uploads/file-uploads.module#FileUploadsModule'},
+      { path: 'sameurl', loadChildren: './sameurl/sameurl.module#SameurlModule'},
       { path: 'seller-product-setting', loadChildren: './seller-product-setting/seller-product-setting.module#SellerProductSettingModule'},
     ]
   },

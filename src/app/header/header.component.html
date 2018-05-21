@@ -227,7 +227,7 @@
     <!-- Start Menu Area -->
     <div *ngIf="ProNav" class="display-on-small-screen">
     <div class="menu-area" style="background: #ffffff">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
             <div class="main-menu">
@@ -238,7 +238,7 @@
                 <!--<li  class="active custom-menu"><a [routerLink]="['/home']">Home</a>-->
 
                 <!--</li>-->
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Phones & Tablets' }"><i class="fa fa-tablet header-icons-rightsettingnew"></i>Phones & Tablets</a>
+                <li class="megamenu"><a (click)="Phone()"><i class="fa fa-tablet header-icons-rightsettingnew"></i>Phones & Tablets</a>
                   <!--class="fa fa-mobile-phone header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -284,7 +284,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Women\'s Fashion' }" ><i class="fa fa-shopping-bag header-icons-rightsettingnew"></i>Women's Fashion</a>
+                <li class="megamenu"><a (click)="Women()" ><i class="fa fa-shopping-bag header-icons-rightsettingnew"></i>Women's Fashion</a>
                   <!--class="fa fa-female header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -424,7 +424,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Computing & Laptops' }"><i class="fa fa-laptop header-icons-rightsettingnew"></i>Computing & Laptops</a>
+                <li class="megamenu"><a (click)="Computing()"><i class="fa fa-laptop header-icons-rightsettingnew"></i>Computing & Laptops</a>
                   <!--class="fa fa-laptop header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -460,7 +460,164 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Home Appliances' }"><i class="fa fa-home header-icons-rightsettingnew"></i>Home Appliances</a>
+                <li class="megamenu"><a (click)="Home()"><i class="fa fa-home header-icons-rightsettingnew"></i>Home Appliances</a>
+                  <!--class="fa fa-home header-icons-setting"-->
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooking']"><i class="	fa fa-angle-double-right">Cooking</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Floorcare']"><i class="	fa fa-angle-double-right">Floorcare</i></a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']"><i class="	fa fa-angle-double-right">Mixing & Blending</i></a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Small Appliances']"><i class="	fa fa-angle-double-right">Other Small Appliances</i></a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Washers & Dryers']"><i class="	fa fa-angle-double-right">Washers & Dryers</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Refrigerators & Freezers']"><i class="	fa fa-angle-double-right">Refrigerators & Freezers</i></a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooling & Heating']"><i class="	fa fa-angle-double-right">Cooling & Heating</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Large Appliances']"><i class="	fa fa-angle-double-right">Other Large Appliances</i></a></li>
+                        </ul>
+                        <div class="mega-menu-img-box"><a href="#"><img src="assets/images/banner31-1000x300.jpg" alt="Bannar 1"></a> </div>
+                        <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/homeApplianceNav.png" alt="Bannar 3"></a> </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Sports Goods' }"><i class="fa fa-soccer-ball-o header-icons-rightsettingnew"></i>Sports Goods</a>
+                  <!--class="fa fa-home header-icons-setting"-->
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Sports Goods','Team Sports']">Team Sports</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Cricket']"><i class="	fa fa-angle-double-right">Cricket</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Football']"><i class="	fa fa-angle-double-right">Football</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Hockey']"><i class="	fa fa-angle-double-right">Hockey</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Basketball']"><i class="	fa fa-angle-double-right">Basketball</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Volleyball']"><i class="	fa fa-angle-double-right">Volleyball</i></a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Sports Goods','Fitness & Excercise']">Fitness & Excercise</a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Gym Accessories']"><i class="	fa fa-angle-double-right">Gym Accessories</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Supplements & Proteins']"><i class="	fa fa-angle-double-right">Supplements & Proteins</i></a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Racket Sports']">Racket Sports</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Table Tennis']"><i class="	fa fa-angle-double-right">Table Tennis</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Tennis']"><i class="	fa fa-angle-double-right">Tennis</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Badminton']"><i class="	fa fa-angle-double-right">Badminton</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Squash']"><i class="	fa fa-angle-double-right">Squash</i></a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Sports Goods','Sports Accessories']">Sports Accessories</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Swimming Accessories']"><i class="	fa fa-angle-double-right">Swimming Accessories</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Men Sports']"><i class="	fa fa-angle-double-right">Men Sports</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Sports Goods','Women Sports']"><i class="	fa fa-angle-double-right">Women Sports</i></a></li>
+                        </ul>
+                        <div class="mega-menu-img-box" style="width:40%!important;float: right!important;"><a href="#"><img src="../../assets/images/Sporting-Goods-image.jpg" alt="Bannar 1"></a> </div>
+                        <div class="mega-menu-img-box1"><a href="#"><img src="../../assets/images/Sports.png" alt="Bannar 3" height="230"></a> </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a (click)="Baby()"><i class="fa fa-child header-icons-rightsettingnew"></i>Baby & Kids</a>
+                  <!--class="fa fa-home header-icons-setting"-->
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooking']"><i class="	fa fa-angle-double-right">Cooking</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Floorcare']"><i class="	fa fa-angle-double-right">Floorcare</i></a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']"><i class="	fa fa-angle-double-right">Mixing & Blending</i></a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Small Appliances']"><i class="	fa fa-angle-double-right">Other Small Appliances</i></a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Washers & Dryers']"><i class="	fa fa-angle-double-right">Washers & Dryers</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Refrigerators & Freezers']"><i class="	fa fa-angle-double-right">Refrigerators & Freezers</i></a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooling & Heating']"><i class="	fa fa-angle-double-right">Cooling & Heating</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Large Appliances']"><i class="	fa fa-angle-double-right">Other Large Appliances</i></a></li>
+                        </ul>
+                        <div class="mega-menu-img-box"><a href="#"><img src="assets/images/banner31-1000x300.jpg" alt="Bannar 1"></a> </div>
+                        <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/homeApplianceNav.png" alt="Bannar 3"></a> </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a (click)="Health()"><i class="fa fa-heart-o header-icons-rightsettingnew"></i>Health & Beauty</a>
+                  <!--class="fa fa-home header-icons-setting"-->
+                  <div class="mega-menu">
+                    <div class="menu-block menu-block-center">
+                      <div class="menu-block">
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooking']"><i class="	fa fa-angle-double-right">Cooking</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Floorcare']"><i class="	fa fa-angle-double-right">Floorcare</i></a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']"><i class="	fa fa-angle-double-right">Mixing & Blending</i></a></li>
+
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Small Appliances']"><i class="	fa fa-angle-double-right">Other Small Appliances</i></a></li>
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Washers & Dryers']"><i class="	fa fa-angle-double-right">Washers & Dryers</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Refrigerators & Freezers']"><i class="	fa fa-angle-double-right">Refrigerators & Freezers</i></a></li>
+
+
+                        </ul>
+                        <ul>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooling & Heating']"><i class="	fa fa-angle-double-right">Cooling & Heating</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Large Appliances']"><i class="	fa fa-angle-double-right">Other Large Appliances</i></a></li>
+                        </ul>
+                        <div class="mega-menu-img-box"><a href="#"><img src="assets/images/banner31-1000x300.jpg" alt="Bannar 1"></a> </div>
+                        <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/homeApplianceNav.png" alt="Bannar 3"></a> </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="megamenu"><a (click)="Vehicles()"><i class="fa fa-car header-icons-rightsettingnew"></i>Vehicles & GPS</a>
                   <!--class="fa fa-home header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">

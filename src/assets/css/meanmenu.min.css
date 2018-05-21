@@ -37,7 +37,7 @@ a.meanmenu-reveal{display:none}
 .main-menu ul li ul.dropdown li a{display:block;font-size:13px;font-weight:normal;padding:0 0 13px;position:relative;text-transform:uppercase;color:#000;}
 .main-menu ul li:hover ul.dropdown{opacity:1;top:100%;visibility:visible;}
 .main-menu ul li ul.dropdown li:hover a{color:#ed2424;font-weight:400px;background:none;}
-.main-menu ul li .mega-menu{background-color:#fff;border:1px #ddd solid;border-top:2px solid #ed2424;left:15px;margin:0;opacity:0;padding:25px 15px 5px;position:absolute;text-align:left;top:130%;transition:all 0.3s ease 0s;width:1170px;visibility:hidden;z-index:9999999;text-align:left;}
+.main-menu ul li .mega-menu{background-color:#fff;border:1px #ddd solid;border-top:2px solid #ed2424;left:15px;margin:0;opacity:0;padding:25px 15px 5px;position:absolute;text-align:left;top:130%;transition:all 0.3s ease 0s;width:100%;visibility:hidden;z-index:9999999;text-align:left;}
 .main-menu ul li:hover .mega-menu{top:100%;opacity:1;visibility:visible;display:inline-block;}
 .main-menu ul li .mega-menu ul{float:left;width:25%;padding-right:15px;padding-left:15px;text-align:left;margin-bottom:15px;}
 .main-menu ul li .mega-menu ul ul.sub-menu{float:left;width:100%;padding-right:0px;padding-left:0px;text-align:left;margin-bottom:0px;}

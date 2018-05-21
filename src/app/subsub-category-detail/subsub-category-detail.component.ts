@@ -27,6 +27,14 @@ export class SubsubCategoryDetailComponent implements OnInit {
   Total: number;
   Cart = false;
   errormessage = false;
+  Waitcall = false;
+  View = false;
+
+  BuyItNow = false;
+  AllListing = true;
+  Auction = false;
+  thisAuction = false;
+  AcceptOffer = false;
 
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private _nav: Router,
@@ -39,7 +47,7 @@ export class SubsubCategoryDetailComponent implements OnInit {
     this.pageno = event;
 
 
-    this.httpService.getAllPhoneAndTabletProduct(this.pageno).subscribe(
+    this.httpService.getAllSubSubPhoneAndTabletProduct(this.pageno,this.Subcat).subscribe(
       data => {
         this.Trend = data;
       });
@@ -65,11 +73,18 @@ export class SubsubCategoryDetailComponent implements OnInit {
           this.CoverPix = 'HA';
         } else if (this.CatName === 'Online Services') {
           this.CoverPix = 'OS';
+        } else if (this.CatName === 'Sports Goods') {
+          this.CoverPix = 'SG';
+        } else if (this.CatName === 'Baby & Kids') {
+          this.CoverPix = 'BK';
+        } else if (this.CatName === 'Health & Beauty') {
+          this.CoverPix = 'HB';
+        } else if (this.CatName === 'Vehicles & GPS') {
+          this.CoverPix = 'VG';
         }
 
 
         // alert(this.CatName);
-        if (this.CatName === 'Phones & Tablets') {
           //  console.log('Phones & Tablets')
           this.httpService.getAllSubSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
             data => {
@@ -78,53 +93,6 @@ export class SubsubCategoryDetailComponent implements OnInit {
                 this.errormessage = true;
               }
             });
-        } else if (this.CatName === 'Women\'s Fashion') {
-          // console.log('Women\'s Fashion')
-          this.httpService.getAllSubSubWomenFashionProduct(1, this.Subcat).subscribe(
-            data => {
-              this.Trend = data;
-              if (this.Trend['results'].length === 0) {
-                this.errormessage = true;
-              }
-            });
-        } else if (this.CatName === 'Men\'s Fashion') {
-          this.httpService.getAllSubSubMenFashionProduct(1, this.Subcat).subscribe(
-            data => {
-              this.Trend = data;
-              if (this.Trend['results'].length === 0) {
-                this.errormessage = true;
-              }
-            });
-        } else if (this.CatName === 'TV, Audio & Video') {
-          // console.log('TV, Audio & Video')
-          this.httpService.getAllSubSubTVAudioVideoProduct(1, this.Subcat).subscribe(
-            data => {
-              this.Trend = data;
-              if (this.Trend['results'].length === 0) {
-                this.errormessage = true;
-              }
-            });
-        } else if (this.CatName === 'Computing & Laptops') {
-          this.httpService.getAllSubSubComputingLaptopsProduct(1, this.Subcat).subscribe(
-            data => {
-              this.Trend = data;
-              if (this.Trend['results'].length === 0) {
-                this.errormessage = true;
-              }
-            });
-        } else if (this.CatName === 'Home Appliances') {
-          this.httpService.getAllSubSubHomeAppliancesProduct(1, this.Subcat).subscribe(
-            data => {
-              this.Trend = data;
-              if (this.Trend['results'].length === 0) {
-                this.errormessage = true;
-              }
-            });
-        } else {
-
-          this._nav.navigate(['/404']);
-        }
-
       });
       if (this.CatName === '0') {
         this._nav.navigate(['/404']);
@@ -155,87 +123,94 @@ export class SubsubCategoryDetailComponent implements OnInit {
     this.errormessage = !this.errormessage;
   }
 
+  listView() {
+    this.View = true;
+  }
+
+  GridView() {
+    this.View = false;
+  }
+
+  AllListingFuc() {
+    this.AllListing = true;
+    this.BuyItNow = false;
+    this.thisAuction = false;
+    this.AcceptOffer = false;
+    this.Waitcall = true;
+
+    // alert(this.CatName);
+      //  console.log('Phones & Tablets')
+      this.httpService.getAllSubSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
+        data => {
+          this.Trend = data;
+          if (this.Trend['results'].length === 0) {
+            this.errormessage = false;
+          }
+        });
+
+    this.Waitcall = false;
+
+  }
+
+  BuyItNowFuc(type) {
+    this.AllListing = false;
+    this.thisAuction = false;
+    this.AcceptOffer = false;
+    this.BuyItNow = true;
+    this.Waitcall = true;
+
+    // alert(this.CatName);
+      //  console.log('Phones & Tablets')
+      this.httpService.getAllSubSubPhoneAndTabletProductType(1, this.Subcat,type).subscribe(
+        data => {
+          this.Trend = data;
+          if (this.Trend['results'].length === 0) {
+            this.errormessage = true;
+          }
+        });
+
+
+    this.Waitcall = false;
+
+  }
+
+  thisAuctionFuc(type) {
+    this.AllListing = false;
+    this.BuyItNow = false;
+    this.AcceptOffer = false;
+    this.thisAuction = true;
+    this.Waitcall = true;
+
+    // alert(this.CatName);
+      //  console.log('Phones & Tablets')
+      this.httpService.getAllSubSubPhoneAndTabletProductType(1, this.Subcat,type).subscribe(
+        data => {
+          this.Trend = data;
+          if (this.Trend['results'].length === 0) {
+            this.errormessage = true;
+          }
+        });
+
+    this.Waitcall = false;
+
+  }
+
   BothAbove() {
 
-
-    if (this.CatName === 'Phones & Tablets') {
       //  console.log('Phones & Tablets')
       this.httpService.getAllSubSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
         data => {
           this.Trend = data;
         });
-    } else if (this.CatName === 'Women\'s Fashion') {
-      // console.log('Women\'s Fashion')
-      this.httpService.getAllSubSubWomenFashionProduct(1, this.Subcat).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Men\'s Fashion') {
-      this.httpService.getAllSubSubMenFashionProduct(1, this.Subcat).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'TV, Audio & Video') {
-      // console.log('TV, Audio & Video')
-      this.httpService.getAllSubSubTVAudioVideoProduct(1, this.Subcat).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Computing & Laptops') {
-      this.httpService.getAllSubSubComputingLaptopsProduct(1, this.Subcat).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Home Appliances') {
-      this.httpService.getAllSubSubHomeAppliancesProduct(1, this.Subcat).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    }  else {
-
-      this._nav.navigate(['/404']);
-    }
 
   }
   ProductType(abc: boolean) {
 
-    if (this.CatName === 'Phones & Tablets') {
       //  console.log('Phones & Tablets')
       this.httpService.getAllSubSubPhoneAndTabletProductType(1, this.Subcat, abc).subscribe(
         data => {
           this.Trend = data;
         });
-    } else if (this.CatName === 'Women\'s Fashion') {
-      // console.log('Women\'s Fashion')
-      this.httpService.getAllSubSubWomenFashionProductType(1, this.Subcat, abc).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Men\'s Fashion') {
-      this.httpService.getAllSubSubMenFashionProductType(1, this.Subcat, abc).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'TV, Audio & Video') {
-      // console.log('TV, Audio & Video')
-      this.httpService.getAllSubSubTVAudioVideoProductType(1, this.Subcat, abc).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Computing & Laptops') {
-      this.httpService.getAllSubSubComputingLaptopsProductType(1, this.Subcat, abc).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Home Appliances') {
-      this.httpService.getAllSubSubHomeAppliancesProductType(1, this.Subcat, abc).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else {
-
-      this._nav.navigate(['/404']);
-    }
 
   }
 
@@ -264,42 +239,10 @@ export class SubsubCategoryDetailComponent implements OnInit {
   }
   ProductPrice(pk1: any, pk2: any) {
 
-    if (this.CatName === 'Phones & Tablets') {
       //  console.log('Phones & Tablets')
       this.httpService.getAllSubSubPhoneAndTabletProductPrice(1, this.Subcat, pk1, pk2).subscribe(
         data => {
           this.Trend = data;
         });
-    } else if (this.CatName === 'Women\'s Fashion') {
-      // console.log('Women\'s Fashion')
-      this.httpService.getAllSubSubWomenFashionProductPrice(1, this.Subcat,  pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Men\'s Fashion') {
-      this.httpService.getAllSubSubMenFashionProductPrice(1, this.Subcat, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'TV, Audio & Video') {
-      // console.log('TV, Audio & Video')
-      this.httpService.getAllSubSubTVAudioVideoProductPrice(1, this.Subcat, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Computing & Laptops') {
-      this.httpService.getAllSubSubComputingLaptopsProductPrice(1, this.Subcat, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    } else if (this.CatName === 'Home Appliances') {
-      this.httpService.getAllSubSubHomeAppliancesProductPrice(1, this.Subcat, pk1, pk2).subscribe(
-        data => {
-          this.Trend = data;
-        });
-    }  else {
-
-      this._nav.navigate(['/404']);
-    }
   }
 }

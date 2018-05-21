@@ -182,7 +182,7 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .howlist li h4{font-size:24px;font-weight:700;color:#ed2424;margin-bottom:10px;}
 .howlist li p{font-size:16px;line-height:24px;color:#999;}
 .catewrap{background:#fff;}
-.categoryList{margin:0 -15px;}
+.categoryList{margin:0 -15px;display: flex}
 .categoryList li{text-align:center;}
 .categoryList li a{display:block;margin-bottom:30px;font-size:18px;font-family:Hind,sans-serif;font-weight:600;color:#000;text-decoration:none;}
 .categoryList li img{margin-bottom:10px;}

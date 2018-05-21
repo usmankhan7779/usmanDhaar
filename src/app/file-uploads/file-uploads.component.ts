@@ -91,7 +91,7 @@ export class FileUploadsComponent implements OnInit {
 
   uploadItemsToActivity() {
     console.log('I am in 1 Component');
-    this.itemUploadService.PostImage(this.filetoup, 'hello', 'hh').subscribe(
+    this.itemUploadService.PostImageCheck(this.filetoup, 'hello', 'hh').subscribe(
       data => {
         console.log('Successs')
       },
