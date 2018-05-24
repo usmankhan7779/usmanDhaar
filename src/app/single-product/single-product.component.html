@@ -233,9 +233,9 @@
                           {{AverageRating}}</h1>
                         <div class="rating">
                           <ng-container *ngFor="let number of [0,1,2,3,4]" >
-                          <span *ngIf="number < AverageRating && (number+1) < AverageRating" class="star-icon full">☆</span>
+                          <span *ngIf="number < AverageRating && (number+1) <= AverageRating" class="star-icon full">☆</span>
                           <span *ngIf="number < AverageRating && (number+1) > AverageRating" class="star-icon half" [style.width.%]="StarPercent">☆</span>
-                          <span *ngIf="number > AverageRating && (number+1) > AverageRating" class="star-icon">☆</span>
+                          <span *ngIf="number >= AverageRating && (number+1) > AverageRating" class="star-icon">☆</span>
                           </ng-container>
                         </div>
                         <div>

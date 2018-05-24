@@ -208,13 +208,13 @@ export class SingleProductComponent implements OnInit {
           this.Calculation = data;
           console.log('Calculation issss:', this.Calculation);
           this.TotalRating = this.Calculation.Sum;
-          this.AverageRating = 3.7;
+          this.AverageRating = (this.Calculation.Average).toFixed(1);
+          // this.AverageRating = 3.7.toFixed(1);
+          console.log('AverageRating number is:', this.AverageRating);
           this.AverageRating1 = (this.AverageRating *10)%10;
           console.log('Mode number is:', this.AverageRating1);
           this.StarPercent = (this.AverageRating1/10) * 100;
           console.log('StarPercent is:', this.StarPercent);
-          // this.AverageRating=(this.Calculation.Average).toFixed(1);
-          // this.AverageRating1=(this.Calculation.Average).toFixed();
           this.count0=this.Calculation.Percentage0;
           this.count1=this.Calculation.Percentage1;
           this.count2=this.Calculation.Percentage2;

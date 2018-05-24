@@ -498,7 +498,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Sports Goods' }"><i class="fa fa-soccer-ball-o header-icons-rightsettingnew"></i>Sports Goods</a>
+                <li class="megamenu"><a (click)="Sports()"><i class="fa fa-soccer-ball-o header-icons-rightsettingnew"></i>Sports Goods</a>
                   <!--class="fa fa-home header-icons-setting"-->
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
@@ -546,31 +546,40 @@
                   <div class="mega-menu">
                     <div class="menu-block menu-block-center">
                       <div class="menu-block">
-                        <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooking']"><i class="	fa fa-angle-double-right">Cooking</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Floorcare']"><i class="	fa fa-angle-double-right">Floorcare</i></a></li>
+                        <ul style="width:20%">
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Baby & Kids','Baby Boy']">Baby Boy</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Boy Fashion']"><i class="	fa fa-angle-double-right">Boy Fashion</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Boy Accessories']"><i class="	fa fa-angle-double-right">Boy Accessories</i></a></li>
 
 
                         </ul>
-                        <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+                        <ul style="width:20%">
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Baby & Kids','Baby Girl']">Baby Girl</a></li>
 
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']"><i class="	fa fa-angle-double-right">Mixing & Blending</i></a></li>
-
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Small Appliances']"><i class="	fa fa-angle-double-right">Other Small Appliances</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Girl Fashion']"><i class="	fa fa-angle-double-right">Girl Fashion</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Girl Accessories']"><i class="	fa fa-angle-double-right">Girl Accessories</i></a></li>
                         </ul>
-                        <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Washers & Dryers']"><i class="	fa fa-angle-double-right">Washers & Dryers</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Refrigerators & Freezers']"><i class="	fa fa-angle-double-right">Refrigerators & Freezers</i></a></li>
+                        <ul style="width:20%">
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Baby & Kids','Toys']">Toys</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Electronic Toys']"><i class="	fa fa-angle-double-right">Electronic Toys</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Kids Books']"><i class="	fa fa-angle-double-right">Kids Books</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Sports Toys']"><i class="	fa fa-angle-double-right">Sports Toys</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Arts & Crafts Toys']"><i class="	fa fa-angle-double-right">Arts & Crafts Toys</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Other Toys']"><i class="	fa fa-angle-double-right">Other Toys</i></a></li>
 
 
                         </ul>
-                        <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooling & Heating']"><i class="	fa fa-angle-double-right">Cooling & Heating</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Large Appliances']"><i class="	fa fa-angle-double-right">Other Large Appliances</i></a></li>
+                        <ul style="width:20%">
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Baby Food']">Baby Food</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Baby Milk']"><i class="	fa fa-angle-double-right">Baby Milk</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Baby Cereals']"><i class="	fa fa-angle-double-right">Baby Cereals</i></a></li>
+                        </ul>
+                        <ul style="width:20%">
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Baby Accessories']">Baby Accessories</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Pacifiers & Accessories']"><i class="	fa fa-angle-double-right">Pacifiers & Accessories</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Strollers']"><i class="	fa fa-angle-double-right">Strollers</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Diapers & Wipes']"><i class="	fa fa-angle-double-right">Diapers & Wipes</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Baby & Kids','Other Accessories']"><i class="	fa fa-angle-double-right">Other Accessories</i></a></li>
                         </ul>
                         <div class="mega-menu-img-box"><a href="#"><img src="assets/images/banner31-1000x300.jpg" alt="Bannar 1"></a> </div>
                         <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/homeApplianceNav.png" alt="Bannar 3"></a> </div>
@@ -585,33 +594,33 @@
                     <div class="menu-block menu-block-center">
                       <div class="menu-block">
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooking']"><i class="	fa fa-angle-double-right">Cooking</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Floorcare']"><i class="	fa fa-angle-double-right">Floorcare</i></a></li>
-
-
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Health & Beauty','Cosmetics']">Cosmetics</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Skin Care']"><i class="	fa fa-angle-double-right">Skin Care</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Lips']"><i class="	fa fa-angle-double-right">Lips</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Eye Care']"><i class="	fa fa-angle-double-right">Eye Care</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Face Masks & Scrubs']"><i class="	fa fa-angle-double-right">Face Masks & Scrubs</i></a></li>
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Health & Beauty','Hair Care']">Hair Care</a></li>
 
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']"><i class="	fa fa-angle-double-right">Mixing & Blending</i></a></li>
-
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Small Appliances']"><i class="	fa fa-angle-double-right">Other Small Appliances</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Shampoo & Conditioners']"><i class="	fa fa-angle-double-right">Shampoo & Conditioners</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Hair Gel & Spray']"><i class="	fa fa-angle-double-right">Hair Gel & Spray</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Hair Styling & Color']"><i class="	fa fa-angle-double-right">Hair Styling & Color</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Shaving & Grooming']"><i class="	fa fa-angle-double-right">Shaving & Grooming</i></a></li>
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Washers & Dryers']"><i class="	fa fa-angle-double-right">Washers & Dryers</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Refrigerators & Freezers']"><i class="	fa fa-angle-double-right">Refrigerators & Freezers</i></a></li>
-
-
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Health & Beauty','Fragrances']">Fragrances</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Men Fragrance']"><i class="	fa fa-angle-double-right">Men Fragrance</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Women Fragrance']"><i class="	fa fa-angle-double-right">Women Fragrance</i></a></li>
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooling & Heating']"><i class="	fa fa-angle-double-right">Cooling & Heating</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Large Appliances']"><i class="	fa fa-angle-double-right">Other Large Appliances</i></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Health & Beauty','Health Care']">Health Care</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Medical Equipments']"><i class="	fa fa-angle-double-right">Medical Equipments</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Vitamins']"><i class="	fa fa-angle-double-right">Vitamins</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Health & Beauty','Medicines']"><i class="	fa fa-angle-double-right">Medicines</i></a></li>
                         </ul>
-                        <div class="mega-menu-img-box"><a href="#"><img src="assets/images/banner31-1000x300.jpg" alt="Bannar 1"></a> </div>
-                        <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/homeApplianceNav.png" alt="Bannar 3"></a> </div>
+                        <!--<div class="mega-menu-img-box"><a href="#"><img src="assets/images/banner31-1000x300.jpg" alt="Bannar 1"></a> </div>-->
+                        <!--<div class="mega-menu-img-box1"><a href="#"><img src="assets/images/homeApplianceNav.png" alt="Bannar 3"></a> </div>-->
 
                       </div>
                     </div>
@@ -623,30 +632,28 @@
                     <div class="menu-block menu-block-center">
                       <div class="menu-block">
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooking']"><i class="	fa fa-angle-double-right">Cooking</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Floorcare']"><i class="	fa fa-angle-double-right">Floorcare</i></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Vehicles & GPS','Vehicles']">Vehicles</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','Cars']"><i class="	fa fa-angle-double-right">Cars</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','Motorcycles']"><i class="	fa fa-angle-double-right">Motorcycles</i></a></li>
 
 
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Small Appliances']">Small Appliances</a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Vehicles & GPS','Tools & Equipments']">Tools & Equipments</a></li>
 
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Mixing & Blending']"><i class="	fa fa-angle-double-right">Mixing & Blending</i></a></li>
-
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Small Appliances']"><i class="	fa fa-angle-double-right">Other Small Appliances</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','Batteries']"><i class="	fa fa-angle-double-right">Batteries</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','Hardware Tools']"><i class="	fa fa-angle-double-right">Hardware Tools</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','Blowers']"><i class="	fa fa-angle-double-right">Blowers</i></a></li>
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Washers & Dryers']"><i class="	fa fa-angle-double-right">Washers & Dryers</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Refrigerators & Freezers']"><i class="	fa fa-angle-double-right">Refrigerators & Freezers</i></a></li>
-
-
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Vehicles & GPS','GPS']">GPS</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','Car GPS']"><i class="	fa fa-angle-double-right">Car GPS</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','GPS Mounts']"><i class="	fa fa-angle-double-right">GPS Mounts</i></a></li>
                         </ul>
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Home Appliances','Large Appliances']">Large Appliances</a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Cooling & Heating']"><i class="	fa fa-angle-double-right">Cooling & Heating</i></a></li>
-                          <li><a [routerLink]="['/subsub-category-detail','Home Appliances','Other Large Appliances']"><i class="	fa fa-angle-double-right">Other Large Appliances</i></a></li>
+                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Vehicles & GPS','Vehicles Accessories']">	Vehicles Accessories</a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','Car Covers & Stickers']"><i class="	fa fa-angle-double-right">Car Covers & Stickers</i></a></li>
+                          <li><a [routerLink]="['/subsub-category-detail','Vehicles & GPS','Seat Covers']"><i class="	fa fa-angle-double-right">Seat Covers</i></a></li>
                         </ul>
                         <div class="mega-menu-img-box"><a href="#"><img src="assets/images/banner31-1000x300.jpg" alt="Bannar 1"></a> </div>
                         <div class="mega-menu-img-box1"><a href="#"><img src="assets/images/homeApplianceNav.png" alt="Bannar 3"></a> </div>

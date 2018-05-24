@@ -85,37 +85,37 @@ export class  CategoryServices {
   //PhoneSUb
 
   getAllSubPhoneAndTabletProduct(page: any, subcat: string) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubPhoneAndTabletProduct/' + subcat + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProduct/' + subcat + '?page=' + page, ).map(response => response.json());
   }
   getAllSubPhoneAndTabletProductoffer(page: any, subcat: string) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubPhoneAndTabletProductoffer/' + subcat + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductoffer/' + subcat + '?page=' + page, ).map(response => response.json());
   }
 
   getAllSubPhoneAndTabletProductauction(page: any, subcat: string) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubPhoneAndTabletProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductauction/' + subcat + '?page=' + page, ).map(response => response.json());
   }
 
   getAllSubPhoneAndTabletProductbuy(page: any, subcat: string) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubPhoneAndTabletProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductbuy/' + subcat + '?page=' + page, ).map(response => response.json());
   }
 
 
   getAllSubPhoneAndTabletProductType(page: any, subcat: string, Auction: boolean) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubPhoneAndTabletProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
   }
   getAllSubPhoneAndTabletProductWithPrice(page: any, subcat: string, pk1: string, pk2: string) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubPhoneAndTabletProductPrice/' + subcat + '/' + pk1 + '/' + pk2 + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubPhoneAndTabletProductPrice/' + subcat + '/' + pk1 + '/' + pk2 + '?page=' + page, ).map(response => response.json());
   }
 
   //Phone Sub sub
   getAllSubSubPhoneAndTabletProduct(page: any, subcat: string) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubSubPhoneAndTabletProduct/' + subcat + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubSubPhoneAndTabletProduct/' + subcat + '?page=' + page, ).map(response => response.json());
   }
   getAllSubSubPhoneAndTabletProductType(page: any, subcat: string, Auction: boolean) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubSubPhoneAndTabletProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubSubPhoneAndTabletProductType/' + subcat + '/' + Auction + '?page=' + page, ).map(response => response.json());
   }
   getAllSubSubPhoneAndTabletProductPrice(page: any, subcat: string, pk1: string, pk2: string) {
-    return this._http.get( this.ServerUrlLocal + 'getAllSubSubPhoneAndTabletProductPrice/' + subcat + '/' + pk1 + '/' + pk2 + '?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'getAllSubSubPhoneAndTabletProductPrice/' + subcat + '/' + pk1 + '/' + pk2 + '?page=' + page, ).map(response => response.json());
   }
 
 

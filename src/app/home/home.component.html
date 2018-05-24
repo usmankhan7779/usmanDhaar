@@ -1001,7 +1001,7 @@
           </div>
         </ng-container>
 
-
+        <ng-container *ngIf="RecommendedProducts.length==0">
         <div class="container">
           <div class="row">
             <div id="ribbon">
@@ -1079,6 +1079,7 @@
             </div>
           </div>
         </div>
+        </ng-container>
 <ng-container *ngIf="ViewedProducts!== null">
         <div class="container">
           <div class="row">

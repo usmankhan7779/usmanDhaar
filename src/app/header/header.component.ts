@@ -105,8 +105,8 @@ export class HeaderComponent implements OnInit {
 
 
     this.PostAdd.GetAllCategories().subscribe(resSlidersData => this.GetallCat = resSlidersData);
-    this.PostAdd.GetAllSubCategories().subscribe(resSlidersData => this.GetallSubCat = resSlidersData);
-    this.PostAdd.GetAllSubSubCategories().subscribe(resSlidersData => this.GetallSubSubCat = resSlidersData);
+    // this.PostAdd.GetAllSubCategories().subscribe(resSlidersData => this.GetallSubCat = resSlidersData);
+    // this.PostAdd.GetAllSubSubCategories().subscribe(resSlidersData => this.GetallSubSubCat = resSlidersData);
 
   }
   }
