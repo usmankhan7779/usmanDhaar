@@ -50,6 +50,7 @@ import {ImageZoomModule} from 'angular2-image-zoom';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { LayoutComponent } from './layout/layout.component';
 import { OwlModule} from "ngx-owl-carousel";
+import { UploadItemService } from './file-uploads/upload-item-service';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { OwlModule} from "ngx-owl-carousel";
     BuyerDashboardServices,
     DatePipe,
     PreloaderService,
+    UploadItemService,
     PostService,
     {
       provide: AuthServiceConfig,

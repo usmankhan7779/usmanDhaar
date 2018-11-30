@@ -5,7 +5,8 @@ import {Http , Headers , Response} from '@angular/http';
 import swal from 'sweetalert2';
 import {HttpService} from '../services/http-service';
 import {Observable} from 'rxjs/Rx';
-import { UploadItemService } from '../file-uploads/upload-item-service';
+// import { UploadItemService } from '../file-uploads/upload-item-service';
+import {UploadItemService} from '../file-uploads/upload-item-service';
 
 @Component({
   selector: 'app-store-registration',
@@ -69,38 +70,38 @@ export class StoreRegistrationComponent implements OnInit {
   }
 
 
-  // onChange(event: EventTarget) {
+  onChange(event: EventTarget) {
 
 
 
-  //   const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-  //   const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-  //   this.files = target.files;
-  //   if (this.files.length >= 1 && this.files.length < 5) {
-  //     this.file = this.files[0];
-  //     const reader = new FileReader();
-  //     reader.onload = this._handleReaderLoaded.bind(this);
-  //     reader.readAsBinaryString(this.file);
+    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    this.files = target.files;
+    if (this.files.length >= 1 && this.files.length < 5) {
+      this.file = this.files[0];
+      const reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(this.file);
 
-  //     if (this.files.length > 1 && this.files.length < 5) {
+      if (this.files.length > 1 && this.files.length < 5) {
 
-  //       for (let a = 1; a < (this.files.length); a++) {
-  //         // alert(a);
-  //         this.file1 = this.files[a];
-  //         const reader1 = new FileReader();
-  //         reader1.onload = (e: any) => {
-  //           this._handleReaderLoadedforALl(e, a - 1);
-  //         };
-  //         // this._handleReaderLoadedforALl.bind(this.file1, a-1);
-  //         reader1.readAsBinaryString(this.file1);
-  //       }
-  //       // console.log("fsdfsdf");
-  //       console.log(this.ALLbase64textStringforPic);
-  //     }
-  //   }
+        for (let a = 1; a < (this.files.length); a++) {
+          alert(a);
+          this.file1 = this.files[a];
+          const reader1 = new FileReader();
+          reader1.onload = (e: any) => {
+            this._handleReaderLoadedforALl(e, a - 1);
+          };
+          // this._handleReaderLoadedforALl.bind(this.file1, a-1);
+          reader1.readAsBinaryString(this.file1);
+        }
+        // console.log("fsdfsdf");
+        console.log(this.ALLbase64textStringforPic);
+      }
+    }
 
 
-  // }
+  }
 
 
   _handleReaderLoadedforALl(readerEvt, index) {
@@ -117,56 +118,57 @@ export class StoreRegistrationComponent implements OnInit {
   }
 
 
-  onChange(event:FileList) {
+  // onChange(event:FileList) {
 
-    this.PicCounter +=event.length;
+  //   this.PicCounter +=event.length;
 
-    console.log('PicCounter is', this.PicCounter);
+  //   console.log('PicCounter is', this.PicCounter);
 
-    // if (event.length <=5 && this.PicCounter <= 5) {
-      this.PictureCheck = true;
-      console.log('Event', event);
-      for (let i = 0; i < event.length; i++) {
-        if (event) {
-          const reader = new FileReader();
-          reader.onload = (event: any) => {
-            console.log('Inner event', event);
-            this.url.push(event.target.result);
-          };
-          reader.readAsDataURL(event[i]);
-        }
-      }
-      this.filetoup1 = event;
-      for (let itm of this.filetoup1) {
-        this.filetoup.push(itm);
-      }
-      console.log('Filetoup has:', this.filetoup);
-    // } else {
-    //   swal('Maximum 5 Pictures are allow','','error');
-    //   this.PicCounter -= event.length;
-    // }
+  //   // if (event.length <=5 && this.PicCounter <= 5) {
+  //     this.PictureCheck = true;
+  //     console.log('Event', event);
+  //     for (let i = 0; i < event.length; i++) {
+  //       if (event) {
+  //         const reader = new FileReader();
+  //         reader.onload = (event: any) => {
+  //           console.log('Inner event', event);
+  //           this.url.push(event.target.result);
+  //         };
+  //         reader.readAsDataURL(event[i]);
+  //       }
+  //     }
+  //     this.filetoup1 = event;
+  //     for (let itm of this.filetoup1) {
+  //       this.filetoup.push(itm);
+  //     }
+  //     console.log('Filetoup has:', this.filetoup);
+  //   // } else {
+  //   //   swal('Maximum 5 Pictures are allow','','error');
+  //   //   this.PicCounter -= event.length;
+  //   // }
 
-    console.log('PicCounter at end is', this.PicCounter);
+  //   console.log('PicCounter at end is', this.PicCounter);
 
-  }
+  // }
 
-  uploadItemsToActivity(StoreName,ProductID) {
-    // if (this.filetoup.length === 1) {
-    console.log('I am in 1 Component');
-    this.itemUploadService.PostImage(this.filetoup, StoreName, ProductID).subscribe(
-      data => {
-        console.log('Successs')
-      },
-      error => {
-        console.log(error);
-      });
-  }
+  // uploadItemsToActivity(StoreName,ProductID) {
+  //   // if (this.filetoup.length === 1) {
+  //   console.log('I am in 1 Component');
+  //   this.itemUploadService.PostImage(this.filetoup, StoreName, ProductID).subscribe(
+  //     data => {
+  //       console.log('Successs')
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     });
+  // }
   save() {
 
     if ( this.model.terms ) {
       this.Waitcall = true;
       // if ( this.base64textString) {
         console.log('Inside base 64');
+        
         this.obj.StoreRegistrationPic(this.model, this.base64textString).subscribe();
       // } else {
         // this.obj.StoreRegistration(this.model).subscribe(
