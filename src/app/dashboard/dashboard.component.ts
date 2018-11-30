@@ -67,11 +67,13 @@ export class DashboardComponent implements OnInit {
 
       window.scrollTo(0, 0);
 
-      this.Profile.GetStoreInformationByUserId(localStorage.getItem('UserID')).subscribe(
+      this.Profile.GetStoreInformationByUserId(localStorage.getItem('UserName')).subscribe(
         data => {
           this.ActiveProduct = data;
-          if (this.ActiveProduct.length > 0) {
-            localStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
+          console.log(this.ActiveProduct,"get store infomation")
+          //alert(this.ActiveProduct = data )
+        //  if (this.ActiveProduct.length > 0) {
+            localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
             this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName')).subscribe(resSlidersData => {
               this.GetUSerOffer = resSlidersData;
               // this.offerLength = GetUSerOffer['results'].length;
@@ -79,9 +81,10 @@ export class DashboardComponent implements OnInit {
 
             });
             this.storename = localStorage.getItem('StoreName');
-          } else {
-            this._nav.navigate(['/login']);
-          }
+          // }
+          //  else {
+          //   this._nav.navigate(['/login']);
+          // }
         });
       this.sessionstore = localStorage.getItem('StoreName');
       console.log('storename is', this.sessionstore);

@@ -235,9 +235,11 @@
                     <label for="telephone" class="required">Upload Your Profile Picture</label>
 
 
-                    <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture multiple ng-files="getTheFiles($files)" />
+                    <!-- <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture multiple ng-files="getTheFiles($files)" /> -->
                     <!-- <input id="pic" type='file' (change)="onChange($event)" (change)="readUrl($event)" name="pic" [(ngModel)]="model.pic" accept="image/*" multiple> -->
                     <!-- <img [src]="url" class="image-box" > -->
+                    <input type="file" #Picture id="file1" name="file" class="file" data-preview-file-type="text" (change)="onChange($event.target.files)" multiple accept="image/*">
+
 
                   </div>
 

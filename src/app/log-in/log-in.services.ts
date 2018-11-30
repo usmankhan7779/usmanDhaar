@@ -99,7 +99,7 @@ export class LoginService {
           if (res.status === 200) {
             localStorage.setItem('Authorization', res.json().token);
             localStorage.setItem('UserName', mail);
-            this.decoded =  this.jwtHelper.decodeToken(res.json().token)['user_id'];
+            this.decoded =  this.jwtHelper.decodeToken(res.json().token)['UserName'];
             localStorage.setItem('UserID', this.decoded);
 
           }
@@ -114,7 +114,9 @@ export class LoginService {
   }
 
   GetUSerdetailsByUserId(decoded: any) {
-
+    // GetStoreInformation
+    // Get_User_details
+    
     return this._http.get(this.ServerUrl + 'Get_User_details/' + decoded).map(response => response.json());
   }
 
@@ -271,8 +273,12 @@ export class LoginService {
     return this._http.get(this.ServerUrl + 'email_verify/' + email).map((response: Response) => response.json());
   }
 
-  GetStoreInformationByUserId(email) {
-    return this._http.get(this.StoreServerUrl + 'GetStoreInformationByUserId/' + email).map((response: Response) => response.json());
+  GetStoreInformationByUserId(username) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + username,{headers: headers}).map((response: Response) => response.json());
 
   }
 

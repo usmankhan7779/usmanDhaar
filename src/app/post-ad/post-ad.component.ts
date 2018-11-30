@@ -104,11 +104,13 @@ export class PostAdComponent implements OnInit {
 
     this.PostAdd.GetAllSubSubCategoriesByCatID(this.CatId).subscribe(resSlidersData => this.GetAllSubSubCat = resSlidersData);
 
-    this.Profile.GetStoreInformationByUserId(localStorage.getItem('UserID')).subscribe(
+    this.Profile.GetStoreInformationByUserId(localStorage.getItem('UserName')).subscribe(
       data => {
         this.ActiveProduct = data;
-        if (this.ActiveProduct.length > 0 ) {
-          localStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
+        console.log(this.ActiveProduct,"get store information ")
+        if (this.ActiveProduct ) {
+          localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
+          // localStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
           this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName') ).subscribe(resSlidersData => {
             this.GetUSerOffer = resSlidersData;
 

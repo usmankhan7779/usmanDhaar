@@ -52,7 +52,7 @@ export class LogInComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
-      if(localStorage.getItem('UserID')){
+      if(localStorage.getItem('UserName')){
         this._nav.navigate(['/']);
 
     } else {
