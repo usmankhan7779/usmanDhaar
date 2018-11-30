@@ -43,7 +43,7 @@ export class UploadItemService {
 
     console.log('formData is:', formData);
 
-    return this._http.post(this.ServerUrl+'twoPicUpload', formData)
+    return this._http.post(this.ServerUrl+'onePicUpload', formData)
       .map((d) => { return true; })
       .catch((e) => {
         return Observable.throw(e.statusText);

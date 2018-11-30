@@ -62,36 +62,15 @@ export class FileUploadsComponent implements OnInit {
   }
 
   handleFileInput(files: FileList) {
-    if (files.length>3){
-      swal('You can upload maximum 3 images','','error')
-    } else if (files.length ===3) {
-      this.fileToUpload = files.item(0);
-      this.fileToUpload1 = files.item(1);
-      this.fileToUpload2 = files.item(2);
-      this. filetoup = [this.fileToUpload,this.fileToUpload1,this.fileToUpload2];
-      this.fileName = this.fileToUpload.name + ',' + this.fileToUpload1.name + ',' + this.fileToUpload2.name;
-      console.log('File Name is:' ,this.fileName);
-      console.log('uploaded file  ', this.fileToUpload);
-      console.log('uploaded file1  ', this.fileToUpload1);
-      console.log('uploaded file2  ', this.fileToUpload2);
-      console.log('uploaded filetoup  ', this.filetoup);
-    } else if (files.length === 2) {
-      this.fileToUpload = files.item(0);
-      this.fileToUpload1 = files.item(1);
-      this.fileName = this.fileToUpload.name + ',' + this.fileToUpload1.name;
-      this. filetoup = [this.fileToUpload,this.fileToUpload1];
-      console.log('File Name is:' ,this.fileName);
-    } else if (files.length === 1) {
-      this.fileToUpload = files.item(0);
-      this. filetoup = [this.fileToUpload];
-      this.fileName = this.fileToUpload.name;
-      console.log('File Name is:' ,this.fileName);
-    }
+
+    this.filetoup = files;
+
+    console.log('Files are::', this.filetoup);
   }
 
   uploadItemsToActivity() {
     console.log('I am in 1 Component');
-    this.itemUploadService.PostImageCheck(this.filetoup, 'hello', 'hh').subscribe(
+    this.itemUploadService.PostImageCheck(this.filetoup, 'Category', 'SubSubCategory').subscribe(
       data => {
         console.log('Successs')
       },

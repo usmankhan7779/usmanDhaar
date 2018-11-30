@@ -43,8 +43,8 @@
 
             <div class="userbtns" style="margin-left: 16%">
               <ul class="nav nav-tabs">
-                <li  *ngIf="step1==true" class="active"><a [ngClass]="{disabled : !step2Button}" (click)="step2=false;step3=false;step4=false"   data-toggle="tab"  class="btn" >Store Information </a></li>
-                <li  *ngIf="step1==false" ><a [ngClass]="{disabled : !step2Button}" (click)="step2=false;step3=false;step4=false"   data-toggle="tab"  class="btn" >Store Information </a></li>
+                <li  *ngIf="step1==true" class="active"style="width: 200px;"><a [ngClass]="{disabled : !step2Button}" (click)="step2=false;step3=false;step4=false"   data-toggle="tab"  class="btn"  >Store Information </a></li>
+                <li  *ngIf="step1==false" style="width: 200px;" ><a [ngClass]="{disabled : !step2Button}" (click)="step2=false;step3=false;step4=false"   data-toggle="tab"  class="btn"  >Store Information </a></li>
 
                 <li *ngIf="step2==true" class="active" ><a    (click)="step1=false;step3=false;step4=false"  data-toggle="tab" class="btn" href="#step2"  >Legal Details </a></li>
                 <li *ngIf="step2==false" >                  <a data-toggle="tab" [ngClass]="{disabled : !step2Button}"(click)="step1=false;step3=false;step4=false" href="#step2" class="btn">Legal Details </a>
@@ -71,10 +71,11 @@
                                pattern="^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$"
                                placeholder="mystore"
                                (keyup)=checkButtonStep1()
-                               (ngModelChange)="onChangeuser($event)"
+                               (ngModelChange)="onChangestore(storename.value)"
                                #storename="ngModel" name="storename" class="input form-control"
                                id="Store _name"
                                required>
+                               <!-- (ngModelChange)="onChangeuser($event)" -->
                         <span  *ngIf="Userloading == true && UserTyping == true" style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate form-control-feedback"></span>
                         <span  *ngIf="UserError == true && UserTyping == true && Userloading == false && storename.valid" style="color: green" class="glyphicon glyphicon-ok-sign form-control-feedback"></span>
 
@@ -122,11 +123,11 @@
                                required
                                (keyup)=checkButtonStep1()
                                (ngModelChange)="OnEmailChangeEvent()"
-                               (focusout)="checkEmail(email.value)"
+                               
                                placeholder="Your Email Address"
                                [(ngModel)]="model.email" #email="ngModel" name="email"
                                id="email_address">
-
+                               <!-- (focusout)="onChangeuser(email.value)" -->
                         <span *ngIf="Emailok == true" style="color: green" class="glyphicon glyphicon-ok-sign form-control-feedback"></span>
                         <div *ngIf=" EmailExist == true "  class="help-block"  style="color: red" >Email is Already Exist for Store</div>
 
@@ -235,7 +236,8 @@
 
 
                     <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture multiple ng-files="getTheFiles($files)" />
-
+                    <!-- <input id="pic" type='file' (change)="onChange($event)" (change)="readUrl($event)" name="pic" [(ngModel)]="model.pic" accept="image/*" multiple> -->
+                    <!-- <img [src]="url" class="image-box" > -->
 
                   </div>
 

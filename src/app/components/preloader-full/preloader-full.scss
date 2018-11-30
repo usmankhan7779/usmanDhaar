@@ -177,7 +177,8 @@
   background-size: contain;
   background-color: transparent;
   transition-origin: 50% 50%;
-  animation: spinner 3s infinite alternate ease-in-out;
+  animation: spin 5s ease-in-out infinite, delay 2s ease-in-out 1 ;
+  // animation: spinner 3s infinite alternate ease-in-out;
 }
 //.spinner-center {
 //  display: inline-block;

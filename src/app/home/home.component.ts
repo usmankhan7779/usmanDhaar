@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
   ViewedProducts: any = {"products":[]};
   WatchedProducts: any = [];
   Tmp_ProID_Array: any = [];
+  imageurls ='https://storage.dhaar.pk/Category/SliderImages/';
   usercheck= false;
   Tmp_ProID_Array2: {
     ProID: any;

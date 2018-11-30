@@ -1,7 +1,10 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { LoginService } from '../log-in/log-in.services';
+import {Http , Headers , Response} from '@angular/http';
 import swal from 'sweetalert2';
+import {HttpService} from '../services/http-service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-store-registration',
@@ -24,6 +27,7 @@ export class StoreRegistrationComponent implements OnInit {
   EmailExist= false;
   Emailok= false;
   Emailinvalid= false;
+  fbrregister :boolean= true;
   uploadFile: any;
   sizeLimit = 2000000;
   ALLbase64textStringforPic= {0: 'dfghjk'};
@@ -33,7 +37,8 @@ export class StoreRegistrationComponent implements OnInit {
   private base64textString= '';
 
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
-               private obj: LoginService) {
+               private obj: LoginService,
+               private _http: HttpService ) {
   }
 
   handleUpload(data): void {
@@ -104,37 +109,37 @@ export class StoreRegistrationComponent implements OnInit {
 
   }
 
+
   save() {
 
     if ( this.model.terms ) {
       this.Waitcall = true;
-      if ( this.base64textString) {
+      // if ( this.base64textString) {
         console.log('Inside base 64');
         this.obj.StoreRegistrationPic(this.model, this.base64textString).subscribe();
-      } else {
-        this.obj.StoreRegistration(this.model).subscribe(
-          resSlidersData => {
+      // } else {
+        // this.obj.StoreRegistration(this.model).subscribe(
+          // resSlidersData => {
             // console.log('DONEDsdfnsd');
-          });
-      }
+          // });
+      // }
     } else {
       alert('You must agree to the terms  first.');
     }
   }
+  onChangestore(store) {
+    if (store !== '') {
 
-  onChangeuser(username: string) {
-    if (username !== '') {
 
-
-      if (username.length > 4 && username.length < 30) {
-        if (username.match('^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$')) {
+      if (store.length > 1 && store.length < 30) {
+        if (store.match('^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$')) {
           this.Userloading = true;
           this.UserTyping = true;
 
-          this.obj.verifyStoreName(username).subscribe((response) => {
+          this.obj.verifyStoreName(store).subscribe((response) => {
               /* this function is executed every time there's a new output */
-              // console.log("VALUE RECEIVED: "+response);
-              if (response.Res !== true) {
+             console.log("VALUE RECEIVED: "+response);
+              if (response !== true) {
 
                 this.Userloading = false;
                 this.UserError = true;
@@ -152,11 +157,6 @@ export class StoreRegistrationComponent implements OnInit {
               this.Userloading = true;
 
               alert(err);
-              ////const User_exist_Resonse= err.json();
-
-
-              /* this function is executed when there's an ERROR */
-              //   console.log("ERROR: "+err);
             },
             () => {
               console.log('error');

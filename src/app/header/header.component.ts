@@ -109,7 +109,7 @@ export class HeaderComponent implements OnInit {
     // this.PostAdd.GetAllSubSubCategories().subscribe(resSlidersData => this.GetallSubSubCat = resSlidersData);
 
   }
-  }
+  }zz
 
   Phone() {
     this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Phones & Tablets'}})
