@@ -16,7 +16,9 @@ export class ActiveAdServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://apis.dhaar.pk/products/';
+  // http://192.168.30.222:7000
+  // https://apis.dhaar.pk
+  ServerUrl = 'http://192.168.30.222:7000/products/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
 
   constructor(private _http: Http,
@@ -57,7 +59,21 @@ export class ActiveAdServices {
   }
 
   GetStoreInformation(storename) {
-    return this._http.get(this.StoreServerUrl + 'GetStoreInformationWithPic/' + storename).map((response: Response) => response.json());
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + storename,{headers :headers}).map((response: Response) => response.json());
+
+  }
+  GetStoreInformationofferbystorename(storename) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + storename,{headers :headers}).map((response: Response) => response.json());
 
   }
 
@@ -84,7 +100,12 @@ export class ActiveAdServices {
   }
 
   GetStoreOffers(st:any) {
-    return this._http.get(this.ServerUrl + 'GetallProductsOffersByStoreName/' + st).map(response => response.json());
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'GetallProductsOffersByStoreName/' + st,{headers :headers}).map(response => response.json());
   }
 
   DeleteOffer(pk:any, st:any) {

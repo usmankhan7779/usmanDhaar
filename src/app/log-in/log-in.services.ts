@@ -607,15 +607,7 @@ export class LoginService {
         }
       });
   }
-  searchrecord(search) {
-     
-    console.log(search)
-     const headers = new Headers();
-     headers.append('Content-Type', 'application/json');
-     return this._http.post('search/' , JSON.stringify({
-       "search": search }), 
-     {headers: headers}).map((response: Response) => response.json());
-     }
+ 
 //   LoginService.prototype.loged_in = function (mail, pass) {
 //     var _this = this;
 //     return this._http.post(this.ServerUrl + 'user-token-auth/', { 'username': mail, 'password': pass })

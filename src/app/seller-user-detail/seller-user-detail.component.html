@@ -177,7 +177,7 @@
                           <label for="telephone" class="required">Upload Your Profile Picture</label>
 
 
-                          <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture ng-files="getTheFiles($files)" />
+                          <input class="file" (change)="onChange($event)" (change)="readUrl($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture ng-files="getTheFiles($files)" />
 
 
                         </div>

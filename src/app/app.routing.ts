@@ -29,6 +29,10 @@ const appRoutes: Routes = [
       { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard]},
       { path: 'seller-user-detail', loadChildren: './seller-user-detail/seller-user-detail.module#SellerUserDetailModule', canActivate: [AuthGuard]},
       { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard]},
+    
+      { path: 'store-view', loadChildren: './store-all-details/store-all-details.module#StoreAllDetailsModule', canActivate: [AuthGuard]},
+    
+      // StoreAllDetailsModule
       { path: '404', loadChildren: './not-found/not-found.module#NotFoundModule'},
       { path: 'buyer-dashboard', loadChildren: './buyer-dashboard/buyer-dashboard.module#BuyerDashboardModule', canActivate: [AuthGuard]},
       { path: 'my-bids', loadChildren: './my-bids/my-bids.module#MyBidsModule', canActivate: [AuthGuard]},

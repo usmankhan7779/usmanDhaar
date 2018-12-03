@@ -61,6 +61,7 @@ import { UploadItemService } from './file-uploads/upload-item-service';
     PreloaderSmall,
     TimePipe,
     LayoutComponent,
+  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'universal-demo-v5'}),

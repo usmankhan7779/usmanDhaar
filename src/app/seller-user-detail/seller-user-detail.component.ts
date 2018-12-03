@@ -27,7 +27,7 @@ export class SellerUserDetailComponent implements OnInit {
   EmailExist= false;
   Emailok= false;
   Emailinvalid= false;
-  private base64textString= '';
+  base64textString;
   SessionstoreName: any;
   sizeLimit = 2000000;
   Fixed = true;
@@ -42,6 +42,7 @@ export class SellerUserDetailComponent implements OnInit {
   Right= false;
   match = true;
   notsame = false;
+  url: any = 'JPG, GIF, PNG';
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router) { }
@@ -118,7 +119,7 @@ export class SellerUserDetailComponent implements OnInit {
     console.log(this.files);
 
     const reader = new FileReader();
-    reader.onload = this._handleReaderLoaded.bind(this);
+   reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsBinaryString(this.file);
   }
 
@@ -126,7 +127,29 @@ export class SellerUserDetailComponent implements OnInit {
   _handleReaderLoaded(readerEvt) {
     const binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
+    console.log(this.base64textString)
 
+  }
+  // onChange(event: EventTarget) {
+  //   this.base64textString = new FormData();
+  //   const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
+  //   const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
+  //   this.base64textString.append('fileToUpload', target.files[0]);
+  //   console.log(this.base64textString);
+  //   alert(this.base64textString);
+  // }
+
+  readUrl(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.url = e.target.result;
+        console.log(this.url);
+      };
+    
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 
   checkButtonStep1() {

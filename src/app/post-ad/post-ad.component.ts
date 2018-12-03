@@ -223,6 +223,7 @@ export class PostAdComponent implements OnInit {
         } else {
           this.fileName += ',' + baseurl + this.SessionstoreName + '/' +Product_ID+'/'+ this.filetoup[i].name;
         }
+        alert( this.fileName);
       }
       console.log('File Name is:', this.fileName);
       if (this.Auction === true) {

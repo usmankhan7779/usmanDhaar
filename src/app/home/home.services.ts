@@ -17,7 +17,9 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'https://apis.dhaar.pk/products/';
+  // http://192.168.30.222:7000
+  // https://apis.dhaar.pk
+  ServerUrl =  'http://192.168.30.222:7000/products/';
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -143,7 +145,13 @@ export class HomeService {
   }
 
   GetallProductsOffersByStoreName(page: any, StoreName: any) {
-    return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + StoreName + '?page=' + page, ).map(response => response.json());
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+
+    return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + StoreName + '?page=' + page,{headers:  headers} ).map(response => response.json());
   }
 
   GetallUserReviewsBYProductId(pID: any) {
