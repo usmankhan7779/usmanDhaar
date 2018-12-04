@@ -34,7 +34,12 @@ export class ActiveAdServices {
     return this._http.get( this.ServerUrl + 'getAll_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
   }
   getAll_ProductBYStoreName(page: any, UserID: any) {
-    return this._http.get( this.ServerUrl + 'getAll_ProductBYStoreName/' + UserID + '?page=' + page, ).map(response => response.json());
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + UserID + '?page=' + page,{headers : headers} ).map(response => response.json());
   }
   getBuyNow_ProductBYStoreName(page: any, UserID: any) {
     return this._http.get( this.ServerUrl + 'getBuyNow_ProductBYStoreName/' + UserID + '?page=' + page, ).map(response => response.json());
