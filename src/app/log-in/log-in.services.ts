@@ -22,14 +22,15 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'https://apis.dhaar.pk/user/';
+  ServerUrl =  'http://192.168.30.225:7000/user/';
   StoreServerUrl =  'https://apis.dhaar.pk/store/';
   EMailServerUrl =  'https://apis.dhaar.pk/rest-auth/';
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: HttpService ,
-              private _nav: Router) {
+              private _nav: Router,
+              private hhtp:Http) {
 
   }
 

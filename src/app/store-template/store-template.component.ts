@@ -46,7 +46,7 @@ export class StoreTemplateComponent implements OnInit {
                 this.Trend = data1;
                 console.log('Start');
                 console.log(this.Trend.results);
-                alert('elase wali condition')
+                // alert('elase wali condition')
               });
 
           }

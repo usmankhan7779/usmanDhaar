@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { JwtHelper } from 'angular2-jwt';
 import swal from 'sweetalert2';
+import { UploadItemService } from '../file-uploads/upload-item-service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-seller-user-detail',
@@ -43,9 +45,16 @@ export class SellerUserDetailComponent implements OnInit {
   match = true;
   notsame = false;
   url: any = 'JPG, GIF, PNG';
+  // filetoup1:any=[];
+  // PicCounter: any =0;
+  PictureCheck = false;
+filetoup: FileList;
+  fileName = '';
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
-              private _nav: Router) { }
+              private _nav: Router,
+              private Profile: LoginService,
+              private itemUploadService: UploadItemService) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -109,48 +118,27 @@ export class SellerUserDetailComponent implements OnInit {
     }
 
   }
+  handleFileInput(files: FileList) {
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
 
-  onChange(event: EventTarget) {
+    this.fileName= 'https://storage.dhaar.pk/UserPics/' + localStorage.getItem('UserID') + '/' + this.filetoup[0].name;
+    console.log('File Name is:' ,this.fileName);
+this.uploadItemsToActivity();
+}
 
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-    this.files = target.files;
-    this.file = this.files[0];
-    console.log(this.files);
+uploadItemsToActivity() {
+    console.log('I am in 1 Component');
+    this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
+      data => {
+        this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
+        console.log('Successs')
+      },
+      error => {
+        console.log(error);
+      });
+}
 
-    const reader = new FileReader();
-   reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsBinaryString(this.file);
-  }
-
-
-  _handleReaderLoaded(readerEvt) {
-    const binaryString = readerEvt.target.result;
-    this.base64textString = btoa(binaryString);
-    console.log(this.base64textString)
-
-  }
-  // onChange(event: EventTarget) {
-  //   this.base64textString = new FormData();
-  //   const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
-  //   const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
-  //   this.base64textString.append('fileToUpload', target.files[0]);
-  //   console.log(this.base64textString);
-  //   alert(this.base64textString);
-  // }
-
-  readUrl(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-
-      reader.onload = (e: any) => {
-        this.url = e.target.result;
-        console.log(this.url);
-      };
-    
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
 
   checkButtonStep1() {
     if (this.model.storename != null && this.model.email != null && this.model.ownername != null && this.model.city != null && this.model.zipcode != null && this.model.personal != null && this.model.address != null && this.model.ownername != null) {
@@ -166,17 +154,24 @@ export class SellerUserDetailComponent implements OnInit {
   }
 
   save(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string) {
-    // this.
-
-    // (FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: string, Username: string) {
-    if ( this.base64textString) {
+    
+    if ( this.fileName) {
+      //this.uploadItemsToActivity();
       this.Waitcall = true;
-      this.obj.UserDetailsUpdate(FName, Lname, Country, State, City, Zip, Mobile, Address, this.base64textString, this.USerNameID).subscribe((response) => {
-          /* this function is executed every time there's a new output */
-          // console.log("VALUE RECEIVED: "+response);
+      console.log('I am in 1 Component');
+      this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
+        data => {
+         // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
+          console.log('Successs' )
+          this.obj.UserDetailsUpdate(FName, Lname, Country, State, City, Zip, Mobile, Address, this.fileName, this.USerNameID).subscribe((response) => {
+         console.log(FName, Lname, Country, State, City, Zip, Mobile, Address, this.fileName, this.USerNameID)
           this.Error = false;
           this.Waitcall = false;
           this.Right = true;
+        },
+        error => {
+          console.log(error);
+        });
 
 
         },
@@ -184,13 +179,11 @@ export class SellerUserDetailComponent implements OnInit {
           this.Right = false;
           this.Waitcall = false;
           this.Error = true;
-          /* this function is executed when there's an ERROR */
-          //   console.log("ERROR: "+err);
+     
         },
         () => {
 
-          /* this function is executed when the observable ends (completes) its stream */
-          //   console.log("COMPLETED");
+       
         }
       );
     } else {

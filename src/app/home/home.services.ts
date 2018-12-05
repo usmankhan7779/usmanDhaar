@@ -19,7 +19,7 @@ export class HomeService {
   returnUrl: string;
   // http://192.168.30.222:7000
   // https://apis.dhaar.pk
-  ServerUrl =  'http://192.168.30.222:7000/products/';
+  ServerUrl =  'http://192.168.30.225:7000/products/';
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,

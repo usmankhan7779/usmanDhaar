@@ -18,7 +18,7 @@ export class ActiveAdServices {
   returnUrl: string;
   // http://192.168.30.222:7000
   // https://apis.dhaar.pk
-  ServerUrl = 'http://192.168.30.222:7000/products/';
+  ServerUrl = 'http://192.168.30.225:7000/products/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
 
   constructor(private _http: Http,
