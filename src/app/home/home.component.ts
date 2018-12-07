@@ -124,16 +124,22 @@ export class HomeComponent implements OnInit {
       this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
         this.GetALLProductss = resSlidersData;
+        // Sub_Sub_Cat_Name
+        localStorage.setItem('sub_sub_cat', this.GetALLProductss.results[0].Sub_Sub_Cat_Name);
+        // localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
+        
       });
 
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
 
         this.GetALLBuyNowProductss = resSlidersData;
+        // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
       });
 
       this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
         this.GetALLAuctionProductss = resSlidersData;
+        // localStorage.setItem('sub_sub_cat', this.GetALLAuctionProductss.results[0].Sub_Sub_Cat_Name);
       });
 
       this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {

@@ -121,10 +121,16 @@ export class SingleProductComponent implements OnInit {
       this.username= localStorage.getItem('UserName');
 
 
-      this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
-        this.GetallPhoneProduct = resSlidersData;
+      // this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
+      //   this.GetallPhoneProduct = resSlidersData;
+      // });
+       this.GetAdd.GetAllProductsgatorgy(localStorage.getItem('sub_sub_cat')).subscribe(resSlidersData => {
+        this.GetallPhoneProduct= resSlidersData.Json()['Results'];
+
+        console.log(this.GetallPhoneProduct.Results,"results")
       });
 
+      // GetAllPhoneandtabletsProducts
       window.scrollTo(0, 0);
       this.sub = this.route
         .queryParams

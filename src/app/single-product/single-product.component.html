@@ -531,8 +531,8 @@
         <div id="productTabContent1" class="tab-content">
 
           <div class="tab-pane active in" id="women">
-            <ng-container *ngFor="let phoneProducts of GetallPhoneProduct">
-              <div class="product-item col-md-3 col-sm-6">
+            <!-- <ng-container *ngFor="let phoneProducts of GetallPhoneProduct.Results"> -->
+              <div class="product-item col-md-3 col-sm-6" *ngFor="let phoneProducts of GetallPhoneProduct.Results" >
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <!--<div class="icon-sale-label sale-left">Sale</div>-->
@@ -544,7 +544,8 @@
                       <div id="pro2-slider1" class="product-flexslider hidden-buttons">
                         <div class="slider-items slider-width-col6">
 
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" alt="{{phoneProducts.pic }}"></a>
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> 
+                            <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" alt="{{phoneProducts.pic }}"></a>
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 
@@ -595,7 +596,7 @@
                   </div>
                 </div>
               </div>
-            </ng-container>
+            <!-- </ng-container> -->
 
           </div>
 

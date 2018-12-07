@@ -33,7 +33,11 @@ export class HomeService {
     return this._http.get(this.ServerUrl + 'getphoneproducts8').map(response => response.json());
     // console.log(this.CateDeatils)
   }
+  GetAllProductsgatorgy(pk:string) {
 
+    return this._http.get(this.ServerUrl + 'Related_Products/' +pk).map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
   GetAllProductPicture(pk: string) {
 
     return this._http.get(this.ServerUrl + 'Getproductimages/' + pk).map(response => response.json());
