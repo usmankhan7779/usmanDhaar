@@ -125,7 +125,7 @@ export class SingleProductComponent implements OnInit {
       //   this.GetallPhoneProduct = resSlidersData;
       // });
        this.GetAdd.GetAllProductsgatorgy(localStorage.getItem('sub_sub_cat')).subscribe(resSlidersData => {
-        this.GetallPhoneProduct= resSlidersData.Json()['Results'];
+        this.GetallPhoneProduct= resSlidersData['Results'];
 
         console.log(this.GetallPhoneProduct.Results,"results")
       });
