@@ -30,6 +30,7 @@ export class SingleProductComponent implements OnInit {
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
   ProID: string;
+  SubCatName:string;
   Getphoto: any = [];
   NewBidInserted = false ;
   NewCart = false ;
@@ -124,11 +125,11 @@ export class SingleProductComponent implements OnInit {
       // this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
       //   this.GetallPhoneProduct = resSlidersData;
       // });
-       this.GetAdd.GetAllProductsgatorgy(localStorage.getItem('sub_sub_cat')).subscribe(resSlidersData => {
-        this.GetallPhoneProduct= resSlidersData['Results'];
+      //  this.GetAdd.GetAllProductsgatorgy(this.SubCatName).subscribe(resSlidersData => {
+      //   this.GetallPhoneProduct= resSlidersData['Results'];
 
-        console.log(this.GetallPhoneProduct.Results,"results")
-      });
+      //   console.log(this.GetallPhoneProduct.Results,"results")
+      // });
 
       // GetAllPhoneandtabletsProducts
       window.scrollTo(0, 0);
@@ -138,7 +139,14 @@ export class SingleProductComponent implements OnInit {
           // Defaults to 0 if no query param provided.
           this.CatName = params['CatName'] || '0';
           this.ProID = params['ProID'] || '0';
+          this.SubCatName =params['SubCatName']||'0';
+          console.log(this.SubCatName,'subcatname')
           this.RedirectFromlogin = params['Redirect'] || null;
+          this.GetAdd.GetAllProductsgatorgy(this.SubCatName).subscribe(resSlidersData => {
+            this.GetallPhoneProduct= resSlidersData['Results'];
+    
+            console.log(this.GetallPhoneProduct.Results,"results")
+          });
           if (this.RedirectFromlogin !== null) {
             if (this.RedirectFromlogin === 'MakeOffer') {
               this.amountoffer = true;

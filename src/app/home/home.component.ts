@@ -125,7 +125,7 @@ export class HomeComponent implements OnInit {
 
         this.GetALLProductss = resSlidersData;
         // Sub_Sub_Cat_Name
-        localStorage.setItem('sub_sub_cat', this.GetALLProductss.results[0].Sub_Sub_Cat_Name);
+        // localStorage.setItem('sub_sub_cat', this.GetALLProductss.results[0].Sub_Sub_Cat_Name);
         // localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
         
       });
@@ -139,6 +139,7 @@ export class HomeComponent implements OnInit {
       this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
         this.GetALLAuctionProductss = resSlidersData;
+        // console.log(this.GetALLAuctionProductss.results.pic.split([,],3000),'pic')
         // localStorage.setItem('sub_sub_cat', this.GetALLAuctionProductss.results[0].Sub_Sub_Cat_Name);
       });
 
