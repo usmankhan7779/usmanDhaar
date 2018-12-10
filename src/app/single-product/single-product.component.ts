@@ -53,6 +53,8 @@ export class SingleProductComponent implements OnInit {
 
   resultProduct: any = [];
   ProPics: any = [];
+  productsPics:any=[];
+  prodimg:any=[];
   ProPDes: any = [];
   BidingProduct: any[] = [];
   // onePeoduct: Productlist[];
@@ -144,6 +146,22 @@ export class SingleProductComponent implements OnInit {
           this.RedirectFromlogin = params['Redirect'] || null;
           this.GetAdd.GetAllProductsgatorgy(this.SubCatName).subscribe(resSlidersData => {
             this.GetallPhoneProduct= resSlidersData['Results'];
+            // for (let prod of this.GetallPhoneProduct.Results) {
+              // prod["Pic"] = prod["Pic"].split(',');
+
+            //  this.productsPics= this.GetallPhoneProduct.Results['Pic'].split(',');
+            for( let i of this.GetallPhoneProduct.Results){
+               this.productsPics =new Array(i.Pic.split( ','));
+               this.prodimg =this.productsPics[0][0];
+              console.log('imusman',this.prodimg)
+              console.log('imagggggggggggggg', this.productsPics[0][0]);
+            }
+          
+            // }
+    //   for(let i=0; i<this.productsPics.length-1; i++) {
+    //     this.productsPics[i]=this.productsPics[i+1];
+    // }
+          
     
             console.log(this.GetallPhoneProduct.Results,"results")
           });

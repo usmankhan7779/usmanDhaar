@@ -545,7 +545,7 @@
                         <div class="slider-items slider-width-col6">
 
                           <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> 
-                            <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" alt="{{phoneProducts.pic }}"></a>
+                            <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic.split(',')[0] }}" alt="{{phoneProducts.pic }}"></a>
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 

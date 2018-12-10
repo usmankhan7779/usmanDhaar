@@ -57,6 +57,12 @@ export class ActiveAdComponent implements OnInit {
 
   DisableProduct(CatName,Product_ID) {
     this.httpService.DisableProduct(CatName,Product_ID).subscribe()
+    swal('You have been successfully disable this product.','','success');
+    // this.httpService.GetAllActiveproductsBYUserID(1, localStorage.getItem('UserID')).subscribe(
+    //   data => {
+    //     this.ActiveProduct = data;
+    //     console.log('active products are::::', this.ActiveProduct);
+    //   });
   }
 
 
