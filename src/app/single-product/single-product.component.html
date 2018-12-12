@@ -193,7 +193,7 @@
                   <ng-container *ngIf="!ourproduct">
 
 
-                    <button class="button pro-add-to-cart singlebutton" (click)="Addtocart(qty.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Buy Now</span></button>
+                    <button class="button pro-add-to-cart singlebutton" (click)="addtocartproducts()" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Buy Now</span></button>
 
                     <button *ngIf="LoginID === true && resultProduct.Addbestoffer" class="button pro-add-to-cart singlebutton" style="margin-left: 3px;" (click)="MakeAnOffer()" title="Add to Cart" type="button"><span><i class="fa fa-bullhorn"></i> Make Offer</span></button>
                     <ng-container *ngIf="LoginID === true">

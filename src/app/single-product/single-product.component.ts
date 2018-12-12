@@ -30,6 +30,7 @@ export class SingleProductComponent implements OnInit {
   LoginID:  Boolean = false;
   login_error:  Boolean = false;
   ProID: string;
+  productid1:string;
   SubCatName:string;
   Getphoto: any = [];
   NewBidInserted = false ;
@@ -141,6 +142,7 @@ export class SingleProductComponent implements OnInit {
           // Defaults to 0 if no query param provided.
           this.CatName = params['CatName'] || '0';
           this.ProID = params['ProID'] || '0';
+          this.productid1=params['id']
           this.SubCatName =params['SubCatName']||'0';
           console.log(this.SubCatName,'subcatname')
           this.RedirectFromlogin = params['Redirect'] || null;
@@ -481,7 +483,12 @@ export class SingleProductComponent implements OnInit {
       }
     );
   }
+addtocartproducts(){
+          // this.productid1=params['id']
+          this.GetAdd.addtocartProduct(this.productid1).subscribe();
+  console.log(this.productid1,"this product")
 
+}
   Addtocart(Abc: any) {
     if (isPlatformBrowser(this.platformId)) {
       // alert('Message of error');
@@ -517,8 +524,10 @@ export class SingleProductComponent implements OnInit {
               // console.log('eeeeeeeee',this.resultProduct);
               this.resultProduct.itemsqty = +Abc;
               this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
+              
               this.TmpresultProduct['products'].push(this.resultProduct);
               localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+              alert("if wali condtion")
 
               // console.log(this.products);
               this.router.navigate(['/checkout2']);
@@ -531,6 +540,7 @@ export class SingleProductComponent implements OnInit {
             this.TmpresultProduct['products'].push(this.resultProduct);
             localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
             // console.log(this.products);
+            alert("else wali condition")
             this.router.navigate(['/checkout2']);
           }
         } catch (e) {

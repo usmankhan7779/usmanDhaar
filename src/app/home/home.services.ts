@@ -20,6 +20,7 @@ export class HomeService {
   // http://192.168.30.222:7000
   // https://apis.dhaar.pk
   ServerUrl =  'https://apis.dhaar.pk/products/';
+  // serverurladdtocart=''
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -191,6 +192,34 @@ export class HomeService {
           'ProductID': Product_ID,
           'Cat_Name': CatName ,
           'User_ID': User_ID,
+        }, { headers: headers }).map((res: Response) => {
+        if (res) {
+
+          if (res.status === 201) {
+            const responce_data = res.json();
+            return [{ status: res.status, json: res }];
+          }
+        }
+      }).catch((error: any) => {
+        console.log(error.toString());
+        return Observable.throw(new Error(error.status));
+      });
+
+
+    }
+  }
+  addtocartProduct(Product_ID: any) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    if (isPlatformBrowser(this.platformId)){
+
+      return this._http.post(this.ServerUrl + 'CheckoutProducts/',
+        {
+          'product_id': Product_ID
         }, { headers: headers }).map((res: Response) => {
         if (res) {
 
