@@ -22,7 +22,8 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'http://192.168.30.225:7000/user/';
+  // http://192.168.30.225:7000
+  ServerUrl =  'https://apis.dhaar.pk/user/';
   StoreServerUrl =  'https://apis.dhaar.pk/store/';
   EMailServerUrl =  'https://apis.dhaar.pk/rest-auth/';
 
