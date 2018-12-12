@@ -184,10 +184,14 @@ export class HomeService {
   }
   WatchProduct(Product_ID: any,  User_ID: any, CatName: any) {
     const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
 
-      return this._http.post(this.ServerUrl + 'watchList',
+      return this._http.post(this.ServerUrl + 'watchList/',
         {
           'ProductID': Product_ID,
           'Cat_Name': CatName ,
@@ -208,6 +212,17 @@ export class HomeService {
 
     }
   }
+   GetAllProductcart() {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'CheckoutProducts/' ,{headers : headers}).map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
+
   addtocartProduct(Product_ID: any) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');

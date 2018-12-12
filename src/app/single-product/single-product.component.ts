@@ -487,6 +487,7 @@ addtocartproducts(){
           // this.productid1=params['id']
           this.GetAdd.addtocartProduct(this.productid1).subscribe();
   console.log(this.productid1,"this product")
+  
 
 }
   Addtocart(Abc: any) {
@@ -511,7 +512,7 @@ addtocartproducts(){
 
           if (localStorage.getItem('Cartdata') !== null) {
 
-            this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
+            //this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
             for (const ABCC of this.TmpresultProduct['products']) {
 
               if (ABCC.ProductID === this.ProID) {  // Checking if the same product also present in cart.
@@ -523,10 +524,11 @@ addtocartproducts(){
 
               // console.log('eeeeeeeee',this.resultProduct);
               this.resultProduct.itemsqty = +Abc;
-              this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
-              
+              //this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
+              this.GetAdd.addtocartProduct(this.productid1).subscribe();
+              console.log(this.productid1,"this product")
               this.TmpresultProduct['products'].push(this.resultProduct);
-              localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+             // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
               alert("if wali condtion")
 
               // console.log(this.products);
@@ -538,7 +540,9 @@ addtocartproducts(){
 
             this.resultProduct.itemsqty = +Abc;
             this.TmpresultProduct['products'].push(this.resultProduct);
-            localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+            this.GetAdd.addtocartProduct(this.productid1).subscribe();
+            console.log(this.productid1,"this product")
+            // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
             // console.log(this.products);
             alert("else wali condition")
             this.router.navigate(['/checkout2']);
@@ -546,7 +550,9 @@ addtocartproducts(){
         } catch (e) {
           this.resultProduct.itemsqty = +Abc;
           this.TmpresultProduct['products'].push(this.resultProduct);
-          localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
+          this.GetAdd.addtocartProduct(this.productid1).subscribe();
+          console.log(this.productid1,"this product")
+          // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
           // console.log(this.products);
           this.router.navigate(['/checkout2']);
         }

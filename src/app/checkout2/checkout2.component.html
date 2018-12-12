@@ -29,8 +29,8 @@
                 </thead>
                 <tbody>
 
-                <ng-container *ngIf="Total > 0">
-                  <ng-container *ngFor="let abc of CartedProduct.products; let i=index">
+                <!-- <ng-container *ngIf="Total > 0"> -->
+                  <ng-container *ngFor="let abc of CartedProduct.Res; let i=index">
                   <tr>
                     <td class="cart_product">
                       <a href="#"><img src="{{ ProPics[i]}}" alt="products" alt="Product"></a>
@@ -46,11 +46,11 @@
                       <form role="form">
                         <input maxlength="3" (ngModelChange)="onChange($event, abc.ProductID)" name="qty"
                                [(ngModel)]="model.qty" #qty="ngModel" class="form-control input-sm" type="number"
-                               placeholder="{{  abc.itemsqty }}">
+                               placeholder="{{  abc.Quantity }}">
                       </form>
                     </td>
                     <td class="price">
-                      <span>Rs: {{ abc.FixedPrice * abc.itemsqty | number:'.0-0' }} </span>
+                      <span>Rs: {{ abc.FixedPrice * abc.Quantity | number:'.0-0' }} </span>
                     </td>
                     <td class="action">
                       <a (click)="TrashcartElement(abc.ProductID)"><i class="fa fa-trash-o"></i></a>
@@ -58,7 +58,7 @@
                   </tr>
 
                 </ng-container>
-                </ng-container>
+                <!-- </ng-container> -->
 
                 </tbody>
                 <tfoot>

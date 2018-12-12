@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 import swal from 'sweetalert2';
+import { HomeService } from '../home/home.services';
 
 @Component({
   selector: 'app-checkout2',
@@ -58,6 +59,7 @@ export class Checkout2Component implements OnInit {
               private httpService: LoginService,
               private httpServiceads: ActiveAdServices,
               private Profile: LoginService,
+              private GetAdd: HomeService,
               private httpbuyerService: BuyerDashboardServices) {
 
   }
@@ -93,21 +95,30 @@ export class Checkout2Component implements OnInit {
 
         }
       });
-      this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+  //  GetAllProductcart(pk: string) {
+    this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+
+        this.CartedProduct = resSlidersData;
+        console.log(this.CartedProduct.Res,'cart')
+
+   
+      // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
       console.log('Carted products are:', this.CartedProduct);
-      for (const tmp1 of this.CartedProduct['products']) {
+      for (const tmp1 of this.CartedProduct.Res) {
         console.log('Temp1 is:', tmp1);
-        console.log('Values are:',tmp1['Pic']);
-        this.ProPics.push(tmp1['Pic'].split(',')[0]);
+        console.log('Values are:',tmp1.Pic);
+        this.ProPics.push(tmp1.Pic.split(',')[0]);
       }
       console.log('Pics are are:', this.ProPics);
 
 
     this.Total = 0;
-    for (const tmp of this.CartedProduct['products']) {
+    for (const tmp of this.CartedProduct.Res) {
 
-      this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
+      this.Total = this.Total + (tmp.FixedPrice * tmp.Quantity);
+      console.log(tmp.FixedPrice,'total')
     }
+  });
     this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
 
@@ -124,15 +135,15 @@ export class Checkout2Component implements OnInit {
 
   onChange(qty: string, Abc: any) {
 
-    for (const tmp of this.CartedProduct['products']) {
+    for (const tmp of this.CartedProduct.Res) {
       if (tmp.ProductID === Abc) {
-        tmp.itemsqty = qty;
+        tmp.Quantity = qty;
       }
 
     }
     this.Total = 0;
-    for (const tmp of this.CartedProduct['products']) {
-      this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
+    for (const tmp of this.CartedProduct.Res) {
+      this.Total = this.Total + (tmp.FixedPrice * tmp.Quantity);
     }
   }
 

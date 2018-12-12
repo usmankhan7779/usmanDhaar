@@ -8,6 +8,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { LoginService } from '../log-in/log-in.services';
 import {CategoryServices} from "../category-detail/category-detail.services";
+import { HomeService } from '../home/home.services';
 
 declare const $: any;
 
@@ -39,6 +40,7 @@ export class HeaderComponent implements OnInit {
               private obj: LoginService,
               private PostAdd: AdService,
               private _nav: Router,
+              private GetAdd: HomeService,
               private httpService: CategoryServices) { }
 
   // @HostListener('window:popstate', ['$event'])
@@ -59,6 +61,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
     // console.log('fdsfsdfdsgj' + localStorage.getItem('UserID'));
+    // this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+
+    //   this.CartedProduct = resSlidersData;
+    //   console.log(this.CartedProduct.Res,'cart')
+    // });
     if (localStorage.getItem('UserID') !== null) {
       this.ValueRec = true;
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {
@@ -143,15 +150,16 @@ export class HeaderComponent implements OnInit {
   }
 
   cartProduct() {
-    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
-
+   // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+  
     if (this.CartedProduct) {
 
-      return this.CartedProduct['products'].length;
+     return  this.CartedProduct.Res.length;
 
     } else {
       return 0
     }
+
   }
 
   closeSearch1(event) {
