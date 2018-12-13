@@ -61,11 +61,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
     // console.log('fdsfsdfdsgj' + localStorage.getItem('UserID'));
-    // this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+    this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
-    //   this.CartedProduct = resSlidersData;
-    //   console.log(this.CartedProduct.Res,'cart')
-    // });
+      this.CartedProduct = resSlidersData;
+      console.log(this.CartedProduct.Res,'cart')
+    });
     if (localStorage.getItem('UserID') !== null) {
       this.ValueRec = true;
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {
@@ -150,7 +150,7 @@ export class HeaderComponent implements OnInit {
   }
 
   cartProduct() {
-   // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+  // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
   
     if (this.CartedProduct) {
 

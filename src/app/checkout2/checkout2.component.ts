@@ -152,11 +152,20 @@ export class Checkout2Component implements OnInit {
 
     if (isPlatformBrowser(this.platformId)){
 
-    for (const tmp of this.CartedProduct['products']) {
-      if ( tmp.ProductID === Abc ) {
+    for (const tmp of this.CartedProduct.Res) {
+      if ( tmp.id === Abc ) {
         console.log(tmp);
-        this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
-        localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+        this.GetAdd.DeleteTodoList(tmp.id).subscribe(data => {
+          swal('Your offer has been Deleted.','','success');
+          this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+
+            this.CartedProduct = resSlidersData;
+            console.log(this.CartedProduct.Res,'cart')
+          });
+
+        });
+      //  this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
+        //localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
         }
       }
     }

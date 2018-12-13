@@ -220,9 +220,23 @@ export class HomeService {
     headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'CheckoutProducts/' ,{headers : headers}).map(response => response.json());
+    
     // console.log(this.CateDeatils)
   }
-
+  // DeleteOffer(pk:any, st:any) {
+  //   return this._http.delete(this.ServerUrl + 'deleteOffer/' + pk + '/' + st).map(response => response.json());
+  // }
+  DeleteTodoList(id) {
+    // console.log('mmmmmmmmmmmmmmmmmmmmm');
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+     return this.http.delete(this.ServerUrl +'Checkout_Edit/'+ id ,
+     {headers: headers}).map((response: Response) => response.json());
+     }
   addtocartProduct(Product_ID: any) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
