@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
   ValueRec: Boolean = false;
   GetUSerDOne: any [];
+  cartcount:any=[];
   CartedProduct: any = [];
   ItemInCart: any ;
   public filteredList = [];
@@ -61,11 +62,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
     // console.log('fdsfsdfdsgj' + localStorage.getItem('UserID'));
-    this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+    // this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
-      this.CartedProduct = resSlidersData;
-      console.log(this.CartedProduct.Res,'cart')
-    });
+    //   this.CartedProduct = resSlidersData;
+    //   this.cartcount= this.CartedProduct;
+    //   console.log(this.CartedProduct.Res,'cart')
+    // });
     if (localStorage.getItem('UserID') !== null) {
       this.ValueRec = true;
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {
@@ -151,10 +153,15 @@ export class HeaderComponent implements OnInit {
 
   cartProduct() {
   // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
-  
-    if (this.CartedProduct) {
+  // this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
-     return  this.CartedProduct.Res.length;
+  //   this.CartedProduct = resSlidersData;
+  //   console.log(this.CartedProduct.Res,'cart')
+  // });
+  //this.cartcount= this.cartProduct;
+    if (this.cartcount) {
+
+     return  this.cartcount.Res.length;
 
     } else {
       return 0

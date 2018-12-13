@@ -18,7 +18,7 @@ export class ActiveAdServices {
   returnUrl: string;
   // http://192.168.30.222:7000
   // https://apis.dhaar.pk
-  ServerUrl = 'https://apis.dhaar.pk/products/';
+  ServerUrl = 'http://192.168.30.225:7000/products/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
 
   constructor(private _http: Http,
@@ -61,6 +61,13 @@ export class ActiveAdServices {
 
   GetallWatchProducts(page: any, UserID: any) {
     return this._http.get( this.ServerUrl + 'GetallWatchProducts/' + UserID + '?page=' + page, ).map(response => response.json());
+  }
+  getwatchproducts(){
+    const headers = new Headers();
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    headers.append('Content-Type', 'application/json');
+    return this._http.get(this.ServerUrl + 'watchList/',{headers:headers}).map(response => response.json());
   }
 
   GetStoreInformation(storename) {

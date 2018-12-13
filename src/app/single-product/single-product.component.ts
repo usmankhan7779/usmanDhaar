@@ -382,9 +382,10 @@ export class SingleProductComponent implements OnInit {
   WatchProduct() {
     if (isPlatformBrowser(this.platformId)) {
       this.GetAdd.WatchProduct(
-        this.resultProduct['ProductID'],
-        localStorage.getItem('UserID'),
-        this.resultProduct['Cat_Name'],
+        this.productid1
+        // this.resultProduct['ProductID'],
+        //localStorage.getItem('UserID'),
+       // this.resultProduct['Cat_Name'],
       ).subscribe(data => {
           // console.log(data);
           // this.WatchStatus=false;

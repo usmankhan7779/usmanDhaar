@@ -50,7 +50,8 @@ export class WatchProductComponent implements OnInit {
 
         this._nav.navigate(['/login']);
       }
-      this.httpService.GetallWatchProducts(1, localStorage.getItem('UserID')).subscribe(data => {
+      // 1, localStorage.getItem('UserID')
+      this.httpService.getwatchproducts().subscribe(data => {
         this.ActiveProduct = data;
         if (this.ActiveProduct['totalItems'] === 0) {
           this.errormessage = true;

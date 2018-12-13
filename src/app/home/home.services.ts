@@ -182,7 +182,8 @@ export class HomeService {
     });
 
   }
-  WatchProduct(Product_ID: any,  User_ID: any, CatName: any) {
+  
+  WatchProduct(Product_ID: any) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'JWT ' +  this.authentication);
@@ -193,9 +194,9 @@ export class HomeService {
 
       return this._http.post(this.ServerUrl + 'watchList/',
         {
-          'ProductID': Product_ID,
-          'Cat_Name': CatName ,
-          'User_ID': User_ID,
+          'product': Product_ID,
+          // 'Cat_Name': CatName ,
+          // 'User_ID': User_ID,
         }, { headers: headers }).map((res: Response) => {
         if (res) {
 
@@ -223,9 +224,7 @@ export class HomeService {
     
     // console.log(this.CateDeatils)
   }
-  // DeleteOffer(pk:any, st:any) {
-  //   return this._http.delete(this.ServerUrl + 'deleteOffer/' + pk + '/' + st).map(response => response.json());
-  // }
+  
   DeleteTodoList(id) {
     // console.log('mmmmmmmmmmmmmmmmmmmmm');
     const headers = new Headers();
