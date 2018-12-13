@@ -64,7 +64,7 @@
           <ul class="searchList">
             <!-- ad start -->
             <ng-container *ngIf="!errormessage">
-              <ng-container *ngFor="let phoneProducts of ActiveProduct.Res | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+              <ng-container *ngFor="let phoneProducts of ActiveProduct.Results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
                 <li>
                   <div class="row">
                     <div class="col-md-2 col-sm-4">
@@ -79,9 +79,10 @@
                             <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
                             <div class="clearfix"></div>
                             <p>{{phoneProducts.P_Des}}</p>
-                            <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">View Details</a></div>
+                            <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name_id, SubCatName:phoneProducts.Sub_Cat_Name_id, id:phoneProducts.id }">View Details</a></div>
                           </div>
                           <div class="col-md-4 col-sm-5 text-right">
+                              <a (click)="TrashcartElement(phoneProducts.id)"><i class="fa fa-trash-o"></i></a>
                             <ng-container *ngIf="phoneProducts.Auction === true">
                             <div class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>
                             </ng-container>

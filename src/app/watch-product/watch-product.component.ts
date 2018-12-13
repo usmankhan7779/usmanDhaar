@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActiveAdServices} from "../active-ad/active-ad.services";
 import swal from 'sweetalert2';
+import { HomeService } from '../home/home.services';
 
 @Component({
   selector: 'app-watch-product',
@@ -21,6 +22,7 @@ export class WatchProductComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private route: ActivatedRoute,
               private _nav: Router,
+              private GetAdd: HomeService,
               private httpService: ActiveAdServices) {
   }
   pageTrendChanged(event) {
@@ -59,6 +61,29 @@ export class WatchProductComponent implements OnInit {
       });
     }
 
+  }
+  TrashcartElement(Abc: any) {
+
+    if (isPlatformBrowser(this.platformId)){
+
+    for (const tmp of this.ActiveProduct.Results) {
+      if ( tmp.id === Abc ) {
+        console.log(tmp);
+        this.GetAdd.Deletewatchlist(tmp.id).subscribe(data => {
+
+          swal('Your offer has been Deleted.','','success');
+          this.httpService.getwatchproducts().subscribe(data => {
+            this.ActiveProduct = data;
+            if (this.ActiveProduct['totalItems'] === 0) {
+              this.errormessage = true;
+            }
+          });
+        });
+      //  this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
+        //localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+        }
+      }
+    }
   }
 
   clearSessionstoreage() {

@@ -152,16 +152,16 @@ export class HeaderComponent implements OnInit {
   }
 
   cartProduct() {
-  // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+  this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
   // this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
   //   this.CartedProduct = resSlidersData;
   //   console.log(this.CartedProduct.Res,'cart')
   // });
-  //this.cartcount= this.cartProduct;
-    if (this.cartcount) {
+  // this.cartcount= this.cartProduct;
+    if (this.CartedProduct) {
 
-     return  this.cartcount.Res.length;
+     return  this.CartedProduct.Res.length;
 
     } else {
       return 0

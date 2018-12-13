@@ -19,7 +19,7 @@ export class HomeService {
   returnUrl: string;
   // http://192.168.30.222:7000
   // https://apis.dhaar.pk
-  ServerUrl =  'https://apis.dhaar.pk/products/';
+  ServerUrl =  'http://192.168.30.225:7000/products/';
   // serverurladdtocart=''
 
 
@@ -222,20 +222,24 @@ export class HomeService {
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'CheckoutProducts/' ,{headers : headers}).map(response => response.json());
     
-    // console.log(this.CateDeatils)
   }
   
-  DeleteTodoList(id) {
-    // console.log('mmmmmmmmmmmmmmmmmmmmm');
+  DeleteTodoList(id:any) {
     const headers = new Headers();
-    // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
     headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
      return this.http.delete(this.ServerUrl +'Checkout_Edit/'+ id ,
      {headers: headers}).map((response: Response) => response.json());
      }
+     Deletewatchlist(id:any) {
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
+       return this.http.delete(this.ServerUrl +'editwatchList/'+ id ,
+       {headers: headers}).map((response: Response) => response.json());
+       }
   addtocartProduct(Product_ID: any) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
