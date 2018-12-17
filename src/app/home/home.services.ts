@@ -17,7 +17,7 @@ export class HomeService {
   private head: any;
   public login: any;
   returnUrl: string;
-  // http://192.168.30.222:7000
+  // http://192.168.30.225:7000
   // https://apis.dhaar.pk
   ServerUrl =  'http://192.168.30.225:7000/products/';
   // serverurladdtocart=''
@@ -232,6 +232,7 @@ export class HomeService {
      return this.http.delete(this.ServerUrl +'Checkout_Edit/'+ id ,
      {headers: headers}).map((response: Response) => response.json());
      }
+     
      Deletewatchlist(id:any) {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');

@@ -9,6 +9,7 @@ import { LoginService } from '../log-in/log-in.services';
 import swal from 'sweetalert2';
 import {FormGroup} from '@angular/forms';
 import {ImageViewerModule, ImageViewerConfig, CustomEvent} from 'ngx-image-viewer';
+import { SharedData } from '../shared-service';
 declare const $: any;
 
 @Component({
@@ -106,6 +107,7 @@ export class SingleProductComponent implements OnInit {
                private GetAdd: HomeService,
                private LOginObj: LoginService,
                private httpService: BuyerDashboardServices,
+               public _shareData: SharedData,
                private router: Router) { }
 
 
@@ -493,12 +495,7 @@ addtocartproducts(){
 }
   Addtocart(Abc: any) {
     if (isPlatformBrowser(this.platformId)) {
-      // alert('Message of error');
-      // console.log(Abc);
-      // console.log('esssssssssss  ', this.resultProduct.Quantity);
-      // console.log(this.resultProduct['Quantity']);
-
-      if (Abc === '') {
+     if (Abc === '') {
         swal('Please Select Product Quantity first','','error');
       } else if (Abc > this.resultProduct.Quantity) {
         swal('You are exceding from Maximum Quantity of product available','','error');
@@ -528,7 +525,8 @@ addtocartproducts(){
               //this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
               this.GetAdd.addtocartProduct(this.productid1).subscribe();
               console.log(this.productid1,"this product")
-              this.TmpresultProduct['products'].push(this.resultProduct);
+
+              // this.TmpresultProduct['products'].push(this.resultProduct);
              // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
               alert("if wali condtion")
 
@@ -540,17 +538,17 @@ addtocartproducts(){
           } else {
 
             this.resultProduct.itemsqty = +Abc;
-            this.TmpresultProduct['products'].push(this.resultProduct);
+           // this.TmpresultProduct['products'].push(this.resultProduct);
             this.GetAdd.addtocartProduct(this.productid1).subscribe();
             console.log(this.productid1,"this product")
             // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
             // console.log(this.products);
             alert("else wali condition")
-            this.router.navigate(['/checkout2']);
+           this.router.navigate(['/checkout2']);
           }
         } catch (e) {
-          this.resultProduct.itemsqty = +Abc;
-          this.TmpresultProduct['products'].push(this.resultProduct);
+         this.resultProduct.itemsqty = +Abc;
+          //this.TmpresultProduct['products'].push(this.resultProduct);
           this.GetAdd.addtocartProduct(this.productid1).subscribe();
           console.log(this.productid1,"this product")
           // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));

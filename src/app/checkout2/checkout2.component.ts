@@ -99,12 +99,12 @@ export class Checkout2Component implements OnInit {
     this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
         this.CartedProduct = resSlidersData;
-        console.log(this.CartedProduct.Res,'cart')
+        console.log(this.CartedProduct.Results,'cart')
 
    
       // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
       console.log('Carted products are:', this.CartedProduct);
-      for (const tmp1 of this.CartedProduct.Res) {
+      for (const tmp1 of this.CartedProduct.Results) {
         console.log('Temp1 is:', tmp1);
         console.log('Values are:',tmp1.Pic);
         this.ProPics.push(tmp1.Pic.split(',')[0]);
@@ -113,7 +113,7 @@ export class Checkout2Component implements OnInit {
 
 
     this.Total = 0;
-    for (const tmp of this.CartedProduct.Res) {
+    for (const tmp of this.CartedProduct.Results) {
 
       this.Total = this.Total + (tmp.FixedPrice * tmp.Quantity);
       console.log(tmp.FixedPrice,'total')
@@ -124,25 +124,25 @@ export class Checkout2Component implements OnInit {
 
     });
 
-    for (const {item,index} of this.CartedProduct['products'].map((item,index) => ({item,index}))) {
-      if(index === this.CartedProduct['products'].length-1) {
-        console.log('item is:  ', item, '  Index is:  ', index);
-      }
-    }
+    // for (const {item,index} of this.CartedProduct['products'].map((item,index) => ({item,index}))) {
+    //   if(index === this.CartedProduct['products'].length-1) {
+    //     console.log('item is:  ', item, '  Index is:  ', index);
+    //   }
+    // }
 
     }
   }
 
   onChange(qty: string, Abc: any) {
 
-    for (const tmp of this.CartedProduct.Res) {
+    for (const tmp of this.CartedProduct.Results) {
       if (tmp.ProductID === Abc) {
         tmp.Quantity = qty;
       }
 
     }
     this.Total = 0;
-    for (const tmp of this.CartedProduct.Res) {
+    for (const tmp of this.CartedProduct.Results) {
       this.Total = this.Total + (tmp.FixedPrice * tmp.Quantity);
     }
   }
@@ -152,15 +152,16 @@ export class Checkout2Component implements OnInit {
 
     if (isPlatformBrowser(this.platformId)){
 
-    for (const tmp of this.CartedProduct.Res) {
+    for (const tmp of this.CartedProduct.Results) {
       if ( tmp.id === Abc ) {
-        console.log(tmp);
+        console.log(tmp.id);
         this.GetAdd.DeleteTodoList(tmp.id).subscribe(data => {
+          alert(tmp.id)
           swal('Your offer has been Deleted.','','success');
           this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
             this.CartedProduct = resSlidersData;
-            console.log(this.CartedProduct.Res,'cart')
+            console.log(this.CartedProduct.Results,'cart')
           });
 
         });

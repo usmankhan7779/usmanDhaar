@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
 
     //   this.CartedProduct = resSlidersData;
     //   this.cartcount= this.CartedProduct;
-    //   console.log(this.CartedProduct.Res,'cart')
+    //   console.log(this.CartedProduct.JSON['Total Result'],'cart')
     // });
     if (localStorage.getItem('UserID') !== null) {
       this.ValueRec = true;
@@ -84,8 +84,6 @@ export class HeaderComponent implements OnInit {
             });
 
           } else {
-
-
 
           }
         },
@@ -161,7 +159,7 @@ export class HeaderComponent implements OnInit {
   // this.cartcount= this.cartProduct;
     if (this.CartedProduct) {
 
-     return  this.CartedProduct.Res.length;
+     return  this.CartedProduct.Results.length;
 
     } else {
       return 0

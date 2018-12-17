@@ -51,6 +51,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { LayoutComponent } from './layout/layout.component';
 import { OwlModule} from "ngx-owl-carousel";
 import { UploadItemService } from './file-uploads/upload-item-service';
+import { SharedData } from './shared-service';
 
 
 @NgModule({
@@ -94,6 +95,7 @@ import { UploadItemService } from './file-uploads/upload-item-service';
     PreloaderService,
     UploadItemService,
     PostService,
+    SharedData,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
