@@ -4,6 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { LoginService } from '../log-in/log-in.services';
 import { ActiveAdServices } from '../active-ad/active-ad.services';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SharedData } from '../shared-service';
 
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 import swal from 'sweetalert2';
@@ -50,9 +51,10 @@ export class Checkout2Component implements OnInit {
   InvoiceIDSet: any;
   id: any;
   ProPics: any=[];
+qty='1';
 
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object,
+total:any;
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, public _shareData: SharedData,
               private Renderer123: Renderer,
               private route: ActivatedRoute,
               private _nav: Router,
@@ -67,7 +69,7 @@ export class Checkout2Component implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-
+      this._shareData.currentMessagetotal.subscribe(message => this.total = message)
 
       console.log('Yahoooo', this.OrderPlaced);
     this.sub = this.route
@@ -95,12 +97,14 @@ export class Checkout2Component implements OnInit {
 
         }
       });
+
   //  GetAllProductcart(pk: string) {
     this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
         this.CartedProduct = resSlidersData;
         console.log(this.CartedProduct.Results,'cart')
-
+        this.total=this.CartedProduct['Total Result']
+        this._shareData.watchtotal(this.total);
    
       // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
       console.log('Carted products are:', this.CartedProduct);
@@ -132,12 +136,13 @@ export class Checkout2Component implements OnInit {
 
     }
   }
-
-  onChange(qty: string, Abc: any) {
+  // value='1'
+  onChange(qty, Abc: any,value:any) {
 
     for (const tmp of this.CartedProduct.Results) {
       if (tmp.ProductID === Abc) {
-        tmp.Quantity = qty;
+        tmp.Quantity = value;
+        console.log(value)
       }
 
     }
@@ -157,10 +162,20 @@ export class Checkout2Component implements OnInit {
         console.log(tmp.id);
         this.GetAdd.DeleteTodoList(tmp.id).subscribe(data => {
           alert(tmp.id)
+          this.total=this.CartedProduct['Total Result']
+            // this._shareData.watchtotal(this.total);
+          this._shareData.watchtotal(this.total);
+          alert(this._shareData.watchtotal(this.total))
+          // this._shareData.currentMessagetotal.subscribe(message => this.total = message)
           swal('Your offer has been Deleted.','','success');
           this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
             this.CartedProduct = resSlidersData;
+            this.total=this.CartedProduct['Total Result']
+            this._shareData.watchtotal(this.total);
+            alert(this._shareData.watchtotal(this.total))
+            
+            this._shareData.currentMessagetotal.subscribe(message => this.total = message)
             console.log(this.CartedProduct.Results,'cart')
           });
 
@@ -254,9 +269,9 @@ export class Checkout2Component implements OnInit {
       // console.log('itemsqty',this.CartedProduct['products'][0]['itemsqty']);
       // console.log('Quantity',this.CartedProduct['products'][0]['Quantity']);
 
-      if (this.CartedProduct['products'][0]['itemsqty'] > this.CartedProduct['products'][0]['Quantity']) {
-        alert('You are exceding from Maximum Quantity of product available');
-      } else {
+      // if (this.CartedProduct['products'][0]['itemsqty'] > this.CartedProduct['products'][0]['Quantity']) {
+        // alert('You are exceding from Maximum Quantity of product available');
+      // } else {
         this.orderreview = false;
         if (this.Total > 0) {
 
@@ -303,7 +318,7 @@ export class Checkout2Component implements OnInit {
         }
 
       }
-    }
+    // }
   }
 
   GuestShippingDetails() {

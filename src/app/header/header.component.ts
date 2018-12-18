@@ -9,6 +9,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { LoginService } from '../log-in/log-in.services';
 import {CategoryServices} from "../category-detail/category-detail.services";
 import { HomeService } from '../home/home.services';
+import { SharedData } from '../shared-service';
 
 declare const $: any;
 
@@ -37,11 +38,13 @@ export class HeaderComponent implements OnInit {
   ProNav = false;
   GetallSubCat: any=[];
   GetallSubSubCat: any=[];
+  total:any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private PostAdd: AdService,
               private _nav: Router,
               private GetAdd: HomeService,
+              public _shareData: SharedData,
               private httpService: CategoryServices) { }
 
   // @HostListener('window:popstate', ['$event'])
@@ -68,6 +71,7 @@ export class HeaderComponent implements OnInit {
     //   this.cartcount= this.CartedProduct;
     //   console.log(this.CartedProduct.JSON['Total Result'],'cart')
     // });
+    this._shareData.currentMessagetotal.subscribe(message => this.total = message)
     if (localStorage.getItem('UserID') !== null) {
       this.ValueRec = true;
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {

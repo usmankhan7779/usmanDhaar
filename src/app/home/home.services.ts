@@ -255,12 +255,13 @@ export class HomeService {
           'product_id': Product_ID
         }, { headers: headers }).map((res: Response) => {
         if (res) {
-
-          if (res.status === 201) {
-            const responce_data = res.json();
-            return [{ status: res.status, json: res }];
-          }
+          if (res.status === 201 || res.status ===200) {
+         
+            const responce_data = res.json()['Message'];
+            return { status: res.status, responce_data };
+        
         }
+      }
       }).catch((error: any) => {
         console.log(error.toString());
         return Observable.throw(new Error(error.status));

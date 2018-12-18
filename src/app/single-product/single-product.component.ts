@@ -98,6 +98,7 @@ export class SingleProductComponent implements OnInit {
   count4:any=0;
   count5:any=0;
   username:any;
+  CartedProduct;
   Title: any;
 
   // imageIndex = this.ProPics;
@@ -113,7 +114,7 @@ export class SingleProductComponent implements OnInit {
 
   ngOnInit() {
 
-
+    this._shareData.currentMessagetotal.subscribe(message => this.total = message)
 
     if (isPlatformBrowser(this.platformId)) {
       setInterval(() => {
@@ -493,7 +494,9 @@ addtocartproducts(){
   
 
 }
-  Addtocart(Abc: any) {
+total:any; 
+statuss; 
+Addtocart(Abc: any) {
     if (isPlatformBrowser(this.platformId)) {
      if (Abc === '') {
         swal('Please Select Product Quantity first','','error');
@@ -523,8 +526,45 @@ addtocartproducts(){
               // console.log('eeeeeeeee',this.resultProduct);
               this.resultProduct.itemsqty = +Abc;
               //this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
-              this.GetAdd.addtocartProduct(this.productid1).subscribe();
+              this.GetAdd.addtocartProduct(this.productid1).subscribe(
+              data=>{
+                console.log(data,'aaaaaaaaaaa')
+              
+                this.total=data['Total Result']
+                alert(this.total)
+                alert(this.statuss)
+                
+                this.statuss=data.responce_data;
+                console.log(this.statuss,'status')
+              this._shareData.watchtotal(this.total)
+                          
+              if(this.statuss == "Product Already In Your Checkout"){
+                swal({
+                   type: 'info',
+                   title: 'This Product Is Already In Your add to cart',
+                   showConfirmButton: true,
+                   confirmButtonColor: "#090200",
+                   width: '512px',
+                  
+               });
+           }
+           else if (this.statuss == "Product Added Successfully In Checkout"){
+               swal({
+                   type: 'success',
+                   title: 'Products succesfully added to your Add to cart list',
+                   showConfirmButton: true,
+                   confirmButtonColor: "#090200",
+                   width: '512px',
+               });
+               alert("else wali condition")
+           this.router.navigate(['/checkout2']);
+              
+           }
+              }
+
+              );
               console.log(this.productid1,"this product")
+              
 
               // this.TmpresultProduct['products'].push(this.resultProduct);
              // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
@@ -539,21 +579,91 @@ addtocartproducts(){
 
             this.resultProduct.itemsqty = +Abc;
            // this.TmpresultProduct['products'].push(this.resultProduct);
-            this.GetAdd.addtocartProduct(this.productid1).subscribe();
+            this.GetAdd.addtocartProduct(this.productid1).subscribe(
+              data=>{
+                console.log(data,'aaaaaaaaaaa')
+              
+                this.total=data['Total Result']
+                alert(this.total)
+                alert(this.statuss)
+                
+                this.statuss=data.responce_data;
+                console.log(this.statuss,'status')
+              this._shareData.watchtotal(this.total)
+                          
+              if(this.statuss == "Product Already In Your Checkout"){
+                swal({
+                   type: 'info',
+                   title: 'This Product Is Already In Your add to cart',
+                   showConfirmButton: true,
+                   confirmButtonColor: "#090200",
+                   width: '512px',
+                  
+               });
+           }
+           else if (this.statuss == "Product Added Successfully In Checkout"){
+               swal({
+                   type: 'success',
+                   title: 'Products succesfully added to your Add to cart list',
+                   showConfirmButton: true,
+                   confirmButtonColor: "#090200",
+                   width: '512px',
+               });
+               alert("else wali condition")
+           this.router.navigate(['/checkout2']);
+              
+           }
+                                         }
+            );
             console.log(this.productid1,"this product")
             // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
             // console.log(this.products);
-            alert("else wali condition")
-           this.router.navigate(['/checkout2']);
+            
           }
         } catch (e) {
          this.resultProduct.itemsqty = +Abc;
           //this.TmpresultProduct['products'].push(this.resultProduct);
-          this.GetAdd.addtocartProduct(this.productid1).subscribe();
+          this.GetAdd.addtocartProduct(this.productid1).subscribe(
+            data=>{
+              // this._shareData.watchtotal(this.total)
+              console.log(data,'aaaaaaaaaaa')
+              
+              this.total=data['Total Result']
+              alert(this.total)
+              alert(this.statuss)
+              
+              this.statuss=data.responce_data;
+              console.log(this.statuss,'status')
+            this._shareData.watchtotal(this.total)
+                        
+            if(this.statuss == "Product Already In Your Checkout"){
+              swal({
+                 type: 'info',
+                 title: 'This Product Is Already In Your add to cart',
+                 showConfirmButton: true,
+                 confirmButtonColor: "#090200",
+                 width: '512px',
+                
+             });
+         }
+         else if (this.statuss == "Product Added Successfully In Checkout"){
+             swal({
+                 type: 'success',
+                 title: 'Products succesfully added to your Add to cart list',
+                 showConfirmButton: true,
+                 confirmButtonColor: "#090200",
+                 width: '512px',
+             });
+             alert("else wali condition")
+         this.router.navigate(['/checkout2']);
+            
+         }
+            }
+          );
           console.log(this.productid1,"this product")
           // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
           // console.log(this.products);
-          this.router.navigate(['/checkout2']);
+          // this.router.navigate(['/checkout2']);
         }
 
       }
