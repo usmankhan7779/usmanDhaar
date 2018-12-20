@@ -22,7 +22,8 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
-  ServerUrl =  'https://apis.dhaar.pk/user/';
+
+  ServerUrl =  'http://192.168.30.225:7000/user/';
   StoreServerUrl =  'https://apis.dhaar.pk/store/';
   EMailServerUrl =  'https://apis.dhaar.pk/rest-auth/';
 
@@ -116,6 +117,19 @@ export class LoginService {
   GetUSerdetailsByUserId(decoded: any) {
 
     return this._http.get(this.ServerUrl + 'Get_User_details/' + decoded).map(response => response.json());
+    // return this._http.get(this.ServerUrl + 'post_shipment_details/' + decoded).map(response => response.json());
+  }
+
+  GetUSerdetailsByUserId1() {
+
+    // return this._http.get(this.ServerUrl + 'Get_User_details/' + decoded).map(response => response.json());
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'post_shipment_details/' ,{headers: headers}).map(response => response.json());
   }
 
 

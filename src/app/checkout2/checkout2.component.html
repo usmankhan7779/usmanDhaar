@@ -33,24 +33,24 @@
                   <ng-container *ngFor="let abc of CartedProduct.Results; let i=index">
                   <tr>
                     <td class="cart_product">
-                      <a href="#"><img src="{{ ProPics[i]}}" alt="products" alt="Product"></a>
+                      <a href="#"><img src="{{ ProPics[i]}}" alt="products" alt="Product" onerror="this.src='../../assets/images/Check-Resolution.png'"></a>
                     </td>
                     <td class="cart_description">
-                      <p class="product-name"><a href="#">{{ abc.P_Title }} </a></p>
+                      <p class="product-name"><a href="#">{{ abc.product.P_Title }} </a></p>
                       <!--<small><a href="#">Color : Beige</a></small><br>-->
                       <!--<small><a href="#">Size : S</a></small>-->
                     </td>
                     <td class="cart_avail"><span class="label label-success">In stock</span></td>
-                    <td class="price"><span>Rs: {{ abc.FixedPrice | number:'.0-0' }}</span></td>
+                    <td class="price"><span>Rs: {{ abc.product.FixedPrice | number:'.0-0' }}</span></td>
                     <td class="qty">
                       <form role="form">
-                        <input maxlength="3" minlength="1" (change)="onChange($event, abc.ProductID,qty.value)" name="qty" #qty
+                        <input maxlength="3" minlength="1" (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty
                                [(ngModel)]="abc.Quantity" class="form-control input-sm" type="number"
                               >
                       </form>
                     </td>
                     <td class="price">
-                      <span>Rs: {{ abc.FixedPrice * abc.Quantity | number:'.0-0' }} </span>
+                      <span>Rs: {{ abc.product.FixedPrice * abc.Quantity | number:'.0-0' }} </span>
                     </td>
                     <td class="action">
                       <a (click)="TrashcartElement(abc.id)"><i class="fa fa-trash-o"></i></a>
@@ -640,7 +640,7 @@
 
 
           <ng-container *ngIf="BillingMethod === true">
-            <h4 class="checkout-sep">Shipping Information</h4>
+            <h4 class="checkout-sep">Shippingssss Information</h4>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad" >
 
 
@@ -650,46 +650,57 @@
                 </div>
                 <div class="panel-body">
                   <div class="row">
-                    <ng-container *ngIf="GetUSerDOne !== null">
-                      <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
-                      <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div>
+                      <div *ngFor="let GetUser of GetUSerDOne.Results">
+                    <!-- <ng-container *ngIf="GetUSerDOne !== null"> -->
+                      
+                      <!-- <div *ngIf="GetUser['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{GetUser['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
+                      <div *ngIf="GetUser['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div> -->
                       <div class=" col-md-8 col-lg-8 ">
+<!-- <div *ngIf="GetUSer['default_shipment_address'] == 'true'"> -->
+                          <div >
                         <table class="table table-user-information">
-                          <tbody>
+                          <tbody *ngIf="GetUser.default_shipment_address == true">
                           <tr>
                             <td>Name:</td>
-                            <td>{{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}</td>
+                            <td>{{GetUser.fullname }}</td>
                           </tr>
                           <tr>
                             <td>Mobile:</td>
-                            <td>{{GetUSerDOne['Mobile']}}</td>
+                            <td>{{GetUser.phone_no}}</td>
                           </tr>
                           <tr>
-                            <td>Address:</td>
-                            <td>{{GetUSerDOne['Address']}}</td>
+                            <td>Area:</td>
+                            <td>{{GetUser.area}}</td>
                           </tr>
 
                           <tr>
                           <tr>
                             <td>City:</td>
-                            <td>{{ GetUSerDOne['City'] +' ' +GetUSerDOne['Zip'] }}</td>
+                            <!-- +' ' +GetUser['Zip']/ -->
+                            <td>{{ GetUser.city  }}</td>
                           </tr>
+                          
                           <tr>
                             <td>State</td>
-                            <td>{{GetUSerDOne['State'] }} </td>
+                            <td>{{GetUser.province }} </td>
                           </tr>
                           <tr>
-                            <td>Country</td>
-                            <td>{{GetUSerDOne['Country'] }}</td>
+                            <td>Address</td>
+                            <td>{{GetUser.address }}</td>
                           </tr>
-
+<tr>
+  <td>Default Address:</td>
+  <td>{{GetUser.default_shipment_address}}</td>
+</tr>
 
                           </tbody>
                         </table>
-
-
+<!-- </div> -->
                       </div>
-                    </ng-container>
+                      </div>
+                    
+                    <!-- </ng-container> -->
+                    </div>
                   </div>
                 </div>
                 <div class="panel-footer">
@@ -700,203 +711,414 @@
                 </div>
 
               </div>
+              <div class="col-md-9 col-sm-8">
+                  <form name="form1" role="form" class="login-form">
+        
+        
+                  <div class="userccount">
+                    <h5>My Details</h5>
+        
+        
+                    <div class="tab-content">
+                      <!-- <ng-container *ngIf="GetUSerdetails"> -->
+                        <div id="step1" class="formpanel tab-pane fade in active">
+        
+                          <ul>
+        
+                            <li class="row">
+                              <div class="col-sm-6">
+        
+                                <label for="FName" class="required">First Name(*)</label>
+                                <input type="text"ng-Model="model.FName" #FName name="FName"
+                                       required class="input form-control"
+                                       placeholder="First Name"
+                                       id="FName"
+                                       value="{{GetUSerdetails.Fname}}">
+        
+        
+        
+                              </div>
+                              <!--/ [col] -->
+        
+        
+                             
+                              <div class="col-sm-6">
+        
+                                  <label for="telephone" class="required">Contact Number(*)</label>
+          
+          
+                                  <input class="input form-control"
+          
+                                         [textMask]="{mask: mask}"
+                                         placeholder="your contact number"
+                                         type="text" required ng-Model="model.personal" #personal name="personal"
+                                         id="telephone"
+                                         value="{{GetUSerdetails.Mobile}}">
+                                </div>
+        
+                            </li>
+                            
+                            <!--/ .row -->
+        
+                            <br>
+                            <li class="row">
+        
+                              <!-- <div class="col-sm-6">
+        
+                                <label   class="required">Select Your Country(*) </label>
+                                <select  class="form-control"  ng-Model="model.Country" #Country name="Country" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                                  <option value="Pakistan" selected>Pakistan</option>
+        
+                                </select>
+        
+                              </div>
+         -->
+        
+        
+        
+                              <div class="col-sm-6">
+        
+                                <!-- <label  class="required">Select Your State/Province(*)</label>
+                                <select  class="form-control"  ng-Model="model.State" #State name="State" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                                  <option value="Punjab" selected>Punjab</option>
+        
+                                  <option value="Sindh" >Sindh</option>
+                                  <option value="Balochistan" >Balochistan</option>
+                                  <option value="Khyber Pakhtunkhwa" >Khyber Pakhtunkhwa</option>
+        
+        
+                                </select> -->
+                                <!-- <div class="col-sm-6"> -->
+        
+                                    <label for="State" class="required">Province(*)</label>
+                                    <input type="text"ng-Model="model.State" #FName name="State"
+                                           required class="input form-control"
+                                           placeholder="Province"
+                                           id="State"
+                                           value="{{GetUSerdetails.State}}">
+            
+            
+            
+                                  <!-- </div> -->
+        
+                              </div>
+                              <div class="col-sm-6">
+        
+                                  <label  class="required">Your City(*)</label>
+          
+                                  <input class="input form-control"
+                                         placeholder="Your City"
+                                         type="text" required
+                                         ng-Model="model.City" #City name="City"
+                                         value="{{GetUSerdetails.City}}">
+                                </div>
+        
+        
+                            </li>
+        
+                            <br>
+                            <li class="row">
+        
+                            
+        
+                              <!-- <div class="col-sm-6">
+        
+                                <label for="postal_code" class="required">Zip/Postal Code(*)</label>
+                                <input class="input form-control" type="text"
+                                       pattern="([0-9])+$"
+        
+                                       placeholder="55560"
+                                       required ng-Model="model.zipcode" #zipcode name="zipcode" id="postal_code"
+                                       value="{{GetUSerdetails.Zip}}">
+                              </div> -->
+        
+        
+                            </li>
+        
+                            <!-- <br> -->
+                            <li class="row">
+        
+                                <div class="col-sm-12">
+        
+                                    <label  class="required">Area(*)</label>
+            
+                                    <input class="input form-control"
+                                           placeholder="Your Area"
+                                           type="text" required
+                                           ng-Model="model.area" #area name="area"
+                                           value="{{GetUSerdetails.area}}">
+                                  </div>
+                              <!-- <div class="col-sm-6">
+        
+                                <label for="telephone" class="required">Owner Contact Number(*)</label>
+        
+        
+                                <input class="input form-control"
+        
+                                       [textMask]="{mask: mask}"
+                                       placeholder="your contact number"
+                                       type="text" required ng-Model="model.personal" #personal name="personal"
+                                       id="telephone"
+                                       value="{{GetUSerdetails.Mobile}}">
+                              </div> -->
+                              <!--/ [col] -->
+                              <!-- <div class="col-sm-6">
+        
+                                <div class="form-group">
+        
+                                  <label for="telephone" class="required">Upload Your Profile Picture</label>
+        
+        
+                                  <input type="file" #fileImportInput id="file1" name="file" class="file" data-preview-file-type="text" (change)="handleFileInput($event.target.files)"  multiple accept="image/*">
+        
+        
+                                </div>
+        
+                              </div> -->
+                              <!--/ [col] -->
+        
+                            </li><!--/ .row -->
+        
+                            <br>
+                            <li class="row">
+                              <div class="col-xs-12">
+        
+                                <label for="address" class="required">Address(*)</label>
+        
+                                <input type="text" class="input form-control" required
+                                       placeholder="shop #, street# etc"
+                                       ng-Model="model.address"
+                                       #address name="address" id="address"
+                                       value="{{GetUSerdetails.Address}}">
+                              </div><!--/ [col] -->
+                            </li><!-- / .row -->
+        
+        
+                          </ul>
+        
+        
+        
+                          <br>
+        
+        
+                          <div class="nav nav-tabs">
+                            <div *ngIf="Error"  class="alert alert-danger">
+                              <strong>Error </strong> While updating record.
+                            </div>
+        
+                            <div *ngIf="Right" class="alert alert-success">
+                              <strong>Profile Updated!  <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go to Dashboard Section</a></strong>
+                            </div>
+                            <div *ngIf="Waitcall" class="alert  alert-info">
+                              <p class="">
+                                <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
+        
+                              </p>
+                            </div>
+                            <input type="submit" (click)="save(FName.value,Lname.value,Country.value,State.value,City.value, zipcode.value, personal.value, address.value)" class="btn" value="Update">
+                          </div>
+                        </div>
+                      <!-- </ng-container> -->
+        
+                    </div>
+        
+        
+                  </div>
+        
+                  </form>
+                </div>
             </div>
 
             <form (ngSubmit)="f.form.valid  && ShippingDetails()" #f="ngForm" novalidate>
 
-              <!--<div class="box-border">-->
-                <!--<ul>-->
+              <!-- <div class="box-border">
+                <ul>
 
-                  <!--<li class="row">-->
+                  <li class="row">
 
-                    <!--<div class="col-sm-6">-->
+                    <div class="col-sm-6">
 
-                      <!--<label for="first_name_1" class="required">First Name  {{GetUSerDOne['Fname']}} </label>-->
-                      <!--<input [(ngModel)]="model.first_name" #first_name="ngModel" ng-Model="model.last_name"-->
-                             <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
-                             <!--class="input form-control" type="text" value="{{GetUSerDOne['Fname']}}" name="first_name" required id="first_name_1">-->
+                      <label for="first_name_1" class="required">First Name  {{GetUSerDOne['Fname']}} </label>
+                      <input [(ngModel)]="model.first_name" #first_name="ngModel" ng-Model="model.last_name"
+                             pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                             class="input form-control" type="text" value="{{GetUSerDOne['Fname']}}" name="first_name" required id="first_name_1">
 
-                      <!--<div *ngIf="f.submitted && !first_name.valid && first_name.errors "  style="color:red" class="help-block">First name is-->
-                        <!--required-->
+                      <div *ngIf="f.submitted && !first_name.valid && first_name.errors "  style="color:red" class="help-block">First name is
+                        required
 
-                      <!--</div>-->
+                      </div>
 
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+                    </div>
+                    <div class="col-sm-6">
 
+                      <label for="last_name_1" class="required">Last Name</label>
+                      <input [(ngModel)]="model.last_name" #last_name="ngModel" ng-Model="model.last_name"
+                             pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                             class="input form-control" type="text"
+                             value="{{GetUSerDOne['Lname']}}"
+                             name="last_name" id="last_name_1">
 
-                    <!--<div class="col-sm-6">-->
-
-                      <!--<label for="last_name_1" class="required">Last Name</label>-->
-                      <!--<input [(ngModel)]="model.last_name" #last_name="ngModel" ng-Model="model.last_name"-->
-                             <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
-                             <!--class="input form-control" type="text"-->
-                             <!--value="{{GetUSerDOne['Lname']}}"-->
-                             <!--name="last_name" id="last_name_1">-->
-
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
-
-                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
-
-                  <!--<li class="row">-->
+                    </div>
+                  </li>
+                  <li class="row">
 
 
-                    <!--<div class="col-sm-6">-->
-                      <!--&lt;!&ndash;pattern="^(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"&ndash;&gt;-->
-                      <!--<label for="email_address_1" class="required">Email Address Or Dhaar Username </label>-->
-                      <!--<input [(ngModel)]="model.email_address" ng-Model="model.email_address"-->
-                             <!--value="{{LoginName}}"-->
-                             <!--#email_address="ngModel" class="input form-control"-->
-                             <!--type="email" name="email_address" id="email_address_1" required>-->
+                    <div class="col-sm-6">
+                      &lt;!&ndash;pattern="^(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"&ndash;&gt;
+                      <label for="email_address_1" class="required">Email Address Or Dhaar Username </label>
+                      <input [(ngModel)]="model.email_address" ng-Model="model.email_address"
+                             value="{{LoginName}}"
+                             #email_address="ngModel" class="input form-control"
+                             type="email" name="email_address" id="email_address_1" required>
 
-                      <!--<div style="color:red" *ngIf="f.submitted && email_address.errors  && !email_address.valid" class="help-block">-->
-                        <!--Email is invalid-->
-                      <!--</div>-->
-
-
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
-
-                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
-
-                  <!--<li class="row">-->
-
-                    <!--<div class="col-sm-6">-->
-
-                      <!--<label class="required">state province</label>-->
-
-                      <!--<div class="custom_select">-->
-
-                        <!--<select [(ngModel)]="model.state" ng-Model="model.state"  #state="ngModel" class="input form-control" required-->
-                                <!--name="state">-->
-                          <!--<option selected value="{{GetUSerDOne['State']}}">{{GetUSerDOne['State']}}</option>-->
-                          <!--<option  value="Punjab">Punjab</option>-->
-                          <!--<option value="Balochistan">Islamabad Capital Territory</option>-->
-                          <!--<option value="Sindh">Sindh</option>-->
-                          <!--<option value="Balochistan">Balochistan</option>-->
-                          <!--<option value="Azad Jammu and Kashmir">Azad Jammu and Kashmir</option>-->
-                          <!--<option value="Balochistan">Balochistan</option>-->
-                          <!--<option value="Gilgit–Baltistan">Gilgit–Baltistan</option>-->
-                          <!--<option value="GKhyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>-->
+                      <div style="color:red" *ngIf="f.submitted && email_address.errors  && !email_address.valid" class="help-block">
+                        Email is invalid
+                      </div>
 
 
-                        <!--</select>-->
-                        <!--<div style="color:red" *ngIf="f.submitted  && !state.valid" class="help-block">-->
-                          <!--State is required-->
-                        <!--</div>-->
+                    </div>
 
-                      <!--</div>-->
+                  </li>
 
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+                  <li class="row">
 
-                    <!--<div class="col-sm-6">-->
+                    <div class="col-sm-6">
 
-                      <!--<label class="required">Country</label>-->
+                      <label class="required">state province</label>
 
-                      <!--<div class="custom_select">-->
+                      <div class="custom_select">
 
-                        <!--<select [(ngModel)]="model.Country"   #Country="ngModel" class="input form-control" name="Country"-->
-                                <!--required>-->
-
-                          <!--<option selected value="Pakistan">Pakistan</option>-->
-
-
-                        <!--</select>-->
-                        <!--<div style="color:red" *ngIf="f.submitted  && !Country.valid" class="help-block">-->
-                          <!--Country is required-->
-                        <!--</div>-->
-                      <!--</div>-->
-
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
-
-                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
-
-                  <!--<li class="row">-->
-
-                    <!--<div class="col-sm-6">-->
-
-                      <!--<label for="postal_code_1"  class="required">City</label>-->
-                      <!--<input [(ngModel)]="model.City" #City="ngModel"-->
-                             <!--pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"-->
-                             <!--value="{{GetUSerDOne['City']}}"-->
-                             <!--ng-Model="model.City"-->
-                             <!--class="input form-control" type="text" name="City" required-->
-                             <!--id="postal_code_1">-->
-                      <!--<div style="color:red" *ngIf="f.submitted  && !City.valid && City.errors" class="help-block">-->
-                        <!--City is required-->
-                      <!--</div>-->
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
-
-                    <!--<div class="col-sm-6">-->
-
-                      <!--<label for="postal_code_1" class="required">Zip/Postal Code</label>-->
-                      <!--<input [(ngModel)]="model.Zip" #Zip="ngModel" class="input form-control"-->
-                             <!--type="text" name="Zip"-->
-                             <!--pattern="([0-9])+$"-->
-                             <!--required-->
-                             <!--ng-Model="model.Zip"-->
-                             <!--value="{{GetUSerDOne['Zip']}}"-->
-                             <!--maxlength="6"-->
-                             <!--id="po">-->
-                      <!--<div style="color:red" *ngIf="f.submitted  && !Zip.valid && Zip.errors" class="help-block">-->
-                        <!--Zip code is required-->
-                      <!--</div>-->
-
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
-
-                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
-                  <!--<li class="row">-->
-
-                    <!--<div class="col-xs-12">-->
-
-                      <!--<label for="address_1" class="required">Address</label>-->
-                      <!--<input [(ngModel)]="model.Address" #Address="ngModel" class="input form-control"-->
-                             <!--type="text"-->
-                             <!--ng-Model="model.Address"-->
-                             <!--value="{{GetUSerDOne['Address']}}"-->
-                             <!--name="Address" id="address_1" required>-->
-
-                      <!--<div style="color:red" *ngIf="f.submitted  && !Address.valid" class="help-block">-->
-                        <!--Address is required-->
-                      <!--</div>-->
-
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
-
-                  <!--</li>&lt;!&ndash;/ .row &ndash;&gt;-->
+                        <select [(ngModel)]="model.state" ng-Model="model.state"  #state="ngModel" class="input form-control" required
+                                name="state">
+                          <option selected value="{{GetUSerDOne['State']}}">{{GetUSerDOne['State']}}</option>
+                          <option  value="Punjab">Punjab</option>
+                          <option value="Balochistan">Islamabad Capital Territory</option>
+                          <option value="Sindh">Sindh</option>
+                          <option value="Balochistan">Balochistan</option>
+                          <option value="Azad Jammu and Kashmir">Azad Jammu and Kashmir</option>
+                          <option value="Balochistan">Balochistan</option>
+                          <option value="Gilgit–Baltistan">Gilgit–Baltistan</option>
+                          <option value="GKhyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
 
 
-                  <!--<li class="row">-->
+                        </select>
+                        <div style="color:red" *ngIf="f.submitted  && !state.valid" class="help-block">
+                          State is required
+                        </div>
 
-                    <!--<div class="col-sm-6">-->
+                      </div>
 
-                      <!--<label for="telephone_1" class="required">Telephone</label>-->
-                      <!--<input [(ngModel)]="model.telephone" #telephone="ngModel"-->
-                             <!--[textMask]="{mask: phonemask}"-->
-                             <!--value="{{GetUSerDOne['Mobile']}}"-->
-                             <!--ng-Model="model.Mobile"-->
-                             <!--class="input form-control" type="text"-->
-                             <!--name="telephone" id="telephone_1">-->
+                    </div>
 
-                      <!--<div style="color:red" *ngIf="f.submitted  && !telephone.valid" class="help-block">-->
-                        <!--Telephone is required-->
-                      <!--</div>-->
+                    <div class="col-sm-6">
 
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
+                      <label class="required">Country</label>
 
-                    <!--<div class="col-sm-6">-->
+                      <div class="custom_select">
 
-                      <!--<label for="fax_1">Fax</label>-->
-                      <!--<input [(ngModel)]="model.fax" #fax="ngModel" class="input form-control" type="number" name="fax"-->
-                             <!--id="fax_1">-->
+                        <select [(ngModel)]="model.Country"   #Country="ngModel" class="input form-control" name="Country"
+                                required>
 
-                    <!--</div>&lt;!&ndash;/ [col] &ndash;&gt;-->
-                  <!--</li>-->
+                          <option selected value="Pakistan">Pakistan</option>
+
+
+                        </select>
+                        <div style="color:red" *ngIf="f.submitted  && !Country.valid" class="help-block">
+                          Country is required
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </li>
+
+                  <li class="row">
+
+                    <div class="col-sm-6">
+
+                      <label for="postal_code_1"  class="required">City</label>
+                      <input [(ngModel)]="model.City" #City="ngModel"
+                             pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
+                             value="{{GetUSerDOne['City']}}"
+                             ng-Model="model.City"
+                             class="input form-control" type="text" name="City" required
+                             id="postal_code_1">
+                      <div style="color:red" *ngIf="f.submitted  && !City.valid && City.errors" class="help-block">
+                        City is required
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+
+                      <label for="postal_code_1" class="required">Zip/Postal Code</label>
+                      <input [(ngModel)]="model.Zip" #Zip="ngModel" class="input form-control"
+                             type="text" name="Zip"
+                             pattern="([0-9])+$"
+                             required
+                             ng-Model="model.Zip"
+                             value="{{GetUSerDOne['Zip']}}"
+                             maxlength="6"
+                             id="po">
+                      <div style="color:red" *ngIf="f.submitted  && !Zip.valid && Zip.errors" class="help-block">
+                        Zip code is required
+                      </div>
+                    </div>
+
+                  </li>
+                  <li class="row">
+
+                    <div class="col-xs-12">
+
+                      <label for="address_1" class="required">Address</label>
+                      <input [(ngModel)]="model.Address" #Address="ngModel" class="input form-control"
+                             type="text"
+                             ng-Model="model.Address"
+                             value="{{GetUSerDOne['Address']}}"
+                             name="Address" id="address_1" required>
+
+                      <div style="color:red" *ngIf="f.submitted  && !Address.valid" class="help-block">
+                        Address is required
+                      </div>
+
+                    </div>
+
+                  </li>
+
+
+                  <li class="row">
+
+                    <div class="col-sm-6">
+
+                      <label for="telephone_1" class="required">Telephone</label>
+                      <input [(ngModel)]="model.telephone" #telephone="ngModel"
+                             [textMask]="{mask: phonemask}"
+                             value="{{GetUSerDOne['Mobile']}}"
+                             ng-Model="model.Mobile"
+                             class="input form-control" type="text"
+                             name="telephone" id="telephone_1">
+
+                      <div style="color:red" *ngIf="f.submitted  && !telephone.valid" class="help-block">
+                        Telephone is required
+                      </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                      <label for="fax_1">Fax</label>
+                      <input [(ngModel)]="model.fax" #fax="ngModel" class="input form-control" type="number" name="fax"
+                             id="fax_1">
+
+                    </div>
+                  </li>
 
 
 
-                  <!--<li>-->
-                <!--</ul>-->
-              <!--</div>-->
+                  <li>
+                </ul>
+              </div> -->
 
-                    <h4 class="checkout-sep">Payment Method</h4>
+                    <h4 class="checkout-sep">Paymentsss Method</h4>
                 <div class="box-border">
                   <ul>
                     <li>

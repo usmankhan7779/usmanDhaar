@@ -71,7 +71,12 @@ export class HeaderComponent implements OnInit {
     //   this.cartcount= this.CartedProduct;
     //   console.log(this.CartedProduct.JSON['Total Result'],'cart')
     // });
-    this._shareData.currentMessagetotal.subscribe(message => this.total = message)
+    if (localStorage.getItem('UserID') !== null) {
+        this._shareData.currentMessagetotal.subscribe(message => this.total = message)
+    }
+    else{
+      this.total=0
+    }
     if (localStorage.getItem('UserID') !== null) {
       this.ValueRec = true;
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {

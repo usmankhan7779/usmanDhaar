@@ -19,7 +19,7 @@ export class HomeService {
   returnUrl: string;
   // http://192.168.30.225:7000
   // https://apis.dhaar.pk
-  ServerUrl =  'https://apis.dhaar.pk/products/';
+  ServerUrl =  'http://192.168.30.225:7000/products/';
   // serverurladdtocart=''
 
 
@@ -241,7 +241,10 @@ export class HomeService {
        return this.http.delete(this.ServerUrl +'editwatchList/'+ id ,
        {headers: headers}).map((response: Response) => response.json());
        }
-  addtocartProduct(Product_ID: any) {
+       quentity:number;
+  addtocartProduct(Product_ID: any,qty:any) {
+    this.quentity=qty;
+    alert(this.quentity)
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
@@ -252,7 +255,8 @@ export class HomeService {
 
       return this._http.post(this.ServerUrl + 'CheckoutProducts/',
         {
-          'product_id': Product_ID
+          'product_id': Product_ID,
+          "qty":this.quentity
         }, { headers: headers }).map((res: Response) => {
         if (res) {
           if (res.status === 201 || res.status ===200) {

@@ -23,6 +23,7 @@
     <div class="row">
       <div class="col-md-3 col-sm-4">
         <ul class="usernavdash">
+            <li ><a [routerLink]="['/store-view']"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my ALL Store</a></li>
           <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
           <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Add New Product</a></li>
           <li ><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
@@ -65,7 +66,7 @@
                                required class="input form-control"
                                placeholder="First Name"
                                id="FName"
-                               value="{{GetUSerdetails[0].Fname}}">
+                               value="{{GetUSerdetails.Fname}}">
 
 
 
@@ -83,7 +84,7 @@
                                placeholder="Last Name"
                                ng-Model="model.Lname" #Lname name="Lname"
                                id="Lname"
-                               value="{{GetUSerdetails[0].Lname}}">
+                               value="{{GetUSerdetails.Lname}}">
 
 
                       </div>
@@ -136,7 +137,7 @@
                                placeholder="Your City"
                                type="text" required
                                ng-Model="model.City" #City name="City"
-                               value="{{GetUSerdetails[0].City}}">
+                               value="{{GetUSerdetails.City}}">
                       </div>
 
                       <div class="col-sm-6">
@@ -147,7 +148,7 @@
 
                                placeholder="55560"
                                required ng-Model="model.zipcode" #zipcode name="zipcode" id="postal_code"
-                               value="{{GetUSerdetails[0].Zip}}">
+                               value="{{GetUSerdetails.Zip}}">
                       </div>
 
 
@@ -168,7 +169,7 @@
                                placeholder="your contact number"
                                type="text" required ng-Model="model.personal" #personal name="personal"
                                id="telephone"
-                               value="{{GetUSerdetails[0].Mobile}}">
+                               value="{{GetUSerdetails.Mobile}}">
                       </div><!--/ [col] -->
                       <div class="col-sm-6">
 
@@ -196,7 +197,7 @@
                                placeholder="shop #, street# etc"
                                ng-Model="model.address"
                                #address name="address" id="address"
-                               value="{{GetUSerdetails[0].Address}}">
+                               value="{{GetUSerdetails.Address}}">
                       </div><!--/ [col] -->
                     </li><!-- / .row -->
 

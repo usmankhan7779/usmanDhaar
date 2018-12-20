@@ -32,6 +32,7 @@ export class SingleProductComponent implements OnInit {
   login_error:  Boolean = false;
   ProID: string;
   productid1:string;
+  qty;
   SubCatName:string;
   Getphoto: any = [];
   NewBidInserted = false ;
@@ -487,15 +488,16 @@ export class SingleProductComponent implements OnInit {
       }
     );
   }
-addtocartproducts(){
-          // this.productid1=params['id']
-          this.GetAdd.addtocartProduct(this.productid1).subscribe();
-  console.log(this.productid1,"this product")
+// addtocartproducts(){
+//           // this.productid1=params['id']
+//           this.GetAdd.addtocartProduct(this.productid1).subscribe();
+//   console.log(this.productid1,"this product")
   
 
-}
+// }
 total:any; 
-statuss; 
+statuss;
+
 Addtocart(Abc: any) {
     if (isPlatformBrowser(this.platformId)) {
      if (Abc === '') {
@@ -526,7 +528,8 @@ Addtocart(Abc: any) {
               // console.log('eeeeeeeee',this.resultProduct);
               this.resultProduct.itemsqty = +Abc;
               //this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
-              this.GetAdd.addtocartProduct(this.productid1).subscribe(
+              alert(Abc)
+              this.GetAdd.addtocartProduct(this.productid1,Abc).subscribe(
               data=>{
                 console.log(data,'aaaaaaaaaaa')
               
@@ -579,7 +582,7 @@ Addtocart(Abc: any) {
 
             this.resultProduct.itemsqty = +Abc;
            // this.TmpresultProduct['products'].push(this.resultProduct);
-            this.GetAdd.addtocartProduct(this.productid1).subscribe(
+            this.GetAdd.addtocartProduct(this.productid1,Abc).subscribe(
               data=>{
                 console.log(data,'aaaaaaaaaaa')
               
@@ -623,7 +626,7 @@ Addtocart(Abc: any) {
         } catch (e) {
          this.resultProduct.itemsqty = +Abc;
           //this.TmpresultProduct['products'].push(this.resultProduct);
-          this.GetAdd.addtocartProduct(this.productid1).subscribe(
+          this.GetAdd.addtocartProduct(this.productid1,Abc).subscribe(
             data=>{
               // this._shareData.watchtotal(this.total)
               console.log(data,'aaaaaaaaaaa')

@@ -29,6 +29,7 @@ export class Checkout2Component implements OnInit {
   days: any;
   model: any = {};
   GetUSerDOne: any = [];
+  GetUser:any=[];
   GetUSallerCoupon: any = [];
   mymodel: any = {};
   LoginName: string;
@@ -87,9 +88,14 @@ total:any;
           this.PaymentMethod = true;
                 this.BillingMethod = true;
                   this.user = localStorage.getItem('UserID');
-                this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
-                  this.GetUSerDOne = resSlidersData;
-                  console.log('User done info are:', this.GetUSerDOne);
+                  // post_shipment_details
+                  this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
+                // this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+                  this.GetUSerDOne= resSlidersData;
+                //  this.GetUser= this.GetUSerDOne.Results 
+                  console.log(this.GetUSerDOne.Results);
+                  console.log('User done info are:', this.GetUSerDOne.Results);
+                  // alert(this.GetUser)
                   if ( this.GetUSerDOne['Complete'] === false) {
                     this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
                   }
@@ -110,8 +116,8 @@ total:any;
       console.log('Carted products are:', this.CartedProduct);
       for (const tmp1 of this.CartedProduct.Results) {
         console.log('Temp1 is:', tmp1);
-        console.log('Values are:',tmp1.Pic);
-        this.ProPics.push(tmp1.Pic.split(',')[0]);
+        console.log('Values are:',tmp1.product.Pic);
+        this.ProPics.push(tmp1.product.Pic.split(',')[0]);
       }
       console.log('Pics are are:', this.ProPics);
 
@@ -119,12 +125,15 @@ total:any;
     this.Total = 0;
     for (const tmp of this.CartedProduct.Results) {
 
-      this.Total = this.Total + (tmp.FixedPrice * tmp.Quantity);
-      console.log(tmp.FixedPrice,'total')
+      this.Total = this.Total + (tmp.product.FixedPrice * tmp.Quantity);
+      console.log(tmp.product.FixedPrice,'total')
     }
   });
-    this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+    this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
+     
+      // this.GetUser=this.GetUSerDOne.Results;
+      // alert(this.GetUSerDOne.Results)
 
     });
 
@@ -148,7 +157,7 @@ total:any;
     }
     this.Total = 0;
     for (const tmp of this.CartedProduct.Results) {
-      this.Total = this.Total + (tmp.FixedPrice * tmp.Quantity);
+      this.Total = this.Total + (tmp.product.FixedPrice * tmp.Quantity);
     }
   }
 
@@ -161,7 +170,7 @@ total:any;
       if ( tmp.id === Abc ) {
         console.log(tmp.id);
         this.GetAdd.DeleteTodoList(tmp.id).subscribe(data => {
-          alert(tmp.id)
+          alert(tmp.product.id)
           this.total=this.CartedProduct['Total Result']
             // this._shareData.watchtotal(this.total);
           this._shareData.watchtotal(this.total);
@@ -285,8 +294,11 @@ total:any;
                 this.BillingMethod = true;
                 this.user = localStorage.getItem('UserID');
                 this.LoginName = localStorage.getItem('UserName');
-                this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+                this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
                   this.GetUSerDOne = resSlidersData;
+                  // this.GetUser= this.GetUSerDOne.Results
+                  // this.GetUser= this.GetUSerDOne.Results;
+                  // alert(this.GetUSerDOne.Results)
 
                   if (this.GetUSerDOne['Complete'] === false) {
                     this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
