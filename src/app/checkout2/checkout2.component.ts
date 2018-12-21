@@ -161,6 +161,31 @@ total:any;
     }
   }
 
+  save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress:string) {
+    
+    // if ( this.fileName) {
+      //this.uploadItemsToActivity();
+      // this.Waitcall = true;
+      console.log('I am in 1 Component');
+      // this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
+        // data => {
+         // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
+          console.log('Successs' )
+          this.httpService.Useraddressaddtocart(FName,province,City,Area,Mobile,Address,Shipmentaddress).subscribe((response) => {
+         console.log(FName,province,City,Area,Mobile,Address,Shipmentaddress)
+          // this.Error = false;
+          // this.Waitcall = false;
+          // this.Right = true;
+        },
+        error => {
+          console.log(error);
+        });
+
+
+    
+     // );
+   
+  }
 
   TrashcartElement(Abc: any) {
 

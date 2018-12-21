@@ -733,27 +733,27 @@
                                        required class="input form-control"
                                        placeholder="First Name"
                                        id="FName"
-                                       value="{{GetUSerdetails.Fname}}">
+                                       
+                                       >
         
         
         
                               </div>
                               <!--/ [col] -->
         
-        
                              
                               <div class="col-sm-6">
-        
+                                <!-- [textMask]="{mask: mask}" -->
                                   <label for="telephone" class="required">Contact Number(*)</label>
           
           
                                   <input class="input form-control"
           
-                                         [textMask]="{mask: mask}"
+                                         
                                          placeholder="your contact number"
-                                         type="text" required ng-Model="model.personal" #personal name="personal"
+                                         type="text" required ng-Model="model.Mobile" #Mobile name="Mobile"
                                          id="telephone"
-                                         value="{{GetUSerdetails.Mobile}}">
+                                         >
                                 </div>
         
                             </li>
@@ -790,12 +790,13 @@
                                 </select> -->
                                 <!-- <div class="col-sm-6"> -->
         
+                              
                                     <label for="State" class="required">Province(*)</label>
-                                    <input type="text"ng-Model="model.State" #FName name="State"
+                                    <input type="text"ng-Model="model.province" #province name="province"
                                            required class="input form-control"
                                            placeholder="Province"
                                            id="State"
-                                           value="{{GetUSerdetails.State}}">
+                                           >
             
             
             
@@ -803,14 +804,15 @@
         
                               </div>
                               <div class="col-sm-6">
-        
+    
                                   <label  class="required">Your City(*)</label>
           
                                   <input class="input form-control"
                                          placeholder="Your City"
                                          type="text" required
                                          ng-Model="model.City" #City name="City"
-                                         value="{{GetUSerdetails.City}}">
+                                         
+                                         >
                                 </div>
         
         
@@ -839,14 +841,15 @@
                             <li class="row">
         
                                 <div class="col-sm-12">
-        
+            
                                     <label  class="required">Area(*)</label>
             
                                     <input class="input form-control"
                                            placeholder="Your Area"
                                            type="text" required
-                                           ng-Model="model.area" #area name="area"
-                                           value="{{GetUSerdetails.area}}">
+                                           ng-Model="model.Area" #Area name="Area"
+                                         
+                                           >
                                   </div>
                               <!-- <div class="col-sm-6">
         
@@ -882,14 +885,28 @@
                             <br>
                             <li class="row">
                               <div class="col-xs-12">
-        
+        <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
                                 <label for="address" class="required">Address(*)</label>
         
                                 <input type="text" class="input form-control" required
                                        placeholder="shop #, street# etc"
-                                       ng-Model="model.address"
-                                       #address name="address" id="address"
-                                       value="{{GetUSerdetails.Address}}">
+                                       ng-Model="model.Address"
+                                       #Address name="Address" id="address"
+                                       
+                                       >
+                              </div><!--/ [col] -->
+                            </li><!-- / .row -->
+                            <li class="row">
+                              <div class="col-xs-12">
+        <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
+                                <label for="Shipmentaddress" class="required">Shipping(*)</label>
+        
+                                <input type="text" class="input form-control" required
+                                       placeholder="shop #, street# etc"
+                                       ng-Model="model.Shipmentaddress"
+                                       #Shipmentaddress name="Shipmentaddress" id="Shipmentaddress"
+                                       
+                                       >
                               </div><!--/ [col] -->
                             </li><!-- / .row -->
         
@@ -915,7 +932,7 @@
         
                               </p>
                             </div>
-                            <input type="submit" (click)="save(FName.value,Lname.value,Country.value,State.value,City.value, zipcode.value, personal.value, address.value)" class="btn" value="Update">
+                            <input type="submit" (click)="save(FName.value,province.value,City.value,Area.value,Mobile.value,Address.value,Shipmentaddress.value)" class="btn" value="Update">
                           </div>
                         </div>
                       <!-- </ng-container> -->
