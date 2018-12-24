@@ -23,6 +23,7 @@ export class LoginService {
   public login: any;
   returnUrl: string;
   decoded: string;
+  USerNameID:string;
 
   ServerUrl =  'http://192.168.30.225:7000/user/';
   StoreServerUrl =  'https://apis.dhaar.pk/store/';
@@ -31,6 +32,7 @@ export class LoginService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: HttpService ,
+              private http:Http,
               private _nav: Router) {
 
   }
@@ -120,7 +122,17 @@ export class LoginService {
     return this._http.get(this.ServerUrl + 'Get_User_details/' + decoded).map(response => response.json());
     // return this._http.get(this.ServerUrl + 'post_shipment_details/' + decoded).map(response => response.json());
   }
-
+  GetUSeraddress() {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'post_shipment_details/',{headers:headers} ).map(response => response.json());
+    // return this._http.get(this.ServerUrl + 'post_shipment_details/' + decoded).map(response => response.json());
+  }
+  // http://192.168.30.225:7000/user/post_shipment_details/
   GetUSerdetailsByUserId1() {
 
     // return this._http.get(this.ServerUrl + 'Get_User_details/' + decoded).map(response => response.json());
@@ -675,9 +687,14 @@ export class LoginService {
   }
 
 
-  UserDetailsUpdate(FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Pic: any, Username: string) {
-    return this._http.post( this.ServerUrl + 'UserFullDetails/' + Username,
+  UserDetailsUpdate(id:number,FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string,Vendor:string, Pic: any, Username: string,ISConfirmed:string,Complete:string) {
+    this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+    console.log(this.USerNameID)
+    return this.http.put( this.ServerUrl + 'UserFullDetails/' +this.USerNameID,
       {
+        "id": id,
+    // "user_id": 277,
+
         'user_id': Username,
         'Fname' :  FName,
         'Lname' :  Lname,
@@ -687,7 +704,10 @@ export class LoginService {
         'City' : City,
         'Zip' :  Zip,
         'Address' :  Address,
+        'Vendor':  Vendor,
+        'ISConfirmed': ISConfirmed,
         'Pic' : Pic,
+        'Complete':Complete
 
 
       })

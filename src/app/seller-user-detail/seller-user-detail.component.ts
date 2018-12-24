@@ -50,6 +50,12 @@ export class SellerUserDetailComponent implements OnInit {
   PictureCheck = false;
 filetoup: FileList;
   fileName = '';
+  Vendor:  any;
+  ISConfirmed:any;
+  id:any;
+  Username:any;
+  complete:any;
+  picname:any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router,
@@ -64,6 +70,11 @@ filetoup: FileList;
       this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
         this.GetUSerdetails = resSlidersData;
         // console.log('fdsf');
+        this.id= this.GetUSerdetails['id']
+        this.Vendor= this.GetUSerdetails['Vendor']
+        this.complete = this.GetUSerdetails['Complete']
+        this.ISConfirmed = this.GetUSerdetails['ISConfirmed']
+        this.picname= this.GetUSerdetails['Pic']
         console.log(this.GetUSerdetails);
       });
     }
@@ -163,8 +174,8 @@ uploadItemsToActivity() {
         data => {
          // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
           console.log('Successs' )
-          this.obj.UserDetailsUpdate(FName, Lname, Country, State, City, Zip, Mobile, Address, this.fileName, this.USerNameID).subscribe((response) => {
-         console.log(FName, Lname, Country, State, City, Zip, Mobile, Address, this.fileName, this.USerNameID)
+          this.obj.UserDetailsUpdate(this.id,FName, Lname, Country, State, City, Zip, Mobile, Address, this.Vendor,this.fileName, this.USerNameID,this.complete,this.ISConfirmed).subscribe((response) => {
+         console.log(this.id,FName, Lname, Country, State, City, Zip, Mobile, Address, this.Vendor,this.fileName, this.USerNameID,this.complete,this.ISConfirmed)
           this.Error = false;
           this.Waitcall = false;
           this.Right = true;
@@ -188,14 +199,17 @@ uploadItemsToActivity() {
       );
     } else {
       this.Waitcall = true;
-      this.obj.UserDetailsUpdateWithOutPic(FName, Lname, Country, State, City, Zip, Mobile, Address, this.USerNameID).subscribe((response) => {
-          /* this function is executed every time there's a new output */
-          // console.log("VALUE RECEIVED: "+response);
-          this.Error = false;
-          this.Waitcall = false;
-          this.Right = true;
-
-        },
+      this.obj.UserDetailsUpdate(this.id,FName, Lname, Country, State, City, Zip, Mobile, Address, this.Vendor,this.picname, this.USerNameID,this.complete,this.ISConfirmed).subscribe((response) => 
+      {
+        console.log(this.id,FName, Lname, Country, State, City, Zip, Mobile, Address, this.Vendor,this.picname, this.USerNameID,this.complete,this.ISConfirmed)
+         this.Error = false;
+         this.Waitcall = false;
+         this.Right = true;
+       },
+      //  error => {
+      //    console.log(error);
+      //  });
+      
         (err) => {
           this.Right = false;
           this.Waitcall = false;
@@ -210,7 +224,6 @@ uploadItemsToActivity() {
         }
       );
     }
-
   }
 
   updatePassword(old: string, new1: string, new2: string) {

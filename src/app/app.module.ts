@@ -52,6 +52,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { OwlModule} from "ngx-owl-carousel";
 import { UploadItemService } from './file-uploads/upload-item-service';
 import { SharedData } from './shared-service';
+// import { UsershipmentComponent } from './usershipment/usershipment.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { SharedData } from './shared-service';
     PreloaderSmall,
     TimePipe,
     LayoutComponent,
+    // UsershipmentComponent,
   
   ],
   imports: [

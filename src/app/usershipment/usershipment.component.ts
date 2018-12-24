@@ -1,3 +1,4 @@
+// import { Component, OnInit } from '@angular/core';
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -7,13 +8,13 @@ import {NgForm} from '@angular/forms';
 import {UploadItemService} from '../file-uploads/upload-item-service';
 import swal from 'sweetalert2';
 
-
 @Component({
-  selector: 'app-buyer-dashboard',
-  templateUrl: './buyer-dashboard.component.html',
-  styleUrls: ['./buyer-dashboard.component.css']
+  selector: 'app-usershipment',
+  templateUrl: './usershipment.component.html',
+  styleUrls: ['./usershipment.component.scss']
 })
-export class BuyerDashboardComponent implements OnInit {
+export class UsershipmentComponent implements OnInit {
+
   file: File;
   GetallCat: any;
   Waitcall: boolean;
@@ -27,6 +28,7 @@ export class BuyerDashboardComponent implements OnInit {
   ValueRec: Boolean = false;
   filetoup: FileList;
   fileName: any;
+  ReservePrice = false;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router,
@@ -57,7 +59,13 @@ export class BuyerDashboardComponent implements OnInit {
     });
     }
   }
-
+  AddReservePriceFun() {
+    if ( this.ReservePrice === true ) {
+      this.ReservePrice = false;
+    } else {
+      this.ReservePrice = true;
+    }
+  }
   handleFileInput(files: FileList) {
     this. filetoup = files;
     console.log('uploaded filetoup  ', this.filetoup);

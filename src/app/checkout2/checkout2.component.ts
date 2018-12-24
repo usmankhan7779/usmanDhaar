@@ -161,6 +161,14 @@ total:any;
     }
   }
 
+  status_900:boolean=false
+  AddReservePriceFun1() {
+    if ( this.status_900 === true ) {
+      this.status_900 = true;
+    } else {
+      this.status_900 = false;
+    }
+  }
   save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress:string) {
     
     // if ( this.fileName) {

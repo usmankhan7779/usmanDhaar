@@ -54,7 +54,7 @@
         <!--<div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>-->
       </div>
 
-        <div class="col-md-9 col-sm-8">
+        <!-- <div class="col-md-9 col-sm-8">
           <ng-container *ngIf="GetUSerDOne !== null">
           <div *ngIf="GetUSerDOne['Complete'] === false"  class="alert alert-info">
             Profile Incomplete Spend 2 minutes to complete. <a style="color: red !important;" [routerLink]="['/user-detail']">Go to Porfile Section</a>
@@ -80,15 +80,6 @@
                       <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
                       <i class="fa fa-camera upload-cam-img"></i>
                     </div>
-                    <!--<form (ngSubmit)="save()">-->
-                    <!--<div class="form-group">-->
-                      <!--&lt;!&ndash;<input class="file" (change)="onChange($event)" type="file" placeholder="Upload image" data-preview-file-type="text" id="file1" name="file" #Picture ng-files="getTheFiles($files)" />&ndash;&gt;-->
-                      <!--&lt;!&ndash;<label for="file1">Upload image</label>&ndash;&gt;-->
-                      <!--<input id="f02" type="file" placeholder="Upload Image" (change)="onChange($event)"/>-->
-                      <!--<label for="f02">Upload Image</label>-->
-                      <!--<input type="submit">-->
-                    <!--</div>-->
-                    <!--</form>-->
                     <div class=" col-md-8 col-lg-8 ">
                     <table class="table table-user-information">
                       <tbody>
@@ -130,17 +121,16 @@
               </div>
               <div class="panel-footer">
                 <a [routerLink]="['/user-detail']" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
+               
                 <span class="pull-right">
                          </span>
               </div>
 
             </div>
           </div>
-          <!-- *ngFor="let GetUser of GetUSerAddress.Results" -->
-        </div>
+        </div> -->
 
-        <div class="col-md-9 col-sm-8" >
+        <div class="col-md-9 col-sm-8" *ngFor="let GetUser of GetUSerAddress.Results" >
           <!-- <ng-container *ngIf="GetUSerDOne !== null">
           <div *ngIf="GetUSerDOne['Complete'] === false"  class="alert alert-info">
             Profile Incomplete Spend 2 minutes to complete. <a style="color: red !important;" [routerLink]="['/user-detail']">Go to Porfile Section</a>
@@ -153,9 +143,9 @@
               <div class="panel-heading">
                 <h3 class="panel-title">My address</h3>
               </div>
-              <div class="panel-body" *ngFor="let GetUser of GetUSerAddress.Results">
+              <div class="panel-body" >
                 <div class="row">
-                  <ng-container *ngIf="GetUSerAddress !== null && GetUser.default_shipment_address == true">
+                  <ng-container *ngIf="GetUSerAddress !== null ">
                  
                   
                     <div class=" col-md-8 col-lg-8 ">
@@ -203,7 +193,7 @@
                 </div>
               </div>
               <div class="panel-footer">
-                <a [routerLink]="['/user-detail']" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                <a  (click)="AddReservePriceFun()" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
                 <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
                 <span class="pull-right">
                          </span>
@@ -213,6 +203,208 @@
           </div>
           <!-- *ngFor="let GetUser of GetUSerAddress.Results" -->
         </div>
+        <form role="form" class="login-form" *ngIf="ReservePrice == true" >
+
+          <div class="col-md-9 col-sm-8">
+  
+            <div *ngIf="Inc" class="alert alert-info">
+              <strong>Incomplete Account Data!</strong>
+            </div>
+  
+  
+            <div class="userccount">
+              <h5>My Details</h5>
+  
+  
+              <div class="tab-content">
+                <!-- <ng-container *ngIf="GetUSerdetails"> -->
+                <div id="step1" class="formpanel tab-pane fade in active">
+  
+                  <ul>
+  
+                    <li class="row">
+                      <div class="col-sm-6">
+  
+                          <label for="FName" class="required">First Name(*)</label>
+                      <input type="text" ng-Model="model.FName" #FName name="FName"
+                                 required class="input form-control"
+                                 placeholder="First Name"
+                                 id="FName"
+                                 value="{{GetUSerdetails.Fname}}">
+  
+  
+  
+                      </div><!--/ [col] -->
+  
+  
+                      <div class="col-sm-6">
+  
+  
+  
+                          <label for="Lname" class="required">Last Name(*)</label>
+  
+                          <input type="text" class="input form-control"
+                                 required
+                                 placeholder="Last Name"
+                                 ng-Model="model.Lname" #Lname name="Lname"
+                                 id="Lname"
+                                 value="{{GetUSerdetails.Lname}}">
+  
+  
+                      </div>
+  
+                    </li><!--/ .row -->
+  
+                    <br>
+                    <li class="row">
+  
+                      <div class="col-sm-6">
+  
+                          <label   class="required">Select Your Country(*) </label>
+                         <select  class="form-control"  ng-Model="model.Country" #Country name="Country" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                           <option value="Pakistan" selected>Pakistan</option>
+  
+                          </select>
+  
+                        </div>
+  
+  
+  
+  
+                      <div class="col-sm-6">
+  
+                          <label  class="required">Select Your State/Province(*)</label>
+                          <select  class="form-control"  ng-Model="model.State" #State name="State" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                            <option value="Punjab" selected>Punjab</option>
+  
+                            <option value="Sindh" >Sindh</option>
+                            <option value="Balochistan" >Balochistan</option>
+                            <option value="Khyber Pakhtunkhwa" >Khyber Pakhtunkhwa</option>
+  
+  
+                          </select>
+  
+                        </div>
+  
+  
+  
+                    </li>
+  
+                    <br>
+                    <li class="row">
+  
+                      <div class="col-sm-6">
+  
+                          <label  class="required">Your City(*)</label>
+  
+                          <input class="input form-control"
+                                  placeholder="Your City"
+                                 type="text" required
+                                 ng-Model="model.City" #City name="City"
+                                 value="{{GetUSerdetails.City}}">
+                        </div>
+  
+                      <div class="col-sm-6">
+  
+                          <label for="postal_code" class="required">Zip/Postal Code(*)</label>
+  \
+                          <input class="input form-control" type="text"
+                                 pattern="([0-9])+$"
+  
+                                 placeholder="55560"
+                                 required ng-Model="model.zipcode" #zipcode name="zipcode" id="postal_code"
+                                 value="{{GetUSerdetails.Zip}}">
+                        </div>
+  
+  
+                    </li>
+  
+                    <br>
+                    <li class="row">
+  
+  
+                      <div class="col-sm-6">
+  
+                          <label for="telephone" class="required">Owner Contact Number(*)</label>
+  
+  
+                          <input class="input form-control"
+  
+                                 [textMask]="{mask: mask}"
+                                 placeholder="your contact number"
+                                 type="text" required ng-Model="model.personal" #personal name="personal"
+                                 id="telephone"
+                                 value="{{GetUSerdetails.Mobile}}">
+                      </div><!--/ [col] -->
+                      <div class="col-sm-6">
+  
+                          <div class="form-group">
+  
+                            <label for="telephone" class="required">Upload Your Profile Picture</label>
+  
+                            <input type="file" #fileImportInput id="file1" name="file" class="file" data-preview-file-type="text" (change)="handleFileInput($event.target.files)"  multiple accept="image/*">
+  
+  
+                            <!-- <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture ng-files="getTheFiles($files)" /> -->
+  
+  
+                          </div>
+  
+                      </div><!--/ [col] -->
+  
+                    </li><!--/ .row -->
+  
+                    <br>
+                    <li class="row">
+                      <div class="col-xs-12">
+  
+                          <label for="address" class="required">Address(*)</label>
+  
+                          <input type="text" class="input form-control" required
+                                 placeholder="shop #, street# etc"
+                                 ng-Model="model.address"
+                                 #address name="address" id="address"
+                            value="{{GetUSerdetails.Address}}">
+                      </div><!--/ [col] -->
+                    </li><!-- / .row -->
+  
+  
+                  </ul>
+  
+  
+  
+                  <br>
+  
+  
+                  <div class="nav nav-tabs">
+                    <div *ngIf="Error"  class="alert alert-danger">
+                      <strong>Error </strong> While updating record.
+                    </div>
+  
+                    <div *ngIf="Right" class="alert alert-success">
+                      <strong>Profile Updated! <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go to Dashboard Section</a></strong>
+                    </div>
+                    <div *ngIf="Waitcall" class="alert  alert-info">
+                      <p class="">
+                        <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
+  
+                      </p>
+                    </div>
+                    <input (click)="save(FName.value,Lname.value,Country.value,State.value,City.value, zipcode.value, personal.value, address.value)" type="button"    class="btn" value="Update">
+                  </div>
+                </div>
+                <!-- </ng-container> -->
+  
+              </div>
+  
+  
+            </div>
+  
+  
+          </div>
+  
+  
+        </form>
         <!--  -->
         
         <!--<div class="myads">-->
