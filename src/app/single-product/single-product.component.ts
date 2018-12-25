@@ -163,11 +163,7 @@ export class SingleProductComponent implements OnInit {
               console.log('imagggggggggggggg', this.productsPics[0][0]);
             }
           
-            // }
-    //   for(let i=0; i<this.productsPics.length-1; i++) {
-    //     this.productsPics[i]=this.productsPics[i+1];
-    // }
-          
+  
     
             console.log(this.GetallPhoneProduct.Results,"results")
           });

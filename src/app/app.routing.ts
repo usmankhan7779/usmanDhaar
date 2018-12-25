@@ -28,6 +28,8 @@ const appRoutes: Routes = [
       { path: 'category-detail', loadChildren: './category-detail/category-detail.module#CategoryDetailModule'},
       { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard]},
       { path: 'user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard]},
+      // usershipmentupdate
+      { path: 'user-shipment-create', loadChildren: './usershipmentupdate/usershipmentupdate.module#UserShipmentUpdateModule', canActivate: [AuthGuard]},
       { path: 'seller-user-detail', loadChildren: './seller-user-detail/seller-user-detail.module#SellerUserDetailModule', canActivate: [AuthGuard]},
       { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard]},
     

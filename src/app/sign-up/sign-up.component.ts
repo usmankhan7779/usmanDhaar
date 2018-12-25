@@ -31,6 +31,12 @@ export class SignUpComponent implements OnInit {
   PassMatch= true;
   registration_error = false;
   captcha = false;
+  Country ='';
+  State='';
+  City='';
+  zip='';
+  Address='';
+  Pic='';
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private singup: LoginService,
                private route: ActivatedRoute,
@@ -59,7 +65,9 @@ export class SignUpComponent implements OnInit {
       //   this.Waitcall = true;
 
         if (this.Emailok) {
-          this.singup.post_signup_form(this.model.Username, this.model.Email, this.model.Password, this.model.FName, this.model.LName, this.model.Mobile).subscribe((response) => {
+          // post_signup_form(username: string, email: string, password: string, Fname, LName, Mobile,Country,State,City,zip,Address,Pic) {
+
+          this.singup.post_signup_form(this.model.Username, this.model.Email, this.model.Password, this.model.FName, this.model.LName, this.model.Mobile,this.Country,this.State,this.City,this.zip,this.Address,this.Pic).subscribe((response) => {
               /* this function is executed every time there's a new output */
               // console.log("VALUE RECEIVED: "+response);
               // swal(
