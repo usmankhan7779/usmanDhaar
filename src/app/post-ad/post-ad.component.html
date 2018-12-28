@@ -45,6 +45,30 @@
                   <!--<input type="text" name="jobtitle" class="form-control" placeholder="Ad Title ">-->
                 </div>
               </div>
+              <div class="col-md-12">
+              <div class="formrow">
+                  <!-- <mat-select (change)="checked17($event,i,name)" value="name" required [(ngModel)]="name" name="name">
+
+                      <mat-option  (click)="checked17($event,i,name)"  >ALL</mat-option>
+                    <mat-option *ngFor="let data of title" [value]="data.title">
+                      {{data.title}}
+  
+                    </mat-option>
+  
+  
+                  </mat-select> -->
+                <label  style="color: black" class="help-block">Select Your StoreName</label>
+                <div *ngIf="f.submitted && !StoreName.valid" class="help-block">Select Your StoreName</div>
+                <select [(ngModel)]="model.StoreName"  class="col-md-push-6" name="StoreName" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                  <option *ngFor="let data of StoreNamess" [value]="data.StoreName"  >
+                    {{data.StoreName}}
+                   </option>
+                  <!-- <option value="7">7 Days</option>
+                  <option value="5">5 Days</option>
+                  <option value="3">3 Days</option> -->
+                </select>
+              </div>
+              </div>
 
               <div  class="col-md-12">
                 <div class="formrow">

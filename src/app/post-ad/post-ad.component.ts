@@ -32,6 +32,7 @@ export class PostAdComponent implements OnInit {
   CatId: string;
   User_ID: string;
   StoreName: string;
+  StoreNamess;
 
   CatName: string;
   SubCat_ID: string;
@@ -109,6 +110,8 @@ export class PostAdComponent implements OnInit {
         this.ActiveProduct = data;
         console.log(this.ActiveProduct,"get store information ")
         if (this.ActiveProduct ) {
+          this.StoreNamess =data.StoreInfo;
+          console.log(this.StoreNamess)
           localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
           // localStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);
           this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName') ).subscribe(resSlidersData => {
@@ -242,8 +245,8 @@ export class PostAdComponent implements OnInit {
           console.log('ABC');
 
           //  console.log('Phones & Tablets')
-        console.log('Attributes:', Product_ID,this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity)
-          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
+        console.log('Attributes:', Product_ID,this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity)
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity).subscribe();
 
       } else {
 
@@ -259,7 +262,7 @@ export class PostAdComponent implements OnInit {
         // console.log('catName:'+ this.CatName);
 
 
-          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer, this.model.Quantity).subscribe();
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity).subscribe();
 
       }
     } else {

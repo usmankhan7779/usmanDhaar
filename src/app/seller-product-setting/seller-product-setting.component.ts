@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID  } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import {ActiveAdServices} from '../active-ad/active-ad.services';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {AdService} from '../post-ad/ad.services';
 import swal from 'sweetalert2';
 
@@ -25,29 +25,45 @@ export class SellerProductSettingComponent implements OnInit {
   ManCatID: any;
   SubCatID: any;
   currentindex: any;
+  sub: any;
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav:Router,
+              // private route: ActivatedRoute,
               private ad:ActiveAdServices,
-              private PostAdd: AdService) { }
+              private PostAdd: AdService,
+              private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.SessionstoreName = localStorage.getItem('StoreName');
+    // this.sub = this.route.params.subscribe(params => {
+    // this.SessionstoreName = params['storename'];
+    this.sub = this.route
+    .queryParams
+    .subscribe(params => {
+      // Defaults to 0 if no query param provided.
+      this.SessionstoreName = params['storename'] || '0';
+     
+      // alert(this.SessionstoreName)
+      // this.SessionstoreName = localStorage.getItem('StoreName');
       if(this.SessionstoreName) {
-        this.ad.getAll_ProductBYStoreName(1,localStorage.getItem('StoreName')).subscribe(data => {
+        this.ad.getAll_ProductBYStoreName(1,this.SessionstoreName).subscribe(data => {
           this.ActiveProduct = data;
           console.log('Active Products are:::', this.ActiveProduct);
         });
       } else {
         this._nav.navigate(['/']);
       }
+   
       this.PostAdd.GetAllCategories().subscribe(resSlidersData => {
         this.GetallCat = resSlidersData
       });
-
+    });
+    
     }
+    
   }
   pageTrendChanged(event) {
     if (isPlatformBrowser(this.platformId)){
@@ -55,7 +71,7 @@ export class SellerProductSettingComponent implements OnInit {
       this.pageno = event;
 
       alert(this.pageno);
-      this.ad.getAll_ProductBYStoreName(this.pageno, localStorage.getItem('StoreName')).subscribe(
+      this.ad.getAll_ProductBYStoreName(this.pageno, this.SessionstoreName).subscribe(
         data => {
           this.ActiveProduct = data;
         });

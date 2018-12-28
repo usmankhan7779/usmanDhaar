@@ -7,7 +7,8 @@
     <div class="row">
       <div class="col-md-3 col-sm-4">
         <ul class="usernavdash">
-          <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li>
+            <li ><a [routerLink]="['/store-view']"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my ALL Store</a></li>
+          <!-- <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li> -->
           <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Add New Product</a></li>
           <li><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
           <li class="active"><a [routerLink]="['/seller-product-setting']"><i class="fa fa-cog" aria-hidden="true"></i>Seller Product Setting</a></li>
@@ -32,12 +33,12 @@
 
       <div class="col-md-9 col-sm-8">
         <div class="myads">
-          <h3>My Products</h3>
+          <h3>My Products {{SessionstoreName}} </h3>
           <br/>
           <br/>
           <ul class="searchList">
             <!-- ad start -->
-            <ng-container *ngFor="let phoneProducts of ActiveProduct.results | paginate: { itemsPerPage: 12,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }; let item = index">
+            <ng-container *ngFor="let phoneProducts of ActiveProduct.Results | paginate: { itemsPerPage: 12,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }; let item = index">
               <li>
                 <div class="row">
                   <div class="col-md-2 col-sm-4">

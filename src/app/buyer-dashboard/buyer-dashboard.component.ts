@@ -6,6 +6,7 @@ import { NgModel } from '@angular/forms';
 import {NgForm} from '@angular/forms';
 import {UploadItemService} from '../file-uploads/upload-item-service';
 import swal from 'sweetalert2';
+import { SharedData } from '../shared-service';
 
 
 @Component({
@@ -27,15 +28,25 @@ export class BuyerDashboardComponent implements OnInit {
   ValueRec: Boolean = false;
   filetoup: FileList;
   fileName: any;
+  total:any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router,
+              public _shareData: SharedData,
               private itemUploadService: UploadItemService
 
               ) { }
 
   ngOnInit() {
+    
     if (isPlatformBrowser(this.platformId)){
+      if (localStorage.getItem('UserID') !== null) {
+        this._shareData.currentMessagetotal.subscribe(message => this.total = message)
+    }
+    else{
+      this.total=0
+    }
+  
       console.log('hahaha', localStorage.getItem('UserID'));
     this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;

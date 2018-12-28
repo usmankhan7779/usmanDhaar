@@ -61,6 +61,9 @@ const appRoutes: Routes = [
       { path: 'file-uploads', loadChildren: './file-uploads/file-uploads.module#FileUploadsModule'},
       { path: 'sameurl', loadChildren: './sameurl/sameurl.module#SameurlModule'},
       { path: 'seller-product-setting', loadChildren: './seller-product-setting/seller-product-setting.module#SellerProductSettingModule'},
+      { path: 'seller-product-setting-store', loadChildren: './seller-product-setting-store/seller-product-setting-store.module#SellerProductSettingStoreModule'},
+
+      // SellerProductSettingStoreModule
     ]
   },
 ];

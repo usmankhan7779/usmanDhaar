@@ -54,7 +54,6 @@ import { UploadItemService } from './file-uploads/upload-item-service';
 import { SharedData } from './shared-service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +62,7 @@ import { SharedData } from './shared-service';
     PreloaderSmall,
     TimePipe,
     LayoutComponent,
+    
    
   
   ],

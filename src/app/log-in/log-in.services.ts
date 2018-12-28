@@ -375,7 +375,12 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
   }
 
   GetStoreInformationByUserId(email) {
-    return this._http.get(this.StoreServerUrl + 'GetStoreInformationByUserId/' + email).map((response: Response) => response.json());
+    const headers = new Headers();
+  
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + email,{headers :headers}).map((response: Response) => response.json());
 
   }
 

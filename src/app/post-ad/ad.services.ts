@@ -169,7 +169,7 @@ export class AdService {
     }
   }
 
-  Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any, Quantity: any) {
+  Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any,StoreName:any, Quantity: any) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
@@ -192,7 +192,8 @@ export class AdService {
         'ReservePrice': ReservePrice,
         'FixedPrice': FixedPrice,
         'Addbestoffer': AddBestOffer,
-        'StoreName': localStorage.getItem('StoreName'),
+        'StoreName':StoreName ,
+        // 'StoreName': localStorage.getItem('StoreName')
         'Quantity': Quantity,
         'MaxQuantity': Quantity,
         'Active': true,
