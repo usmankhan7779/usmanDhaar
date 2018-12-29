@@ -149,9 +149,12 @@ export class SingleProductComponent implements OnInit {
           this.productid1=params['id']
           this.SubCatName =params['SubCatName']||'0';
           console.log(this.SubCatName,'subcatname')
+          alert(this.SubCatName)
           this.RedirectFromlogin = params['Redirect'] || null;
+
           this.GetAdd.GetAllProductsgatorgy(this.SubCatName).subscribe(resSlidersData => {
             this.GetallPhoneProduct= resSlidersData['Results'];
+            console.log(this.GetallPhoneProduct)
             // for (let prod of this.GetallPhoneProduct.Results) {
               // prod["Pic"] = prod["Pic"].split(',');
 
