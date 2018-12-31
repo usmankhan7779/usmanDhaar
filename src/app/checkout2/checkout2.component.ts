@@ -37,7 +37,7 @@ export class Checkout2Component implements OnInit {
   CheckoutMethod = false;
   BillingMethod = false;
   GuestBillingMethod = false;
-
+catid:'';
   PaymentMethod = false;
   status= 1;
   orderreview = true;
@@ -52,8 +52,27 @@ export class Checkout2Component implements OnInit {
   InvoiceIDSet: any;
   id: any;
   ProPics: any=[];
-qty='1';
-
+  qty='1';
+currentindex: any;
+  //sub: any;
+  CatId: any;
+  fullname:'';
+  address:'';
+  Provinces:'';
+  city:'';
+  area:'';
+  default_shipment_address:'';
+  phone_no:'';
+  user_id:'';
+   // //     "id": 2,
+  // //     "fullname": "hassan",
+  // //     "address": "madina",
+  // //     "province": "custom",
+  // //     "city": "fsd",
+  // //     "area": "samanabad s",
+  // //     "default_shipment_address": false,
+  // //     "phone_no": 30112889666,
+  // //     "user_id": 303
 total:any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object, public _shareData: SharedData,
               private Renderer123: Renderer,
@@ -145,7 +164,34 @@ total:any;
 
     }
   }
-  // value='1'
+   // //     "id": 2,
+  // //     "fullname": "hassan",
+  // //     "address": "madina",
+  // //     "province": "custom",
+  // //     "city": "fsd",
+  // //     "area": "samanabad s",
+  // //     "default_shipment_address": false,
+  // //     "phone_no": 30112889666,
+  // //     "user_id": 303
+  // SaveProduct(GetUser.id,GetUser.fullname,GetUser.phone_no,GetUser.area, GetUser.city,GetUser.province,GetUser.address,GetUser.default_shipment_address )"
+  SaveProduct(id, val1,val2,val3,val4,val5,val6,val7,val8) {
+    this.catid = id;    
+    this.fullname = val1;
+    this.address = val6;
+    this.Provinces = val5;
+    this.city = val4;
+    this.area = val3;
+    this.default_shipment_address = val7;
+    this.phone_no = val2;
+    this.user_id = val8;
+    
+
+    console.log(val1,val2,val3,val4,val5,val6,val7,val8)
+    console.log('id : ' + this.catid);
+    console.log(this.fullname)
+}
+ 
+
   onChange(qty, Abc: any,value:any) {
 
     for (const tmp of this.CartedProduct.Results) {

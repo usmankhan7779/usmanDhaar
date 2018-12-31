@@ -136,12 +136,12 @@ export class HomeComponent implements OnInit {
         // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
       });
 
-      // this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
+      this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
-      //   this.GetALLAuctionProductss = resSlidersData;
-      //   // console.log(this.GetALLAuctionProductss.results.pic.split([,],3000),'pic')
-      //   // localStorage.setItem('sub_sub_cat', this.GetALLAuctionProductss.results[0].Sub_Sub_Cat_Name);
-      // });
+        this.GetALLAuctionProductss = resSlidersData;
+        // console.log(this.GetALLAuctionProductss.results.pic.split([,],3000),'pic')
+        // localStorage.setItem('sub_sub_cat', this.GetALLAuctionProductss.results[0].Sub_Sub_Cat_Name);
+      });
 
       this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
 

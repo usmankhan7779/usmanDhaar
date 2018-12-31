@@ -32,26 +32,20 @@ export class UsershipmentComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router,
-              private itemUploadService: UploadItemService
+              private itemUploadService: UploadItemService,
+              private httpService: LoginService
 
               ) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
       console.log('hahaha', localStorage.getItem('UserID'));
-    this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
-      this.GetUSerDOne = resSlidersData;
-      console.log('User Id is:', this.GetUSerDOne);
-      // this.FName = this.GetUSerDOne['Fname'];
-      // this.LName = this.GetUSerDOne['Lname'];
-      // this.Country = this.GetUSerDOne['Country'];
-      // this.State = this.GetUSerDOne['State'];
-      // this.City = this.GetUSerDOne['City'];
-      // this.Zip = this.GetUSerDOne['Zip'];
-      // this.Mobile = this.GetUSerDOne['Mobile'];
-      // this.Address = this.GetUSerDOne['Address'];
-      this.ValueRec = true;
-    });
+    // this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+    //   this.GetUSerDOne = resSlidersData;
+    //   console.log('User Id is:', this.GetUSerDOne);
+    
+    //   this.ValueRec = true;
+    // });
     this.obj.GetUSeraddress().subscribe(resAddSlidersData => {
       this.GetUSerAddress = resAddSlidersData;
       console.log('User Id is:', this.GetUSerAddress);
@@ -59,6 +53,37 @@ export class UsershipmentComponent implements OnInit {
     });
     }
   }
+  save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress:string) {
+    
+    // if ( this.fileName) {
+      //this.uploadItemsToActivity();
+      // this.Waitcall = true;
+      console.log('I am in 1 Component');
+      // this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
+        // data => {
+         // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
+          console.log('Successs' )
+          this.httpService.Useraddressaddtocart(FName,province,City,Area,Mobile,Address,Shipmentaddress).subscribe((response) => {
+         console.log(FName,province,City,Area,Mobile,Address,Shipmentaddress)
+         this.obj.GetUSeraddress().subscribe(resAddSlidersData => {
+          this.GetUSerAddress = resAddSlidersData;
+          console.log('User Id is:', this.GetUSerAddress);
+          this.ValueRec = true;
+        });
+          // this.Error = false;
+          // this.Waitcall = false;
+          // this.Right = true;
+        },
+        error => {
+          console.log(error);
+        });
+
+
+    
+     // );
+   
+  }
+
   AddReservePriceFun() {
     if ( this.ReservePrice === true ) {
       this.ReservePrice = false;

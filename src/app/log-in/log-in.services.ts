@@ -26,7 +26,7 @@ export class LoginService {
   USerNameID: string;
   // http://192.168.30.225:7000
   // https://apis.dhaar.pk
-  ServerUrl = 'https://apis.dhaar.pk/user/';
+  ServerUrl = 'http://192.168.30.225:7000/user/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
   EMailServerUrl = 'https://apis.dhaar.pk/rest-auth/';
 
@@ -736,7 +736,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         'default_shipment_address': Shipmentaddress,
         'city': City,
         'area': Area,
-        'Address': Address,
+        // 'Address': Address,
         // 'Pic' : Pic,
 
 
@@ -775,7 +775,6 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
       {
         "id": id,
         // "user_id": 277,
-
         'user_id': Username,
         'Fname': FName,
         'Lname': Lname,

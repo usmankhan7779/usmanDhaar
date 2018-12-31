@@ -653,11 +653,9 @@
                       <div *ngFor="let GetUser of GetUSerDOne.Results">
                     <!-- <ng-container *ngIf="GetUSerDOne !== null"> -->
                       
-                      <!-- <div *ngIf="GetUser['Pic'] !== ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="{{GetUser['Pic']}}" width="200" height="200"  class="img-circle img-responsive"> </div>
-                      <div *ngIf="GetUser['Pic'] === ''" class="col-md-4 col-lg-4 " align="center"> <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive"> </div> -->
-                      <div class=" col-md-8 col-lg-8 ">
+                       <div class=" col-md-8 col-lg-8 ">
 <!-- <div *ngIf="GetUSer['default_shipment_address'] == 'true'"> -->
-                          <div >
+                          
                         <table class="table table-user-information">
                           <tbody *ngIf="GetUser.default_shipment_address == true">
                           <tr>
@@ -692,30 +690,35 @@
   <td>Default Address:</td>
   <td>{{GetUser.default_shipment_address}}</td>
 </tr>
+<div class="panel-footer" >
+  <a  data-original-title="Edit this user" (click)="SaveProduct(GetUser.id,GetUser.fullname,GetUser.phone_no,GetUser.area, GetUser.city,GetUser.province,GetUser.address,GetUser.default_shipment_address )"  data-toggle="modal" data-target="#myModal" type="button" class="btn btn-sm btn-warning">
+                      <i class="glyphicon glyphicon-edit"  >
+                       </i>
+                    </a>
+                    <span class="pull-right">
+                    </span>
+           </div>
 
                           </tbody>
                         </table>
 <!-- </div> -->
-                      </div>
+                     
                       </div>
                     
                     <!-- </ng-container> -->
+                  
                     </div>
                   </div>
                 </div>
-                <div class="panel-footer">
-                  <a  data-original-title="Edit this user"   data-toggle="modal" data-target="#myModal" type="button" class="btn btn-sm btn-warning">
+                <!-- <div class="panel-footer" >
+                  <a  data-original-title="Edit this user" (click)="SaveProduct(GetUser.id,GetUser.fullname)"  data-toggle="modal" data-target="#myModal" type="button" class="btn btn-sm btn-warning">
                     <i class="glyphicon glyphicon-edit"  >
-                      <!-- <div class="listbtn"><a  data-toggle="modal" data-target="#myModal" >
-                        </a></div> -->
-                        <!-- data-toggle="tooltip" -->
-                      <!-- (click)="SaveProduct(phoneProducts, item)" -->
-                    </i>
+                     </i>
                   </a>
                  
                   <span class="pull-right">
                          </span>
-                </div>
+                </div> -->
 
               </div>
               
@@ -1078,7 +1081,7 @@
                       <input type="text"ng-Model="model.FName" #FName name="FName"
                              required class="input form-control"
                              placeholder="First Name"
-                             id="FName"  value="{{GetUSerDOne.Results.fullname }}"
+                             id="FName"   value="{{fullname}}"
                              
                              >
 
@@ -1088,7 +1091,7 @@
                   
                     <!--/ [col] -->
 
-                   
+                    
                     <div class="col-sm-6">
                       <!-- [textMask]="{mask: mask}" -->
                         <label for="telephone" class="required">Contact Number(*)</label>
@@ -1099,7 +1102,7 @@
                                
                                placeholder="your contact number"
                                type="text" required ng-Model="model.Mobile" #Mobile name="Mobile"
-                               id="telephone"
+                               id="telephone"   value="{{phone_no}}"
                                >
                       </div>
 
@@ -1125,30 +1128,20 @@
 
                     <div class="col-sm-6">
 
-                      <!-- <label  class="required">Select Your State/Province(*)</label>
-                      <select  class="form-control"  ng-Model="model.State" #State name="State" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
-                        <option value="Punjab" selected>Punjab</option>
-
-                        <option value="Sindh" >Sindh</option>
-                        <option value="Balochistan" >Balochistan</option>
-                        <option value="Khyber Pakhtunkhwa" >Khyber Pakhtunkhwa</option>
-
-
-                      </select> -->
-                      <!-- <div class="col-sm-6"> -->
+                    
 
                     
                           <label for="State" class="required">Province(*)</label>
                           <input type="text"ng-Model="model.province" #province name="province"
                                  required class="input form-control"
                                  placeholder="Province"
-                                 id="State"
+                                 id="State" value="{{Provinces}}"
                                  >
   
   
   
                         <!-- </div> -->
-
+                       
                     </div>
                     <div class="col-sm-6">
 
@@ -1158,7 +1151,7 @@
                                placeholder="Your City"
                                type="text" required
                                ng-Model="model.City" #City name="City"
-                               
+                               value="{{city}}"
                                >
                       </div>
 
@@ -1169,17 +1162,7 @@
                   <li class="row">
 
                   
-
-                    <!-- <div class="col-sm-6">
-
-                      <label for="postal_code" class="required">Zip/Postal Code(*)</label>
-                      <input class="input form-control" type="text"
-                             pattern="([0-9])+$"
-
-                             placeholder="55560"
-                             required ng-Model="model.zipcode" #zipcode name="zipcode" id="postal_code"
-                             value="{{GetUSerdetails.Zip}}">
-                    </div> -->
+ 
 
 
                   </li>
@@ -1195,38 +1178,9 @@
                                  placeholder="Your Area"
                                  type="text" required
                                  ng-Model="model.Area" #Area name="Area"
-                               
+                                 value="{{area}}"
                                  >
                         </div>
-                    <!-- <div class="col-sm-6">
-
-                      <label for="telephone" class="required">Owner Contact Number(*)</label>
-
-
-                      <input class="input form-control"
-
-                             [textMask]="{mask: mask}"
-                             placeholder="your contact number"
-                             type="text" required ng-Model="model.personal" #personal name="personal"
-                             id="telephone"
-                             value="{{GetUSerdetails.Mobile}}">
-                    </div> -->
-                    <!--/ [col] -->
-                    <!-- <div class="col-sm-6">
-
-                      <div class="form-group">
-
-                        <label for="telephone" class="required">Upload Your Profile Picture</label>
-
-
-                        <input type="file" #fileImportInput id="file1" name="file" class="file" data-preview-file-type="text" (change)="handleFileInput($event.target.files)"  multiple accept="image/*">
-
-
-                      </div>
-
-                    </div> -->
-                    <!--/ [col] -->
-
                   </li><!--/ .row -->
 
                   <br>
@@ -1238,7 +1192,7 @@
                       <input type="text" class="input form-control" required
                              placeholder="shop #, street# etc"
                              ng-Model="model.Address"
-                             #Address name="Address" id="address"
+                             #Address name="Address" id="address"  value="{{address}}"
                              
                              >
                     </div><!--/ [col] -->
@@ -1252,7 +1206,7 @@
                              placeholder="shop #, street# etc"
                              ng-Model="model.Shipmentaddress"
                              #Shipmentaddress name="Shipmentaddress" id="Shipmentaddress"
-                             
+                             value="{{default_shipment_address}}"
                              >
                     </div><!--/ [col] -->
                   </li><!-- / .row -->
@@ -1420,10 +1374,10 @@
         </ng-container> -->
       </div>
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal"(click)="EditProduct()">Submit</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

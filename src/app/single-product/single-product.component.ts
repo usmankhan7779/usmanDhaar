@@ -32,7 +32,7 @@ export class SingleProductComponent implements OnInit {
   login_error:  Boolean = false;
   ProID: string;
   productid1:string;
-  qty;
+  qty ='1';
   SubCatName:string;
   Getphoto: any = [];
   NewBidInserted = false ;
@@ -149,7 +149,7 @@ export class SingleProductComponent implements OnInit {
           this.productid1=params['id']
           this.SubCatName =params['SubCatName']||'0';
           console.log(this.SubCatName,'subcatname')
-          alert(this.SubCatName)
+          // alert(this.SubCatName)
           this.RedirectFromlogin = params['Redirect'] || null;
 
           this.GetAdd.GetAllProductsgatorgy(this.SubCatName).subscribe(resSlidersData => {
@@ -527,14 +527,15 @@ Addtocart(Abc: any) {
               // console.log('eeeeeeeee',this.resultProduct);
               this.resultProduct.itemsqty = +Abc;
               //this.TmpresultProduct = JSON.parse(localStorage.getItem('Cartdata'));
-              alert(Abc)
+              // alert(Abc)
+              console.log(Abc,'result')
               this.GetAdd.addtocartProduct(this.productid1,Abc).subscribe(
               data=>{
                 console.log(data,'aaaaaaaaaaa')
               
                 this.total=data['Total Result']
-                alert(this.total)
-                alert(this.statuss)
+                console.log(this.total)
+                console.log(this.statuss)
                 
                 this.statuss=data.responce_data;
                 console.log(this.statuss,'status')
@@ -558,7 +559,7 @@ Addtocart(Abc: any) {
                    confirmButtonColor: "#090200",
                    width: '512px',
                });
-               alert("else wali condition")
+              //  alert("else wali condition")
            this.router.navigate(['/checkout2']);
               
            }
@@ -570,7 +571,7 @@ Addtocart(Abc: any) {
 
               // this.TmpresultProduct['products'].push(this.resultProduct);
              // localStorage.setItem('Cartdata', JSON.stringify(this.TmpresultProduct));
-              alert("if wali condtion")
+              // alert("if wali condtion")
 
               // console.log(this.products);
               this.router.navigate(['/checkout2']);
@@ -586,8 +587,8 @@ Addtocart(Abc: any) {
                 console.log(data,'aaaaaaaaaaa')
               
                 this.total=data['Total Result']
-                alert(this.total)
-                alert(this.statuss)
+                console.log(this.total)
+                console.log(this.statuss)
                 
                 this.statuss=data.responce_data;
                 console.log(this.statuss,'status')
@@ -611,7 +612,7 @@ Addtocart(Abc: any) {
                    confirmButtonColor: "#090200",
                    width: '512px',
                });
-               alert("else wali condition")
+              //  alert("else wali condition")
            this.router.navigate(['/checkout2']);
               
            }
@@ -631,8 +632,8 @@ Addtocart(Abc: any) {
               console.log(data,'aaaaaaaaaaa')
               
               this.total=data['Total Result']
-              alert(this.total)
-              alert(this.statuss)
+              console.log(this.total)
+              console.log(this.statuss)
               
               this.statuss=data.responce_data;
               console.log(this.statuss,'status')
@@ -656,7 +657,7 @@ Addtocart(Abc: any) {
                  confirmButtonColor: "#090200",
                  width: '512px',
              });
-             alert("else wali condition")
+            //  alert("else wali condition")
          this.router.navigate(['/checkout2']);
             
          }
@@ -786,7 +787,8 @@ Addtocart(Abc: any) {
         });
         this.ProductReviews();
         const selectElement = <HTMLSelectElement>document.getElementById('reviewsForm');
-        selectElement.reset();
+         selectElement.reset();
+        
       },
       (err) => {
         this.searchQuery = err;

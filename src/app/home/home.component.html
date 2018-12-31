@@ -340,10 +340,10 @@
                 <div class="item-inner" >
                   <div class="product-thumbnail">
                     <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic}}" alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                      <img class="img-responsive" src="{{TvVideoaudio88.product.Pic}}" alt="{{TvVideoaudio88.product.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
                       <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product Detail</a>
+                        <h2>{{TvVideoaudio88.product.Cat_Name}}</h2>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">Product Detail</a>
                       </div>
                     </div>
                   </div>
@@ -353,25 +353,25 @@
                       <div class="info-inner">
                         <div class="item-title">
                           <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                                 [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">{{
-                            TvVideoaudio88.P_Title }} </a></h4>
+                                 [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">{{
+                            TvVideoaudio88.product.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
                           <div class="rating">
 
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
+                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.product.StoreName]">
                               {{TvVideoaudio88.product.StoreName}}</a></p>
 
                           </div>
 
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                          <div *ngIf="TvVideoaudio88.product.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{ TvVideoaudio88.SrartingPrice | number:'.0-0'}}</span> </span>
+                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{ TvVideoaudio88.product.SrartingPrice | number:'.0-0'}}</span> </span>
                             </div>
 
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{ TvVideoaudio88.FixedPrice | number:'.0-0'}}</span> </span>
+                          <div *ngIf="TvVideoaudio88.product.Auction == false" class="item-price">
+                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{ TvVideoaudio88.product.FixedPrice | number:'.0-0'}}</span> </span>
                             </div>
                           </div>
 
@@ -383,16 +383,16 @@
                     </div>
                     <div class="box-hover">
                       <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                        <div *ngIf="TvVideoaudio88.product.Auction == true" class="pro-actions">
                           <a [routerLink]="['/single-product']"
-                             [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                             [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart">
                               <span>Bid Now</span></button>
                           </a>
                         </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                        <div *ngIf="TvVideoaudio88.product.Auction == false" class="pro-actions">
                           <a [routerLink]="['/single-product']"
-                             [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                             [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">
                             <button class="action add-to-cart"
                                     type="button" title="Add to Cart"><span>Buy Now</span></button>
                           </a>
@@ -408,15 +408,15 @@
           </div>
           <div class="tab-pane fade" id="featured">
 
-            <ng-container *ngFor="let TvVideoaudio88 of GetALLFeaturedProductss.results">
+            <ng-container *ngFor="let TvVideoaudio88 of GetALLFeaturedProductss.Results">
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner" >
                   <div class="product-thumbnail">
                     <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                      <img class="img-responsive" src="{{TvVideoaudio88.product.Pic }}" alt="{{TvVideoaudio88.product.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
                       <div class="overlay">
                         <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, id:TvVideoaudio88.id }">Product Detail</a>
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">Product Detail</a>
                       </div>
                     </div>
 
@@ -427,22 +427,22 @@
                       <div class="info-inner">
                         <div class="item-title">
                           <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                                 [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, id:TvVideoaudio88.id }">{{
-                            TvVideoaudio88.P_Title }} </a></h4>
+                                 [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name,SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">
+                                 {{TvVideoaudio88.product.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                          <!-- <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                             class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
-                          </div>
+                          </div> -->
 
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                          <div *ngIf="TvVideoaudio88.product.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{ TvVideoaudio88.MaxBidPrice | number:'.0-0'}}</span> </span>
+                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{ TvVideoaudio88.product.MaxBidPrice | number:'.0-0'}}</span> </span>
                             </div>
 
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{ TvVideoaudio88.FixedPrice | number:'.0-0' }}</span> </span>
+                          <div *ngIf="TvVideoaudio88.product.Auction == false" class="item-price">
+                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{ TvVideoaudio88.product.FixedPrice | number:'.0-0' }}</span> </span>
                             </div>
                           </div>
 
@@ -454,16 +454,16 @@
                     </div>
                     <div class="box-hover">
                       <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                        <div *ngIf="TvVideoaudio88.product.Auction == true" class="pro-actions">
                           <a [routerLink]="['/single-product']"
-                             [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, id:TvVideoaudio88.id }">
+                             [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name,SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart">
                               <span>Bid Now</span></button>
                           </a>
                         </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                        <div *ngIf="TvVideoaudio88.product.Auction == false" class="pro-actions">
                           <a [routerLink]="['/single-product']"
-                             [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, id:TvVideoaudio88.id }">
+                             [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name,SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">
                             <button  class="action add-to-cart"
                                     type="button" title="Add to Cart"><span>Buy Now</span></button>
                           </a>
