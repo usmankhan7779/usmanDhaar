@@ -150,7 +150,7 @@ export class SingleProductComponent implements OnInit {
           this.SubCatName =params['SubCatName']||'0';
           console.log(this.SubCatName,'subcatname')
           // alert(this.SubCatName)
-          this.RedirectFromlogin = params['Redirect'] || null;
+         this.RedirectFromlogin = params['Redirect'] || null;
 
           this.GetAdd.GetAllProductsgatorgy(this.SubCatName).subscribe(resSlidersData => {
             this.GetallPhoneProduct= resSlidersData['Results'];
@@ -191,6 +191,7 @@ export class SingleProductComponent implements OnInit {
             });
 
           if (this.ProID !== '0') {
+            alert(this.ProID)
             this.GetAdd.GetAllProductPicture(this.ProID).subscribe(resSlidersData => {
               this.ProductPictures = resSlidersData;
             });

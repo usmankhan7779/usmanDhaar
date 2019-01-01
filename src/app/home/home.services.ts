@@ -127,23 +127,68 @@ export class HomeService {
   }
 
   GetProductsfromAllCat( ) {
-
-    return this._http.get(this.ServerUrl + 'getProductsfromAllCat').map(response => response.json());
+    if(localStorage.getItem('UserName') !== null)
+    {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'getProductsfromAllCat',{headers : headers}).map(response => response.json());
     // console.log(this.CateDeatils)
   }
-  GetAuctionProductsfromAllCat( ) {
+  else{
+    return this._http.get(this.ServerUrl + 'getProductsfromAllCat').map(response => response.json());
 
+  }
+}
+  GetAuctionProductsfromAllCat( ) {
+    if(localStorage.getItem('UserName') !== null)
+    {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat',{headers: headers}).map(response => response.json());
+    // console.log(this.CateDeatils)
+  }
+  else{
     return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat').map(response => response.json());
     // console.log(this.CateDeatils)
   }
+}
   GetBuyNowProductsfromAllCat() {
+    if(localStorage.getItem('UserName') !== null)
+    {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'getBuyNowProductsfromAllCat',{headers : headers}).map(response => response.json());
+  }
+  else{
     return this._http.get(this.ServerUrl + 'getBuyNowProductsfromAllCat').map(response => response.json());
   }
+}
    GetAllFeaturedProducts( ) {
-
-    return this._http.get(this.ServerUrl + 'getallfeaturedProducts').map(response => response.json());
+    if(localStorage.getItem('UserName') !== null)
+    {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'getallfeaturedProducts',{headers: headers}).map(response => response.json());
     // console.log(this.CateDeatils)
   }
+  else{
+     return this._http.get(this.ServerUrl + 'getallfeaturedProducts').map(response => response.json());
+  // console.log(this.CateDeatils)
+
+  }
+}
 
   GetallBidsProductdbyProductID( ProductID: any) {
     return this._http.get( this.ServerUrl + 'GetallBidsProductd/' + ProductID  ).map(response => response.json());
