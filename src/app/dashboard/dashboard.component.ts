@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
 
       window.scrollTo(0, 0);
 
-      this.Profile.GetStoreInformationByUserId(localStorage.getItem('UserName')).subscribe(
+      this.Profile.GetStoreInformationByUserId().subscribe(
         data => {
           this.ActiveProduct = data;
           console.log(this.ActiveProduct,"get store infomation")

@@ -27,7 +27,7 @@ export class LoginService {
   // http://192.168.30.225:7000
   // https://apis.dhaar.pk
   ServerUrl = 'https://apis.dhaar.pk/user/';
-  StoreServerUrl = 'https://apis.dhaar.pk/store/';
+  StoreServerUrl = 'http://192.168.30.225:7000/store/';
   EMailServerUrl = 'https://apis.dhaar.pk/rest-auth/';
 
 
@@ -374,13 +374,13 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     return this._http.get(this.ServerUrl + 'email_verify/' + email).map((response: Response) => response.json());
   }
 
-  GetStoreInformationByUserId(email) {
+  GetStoreInformationByUserId() {
     const headers = new Headers();
   
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + email,{headers :headers}).map((response: Response) => response.json());
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' ,{headers :headers}).map((response: Response) => response.json());
 
   }
 
@@ -470,8 +470,85 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
   }
 
 
+  // StoreRegistration(model: any[]) {
+  //   if (isPlatformBrowser(this.platformId)) {
+
+  //     console.log(model['fbrunregister']);
+  //     if (model['fbrunregister'] === true) {
+
+  //       model['fbrregister'] = false;
+  //       model['fbrname'] = '-';
+  //       model['cnic'] = '-';
+  //       model['strn'] = '-';
+
+  //       console.log(model['fbrregister']);
+  //       console.log(model['fbrname']);
+  //       console.log(model['cnic']);
+  //       console.log(model['strn']);
+
+  //     }
+  //     return this._http.post(this.StoreServerUrl + 'GetStoreInformation/' + localStorage.getItem('UserID'),
+  //       {
+  //         'StoreName': model['storename'],
+  //         'OwnerName': model['ownername'],
+  //         'BusinessEmail': model['email'],
+  //         'Zip': model['zipcode'],
+  //         'City': model['city'],
+  //         'OwnerContactNum': model['personal'],
+  //         'BusinessPhone': model['business'],
+  //         'Address': model['address'],
+  //         'FbrRegister': model['fbrregister'],
+  //         'LegalName': model['fbrname'],
+  //         'NTN': model['cnic'],
+  //         'STRN': model['strn'],
+  //         'UserID': localStorage.getItem('UserID'),
+
+  //       })
+
+  //       .map((res: Response) => {
+
+  //         if (res) {
+  //           if (res.status === 201 || res.status === 200) {
+  //             // localStorage.setItem('account_created' , '1' );
+  //             // const responce_data = res.json();
+  //             // localStorage.setItem('Reg', 'Done');
+  //             //  alert(localStorage.getItem('id'));
+
+  //             this.StoreBankRegistration(model).subscribe(data => {
+  //               console.log(data);
+  //             });
+  //             // this.register_customer(responce_data.id, Fname, LName, Mobile).subscribe();
+  //           }
+  //         }
+  //       }).catch((error: any) => {
+  //         console.log(error);
+  //         if (error.status !== 404) {
+  //           if (error.status === 401) {
+  //             console.log(error);
+
+  //             return Observable.throw(new Error(error.status));
+  //           }
+
+
+  //         } else {
+  //           console.log(error);
+  //           //   this._nav.navigate(['/login']);
+
+  //           return Observable.throw(new Error(error.status));
+  //         }
+  //       });
+  //   }
+  // }
+
   StoreRegistration(model: any[]) {
     if (isPlatformBrowser(this.platformId)) {
+
+      const headers = new Headers();
+      // headers.append('Content-Type', 'application/json');
+      headers.append('Content-Type', 'application/json');
+      // headers.append('Authorization', 'JWT ' +  this.authentication);
+      headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
 
       console.log(model['fbrunregister']);
       if (model['fbrunregister'] === true) {
@@ -487,24 +564,51 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         console.log(model['strn']);
 
       }
-      return this._http.post(this.StoreServerUrl + 'GetStoreInformation/' + localStorage.getItem('UserID'),
-        {
-          'StoreName': model['storename'],
-          'OwnerName': model['ownername'],
-          'BusinessEmail': model['email'],
-          'Zip': model['zipcode'],
-          'City': model['city'],
-          'OwnerContactNum': model['personal'],
-          'BusinessPhone': model['business'],
-          'Address': model['address'],
-          'FbrRegister': model['fbrregister'],
-          'LegalName': model['fbrname'],
-          'NTN': model['cnic'],
-          'STRN': model['strn'],
-          'UserID': localStorage.getItem('UserID'),
 
-        })
+      return this._http.post(this.StoreServerUrl + 'GetStoreInformation/' ,
+        {
+          'storename': model['storename'],
+          'ownername': model['ownername'],
+          'businessemail': model['email'],
+          'zip': model['zipcode'],
+          'city': model['city'],
+          'contactno': model['personal'],
+          'businessphone': model['business'],
+          'address': model['address'],
+          'fbrregister': model['fbrregister'],
+          'legalname': model['fbrname'],
+          'ntn': model['cnic'],
+          'strn': model['strn'],
+          // 'UserID': localStorage.getItem('UserID'),
+          // 'pic': Pic,
+          'acctitle': model['acount_title'],
+          'accno': model['acount_number'],
+          'bankname': model['Bank_name'],
+          'branchname': model['Branch_name'],
+          'branchcode': model['Branch_code'],
+
+          //         "storename":"yahoo.com",
+// "ownername":"jibran",
+// "businessemail":"hasni17@gmail.com",
+// "zip":"75003",
+// "city":"fsd",
+// "contactno":"42333565",
+// "businessphone":"6963333",
+// "address":"haaaakakak",
+// "ntn":"11101010",
+// "strn":"7333939",
+// "pic":"https://storage.dhaar.pk/UserPics/56/4_9_49.jpg",
+// "fbrregister":false,
+// "acctitle":"punjab",
+// "accno":"558585",
+// "bankname":"snskkskks",
+// "branchname":"akkakak",
+// "branchcode":"7299292",
+// "legalname":"aahhaha"
+
+        },{headers: headers})
         .map((res: Response) => {
+          console.log('Storing with pic');
 
           if (res) {
             if (res.status === 201 || res.status === 200) {
@@ -513,9 +617,9 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
               // localStorage.setItem('Reg', 'Done');
               //  alert(localStorage.getItem('id'));
 
-              this.StoreBankRegistration(model).subscribe(data => {
-                console.log(data);
-              });
+             // this.StoreBankRegistration(model).subscribe(data => {
+               // console.log(data);
+              // });
               // this.register_customer(responce_data.id, Fname, LName, Mobile).subscribe();
             }
           }
@@ -539,8 +643,16 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     }
   }
 
+
   StoreRegistrationPic(model: any[], Pic: any) {
     if (isPlatformBrowser(this.platformId)) {
+
+      const headers = new Headers();
+      // headers.append('Content-Type', 'application/json');
+      headers.append('Content-Type', 'application/json');
+      // headers.append('Authorization', 'JWT ' +  this.authentication);
+      headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
 
       console.log(model['fbrunregister']);
       if (model['fbrunregister'] === true) {
@@ -557,24 +669,48 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
 
       }
 
-      return this._http.post(this.StoreServerUrl + 'GetStoreInformationWithPic/' + localStorage.getItem('UserID'),
+      return this._http.post(this.StoreServerUrl + 'GetStoreInformation/' ,
         {
-          'StoreName': model['storename'],
-          'OwnerName': model['ownername'],
-          'BusinessEmail': model['email'],
-          'Zip': model['zipcode'],
-          'City': model['city'],
-          'OwnerContactNum': model['personal'],
-          'BusinessPhone': model['business'],
-          'Address': model['address'],
-          'FbrRegister': model['fbrregister'],
-          'LegalName': model['fbrname'],
-          'NTN': model['cnic'],
-          'STRN': model['strn'],
-          'UserID': localStorage.getItem('UserID'),
-          'Pic': Pic,
+          'storename': model['storename'],
+          'ownername': model['ownername'],
+          'businessemail': model['email'],
+          'zip': model['zipcode'],
+          'city': model['city'],
+          'contactno': model['personal'],
+          'businessphone': model['business'],
+          'address': model['address'],
+          'fbrregister': model['fbrregister'],
+          'legalname': model['fbrname'],
+          'ntn': model['cnic'],
+          'strn': model['strn'],
+          // 'UserID': localStorage.getItem('UserID'),
+          'pic': Pic,
+          'acctitle': model['acount_title'],
+          'accno': model['acount_number'],
+          'bankname': model['Bank_name'],
+          'branchname': model['Branch_name'],
+          'branchcode': model['Branch_code'],
 
-        })
+          //         "storename":"yahoo.com",
+// "ownername":"jibran",
+// "businessemail":"hasni17@gmail.com",
+// "zip":"75003",
+// "city":"fsd",
+// "contactno":"42333565",
+// "businessphone":"6963333",
+// "address":"haaaakakak",
+// "ntn":"11101010",
+// "strn":"7333939",
+// "pic":"https://storage.dhaar.pk/UserPics/56/4_9_49.jpg",
+// "fbrregister":false,
+// "acctitle":"punjab",
+// "accno":"558585",
+// "bankname":"snskkskks",
+// "branchname":"akkakak",
+// "branchcode":"7299292",
+// "legalname":"aahhaha"
+
+        },{headers: headers})
         .map((res: Response) => {
           console.log('Storing with pic');
 
@@ -585,9 +721,9 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
               // localStorage.setItem('Reg', 'Done');
               //  alert(localStorage.getItem('id'));
 
-              this.StoreBankRegistration(model).subscribe(data => {
-                console.log(data);
-              });
+             // this.StoreBankRegistration(model).subscribe(data => {
+               // console.log(data);
+              // });
               // this.register_customer(responce_data.id, Fname, LName, Mobile).subscribe();
             }
           }
@@ -622,11 +758,12 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
       return this._http.post(this.StoreServerUrl + 'GetStoreBankInformation/' + localStorage.getItem('UserID'),
         {
           'StoreID': model['storename'],
-          'AccountTitle': model['acount_title'],
-          'AccountNumber': model['acount_number'],
-          'BankName': model['Bank_name'],
-          'BranchName': model['Branch_name'],
-          'BranchCode': model['Branch_code'],
+          'acctitle': model['acount_title'],
+          'accno': model['acount_number'],
+          'bankname': model['Bank_name'],
+          'branchname': model['Branch_name'],
+          'branchcode': model['Branch_code'],
+        
         })
         .map((res: Response) => {
           if (res) {
@@ -664,8 +801,16 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
 
   verifyStoreName(username: string) {
     //console.log(username);
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.post(this.StoreServerUrl + 'verifyStoreName&Email/', {
 
-    return this._http.get(this.StoreServerUrl + 'verifyStoreName/' + username)
+      'store':username
+    },{headers:headers})
       .map((res: Response) => {
         if (res) {
           if (res.status === 201 || res.status === 200) {

@@ -16,7 +16,8 @@ export class StoredetailsService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl =  'https://apis.dhaar.pk/store/';
+  // https://apis.dhaar.pk/store/
+  ServerUrl =  'http://192.168.30.225:7000/store/';
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -25,12 +26,12 @@ export class StoredetailsService {
               private _nav: Router) {
   }
 
-  GetAllStoreByStorenames(username) {
+  GetAllStoreByStorenames() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'JWT ' +  this.authentication);
     headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get(this.ServerUrl + 'GetStoreInformation/'+username,{headers :headers}).map(response => response.json());
+    return this._http.get(this.ServerUrl + 'GetStoreInformation/',{headers :headers}).map(response => response.json());
   }
 }

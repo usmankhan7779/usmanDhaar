@@ -26,7 +26,7 @@ export class SellerProductSettingStoreComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
-      this.GetProducts.GetAllStoreByStorenames(localStorage.getItem("UserName")).subscribe(resSlidersData => {
+      this.GetProducts.GetAllStoreByStorenames().subscribe(resSlidersData => {
 
         this.GetALLBuyNowProductss = resSlidersData;
         

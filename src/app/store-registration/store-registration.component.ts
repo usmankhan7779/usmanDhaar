@@ -42,10 +42,14 @@ export class StoreRegistrationComponent implements OnInit {
   PicCounter: any =0;
   filetoup1:any=[];
   filetoup:any=[];
+  SessionstoreName: any;
+  seller = false;
+  fileName = '';
   // files: FileList;
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private obj: LoginService,
                private _http: HttpService,
+              //  private Profile: LoginService,
                private itemUploadService: UploadItemService ) {
   }
 
@@ -69,113 +73,39 @@ export class StoreRegistrationComponent implements OnInit {
 
   }
 
+  handleFileInput(files: FileList) {
+    this. filetoup = files;
+    console.log('uploaded filetoup  ', this.filetoup);
 
-  onChange(event: EventTarget) {
+    this.fileName= 'https://storage.dhaar.pk/UserPics/' + localStorage.getItem('UserID') + '/' + this.filetoup[0].name;
+    console.log('File Name is:' ,this.fileName);
+    this.uploadItemsToActivity();
+}
 
+uploadItemsToActivity() {
+    console.log('I am in 1 Component');
+    this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
+      data => {
+        this.obj.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
+        console.log('Successs')
+      },
+      error => {
+        console.log(error);
+      });
 
-
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-    this.files = target.files;
-    if (this.files.length >= 1 && this.files.length < 5) {
-      this.file = this.files[0];
-      const reader = new FileReader();
-      reader.onload = this._handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(this.file);
-
-      if (this.files.length > 1 && this.files.length < 5) {
-
-        for (let a = 1; a < (this.files.length); a++) {
-          alert(a);
-          this.file1 = this.files[a];
-          const reader1 = new FileReader();
-          reader1.onload = (e: any) => {
-            this._handleReaderLoadedforALl(e, a - 1);
-          };
-          // this._handleReaderLoadedforALl.bind(this.file1, a-1);
-          reader1.readAsBinaryString(this.file1);
-        }
-        // console.log("fsdfsdf");
-        console.log(this.ALLbase64textStringforPic);
-      }
     }
 
-
-  }
-
-
-  _handleReaderLoadedforALl(readerEvt, index) {
-    // console.log('attt  ',index);
-    const binaryString = readerEvt.target.result;
-    // console.log('123456');
-    // console.log('asdfghjk   ',btoa(binaryString))
-    // // this.arrayIndex=0;
-
-    this.ALLbase64textStringforPic[index] = btoa(binaryString);
-    // console.log(this.ALLbase64textStringforPic);
-
-
-  }
-
-
-  // onChange(event:FileList) {
-
-  //   this.PicCounter +=event.length;
-
-  //   console.log('PicCounter is', this.PicCounter);
-
-  //   // if (event.length <=5 && this.PicCounter <= 5) {
-  //     this.PictureCheck = true;
-  //     console.log('Event', event);
-  //     for (let i = 0; i < event.length; i++) {
-  //       if (event) {
-  //         const reader = new FileReader();
-  //         reader.onload = (event: any) => {
-  //           console.log('Inner event', event);
-  //           this.url.push(event.target.result);
-  //         };
-  //         reader.readAsDataURL(event[i]);
-  //       }
-  //     }
-  //     this.filetoup1 = event;
-  //     for (let itm of this.filetoup1) {
-  //       this.filetoup.push(itm);
-  //     }
-  //     console.log('Filetoup has:', this.filetoup);
-  //   // } else {
-  //   //   swal('Maximum 5 Pictures are allow','','error');
-  //   //   this.PicCounter -= event.length;
-  //   // }
-
-  //   console.log('PicCounter at end is', this.PicCounter);
-
-  // }
-
-  // uploadItemsToActivity(StoreName,ProductID) {
-  //   // if (this.filetoup.length === 1) {
-  //   console.log('I am in 1 Component');
-  //   this.itemUploadService.PostImage(this.filetoup, StoreName, ProductID).subscribe(
-  //     data => {
-  //       console.log('Successs')
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     });
-  // }
   save() {
 
     if ( this.model.terms ) {
       this.Waitcall = true;
-      // if ( this.base64textString) {
+      if ( this.fileName) {
         console.log('Inside base 64');
         
-        this.obj.StoreRegistrationPic(this.model, this.base64textString).subscribe();
-      // } else {
-        // this.obj.StoreRegistration(this.model).subscribe(
-          // resSlidersData => {
-            // console.log('DONEDsdfnsd');
-          // });
-      // }
+        this.obj.StoreRegistrationPic(this.model, this.fileName).subscribe();
+      } else {
+        this.obj.StoreRegistration(this.model).subscribe();
+      }
     } else {
       alert('You must agree to the terms  first.');
     }
@@ -317,6 +247,12 @@ export class StoreRegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.SessionstoreName= localStorage.getItem('StoreName');
+      if (this.SessionstoreName === null) {
+        this.seller = false;
+      } else {
+        this.seller = true;
+      }
 this.model.fbrregister = false;
     this.model.fbrunregister = false;
 this.model.terms = true;

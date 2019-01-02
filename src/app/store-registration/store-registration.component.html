@@ -21,6 +21,7 @@
 <div class="inner-page">
   <div class="container">
     <div class="row">
+        <ng-container *ngIf="seller === false">
       <div class="col-md-3 col-sm-4">
         <ul class="usernavdash">
           <li ><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
@@ -35,6 +36,30 @@
         </ul>
 
       </div>
+        </ng-container>
+      <ng-container *ngIf="seller === true">
+        <div class="col-md-3 col-sm-4">
+          <ul class="usernavdash">
+            <!-- <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li> -->
+            <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Product</a></li>
+            <li ><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
+            <li><a [routerLink]="['/seller-product-setting']"><i class="fa fa-cog" aria-hidden="true"></i>Seller Product Setting</a></li>
+            <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
+            <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
+            <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
+            <li><a [routerLink]="['/seller-offer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Offers</a></li>
+            <li><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
+            <li class="active"><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
+            <li><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Add New Store  Dhaar.pk</a></li> <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
+           
+            <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
+            <li><a [routerLink]="['/seller-user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
+            <li><a [routerLink]="['/seller-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
+            <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+          </ul>
+          <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
+        </div>
+      </ng-container>
 
       <form role="form" class="login-form" (ngSubmit)="f.form.valid && save()" #f="ngForm" novalidate>
 
@@ -232,13 +257,22 @@
 
                   <div class="form-group">
 
-                    <label for="telephone" class="required">Upload Your Profile Picture</label>
+                      <!-- <div class="form-group"> -->
+
+                          <label for="telephone" class="required">Upload Your Profile Picture</label>
+
+
+                          <input type="file" #fileImportInput id="file1" name="file" class="file" data-preview-file-type="text" (change)="handleFileInput($event.target.files)"  multiple accept="image/*">
+
+
+                        <!-- </div> -->
+                    <!-- <label for="telephone" class="required">Upload Your Profile Picture</label> -->
 
 
                     <!-- <input class="file" (change)="onChange($event)" type="file" data-preview-file-type="text" id="file1" name="file" #Picture multiple ng-files="getTheFiles($files)" /> -->
                     <!-- <input id="pic" type='file' (change)="onChange($event)" (change)="readUrl($event)" name="pic" [(ngModel)]="model.pic" accept="image/*" multiple> -->
                     <!-- <img [src]="url" class="image-box" > -->
-                    <input type="file" #Picture id="file1" name="file" class="file" data-preview-file-type="text" (change)="onChange($event.target.files)" multiple accept="image/*">
+                    <!-- <input type="file" #Picture id="file1" name="file" class="file" data-preview-file-type="text" (change)="onChange($event.target.files)" multiple accept="image/*"> -->
 
 
                   </div>

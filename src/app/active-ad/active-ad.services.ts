@@ -70,22 +70,22 @@ export class ActiveAdServices {
     return this._http.get(this.ServerUrl + 'watchList/',{headers:headers}).map(response => response.json());
   }
 
-  GetStoreInformation(storename) {
+  GetStoreInformation() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'JWT ' +  this.authentication);
     headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + storename,{headers :headers}).map((response: Response) => response.json());
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' ,{headers :headers}).map((response: Response) => response.json());
 
   }
-  GetStoreInformationofferbystorename(storename) {
+  GetStoreInformationofferbystorename() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'JWT ' +  this.authentication);
     headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' + storename,{headers :headers}).map((response: Response) => response.json());
+    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' ,{headers :headers}).map((response: Response) => response.json());
 
   }
 
