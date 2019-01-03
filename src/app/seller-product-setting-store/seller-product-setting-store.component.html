@@ -43,62 +43,61 @@
 
     <div class="product-item col-md-3 col-sm-6" *ngFor="let TvVideoaudio88 of GetALLBuyNowProductss.StoreInfo">
       <div *ngFor="let Tv of GetALLBuyNowProductss.BankInfo">
-      <div class="item-inner"  *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
-      
-        <h2 class="product-heading" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">{{TvVideoaudio88?.StoreName}}</h2>
-        <div class="product-thumbnail"  *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
-          <div class="hovereffect"  *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
-            <img class="img-responsive" src="{{TvVideoaudio88.userimage}}"
-              onerror="this.src='https://storage.dhaar.pk/logostores/0519764032018162721/91JA5-hAnoL._SL1500_-min.jpg'">
-            <!-- <div  class="overlay">
+        <div class="item-inner" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
+
+          <h2 class="product-heading" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">{{TvVideoaudio88?.StoreName}}</h2>
+          <div class="product-thumbnail" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
+            <div class="hovereffect" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
+              <img class="img-responsive" src="{{TvVideoaudio88.userimage}}" onerror="this.src='https://storage.dhaar.pk/logostores/0519764032018162721/91JA5-hAnoL._SL1500_-min.jpg'">
+              <!-- <div  class="overlay">
                           <h2 >Computing &amp; Laptops</h2> -->
-            <!-- <a  class="info" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops">Product Detail</a>
+              <!-- <a  class="info" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops">Product Detail</a>
                         </div> -->
-          </div>
-        </div>
-
-        <div class="pro-box-info"  *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id" >
-          <div class="item-info">
-            <div class="info-inner">
-              <div class="item-title">
-                <!-- <h4 ><a  title="Product Title Here" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops"></a></h4> -->
-              </div>
-              <div class="item-content" >
-                <div class="rating">
-                  <p > Seller:{{TvVideoaudio88.StoreName}}
-                    <!-- <a  ng-reflect-router-link="/store,logostores" href="/store/logostores"> -->
-                    <!-- logostores</a> -->
-                  </p>
-
-                </div>
-
-                <div class="item-price">
-                  <div class="price-box"><span class="regular-price">
-                      <!-- <span  class="price">Rs 15,600</span> -->
-                    </span>
-                  </div>
-                </div>
-
-
-              </div>
-
-
             </div>
           </div>
-       
-          <div class="box-hover">
-            <div class="product-item-actions">
-              <div class="pro-actions">
-                <a [routerLink]="['/seller-product-setting']" [queryParams]="{ storename:  TvVideoaudio88.StoreName }">
-                  view store
+
+          <div class="pro-box-info" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
+            <div class="item-info">
+              <div class="info-inner">
+                <div class="item-title">
+                  <!-- <h4 ><a  title="Product Title Here" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops"></a></h4> -->
+                </div>
+                <div class="item-content">
+                  <div class="rating">
+                    <p> Seller:{{TvVideoaudio88.StoreName}}
+                      <!-- <a  ng-reflect-router-link="/store,logostores" href="/store/logostores"> -->
+                      <!-- logostores</a> -->
+                    </p>
+
+                  </div>
+
+                  <div class="item-price">
+                    <div class="price-box"><span class="regular-price">
+                        <!-- <span  class="price">Rs 15,600</span> -->
+                      </span>
+                    </div>
+                  </div>
 
 
-                  <button class="action add-to-cart" title="Add to Cart" type="button"><span>View Store</span></button>
+                </div>
 
-                </a>
-                
+
               </div>
-              <div class="pro-actions">
+            </div>
+
+            <div class="box-hover">
+              <div class="product-item-actions">
+                <div class="pro-actions">
+                  <a [routerLink]="['/seller-product-setting']" [queryParams]="{ storename:  TvVideoaudio88.StoreName }">
+                    view store
+
+
+                    <button class="action add-to-cart" title="Add to Cart" type="button"><span>View Store</span></button>
+
+                  </a>
+
+                </div>
+                <div class="pro-actions">
                   <a [routerLink]="['/seller-product-setting']" [queryParams]="{ storename:  TvVideoaudio88.StoreName }">
                     view store
                   </a>
@@ -109,9 +108,11 @@
                   ,TvVideoaudio88.BusinessPhone,TvVideoaudio88.Address
                   ,TvVideoaudio88.FbrRegister,TvVideoaudio88.LegalName
                   ,TvVideoaudio88.NTN,TvVideoaudio88.STRN
-                  ,TvVideoaudio88.activestore,Tv.id,Tv.StoreID_id,Tv.AccountTitle,Tv.AccountNumber,Tv.BankName,Tv.BranchName,Tv.BranchCode,TvVideoaudio88.pic);step1=false;">
-                    <button class="action add-to-cart" title="Add to Cart"   data-toggle="modal" data-target="#myModal" type="button"><span>Edit Your Store</span></button>
-  
+                  ,TvVideoaudio88.activestore,Tv.id,Tv.StoreID_id,Tv.AccountTitle,
+                  Tv.AccountNumber,Tv.BankName,Tv.BranchName,Tv.BranchCode,TvVideoaudio88.pic);step1=false;">
+                    <button class="action add-to-cart" title="Add to Cart" data-toggle="modal" data-target="#myModal"
+                      type="button"><span>Edit Your Store</span></button>
+
                   </a>
                   <!-- <button  class="action add-to-cart"(click)="Getallbuynowproductsdetail  (TvVideoaudio88.id,TvVideoaudio88.StoreName,TvVideoaudio88.OwnerName
                                 ,TvVideoaudio88.BusinessEmail,TvVideoaudio88.Zip
@@ -121,268 +122,23 @@
                                 ,TvVideoaudio88.NTN,TvVideoaudio88.STRN
                                 ,TvVideoaudio88.activestore)"  
                                 data-toggle="modal" data-target="#myModal"title="Add to Cart" type="button"><span >Edit your store information</span></button> -->
-  
+
                 </div>
+              </div>
             </div>
           </div>
         </div>
-      </div></div>
+      </div>
       <!-- </ng-container> -->
 
 
     </div>
-    <div class="tab-content" *ngIf="step1==false">
-        <!-- <ng-container *ngIf="GetUSerdetails"> -->
-        <div id="step1" class="formpanel tab-pane fade in active">
-    
-          <ul>
-    
-            <li class="row">
-              <div class="col-sm-3">
-    
-                <label for="SName" class="required">Store Name(*)</label>
-                <input type="text" ng-Model="model.SName" #SName name="SName" required class="input form-control"
-                  placeholder="Store Name" id="SName" value="{{storename}}">
-    
-    
-    
-              </div>
-    
-              <!--/ [col] -->
-    
-    
-              <div class="col-sm-3">
-                <!-- [textMask]="{mask: mask}" -->
-                <label for="telephone" class="required">Owner Name(*)</label>
-    
-    
-                <input class="input form-control" placeholder="OwnerName" type="text" required ng-Model="model.OName"
-                  #OName name="OName" id="telephone" value="{{OwnerName}}">
-              </div>
-    
-              <div class="col-sm-3">
-                <!-- [textMask]="{mask: mask}" -->
-                <label for="Email" class="required">Business Email(*)</label>
-    
-    
-                <input class="input form-control" placeholder="your contact number" type="text" required ng-Model="model.Email"
-                  #Email name="Email" id="Email" value="{{BusinessEmail}}">
-              </div>
-            </li>
-    
-            <!--/ .row -->
-    
-            <br>
-    
-            <li class="row">
-    
-    
-    
-    
-    
-              <div class="col-sm-6">
-    
-    
-    
-    
-                <label for="Zip" class="required">Zip(*)</label>
-                <input type="text" ng-Model="model.Zip" #zip name="Zip" required class="input form-control"
-                  placeholder="Zip" id="Zip" value="{{Zip}}">
-    
-    
-    
-                <!-- </div> -->
-    
-              </div>
-              <div class="col-sm-6">
-    
-                <label for="city" class="required">Your City(*)</label>
-    
-                <input class="input form-control" placeholder="Your City" type="text" required ng-Model="model.city"
-                  #City name="City" value="{{city}}">
-              </div>
-    
-    
-            </li>
-    
-            <br>
-    
-    
-    
-            <li class="row">
-    
-              <div class="col-sm-6">
-    
-                <label class="required">OwnerContactNum(*)</label>
-    
-                <input class="input form-control" placeholder="Your Owner Contact" type="text" required ng-Model="model.OwnerContactNum"
-                  #ownercontactnum name="OwnerContactNum" value="{{ownerContactNum}}">
-              </div>
-              <div class="col-sm-6">
-    
-                <label class="required">BusinessPhone(*)</label>
-    
-                <input class="input form-control" placeholder="Your Owner Contact" type="text" required ng-Model="model.BusinessPhone"
-                  #Businessphone name="BusinessPhone" value="{{businessPhone}}">
-              </div>
-            </li>
-            <!--/ .row -->
-    
-            <br>
-            <li class="row">
-              <div class="col-xs-10">
-    
-                <label for="address" class="required">Address(*)</label>
-    
-                <input type="text" class="input form-control" required placeholder="shop #, street# etc" ng-Model="model.Address"
-                  #Address name="Address" id="address" value="{{address}}">
-              </div>
-              <div class="col-xs-2">
-    
-                <label for="fbrRegister" class="required">FbrRegister(*)</label>
-    
-                <input type="text" class="input form-control" required placeholder="FbrRegister" ng-Model="model.FbrRegister"
-                  #fbrregister name="FbrRegister" id="fbrRegister" value="{{fbrRegister}}">
-              </div>
-            </li>
-         
-            <li class="row">
-              <div class="col-xs-4">
-    
-                <label for="legalName" class="required">LegalName(*)</label>
-    
-                <input type="text" class="input form-control" required placeholder="LegalName" ng-Model="model.LegalName"
-                  #Legalname name="LegalName" id="LegalName" value="{{legalName}}">
-              </div>
-              <div class="col-xs-4">
-    
-                <label for="nTN" class="required">NTN(*)</label>
-    
-                <input type="text" class="input form-control" required placeholder="NTN" ng-Model="model.NTN" #ntn
-                  name="NTN" id="nTN" value="{{nTN}}">
-              </div>
-              <div class="col-xs-4">
-    
-                <label for="sTRN" class="required">STRN(*)</label>
-    
-                <input type="text" class="input form-control" required placeholder="STRN" ng-Model="model.STRN"
-                  #strn name="STRN" id="STRN" value="{{sTRN}}">
-              </div>
-              <div class="col-xs-4">
-    
-                <label for="as" class="required">activestore(*)</label>
-    
-                <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                  #as name="activestore" id="activestore" value="{{storestatus}}">
-              </div>
-            
-              <div class="col-xs-4">
-    
-                  <label for="BankId" class="required">Bank User Id(*)</label>
-      
-                  <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                    #BankId name="bankid" id="bankid" value="{{bankid}}">
-                </div>
-                <div class="col-xs-4">
-    
-                    <label for="Sid" class="required">Store iD(*)</label>
-        
-                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                      #Sid name="storeid" id="storeid" value="{{storeid}}">
-                  </div>
-                  <div class="col-xs-4">
-                    
-                      <label for="title" class="required">Acount Title(*)</label>
-          
-                      <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                        #atitle name="accounttitle" id="accounttitle" value="{{accounttitle}}">
-                    </div>
-                    <div class="col-xs-4">
-    
-                        <label for="as" class="required">Account Number(*)</label>
-            
-                        <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                          #accountnum name="activestore" id="activestore" value="{{accountnumber}}">
-                      </div>
-                      <div class="col-xs-4">
-         <!-- bankid;
-storeid;
-accounttitle;
-accountnumber;
-bankname;
-branchname;
-branchcode; -->
-                          <label for="as" class="required">Bank Name(*)</label>
-              
-                          <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                            #banknam name="activestore" id="activestore" value="{{bankname}}">
-                        </div>
-                        <div class="col-xs-4">
-    
-                            <label for="as" class="required">BranchName(*)</label>
-                
-                            <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                              #branchnam name="activestore" id="activestore" value="{{branchname}}">
-                          </div>
-                          <div class="col-xs-4">
-    
-                              <label for="as" class="required">BranchCode(*)</label>
-                  
-                              <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                #branchcod name="activestore" id="activestore" value="{{branchcode}}">
-                            </div>
-                            <div class="col-xs-4">
-    
-                                <label for="as" class="required">User Image(*)</label>
-                    
-                                <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                  #userimag name="activestore" id="activestore" value="{{image}}">
-                              </div>
-                          
-            </li>
-    
-    
-          </ul>
-    
-    
-    
-          <br>
-    
-    
-          <div class="nav nav-tabs">
-            <div *ngIf="Error" class="alert alert-danger">
-              <strong>Error </strong> While updating record.
-            </div>
-    
-            <div *ngIf="Right" class="alert alert-success">
-              <strong>Profile Updated! <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go to
-                  Dashboard Section</a></strong>
-            </div>
-            <div *ngIf="Waitcall" class="alert  alert-info">
-              <p class="">
-                <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>
-                  &nbsp; Loading ...</span>
-    
-              </p>
-            </div>
-            <input type="submit" (click)="save(FName.value,province.value,City.value,Area.value,Mobile.value,Address.value,Shipmentaddress.value)"
-              class="btn" value="Update">
-          </div>
-        </div>
-        <!-- </ng-container> -->
-    
-      </div>
-    <!-- ad end -->
 
 
-    <!-- ad end -->
-    <!-- </ul> -->
   </div>
 </div>
 
-<!-- </div>
-    </div>
-  </div> -->
+
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -395,378 +151,255 @@ branchcode; -->
         <div class="formpanel">
           <div class="tab-content">
             <!-- <ng-container *ngIf="GetUSerdetails"> -->
-                <div id="step1" class="formpanel tab-pane fade in active">
-    
-                    <ul>
-              
-                      <li class="row">
-                        <div class="col-sm-3">
-              
-                          <label for="SName" class="required">Store Name(*)</label>
-                          <input type="text" ng-Model="model.SName" #SName name="SName" required class="input form-control"
-                            placeholder="Store Name" id="SName" value="{{storename}}">
-              
-              
-              
-                        </div>
-              
-                        <!--/ [col] -->
-              
-              
-                        <div class="col-sm-3">
-                          <!-- [textMask]="{mask: mask}" -->
-                          <label for="telephone" class="required">Owner Name(*)</label>
-              
-              
-                          <input class="input form-control" placeholder="OwnerName" type="text" required ng-Model="model.OName"
-                            #OName name="OName" id="telephone" value="{{OwnerName}}">
-                        </div>
-              
-                        <div class="col-sm-3">
-                          <!-- [textMask]="{mask: mask}" -->
-                          <label for="Email" class="required">Business Email(*)</label>
-              
-              
-                          <input class="input form-control" placeholder="your contact number" type="text" required ng-Model="model.Email"
-                            #Email name="Email" id="Email" value="{{BusinessEmail}}">
-                        </div>
-                      </li>
-              
-                      <!--/ .row -->
-              
-                      <br>
-              
-                      <li class="row">
-              
-              
-              
-              
-              
-                        <div class="col-sm-6">
-              
-              
-              
-              
-                          <label for="Zip" class="required">Zip(*)</label>
-                          <input type="text" ng-Model="model.Zip" #zip name="Zip" required class="input form-control"
-                            placeholder="Zip" id="Zip" value="{{Zip}}">
-              
-              
-              
-                          <!-- </div> -->
-              
-                        </div>
-                        <div class="col-sm-6">
-              
-                          <label for="city" class="required">Your City(*)</label>
-              
-                          <input class="input form-control" placeholder="Your City" type="text" required ng-Model="model.city"
-                            #City name="City" value="{{city}}">
-                        </div>
-              
-              
-                      </li>
-              
-                      <br>
-              
-              
-              
-                      <li class="row">
-              
-                        <div class="col-sm-6">
-              
-                          <label class="required">OwnerContactNum(*)</label>
-              
-                          <input class="input form-control" placeholder="Your Owner Contact" type="text" required ng-Model="model.OwnerContactNum"
-                            #ownercontactnum name="OwnerContactNum" value="{{ownerContactNum}}">
-                        </div>
-                        <div class="col-sm-6">
-              
-                          <label class="required">BusinessPhone(*)</label>
-              
-                          <input class="input form-control" placeholder="Your Owner Contact" type="text" required ng-Model="model.BusinessPhone"
-                            #Businessphone name="BusinessPhone" value="{{businessPhone}}">
-                        </div>
-                      </li>
-                      <!--/ .row -->
-              
-                      <br>
-                      <li class="row">
-                        <div class="col-xs-10">
-              
-                          <label for="address" class="required">Address(*)</label>
-              
-                          <input type="text" class="input form-control" required placeholder="shop #, street# etc" ng-Model="model.Address"
-                            #Address name="Address" id="address" value="{{address}}">
-                        </div>
-                        <div class="col-xs-2">
-              
-                          <label for="fbrRegister" class="required">FbrRegister(*)</label>
-              
-                          <input type="text" class="input form-control" required placeholder="FbrRegister" ng-Model="model.FbrRegister"
-                            #fbrregister name="FbrRegister" id="fbrRegister" value="{{fbrRegister}}">
-                        </div>
-                      </li>
-                   
-                      <li class="row">
-                        <div class="col-xs-4">
-              
-                          <label for="legalName" class="required">LegalName(*)</label>
-              
-                          <input type="text" class="input form-control" required placeholder="LegalName" ng-Model="model.LegalName"
-                            #Legalname name="LegalName" id="LegalName" value="{{legalName}}">
-                        </div>
-                        <div class="col-xs-4">
-              
-                          <label for="nTN" class="required">NTN(*)</label>
-              
-                          <input type="text" class="input form-control" required placeholder="NTN" ng-Model="model.NTN" #ntn
-                            name="NTN" id="nTN" value="{{nTN}}">
-                        </div>
-                        <div class="col-xs-4">
-              
-                          <label for="sTRN" class="required">STRN(*)</label>
-              
-                          <input type="text" class="input form-control" required placeholder="STRN" ng-Model="model.STRN"
-                            #strn name="STRN" id="STRN" value="{{sTRN}}">
-                        </div>
-                        <div class="col-xs-4">
-              
-                          <label for="as" class="required">activestore(*)</label>
-              
-                          <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                            #StoreStatus name="activestore" id="activestore" value="{{storestatus}}">
-                        </div>
-                      
-                        <div class="col-xs-4">
-              
-                            <label for="BankId" class="required">Bank User Id(*)</label>
-                
-                            <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                              #BankId name="bankid" id="bankid" value="{{bankid}}">
-                          </div>
-                          <div class="col-xs-4">
-              
-                              <label for="Sid" class="required">Store iD(*)</label>
-                  
-                              <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                #Sid name="storeid" id="storeid" value="{{storeid}}">
-                            </div>
-                            <div class="col-xs-4">
-                              
-                                <label for="title" class="required">Acount Title(*)</label>
-                    
-                                <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                  #atitle name="accounttitle" id="accounttitle" value="{{accounttitle}}">
-                              </div>
-                              <div class="col-xs-4">
-              
-                                  <label for="as" class="required">Account Number(*)</label>
-                      
-                                  <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                    #accountnum name="activestore" id="activestore" value="{{accountnumber}}">
-                                </div>
-                                <div class="col-xs-4">
-                   <!-- bankid;
+            <div id="step1" class="formpanel tab-pane fade in active">
+
+              <ul>
+
+                <li class="row">
+                  <div class="col-sm-3">
+
+                    <label for="id" class="required">ID(*)</label>
+                    <input type="text" ng-Model="model.id" #id name="id" required class="input form-control"
+                      placeholder="Store Name" id="id" value="{{stroeid}}">
+
+
+
+                  </div>
+                  <div class="col-sm-3">
+
+                    <label for="SName" class="required">Store Name(*)</label>
+                    <input type="text" ng-Model="model.SName" #SName name="SName" required class="input form-control"
+                      placeholder="Store Name" id="SName" value="{{storename}}">
+
+
+
+                  </div>
+
+
+                  <!--/ [col] -->
+
+
+                  <div class="col-sm-3">
+                    <!-- [textMask]="{mask: mask}" -->
+                    <label for="telephone" class="required">Owner Name(*)</label>
+
+
+                    <input class="input form-control" placeholder="OwnerName" type="text" required ng-Model="model.OName"
+                      #OName name="OName" id="telephone" value="{{OwnerName}}">
+                  </div>
+
+                  <div class="col-sm-3">
+                    <!-- [textMask]="{mask: mask}" -->
+                    <label for="Email" class="required">Business Email(*)</label>
+
+
+                    <input class="input form-control" placeholder="your contact number" type="text" required ng-Model="model.Email"
+                      #Email name="Email" id="Email" value="{{BusinessEmail}}">
+                  </div>
+                </li>
+
+                <!--/ .row -->
+
+                <br>
+
+                <li class="row">
+
+
+
+
+
+                  <div class="col-sm-6">
+
+
+
+
+                    <label for="Zip" class="required">Zip(*)</label>
+                    <input type="text" ng-Model="model.Zipcode" #Zipcode name="Zipcode" required class="input form-control"
+                      placeholder="Zipcode" id="Zip" value="{{Zip}}">
+
+
+
+                    <!-- </div> -->
+
+                  </div>
+                  <div class="col-sm-6">
+
+                    <label for="city" class="required">Your City(*)</label>
+
+                    <input class="input form-control" placeholder="Your City" type="text" required ng-Model="model.city"
+                      #City name="City" value="{{city}}">
+                  </div>
+
+
+                </li>
+
+                <br>
+
+
+
+                <li class="row">
+
+                  <div class="col-sm-6">
+
+                    <label class="required">OwnerContactNum(*)</label>
+
+                    <input class="input form-control" placeholder="Your Owner Contact" type="text" required ng-Model="model.OwnerContactNum"
+                      #ownercontactnum name="OwnerContactNum" value="{{ownerContactNum}}">
+                  </div>
+                  <div class="col-sm-6">
+
+                    <label class="required">BusinessPhone(*)</label>
+
+                    <input class="input form-control" placeholder="Your Owner Contact" type="text" required ng-Model="model.BusinessPhone"
+                      #Businessphone name="BusinessPhone" value="{{businessPhone}}">
+                  </div>
+                </li>
+                <!--/ .row -->
+
+                <br>
+                <li class="row">
+                  <div class="col-xs-10">
+
+                    <label for="address" class="required">Address(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="shop #, street# etc" ng-Model="model.Address"
+                      #Address name="Address" id="address" value="{{address}}">
+                  </div>
+                  <div class="col-xs-2">
+
+                    <label for="fbrRegister" class="required">FbrRegister(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="FbrRegister" ng-Model="model.FbrRegister"
+                      #fbrregister name="FbrRegister" id="fbrRegister" value="{{fbrRegister}}">
+                  </div>
+                </li>
+
+                <li class="row">
+                  <div class="col-xs-4">
+
+                    <label for="legalName" class="required">LegalName(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="LegalName" ng-Model="model.LegalName"
+                      #Legalname name="LegalName" id="LegalName" value="{{legalName}}">
+                  </div>
+                  <div class="col-xs-4">
+
+                    <label for="nTN" class="required">NTN(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="NTN" ng-Model="model.NTN" #ntn
+                      name="NTN" id="nTN" value="{{nTN}}">
+                  </div>
+                  <div class="col-xs-4">
+
+                    <label for="sTRN" class="required">STRN(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="STRN" ng-Model="model.STRN"
+                      #strn name="STRN" id="STRN" value="{{sTRN}}">
+                  </div>
+                  <div class="col-xs-4">
+
+                    <label for="as" class="required">activestore(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #StoreStatus name="activestore" id="activestore" value="{{storestatus}}">
+                  </div>
+
+                  <div class="col-xs-4">
+
+                    <label for="BankId" class="required">Bank User Id(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #BankId name="bankid" id="bankid" value="{{bankid}}">
+                  </div>
+                  <div class="col-xs-4">
+
+                    <label for="Sid" class="required">Store iD(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #Sid name="storeid" id="storeid" value="{{storeid}}">
+                  </div>
+                  <div class="col-xs-4">
+
+                    <label for="title" class="required">Acount Title(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #atitle name="accounttitle" id="accounttitle" value="{{accounttitle}}">
+                  </div>
+                  <div class="col-xs-4">
+
+                    <label for="as" class="required">Account Number(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #accountnum name="activestore" id="activestore" value="{{accountnumber}}">
+                  </div>
+                  <div class="col-xs-4">
+                    <!-- bankid;
           storeid;
           accounttitle;
           accountnumber;
           bankname;
           branchname;
           branchcode; -->
-                                    <label for="as" class="required">Bank Name(*)</label>
-                        
-                                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                      #banknam name="activestore" id="activestore" value="{{bankname}}">
-                                  </div>
-                                  <div class="col-xs-4">
-              
-                                      <label for="as" class="required">BranchName(*)</label>
-                          
-                                      <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                        #branchnam name="activestore" id="activestore" value="{{branchname}}">
-                                    </div>
-                                    <div class="col-xs-4">
-              
-                                        <label for="as" class="required">BranchCode(*)</label>
-                            
-                                        <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                          #branchcod name="activestore" id="activestore" value="{{branchcode}}">
-                                      </div>
-                                      <div class="col-xs-4">
-              
-                                          <label for="as" class="required">User Image(*)</label>
-                              
-                                          <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
-                                            #pic name="activestore" id="activestore" value="{{image}}">
-                                        </div>
-                                    
-                      </li>
-              
-              
-                    </ul>
-              
-              
-              
-                    <br>
-              
-              
-                    <div class="nav nav-tabs">
-                      <div *ngIf="Error" class="alert alert-danger">
-                        <strong>Error </strong> While updating record.
-                      </div>
-              
-                      <div *ngIf="Right" class="alert alert-success">
-                        <strong>Profile Updated! <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go to
-                            Dashboard Section</a></strong>
-                      </div>
-                      <div *ngIf="Waitcall" class="alert  alert-info">
-                        <p class="">
-                          <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>
-                            &nbsp; Loading ...</span>
-              
-                        </p>
-                      </div>
-                      <input type="submit" (click)="save(SName.value,OName.value,Emai.value,zip.value,City.value,ownercontactnum.value,Businessphone.value,Address.value,fbrregister.value,Legalname.value,ntn.value,strn.value,StoreStatus.value,BankId.value,Sid.value,atitle.value,accountnum.value,banknam.value,branchnam.value,branchcod.value,pic.value)"
-                        class="btn" value="Update">
-                    </div>
+                    <label for="as" class="required">Bank Name(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #banknam name="activestore" id="activestore" value="{{bankname}}">
                   </div>
+                  <div class="col-xs-4">
+
+                    <label for="as" class="required">BranchName(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #branchnam name="activestore" id="activestore" value="{{branchname}}">
+                  </div>
+                  <div class="col-xs-4">
+
+                    <label for="as" class="required">BranchCode(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #branchcod name="activestore" id="activestore" value="{{branchcode}}">
+                  </div>
+                  <div class="col-xs-4">
+
+                    <label for="as" class="required">User Image(*)</label>
+
+                    <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
+                      #pic name="activestore" id="activestore" value="{{image}}">
+                  </div>
+
+                </li>
+
+
+              </ul>
+
+
+
+              <br>
+
+
+              <div class="nav nav-tabs">
+                <div *ngIf="Error" class="alert alert-danger">
+                  <strong>Error </strong> While updating record.
+                </div>
+
+                <div *ngIf="Right" class="alert alert-success">
+                  <strong>Profile Updated! <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go to
+                      Dashboard Section</a></strong>
+                </div>
+                <div *ngIf="Waitcall" class="alert  alert-info">
+                  <p class="">
+                    <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>
+                      &nbsp; Loading ...</span>
+
+                  </p>
+                </div>
+                <input type="submit" (click)="save(id.value,SName.value,OName.value,Email.value,Zipcode.value,City.value,ownercontactnum.value,Businessphone.value,Address.value,fbrregister.value,Legalname.value,ntn.value,strn.value,StoreStatus.value,BankId.value,Sid.value,atitle.value,accountnum.value,banknam.value,branchnam.value,branchcod.value,pic.value)"
+                  class="btn" value="Update">
+              </div>
+            </div>
             <!-- </ng-container> -->
 
           </div>
-          <!-- <div class="formrow">
-          <label>Category:</label>
-          <select [(ngModel)]="model.Cat_Name" name="cat" (click)="MainCatSel(model.Cat_Name)" required>
-            <ng-container *ngFor="let cat of GetallCat">
-            <option value="{{cat.Cat_Name}}">{{cat.Cat_Name}}</option>
-            </ng-container>
-          </select>
-              </div> -->
-          <!-- <div class="formrow">
-          <label>Sub-Category:</label>
-          <select [(ngModel)]="model.Sub_Cat_Name" name="Subcat" (click)="SubCatSel(model.Sub_Cat_Name)" required>
-            <ng-container *ngFor="let cat of GetAllSubCat">
-            <option value="{{cat.Sub_Cat_Name}}">{{cat.Sub_Cat_Name}}</option>
-            </ng-container>
-          </select>
-              <div class="formrow">
-            </div>
-          <label>Sub-Sub-Category:</label>
-          <select [(ngModel)]="model.Sub_Sub_Cat_Name" name="SubSubcat" required>
-            <ng-container *ngFor="let cat of GetAllSubSubCat">
-            <option value="{{cat.Sub_Sub_Cat_Name}}">{{cat.Sub_Sub_Cat_Name}}</option>
-            </ng-container>
-          </select>
-            </div> -->
-          <!-- <div class="formrow">
-          <label>Title:</label>
-          <input type="text" class="form-control" name="Title" [(ngModel)]="model.P_Title" required>
-            </div> -->
-          <!-- <div class="formrow">
-          <label>Product Condition:</label>
-          <input type="text" class="form-control" name="Condition" [(ngModel)]="model.P_Condition" required>
-            </div> -->
-          <!-- <div class="formrow">
-          <label>Product Description:</label>
-          <textarea type="text" class="form-control" name="Description" [(ngModel)]="model.P_Des" ></textarea>
-            </div> -->
-          <!-- <ng-container *ngIf="model.Auction">
-          <div class="col-md-12">
-            <div class="userbtns">
-              <ul class="nav nav-tabs">
-                <li (click)="EnableAuction(true)" class="active"><a data-toggle="tab" href="#wsell">Auction</a></li>
-                <li (click)="EnableFixd(false)"><a data-toggle="tab" href="#wbuy">Fixed Price</a></li>
-              </ul>
-            </div>
-            <div class="tab-content">
-              <div id="wsell" class="formpanel tab-pane fade in active">
-                <div class="formrow">
-                  <input type="number" name="StartingPrice" class="form-control" [(ngModel)]="model.SrartingPrice">
-                </div>
-         
-  
-                <div class="formrow">
-                  <input type="checkbox" (click)="AddReservePriceFun()" value="agree text" name="agree" />
-                  Add a Reserve Price
-                </div>
-                <div *ngIf="ReservePrice == true" class="formrow">
-                  <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control">
-                </div>
-                <div class="formrow">
-                  <label  style="color: black" class="help-block">Select Your Listing</label>
-                  <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
-                    <option value="10" selected>10 Days</option>
-                    <option value="7">7 Days</option>
-                    <option value="5">5 Days</option>
-                    <option value="3">3 Days</option>
-                  </select>
-                </div>
-              </div>
-              <div id="wbuy" class="formpanel tab-pane fade in">
-                <div class="formrow">
-                  <input type="number" [(ngModel)]="model.FixedPrice" name="FixedPrice" class="form-control">
-                </div>
-                <div class="formrow">
-                  <input type="checkbox" [(ngModel)]="model.AddBestOffer" value="agree text" name="agree" />
-                  Accept Offers?
-                </div>
-                <div class="formrow">
-                  <input type="number" [(ngModel)]="model.Quantity" name="Quantity" class="form-control">
-                </div>
-              </div>
-            </div>
-          </div>
-          </ng-container> -->
-          <!-- <ng-container *ngIf="!model.Auction">
-            <div class="col-md-12">
-              <div class="userbtns">
-                <ul class="nav nav-tabs">
-                  <li (click)="EnableAuction(true)"><a data-toggle="tab" href="#wsell">Auction</a></li>
-                  <li (click)="EnableFixd(false)" class="active"><a data-toggle="tab" href="#wbuy">Fixed Price</a></li>
-                </ul>
-              </div>
-              <div class="tab-content">
-                <div id="wbuy" class="formpanel tab-pane fade in active">
-                  <div class="formrow">
-                    <input type="number" [(ngModel)]="model.FixedPrice" name="FixedPrice" class="form-control">
-                  </div>
-                  <div class="formrow">
-                    <input type="checkbox" [(ngModel)]="model.AddBestOffer" value="agree text" name="agree" />
-                    Accept Offers?
-                  </div>
-                  <div class="formrow">
-                    <input type="number" [(ngModel)]="model.Quantity" name="Quantity" class="form-control">
-                  </div>
-                </div>
-                <div id="wsell" class="formpanel tab-pane fade in" >
-                  <div class="formrow">
-                    <input type="number" name="StartingPrice" class="form-control" [(ngModel)]="model.SrartingPrice">
-                  </div>
-                  <div *ngIf="Buyitnow == true" class="formrow">
-                    <input type="number" name="BuyitNow" class="form-control" [(ngModel)]="model.Buyitnow">
-                  </div>
-  
-                  <div class="formrow">
-                    <input type="checkbox" (click)="AddReservePriceFun()" value="agree text" name="agree" />
-                    Add a Reserve Price
-                  </div>
-                  <div *ngIf="ReservePrice == true" class="formrow">
-                    <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control">
-                  </div>
-                  <div class="formrow">
-                    <label  style="color: black" class="help-block">Select Your Listing</label>
-                    <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
-                      <option value="10" selected>10 Days</option>
-                      <option value="7">7 Days</option>
-                      <option value="5">5 Days</option>
-                      <option value="3">3 Days</option>
-                    </select>
-                  </div>
-                </div>
-  
-              </div>
-            </div>
-          </ng-container> -->
         </div>
       </div>
       <!-- <div class="modal-footer">

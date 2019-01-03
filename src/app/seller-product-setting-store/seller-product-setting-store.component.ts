@@ -19,7 +19,7 @@ export class SellerProductSettingStoreComponent implements OnInit {
   GetALLBuyNowProductss: any = [];
   storename: any;
   step1 = true;
-  id;
+stroeid :any;
   // storname;
   OwnerName:any;
   BusinessEmail:any;
@@ -34,14 +34,14 @@ export class SellerProductSettingStoreComponent implements OnInit {
   sTRN;
   storestatus;
   bank;
-bankid;
-storeid;
-accounttitle;
-accountnumber;
-bankname;
-branchname;
-branchcode;
-image;
+ bankid;
+ storeid;
+ accounttitle;
+ accountnumber;
+ bankname;
+ branchname;
+ branchcode;
+ image;
   // Tv.id,Tv.StoreID_id,Tv.AccountTitle,Tv.AccountNumber,Tv.BankName,Tv.BranchName,Tv.BranchCode
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private GetProducts: StoredetailsService,
@@ -72,7 +72,7 @@ image;
   //   ,TvVideoaudio88.activestore)"  
  Getallbuynowproductsdetail(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,val12,val13,val14,val15,
   val16,val17,val18,val19,val20,val21,val22){
-   this.id= val1;
+   this.stroeid= val1;
    this.storename = val2;
    this.OwnerName =val3;
    this.BusinessEmail = val4;
@@ -94,8 +94,9 @@ image;
    this.branchname=val20;
    this.branchcode=val21;
    this.image= val22
-    alert(val15)
-   console.log(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,val12,val13,val14)
+    // alert(val15)
+   console.log(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,val12,val13,val14,val15,
+    val16,val17,val18,val19,val20,val21,val22)
 
   //  (TvVideoaudio88.id,TvVideoaudio88.OwnerName
   //   ,TvVideoaudio88.BusinessEmail,TvVideoaudio88.Zip
@@ -106,7 +107,7 @@ image;
   //   ,TvVideoaudio88.activestore)
 
  }
- save(SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,StoreStatus:string,BankId:string,Sid:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic:string) {
+ save(id,SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,StoreStatus:string,BankId:string,Sid:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic:string) {
     
   // if ( this.fileName) {
     //this.uploadItemsToActivity();
@@ -117,11 +118,12 @@ image;
        // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
         console.log('Successs' )
         // SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,fbrregister,Legalname,ntn,strn,StoreStatus,BankId,Sid,atitle,accountnum,banknam,branchnam,branchcod,pic) 
-        this.savedetail.sellerstoreinformationupdate(SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,fbrregister,Legalname,ntn,strn,StoreStatus,BankId,Sid,atitle,accountnum,banknam,branchnam,branchcod,pic).subscribe((response) => {
+        this.savedetail.sellerstoreinformationupdate(id,SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,fbrregister,Legalname,ntn,strn,StoreStatus,BankId,Sid,atitle,accountnum,banknam,branchnam,branchcod,pic).subscribe((response) => {
        console.log(SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,fbrregister,Legalname,ntn,strn,StoreStatus,BankId,Sid,atitle,accountnum,banknam,branchnam,branchcod,pic)
         // this.Error = false;
         // this.Waitcall = false;
         // this.Right = true;
+        swal('Changes has been Saved','','success');
       },
       error => {
         console.log(error);

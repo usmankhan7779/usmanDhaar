@@ -27,7 +27,7 @@ export class LoginService {
   // http://192.168.30.225:7000
   // https://apis.dhaar.pk
   ServerUrl = 'https://apis.dhaar.pk/user/';
-  StoreServerUrl = 'http://192.168.30.225:7000/store/';
+  StoreServerUrl = 'https://apis.dhaar.pk/store/';
   EMailServerUrl = 'https://apis.dhaar.pk/rest-auth/';
 
 
@@ -903,15 +903,16 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
       });
   }
 
-  sellerstoreinformationupdate(SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,StoreStatus:string,BankId:string,Sid:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic) {
+  sellerstoreinformationupdate(id,SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,StoreStatus:string,BankId:string,Sid:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'JWT ' +  this.authentication);
     headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.post(this.ServerUrl + 'GetStoreInformation/',
+    return this.http.put(this.StoreServerUrl + 'GetStoreInformation/' ,
       {
+        'id':id,
         'storename': SName,
         'ownername':OName,
         'businessemail':Email,
@@ -931,8 +932,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         'branchcode':branchcod,
         'legalname':Legalname
         
-        // 'Address': Address,
-        // 'Pic' : Pic,
+         
 
 
       }, { headers: headers })
