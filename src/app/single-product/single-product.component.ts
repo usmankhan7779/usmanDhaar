@@ -170,6 +170,7 @@ export class SingleProductComponent implements OnInit {
     
             console.log(this.GetallPhoneProduct.Results,"results")
           });
+          
           if (this.RedirectFromlogin !== null) {
             if (this.RedirectFromlogin === 'MakeOffer') {
               this.amountoffer = true;

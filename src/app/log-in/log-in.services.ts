@@ -864,16 +864,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.post(this.ServerUrl + 'post_shipment_details/',
       {
-        // {
-        //   "fullname":"hassan",
-        //   "address":"hsjssososoosos",
-        //   "province":"punjab",
-        //   "city":"fsd",
-        //   "area":"samanabad",
-        //   "default_shipment_address":false,
-        //   "phone_no":"89128963447"
-        //   }
-        // 'user_id': Username,
+       
         'fullname': FName,
         'address': Address,
         'phone_no': Mobile,
@@ -881,6 +872,65 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         'default_shipment_address': Shipmentaddress,
         'city': City,
         'area': Area,
+        // 'Address': Address,
+        // 'Pic' : Pic,
+
+
+      }, { headers: headers })
+      .map((res: Response) => {
+
+        if (res) {
+          if (res.status === 201 || res.status === 200) {
+            const responce_data = res.json();
+          }
+        }
+      }).catch((error: any) => {
+
+        if (error.status !== 404) {
+          if (error.status === 401) {
+            console.log(error);
+
+            return Observable.throw(new Error(error.status));
+          }
+
+
+        } else {
+          console.log(error);
+          //   this._nav.navigate(['/login']);
+
+          return Observable.throw(new Error(error.status));
+        }
+      });
+  }
+
+  sellerstoreinformationupdate(SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,StoreStatus:string,BankId:string,Sid:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.post(this.ServerUrl + 'GetStoreInformation/',
+      {
+        'storename': SName,
+        'ownername':OName,
+        'businessemail':Email,
+        'zip':zip,
+        'city':City,
+        'contactno':ownercontactnum,
+        'businessphone':Businessphone,
+        'address':Address,
+        'ntn':ntn,
+        'strn':strn,
+        'pic':pic,
+        'fbrregister':fbrregister,
+        'acctitle':atitle,
+        'accno':accountnum,
+        'bankname':banknam,
+        'branchname':branchnam,
+        'branchcode':branchcod,
+        'legalname':Legalname
+        
         // 'Address': Address,
         // 'Pic' : Pic,
 
