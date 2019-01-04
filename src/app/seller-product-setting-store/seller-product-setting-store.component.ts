@@ -28,7 +28,7 @@ stroeid :any;
   ownerContactNum;
   businessPhone;
   address;
-  fbrRegister;
+  fbrRegister="False";
   legalName;
   nTN;
   sTRN;
@@ -81,7 +81,7 @@ stroeid :any;
    this.ownerContactNum = val7;
    this.businessPhone = val8;
    this.address = val9;
-   this.fbrRegister = val10;
+  //  this.fbrRegister = val10;
    this.legalName = val11;
    this.nTN= val12;
    this.sTRN = val13;
@@ -107,19 +107,37 @@ stroeid :any;
   //   ,TvVideoaudio88.activestore)
 
  }
- save(id,SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,StoreStatus:string,BankId:string,Sid:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic:string) {
+ checked3(event, i) {
+  if (event.target.checked == true) {
+      console.log(event.target.checked)
+      this.fbrRegister = "True";
+      console.log(this.fbrRegister,'true fbr register')
+      alert(this.fbrRegister)
+      //this.setPage(1);
+  }
+  else if (event.target.checked == false) {
+      console.log(event.target.checked)
+      this.fbrRegister="False";
+      console.log(this.fbrRegister,'false fbr register')
+      alert(this.fbrRegister)
+      //this.setPage(1);
+  }
+  //console.log(this.months3)
+}
+ save(id,SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic:string) {
     
   // if ( this.fileName) {
     //this.uploadItemsToActivity();
     // this.Waitcall = true;
     console.log('I am in 1 Component');
+    alert(this.fbrRegister)
     // this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
       // data => {
        // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
         console.log('Successs' )
         // SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,fbrregister,Legalname,ntn,strn,StoreStatus,BankId,Sid,atitle,accountnum,banknam,branchnam,branchcod,pic) 
-        this.savedetail.sellerstoreinformationupdate(id,SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,fbrregister,Legalname,ntn,strn,StoreStatus,BankId,Sid,atitle,accountnum,banknam,branchnam,branchcod,pic).subscribe((response) => {
-       console.log(SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,fbrregister,Legalname,ntn,strn,StoreStatus,BankId,Sid,atitle,accountnum,banknam,branchnam,branchcod,pic)
+        this.savedetail.sellerstoreinformationupdate(id,SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,this.fbrRegister,Legalname,ntn,strn,atitle,accountnum,banknam,branchnam,branchcod,pic).subscribe((response) => {
+       console.log(SName,OName,Email,zip,City,ownercontactnum,Businessphone,Address,fbrregister,Legalname,ntn,strn,atitle,accountnum,banknam,branchnam,branchcod,pic)
         // this.Error = false;
         // this.Waitcall = false;
         // this.Right = true;

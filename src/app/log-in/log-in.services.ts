@@ -27,7 +27,7 @@ export class LoginService {
   // http://192.168.30.225:7000
   // https://apis.dhaar.pk
   ServerUrl = 'https://apis.dhaar.pk/user/';
-  StoreServerUrl = 'https://apis.dhaar.pk/store/';
+  StoreServerUrl = 'http://192.168.30.225:7000/store/';
   EMailServerUrl = 'https://apis.dhaar.pk/rest-auth/';
 
 
@@ -903,7 +903,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
       });
   }
 
-  sellerstoreinformationupdate(id,SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,StoreStatus:string,BankId:string,Sid:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic) {
+  sellerstoreinformationupdate(id,SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
@@ -912,6 +912,26 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     console.log('pofile', localStorage.getItem('Authorization'));
     return this.http.put(this.StoreServerUrl + 'GetStoreInformation/' ,
       {
+        // "id": 105,
+        // "storename":"http://bismillah.net",
+        // "ownername":"oksksss",
+        // "businessemail":"muhammad.hasan@brainplow.com",
+        // "zip":"75003",
+        // "city":"fsd",
+        // "contactno":"42333565",
+        // "businessphone":"6963333",
+        // "address":"haaaakakak",
+        // "ntn":"11101010",
+        // "strn":"7333939",
+        // "pic":"https://storage.dhaar.pk/UserPics/56/4_9_49.jpg",
+        // "fbrregister":false,
+        // "acctitle":"punjab",
+        // "accno":"558585",
+        // "bankname":"snskkskks",
+        // "branchname":"akkakak",
+        // "branchcode":"7299292",
+        // "legalname":"aahhaha"
+        
         'id':id,
         'storename': SName,
         'ownername':OName,

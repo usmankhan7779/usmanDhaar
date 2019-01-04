@@ -56,9 +56,6 @@ import { SharedData } from './shared-service';
 // import { SellerDashboardLayoutComponent } from './layouts/seller-dashboard-layout/seller-dashboard-layout.component';
 import { SellerDashboardMastersComponent } from './layouts/seller-dashboard-masters/seller-dashboard-masters.component';
 import { HeaderModule } from './header/header.module';
-import { SellerStoreSettingUpdateComponent } from './seller-store-setting-update/seller-store-setting-update.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
