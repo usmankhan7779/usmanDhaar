@@ -710,19 +710,11 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="panel-footer" >
-                  <a  data-original-title="Edit this user" (click)="SaveProduct(GetUser.id,GetUser.fullname)"  data-toggle="modal" data-target="#myModal" type="button" class="btn btn-sm btn-warning">
-                    <i class="glyphicon glyphicon-edit"  >
-                     </i>
-                  </a>
-                 
-                  <span class="pull-right">
-                         </span>
-                </div> -->
+                
 
               </div>
               
-              <!-- <div class="col-md-9 col-sm-8" >
+              <div class="col-md-9 col-sm-8" *ngIf="GetUSerDOne ==null"  >
                   <form name="form1" role="form" class="login-form">
         
         
@@ -885,8 +877,8 @@
                   </div>
         
                   </form>
-                </div> -->
-            </div>
+                </div> 
+                          </div>
 
             <form (ngSubmit)="f.form.valid  && ShippingDetails()" #f="ngForm" novalidate>
 
