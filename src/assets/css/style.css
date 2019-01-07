@@ -1814,7 +1814,7 @@ ul#cart-sidebar {
 .product-item .item-inner {
     margin-bottom: 0px;
     border: 1px solid #e5e5e5;
-    padding: 0px 0px 20px;
+    padding: 10px 0;
     -webkit-transition: all 0.4s ease-out;
     -moz-transition: all 0.4s ease-out;
     -ms-transition: all 0.4s ease-out;
@@ -1823,6 +1823,13 @@ ul#cart-sidebar {
 
 .product-item .item-inner:hover {
     border: 1px solid #ed2424;
+}
+
+.product-item.btn-plus{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-item .item-inner:hover .product-thumbnail .btn-quickview {
@@ -1844,10 +1851,18 @@ ul#cart-sidebar {
 .product-item .item-inner:hover .pro-box-info .box-hover .add-to-links .add-to-compare {
     margin-left: 63px;
 }
+.product-item .item-inner .product-heading{
+    font-size: 20px;
+    margin: 5px 0;
+    text-transform: capitalize;
+    text-align: center;
+}
 
 .product-item .item-inner .product-thumbnail {
     position: relative;
     text-align: center;
+    float: left;
+    width: 100%;
 }
 
 .product-item .item-inner .product-thumbnail .btn-quickview {
@@ -1909,7 +1924,8 @@ ul#cart-sidebar {
 }
 
 .product-item .item-inner .pro-box-info {
-    margin-top: 5px;
+    float: left;
+    width: 100%;
 }
 
 .product-item .item-inner .pro-box-info .box-hover {
@@ -1982,18 +1998,17 @@ ul#cart-sidebar {
 }
 
 .product-item .item-inner .pro-box-info .pro-actions .action.add-to-cart {
-    background: #1b2c39 !important;
-    border: 1px solid #cccccc;
+    background: #1b2c39;
+    border: 1px solid #1b2c39;
     color: white;
-    font-size: 13px;
-    font-weight: 400;
-    padding: 0 15px;
-    line-height: 32px;
+    font-size: 14px;
+    padding: 10px 15px;
     letter-spacing: 0.5px;
     text-transform: inherit;
-    border-radius: 0;
     transition: all 0.4s ease-out 0s;
     border-radius: 50px;
+    display: inline-block;
+    text-transform: capitalize;
 }
 
 .product-item .item-inner:hover .pro-box-info .pro-actions .action.add-to-cart {
@@ -2094,10 +2109,6 @@ ul#cart-sidebar {
     position: relative;
     overflow: hidden;
     border-radius: 15px
-}
-
-.product-item {
-    margin: 0 10px 25px;
 }
 
 .home-tab .product-item {
@@ -8172,7 +8183,8 @@ label[for="rememberme"] {
     text-align: center
 }
 
-<!----------------------------------------------> #slider-text {
+/* <!----------------------------------------------> */
+ #slider-text {
     padding-top: 40px;
     display: block;
 }

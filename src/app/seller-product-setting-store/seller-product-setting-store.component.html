@@ -2,120 +2,132 @@
 
 
 <div class="inner-page">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 col-sm-4">
-          <ul class="usernavdash">
-              <li ><a [routerLink]="['/store-view']"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my ALL Store</a></li>
-            <!-- <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li> -->
-            <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Add New Product</a></li>
-            <li><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
-            <!-- <li class="active"><a [routerLink]="['/seller-product-setting']"><i class="fa fa-cog" aria-hidden="true"></i>Seller Product Setting</a></li> -->
-            <li class="active"><a [routerLink]="['/seller-product-setting-store']"><i class="fa fa-cog" aria-hidden="true"></i>Seller Product Setting</a></li>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-4">
+        <ul class="usernavdash">
+          <li><a [routerLink]="['/store-view']"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my ALL
+              Store</a></li>
+          <!-- <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li> -->
+          <li><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Add New
+              Product</a></li>
+          <li><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
+          <!-- <li class="active"><a [routerLink]="['/seller-product-setting']"><i class="fa fa-cog" aria-hidden="true"></i>Seller Product Setting</a></li> -->
+          <li class="active"><a [routerLink]="['/seller-product-setting-store']"><i class="fa fa-cog" aria-hidden="true"></i>Seller
+              Product Setting</a></li>
 
-            <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
-            <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
-            <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
-            <li><a [routerLink]="['/seller-offer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Offers</a></li>
-            <li><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
-            <li><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
-            <li><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Add New Store  Dhaar.pk</a></li> <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
-           
-            <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage Coupons</a></li>
-            <li><a [routerLink]="['/seller-user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
-            <li><a [routerLink]="['/seller-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
-  
-  
-            <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-  
-  
-  
-          </ul>
-          <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
-        </div>
-  
-        <div class="col-md-9 col-sm-8">
-          <div class="myads">
-            <h3>My Store Setting</h3>
-            <br/>
-            <br/>
-            <!-- <ul class="searchList"> -->
-              <!-- ad start -->
-            
-              <div  class="product-item col-md-3 col-sm-6" *ngFor="let TvVideoaudio88 of GetALLBuyNowProductss.StoreInfo">
-                  <div  class="item-inner">
-                      <h2 class="product-heading">{{TvVideoaudio88.StoreName}}</h2>
-                    <div  class="product-thumbnail">
-                      <div  class="hovereffect">
-                        <img  class="img-responsive" src="https://storage.dhaar.pk/logostores/0519764032018162721/91JA5-hAnoL._SL1500_-min.jpg" alt="https://storage.dhaar.pk/logostores/0519764032018162721/91JA5-hAnoL._SL1500_-min.jpg">
-                        <!-- <div  class="overlay">
+          <li><a [routerLink]="['/pending-ad']"><i class="fa fa-check" aria-hidden="true"></i> My Pending Ads</a></li>
+          <li><a [routerLink]="['/active-ad']"><i class="fa fa-check-square" aria-hidden="true"></i> My Active Ads</a></li>
+          <li><a [routerLink]="['/my-bids']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
+          <li><a [routerLink]="['/seller-offer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Offers</a></li>
+          <li><a [routerLink]="['/seller-purchasing']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My
+              Purchases</a></li>
+          <li><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
+          <li><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Add New
+              Store Dhaar.pk</a></li>
+          <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage
+              Coupons</a></li>
+
+          <li><a [routerLink]="['/manage-coupons']"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Manage
+              Coupons</a></li>
+          <li><a [routerLink]="['/seller-user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
+          <li><a [routerLink]="['/seller-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
+
+
+          <li><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out"
+                aria-hidden="true"></i> Logout</a></li>
+
+
+
+        </ul>
+        <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad">
+          </a> </div>
+      </div>
+
+      <div class="col-md-9 col-sm-8">
+        <div class="myads">
+          <h3>My Store Setting</h3>
+          <br />
+          <br />
+          <!-- <ul class="searchList"> -->
+          <!-- ad start -->
+
+          <div class="product-item col-md-4 col-sm-6" *ngFor="let TvVideoaudio88 of GetALLBuyNowProductss.StoreInfo">
+            <div class="item-inner">
+              <h2 class="product-heading">{{TvVideoaudio88.StoreName}}</h2>
+              <div class="product-thumbnail">
+                <div class="hovereffect">
+                  <img class="img-responsive" src="https://storage.dhaar.pk/logostores/0519764032018162721/91JA5-hAnoL._SL1500_-min.jpg"
+                    alt="https://storage.dhaar.pk/logostores/0519764032018162721/91JA5-hAnoL._SL1500_-min.jpg">
+                  <!-- <div  class="overlay">
                           <h2 >Computing &amp; Laptops</h2> -->
-                         <!-- <a  class="info" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops">Product Detail</a>
+                  <!-- <a  class="info" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops">Product Detail</a>
                         </div> -->
+                </div>
+              </div>
+
+              <div class="pro-box-info">
+                <div class="item-info">
+                  <div class="info-inner">
+                    <!-- <div class="item-title">
+                      <h4 ><a  title="Product Title Here" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops"></a></h4>
+                    </div> -->
+                    <div class="item-content">
+                      <div class="rating">
+                        <p> Seller:{{TvVideoaudio88.StoreName}}
+                          <!-- <a  ng-reflect-router-link="/store,logostores" href="/store/logostores"> -->
+                          <!-- logostores</a> -->
+                        </p>
+
                       </div>
-                    </div>
-            
-                    <div  class="pro-box-info">
-                      <div  class="item-info">
-                        <div  class="info-inner">
-                          <div  class="item-title">
-                            <!-- <h4 ><a  title="Product Title Here" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops"></a></h4> -->
-                          </div>
-                          <div  class="item-content">
-                            <div  class="rating">
-                              <p > Seller:{{TvVideoaudio88.StoreName}} 
-                                <!-- <a  ng-reflect-router-link="/store,logostores" href="/store/logostores"> -->
-                                <!-- logostores</a> -->
-                              </p>
-            
-                            </div>
-            
-              <div  class="item-price">
-                              <div  class="price-box"><span  class="regular-price">
-                                 <!-- <span  class="price">Rs 15,600</span> -->
-                                 </span>
-                              </div>
-                            </div>
-            
-            
-                          </div>
-            
-            
+
+                      <!-- <div class="item-price">
+                        <div class="price-box"><span class="regular-price">
+                            <span  class="price">Rs 15,600</span>
+                          </span>
                         </div>
-                      </div>
-                      <div  class="box-hover">
-                        <div  class="product-item-actions">
-               <div  class="pro-actions">
-                  <!-- <a [routerLink]="['/single-product']"
+                      </div> -->
+
+
+                    </div>
+
+
+                  </div>
+                </div>
+                <div class="box-hover">
+                  <div class="product-item-actions">
+                    <div class="pro-actions">
+                      <!-- <a [routerLink]="['/single-product']"
                   [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
                  <button class="action add-to-cart"
                          type="button" title="Add to Cart"><span>Buy Now</span></button>
                          , TvVideoaudio88.StoreName
                </a> -->
-                            <a  [routerLink]="['/seller-product-setting']"
-                            [queryParams]="{ storename:  TvVideoaudio88.StoreName }">
-                              view store
-                              <button  class="action add-to-cart" title="Add to Cart" type="button"><span >View Store</span></button>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
+                      <a [routerLink]="['/seller-product-setting']" class="action add-to-cart" [queryParams]="{ storename:  TvVideoaudio88.StoreName }">
+                        view store
+                      </a>
                     </div>
                   </div>
-                <!-- </ng-container> -->
-            
-            
                 </div>
-             
-              <!-- ad end -->
-  
-  
-              <!-- ad end -->
-            <!-- </ul> -->
+              </div>
+            </div>
+            <!-- </ng-container> -->
+
+
           </div>
+          <div class="product-item btn-plus col-md-4">
+            <a href="#">
+              <i class="fas fa-7x fa-plus"></i>
+            </a>
+          </div>
+
+          <!-- ad end -->
+
+
+          <!-- ad end -->
+          <!-- </ul> -->
         </div>
       </div>
     </div>
   </div>
-  
-
+</div>
