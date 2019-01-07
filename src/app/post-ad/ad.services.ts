@@ -18,7 +18,7 @@ export class AdService {
   public login: any;
   returnUrl: string;
   ServerUrl = 'https://apis.dhaar.pk/products/';
-  ServerUrlLocal = 'http://127.0.0.1:8000/products/';
+  ServerUrlLocal = 'https://apis.dhaar.pk/products/';
   StoreUrl =  'https://apis.dhaar.pk/store/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -169,7 +169,7 @@ export class AdService {
     }
   }
 
-  Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any,StoreName:any, Quantity: any) {
+  Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any,StoreName:any, Quantity: any,StartbidTime:any,EndbidTime:any) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
@@ -199,6 +199,10 @@ export class AdService {
         'Active': true,
         'Sold': false,
         'Pic': basex64,
+        "StartbidTime":StartbidTime,
+        "EndbidTime":EndbidTime,
+        "product_ad_active":true
+
        }, { headers: headers }).map((res: Response) => {
       if (res) {
 
