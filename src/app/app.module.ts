@@ -1,6 +1,7 @@
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+// import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DatePipe   } from '@angular/common';
@@ -52,8 +53,9 @@ import { LayoutComponent } from './layout/layout.component';
 import { OwlModule} from "ngx-owl-carousel";
 import { UploadItemService } from './file-uploads/upload-item-service';
 import { SharedData } from './shared-service';
-
-
+// import { SellerDashboardLayoutComponent } from './layouts/seller-dashboard-layout/seller-dashboard-layout.component';
+import { SellerDashboardMastersComponent } from './layouts/seller-dashboard-masters/seller-dashboard-masters.component';
+import { HeaderModule } from './header/header.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +64,10 @@ import { SharedData } from './shared-service';
     PreloaderSmall,
     TimePipe,
     LayoutComponent,
+    
+    SellerDashboardMastersComponent,
+    
+    
     
    
   
@@ -73,7 +79,7 @@ import { SharedData } from './shared-service';
     BrowserAnimationsModule,
     Ng2PaginationModule,
     FormsModule,
-    // HeaderModule,
+     HeaderModule,
     HttpModule,
     ImageZoomModule,
     Ng2AutoCompleteModule,
@@ -108,6 +114,9 @@ import { SharedData } from './shared-service';
       deps: [XHRBackend, RequestOptions, PreloaderService]
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

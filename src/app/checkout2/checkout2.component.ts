@@ -64,6 +64,8 @@ currentindex: any;
   default_shipment_address:'';
   phone_no:'';
   user_id:'';
+  Shipmentaddress="False";
+  Shipmentbilladdress="False";
    // //     "id": 2,
   // //     "fullname": "hassan",
   // //     "address": "madina",
@@ -215,7 +217,42 @@ total:any;
       this.status_900 = false;
     }
   }
-  save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress:string) {
+  checked3(event, i) {
+    if (event.target.checked == true) {
+        console.log(event.target.checked)
+        this.Shipmentaddress = "True";
+        console.log(this.Shipmentaddress,'true fbr register')
+        alert(this.Shipmentaddress)
+        //this.setPage(1);
+    }
+    else if (event.target.checked == false) {
+        console.log(event.target.checked)
+        this.Shipmentaddress="False";
+        console.log(this.Shipmentaddress,'false fbr register')
+        alert(this.Shipmentaddress)
+        //this.setPage(1);
+    }
+    //console.log(this.months3)
+  }
+
+  checked4(event, i) {
+    if (event.target.checked == true) {
+        console.log(event.target.checked)
+        this.Shipmentbilladdress = "True";
+        console.log(this.Shipmentbilladdress,'true fbr register')
+        alert(this.Shipmentbilladdress)
+        //this.setPage(1);
+    }
+    else if (event.target.checked == false) {
+        console.log(event.target.checked)
+        this.Shipmentbilladdress="False";
+        console.log(this.Shipmentbilladdress,'false fbr register')
+        alert(this.Shipmentbilladdress)
+        //this.setPage(1);
+    }
+    //console.log(this.months3)
+  }
+  save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress,Shipmentbilladdress) {
     
     // if ( this.fileName) {
       //this.uploadItemsToActivity();
@@ -225,8 +262,14 @@ total:any;
         // data => {
          // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
           console.log('Successs' )
-          this.httpService.Useraddressaddtocart(FName,province,City,Area,Mobile,Address,Shipmentaddress).subscribe((response) => {
-         console.log(FName,province,City,Area,Mobile,Address,Shipmentaddress)
+          this.httpService.Useraddressaddtocart(FName,province,City,Area,Mobile,Address,this.Shipmentaddress,this.Shipmentbilladdress).subscribe((response) => {
+            this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
+              // this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+                this.GetUSerDOne= resSlidersData;
+              //  this.GetUser= this.GetUSerDOne.Results 
+                console.log(this.GetUSerDOne.Results);
+            });
+            console.log(FName,province,City,Area,Mobile,Address,this.Shipmentaddress,this.Shipmentbilladdress)
           // this.Error = false;
           // this.Waitcall = false;
           // this.Right = true;
