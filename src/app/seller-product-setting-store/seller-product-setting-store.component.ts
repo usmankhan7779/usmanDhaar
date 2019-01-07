@@ -107,23 +107,7 @@ stroeid :any;
   //   ,TvVideoaudio88.activestore)
 
  }
- checked3(event, i) {
-  if (event.target.checked == true) {
-      console.log(event.target.checked)
-      this.fbrRegister = "True";
-      console.log(this.fbrRegister,'true fbr register')
-      alert(this.fbrRegister)
-      //this.setPage(1);
-  }
-  else if (event.target.checked == false) {
-      console.log(event.target.checked)
-      this.fbrRegister="False";
-      console.log(this.fbrRegister,'false fbr register')
-      alert(this.fbrRegister)
-      //this.setPage(1);
-  }
-  //console.log(this.months3)
-}
+
  save(id,SName:string,OName:string,Email:string,zip:string,City:string,ownercontactnum:string,Businessphone:string,Address:string,fbrregister:string,Legalname:string,ntn:string,strn:string,atitle:string,accountnum:string,banknam:string,branchnam:string,branchcod:string,pic:string) {
     
   // if ( this.fileName) {

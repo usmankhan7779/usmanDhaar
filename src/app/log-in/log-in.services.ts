@@ -26,7 +26,7 @@ export class LoginService {
   USerNameID: string;
   // http://192.168.30.225:7000
   // https://apis.dhaar.pk
-  ServerUrl = 'https://apis.dhaar.pk/user/';
+  ServerUrl = 'http://192.168.30.225:7000/user/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
   EMailServerUrl = 'https://apis.dhaar.pk/rest-auth/';
 
@@ -855,7 +855,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         console.log('Response:', res);
       });
   }
-  Useraddressaddtocart(FName: string, province: string, City: string, Area: string, Mobile: string, Address: string, Shipmentaddress: string) {
+  Useraddressaddtocart(FName: string, province: string, City: string, Area: string, Mobile: string, Address: string, Shipmentaddress,Shipmentbilladdress) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
@@ -870,6 +870,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         'phone_no': Mobile,
         'province': province,
         'default_shipment_address': Shipmentaddress,
+        'default_bill_address':Shipmentbilladdress,
         'city': City,
         'area': Area,
         // 'Address': Address,
