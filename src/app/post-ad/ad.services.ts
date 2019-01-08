@@ -169,7 +169,7 @@ export class AdService {
     }
   }
 
-  Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any,StoreName:any, Quantity: any,StartbidTime:any,EndbidTime:any) {
+  Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any,StoreName:any, Quantity: any,StartbidTime:any,EndbidTime:any,product_ad_active:any) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
@@ -201,7 +201,7 @@ export class AdService {
         'Pic': basex64,
         "StartbidTime":StartbidTime,
         "EndbidTime":EndbidTime,
-        "product_ad_active":true
+        "product_ad_active":product_ad_active
 
        }, { headers: headers }).map((res: Response) => {
       if (res) {

@@ -246,7 +246,7 @@ export class PostAdComponent implements OnInit {
 
           //  console.log('Phones & Tablets')
         console.log('Attributes:', Product_ID,this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime)
-          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime).subscribe();
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime,this.model.product_ad_active).subscribe();
 
       } else {
 
@@ -262,7 +262,7 @@ export class PostAdComponent implements OnInit {
         // console.log('catName:'+ this.CatName);
 
 
-          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime).subscribe();
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime,this.model.product_ad_active).subscribe();
 
       }
     } else {

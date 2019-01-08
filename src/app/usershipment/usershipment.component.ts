@@ -53,7 +53,7 @@ export class UsershipmentComponent implements OnInit {
     });
     }
   }
-  save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress:string) {
+  save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress,Shipmentbilladdress) {
     
     // if ( this.fileName) {
       //this.uploadItemsToActivity();
@@ -63,7 +63,7 @@ export class UsershipmentComponent implements OnInit {
         // data => {
          // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
           console.log('Successs' )
-          this.httpService.Useraddressaddtocart(FName,province,City,Area,Mobile,Address,Shipmentaddress).subscribe((response) => {
+          this.httpService.Useraddressaddtocart(FName,province,City,Area,Mobile,Address,Shipmentaddress,Shipmentbilladdress).subscribe((response) => {
          console.log(FName,province,City,Area,Mobile,Address,Shipmentaddress)
          this.obj.GetUSeraddress().subscribe(resAddSlidersData => {
           this.GetUSerAddress = resAddSlidersData;
