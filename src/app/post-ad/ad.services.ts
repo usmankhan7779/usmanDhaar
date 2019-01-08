@@ -158,6 +158,7 @@ export class AdService {
           'Addbestoffer': model['Addbestoffer'],
           'Quantity': model['Quantity'],
           'MaxQuantity': model['MaxQuantity'],
+          'product_ad_active':model['product_ad_active']
         }, { headers: headers }).map((res: Response) => {
 
       }).catch((error: any) => {
@@ -173,7 +174,7 @@ export class AdService {
   
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
-    headers.append('Content-Type', 'application/json');
+    // headers.append('Content-Type', 'applicati on/json');
     // headers.append('Authorization', 'JWT ' +  this.authentication);
     headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
@@ -190,7 +191,7 @@ export class AdService {
         'P_Title':  Title,
         'P_Des':  Addetail,
         'P_Condition':  condition,
-        'Auction': Auction,
+        'auction': Auction,
         'SrartingPrice': Starting_Price,
         'MaxBidPrice': Starting_Price,
         'Buyitnow': Buyitnow,
@@ -212,7 +213,7 @@ export class AdService {
        }, { headers: headers }).map((res: Response) => {
       if (res) {
 
-        if (res.status === 201) {
+        if (res.status === 201 || res.status === 200) {
           const responce_data = res.json();
 
           // for (let a = 0; a < arrayIndex; a++) {

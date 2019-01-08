@@ -22,8 +22,10 @@ export class SelectCategoryComponent implements OnInit {
 
     if(localStorage.getItem('StoreName')) {
       this.user = true;
+      alert(this.user)
     } else if (localStorage.getItem('UserID') && localStorage.getItem('StoreName') === null){
       this.seller = false;
+      alert(this.seller)
     } else {
       this.user=false;
     }

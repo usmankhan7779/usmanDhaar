@@ -55,10 +55,10 @@
   
                     </mat-option>
   
-  
+  && StoreName.valid
                   </mat-select> -->
                 <label  style="color: black" class="help-block">Select Your StoreName</label>
-                <div *ngIf="f.submitted && !StoreName.valid" class="help-block">Select Your StoreName</div>
+                <div *ngIf="f.submitted " class="help-block">Select Your StoreName</div>
                 <select [(ngModel)]="model.StoreName"  class="col-md-push-6" name="StoreName" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                   <option *ngFor="let data of StoreNamess" [value]="data.StoreName"  >
                     {{data.StoreName}}
@@ -182,7 +182,7 @@
                       </div>
                       <div class="formrow">
 
-                        <input type="date" name="date2" class="form-control" placeholder="Starting Date" [(ngModel)]="model.EndbidTime" #EndbidTime="ngModel" >
+                        <input type="date" name="date2" class="form-control" placeholder=" Date" [(ngModel)]="model.EndbidTime" #EndbidTime="ngModel" >
 
                       </div>
  <!-- <input type="date" required name="date" [(ngModel)]="publish_product_date" style="    padding: 10px 0px; font-size: 20px;"> -->
@@ -210,9 +210,9 @@
                       <input type="checkbox" (click)="AddReservePriceFun()" value="agree text" name="agree" />
                       Add a Reserve Price
                     </div>
-                    <div *ngIf="ReservePrice == true" class="formrow">
+                    <!-- <div *ngIf="ReservePrice == true" class="formrow">
                       <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control" placeholder="Reserve Price">
-                    </div>
+                    </div> -->
                       <div class="formrow">
                         <label  style="color: black" class="help-block">Select Your Listing</label>
                         <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
