@@ -280,13 +280,13 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .social a{color:#00a8ff;font-size:32px;display:inline-block;margin-right:5px;margin-top:0;}
 .social a:hover{color:#000;}
 .searchList{list-style:none;}
-.searchList li{background:#fff;border:1px solid #fff;padding:20px;margin-bottom:30px;}
-.searchList li:hover{box-shadow:0 0 10px rgba(0,0,0,0.1);border:1px solid #ed2424;}
+.searchList li{background:#fff;border:1px solid #fff;padding:20px;margin-bottom: 5px;transition: 0.4s all ease-in-out;}
+.searchList li:hover{box-shadow: 0 0 14px 3px #d8d8d8;}
 .searchList li .adimg{margin-bottom:20px;}
 .searchList li .adimg img{width:100%;}
-.searchList li h3{margin:0;}
-.searchList li h3 a{font-size:18px;font-weight:600;color:#ed2424;}
-.searchList li .cateName{margin:10px 0;color:#969595;float:left;}
+.searchList li h3{margin:10px 0;}
+.searchList li h3 a{font-size:18px;font-weight:600;color:#000000;}
+.searchList li .cateName{color:#969595;}
 .searchList li .cateName a{color:#969595;}
 .adprice{font-size:30px;font-weight:600;margin-bottom:20px;color:#ed2424;}
 .adverify{text-align:right;border:1px solid #ddd;padding:7px 15px;display:inline-block;background:#f8f8f8;font-weight:600}
@@ -296,10 +296,10 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .searchList li a:hover{color:#333;}
 .searchList li .location{color:#000;margin-top:10px;float:left;margin-left:30px;}
 .searchList li .location span{color:#333;}
-.searchList li .listbtn{margin-top:10px; display: inline}
-.searchList li .listbtn a{background:#ed2424;display:inline-block;border-radius:0;color:#fff;text-transform:uppercase;font-weight:600;padding:8px 20px;text-align:center;cursor: pointer;}
-.searchList li .listbtn a:hover{background:#333;text-decoration:none;}
-.searchList li p{line-height:22px;color:#333;margin:0;}
+.searchList li .listbtn{display: inline-block}
+.searchList li .listbtn a{display:inline-block;border-radius:0;color:#000;text-transform:uppercase;font-weight:600;text-align:center;cursor: pointer;margin: 0 5px;}
+.searchList li .listbtn a:hover{color:#ed2424;text-decoration:none;}
+.searchList li p{color:#fff;margin:0;float: left;padding: 5px;width: fit-content;}
 .searchList li .cateinfo{color:#ed2424;margin:10px 0;}
 .searchList li .minsalary{font-size:22px;font-weight:700;text-align:center;margin-top:25px;color:#a8d815;}
 .searchList li .minsalary span{color:#999;font-weight:400;}
@@ -400,7 +400,7 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .usernavdash li a{border:1px solid #eee;border-bottom:none;padding:13px 20px;font-family:Hind,sans-serif;color:#444;display:block;font-size:20px;background:#fff}
 .usernavdash li:last-child a{border-bottom:1px solid #eee;}
 .usernavdash li a:hover{background:#ed2424;color:#fff;text-decoration:none;}
-.usernavdash li i{margin-right:2px;font-size:18px;width:25px;}
+.usernavdash li i{margin-right:2px;font-size:18px;width:25px;float: left;}
 .usernavdash li.active a{background:#ed2424;color:#fff;}
 .profilestat li .inbox{border:1px solid #eee;text-align:center;background:#fff;padding:15px 10px;margin-bottom:30px;margin-left:15px;}
 .profilestat li i{font-size:36px;color:#999;margin-bottom:15px;display:block;}
