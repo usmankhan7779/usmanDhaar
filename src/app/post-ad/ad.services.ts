@@ -17,7 +17,7 @@ export class AdService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://apis.dhaar.pk/products/';
+  ServerUrl = 'http://192.168.30.225:7000/products/';
   ServerUrlLocal = 'https://apis.dhaar.pk/products/';
   StoreUrl =  'https://apis.dhaar.pk/store/';
 
@@ -170,7 +170,13 @@ export class AdService {
   }
 
   Add_PhoneAndTabletProduct_Product(Product_ID: any,  User_ID: any,  basex64: any, Title: any, CatName: any, SubCat: any, SubSubCat: any, condition: any, Addetail: any, Auction: any, Starting_Price: any, Buyitnow: any, ReservePrice: any, AuctionListing: any, FixedPrice: any, AddBestOffer: any,StoreName:any, Quantity: any,StartbidTime:any,EndbidTime:any,product_ad_active:any) {
+  
     const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
 

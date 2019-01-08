@@ -18,7 +18,7 @@ export class StoredetailsService {
   returnUrl: string;
   // https://apis.dhaar.pk/store/
   // http://192.168.30.225:7000
-  ServerUrl =  'https://apis.dhaar.pk/store/';
+  ServerUrl =  'http://192.168.30.225:7000/store/';
 
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,

@@ -71,6 +71,7 @@ export class PostAdComponent implements OnInit {
   PicCounter: any =0;
   fileCounter = 0;
   filetoup1:any=[];
+  product_ad_active ="False";
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private HomeServics: HomeService,
@@ -187,7 +188,23 @@ export class PostAdComponent implements OnInit {
   // }
 
 
-
+  checked3(event, i) {
+    if (event.target.checked == true) {
+        console.log(event.target.checked)
+        this.product_ad_active = "True";
+        console.log(this.product_ad_active,'true fbr register')
+        alert(this.product_ad_active)
+        //this.setPage(1);
+    }
+    else if (event.target.checked == false) {
+        console.log(event.target.checked)
+        this.product_ad_active="False";
+        console.log(this.product_ad_active,'false fbr register')
+        alert(this.product_ad_active)
+        //this.setPage(1);
+    }
+    //console.log(this.months3)
+  }
   save( cateogry: any, condition: string) {
     // alert('first')
     this.ShowPictureError = false;
@@ -226,7 +243,7 @@ export class PostAdComponent implements OnInit {
         } else {
           this.fileName += ',' + baseurl + this.SessionstoreName + '/' +Product_ID+'/'+ this.filetoup[i].name;
         }
-        alert( this.fileName);
+        //alert( this.fileName);
       }
       console.log('File Name is:', this.fileName);
       if (this.Auction === true) {
@@ -246,7 +263,7 @@ export class PostAdComponent implements OnInit {
 
           //  console.log('Phones & Tablets')
         console.log('Attributes:', Product_ID,this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime)
-          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID, this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime,this.model.product_ad_active).subscribe();
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, localStorage.get('UserID'), this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime,this.product_ad_active).subscribe();
 
       } else {
 
@@ -262,11 +279,12 @@ export class PostAdComponent implements OnInit {
         // console.log('catName:'+ this.CatName);
 
 
-          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID, this.User_ID,this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime,this.model.product_ad_active).subscribe();
+          this.PostAdd.Add_PhoneAndTabletProduct_Product(Product_ID,localStorage.get('UserID'),this.fileName, this.model.Title, this.CatName, subcat[0], subcat[2], this.model.condition, this.model.Addetail, this.Auction, this.model.Starting_Price, this.model.Buyitnow, this.model.ReservePrice, this.model.AuctionListing, this.model.FixedPrice, this.model.AddBestOffer,this.model.StoreName, this.model.Quantity,this.model.StartbidTime,this.model.EndbidTime,this.product_ad_active).subscribe();
 
       }
     } else {
       this.ShowPictureError = true;
+      
 
     }
 
