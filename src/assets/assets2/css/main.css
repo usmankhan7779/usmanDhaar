@@ -299,7 +299,7 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .searchList li .listbtn{display: inline-block}
 .searchList li .listbtn a{display:inline-block;border-radius:0;color:#000;text-transform:uppercase;font-weight:600;text-align:center;cursor: pointer;margin: 0 5px;}
 .searchList li .listbtn a:hover{color:#ed2424;text-decoration:none;}
-.searchList li p{color:#fff;margin:0;float: left;padding: 5px;width: fit-content;}
+.searchList li p{color:#fff;margin:0;float: left;padding: 5px;width: fit-content;white-space: normal;line-height: 13px;font-size: 12px;background-color: #3f3f3f;}
 .searchList li .cateinfo{color:#ed2424;margin:10px 0;}
 .searchList li .minsalary{font-size:22px;font-weight:700;text-align:center;margin-top:25px;color:#a8d815;}
 .searchList li .minsalary span{color:#999;font-weight:400;}
