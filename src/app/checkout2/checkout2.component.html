@@ -636,11 +636,12 @@
 
 
               <div class="panel panel-info">
+              
                 <div class="panel-heading">
                   <h3 class="panel-title">My details</h3>
                 </div>
                 <div class="panel-body">
-                  <div class="row">
+                  <div class="row" *ngIf="total_GetUSerDOne != 0">
                     <div *ngFor="let GetUser of GetUSerDOne.Results">
                       <!-- <ng-container *ngIf="GetUSerDOne !== null"> -->
 
@@ -702,7 +703,7 @@
                     </div>
                   </div>
                   
-                  <div class="row" *ngIf="GetUSerDOne.Results == null">
+                  <div class="row" *ngIf="total_GetUSerDOne == 0">
                     <div class="col-md-9 col-sm-8">
                       <form name="form1" role="form" class="login-form">
 
@@ -858,7 +859,7 @@
 
 
               </div>
-
+              
 
             </div>
 

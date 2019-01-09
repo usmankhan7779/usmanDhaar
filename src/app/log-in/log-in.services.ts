@@ -26,8 +26,8 @@ export class LoginService {
   USerNameID: string;
   // http://192.168.30.225:7000
   // https://apis.dhaar.pk
-  ServerUrl = 'http://192.168.30.225:7000/user/';
-  StoreServerUrl = 'http://192.168.30.225:7000/store/';
+  ServerUrl = 'https://apis.dhaar.pk/user/';
+  StoreServerUrl = 'https://apis.dhaar.pk/store/';
   EMailServerUrl = 'https://apis.dhaar.pk/rest-auth/';
 
 

@@ -87,7 +87,7 @@ total:any;
               private httpbuyerService: BuyerDashboardServices) {
 
   }
-
+  total_GetUSerDOne;
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -113,6 +113,8 @@ total:any;
                   this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
                 // this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
                   this.GetUSerDOne= resSlidersData;
+                  this.total_GetUSerDOne=resSlidersData['Total Result']
+                  console.log(this.total_GetUSerDOne,'ddddddddddddddddddd')
                 //  this.GetUser= this.GetUSerDOne.Results 
                   console.log(this.GetUSerDOne.Results);
                   console.log('User done info are:', this.GetUSerDOne.Results);

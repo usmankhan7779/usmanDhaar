@@ -13,6 +13,7 @@ import swal from 'sweetalert2';
 export class SellerProductSettingComponent implements OnInit {
 
   ActiveProduct: any = [];
+  DeactiveProducts :any =[];
   GetallCat: any = [];
   GetAllSubCat: any = [];
   GetAllSubSubCat: any = [];
@@ -27,6 +28,7 @@ export class SellerProductSettingComponent implements OnInit {
   currentindex: any;
   sub: any;
   product_ad_active ="False";
+  Active="True"
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav:Router,
@@ -51,10 +53,16 @@ export class SellerProductSettingComponent implements OnInit {
       if(this.SessionstoreName) {
         // getAll_ProductBYStoreName
         // getactivedeacvtiveproductbystorename
-        this.ad.getAll_ProductBYStoreName(1,this.SessionstoreName).subscribe(data => {
+        // getdeacvtiveproductbystorename
+        this.ad.getactiveproductbystorename(1,this.SessionstoreName).subscribe(data => {
           this.ActiveProduct = data;
           console.log('Active Products are:::', this.ActiveProduct);
         });
+        this.ad.getdeacvtiveproductbystorename(1,this.SessionstoreName).subscribe(data => {
+          this.DeactiveProducts = data;
+          console.log('DeActive Products are:::', this.DeactiveProducts);
+        });
+
       } else {
         this._nav.navigate(['/']);
       }
@@ -65,6 +73,7 @@ export class SellerProductSettingComponent implements OnInit {
     });
     
     }
+    // alert(this.Active)
     
   }
   pageTrendChanged(event) {
@@ -114,6 +123,24 @@ export class SellerProductSettingComponent implements OnInit {
         this.product_ad_active="False";
         console.log(this.product_ad_active,'false fbr register')
         alert(this.product_ad_active)
+        //this.setPage(1);
+    }
+    //console.log(this.months3)
+  }
+  checked4(event, i) {
+    if (event.target.checked == true) {
+        console.log(event.target.checked)
+        this.Active = "False";
+        
+        console.log(this.Active,'true fbr register')
+        alert(this.Active)
+        //this.setPage(1);
+    }
+    else if (event.target.checked == false) {
+        console.log(event.target.checked)
+        this.Active="True";
+        console.log(this.Active,'false fbr register')
+        alert(this.Active)
         //this.setPage(1);
     }
     //console.log(this.months3)

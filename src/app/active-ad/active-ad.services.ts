@@ -33,7 +33,15 @@ export class ActiveAdServices {
   getAll_ProductBYUserID(page: any, UserID: any) {
     return this._http.get( this.ServerUrl + 'getAll_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
   }
-  getactivedeacvtiveproductbystorename(page: any, UserID: any) {
+  getactiveproductbystorename(page: any, UserID: any) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'JWT ' +  this.authentication);
+    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get( this.StoreServerUrl + 'store_products_active/' + UserID + '?page=' + page,{headers : headers} ).map(response => response.json());
+  }
+  getdeacvtiveproductbystorename(page: any, UserID: any) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // headers.append('Authorization', 'JWT ' +  this.authentication);

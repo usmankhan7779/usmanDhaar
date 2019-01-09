@@ -158,7 +158,8 @@ export class AdService {
           'Addbestoffer': model['Addbestoffer'],
           'Quantity': model['Quantity'],
           'MaxQuantity': model['MaxQuantity'],
-          'product_ad_active':model['product_ad_active']
+          'product_ad_active':model['product_ad_active'],
+          'Active':model['Active']
         }, { headers: headers }).map((res: Response) => {
 
       }).catch((error: any) => {
