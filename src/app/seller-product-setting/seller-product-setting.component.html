@@ -160,6 +160,10 @@
                   <div *ngIf="ReservePrice == true" class="formrow">
                     <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control">
                   </div>
+                  <div  class="formrow">
+                    <input type="checkbox" name="namead"  [(ngModel)]="model.product_ad_active"  (change)="checked3($event,i)" placeholder="product_ad_active">
+                 If you want active ad about this Product
+                  </div>
                   <div class="formrow">
                     <label style="color: black" class="help-block">Select Your Listing</label>
                     <select [(ngModel)]="model.AuctionListing" class="col-md-push-6" name="listing" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;">
@@ -220,6 +224,10 @@
                   </div>
                   <div *ngIf="ReservePrice == true" class="formrow">
                     <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control">
+                  </div>
+                  <div  class="formrow">
+                    <input type="checkbox" name="namead"  [(ngModel)]="model.product_ad_active"  (change)="checked3($event,i)" placeholder="product_ad_active">
+                 If you want active ad about this Product
                   </div>
                   <div class="formrow">
                     <label style="color: black" class="help-block">Select Your Listing</label>

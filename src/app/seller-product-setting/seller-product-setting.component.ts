@@ -26,7 +26,7 @@ export class SellerProductSettingComponent implements OnInit {
   SubCatID: any;
   currentindex: any;
   sub: any;
-
+  product_ad_active ="False";
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav:Router,
@@ -49,6 +49,8 @@ export class SellerProductSettingComponent implements OnInit {
       // alert(this.SessionstoreName)
       // this.SessionstoreName = localStorage.getItem('StoreName');
       if(this.SessionstoreName) {
+        // getAll_ProductBYStoreName
+        // getactivedeacvtiveproductbystorename
         this.ad.getAll_ProductBYStoreName(1,this.SessionstoreName).subscribe(data => {
           this.ActiveProduct = data;
           console.log('Active Products are:::', this.ActiveProduct);
@@ -99,6 +101,23 @@ export class SellerProductSettingComponent implements OnInit {
     console.log('Index are:', index);
   }
 
+  checked3(event, i) {
+    if (event.target.checked == true) {
+        console.log(event.target.checked)
+        this.product_ad_active = "True";
+        console.log(this.product_ad_active,'true fbr register')
+        alert(this.product_ad_active)
+        //this.setPage(1);
+    }
+    else if (event.target.checked == false) {
+        console.log(event.target.checked)
+        this.product_ad_active="False";
+        console.log(this.product_ad_active,'false fbr register')
+        alert(this.product_ad_active)
+        //this.setPage(1);
+    }
+    //console.log(this.months3)
+  }
   EditProduct() {
     this.model.MaxQuantity = this.model.Quantity;
     console.log('Final Attributes are:', this.model);

@@ -19,7 +19,7 @@ export class HomeService {
   returnUrl: string;
   // http://192.168.30.225:9000
   // https://apis.dhaar.pk
-  ServerUrl =  'http://192.168.30.225:7000/products/';
+  ServerUrl =  'https://apis.dhaar.pk/products/';
   // serverurladdtocart=''
 
 

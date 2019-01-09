@@ -169,6 +169,32 @@
                   <div class="tab-content">
                     <div id="wsell" class="formpanel tab-pane fade in active">
 
+                      
+                    <div class="formrow">
+                      <input type="checkbox" (click)="AddReservePriceFun()" value="agree text" name="agree" />
+                      Add a Reserve Price
+                    </div>
+                    <div *ngIf="ReservePrice == true" class="formrow">
+                      <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control" placeholder="Reserve Price">
+                    </div>
+                    <div  class="formrow">
+                      <input type="checkbox" name="namead"  [(ngModel)]="model.product_ad_active"  (change)="checked3($event,i)" placeholder="product_ad_active">
+                   If you want active ad about this Product
+                    </div>
+
+                  
+                    <!-- <div *ngIf="ReservePrice == true" class="formrow">
+                      <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control" placeholder="Reserve Price">
+                    </div> -->
+                      <div class="formrow">
+                        <label  style="color: black" class="help-block">Select Your Listing</label>
+                        <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                          <option value="10" selected>10 Days</option>
+                          <option value="7">7 Days</option>
+                          <option value="5">5 Days</option>
+                          <option value="3">3 Days</option>
+                        </select>
+                      </div>
                       <div class="formrow">
 
                         <input type="number" name="name1" class="form-control" placeholder="Starting Price" [(ngModel)]="model.Starting_Price" #Starting_Price="ngModel" >
@@ -185,43 +211,7 @@
                         <input type="date" name="date2" class="form-control" placeholder=" Date" [(ngModel)]="model.EndbidTime" #EndbidTime="ngModel" >
 
                       </div>
- <!-- <input type="date" required name="date" [(ngModel)]="publish_product_date" style="    padding: 10px 0px; font-size: 20px;"> -->
-
-                    <!--<div class="formrow">-->
-                      <!--<input type="checkbox"  (click)="BuyitnowFun()"  value="agree text" name="agree" />-->
-                      <!--Buy it Now-->
-                    <!--</div>-->
-                    <!-- <div class="formrow">
-
-                      <label for="fbrRegister" class="required">FbrRegister(*)</label>
-  
-                      <input type="checkbox" class="input form-control" required placeholder="FbrRegister" ng-Model="model.FbrRegister"
-                        #fbrregister name="FbrRegister" id="fbrRegister" (change)="checked3($event,i)"  >
-                    </div> -->
-                    <div *ngIf="ReservePrice == true" class="formrow">
-                      <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control" placeholder="Reserve Price">
-                    </div>
-                    <div  class="formrow">
-                      <input type="checkbox" name="namead"  [(ngModel)]="model.product_ad_active"  (change)="checked3($event,i)" placeholder="product_ad_active">
-                   add for ads active
-                    </div>
-
-                    <div class="formrow">
-                      <input type="checkbox" (click)="AddReservePriceFun()" value="agree text" name="agree" />
-                      Add a Reserve Price
-                    </div>
-                    <!-- <div *ngIf="ReservePrice == true" class="formrow">
-                      <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control" placeholder="Reserve Price">
-                    </div> -->
-                      <div class="formrow">
-                        <label  style="color: black" class="help-block">Select Your Listing</label>
-                        <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
-                          <option value="10" selected>10 Days</option>
-                          <option value="7">7 Days</option>
-                          <option value="5">5 Days</option>
-                          <option value="3">3 Days</option>
-                        </select>
-                      </div>
+ 
 
 
                     </div>

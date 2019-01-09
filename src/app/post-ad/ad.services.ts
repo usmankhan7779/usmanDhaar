@@ -17,7 +17,7 @@ export class AdService {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://192.168.30.225:7000/products/';
+  ServerUrl = 'https://apis.dhaar.pk/products/';
   ServerUrlLocal = 'https://apis.dhaar.pk/products/';
   StoreUrl =  'https://apis.dhaar.pk/store/';
 
