@@ -36,12 +36,10 @@
 <div class="col-md-9 col-sm-8">
   <div class="myads">
     <h3>My Store Setting</h3>
-    <br />
-    <br />
     <!-- <ul class="searchList"> -->
     <!-- ad start -->
 
-    <div class="product-item col-md-3 col-sm-6" *ngFor="let TvVideoaudio88 of GetALLBuyNowProductss.StoreInfo">
+    <div class="product-item col-md-4 col-sm-6" *ngFor="let TvVideoaudio88 of GetALLBuyNowProductss.StoreInfo">
       <div *ngFor="let Tv of GetALLBuyNowProductss.BankInfo">
         <div class="item-inner" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
 
@@ -63,8 +61,8 @@
                   <!-- <h4 ><a  title="Product Title Here" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops"></a></h4> -->
                 </div>
                 <div class="item-content">
-                  <div class="rating">
-                    <p> Seller:{{TvVideoaudio88.StoreName}}
+                  <div class="seller-name">
+                    <p> Seller Name: {{TvVideoaudio88.StoreName}}
                       <!-- <a  ng-reflect-router-link="/store,logostores" href="/store/logostores"> -->
                       <!-- logostores</a> -->
                     </p>
@@ -129,10 +127,8 @@
         </div>
       </div>
       <!-- </ng-container> -->
-
-
     </div>
-    <div class="col-md-3 product-item btn-plus">
+    <div class="col-md-4 product-item btn-plus">
       <a href="#"><i class="fas fa-7x fa-plus-square"></i></a>
     </div>
   </div>

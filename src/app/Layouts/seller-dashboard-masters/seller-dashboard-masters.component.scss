@@ -1,0 +1,57 @@
+.user-detail{
+    margin-top: 60px;
+    background: #ed2424;
+    position: relative;
+    border-radius: 5px;
+    padding: 0 0 10px;
+    text-align: center
+}
+.user-detail img{
+    width: 115px;
+    height: 115px;
+    margin-top: -77px;
+    border-radius: 50%;
+}
+.user-name{
+    font-size: 22px;
+    line-height: 26px;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+}
+.user-address{
+    font-size: 18px;
+    line-height: 26px;
+    color: #fff;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+}
+.upload-img-wrapper{
+    position: relative;
+}
+input.upload-input{
+    position: absolute;
+    top: -78px;
+    opacity: 0;
+    height: 115px;
+    width: 115px;
+    cursor: pointer;
+    z-index: 99;
+    left: 77px;
+    border-radius: 50%;
+}
+.upload-cam-img{
+    position: absolute;
+    top: -42px;
+    font-size: 55px;
+    color: #fff;
+    left: 106px;
+    cursor: pointer;
+    display: none;
+}
+.upload-img-wrapper:hover .upload-cam-img{
+    display: block;
+}

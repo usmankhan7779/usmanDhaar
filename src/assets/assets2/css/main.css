@@ -397,11 +397,11 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .userPortfolio li.shown, .no-cssanimations .userPortfolio li, .no-js .grid li{opacity:1}
 .userPortfolio li a, .userPortfolio li img{outline:0;border:none;display:block;max-width:100%}
 .usernavdash{margin-bottom:30px;}
-.usernavdash li a{border:1px solid #eee;border-bottom:none;padding:13px 20px;font-family:Hind,sans-serif;color:#444;display:block;font-size:20px;background:#fff}
+.usernavdash li a{border:1px solid #eee;border-bottom:none;padding:10px 18px;border-radius: 5px;text-transform: capitalize;color:#444;display:block;font-size:18px;background:#fff;cursor: pointer;}
 .usernavdash li:last-child a{border-bottom:1px solid #eee;}
 .usernavdash li a:hover{background:#ed2424;color:#fff;text-decoration:none;}
 .usernavdash li i{margin-right:2px;font-size:18px;width:25px;float: left;}
-.usernavdash li.active a{background:#ed2424;color:#fff;}
+.usernavdash li a.active{background:#ed2424;color:#fff;}
 .profilestat li .inbox{border:1px solid #eee;text-align:center;background:#fff;padding:15px 10px;margin-bottom:30px;margin-left:15px;}
 .profilestat li i{font-size:36px;color:#999;margin-bottom:15px;display:block;}
 .profilestat li h6{font-size:30px;font-weight:600;color:#ed2424;margin-bottom:10px;}
@@ -415,7 +415,7 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .instoretxt a{font-size:18px;display:inline-block;padding:9px 20px;background:#ed2424;color:#fff;margin:0 5px;}
 .instoretxt a:hover{background:#333;text-decoration:none;}
 .instoretxt a.history{background:#444;}
-.myads h3{font-size:24px;margin:0 0 10px 0;}
+.myads h3{font-size:24px;margin:0 0 36px; text-align: center;}
 .inner-page{padding:50px 0;}
 .inner-page .title{text-align:center;margin-bottom:40px;}
 .inner-page .title > span{color:#292929;font-size:17px;margin-bottom:10px;}

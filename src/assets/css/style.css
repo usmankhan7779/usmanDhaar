@@ -1820,6 +1820,9 @@ ul#cart-sidebar {
     -moz-transition: all 0.4s ease-out;
     -ms-transition: all 0.4s ease-out;
     -o-transition: all 0.4s ease-out;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px
 }
 
 .product-item .item-inner:hover {
@@ -2110,11 +2113,6 @@ ul#cart-sidebar {
     letter-spacing: 0.5px;
 }
 
-.product-item .item-inner {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px
-}
 
 .home-tab .product-item {
     margin: 0px;
