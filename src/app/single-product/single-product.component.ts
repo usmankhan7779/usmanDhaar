@@ -192,7 +192,7 @@ export class SingleProductComponent implements OnInit {
             });
 
           if (this.ProID !== '0') {
-            alert(this.ProID)
+            // alert(this.ProID)
             this.GetAdd.GetAllProductPicture(this.ProID).subscribe(resSlidersData => {
               this.ProductPictures = resSlidersData;
             });

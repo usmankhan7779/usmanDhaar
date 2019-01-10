@@ -180,8 +180,13 @@
         <!--</div>-->
         <!--&lt;!&ndash; /.nav-tabs &ndash;&gt;-->
         <!--</div>-->
+        
         <div id="productTabContent2" class="tab-content">
-          <div class="tab-pane active in" id="all2">
+        
+            <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
+            style="height: 400px; overflow-y: scroll;"> 
+             <div class="tab-pane active in" id="all2">
+              
             <ng-container *ngFor="let TvVideoaudio88 of GetALLProductss.Results">
               <div class="product-item home-productss col-md-3 col-sm-6">
                 <div class="item-inner">
@@ -257,6 +262,7 @@
                 </div>
               </div>
             </ng-container>
+          </div>
           </div>
 
           <div class="tab-pane fade" id="buynow">
@@ -479,6 +485,7 @@
 
           </div>
         </div>
+         
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12">
         <!-- Home Tabs  -->

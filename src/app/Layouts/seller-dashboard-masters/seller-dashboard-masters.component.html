@@ -3,21 +3,94 @@
 <div class="inner-page">
   <div class="container">
     <div class="row">
+            
       <div class="col-md-3 col-sm-4">
-
+            <ng-container *ngIf="GetUSerDOne !== null">
         <div class="user-detail">
-          <div class="upload-img-wrapper">
-            <img src="../../../assets/images/Image.png">
-            <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
-            <i class="fa fa-camera upload-cam-img"></i>
-          </div>
+          <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] !== ''" >
+                <img alt="User Pic" src="{{GetUSerDOne['Pic']}}"  onerror="this.src='../../assets/images/Image.png'">
+                <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+                <i class="fa fa-camera upload-cam-img"></i>
+            <!-- <img src="../../../assets/images/Image.png"> -->
+            <!-- <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*"> -->
+            <!-- <i class="fa fa-camera upload-cam-img"></i> -->
+          </div>  
+          <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] === ''" >
+
+                <img alt="User Pic" src="assets/images/Image.jpg" onerror="this.src='../../assets/images/Image.png'" >
+                <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+                <i class="fa fa-camera upload-cam-img"></i>
+                <!-- <img src="../../../assets/images/Image.png"> -->
+                <!-- <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*"> -->
+                <!-- <i class="fa fa-camera upload-cam-img"></i> -->
+              </div>     
           <p class="user-name">
-            Anas Tahir
+            <!-- Anas Tahir  -->
+            {{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}
           </p>
           <p class="user-address">
-            <i class="fas fa-flag"></i> 103-C Madina Town, Faisalabad Pakistan
+            <i class="fas fa-flag"></i> 
+            {{GetUSerDOne['Address']}}
+            <!-- 103-C Madina Town, Faisalabad Pakistan -->
           </p>
         </div>
+        </ng-container>
+   <!-- <ng-container *ngIf="GetUSerDOne !== null">
+                  <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 upload-img-wrapper" align="center">
+                    <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive">
+                    <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+                    <i class="fa fa-camera upload-cam-img"></i>
+                  </div>
+                  <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 upload-img-wrapper" align="center">
+                    <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200"  class="img-circle img-responsive">
+                    <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+                    <i class="fa fa-camera upload-cam-img"></i>
+                  </div>
+
+                  <div class=" col-md-8 col-lg-8 ">
+                    <table class="table table-user-information">
+                      <tbody>
+                      <tr>
+                        <td><i class="fas fa-user"></i></td>
+                        <td>{{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}</td>
+                      </tr>
+                      <tr>
+                        <td><i class="fas fa-mobile-alt"></i></td>
+                        <td>{{GetUSerDOne['Mobile']}}</td>
+                      </tr>
+                      <tr>
+                        <td><i class="far fa-address-card"></i></td>
+                        <td>{{GetUSerDOne['Address']}}</td>
+                      </tr>
+
+                      <tr>
+                      <tr>
+                        <td><i class="fas fa-city"></i></td>
+                        <td>{{ GetUSerDOne['City'] +' ' +GetUSerDOne['Zip'] }}</td>
+                      </tr>
+                      <tr>
+                        <td><i class="fas fa-university"></i></td>
+                        <td>{{GetUSerDOne['State'] }} </td>
+                      </tr>
+                      <tr>
+                        <td><i class="far fa-flag"></i></td>
+                        <td>{{GetUSerDOne['Country'] }}</td>
+                      </tr>
+
+
+                      </tbody>
+                    </table>
+
+
+                  </div>
+                </ng-container> -->
+
+
+
+
+
+
+
         <ul class="usernavdash">
           <li><a [routerLink]="['/dashboard']" routerLinkActive="active"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller
               Dashboard</a></li>

@@ -126,7 +126,7 @@ export class HomeService {
     // console.log(this.CateDeatils)
   }
 
-  GetProductsfromAllCat( ) {
+  GetProductsfromAllCat(page: number ) {
     if(localStorage.getItem('UserName') !== null)
     {
     let headers = new Headers();
@@ -134,11 +134,11 @@ export class HomeService {
     // headers.append('Authorization', 'JWT ' +  this.authentication);
     headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get(this.ServerUrl + 'getProductsfromAllCat',{headers : headers}).map(response => response.json());
+    return this._http.get(this.ServerUrl + 'getProductsfromAllCat?page=' + page,{headers : headers}).map(response => response.json());
     // console.log(this.CateDeatils)
   }
   else{
-    return this._http.get(this.ServerUrl + 'getProductsfromAllCat').map(response => response.json());
+    return this._http.get(this.ServerUrl + 'getProductsfromAllCat'+'?page=' + page,).map(response => response.json());
 
   }
 }
@@ -289,7 +289,7 @@ export class HomeService {
        quentity:number;
   addtocartProduct(Product_ID: any,qty:any) {
     this.quentity=qty;
-    alert(this.quentity)
+    // alert(this.quentity)
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');

@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
   message = '';
   seconds = 59;
 
-
+  page: number = 1;
   AuctionProductPrice: number;
   AuctionTest = true;
   Getphoto: any = [];
@@ -120,8 +120,8 @@ export class HomeComponent implements OnInit {
 
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
-
-      this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
+ this.getPhotos();
+      this.GetProducts.GetProductsfromAllCat(this.page).subscribe(resSlidersData => {
 
         this.GetALLProductss = resSlidersData;
         // Sub_Sub_Cat_Name
@@ -188,7 +188,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  getPhotos(){
+    this.GetProducts.GetProductsfromAllCat(this.page).subscribe(resSlidersData => {
 
+      this.GetALLProductss = resSlidersData;
+    });
+  }
+  onScroll()
+  {
+    console.log("Scrolled");
+    this.page = this.page + 1;
+    this.getPhotos();
+    alert(this.page)
+  }
   CategorySlider(){
     this.GetCat.GetAllCategories().subscribe(data => {
       this.GetallCat = data;

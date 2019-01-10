@@ -225,14 +225,14 @@ total:any;
         console.log(event.target.checked)
         this.Shipmentaddress = "True";
         console.log(this.Shipmentaddress,'true fbr register')
-        alert(this.Shipmentaddress)
+        //alert(this.Shipmentaddress)
         //this.setPage(1);
     }
     else if (event.target.checked == false) {
         console.log(event.target.checked)
         this.Shipmentaddress="False";
         console.log(this.Shipmentaddress,'false fbr register')
-        alert(this.Shipmentaddress)
+        // alert(this.Shipmentaddress)
         //this.setPage(1);
     }
     //console.log(this.months3)
@@ -243,14 +243,14 @@ total:any;
         console.log(event.target.checked)
         this.Shipmentbilladdress = "True";
         console.log(this.Shipmentbilladdress,'true fbr register')
-        alert(this.Shipmentbilladdress)
+        // alert(this.Shipmentbilladdress)
         //this.setPage(1);
     }
     else if (event.target.checked == false) {
         console.log(event.target.checked)
         this.Shipmentbilladdress="False";
         console.log(this.Shipmentbilladdress,'false fbr register')
-        alert(this.Shipmentbilladdress)
+        // alert(this.Shipmentbilladdress)
         //this.setPage(1);
     }
     //console.log(this.months3)
@@ -296,11 +296,11 @@ total:any;
       if ( tmp.id === Abc ) {
         console.log(tmp.id);
         this.GetAdd.DeleteTodoList(tmp.id).subscribe(data => {
-          alert(tmp.product.id)
+          // alert(tmp.product.id)
           this.total=this.CartedProduct['Total Result']
             // this._shareData.watchtotal(this.total);
           this._shareData.watchtotal(this.total);
-          alert(this._shareData.watchtotal(this.total))
+          // alert(this._shareData.watchtotal(this.total))
           // this._shareData.currentMessagetotal.subscribe(message => this.total = message)
           swal('Your offer has been Deleted.','','success');
           this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
@@ -308,7 +308,7 @@ total:any;
             this.CartedProduct = resSlidersData;
             this.total=this.CartedProduct['Total Result']
             this._shareData.watchtotal(this.total);
-            alert(this._shareData.watchtotal(this.total))
+            // alert(this._shareData.watchtotal(this.total))
             
             this._shareData.currentMessagetotal.subscribe(message => this.total = message)
             console.log(this.CartedProduct.Results,'cart')
