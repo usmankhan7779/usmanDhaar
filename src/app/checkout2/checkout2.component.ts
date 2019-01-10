@@ -28,6 +28,7 @@ export class Checkout2Component implements OnInit {
   hours: any;
   days: any;
   model: any = {};
+  GetUSeradress: any = [];
   GetUSerDOne: any = [];
   GetUser:any=[];
   GetUSallerCoupon: any = [];
@@ -87,7 +88,7 @@ total:any;
               private httpbuyerService: BuyerDashboardServices) {
 
   }
-  total_GetUSerDOne;
+  total_GetUSeradress;
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -112,14 +113,14 @@ total:any;
                   // post_shipment_details
                   this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
                 // this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
-                  this.GetUSerDOne= resSlidersData;
-                  this.total_GetUSerDOne=resSlidersData['Total Result']
-                  console.log(this.total_GetUSerDOne,'ddddddddddddddddddd')
+                  this.GetUSeradress= resSlidersData;
+                  this.total_GetUSeradress=resSlidersData['Total Result']
+                  console.log(this.total_GetUSeradress,'ddddddddddddddddddd')
                 //  this.GetUser= this.GetUSerDOne.Results 
-                  console.log(this.GetUSerDOne.Results);
-                  console.log('User done info are:', this.GetUSerDOne.Results);
+                  console.log(this.GetUSeradress.Results);
+                  console.log('User done info are:', this.GetUSeradress.Results);
                   // alert(this.GetUser)
-                  if ( this.GetUSerDOne['Complete'] === false) {
+                  if ( this.GetUSeradress['Complete'] === false) {
                     this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
                   }
                 });
@@ -152,13 +153,13 @@ total:any;
       console.log(tmp.product.FixedPrice,'total')
     }
   });
-    this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
-      this.GetUSerDOne = resSlidersData;
-     
-      // this.GetUser=this.GetUSerDOne.Results;
-      // alert(this.GetUSerDOne.Results)
-
-    });
+  this.get()
+    // this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
+    //   this.GetUSeradress = resSlidersData;
+    //  // this.GetUSeradress= resSlidersData;
+    //   this.total_GetUSeradress=resSlidersData['Total Result']
+    //   console.log(this.total_GetUSeradress,'ddddddddddddddddddd')
+    // });
 
     // for (const {item,index} of this.CartedProduct['products'].map((item,index) => ({item,index}))) {
     //   if(index === this.CartedProduct['products'].length-1) {
@@ -254,6 +255,15 @@ total:any;
     }
     //console.log(this.months3)
   }
+  get(){
+    this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
+      // this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+        this.GetUSeradress= resSlidersData;
+        this.total_GetUSeradress=resSlidersData['Total Result']
+      //  this.GetUser= this.GetUSerDOne.Results 
+        console.log(this.GetUSeradress.Results);
+    });
+  }
   save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress,Shipmentbilladdress) {
     
     // if ( this.fileName) {
@@ -265,16 +275,8 @@ total:any;
          // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
           console.log('Successs' )
           this.httpService.Useraddressaddtocart(FName,province,City,Area,Mobile,Address,this.Shipmentaddress,this.Shipmentbilladdress).subscribe((response) => {
-            this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
-              // this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
-                this.GetUSerDOne= resSlidersData;
-              //  this.GetUser= this.GetUSerDOne.Results 
-                console.log(this.GetUSerDOne.Results);
-            });
-            console.log(FName,province,City,Area,Mobile,Address,this.Shipmentaddress,this.Shipmentbilladdress)
-          // this.Error = false;
-          // this.Waitcall = false;
-          // this.Right = true;
+           
+         this.get();
         },
         error => {
           console.log(error);
@@ -419,12 +421,12 @@ total:any;
                 this.user = localStorage.getItem('UserID');
                 this.LoginName = localStorage.getItem('UserName');
                 this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
-                  this.GetUSerDOne = resSlidersData;
+                  this.GetUSeradress = resSlidersData;
                   // this.GetUser= this.GetUSerDOne.Results
                   // this.GetUser= this.GetUSerDOne.Results;
                   // alert(this.GetUSerDOne.Results)
 
-                  if (this.GetUSerDOne['Complete'] === false) {
+                  if (this.GetUSeradress['Complete'] === false) {
                     this._nav.navigate(['/user-detail'], {queryParams: {Inc: 'true'}});
                   }
 

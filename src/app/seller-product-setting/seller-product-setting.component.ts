@@ -12,6 +12,7 @@ import swal from 'sweetalert2';
 })
 export class SellerProductSettingComponent implements OnInit {
 
+  Allproducts:any=[];
   ActiveProduct: any = [];
   DeactiveProducts :any =[];
   GetallCat: any = [];
@@ -54,6 +55,10 @@ export class SellerProductSettingComponent implements OnInit {
         // getAll_ProductBYStoreName
         // getactivedeacvtiveproductbystorename
         // getdeacvtiveproductbystorename
+        this.ad.getAll_ProductBYStoreName(1,this.SessionstoreName).subscribe(data => {
+          this.Allproducts = data;
+          console.log('Active Products are:::', this.ActiveProduct);
+        });
         this.ad.getactiveproductbystorename(1,this.SessionstoreName).subscribe(data => {
           this.ActiveProduct = data;
           console.log('Active Products are:::', this.ActiveProduct);
@@ -152,6 +157,14 @@ export class SellerProductSettingComponent implements OnInit {
     this.PostAdd.Edit_PhoneAndTabletProduct_Product(this.model).subscribe(response => {
       swal('Changes has been Saved','','success');
     })
+    this.ad.getactiveproductbystorename(1,this.SessionstoreName).subscribe(data => {
+      this.ActiveProduct = data;
+      console.log('Active Products are:::', this.ActiveProduct);
+    });
+    this.ad.getdeacvtiveproductbystorename(1,this.SessionstoreName).subscribe(data => {
+      this.DeactiveProducts = data;
+      console.log('DeActive Products are:::', this.DeactiveProducts);
+    });
 
   }
 
