@@ -94,6 +94,50 @@ export class BuyerDashboardServices {
 
   }
 
+  paymentmethod(model: any []) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    if (isPlatformBrowser(this.platformId)){
+
+      return this._http.put(this.ServerUrl + 'productediting/' + model['ProductID'],
+        {
+
+
+          // {
+            "creditno":model['Cat_Name'] ,
+            "exp":model['Cat_Name'] ,
+            "ccv":model['Cat_Name'] ,
+            "paymenttype":"online",
+            "price":model['Cat_Name'] ,
+            "currency_code": model['Cat_Name'] ,
+            "card_type":model['Cat_Name'] 
+          //   }
+          // 'Cat_Name': model['Cat_Name'] ,
+          // 'Sub_Cat_Name': model['Sub_Cat_Name'],
+          // 'Sub_Sub_Cat_Name': model['Sub_Sub_Cat_Name'],
+          // 'P_Title':  model['P_Title'],
+          // 'P_Des':  model['P_Des'],
+          // 'P_Condition':  model['P_Condition'],
+          // 'Auction': model['Auction'],
+          // 'SrartingPrice': model['SrartingPrice'],
+          // 'AuctionListing': model['AuctionListing'],
+          // 'ReservePrice': model['ReservePrice'],
+          // 'FixedPrice': model['FixedPrice'],
+          // 'Addbestoffer': model['Addbestoffer'],
+          // 'Quantity': model['Quantity'],
+          // 'MaxQuantity': model['MaxQuantity'],
+          // 'product_ad_active':model['product_ad_active'],
+          // 'Active':model['Active']
+        }, { headers: headers }).map((res: Response) => {
+
+      }).catch((error: any) => {
+        console.log(error.toString());
+        return Observable.throw(new Error(error.status));
+      });
+
+
+    }
+  }
 
   InvoiceProducts(invID: any , prodID: any, Quantity: any, UserID: any) {
 

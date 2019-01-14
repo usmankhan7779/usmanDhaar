@@ -547,6 +547,17 @@ total:any;
     }
   }
 
+  EditProduct() {
+    this.model.MaxQuantity = this.model.Quantity;
+    console.log('Final Attributes are:', this.model);
+
+    this.httpbuyerService.paymentmethod(this.model).subscribe(response => {
+      swal('Changes has been Saved','','success');
+    })
+
+
+  }
+
   ShippingDetails() {
 
     if (isPlatformBrowser(this.platformId)) {

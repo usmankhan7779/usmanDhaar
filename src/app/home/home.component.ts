@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
   intervalId = 0;
   message = '';
   seconds = 59;
-
+  ActiveProduct :any=[];
   page: number = 1;
   AuctionProductPrice: number;
   AuctionTest = true;
@@ -201,6 +201,17 @@ export class HomeComponent implements OnInit {
     this.getPhotos();
     alert(this.page)
   }
+  // nextClick() {
+  //   console.log(this.model);
+  //   if (this.model.pageno < this.model.totalpages) {
+  //     this.model.pageno = this.model.pageno + 1; // (parseInt(this.model.pageno, 10) + 1).toString();
+  //     this.newService.fetchJobByAdvanceSearch(this.model).subscribe(data => {
+  //       for (let i = 0; i < data.jobs.length; i++) {
+  //         this.jobsList.push(data.jobs[i]);
+  //       }
+  //     });
+  //   }
+  // }
   CategorySlider(){
     this.GetCat.GetAllCategories().subscribe(data => {
       this.GetallCat = data;
