@@ -99,18 +99,27 @@ export class BuyerDashboardServices {
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
 
-      return this._http.put(this.ServerUrl + 'productediting/' + model['ProductID'],
+      return this._http.put(this.ServerUrl + 'productediting/',
         {
 
 
           // {
-            "creditno":model['Cat_Name'] ,
-            "exp":model['Cat_Name'] ,
-            "ccv":model['Cat_Name'] ,
-            "paymenttype":"online",
-            "price":model['Cat_Name'] ,
-            "currency_code": model['Cat_Name'] ,
-            "card_type":model['Cat_Name'] 
+            "creditno":model['creditno'] ,
+            "exp":model['exp'] ,
+            "ccv":model['ccv'] ,
+            "paymenttype":model['paymenttype'] ,
+            "price":model['price'] ,
+            "currency_code": model['currency_code'] ,
+            "card_type":model['card_type'] 
+
+
+            // creditno ,
+            // exp,
+            // ccv ,
+            // paymenttype ,
+            // price ,
+            // currency_code ,
+            // card_type 
           //   }
           // 'Cat_Name': model['Cat_Name'] ,
           // 'Sub_Cat_Name': model['Sub_Cat_Name'],
