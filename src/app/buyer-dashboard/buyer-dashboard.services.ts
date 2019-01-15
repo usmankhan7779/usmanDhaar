@@ -94,50 +94,33 @@ export class BuyerDashboardServices {
 
   }
 
-  paymentmethod(model: any []) {
+  paymentmethod(creditno , exp, ccv ,paymenttype , price , currency_code , card_type ) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
     if (isPlatformBrowser(this.platformId)){
 
-      return this._http.put(this.ServerUrl + 'productediting/',
+      return this._http.post('http://192.168.30.225:7000/payment/post_payment/',
         {
 
 
-          // {
-            "creditno":model['creditno'] ,
-            "exp":model['exp'] ,
-            "ccv":model['ccv'] ,
-            "paymenttype":model['paymenttype'] ,
-            "price":model['price'] ,
-            "currency_code": model['currency_code'] ,
-            "card_type":model['card_type'] 
+        
+            "creditno":creditno ,
+            "exp":exp,
+            "ccv":ccv,
+            "paymenttype":paymenttype ,
+            "price":price,
+            "currency_code":currency_code ,
+            "card_type":card_type 
 
-
-            // creditno ,
-            // exp,
-            // ccv ,
-            // paymenttype ,
-            // price ,
-            // currency_code ,
-            // card_type 
-          //   }
-          // 'Cat_Name': model['Cat_Name'] ,
-          // 'Sub_Cat_Name': model['Sub_Cat_Name'],
-          // 'Sub_Sub_Cat_Name': model['Sub_Sub_Cat_Name'],
-          // 'P_Title':  model['P_Title'],
-          // 'P_Des':  model['P_Des'],
-          // 'P_Condition':  model['P_Condition'],
-          // 'Auction': model['Auction'],
-          // 'SrartingPrice': model['SrartingPrice'],
-          // 'AuctionListing': model['AuctionListing'],
-          // 'ReservePrice': model['ReservePrice'],
-          // 'FixedPrice': model['FixedPrice'],
-          // 'Addbestoffer': model['Addbestoffer'],
-          // 'Quantity': model['Quantity'],
-          // 'MaxQuantity': model['MaxQuantity'],
-          // 'product_ad_active':model['product_ad_active'],
-          // 'Active':model['Active']
         }, { headers: headers }).map((res: Response) => {
+          if (res) {
+            console.log(res.status);
+            if (res.status === 200) {
+
+            }
+          }
 
       }).catch((error: any) => {
         console.log(error.toString());

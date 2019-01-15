@@ -10,6 +10,7 @@ import { JwtHelper } from 'angular2-jwt';
 import {ActiveAdServices} from "../active-ad/active-ad.services";
 import swal from "sweetalert2";
 import {UploadItemService} from '../file-uploads/upload-item-service';
+import { SharedData } from '../shared-service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -36,12 +37,14 @@ export class DashboardComponent implements OnInit {
   CatName: any;
   filetoup: FileList;
   fileName: any;
-
+  CartedProduct: any = [];
+  total: any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http ,
               private Profile: LoginService,
               private HomeServics: HomeService,
               private _nav: Router,
+              public _shareData: SharedData,
               private httpService: ActiveAdServices,
               private itemUploadService: UploadItemService) {
   }
@@ -67,6 +70,16 @@ export class DashboardComponent implements OnInit {
 
       window.scrollTo(0, 0);
 
+      this.HomeServics.GetAllProductcart().subscribe(resSlidersData => {
+
+        this.CartedProduct = resSlidersData;
+        console.log(this.CartedProduct.Results, 'cart')
+        this.total = this.CartedProduct['Total Result']
+        this._shareData.watchtotal(this.total);
+
+        // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+      
+      });
       this.Profile.GetStoreInformationByUserId().subscribe(
         data => {
           this.ActiveProduct = data;

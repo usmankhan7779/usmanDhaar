@@ -880,16 +880,10 @@
                               Payment</label>
                           </div>
                           <ng-container *ngIf="PaymentatHme === false">
-                            <div class="col-sm-12">
+                            <!-- <div class="col-sm-12">
                               <div class="col-sm-6">
                                 <br />
-                                <!-- // creditno ,
-                                // exp,
-                                // ccv ,
-                                // paymenttype ,
-                                // price ,
-                                // currency_code ,
-                                // card_type -->
+                               
                                 <label for="first_name_1" class="required">Name on the Card</label>
                                 <input [(ngModel)]="model.card_name" #card_name="ngModel" pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
                                   class="input form-control" type="text" name="card_name" required name="card_name"
@@ -899,15 +893,22 @@
                                 </div>
 
                               </div>
-                            </div>
+                            </div> -->
+                             <!-- // creditno ,
+                                // exp,
+                                // ccv ,
+                                // paymenttype ,
+                                // price ,
+                                // currency_code ,
+                                // card_type -->
                             <!--/ [col] -->
                             <div class="col-sm-12">
                               <div class="col-sm-6">
                                 <br />
                                 <label for="first_name_1" class="required">Card Number</label>
-                                <input [(ngModel)]="model.card_number" #card_number="ngModel" required [textMask]="{mask: mask}"
-                                  class="input form-control" type="text" name="card_number" placeholder="">
-                                <div style="color:red" *ngIf="f.submitted  && !card_number.valid" class="help-block">
+                                <input [(ngModel)]="model.creditno" #creditno="ngModel" required 
+                                  class="input form-control" type="text" name="creditno" placeholder="">
+                                <div style="color:red" *ngIf="f.submitted  && !creditno.valid" class="help-block">
                                   This field is required
                                 </div>
                               </div>
@@ -934,27 +935,28 @@
                                 <input class="input form-control" [(ngModel)]="model.expiry_year" #expiry_year="ngModel"
                                   required maxlength="4" minlength="4" pattern="([0-9])+$" type="text" name="expiry_year"
                                   placeholder="2025">
-                                <div style="color:red" *ngIf="f.submitted  && !expiry_year.valid" class="help-block">
+                                <!-- <div style="color:red" *ngIf="f.submitted  && !expiry_year.valid" class="help-block">
                                   This field is required
-                                </div>
+                                </div> -->
                               </div>
                               <div class="col-sm-1">
                                 <br />
                                 <label for="cvv" class="required">-CVV Number</label>
-                                <input class="input form-control" [(ngModel)]="model.cvv" #cvv="ngModel" required
-                                  maxlength="3" minlength="3" pattern="([0-9])+$" type="text" name="cvv" placeholder="365">
-                                <div style="color:red" *ngIf="f.submitted  && !cvv.valid" class="help-block">
+                                <input class="input form-control" [(ngModel)]="model.ccv" #ccv="ngModel" required
+                                  maxlength="3" minlength="3" pattern="([0-9])+$" type="text" name="ccv" placeholder="365">
+                                <div style="color:red" *ngIf="f.submitted  && !ccv.valid" class="help-block">
                                   This field is required
                                 </div>
                               </div>
                             </div>
                             <!--/ [col] -->
+
                           </ng-container>
 
                         </li>
 
 
-                        <li>
+                        <!-- <li>
 
                           <div class="col-sm-12">
                             <br />
@@ -964,13 +966,14 @@
                               At
                               Home</label>
                           </div>
-                        </li>
+                        </li> -->
                       </ul>
 
                       <br />
-                      <button class="button col-lg-12 "><i class="fa fa-angle-double-right"></i>&nbsp;
+                      <!-- <button class="button col-lg-12 " type="submit"><i class="fa fa-angle-double-right"></i>&nbsp;
                         <span>Place Order </span>
-                      </button>
+                      </button> -->
+                      <input type="submit" class="btn" (click)="EditProduct()" value="Post An Ad">
                     </div>
                   </li>
                   <!--/ .row -->

@@ -100,7 +100,7 @@
           </div>
           <div id="home1" class="tab-pane fade">
               <h3>All Products</h3>
-              <!-- <p>Some content in menu 1.</p> -->
+          
               <div class="myads">
                 <h3>My Products {{SessionstoreName}} </h3>
                 <br />
@@ -117,7 +117,9 @@
                           <div class="jobinfo">
                             <div class="row">
                               <div class="col-md-8 col-sm-7">
-                                <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name }}</a> <i class="fa fa-angle-double-right"
+                                <div class="cateName">
+                                   <a href="#.">{{ phoneProducts.Cat_Name }}</a> 
+                                   <i class="fa fa-angle-double-right"
                                     aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right"
                                     aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name }}</a> </div>
                                 <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }">{{
@@ -159,8 +161,7 @@
               </div>
             </div>
           <div id="menu1" class="tab-pane fade">
-            <h3>Menu 1</h3>
-            <p>Some content in menu 1.</p>
+           
             <div class="myads">
               <h3>My Products {{SessionstoreName}} </h3>
               <br />
