@@ -10,6 +10,7 @@ import { LoginService } from '../log-in/log-in.services';
 import {CategoryServices} from "../category-detail/category-detail.services";
 import { HomeService } from '../home/home.services';
 import { SharedData } from '../shared-service';
+import swal from 'sweetalert2';
 
 declare const $: any;
 
@@ -42,6 +43,7 @@ export class HeaderComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private PostAdd: AdService,
+            
               private _nav: Router,
               private GetAdd: HomeService,
               public _shareData: SharedData,
@@ -62,6 +64,21 @@ export class HeaderComponent implements OnInit {
   TextChange(val) {
     // alert(val);
   }
+  notgocart(){
+    // UserName
+    if(localStorage.getItem('UserName') !== null){
+      this._nav.navigate(['/checkout2'])
+// this.router.navigate(['/ChangePassword1']);
+    }
+    else if(localStorage.getItem('UserName') == null)
+    {
+      swal(
+        'Add to cart!',
+        'Your Shopping cart is empty',
+        'error'
+      );
+    }
+  }
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
     // console.log('fdsfsdfdsgj' + localStorage.getItem('UserID'));
@@ -77,6 +94,16 @@ export class HeaderComponent implements OnInit {
     else{
       this.total=0
     }
+    this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+
+      this.CartedProduct = resSlidersData;
+      console.log(this.CartedProduct.Results, 'cart')
+      this.total = this.CartedProduct['Total Result']
+      this._shareData.watchtotal(this.total);
+
+      // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+    
+    });
     if (localStorage.getItem('UserID') !== null) {
       this.ValueRec = true;
       this.obj.verify_tokenWithNoRedirict().subscribe((response) => {
@@ -125,7 +152,7 @@ export class HeaderComponent implements OnInit {
     // this.PostAdd.GetAllSubSubCategories().subscribe(resSlidersData => this.GetallSubSubCat = resSlidersData);
 
   }
-  }zz
+  }
 
   Phone() {
     this._nav.navigate(['/sameurl'], {queryParams: {CatName:'Phones & Tablets'}})

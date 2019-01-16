@@ -69,6 +69,7 @@ export class LoginService {
                   } else {
                     // alert(resSlidersData['Vendor']);
                     if (resSlidersData['Vendor'] === true) {
+                      localStorage.setItem('Vendor',resSlidersData['Vendor'])
                       this._nav.navigate(['/dashboard']);
                     } else {
                       localStorage.setItem('Vendor',resSlidersData['Vendor'])

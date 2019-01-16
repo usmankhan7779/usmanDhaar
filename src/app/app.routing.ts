@@ -5,6 +5,8 @@ import { LayoutComponent } from "./layout/layout.component";
 import { TermsUseModule } from './terms-use/terms-use.module';
 import { SellerProductSettingModule } from './seller-product-setting/seller-product-setting.module';
 import { SellerDashboardMastersComponent } from './layouts/seller-dashboard-masters/seller-dashboard-masters.component';
+import { UserDashboardMasterComponent } from './layouts/user-dashboard-master/user-dashboard-master.component';
+// import { BuyerDashboardMastersComponent } from './Layouts/buyer-dashboard-masters/buyer-dashboard-masters.component';
 // import { SellerDashboardLayoutComponent } from './Layouts/seller-dashboard-layout/seller-dashboard-layout.component';
 
 const appRoutes: Routes = [
@@ -28,21 +30,21 @@ const appRoutes: Routes = [
       // { path: 'pending-ad', loadChildren: './pending-ad/pending-ad.module#PendingAdModule', canActivate: [AuthGuard]},
       { path: 'contact-us', loadChildren: './contact-us/contact-us.module#ContactUsModule' },
       { path: 'category-detail', loadChildren: './category-detail/category-detail.module#CategoryDetailModule' },
-      { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard] },
-      { path: 'user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
+      //  { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard] },
+      //  { path: 'user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
       // usershipmentupdate
       { path: 'user-shipment-create', loadChildren: './usershipmentupdate/usershipmentupdate.module#UserShipmentUpdateModule', canActivate: [AuthGuard] },
       // { path: 'seller-user-detail', loadChildren: './seller-user-detail/seller-user-detail.module#SellerUserDetailModule', canActivate: [AuthGuard]},
-      { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard] },
+      //  { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard] },
 
       { path: 'store-view', loadChildren: './store-all-details/store-all-details.module#StoreAllDetailsModule', canActivate: [AuthGuard] },
 
       { path: '404', loadChildren: './not-found/not-found.module#NotFoundModule' },
-      { path: 'buyer-dashboard', loadChildren: './buyer-dashboard/buyer-dashboard.module#BuyerDashboardModule', canActivate: [AuthGuard] },
+      // { path: 'buyer-dashboard', loadChildren: './buyer-dashboard/buyer-dashboard.module#BuyerDashboardModule', canActivate: [AuthGuard] },
       // { path: 'my-bids', loadChildren: './my-bids/my-bids.module#MyBidsModule', canActivate: [AuthGuard]},
-      { path: 'my-bids-buyer', loadChildren: './my-bids-buyer/my-bids-buyer.module#MyBidsBuyerModule', canActivate: [AuthGuard] },
-      { path: 'buyer-orders', loadChildren: './buyer-order/buyer-order.module#BuyerOrderModule', canActivate: [AuthGuard] },
-      { path: 'buyer-invoice', loadChildren: './buyer-invoice/buyer-invoice.module#BuyerInvoiceModule', canActivate: [AuthGuard] },
+      // { path: 'my-bids-buyer', loadChildren: './my-bids-buyer/my-bids-buyer.module#MyBidsBuyerModule', canActivate: [AuthGuard] },
+      // { path: 'buyer-orders', loadChildren: './buyer-order/buyer-order.module#BuyerOrderModule', canActivate: [AuthGuard] },
+       { path: 'buyer-invoice', loadChildren: './buyer-invoice/buyer-invoice.module#BuyerInvoiceModule', canActivate: [AuthGuard] },
       // { path: 'seller-purchasing', loadChildren: './seller-purchasing/seller-purchasing.module#SellerPurchasingModule', canActivate: [AuthGuard]},
       { path: 'seller-purchasing-invoice', loadChildren: './seller-purchasing-invoice/seller-purchasing-invoice.module#SellerPurchasingInvoiceModule', canActivate: [AuthGuard] },
       { path: 'store/:storename', loadChildren: './store-template/store-template.module#StoreTemplateModule' },
@@ -54,7 +56,7 @@ const appRoutes: Routes = [
       { path: 'reset/:uid/:token', loadChildren: './reset-password/reset-password.module#ResetPasswordModule', },
       { path: 'VerfiyEmail/:key', loadChildren: './verify-email/verify-email.module#VerfiyEmailModule', },
       { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', },
-      { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard] },
+      // { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard] },
       // { path: 'seller-offer', loadChildren: './seller-offer/seller-offer.module#SellerOfferModule', canActivate: [AuthGuard]},
       { path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule' },
       { path: 'terms-use', loadChildren: './terms-use/terms-use.module#TermsUseModule' },
@@ -63,6 +65,24 @@ const appRoutes: Routes = [
       { path: 'sameurl', loadChildren: './sameurl/sameurl.module#SameurlModule' },
 
       // SellerProductSettingStoreModule
+    ]
+  },
+  
+  {
+    path: '',
+    component: UserDashboardMasterComponent,
+    children: [
+      { path: 'buyer-dashboard', loadChildren: './buyer-dashboard/buyer-dashboard.module#BuyerDashboardModule', canActivate: [AuthGuard] },
+      { path: 'my-bids-buyer', loadChildren: './my-bids-buyer/my-bids-buyer.module#MyBidsBuyerModule', canActivate: [AuthGuard] },
+      { path: 'buyer-orders', loadChildren: './buyer-order/buyer-order.module#BuyerOrderModule', canActivate: [AuthGuard] },
+      { path: 'buyer-invoice', loadChildren: './buyer-invoice/buyer-invoice.module#BuyerInvoiceModule', canActivate: [AuthGuard] },
+      { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard] },
+      { path: 'buyer-store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard] },
+      { path: 'my-watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', canActivate: [AuthGuard] },
+      { path: 'user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
+      { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard] },
+      { path: 'account-setting', loadChildren: './buyer-setting/buyer-setting.module#BuyerSettingModule', canActivate: [AuthGuard] },
+
     ]
   },
   {
@@ -81,11 +101,14 @@ const appRoutes: Routes = [
       { path: 'seller-user-detail', loadChildren: './seller-user-detail/seller-user-detail.module#SellerUserDetailModule', canActivate: [AuthGuard] },
       { path: 'seller-setting', loadChildren: './seller-setting/seller-setting.module#SellerSettingModule', canActivate: [AuthGuard] },
       // { path: 'seller-store-setting', loadChildren: './seller-store-setting-update/seller-store-setting-update.module#SellerSettingStoreUpdateModule', canActivate: [AuthGuard] },
+      { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard] },
+      { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule',canActivate: [AuthGuard]  },
+      { path: 'user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
 
       // SellerSettingStoreUpdateModule
 
     ]
-  },
+  }
 ];
 
 export const AppRoutingProvider: any[] = [];

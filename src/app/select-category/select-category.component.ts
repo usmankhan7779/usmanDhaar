@@ -20,15 +20,13 @@ export class SelectCategoryComponent implements OnInit {
     console.log(localStorage.getItem('StoreName'));
     console.log(localStorage.getItem('UserID'));
 
-    if(localStorage.getItem('StoreName')) {
+    if(localStorage.getItem('Vendor') == 'true'|| localStorage.getItem('Vendor') == 'false') {
       this.user = true;
       // alert(this.user)
     } else if (localStorage.getItem('UserID') && localStorage.getItem('StoreName') === null){
       this.seller = false;
       // alert(this.seller)
-    } else {
-      this.user=false;
-    }
+    } 
 
     this.PostAdd.GetAllCategories().subscribe(resSlidersData => this.GetallCat = resSlidersData);
 

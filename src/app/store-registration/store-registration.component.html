@@ -1,4 +1,4 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 
 
 <!-- Page Title start -->
@@ -17,7 +17,7 @@
 <!--</div>-->
 <!-- Page Title End -->
 
-
+<!-- 
 <div class="inner-page">
   <div class="container">
     <div class="row">
@@ -30,17 +30,18 @@
           <li class="active" ><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with Dharr.pk</a></li>
           <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
           <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
-
-
           <li ><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
         </ul>
 
       </div>
-        </ng-container>
-      <ng-container *ngIf="seller === true">
+        </ng-container> -->
+        <!-- <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li> -->
+
+ 
+      <!-- <ng-container *ngIf="seller === true">
         <div class="col-md-3 col-sm-4">
           <ul class="usernavdash">
-            <!-- <li ><a [routerLink]="['/store', SessionstoreName]"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Visit my Store</a></li> -->
+           
             <li ><a [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Add New Product</a></li>
             <li ><a [routerLink]="['/dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Seller Dashboard</a></li>
             <li><a [routerLink]="['/seller-product-setting']"><i class="fa fa-cog" aria-hidden="true"></i>Seller Product Setting</a></li>
@@ -59,7 +60,7 @@
           </ul>
           <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
         </div>
-      </ng-container>
+      </ng-container> -->
 
       <form role="form" class="login-form" (ngSubmit)="f.form.valid && save()" #f="ngForm" novalidate>
 
@@ -530,9 +531,9 @@
 
 
       </form>
-    </div>
+    <!-- </div>
   </div>
-</div>
+</div> -->
 
 
 <!--<app-footer></app-footer>-->

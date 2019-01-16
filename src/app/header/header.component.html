@@ -196,11 +196,13 @@
               <li *ngIf="!loginCheck()"><a  [routerLink]="['/login']"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log In</a></li>
               <li *ngIf="!loginCheck()"><a  [routerLink]="['/sign-up']" style="border-left: 1px solid black;"><i class="fa fa-lock header-icons-rightsetting"></i>Sign up</a></li>
               <li *ngIf="loginCheck()" ><a  (click)="ValueReset()" [routerLink]="['/login']" ><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
-              <li class="shop-cart"><a [routerLink]="['/checkout2']" title="Shopping Cart"> <span class="glyphicon glyphicon-shopping-cart"></span> <span>{{total}}</span></a></li>
+              <li class="shop-cart"><a (click)="notgocart()" title="Shopping Cart"> <span class="glyphicon glyphicon-shopping-cart"></span> <span>{{total}}</span></a></li>
+              <!-- <li class="shop-cart"><a [routerLink]="['/checkout2']" title="Shopping Cart"> <span class="glyphicon glyphicon-shopping-cart"></span> <span>{{total}}</span></a></li> -->
             </ul>
           </div>
 
           <!--<ul class="menu-registration-links">-->
+              
             <!--<li><a [routerLink]="['/select-category']"><i class="fa fa-camera header-icons-rightsetting"></i>Sell</a></li>-->
             <!--<li><a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Categories</a></li>-->
             <!--<li><a (click)="ProductNav()" style="cursor: pointer"><i class="fa fa-list header-icons-rightsetting"></i>Why Dhaar?</a></li>-->

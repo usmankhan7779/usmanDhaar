@@ -56,6 +56,8 @@ import { SharedData } from './shared-service';
 // import { SellerDashboardLayoutComponent } from './layouts/seller-dashboard-layout/seller-dashboard-layout.component';
 import { SellerDashboardMastersComponent } from './layouts/seller-dashboard-masters/seller-dashboard-masters.component';
 import { HeaderModule } from './header/header.module';
+import { UserDashboardMasterComponent } from './layouts/user-dashboard-master/user-dashboard-master.component';
+// import { BuyerDashboardMastersComponent } from './layouts/buyer-dashboard-masters/buyer-dashboard-masters.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +68,10 @@ import { HeaderModule } from './header/header.module';
     LayoutComponent,
     
     SellerDashboardMastersComponent,
+    
+    UserDashboardMasterComponent,
+    
+     
     
     
     
