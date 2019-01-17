@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
   AuctionTest = true;
   Getphoto: any = [];
   GetallphotsProduct: any = [];
+  // page: number = 1;
 
   images = [
     "assets/images/slider/5-min.png",
@@ -190,16 +191,26 @@ export class HomeComponent implements OnInit {
 
   getPhotos(){
     this.GetProducts.GetProductsfromAllCat(this.page).subscribe(resSlidersData => {
-
+this.onSuccess(resSlidersData)
       this.GetALLProductss = resSlidersData;
+      console.log(this.page);
     });
+    // this.service.getMyPhotos(this.page).subscribe((res) => this.onSuccess(res));
+
+  }
+  onSuccess(res) {
+    console.log(res);
+    if (res != undefined) {
+      res.forEach(item => {
+        this.GetALLProductss.push();
+      });
+    }
   }
   onScroll()
   {
     console.log("Scrolled");
     this.page = this.page + 1;
     this.getPhotos();
-    alert(this.page)
   }
   // nextClick() {
   //   console.log(this.model);

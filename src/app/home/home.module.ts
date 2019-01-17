@@ -11,7 +11,7 @@ import {Ng2PaginationModule} from 'ng2-pagination';
 import {ImageZoomModule} from 'angular2-image-zoom';
 import {NewModule} from './new.module';
 import {PreloaderFullModule} from '../components/preloader-full/preloader-full.module';
-// import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 const loginRoutes: Routes = [
   { path: '', component: HomeComponent }
 ];
@@ -32,7 +32,7 @@ const loginRoutes: Routes = [
     ImageZoomModule,
     FormsModule,
     ReactiveFormsModule,
-    // InfiniteScrollModule,
+    InfiniteScrollModule,
     RouterModule.forChild(loginRoutes)
   ],
 

@@ -549,7 +549,8 @@ export class Checkout2Component implements OnInit {
   price ;
   currency_code ;
   card_type ;
-  exp
+  exp;
+  shipmentid;
   EditProduct() {
 
 this.exp=this.model.expiry_month+ this.model.expiry_year;
@@ -557,6 +558,7 @@ this.paymenttype="online";
 this.card_type="visa";
 this.currency_code="USD"
 this.price=this.Total;
+this.shipmentid="24"
     // creditno ,
     // exp,
     // ccv ,
@@ -565,7 +567,7 @@ this.price=this.Total;
     // currency_code ,
     // card_type 
     // this.exp = this.expiry_month + this.expiry_year;
-    this.httpbuyerService.paymentmethod(this.model.creditno,this.exp,this.model.ccv,this.paymenttype,this.price,this.currency_code,this.card_type).subscribe(response => {
+    this.httpbuyerService.paymentmethod(this.model.creditno,this.exp,this.model.ccv,this.paymenttype,this.price,this.currency_code,this.card_type,this.shipmentid).subscribe(response => {
       swal('Changes has been Saved', '', 'success');
       console.log(this.model.creditno,this.exp,this.model.ccv,this.paymenttype,this.price,this.currency_code,this.card_type)
     })

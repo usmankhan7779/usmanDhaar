@@ -17,7 +17,8 @@ export class BuyerDashboardServices {
   public login: any;
   returnUrl: string;
   ServerUrl = 'https://apis.dhaar.pk/products/';
-  saleServerUrl = 'https://apis.dhaar.pk/sale/';
+  // saleServerUrl = 'https://apis.dhaar.pk/sale/';
+  saleServerUrl = 'http://192.168.29.96:7000/sale/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http,
@@ -94,14 +95,14 @@ export class BuyerDashboardServices {
 
   }
 
-  paymentmethod(creditno , exp, ccv ,paymenttype , price , currency_code , card_type ) {
+  paymentmethod(creditno , exp, ccv ,paymenttype , price , currency_code , card_type,shipmentid ) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     if (isPlatformBrowser(this.platformId)){
 
-      return this._http.post('http://192.168.30.225:7000/payment/post_payment/',
+      return this._http.post('http://192.168.29.224:7000/payment/post_payment/',
         {
 
 
@@ -112,7 +113,8 @@ export class BuyerDashboardServices {
             "paymenttype":paymenttype ,
             "price":price,
             "currency_code":currency_code ,
-            "card_type":card_type 
+            "card_type":card_type ,
+            "shipmentid":shipmentid
 
         }, { headers: headers }).map((res: Response) => {
           if (res) {
