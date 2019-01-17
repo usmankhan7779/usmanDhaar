@@ -29,6 +29,7 @@ export class UsershipmentComponent implements OnInit {
   filetoup: FileList;
   fileName: any;
   ReservePrice = false;
+  total_GetUSeradress;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router,
@@ -48,6 +49,7 @@ export class UsershipmentComponent implements OnInit {
     // });
     this.obj.GetUSeraddress().subscribe(resAddSlidersData => {
       this.GetUSerAddress = resAddSlidersData;
+      this.total_GetUSeradress = resAddSlidersData['Total Result']
       console.log('User Id is:', this.GetUSerAddress);
       this.ValueRec = true;
     });

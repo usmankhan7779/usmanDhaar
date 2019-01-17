@@ -1,324 +1,271 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 
-<!-- Page Title start -->
-<!--<div class="pageTitle">-->
-<!--<div class="container">-->
-<!--<div class="row">-->
-<!--<div class="col-md-6 col-sm-6">-->
-<!--<h1 class="page-heading">Dashboard</h1>-->
-<!--</div>-->
-<!--<div class="col-md-6 col-sm-6">-->
 
 
-<!--<div class="breadCrumb ">-->
-<!--<ng-container *ngIf="GetUSerDOne !== null">-->
-<!--<a [routerLink]="['/user-detail']">-->
-<!--<img *ngIf="GetUSerDOne['Pic'] === ''" class="breadimg" src="assets/images/defaultprofile.jpg" alt=""  width="70px" height="70px">-->
-<!--<img *ngIf="GetUSerDOne['Pic'] !== ''"  class="breadimg" src="{{PicServrUrl + GetUSerDOne['Pic']}}" alt=""  width="70px" height="70px">-->
-<!--<br/>-->
-<!--<span *ngIf="ValueRec == true">Welcome {{ GetUSerDOne['Fname']}}</span>-->
-<!--</a>-->
-<!--</ng-container>-->
-
-
-<!--</div>-->
-
-
-
-
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!-- Page Title End -->
-
-<!-- <div class="inner-page">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-sm-4">
-        <ul class="usernavdash">
-          <li class="active"><a [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>
-              Dashboard</a></li>
-          <li><a [routerLink]="['/my-bids-buyer']"><i class="fa fa-laptop" aria-hidden="true"></i> My Bids</a></li>
-          <li><a [routerLink]="['/buyer-orders']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Purchases</a></li>
-          <li><a [routerLink]="['/buyer-offer']"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Offers</a></li>
-          <li><a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sell with
-              Dhaar.pk</a></li>
-          <li><a [routerLink]="['/watch-Product']"><i class="fa fa-list" aria-hidden="true"></i> My Watchlist</a></li>
-      
-          <li><a [routerLink]="['/user-shipment']"><i class="fa fa-user" aria-hidden="true"></i> My Address Book</a></li>
-          <li><a [routerLink]="['/user-detail']"><i class="fa fa-user" aria-hidden="true"></i> My Details</a></li>
-          <li><a [routerLink]="['/account-setting']"><i class="fa fa-lock" aria-hidden="true"></i> Account Setting</a></li>
-
-          <li><a [routerLink]="['/login']" [queryParams]="{ Logout:'yes'}" (click)="clearSessionstoreage()"><i class="fa fa-sign-out"
-                aria-hidden="true"></i> Logout</a></li>
-
-        </ul>
-      
-      </div>
-       -->
-      <ng-container *ngIf="GetUSerAddress.Results == null">
-        <div class="col-md-9 col-sm-8">
-
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad">
-
-
-            <div class="panel panel-info">
-              <div class="panel-heading">
-                <h3 class="panel-title">My details</h3>
-              </div>
-              <div class="panel-body">
-                <div class="row">
-
-                  <div class=" col-md-12 col-lg-12 ">
-                    <div class="tab-content">
-                      <!-- <ng-container *ngIf="GetUSerdetails"> -->
-                      <div id="step1" class="formpanel tab-pane fade in active">
-
-                        <ul>
-
-                          <li class="row">
-                            <div class="col-sm-6">
-
-                              <label for="FName" class="required">First Name(*)</label>
-                              <input type="text" ng-Model="model.FName" #FName name="FName" required class="input form-control"
-                                placeholder="First Name" id="FName" value="{{fullname}}">
-
-
-
-                            </div>
-
-                            <!--/ [col] -->
-
-
-                            <div class="col-sm-6">
-                              <!-- [textMask]="{mask: mask}" -->
-                              <label for="telephone" class="required">Contact Number(*)</label>
-
-
-                              <input class="input form-control" placeholder="your contact number" type="text" required
-                                ng-Model="model.Mobile" #Mobile name="Mobile" id="telephone" value="{{phone_no}}">
-                            </div>
-
-                          </li>
-
-                          <!--/ .row -->
-
-                          <br>
-                          <li class="row">
-
-                            <!-- <div class="col-sm-6">
-            
-                                  <label   class="required">Select Your Country(*) </label>
-                                  <select  class="form-control"  ng-Model="model.Country" #Country name="Country" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
-                                    <option value="Pakistan" selected>Pakistan</option>
-            
-                                  </select>
-            
-                                </div>
-            -->
-
-
-
-                            <div class="col-sm-6">
-
-
-
-
-                              <label for="State" class="required">Province(*)</label>
-                              <input type="text" ng-Model="model.province" #province name="province" required class="input form-control"
-                                placeholder="Province" id="State" value="{{Provinces}}">
-
-
-
-                              <!-- </div> -->
-
-                            </div>
-                            <div class="col-sm-6">
-
-                              <label class="required">Your City(*)</label>
-
-                              <input class="input form-control" placeholder="Your City" type="text" required ng-Model="model.City"
-                                #City name="City" value="{{city}}">
-                            </div>
-
-
-                          </li>
-
-                          <br>
-                          <li class="row">
-
-
-
-
-
-                          </li>
-
-                          <!-- <br> -->
-                          <li class="row">
-
-                            <div class="col-sm-12">
-
-                              <label class="required">Area(*)</label>
-
-                              <input class="input form-control" placeholder="Your Area" type="text" required ng-Model="model.Area"
-                                #Area name="Area" value="{{area}}">
-                            </div>
-                          </li>
-                          <!--/ .row -->
-
-                          <br>
-                          <li class="row">
-                            <div class="col-xs-12">
-                              <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
-                              <label for="address" class="required">Address(*)</label>
-
-                              <input type="text" class="input form-control" required placeholder="shop #, street# etc"
-                                ng-Model="model.Address" #Address name="Address" id="address" value="{{address}}">
-                            </div>
-                            <!--/ [col] -->
-                          </li><!-- / .row -->
-                          <li class="row">
-                            <div class="col-xs-12">
-                              <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
-                              <label for="Shipmentaddress" class="required">Shipping(*)</label>
-
-                              <input type="text" class="input form-control" required placeholder="shop #, street# etc"
-                                ng-Model="model.Shipmentaddress" #Shipmentaddress name="Shipmentaddress" id="Shipmentaddress"
-                                value="{{default_shipment_address}}">
-                            </div>
-                            <!--/ [col] -->
-                          </li><!-- / .row -->
-
-
-                        </ul>
-
-
-
-                        <br>
-
-
-                        <div class="nav nav-tabs">
-                          <div *ngIf="Error" class="alert alert-danger">
-                            <strong>Error </strong> While updating record.
-                          </div>
-
-                          <div *ngIf="Right" class="alert alert-success">
-                            <strong>Profile Updated! <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go
-                                to Dashboard Section</a></strong>
-                          </div>
-                          <div *ngIf="Waitcall" class="alert  alert-info">
-                            <p class="">
-                              <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate">
-                              </span><span> &nbsp; Loading ...</span>
-
-                            </p>
-                          </div>
-                          <input type="submit" (click)="save(FName.value,province.value,City.value,Area.value,Mobile.value,Address.value,Shipmentaddress.value)"
-                            class="btn" value="Add New Address">
-                        </div>
-                      </div>
-                      <!-- </ng-container> -->
-
-                    </div>
-
-
-                  </div>
-
-                </div>
-              </div>
-              <!-- <div class="panel-footer">
-                <a [routerLink]="['/user-detail']" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-               
-                <span class="pull-right">
-                         </span>
-              </div> -->
-
-            </div>
-          </div>
-        </div>
-      </ng-container>
-      <div class="col-md-9 col-sm-8" *ngFor="let GetUser of GetUSerAddress.Results">
-        <!-- <ng-container *ngIf="GetUSerDOne !== null">
+<div class="col-md-9 col-sm-8" *ngFor="let GetUser of GetUSerAddress.Results">
+  <!-- <ng-container *ngIf="GetUSerDOne !== null">
           <div *ngIf="GetUSerDOne['Complete'] === false"  class="alert alert-info">
             Profile Incomplete Spend 2 minutes to complete. <a style="color: red !important;" [routerLink]="['/user-detail']">Go to Porfile Section</a>
           </div>
           </ng-container> -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad ">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad ">
 
 
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">My address</h3>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">My address</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <ng-container *ngIf="GetUSerAddress !== null ">
+
+
+            <div class=" col-md-8 col-lg-8 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>Name:</td>
+                    <td>{{GetUser.fullname }}</td>
+                  </tr>
+                  <tr>
+                    <td>Mobile:</td>
+                    <td>{{GetUser.phone_no}}</td>
+                  </tr>
+                  <tr>
+                    <td>Area:</td>
+                    <td>{{GetUser.area}}</td>
+                  </tr>
+
+                  <tr>
+                  <tr>
+                    <td>City:</td>
+                    <!-- +' ' +GetUser['Zip']/ -->
+                    <td>{{ GetUser.city }}</td>
+                  </tr>
+
+                  <tr>
+                    <td>State</td>
+                    <td>{{GetUser.province }} </td>
+                  </tr>
+                  <tr>
+                    <td>Address</td>
+                    <td>{{GetUser.address }}</td>
+                  </tr>
+                  <tr>
+                    <td>Default Address:</td>
+                    <td>{{GetUser.default_shipment_address}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+
             </div>
-            <div class="panel-body">
-              <div class="row">
-                <ng-container *ngIf="GetUSerAddress !== null ">
+          </ng-container>
+          
+          
+          
+        </div>
+      </div>
+      <div class="panel-footer">
+        <!-- <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product Detail</a> -->
+
+        <a [routerLink]="['/user-shipment-create']" [queryParams]="{ ProID:  GetUser.id }" data-original-title="Edit this user"
+          data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+        <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
+        <span class="pull-right">
+        </span>
+      </div>
 
 
-                  <div class=" col-md-8 col-lg-8 ">
-                    <table class="table table-user-information">
-                      <tbody>
-                        <tr>
-                          <td>Name:</td>
-                          <td>{{GetUser.fullname }}</td>
-                        </tr>
-                        <tr>
-                          <td>Mobile:</td>
-                          <td>{{GetUser.phone_no}}</td>
-                        </tr>
-                        <tr>
-                          <td>Area:</td>
-                          <td>{{GetUser.area}}</td>
-                        </tr>
+    </div>
+    <!-- *ngIf="total_GetUSeradress != 0" -->
+    <ng-container *ngIf="total_GetUSeradress != 0">
+      <form role="form" class="login-form">
 
-                        <tr>
-                        <tr>
-                          <td>City:</td>
-                          <!-- +' ' +GetUser['Zip']/ -->
-                          <td>{{ GetUser.city }}</td>
-                        </tr>
+        <div class="col-md-9 col-sm-8">
 
-                        <tr>
-                          <td>State</td>
-                          <td>{{GetUser.province }} </td>
-                        </tr>
-                        <tr>
-                          <td>Address</td>
-                          <td>{{GetUser.address }}</td>
-                        </tr>
-                        <tr>
-                          <td>Default Address:</td>
-                          <td>{{GetUser.default_shipment_address}}</td>
-                        </tr>
-
-                      </tbody>
-                    </table>
+          <div *ngIf="Inc" class="alert alert-info">
+            <strong>Incomplete Account Data!</strong>
+          </div>
 
 
+          <div class="userccount">
+            <h5>Edit My Address</h5>
+
+
+            <div class="tab-content">
+              <!-- <ng-container *ngIf="GetUSerAddress"> -->
+              <div id="step1" class="formpanel tab-pane fade in active">
+
+                <ul>
+
+                  <li class="row">
+                    <div class="col-sm-12">
+
+                      <label for="fullname" class="required">Full Name(*)</label>
+                      <input type="text" ng-Model="model.fullname" #fullname name="fullname" required class="input form-control"
+                        placeholder="First Name" id="fullname" value="{{GetUSerAddress.fullname}}">
+
+
+                    </div>
+                    </li>
+                    <!--/ [col] -->
+
+                  <br>
+                    <li class="row">
+                 
+                    <div class="col-sm-6">
+
+                        <label for="telephone" class="required">Owner Contact Number(*)</label>
+  
+  
+                        <input class="input form-control" [textMask]="{mask: mask}" placeholder="your contact number"
+                          type="text" required ng-Model="model.phone_no" #phone_no name="phone_no" id="telephone" value="{{GetUSerAddress.phone_no}}">
+                      </div>
+                      
+                      
+                      <div class="col-sm-6">
+
+                          <label class="required">Province (*)</label>
+    
+                          <input class="input form-control" placeholder="Your province" type="text" required ng-Model="model.province"
+                            #province name="province" value="{{GetUSerAddress.province}}">
+                        </div>
+
+                  </li>
+                  <!--/ .row -->
+
+                  <br>
+                  <!-- <li class="row">
+
+                    <div class="col-sm-6">
+
+                      <label class="required">Select Your Country(*) </label>
+                      <select class="form-control" ng-Model="model.Country" #Country name="Country" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;">
+                        <option value="Pakistan" selected>Pakistan</option>
+
+                      </select>
+
+                    </div>
+
+
+
+
+                    <div class="col-sm-6">
+
+                      <label class="required">Select Your State/Province(*)</label>
+                      <select class="form-control" ng-Model="model.State" #State name="State" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;">
+                        <option value="Punjab" selected>Punjab</option>
+
+                        <option value="Sindh">Sindh</option>
+                        <option value="Balochistan">Balochistan</option>
+                        <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
+
+
+                      </select>
+
+                    </div>
+
+
+
+                  </li> -->
+
+                  <!-- <br> -->
+                  <li class="row">
+
+                    <div class="col-sm-6">
+
+                      <label class="required">Your City(*)</label>
+
+                      <input class="input form-control" placeholder="Your City" type="text" required ng-Model="model.city"
+                        #city name="city" value="{{GetUSerAddress.city}}">
+                    </div>
+                     
+                    <div class="col-sm-6">
+
+                        <label class="required">Your Area(*)</label>
+  
+                        <input class="input form-control" placeholder="Your City" type="text" required ng-Model="model.area"
+                          #area name="area" value="{{GetUSerAddress.area}}">
+                      </div>
+                      <div class="col-sm-6">
+
+                          <label class="required">Default shipment address(*)</label>
+    
+                          <input class="input form-control" placeholder="Defualt shipment addres" type="text" required ng-Model="model.default_shipment_address"
+                            #default_shipment_address name="default_shipment_address" value="{{GetUSerAddress.default_shipment_address}}">
+                        </div>
+                    <!-- <div class="col-sm-6">
+
+                      <label for="postal_code" class="required">Zip/Postal Code(*)</label>
+                      
+                      <input class="input form-control" type="text" pattern="([0-9])+$" placeholder="55560" required
+                        ng-Model="model.zipcode" #zipcode name="zipcode" id="postal_code" value="{{GetUSerAddress.Zip}}">
+                    </div> -->
+
+
+                  </li>
+
+                  <br>
+                  
+                  <!--/ .row -->
+
+                  <br>
+                  <li class="row">
+                    <div class="col-xs-12">
+
+                      <label for="address" class="required">Address(*)</label>
+
+                      <input type="text" class="input form-control" required placeholder="shop #, street# etc" ng-Model="model.address"
+                        #address name="address" id="address" value="{{GetUSerAddress.address}}">
+                    </div>
+                    <!--/ [col] -->
+                  </li><!-- / .row -->
+
+
+                </ul>
+
+
+
+                <br>
+
+
+                <div class="nav nav-tabs">
+                  <div *ngIf="Error" class="alert alert-danger">
+                    <strong>Error </strong> While updating record.
                   </div>
-                </ng-container>
-              </div>
-            </div>
-            <div class="panel-footer">
-              <!-- <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product Detail</a> -->
 
-              <a [routerLink]="['/user-shipment-create']" [queryParams]="{ ProID:  GetUser.id }" data-original-title="Edit this user"
-                data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-              <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
-              <span class="pull-right">
-              </span>
+                  <div *ngIf="Right" class="alert alert-success">
+                    <strong>Profile Updated! <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go
+                        to Dashboard Section</a></strong>
+                  </div>
+                  <div *ngIf="Waitcall" class="alert  alert-info">
+                    <p class="">
+                      <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>
+                        &nbsp; Loading ...</span>
+
+                    </p>
+                  </div>
+                   <!-- save(fullname.value,phone_no.value,province.value,city.value,area.value,default_shipment_address.value,address.value) -->
+                  <input (click)="save(fullname.value,phone_no.value,province.value,city.value,area.value,default_shipment_address.value,address.value)"
+                    type="button" class="btn" value="Update">
+                </div>
+              </div>
+              <!-- </ng-container> -->
+
             </div>
 
 
           </div>
+
+
         </div>
-        <!-- *ngFor="let GetUser of GetUSerAddress.Results" -->
-      </div>
 
-    <!-- </div>
+
+      </form>
+    </ng-container>
   </div>
-</div> -->
-
-
-<!--<app-footer></app-footer>-->
+  <!-- *ngFor="let GetUser of GetUSerAddress.Results" -->
+</div>
+ 

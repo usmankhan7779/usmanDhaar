@@ -286,6 +286,8 @@ export class HomeService {
        return this.http.delete(this.ServerUrl +'editwatchList/'+ id ,
        {headers: headers}).map((response: Response) => response.json());
        }
+
+       
        quentity:number;
   addtocartProduct(Product_ID: any,qty:any) {
     this.quentity=qty;
