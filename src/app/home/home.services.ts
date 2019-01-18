@@ -125,7 +125,25 @@ export class HomeService {
     return this._http.get(this.ServerUrl + 'GetAuctionProductPriceById/' + proId).map(response => response.json());
     // console.log(this.CateDeatils)
   }
+//   premiseIdData(page: number) {
+//     if (page < 1 || page > this.pager.totalPages) {
+//         return;
+//     }
+//     let headers = new Headers();
+//     headers.append('Content-Type', 'application/json');
+//     //   this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+//     this.http.get(Config.api + 'dashboard/' + '?page=' + page, { headers: headers }).subscribe(Res => {
+//         console.log(Res);
+//         this.pager = this.pagerService.getPager(Res.json()['Total Result'], page, 10);
 
+//         this.data = Res.json()['Results'];
+
+
+
+
+//     });
+//     // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+// }
   GetProductsfromAllCat(page: number ) {
     if(localStorage.getItem('UserName') !== null)
     {
@@ -134,7 +152,7 @@ export class HomeService {
     // headers.append('Authorization', 'JWT ' +  this.authentication);
     headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get(this.ServerUrl + 'getProductsfromAllCat?page=' + page,{headers : headers}).map(response => response.json());
+    return this._http.get(this.ServerUrl + 'getProductsfromAllCat' + '?page=' + page,{headers : headers}).map(response => response.json());
     // console.log(this.CateDeatils)
   }
   else{

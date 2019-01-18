@@ -7,6 +7,8 @@ import {AdService} from '../post-ad/ad.services';
 import {CategoryServices} from "../category-detail/category-detail.services";
 import {split} from "ts-node/dist";
 import {ActiveAdServices} from "../active-ad/active-ad.services";
+// import { PhotosObj, Photos } from './_modal';
+import { PagerService } from '../pager.service';
 declare const $: any;
 @Component({
   selector: 'app-home',
@@ -72,8 +74,8 @@ export class HomeComponent implements OnInit {
   AuctionTest = true;
   Getphoto: any = [];
   GetallphotsProduct: any = [];
-  // page: number = 1;
-
+  pager: any = {};
+  // myPhotosList: Photos[] = [];
   images = [
     "assets/images/slider/5-min.png",
     "assets/images/slider/menslider.png",
@@ -111,6 +113,7 @@ export class HomeComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private GetProducts: HomeService,
               private GetCat:AdService,
+              private pagerService: PagerService,
               private Category: CategoryServices,
               private GetWatch:ActiveAdServices) {
 
@@ -121,15 +124,15 @@ export class HomeComponent implements OnInit {
 
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
- this.getPhotos();
-      this.GetProducts.GetProductsfromAllCat(this.page).subscribe(resSlidersData => {
+ this.ProductsAllCat(1);
+      // this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
-        this.GetALLProductss = resSlidersData;
-        // Sub_Sub_Cat_Name
-        // localStorage.setItem('sub_sub_cat', this.GetALLProductss.results[0].Sub_Sub_Cat_Name);
-        // localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
+      //   this.GetALLProductss = resSlidersData;
+      //   // Sub_Sub_Cat_Name
+      //   // localStorage.setItem('sub_sub_cat', this.GetALLProductss.results[0].Sub_Sub_Cat_Name);
+      //   // localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
         
-      });
+      // });
 
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
 
@@ -189,29 +192,41 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getPhotos(){
-    this.GetProducts.GetProductsfromAllCat(this.page).subscribe(resSlidersData => {
-this.onSuccess(resSlidersData)
+  ProductsAllCat( page: number){
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+  }
+    this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
+
       this.GetALLProductss = resSlidersData;
-      console.log(this.page);
+     
+
+      // this.GetALLProductss.push(resSlidersData.Results)
+
+      // console.log(this.pager);
+      this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
+      
+      // alert(this.pager)
     });
     // this.service.getMyPhotos(this.page).subscribe((res) => this.onSuccess(res));
 
   }
-  onSuccess(res) {
-    console.log(res);
-    if (res != undefined) {
-      res.forEach(item => {
-        this.GetALLProductss.push();
-      });
-    }
-  }
-  onScroll()
-  {
-    console.log("Scrolled");
-    this.page = this.page + 1;
-    this.getPhotos();
-  }
+
+ 
+  // onSuccess(resSlidersData) {
+  //   console.log(resSlidersData);
+  //   if (resSlidersData != null) {
+  //     resSlidersData.forEach(item => {
+  //       this.myPhotosList.push(new PhotosObj(item));
+  //     });
+  //   }
+  // }
+  // onScroll()
+  // {
+  //   console.log("Scrolled");
+  //   this.page = this.page + 1;
+  //   this.getPhotos(1);
+  // }
   // nextClick() {
   //   console.log(this.model);
   //   if (this.model.pageno < this.model.totalpages) {
