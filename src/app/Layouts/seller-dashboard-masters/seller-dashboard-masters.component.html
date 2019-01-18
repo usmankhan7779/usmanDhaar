@@ -3,39 +3,40 @@
 <div class="inner-page">
   <div class="container">
     <div class="row">
-            
-      <div class="col-md-3 col-sm-4">
-            <ng-container *ngIf="GetUSerDOne !== null">
-        <div class="user-detail">
-          <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] !== ''" >
-                <img alt="User Pic" src="{{GetUSerDOne['Pic']}}"  onerror="this.src='../../assets/images/Image.png'">
-                <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
-                <i class="fa fa-camera upload-cam-img"></i>
-            <!-- <img src="../../../assets/images/Image.png"> -->
-            <!-- <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*"> -->
-            <!-- <i class="fa fa-camera upload-cam-img"></i> -->
-          </div>  
-          <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] === ''" >
 
-                <img alt="User Pic" src="assets/images/Image.jpg" onerror="this.src='../../assets/images/Image.png'" >
-                <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
-                <i class="fa fa-camera upload-cam-img"></i>
-                <!-- <img src="../../../assets/images/Image.png"> -->
-                <!-- <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*"> -->
-                <!-- <i class="fa fa-camera upload-cam-img"></i> -->
-              </div>     
-          <p class="user-name">
-            <!-- Anas Tahir  -->
-            {{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}
-          </p>
-          <p class="user-address">
-            <i class="fas fa-flag"></i> 
-            {{GetUSerDOne['Address']}}
-            <!-- 103-C Madina Town, Faisalabad Pakistan -->
-          </p>
-        </div>
+      <div class="col-md-3 col-sm-4">
+        <ng-container *ngIf="GetUSerDOne !== null">
+          <div class="user-detail">
+            <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] !== ''">
+              <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" onerror="this.src='../../assets/images/Image.png'">
+              <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+              <i class="fa fa-camera upload-cam-img"></i>
+              <!-- <img src="../../../assets/images/Image.png"> -->
+              <!-- <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*"> -->
+              <!-- <i class="fa fa-camera upload-cam-img"></i> -->
+            </div>
+            <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] === ''">
+
+              <img alt="User Pic" src="assets/images/Image.jpg" onerror="this.src='../../assets/images/Image.png'">
+              <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+              <i class="fa fa-camera upload-cam-img"></i>
+              <!-- <img src="../../../assets/images/Image.png"> -->
+              <!-- <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*"> -->
+              <!-- <i class="fa fa-camera upload-cam-img"></i> -->
+            </div>
+            <p class="user-name">
+              <!-- Anas Tahir  -->
+              {{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}
+            </p>
+            <p class="user-address">
+              <i class="fas fa-flag"></i>
+              {{GetUSerDOne['Address'] +' '+ GetUSerDOne['City'] +' '+ GetUSerDOne['State'] +' '+
+              GetUSerDOne['Country']}}
+              <!-- 103-C Madina Town, Faisalabad Pakistan -->
+            </p>
+          </div>
         </ng-container>
-   <!-- <ng-container *ngIf="GetUSerDOne !== null">
+        <!-- <ng-container *ngIf="GetUSerDOne !== null">
                   <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 upload-img-wrapper" align="center">
                     <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive">
                     <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
