@@ -50,6 +50,8 @@ export class UsershipmentComponent implements OnInit {
     this.obj.GetUSeraddress().subscribe(resAddSlidersData => {
       this.GetUSerAddress = resAddSlidersData;
       this.total_GetUSeradress = resAddSlidersData['Total Result']
+      console.log(this.total_GetUSeradress,'total')
+      alert(this.total_GetUSeradress)
       console.log('User Id is:', this.GetUSerAddress);
       this.ValueRec = true;
     });
