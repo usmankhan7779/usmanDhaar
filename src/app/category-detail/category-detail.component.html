@@ -102,7 +102,8 @@
                       <div class="slider-items-products">
                         <div id="pro2-slider" class="product-flexslider hidden-buttons">
                           <div class="slider-items slider-width-col6">
-                               <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo"> <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" alt="{{ phoneProducts.Pic }}"></a>
+                               <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo">
+                                 <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'"  alt="{{ phoneProducts.Pic }}"></a>
 
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
@@ -118,7 +119,9 @@
                       <div class="item-info">
                         <div class="info-inner">
                           <div class="item-title">
-                            <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
+                            <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">{{ phoneProducts.P_Title }}  </a></h4>
+                            <!-- <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">Product
+                              Detail</a> -->
                           </div>
                           <div class="item-content">
                             <div class="rating">
@@ -138,10 +141,10 @@
                       <div class="box-hover">
                         <div class="product-item-actions">
                           <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
-                            <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
+                            <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
                           </div>
                           <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                            <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button> </a>
+                            <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button> </a>
                           </div>
                         </div>
                       </div>
@@ -170,7 +173,7 @@
                   <li>
                     <div class="row">
                       <div class="col-md-2 col-sm-4">
-                        <div class="adimg"><img src="{{phoneProducts.Pic  }}" alt="Ad Name"></div>
+                        <div class="adimg"><img src="{{phoneProducts.Pic  }}" onerror="this.src='../../assets/images/Check-Resolution.png'"  alt="Ad Name"></div>
                       </div>
                       <div class="col-md-10 col-sm-8">
                         <div class="jobinfo">
@@ -382,15 +385,15 @@
           </div>
           <div class="block-content">
             <ng-container *ngIf="!Cart" >
-            <p class="amount">There are <a href="">{{ CartedProduct.products.length }} items</a> in your cart.</p>
+            <p class="amount">There are <a href="">{{ CartedProduct.Results.length }} items</a> in your cart.</p>
             <ul>
-              <ng-container *ngFor="let abc of CartedProduct.products">
-              <li class="item"> <a  title="Sample Product" class="product-image"><img src="{{abc.Pic }}" alt="Sample Product "></a>
+              <ng-container *ngFor="let abc of CartedProduct.Results ">
+              <li class="item"> <a  title="Sample Product" class="product-image"><img src="{{abc.product.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'" alt="Sample Product "></a>
                 <div class="product-details">
                   <div class="access"> <a (click)="TrashcartElement(abc.ProductID)" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a></div>
-                  <p class="product-name"> <a href="shopping_cart.html">{{ abc.P_Title }}{{ abc.P_Title }}</a> </p>
-                  <p class="product-name"> <a href="shopping_cart.html">{{ abc.P_Title }}{{ abc.P_Title }}</a> </p>
-                  <strong>{{  abc.itemsqty }}</strong> x <span class="price">Rs: {{ abc.FixedPrice | number:'.0-0' }}</span> </div>
+                  <p class="product-name"> <a href="shopping_cart.html">{{ abc.product.P_Title }}{{ abc.product.P_Title }}</a> </p>
+                  <p class="product-name"> <a href="shopping_cart.html">{{ abc.product.P_Title }}{{ abc.product.P_Title }}</a> </p>
+                  <strong>{{  abc.Quantity }}</strong> x <span class="price">Rs: {{ abc.product.FixedPrice | number:'.0-0' }}</span> </div>
               </li>
 
               </ng-container>

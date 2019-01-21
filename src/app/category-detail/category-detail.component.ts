@@ -5,6 +5,9 @@ import {Ng2PaginationModule} from 'ng2-pagination';
 
 import {Router, RouterModule, ActivatedRoute} from '@angular/router';
 import {PaginatePipe, PaginationService} from 'ng2-pagination';
+import { HomeService } from '../home/home.services';
+import swal from 'sweetalert2';
+import { SharedData } from '../shared-service';
 
 @Component({
   selector: 'app-category-detail',
@@ -37,9 +40,11 @@ export class CategoryDetailComponent implements OnInit {
   Price2: string;
   PriceStatus = false;
   BothCheck = false;
-
+  total: any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav: Router,
+              public _shareData: SharedData,
+              private GetAdd: HomeService,
               private route: ActivatedRoute,
               private httpService: CategoryServices) {
   }
@@ -104,23 +109,40 @@ export class CategoryDetailComponent implements OnInit {
     }
 
     if (isPlatformBrowser(this.platformId)){
-    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
-    }
-    if (this.CartedProduct === null) {
-      this.Cart = true;
-    }
-    this.Total = 0;
-    if (this.CartedProduct !== null) {
-    for (const tmp of this.CartedProduct['products']) {
-      this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
-    }
-    }
+    // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
 
+    this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
-    // this.httpService.GetphotoById().subscribe(resSlidersData => {
-    //   this.GetPhotos = resSlidersData;
-    //
-    // });
+      this.CartedProduct = resSlidersData;
+  
+      console.log(this.CartedProduct.Results, 'cart')
+      this.total = this.CartedProduct['Total Result']
+      this._shareData.watchtotal(this.total);
+ 
+      // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+      console.log('Carted products are:', this.CartedProduct);
+      if (this.CartedProduct.Results === null) {
+        this.Cart = true;
+      }
+      this.Total = 0;
+      // for (const tmp of this.CartedProduct.Results) {
+  
+      //   this.Total = this.Total + (tmp.product.FixedPrice * tmp.Quantity);
+      //   console.log(tmp.product.FixedPrice, 'total')
+      // }
+      if (this.CartedProduct !== null) {
+      for (const tmp of this.CartedProduct.Results) {
+        
+        this.Total = this.Total + (tmp.product.FixedPrice * tmp.Quantity);
+        console.log(tmp.product.FixedPrice, 'total')
+      }
+      console.log(this.Total)
+      }
+    });
+    }
+   
+
+ 
 
 
   }
@@ -198,32 +220,65 @@ export class CategoryDetailComponent implements OnInit {
   }
 
 
-  TrashcartElement(Abc: any) {
-    for (const tmp of this.CartedProduct['products']) {
-      if (tmp.ProductID === Abc) {
+  // TrashcartElement(Abc: any) {
+  //   for (const tmp of this.CartedProduct['products']) {
+  //     if (tmp.ProductID === Abc) {
 
-        this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1);
-        if (isPlatformBrowser(this.platformId)) {
-        localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+  //       this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1);
+  //       if (isPlatformBrowser(this.platformId)) {
+  //       localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+  //       }
+  //     }
+
+  //   }
+  //   if (isPlatformBrowser(this.platformId)) {
+  //   this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+  //   }
+  //   if (this.CartedProduct === null) {
+  //     this.Cart = true;
+  //   }
+  //   this.Total = 0;
+  //   for (const tmp of this.CartedProduct['products']) {
+  //     this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
+  //   }
+
+
+  // }
+
+
+  TrashcartElement(Abc: any) {
+
+    if (isPlatformBrowser(this.platformId)) {
+
+      for (const tmp of this.CartedProduct.Results) {
+        if (tmp.id === Abc) {
+          console.log(tmp.id);
+          this.GetAdd.DeleteTodoList(tmp.id).subscribe(data => {
+            // alert(tmp.product.id)
+            this.total = this.CartedProduct['Total Result']
+            // this._shareData.watchtotal(this.total);
+            this._shareData.watchtotal(this.total);
+            // alert(this._shareData.watchtotal(this.total))
+            // this._shareData.currentMessagetotal.subscribe(message => this.total = message)
+            swal('Your offer has been Deleted.', '', 'success');
+            this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+
+              this.CartedProduct = resSlidersData;
+              this.total = this.CartedProduct['Total Result']
+              this._shareData.watchtotal(this.total);
+              // alert(this._shareData.watchtotal(this.total))
+
+              this._shareData.currentMessagetotal.subscribe(message => this.total = message)
+              console.log(this.CartedProduct.Results, 'cart')
+            });
+
+          });
+          //  this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
+          //localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
         }
       }
-
     }
-    if (isPlatformBrowser(this.platformId)) {
-    this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
-    }
-    if (this.CartedProduct === null) {
-      this.Cart = true;
-    }
-    this.Total = 0;
-    for (const tmp of this.CartedProduct['products']) {
-      this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
-    }
-
-
   }
-
-
   ClickCheckOut() {
 
     this._nav.navigate(['/checkout2']);
