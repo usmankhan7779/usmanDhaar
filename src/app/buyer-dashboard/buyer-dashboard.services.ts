@@ -18,7 +18,7 @@ export class BuyerDashboardServices {
   returnUrl: string;
   ServerUrl = 'https://apis.dhaar.pk/products/';
   // saleServerUrl = 'https://apis.dhaar.pk/sale/';
-  saleServerUrl = 'http://192.168.29.96:7000/sale/';
+  saleServerUrl = 'http://192.168.30.225:7000/sale/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http,
@@ -67,15 +67,21 @@ export class BuyerDashboardServices {
     });
   }
 
-  Invoice(invID: any , invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
+  Invoice( invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
 
 
     return this._http.post(this.saleServerUrl + 'AddcustomerInvoice', {
-      'InvoicesID': invID,
+      // 'InvoicesID': invID,
       'InvoicesBalance': invBalance,
       'InvoicesPayment': invPay,
       'InvoicesAsGuest': invGuest,
       'InvoicesAsUserID': invUserID
+      // {
+      //   InvoicesBalance:250,
+      //   InvoicesPayment:false,
+      //   InvoicesAsGuest:false,
+      //   InvoicesAsUserID:277
+      //   }
     })
       .map((res: Response) => {
         if (res) {
@@ -94,15 +100,15 @@ export class BuyerDashboardServices {
       });
 
   }
-
-  paymentmethod(creditno , exp, ccv ,paymenttype , price , currency_code , card_type,shipmentid ) {
+  // http://192.168.30.225:7000/sale/AddcustomerInvoice
+  paymentmethod(creditno , exp, ccv ,paymenttype , price , currency_code , card_type ) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     if (isPlatformBrowser(this.platformId)){
 
-      return this._http.post('http://192.168.29.224:7000/payment/post_payment/',
+      return this._http.post(this.saleServerUrl+'payment/post_payment/',
         {
 
 
@@ -113,8 +119,8 @@ export class BuyerDashboardServices {
             "paymenttype":paymenttype ,
             "price":price,
             "currency_code":currency_code ,
-            "card_type":card_type ,
-            "shipmentid":shipmentid
+            "card_type":card_type 
+            // "shipmentid":shipmentid
 
         }, { headers: headers }).map((res: Response) => {
           if (res) {

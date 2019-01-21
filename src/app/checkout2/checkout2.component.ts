@@ -459,8 +459,8 @@ export class Checkout2Component implements OnInit {
   GuestShippingDetails() {
     if (isPlatformBrowser(this.platformId)) {
       console.log(this.model);
-      console.log('id value is:', this.id);
-      this.httpbuyerService.Invoice(this.id, this.Total, false, true, 'Guest').subscribe(
+      console.log('id value is:', localStorage.getItem('UserID'));
+      this.httpbuyerService.Invoice(localStorage.getItem('UserID'), this.Total, false, true, 'Guest').subscribe(
         data => {
           // console.log( this.CartedProduct['products']);
           for (const item of this.CartedProduct['products']) {
@@ -546,50 +546,67 @@ export class Checkout2Component implements OnInit {
   expiry_month;
   expiry_year;
   paymenttype;
-  price ;
-  currency_code ;
-  card_type ;
+  price;
+  currency_code;
+  card_type;
   exp;
   shipmentid;
   EditProduct() {
 
-this.exp=this.model.expiry_month+ this.model.expiry_year;
-this.paymenttype="online";
-this.card_type="visa";
-this.currency_code="USD"
-this.price=this.Total;
-this.shipmentid="24"
-    // creditno ,
-    // exp,
-    // ccv ,
-    // paymenttype ,
-    // price ,
-    // currency_code ,
-    // card_type 
-    // this.exp = this.expiry_month + this.expiry_year;
-    this.httpbuyerService.paymentmethod(this.model.creditno,this.exp,this.model.ccv,this.paymenttype,this.price,this.currency_code,this.card_type,this.shipmentid).subscribe(response => {
+    this.exp = this.model.expiry_month + this.model.expiry_year;
+    this.paymenttype = "online";
+    this.card_type = "visa";
+    this.currency_code = "USD"
+    this.price = this.Total;
+    // this.shipmentid = "24"
+
+    this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type).subscribe(response => {
       swal('Changes has been Saved', '', 'success');
-      console.log(this.model.creditno,this.exp,this.model.ccv,this.paymenttype,this.price,this.currency_code,this.card_type)
+      console.log(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type)
     })
+
 
 
   }
 
   ShippingDetails() {
 
+    this.exp = this.model.expiry_month + this.model.expiry_year;
+    this.paymenttype = "online";
+    this.card_type = "visa";
+    this.currency_code = "USD"
+    this.price = this.Total;
     if (isPlatformBrowser(this.platformId)) {
       console.log(this.model);
-      console.log('id value is:', this.id);
-      this.httpbuyerService.Invoice(this.id, this.Total, false, true, this.user).subscribe(
+      console.log('id value is:', localStorage.getItem('UserID'));
+      this.httpbuyerService.Invoice(this.Total, false, true, this.user).subscribe(
         data => {
           // console.log( this.CartedProduct['products']);
-          for (const { item, index } of this.CartedProduct['products'].map((item, index) => ({ item, index }))) {
-            if (index === this.CartedProduct['products'].length - 1) {
-              console.log('item is:  ', item, '  Index is:  ', index);
-              this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
+          // this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+
+            // this.CartedProduct = resSlidersData;
+           // console.log(this.CartedProduct.Results, 'cart')
+            // this.total = this.CartedProduct['Total Result']
+            // this._shareData.watchtotal(this.total);
+    
+            // // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+            // console.log('Carted products are:', this.CartedProduct);
+            // for (const tmp1 of this.CartedProduct.Results) {
+            //   console.log('Temp1 is:', tmp1);
+            //   console.log('Values are:', tmp1.product.Pic);
+            //   this.ProPics.push(tmp1.product.Pic.split(',')[0]);
+           // }
+          // for (const { item, index } of this.CartedProduct['products'].map((item, index) => ({ item, index }))) {
+           for (const item of this.CartedProduct.Results) {
+
+            if (item === this.CartedProduct.Results.length - 1) {
+              // console.log('item is:  ', item, '  Index is:  ', index);
+              this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.product.id, item.itemsqty, localStorage.getItem('UserID')).subscribe(
                 data => {
-                  this.httpbuyerService.SendEmail(localStorage.getItem('InvoiceID')).subscribe(data => {
-                    console.log('Email Successssssssss');
+                  this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type).subscribe(data => {
+
+                  // this.httpbuyerService.SendEmail(localStorage.getItem('InvoiceID')).subscribe(data => {
+                    console.log('cartproduct Successssssssss');
                   });
                 }, (err) => {
 
@@ -600,7 +617,7 @@ this.shipmentid="24"
                 },
               );
             } else {
-              console.log('item is:  ', item, '  Index is:  ', index);
+              // console.log('item is:  ', item, '  Index is:  ', index);
               this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
                 data => {
 
