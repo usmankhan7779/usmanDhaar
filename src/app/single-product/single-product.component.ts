@@ -45,7 +45,8 @@ export class SingleProductComponent implements OnInit {
   noreview = false;
   Solddd = false;
   soldfix = false;
-  WatchStatus = false;
+  WatchStatus;
+  checkwatchstatus = 'false';
   minOffer = false;
   openreviews = true;
   ourproduct = false;
@@ -180,6 +181,7 @@ export class SingleProductComponent implements OnInit {
           if (localStorage.getItem('UserID') !== null) {
             this.LoginID = true;
             this.WatchObserver();
+            // alert(this.WatchObserver)
           } else {
             this.LoginID = false;
           }
@@ -380,8 +382,12 @@ export class SingleProductComponent implements OnInit {
     this.httpService.WatchStatus(this.ProID, localStorage.getItem('UserID')).subscribe( data => {
       console.log('checkkkkkkkkkkk  ',data);
       this.WatchStatus=data.Res
+      alert( this.WatchStatus)
+      
+      // this.checkwatchstatus = this.WatchStatus;
+      // alert(this.checkwatchstatus)
     });
-    }
+    } 
   }
 
   WatchProduct() {
