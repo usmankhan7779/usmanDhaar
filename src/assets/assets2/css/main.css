@@ -713,6 +713,20 @@ input.upload-input{
 .upload-img-wrapper:hover .upload-cam-img{
     display: block;
 }
+.pagination > li {
+    display: inline-block;
+    margin-right: 5px;
+}
+.pagination > li > a, .pagination > li > span{
+    color: #ff0000;
+}
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{
+    background-color: #ff0000;
+    border-color: #ff0000;
+}
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover{
+    color: #272d33;
+}
 @media screen and (max-width:1199px){.main-plan .plan-price2{margin-left:0px;font-size:44px;}
 .main-plan .plan-price2-1{font-size:70px;}
 .main-plan .plan-price2-2{margin-right:0px;}
