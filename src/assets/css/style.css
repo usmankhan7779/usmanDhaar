@@ -1814,7 +1814,6 @@ ul#cart-sidebar {
 .product-item .item-inner {
     margin-bottom: 0px;
     border: 1px solid #e5e5e5;
-    padding: 10px 0;
     transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
     -moz-transition: all 0.4s ease-out;
@@ -1822,11 +1821,11 @@ ul#cart-sidebar {
     -o-transition: all 0.4s ease-out;
     position: relative;
     overflow: hidden;
-    border-radius: 15px
+    border-radius: 5px;
 }
 
 .product-item .item-inner:hover {
-    border: 1px solid #ed2424;
+    box-shadow: 0 0 16px -4px #9d9d9d;
 }
 
 .product-item.btn-plus{
@@ -1931,6 +1930,7 @@ ul#cart-sidebar {
 .product-item .item-inner .pro-box-info {
     float: left;
     width: 100%;
+    padding: 0 5px;
 }
 
 .product-item .item-inner .pro-box-info .box-hover {
@@ -2003,17 +2003,19 @@ ul#cart-sidebar {
     z-index: 2;
     margin-bottom: 5px;
 }
-
+.product-item .item-inner .pro-box-info .pro-actions a{
+    display: inline-block;
+}
 .product-item .item-inner .pro-box-info .pro-actions .action.add-to-cart {
     background: #1b2c39;
     border: 1px solid #1b2c39;
     color: white;
     font-size: 14px;
-    padding: 10px 15px;
+    padding: 6px 20px;
     letter-spacing: 0.5px;
     text-transform: inherit;
     transition: all 0.4s ease-out 0s;
-    border-radius: 50px;
+    border-radius: 25px;
     display: inline-block;
     text-transform: capitalize;
     cursor: pointer;
@@ -2033,7 +2035,10 @@ ul#cart-sidebar {
     line-height: 31px;
     font-size: 12px;
 }
-
+.scrolled-tabs{
+    height: 350px;
+    overflow-y: scroll;
+}
 .add-to-cart-mt {
     background: #ed2424;
     border: 0 none;
@@ -2091,26 +2096,28 @@ ul#cart-sidebar {
 }
 
 .product-item .item-inner .item-info {
-    text-align: center;
+    text-align: left;
     padding-top: 5px;
 }
 
 .product-item .item-inner .item-info .item-title {
     font-size: 14px;
-    margin-bottom: 6px;
     font-weight: 400;
+}
+.product-item .item-inner .item-info .item-title h4{
+    margin: 0;
 }
 
 .product-item .item-inner .item-info .item-title a {
-    display: inherit;
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 0 10px;
-    font-size: 18px;
+    padding: 0;
+    font-size: 16px;
     font-weight: 500;
     text-transform: none;
     letter-spacing: 0.5px;
+    height: 40px;
 }
 
 
@@ -5398,23 +5405,17 @@ ul.products-list .sale-left {
     white-space: nowrap;
 }
 
-.price-box {
-    margin: 6px 0 2px;
-    min-height: 24px;
-}
-
 .price-box p {
     margin: auto;
 }
 
 .regular-price {
-    display: inline
+    display: block;
 }
 
 .regular-price .price {
-    font-weight: bold;
-    font-size: 16px;
-    color: #fe0100
+    font-size: 20px;
+    color: #fe0100;
 }
 
 .block .regular-price,
@@ -8869,6 +8870,8 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 .home-productss {
     margin-right: 0px!important;
     margin-left: 0px!important;
+    padding: 0 5px;
+    margin-bottom: 5px;
 }
 
 .login-form-1-center {
@@ -9291,11 +9294,12 @@ hr.invis {
 }
 
 .hovereffect img {
-    display: inline;
-    height: 225px;
+    display: inline-block;
+    height: 200px;
     position: relative;
     -webkit-transition: all .4s linear;
     transition: all .4s linear;
+    object-fit: contain;
 }
 
 .hovereffect h2 {
@@ -9303,14 +9307,15 @@ hr.invis {
     color: #fff;
     text-align: center;
     position: relative;
-    font-size: 17px;
+    font-size: 14px;
     background: rgba(0, 0, 0, 0.6);
     -webkit-transform: translatey(-100px);
     -ms-transform: translatey(-100px);
     transform: translatey(-100px);
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
-    padding: 10px;
+    padding: 10px 0;
+    white-space: nowrap;
 }
 
 .hovereffect a.info {
@@ -9318,8 +9323,9 @@ hr.invis {
     display: inline-block;
     text-transform: uppercase;
     color: #fff;
-    border: 1px solid #fff;
-    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.43);
     opacity: 0;
     filter: alpha(opacity=0);
     -webkit-transition: all .2s ease-in-out;
@@ -9329,8 +9335,8 @@ hr.invis {
 }
 
 .hovereffect a.info:hover {
-    background-color: red;
-    box-shadow: 0 0 5px #fff;
+    background-color: rgba(255, 0, 0, 0.47);
+    border: 1px solid rgba(255, 0, 0, 0.47);
 }
 
 .hovereffect:hover img {

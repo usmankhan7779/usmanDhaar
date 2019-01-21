@@ -186,13 +186,11 @@
             <!-- <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
             style="height: 400px; overflow-y: scroll;">  -->
             
-            <div class="tab-pane active in" id="all2"
-            infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
-    style="height: 400px; overflow-y: scroll;">
+            <div class="tab-pane active in scrolled-tabs" id="all2" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false">
               <!-- <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
     style="height: 400px; overflow-y: scroll;"> -->
             <div *ngFor="let TvVideoaudio88 of GetALLProductss.Results">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"-->
@@ -277,7 +275,7 @@
           <div class="tab-pane fade" id="buynow">
 
             <ng-container *ngFor="let TvVideoaudio88 of GetALLBuyNowProductss.Results">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -352,7 +350,7 @@
           <div class="tab-pane fade" id="auction">
 
             <ng-container *ngFor="let TvVideoaudio88 of GetALLAuctionProductss.Results">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-6">
                 <div class="item-inner" >
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -425,7 +423,7 @@
           <div class="tab-pane fade" id="featured">
 
             <ng-container *ngFor="let TvVideoaudio88 of GetALLFeaturedProductss.Results">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-6">
                 <div class="item-inner" >
                   <div class="product-thumbnail">
                     <div class="hovereffect">

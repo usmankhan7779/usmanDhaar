@@ -77,13 +77,14 @@ a:hover,a:focus{
   border-left: 9px solid transparent;
   border-right: 9px solid transparent;
   position: absolute;
-  top:56px;
+  top:40px;
   right: 38%;
 }
 .nav-tabs > li > a{
-  border-radius: 0px;
   background: #272d33;
-  color:#fff;
+  color: #fff;
+  padding: 5px;
+  font-size: 20px
 }
 .nav-tabs > li > a:hover{
   border-color:transparent;
