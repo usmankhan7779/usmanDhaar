@@ -579,7 +579,7 @@ export class Checkout2Component implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       console.log(this.model);
       console.log('id value is:', localStorage.getItem('UserID'));
-      this.httpbuyerService.Invoice(this.Total, false, true, this.user).subscribe(
+      this.httpbuyerService.Invoice(this.id,this.Total, false, true, this.user).subscribe(
         data => {
           // console.log( this.CartedProduct['products']);
           // this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {

@@ -67,11 +67,11 @@ export class BuyerDashboardServices {
     });
   }
 
-  Invoice( invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
+  Invoice(invID:any, invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
 
 
     return this._http.post(this.saleServerUrl + 'AddcustomerInvoice', {
-      // 'InvoicesID': invID,
+      'InvoicesID': invID,
       'InvoicesBalance': invBalance,
       'InvoicesPayment': invPay,
       'InvoicesAsGuest': invGuest,
