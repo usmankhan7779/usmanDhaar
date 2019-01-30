@@ -222,7 +222,6 @@ export class HeaderComponent implements OnInit {
         $('#wrapper').removeClass('search-active');
       }
   }
-
   ProductNav() {
     this.ProNav = !this.ProNav;
   }
