@@ -53,7 +53,7 @@ export class UsershipmentupdateComponent implements OnInit {
         this.ProID = params['ProID'] || '0';
         console.log(this.ProID)
       });
-    // this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+    // this.obj.GetUSerdetailsByUserId().subscribe(resSlidersData => {
     //   this.GetUSerDOne = resSlidersData;
     //   console.log('User Id is:', this.GetUSerDOne);
      

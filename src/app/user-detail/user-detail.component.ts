@@ -66,10 +66,10 @@ export class UserDetailComponent implements OnInit {
           this.Inc = params['Inc'] || false;
         });
 
-      this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+      // this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
       console.log(this.USerNameID)
 
-      this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
+      this.obj.GetUserDetailByName().subscribe(resSlidersData => {
         this.GetUSerdetails = resSlidersData;
         this.id= this.GetUSerdetails['id']
         this.Vendor= this.GetUSerdetails['Vendor']

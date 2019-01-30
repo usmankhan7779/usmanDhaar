@@ -36,24 +36,24 @@ export class ActiveAdServices {
   getactiveproductbystorename(page: any, UserID: any) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get( this.StoreServerUrl + 'store_products_active/' + UserID + '?page=' + page,{headers : headers} ).map(response => response.json());
   }
   getdeacvtiveproductbystorename(page: any, UserID: any) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get( this.StoreServerUrl + 'store_products_deactive/' + UserID + '?page=' + page,{headers : headers} ).map(response => response.json());
   }
   getAll_ProductBYStoreName(page: any, UserID: any) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + UserID + '?page=' + page,{headers : headers} ).map(response => response.json());
   }
@@ -80,7 +80,7 @@ export class ActiveAdServices {
   }
   getwatchproducts(){
     const headers = new Headers();
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     headers.append('Content-Type', 'application/json');
     return this._http.get(this.ServerUrl + 'watchList/',{headers:headers}).map(response => response.json());
@@ -89,8 +89,8 @@ export class ActiveAdServices {
   GetStoreInformation() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' ,{headers :headers}).map((response: Response) => response.json());
 
@@ -98,8 +98,8 @@ export class ActiveAdServices {
   GetStoreInformationofferbystorename() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' ,{headers :headers}).map((response: Response) => response.json());
 
@@ -130,8 +130,8 @@ export class ActiveAdServices {
   GetStoreOffers(st:any) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'GetallProductsOffersByStoreName/' + st,{headers :headers}).map(response => response.json());
   }

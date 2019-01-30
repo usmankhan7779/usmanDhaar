@@ -48,7 +48,7 @@ export class BuyerDashboardComponent implements OnInit {
     }
   
       console.log('hahaha', localStorage.getItem('UserID'));
-    this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+    this.obj.GetUSerdetailsByUserId().subscribe(resSlidersData => {
       this.GetUSerDOne = resSlidersData;
       console.log('User Id is:', this.GetUSerDOne);
       // this.FName = this.GetUSerDOne['Fname'];

@@ -112,7 +112,7 @@ export class Checkout2Component implements OnInit {
             this.user = localStorage.getItem('UserID');
             // post_shipment_details
             this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
-              // this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+              // this.httpService.GetUSerdetailsByUserId().subscribe(resSlidersData => {
               this.GetUSeradress = resSlidersData;
               this.total_GetUSeradress = resSlidersData['Total Result']
               console.log(this.total_GetUSeradress, 'ddddddddddddddddddd')
@@ -256,7 +256,7 @@ export class Checkout2Component implements OnInit {
   }
   get() {
     this.httpService.GetUSerdetailsByUserId1().subscribe(resSlidersData => {
-      // this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+      // this.httpService.GetUSerdetailsByUserId().subscribe(resSlidersData => {
       this.GetUSeradress = resSlidersData;
       this.total_GetUSeradress = resSlidersData['Total Result']
       //  this.GetUser= this.GetUSerDOne.Results 
@@ -715,7 +715,7 @@ export class Checkout2Component implements OnInit {
     //       this.PaymentMethod = true;
     //       this.BillingMethod = true;
     //       this.user = localStorage.getItem('UserID');
-    //       this.httpService.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+    //       this.httpService.GetUSerdetailsByUserId().subscribe(resSlidersData => {
     //         this.GetUSerDOne = resSlidersData;
     //
     //       });

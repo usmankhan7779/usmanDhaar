@@ -110,7 +110,7 @@ export class HeaderComponent implements OnInit {
 
           if (response) {
 
-            this.obj.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+            this.obj.GetUSerdetailsByUserId().subscribe(resSlidersData => {
               this.GetUSerDOne = resSlidersData;
               this.fname= this.GetUSerDOne['Fname'];
               this.ValueRec = true;
@@ -259,8 +259,8 @@ export class HeaderComponent implements OnInit {
 
   gotodashboard() {
     if (isPlatformBrowser(this.platformId)){
-
-    this.obj.GetUSerdetailsByUserId(this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id']).subscribe(resSlidersData => {
+      // this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id']
+    this.obj.GetUSerdetailsByUserId().subscribe(resSlidersData => {
 
         if ( resSlidersData['Vendor'] === true) {
           this._nav.navigate(['/dashboard']);

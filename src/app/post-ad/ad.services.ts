@@ -177,8 +177,8 @@ export class AdService {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     // headers.append('Content-Type', 'applicati on/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
