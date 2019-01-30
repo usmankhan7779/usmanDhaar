@@ -67,7 +67,7 @@ filetoup: FileList;
       this.SessionstoreName = localStorage.getItem('StoreName');
       this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
 
-      this.obj.GetUserDetailByName(this.USerNameID).subscribe(resSlidersData => {
+      this.obj.GetUserDetailByName().subscribe(resSlidersData => {
         this.GetUSerdetails = resSlidersData;
         // console.log('fdsf');
         this.id= this.GetUSerdetails['id']

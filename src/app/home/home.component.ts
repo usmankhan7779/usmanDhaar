@@ -151,7 +151,7 @@ export class HomeComponent implements OnInit {
 
         this.GetALLFeaturedProductss = resSlidersData;
       });
-
+// this portion in for second portion 
       this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
         this.GetallPhoneProduct = resSlidersData;
       });

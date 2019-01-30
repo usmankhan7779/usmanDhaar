@@ -149,8 +149,8 @@ export class HomeService {
     {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'getProductsfromAllCat' + '?page=' + page,{headers : headers}).map(response => response.json());
     // console.log(this.CateDeatils)
@@ -165,8 +165,8 @@ export class HomeService {
     {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat',{headers: headers}).map(response => response.json());
     // console.log(this.CateDeatils)
@@ -181,8 +181,8 @@ export class HomeService {
     {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'getBuyNowProductsfromAllCat',{headers : headers}).map(response => response.json());
   }
@@ -195,8 +195,8 @@ export class HomeService {
     {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'getallfeaturedProducts',{headers: headers}).map(response => response.json());
     // console.log(this.CateDeatils)
@@ -215,8 +215,8 @@ export class HomeService {
   GetallProductsOffersByStoreName(page: any, StoreName: any) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
 
     return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + StoreName + '?page=' + page,{headers:  headers} ).map(response => response.json());
@@ -245,12 +245,39 @@ export class HomeService {
     });
 
   }
-  
+  PhoneandTablets(category_name1: any) {
+    const headers = new Headers();
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    headers.append('Content-Type', 'application/json');
+    if (isPlatformBrowser(this.platformId)){
+
+      return this._http.post(this.ServerUrl + 'Category_Products/',
+        {
+          'category_name1': category_name1,
+          // 'Cat_Name': CatName ,
+          // 'User_ID': User_ID,
+        }, { headers: headers }).map((res: Response) => {
+        if (res) {
+
+          if (res.status === 201) {
+            const responce_data = res.json();
+            return [{ status: res.status, json: res }];
+          }
+        }
+      }).catch((error: any) => {
+        console.log(error.toString());
+        return Observable.throw(new Error(error.status));
+      });
+
+
+    }
+  }
   WatchProduct(Product_ID: any) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
@@ -280,8 +307,8 @@ export class HomeService {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'CheckoutProducts/' ,{headers : headers}).map(response => response.json());
     
@@ -290,7 +317,7 @@ export class HomeService {
   DeleteTodoList(id:any) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
      return this.http.delete(this.ServerUrl +'Checkout_Edit/'+ id ,
      {headers: headers}).map((response: Response) => response.json());
@@ -299,7 +326,7 @@ export class HomeService {
      Deletewatchlist(id:any) {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+      headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
       console.log('pofile', localStorage.getItem('Authorization'));
        return this.http.delete(this.ServerUrl +'editwatchList/'+ id ,
        {headers: headers}).map((response: Response) => response.json());
@@ -313,8 +340,8 @@ export class HomeService {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     if (isPlatformBrowser(this.platformId)){
 

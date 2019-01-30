@@ -104,7 +104,7 @@ export class BuyerDashboardServices {
   paymentmethod(creditno , exp, ccv ,paymenttype , price , currency_code , card_type ) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     if (isPlatformBrowser(this.platformId)){
 

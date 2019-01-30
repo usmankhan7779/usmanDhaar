@@ -30,8 +30,8 @@ export class StoredetailsService {
   GetAllStoreByStorenames() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' +localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'GetStoreInformation/',{headers :headers}).map(response => response.json());
   }

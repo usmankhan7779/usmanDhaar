@@ -62,12 +62,13 @@ export class SellerDashboardMastersComponent implements OnInit {
   // }
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.Profile.GetUSerdetailsByUserId(localStorage.getItem('UserID')).subscribe(resSlidersData => {
+      this.Profile.GetUSerdetailsByUserId().subscribe(resSlidersData => {
         this.GetUSerDOne = resSlidersData;
         this.ValueRec = true;
+        this.USerName= this.GetUSerDOne.Fname;
       });
 
-      this.USerName = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+      // this.USerName = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
       console.log('NewPost is:', localStorage.getItem('NewPost'));
       this.ProductID = localStorage.getItem('NewProduct');
       this.CatName = localStorage.getItem('NewCat');

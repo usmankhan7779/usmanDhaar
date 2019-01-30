@@ -131,7 +131,7 @@ export class LogInComponent implements OnInit {
           'You have entered invalid login credentials',
           'error'
         );
-        this.Waitcall = false;
+        // this.Waitcall = false;
         this.login_error = true;
         /* this function is executed when there's an ERROR */
         //   console.log("ERROR: "+err);

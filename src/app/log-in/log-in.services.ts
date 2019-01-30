@@ -42,17 +42,23 @@ export class LoginService {
   loged_in(mail: any, pass: any, CatName: any, ProID: any, checkout: any) {
 
     if (isPlatformBrowser(this.platformId)) {
-      return this._http.post(this.ServerUrl + 'user-token-auth/', { 'username': mail, 'password': pass })
+      return this._http.post(this.ServerUrl + 'user_login/', { 'user': mail, 'pass': pass })
         .map((res: Response) => {
           if (res) {
 
             if (res.status === 200) {
+              
+              this.decoded = res.json().Key;
+            console.log(this.decoded,"decode")
 
-              this.decoded = this.jwtHelper.decodeToken(res.json().token)['user_id'];
-              localStorage.setItem('UserID', this.decoded);
-              this.GetUSerdetailsByUserId(this.decoded).subscribe(resSlidersData => {
+              // this.decoded = this.jwtHelper.decodeToken(res.json().token)['user_id'];
+              localStorage.setItem('UserID',this.decoded );
+              localStorage.setItem('Authorization',this.decoded);
+              this.GetUSerdetailsByUserId().subscribe(resSlidersData => {
+                alert(resSlidersData['ISConfirmed'])
                 if (resSlidersData['ISConfirmed'] === true) {
-                  localStorage.setItem('Authorization', res.json().token);
+                  alert(localStorage.setItem('Authorization', this.decoded))
+                  localStorage.setItem('Authorization', this.decoded);
                   localStorage.setItem('password', null);
                   localStorage.setItem('Username', null);
                   localStorage.setItem('UserName', mail);
@@ -78,7 +84,7 @@ export class LoginService {
                   }
                 } else {
 
-                  this.GetEmailById(this.decoded).subscribe(resSlidersData1 => {
+                  this.GetEmailById().subscribe(resSlidersData1 => {
                     localStorage.setItem('Usernamae', mail);
                     localStorage.setItem('email', resSlidersData1['email']);
                     localStorage.setItem('password', pass);
@@ -120,22 +126,25 @@ export class LoginService {
 
   }
 
-  GetUSerdetailsByUserId(decoded: any) {
-
-    return this._http.get(this.ServerUrl + 'Get_User_details/' + decoded).map(response => response.json());
+  GetUSerdetailsByUserId() {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'Get_User_details/',{headers:headers} ).map(response => response.json());
     // return this._http.get(this.ServerUrl + 'post_shipment_details/' + decoded).map(response => response.json());
   }
   GetUSeraddress() {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'post_shipment_details/', { headers: headers }).map(response => response.json());
   }
   GetUSeraddressbyID(id: any) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'put_delete_shipment_details/' + id, { headers: headers }).map(response => response.json());
   }
@@ -146,8 +155,8 @@ export class LoginService {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'post_shipment_details/', { headers: headers }).map(response => response.json());
   }
@@ -158,8 +167,8 @@ export class LoginService {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this.http.put(this.ServerUrl + 'put_delete_shipment_details/' + id,
       {
@@ -380,7 +389,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     const headers = new Headers();
   
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' ,{headers :headers}).map((response: Response) => response.json());
 
@@ -548,8 +557,8 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
       const headers = new Headers();
       // headers.append('Content-Type', 'application/json');
       headers.append('Content-Type', 'application/json');
-      // headers.append('Authorization', 'JWT ' +  this.authentication);
-      headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+      // headers.append('Authorization', 'Token ' +  this.authentication);
+      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
       console.log('pofile', localStorage.getItem('Authorization'));
 
       console.log(model['fbrunregister']);
@@ -652,8 +661,8 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
       const headers = new Headers();
       // headers.append('Content-Type', 'application/json');
       headers.append('Content-Type', 'application/json');
-      // headers.append('Authorization', 'JWT ' +  this.authentication);
-      headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+      // headers.append('Authorization', 'Token ' +  this.authentication);
+      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
       console.log('pofile', localStorage.getItem('Authorization'));
 
       console.log(model['fbrunregister']);
@@ -806,8 +815,8 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.post(this.StoreServerUrl + 'verifyStoreName&Email/', {
 
@@ -840,12 +849,24 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
 
 
 
-  GetUserDetailByName(USerid) {
-    return this._http.get(this.ServerUrl + 'UserFullDetails/' + USerid).map((response: Response) => response.json());
+  GetUserDetailByName(){
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'UserFullDetails/',{headers: headers} ).map((response: Response) => response.json());
   }
 
-  GetEmailById(USerid) {
-    return this._http.get(this.ServerUrl + 'Get_EmailByID/' + USerid).map((response: Response) => response.json());
+  GetEmailById() {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'Get_EmailByID/',{headers :headers}).map((response: Response) => response.json());
   }
 
   UserDetailsUpdatePic(Username: string, Pic: any) {
@@ -861,8 +882,8 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.post(this.ServerUrl + 'post_shipment_details/',
       {
@@ -910,8 +931,8 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'JWT ' +  this.authentication);
-    headers.append('Authorization', 'JWT ' + localStorage.getItem('Authorization'));
+    // headers.append('Authorization', 'Token ' +  this.authentication);
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this.http.put(this.StoreServerUrl + 'GetStoreInformation/' ,
       {
