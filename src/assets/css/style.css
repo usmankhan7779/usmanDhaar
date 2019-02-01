@@ -1813,7 +1813,6 @@ ul#cart-sidebar {
 
 .product-item .item-inner {
     margin-bottom: 0px;
-    border: 1px solid #e5e5e5;
     transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
     -moz-transition: all 0.4s ease-out;
@@ -1821,11 +1820,11 @@ ul#cart-sidebar {
     -o-transition: all 0.4s ease-out;
     position: relative;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .product-item .item-inner:hover {
-    box-shadow: 0 0 16px -4px #9d9d9d;
+    box-shadow: 0 0 22px -2px #9d9d9d;
 }
 
 .product-item.btn-plus{
@@ -2007,8 +2006,8 @@ ul#cart-sidebar {
     display: inline-block;
 }
 .product-item .item-inner .pro-box-info .pro-actions .action.add-to-cart {
-    background: #1b2c39;
-    border: 1px solid #1b2c39;
+    background: #000000;
+    border: 1px solid #000000;
     color: white;
     font-size: 14px;
     padding: 6px 20px;
@@ -2114,7 +2113,6 @@ ul#cart-sidebar {
     text-overflow: ellipsis;
     padding: 0;
     font-size: 16px;
-    font-weight: 500;
     text-transform: none;
     letter-spacing: 0.5px;
     height: 40px;

@@ -154,7 +154,7 @@
   <!--<h1>PRODUCTS</h1>-->
   <!--</div>-->
   <!--</div>-->
-  <div class="container">
+  <div class="container-fluid padding-rl-30">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <!-- Home Tabs  -->
@@ -203,7 +203,7 @@
             <!-- <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
     style="height: 400px; overflow-y: scroll;"> -->
             <div *ngFor="let TvVideoaudio88 of GetALLProductss.Results">
-              <div class="product-item home-productss col-md-2 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"-->
@@ -229,18 +229,12 @@
                               TvVideoaudio88.product.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-
-                            <p> Seller: <a [routerLink]="['/store',TvVideoaudio88.product.StoreName]">
-                                {{TvVideoaudio88.product.StoreName}}</a></p>
-
-                          </div>
-
-
                           <div *ngIf="TvVideoaudio88.product.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.product.SrartingPrice | number:'.0-0' }}</span> </span>
+                            <div class="price-box">
+                              <span class="regular-price">
+                                <span class="price">Rs {{TvVideoaudio88.product.SrartingPrice | number:'.0-0' }}</span>
+                              </span>
                             </div>
 
 
@@ -287,7 +281,7 @@
           <div class="tab-pane fade" id="buynow">
 
             <ng-container *ngFor="let TvVideoaudio88 of GetALLBuyNowProductss.Results">
-              <div class="product-item home-productss col-md-2 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -309,12 +303,6 @@
                               TvVideoaudio88.product.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.product.StoreName]">
-                                {{TvVideoaudio88.product.StoreName}}</a></p>
-
-                          </div>
 
                           <div *ngIf="TvVideoaudio88.product.Auction == true" class="item-price">
 
@@ -358,11 +346,10 @@
 
 
           </div>
-
           <div class="tab-pane fade" id="auction">
 
             <ng-container *ngFor="let TvVideoaudio88 of GetALLAuctionProductss.Results">
-              <div class="product-item home-productss col-md-2 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -384,12 +371,6 @@
                               TvVideoaudio88.product.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.product.StoreName]">
-                                {{TvVideoaudio88.product.StoreName}}</a></p>
-
-                          </div>
 
                           <div *ngIf="TvVideoaudio88.product.Auction == true" class="item-price">
 
@@ -435,7 +416,7 @@
           <div class="tab-pane fade" id="featured">
 
             <ng-container *ngFor="let TvVideoaudio88 of GetALLFeaturedProductss.Results">
-              <div class="product-item home-productss col-md-2 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
