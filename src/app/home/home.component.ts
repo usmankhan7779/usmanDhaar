@@ -183,8 +183,8 @@ export class HomeComponent implements OnInit {
       // });
       this.PhoneandTablet();
       this.CategorySlider();
-      // this.HotDealSlider();
-      // this.RecommendedSlider();
+      this.HotDealSlider();
+      this.RecommendedSlider();
       this.ViewedItemSlider();
       if (localStorage.getItem('UserID')) {
         this.usercheck = true;
