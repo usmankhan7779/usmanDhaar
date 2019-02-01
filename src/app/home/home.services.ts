@@ -145,7 +145,7 @@ export class HomeService {
 //     // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 // }
   GetProductsfromAllCat(page: number ) {
-    if(localStorage.getItem('UserName') !== null)
+    if(localStorage.getItem('Authorization') !== null)
     {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -161,7 +161,7 @@ export class HomeService {
   }
 }
   GetAuctionProductsfromAllCat( ) {
-    if(localStorage.getItem('UserName') !== null)
+    if(localStorage.getItem('Authorization') !== null)
     {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -177,7 +177,7 @@ export class HomeService {
   }
 }
   GetBuyNowProductsfromAllCat() {
-    if(localStorage.getItem('UserName') !== null)
+    if(localStorage.getItem('Authorization') !== null)
     {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -191,7 +191,7 @@ export class HomeService {
   }
 }
    GetAllFeaturedProducts( ) {
-    if(localStorage.getItem('UserName') !== null)
+    if(localStorage.getItem('Authorization') !== null)
     {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -245,7 +245,10 @@ export class HomeService {
     });
 
   }
-  PhoneandTablets(category_name1: any) {
+ 
+
+   womenFashion(category_name1) {
+    if(localStorage.getItem('Authorization') !== null){
     const headers = new Headers();
     headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
@@ -260,9 +263,9 @@ export class HomeService {
         }, { headers: headers }).map((res: Response) => {
         if (res) {
 
-          if (res.status === 201) {
+          if (res.status === 200) {
             const responce_data = res.json();
-            return [{ status: res.status, json: res }];
+            return responce_data;
           }
         }
       }).catch((error: any) => {
@@ -273,6 +276,332 @@ export class HomeService {
 
     }
   }
+  else{
+    const headers = new Headers();
+    // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+    // console.log('pofile', localStorage.getItem('Authorization'));
+    headers.append('Content-Type', 'application/json');
+    if (isPlatformBrowser(this.platformId)){
+
+      return this._http.post(this.ServerUrl + 'Category_Products/',
+        {
+          'category_name1': category_name1,
+          // 'Cat_Name': CatName ,
+          // 'User_ID': User_ID,
+        }, { headers: headers }).map((res: Response) => {
+        if (res) {
+
+          if (res.status === 200) {
+            const responce_data = res.json();
+            return responce_data;
+          }
+        }
+      }).catch((error: any) => {
+        console.log(error.toString());
+        return Observable.throw(new Error(error.status));
+      });
+
+
+    }
+
+  }
+}
+PhoneandTablet(category_name2) {
+  if(localStorage.getItem('Authorization') !== null){
+  const headers = new Headers();
+  headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name2': category_name2,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+}
+else{
+  const headers = new Headers();
+  // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  // console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name2': category_name2,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+
+}
+}
+MenFashion(category_name3) {
+  if(localStorage.getItem('Authorization') !== null){
+  const headers = new Headers();
+  headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name3': category_name3,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+}
+else{
+  const headers = new Headers();
+  // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  // console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name3': category_name3,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+
+}
+}
+TV(category_name4) {
+  if(localStorage.getItem('Authorization') !== null){
+  const headers = new Headers();
+  headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name4': category_name4,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+}
+else{
+  const headers = new Headers();
+  // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  // console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name4': category_name4,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+
+}
+}
+Computer(category_name5) {
+  if(localStorage.getItem('Authorization') !== null){
+  const headers = new Headers();
+  headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name5': category_name5,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+}
+else{
+  const headers = new Headers();
+  // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  // console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name5': category_name5,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+
+}
+}
+Home(category_name6) {
+  if(localStorage.getItem('Authorization') !== null){
+  const headers = new Headers();
+  headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name6': category_name6,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+}
+else{
+  const headers = new Headers();
+  // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+  // console.log('pofile', localStorage.getItem('Authorization'));
+  headers.append('Content-Type', 'application/json');
+  if (isPlatformBrowser(this.platformId)){
+
+    return this._http.post(this.ServerUrl + 'Category_Products/',
+      {
+        'category_name6': category_name6,
+        // 'Cat_Name': CatName ,
+        // 'User_ID': User_ID,
+      }, { headers: headers }).map((res: Response) => {
+      if (res) {
+
+        if (res.status === 200) {
+          const responce_data = res.json();
+          return responce_data;
+        }
+      }
+    }).catch((error: any) => {
+      console.log(error.toString());
+      return Observable.throw(new Error(error.status));
+    });
+
+
+  }
+
+}
+}
+
   WatchProduct(Product_ID: any) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');

@@ -1,12 +1,12 @@
-import {Component, OnInit, Inject, PLATFORM_ID, ViewChild} from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { HomeService } from './home.services';
-import {OwlCarousel} from "ngx-owl-carousel";
-import {AdService} from '../post-ad/ad.services';
-import {CategoryServices} from "../category-detail/category-detail.services";
-import {split} from "ts-node/dist";
-import {ActiveAdServices} from "../active-ad/active-ad.services";
+import { OwlCarousel } from "ngx-owl-carousel";
+import { AdService } from '../post-ad/ad.services';
+import { CategoryServices } from "../category-detail/category-detail.services";
+import { split } from "ts-node/dist";
+import { ActiveAdServices } from "../active-ad/active-ad.services";
 // import { PhotosObj, Photos } from './_modal';
 import { PagerService } from '../pager.service';
 declare const $: any;
@@ -56,11 +56,11 @@ export class HomeComponent implements OnInit {
   GetALLBuyNowProductss: any = [];
   HotDealProducts: any = [];
   RecommendedProducts: any = [];
-  ViewedProducts: any = {"products":[]};
+  ViewedProducts: any = { "products": [] };
   WatchedProducts: any = [];
   Tmp_ProID_Array: any = [];
-  imageurls ='https://storage.dhaar.pk/Category/SliderImages/';
-  usercheck= false;
+  imageurls = 'https://storage.dhaar.pk/Category/SliderImages/';
+  usercheck = false;
   Tmp_ProID_Array2: {
     ProID: any;
     Price: any;
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
   intervalId = 0;
   message = '';
   seconds = 59;
-  ActiveProduct :any=[];
+  ActiveProduct: any = [];
   page: number = 1;
   AuctionProductPrice: number;
   AuctionTest = true;
@@ -85,37 +85,37 @@ export class HomeComponent implements OnInit {
   ];
   categories = [
     {
-      "image":"assets/images/phone-and-tablet-min.png",
-      "name":"Phones & Tablets",
+      "image": "assets/images/phone-and-tablet-min.png",
+      "name": "Phones & Tablets",
     },
     {
-      "image":"assets/images/Mens-min.png",
-      "name":"Men\'s Fashion",
+      "image": "assets/images/Mens-min.png",
+      "name": "Men\'s Fashion",
     },
     {
-      "image":"assets/images/Womens-2-min.png",
-      "name":"Women\'s Fashion",
+      "image": "assets/images/Womens-2-min.png",
+      "name": "Women\'s Fashion",
     },
     {
-      "image":"assets/images/Audio-video-2-min.png",
-      "name":"TV, Audio & Video",
+      "image": "assets/images/Audio-video-2-min.png",
+      "name": "TV, Audio & Video",
     },
     {
-      "image":"assets/images/Computing-laptop-min.png",
-      "name":"Computing & Laptops",
+      "image": "assets/images/Computing-laptop-min.png",
+      "name": "Computing & Laptops",
     },
     {
-      "image":"assets/images/Home-Appliance-min.png",
-      "name":"Home Appliances",
+      "image": "assets/images/Home-Appliance-min.png",
+      "name": "Home Appliances",
     }
   ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
-              private GetProducts: HomeService,
-              private GetCat:AdService,
-              private pagerService: PagerService,
-              private Category: CategoryServices,
-              private GetWatch:ActiveAdServices) {
+    private GetProducts: HomeService,
+    private GetCat: AdService,
+    private pagerService: PagerService,
+    private Category: CategoryServices,
+    private GetWatch: ActiveAdServices) {
 
 
   }
@@ -124,14 +124,14 @@ export class HomeComponent implements OnInit {
 
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
- this.ProductsAllCat(1);
+      this.ProductsAllCat(1);
       // this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
       //   this.GetALLProductss = resSlidersData;
       //   // Sub_Sub_Cat_Name
       //   // localStorage.setItem('sub_sub_cat', this.GetALLProductss.results[0].Sub_Sub_Cat_Name);
       //   // localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
-        
+
       // });
 
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
@@ -151,68 +151,106 @@ export class HomeComponent implements OnInit {
 
         this.GetALLFeaturedProductss = resSlidersData;
       });
-// this portion in for second portion 
-      this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
-        this.GetallPhoneProduct = resSlidersData;
-      });
 
-      this.GetProducts.GetWomenFashionProducts4().subscribe(resSlidersData => {
+      // this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
+      //   this.GetallPhoneProduct = resSlidersData;
+      // });
 
-        this.WomenFashionProducts = resSlidersData;
-      });
 
-      this.GetProducts.GetMenFashionProducts4().subscribe(resSlidersData => {
+      // this.GetProducts.GetWomenFashionProducts4().subscribe(resSlidersData => {
 
-        this.MenFashionProducts = resSlidersData;
-      });
+      //   this.WomenFashionProducts = resSlidersData;
+      // });
 
-      this.GetProducts.getTVAudioVideoProduct().subscribe(resSlidersData => {
+      // this.GetProducts.GetMenFashionProducts4().subscribe(resSlidersData => {
 
-        this.getTvAudioVideoProduct = resSlidersData;
-      });
+      //   this.MenFashionProducts = resSlidersData;
+      // });
 
-      this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
+      // this.GetProducts.getTVAudioVideoProduct().subscribe(resSlidersData => {
 
-        this.getcomputinglaptopsproduct = resSlidersData;
-      });
+      //   this.getTvAudioVideoProduct = resSlidersData;
+      // });
 
-      this.GetProducts.gethomeappliancesproduct8().subscribe(resSlidersData => {
+      // this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
 
-        this.gethomeappliancesproduct = resSlidersData;
-      });
+      //   this.getcomputinglaptopsproduct = resSlidersData;
+      // });
 
+      // this.GetProducts.gethomeappliancesproduct8().subscribe(resSlidersData => {
+
+      //   this.gethomeappliancesproduct = resSlidersData;
+      // });
+      this.PhoneandTablet();
       this.CategorySlider();
-      this.HotDealSlider();
-      this.RecommendedSlider();
+      // this.HotDealSlider();
+      // this.RecommendedSlider();
       this.ViewedItemSlider();
-      if(localStorage.getItem('UserID')) {
+      if (localStorage.getItem('UserID')) {
         this.usercheck = true;
         this.WatchedItemSlider();
       }
     }
   }
+  PhoneandTablet() {
 
-  ProductsAllCat( page: number){
+    this.GetProducts.PhoneandTablet("Phones & Tablets").subscribe(resSlidersData => {
+      console.log(resSlidersData)
+      this.GetallPhoneProduct = resSlidersData.Results;
+    });
+  }
+  menfashion() {
+    this.GetProducts.MenFashion("Men's Fashion").subscribe(resSlidersData => {
+
+      this.MenFashionProducts = resSlidersData.Results;
+    });
+  }
+  tv() {
+    this.GetProducts.TV("TV, Audio & Video").subscribe(resSlidersData => {
+
+      this.getTvAudioVideoProduct = resSlidersData.Results;
+    });
+
+  }
+  computer() {
+    this.GetProducts.Computer("Computing & Laptops").subscribe(resSlidersData => {
+
+      this.getcomputinglaptopsproduct = resSlidersData.Results;
+    });
+
+  }
+  home() {
+    this.GetProducts.Home("Home Appliances").subscribe(resSlidersData => {
+
+      this.gethomeappliancesproduct = resSlidersData.Results;
+    });
+
+  }
+
+
+  womenFashion() {
+
+    this.GetProducts.womenFashion("Women's Fashion").subscribe(resSlidersData => {
+      console.log(resSlidersData)
+      this.WomenFashionProducts = resSlidersData.Results;
+    });
+  }
+  ProductsAllCat(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
-  }
+    }
     this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
 
       this.GetALLProductss = resSlidersData;
-     
-
-      // this.GetALLProductss.push(resSlidersData.Results)
-
-      // console.log(this.pager);
       this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
-      
-      // alert(this.pager)
+
+
     });
-    // this.service.getMyPhotos(this.page).subscribe((res) => this.onSuccess(res));
+
 
   }
 
- 
+
   // onSuccess(resSlidersData) {
   //   console.log(resSlidersData);
   //   if (resSlidersData != null) {
@@ -238,7 +276,7 @@ export class HomeComponent implements OnInit {
   //     });
   //   }
   // }
-  CategorySlider(){
+  CategorySlider() {
     this.GetCat.GetAllCategories().subscribe(data => {
       this.GetallCat = data;
       console.log('Categories Are:', this.GetallCat);
@@ -282,11 +320,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  HotDealSlider(){
+  HotDealSlider() {
     this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
       this.HotDealProducts = resSlidersData;
       $('.hotslider').fadeOut(0);
-      if (this.HotDealProducts.length >=5) {
+      if (this.HotDealProducts.length >= 5) {
         setTimeout(function () {
           $('.hotslider').slick({
             infinite: true,
@@ -324,8 +362,8 @@ export class HomeComponent implements OnInit {
       $('.hotslider').fadeIn(500).delay(200);
     });
   }
-  RecommendedSlider(){
-    this.Category.getAllPhoneAndTabletProduct(1,'Phone').subscribe(resSlidersData => {
+  RecommendedSlider() {
+    this.Category.getAllPhoneAndTabletProduct(1, 'Phone').subscribe(resSlidersData => {
       this.RecommendedProducts = resSlidersData;
       $('.recommendedslider').fadeOut(0);
       if (this.RecommendedProducts) {
@@ -366,60 +404,60 @@ export class HomeComponent implements OnInit {
       $('.recommendedslider').fadeIn(500).delay(200);
     });
   }
-  ViewedItemSlider(){
+  ViewedItemSlider() {
     this.ViewedProducts = JSON.parse(localStorage.getItem('ViewedItem'));
-    if(this.ViewedProducts === null) {
+    if (this.ViewedProducts === null) {
       console.log('Viewed Products Are:', this.ViewedProducts);
-    } else if(this.ViewedProducts !== null){
-        for (const tmp1 of this.ViewedProducts['products']) {
-          tmp1['Pic']=tmp1['Pic'].split(',')[0];
-        }
-        this.ViewedProducts = this.ViewedProducts['products'];
-        $('.viewedslider').fadeOut(0);
-        if (this.ViewedProducts.length >=5) {
-          setTimeout(function () {
-            $('.viewedslider').slick({
-              infinite: true,
-              slidesToShow: 4,
-              slidesToScroll: 1,
-              autoplay: true,
-              prevArrow: '<button class="leftRsBanner">&lt;</button>',
-              nextArrow: '<button class="rightRsBanner">&lt;</button>',
-              responsive: [
-                {
-                  breakpoint: 1199,
-                  settings: {
-                    slidesToShow: 3,
-                    infinite: true
-                  }
-                },
-                {
-                  breakpoint: 767,
-                  settings: {
-                    slidesToShow: 2,
-                  }
-                },
-                {
-                  breakpoint: 639,
-                  settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                  }
+    } else if (this.ViewedProducts !== null) {
+      for (const tmp1 of this.ViewedProducts['products']) {
+        tmp1['Pic'] = tmp1['Pic'].split(',')[0];
+      }
+      this.ViewedProducts = this.ViewedProducts['products'];
+      $('.viewedslider').fadeOut(0);
+      if (this.ViewedProducts.length >= 5) {
+        setTimeout(function () {
+          $('.viewedslider').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            prevArrow: '<button class="leftRsBanner">&lt;</button>',
+            nextArrow: '<button class="rightRsBanner">&lt;</button>',
+            responsive: [
+              {
+                breakpoint: 1199,
+                settings: {
+                  slidesToShow: 3,
+                  infinite: true
                 }
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 639,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
 
-              ]
-            });
-          }, 0);
-        }
-        $('.viewedslider').fadeIn(500).delay(200);
-    // });
+            ]
+          });
+        }, 0);
+      }
+      $('.viewedslider').fadeIn(500).delay(200);
+      // });
     }
   }
-  WatchedItemSlider(){
-    this.GetWatch.GetallWatchProducts(1,localStorage.getItem('UserID')).subscribe(resSlidersData => {
+  WatchedItemSlider() {
+    this.GetWatch.GetallWatchProducts(1, localStorage.getItem('UserID')).subscribe(resSlidersData => {
       this.WatchedProducts = resSlidersData;
       $('.watchslider').fadeOut(0);
-      if (this.WatchedProducts.totalItems >=5) {
+      if (this.WatchedProducts.totalItems >= 5) {
         setTimeout(function () {
           $('.watchslider').slick({
             infinite: true,
