@@ -81,7 +81,7 @@ a:hover,a:focus{
   right: 38%;
 }
 .nav-tabs > li > a{
-  background: #272d33;
+  background: #000000;
   color: #fff;
   padding: 5px;
   font-size: 20px
@@ -149,7 +149,7 @@ a:hover,a:focus{
 }
 .nav-tabs1 > li > a{
   border-radius: 0px;
-  background: #272d33;
+  background: #000000;
   color:#fff;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -166,35 +166,11 @@ a:hover,a:focus{
   background:red;
   color:#fff;
 }
+.padding-rl-30{
+  padding: 0 30px;
+}
 @media only screen and (max-width: 360px){
   .nav-tabs1 > li > a{
     padding: 10px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
