@@ -73,10 +73,9 @@
               </div>
               <div class="ratings">
                 <div class="rating">
-
                   <p> Seller: <a [routerLink]="['/store', resultProduct.StoreName]"> {{resultProduct.StoreName}}</a></p>
                 </div>
-                <p class="availability in-stock pull-right" style="font-size: larger">Availability: <span *ngIf="!Solddd" style=" background-color: white;color: green;font-weight: bolder; font-size: xx-large">In Stock</span> <span *ngIf="Solddd" style=" background-color: white;color: red;font-weight: bolder; font-size: xx-large">Sold Out</span></p>
+                <p class="availability in-stock pull-right">Availability: <span *ngIf="!Solddd" class="not-sold">In Stock</span> <span *ngIf="Solddd" class="sold">Sold Out</span></p>
               </div>
               <div class="product-variation">
                 <div id="clockdiv" style="margin-bottom: 15px; float: left;">
@@ -169,7 +168,7 @@
 
                   <p> Seller: <a [routerLink]="['/store', resultProduct.StoreName]"> {{resultProduct.StoreName}}</a></p>
                 </div>
-                <p class="availability in-stock pull-right" style="font-size: larger">Availability: <span *ngIf="!soldfix" style=" background-color: white;color: green;font-weight: bolder; font-size: xx-large">In Stock</span> <span *ngIf="soldfix" style=" background-color: white;color: red;font-weight: bolder; font-size: xx-large">Sold Out</span></p>
+                <p class="availability in-stock pull-right">Availability: <span *ngIf="!soldfix" class="not-sold">In Stock</span> <span *ngIf="soldfix" class="sold">Sold Out</span></p>
               </div>
               <div class="product-variation">
                 <div *ngIf="amountoffer">

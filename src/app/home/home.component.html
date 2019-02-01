@@ -228,13 +228,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-
-                            <p> Seller: <a [routerLink]="['/store',TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
 
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
@@ -547,9 +540,10 @@
         </ul>
 
         <div id="productTabContent" class="tab-content">
+          
           <div class="tab-pane active in" id="phonetablet">
             <ng-container *ngFor="let phoneProducts of GetallPhoneProduct">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
 
@@ -570,12 +564,6 @@
                               phoneProducts.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store',phoneProducts.StoreName]">
-                                {{phoneProducts.StoreName}}</a></p>
-
-
-                          </div>
                           <div *ngIf="phoneProducts.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -616,7 +604,7 @@
           <div class="tab-pane fade" id="womenfashion">
 
             <ng-container *ngFor="let phoneProducts of WomenFashionProducts">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -636,11 +624,6 @@
                               phoneProducts.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', phoneProducts.StoreName]">
-                                {{phoneProducts.StoreName}}</a></p>
-
-                          </div>
                           <div *ngIf="phoneProducts.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -681,7 +664,7 @@
           </div>
           <div class="tab-pane fade" id="menfashion">
             <ng-container *ngFor="let TvVideoaudio88 of MenFashionProducts">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -702,12 +685,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -751,7 +728,7 @@
           </div>
           <div class="tab-pane fade" id="tvaudiovideo">
             <ng-container *ngFor="let TvVideoaudio88 of getTvAudioVideoProduct">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -772,12 +749,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -821,7 +792,7 @@
           </div>
           <div class="tab-pane fade" id="computinglaptop">
             <ng-container *ngFor="let TvVideoaudio88 of getcomputinglaptopsproduct">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -842,12 +813,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -891,7 +856,7 @@
           </div>
           <div class="tab-pane fade" id="home">
             <ng-container *ngFor="let TvVideoaudio88 of gethomeappliancesproduct">
-              <div class="product-item home-productss col-md-3 col-sm-6">
+              <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
@@ -912,12 +877,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -994,12 +953,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -1073,12 +1026,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -1151,12 +1098,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
@@ -1229,12 +1170,6 @@
                               TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', TvVideoaudio88.StoreName]">
-                                {{TvVideoaudio88.StoreName}}</a></p>
-
-                          </div>
-
                           <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
