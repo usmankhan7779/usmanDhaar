@@ -288,6 +288,7 @@ export class SingleProductComponent implements OnInit {
     this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
       this.Title = this.resultProduct['P_Title']
+      this.ourproduct = true;
       console.log('Description of product is:', this.resultProduct['P_Des']);
       this.ProPDes = this.resultProduct['P_Des'].split('\n');
 
@@ -300,12 +301,13 @@ export class SingleProductComponent implements OnInit {
       console.log('Pics Before:', this.ProPics);
       console.log('Pics after:', this.PicList);
 
-
+    
       console.log('Pics are:', this.ProPics);
-      if (this.resultProduct['StoreName'] === localStorage.getItem('StoreName')) {
-        this.ourproduct = true;
+      // === localStorage.getItem('StoreName')
+      // if (this.resultProduct['StoreName'] ) {
+      //   this.ourproduct = true;
 
-      }
+      // }
       try {
 
         if (localStorage.getItem('ViewedItem') !== null) {
@@ -506,6 +508,8 @@ total:any;
 statuss;
 
 Addtocart(Abc: any) {
+  if(localStorage.set())
+  {
     if (isPlatformBrowser(this.platformId)) {
      if (Abc === '') {
         swal('Please Select Product Quantity first','','error');
@@ -679,6 +683,10 @@ Addtocart(Abc: any) {
 
       }
     }
+  }
+  else{
+
+  }
   }
 
   ClearSession() {
