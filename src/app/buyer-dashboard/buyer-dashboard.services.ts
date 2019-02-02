@@ -46,9 +46,16 @@ export class BuyerDashboardServices {
   GetShippingByInvoiceId( InvoiceId: any) {
     return this._http.get( this.saleServerUrl + 'GetShippingByInvoiceId/' + InvoiceId  ).map(response => response.json());
   }
-  WatchStatus(PID: any, User_ID: any) {
-    return this._http.get(this.ServerUrl + 'verifyWatchStatus/' + PID + "/" + User_ID).map(response => response.json());
+  WatchStatus() {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    if (isPlatformBrowser(this.platformId)){
+
+    return this._http.get(this.ServerUrl + 'watchList/' ,{headers:headers}).map(response => response.json());
   }
+}
 
   SendEmail(InvID: any) {
     return this._http.post(this.saleServerUrl + 'OrderEmail/', {

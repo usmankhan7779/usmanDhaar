@@ -381,7 +381,7 @@ export class SingleProductComponent implements OnInit {
 
   WatchObserver() {
     if (isPlatformBrowser(this.platformId)) {
-    this.httpService.WatchStatus(this.ProID, localStorage.getItem('UserID')).subscribe( data => {
+    this.httpService.WatchStatus().subscribe( data => {
       console.log('checkkkkkkkkkkk  ',data);
       this.WatchStatus=data.Res
       alert( this.WatchStatus)

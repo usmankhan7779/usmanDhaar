@@ -194,27 +194,29 @@ export class HomeComponent implements OnInit {
     }
   }
   ProductsAllCat(page: number) {
-    if(localStorage.getItem('Authorization') !== null){
+    if(localStorage.getItem('UserID') !== null){
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
     this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
 
       this.GetALLProductss = resSlidersData.Results.product;
-      this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
+      console.log( resSlidersData.Results.product,'response')
+      //this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
 
 
     });
   }
-  else{
+  else if(localStorage.getItem('UserID') == null) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
     this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
 
       this.GetALLProductss = resSlidersData.Results;
-      this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
-
+      // this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
+      console.log( resSlidersData.Results,'response')
+      // alert(resSlidersData.Results)
 
     });
 
