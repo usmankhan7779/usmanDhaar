@@ -55,7 +55,7 @@ const appRoutes: Routes = [
       { path: 'manage-coupons', loadChildren: './manage-coupons/manage-coupons.module#ManageCouponsModule', canActivate: [AuthGuard] },
       { path: 'reset/:uid/:token', loadChildren: './reset-password/reset-password.module#ResetPasswordModule', },
       { path: 'VerfiyEmail/:key', loadChildren: './verify-email/verify-email.module#VerfiyEmailModule', },
-      { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', },
+      // { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', },
       // { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard] },
       // { path: 'seller-offer', loadChildren: './seller-offer/seller-offer.module#SellerOfferModule', canActivate: [AuthGuard]},
       { path: 'privacy-policy', loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule' },
@@ -82,6 +82,7 @@ const appRoutes: Routes = [
       { path: 'buyer-user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
       { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard] },
       { path: 'account-setting', loadChildren: './buyer-setting/buyer-setting.module#BuyerSettingModule', canActivate: [AuthGuard] },
+      { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', },
 
     ]
   },

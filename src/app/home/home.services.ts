@@ -153,12 +153,14 @@ export class HomeService {
     headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'getProductsfromAllCat' + '?page=' + page,{headers : headers}).map(response => response.json());
+    
     // console.log(this.CateDeatils)
   }
   else{
     return this._http.get(this.ServerUrl + 'getProductsfromAllCat'+'?page=' + page,).map(response => response.json());
 
   }
+  
 }
   GetAuctionProductsfromAllCat( ) {
     if(localStorage.getItem('Authorization') !== null)
@@ -619,7 +621,7 @@ else{
         }, { headers: headers }).map((res: Response) => {
         if (res) {
 
-          if (res.status === 201) {
+          if (res.status === 200) {
             const responce_data = res.json();
             return [{ status: res.status, json: res }];
           }

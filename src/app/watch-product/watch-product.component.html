@@ -65,7 +65,7 @@
           <ul class="searchList">
             <!-- ad start -->
             <ng-container *ngIf="!errormessage">
-              <ng-container *ngFor="let phoneProducts of ActiveProduct.Results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+              <ng-container *ngFor="let phoneProducts of ActiveProduct.Results.ProductID | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
                 <li>
                   <div class="row">
                     <div class="col-md-2 col-sm-4">

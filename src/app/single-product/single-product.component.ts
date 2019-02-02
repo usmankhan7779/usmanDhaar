@@ -288,6 +288,7 @@ export class SingleProductComponent implements OnInit {
     this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
       this.Title = this.resultProduct['P_Title']
+      this.ourproduct = true;
       console.log('Description of product is:', this.resultProduct['P_Des']);
       this.ProPDes = this.resultProduct['P_Des'].split('\n');
 
@@ -300,12 +301,13 @@ export class SingleProductComponent implements OnInit {
       console.log('Pics Before:', this.ProPics);
       console.log('Pics after:', this.PicList);
 
-
+    
       console.log('Pics are:', this.ProPics);
-      if (this.resultProduct['StoreName'] === localStorage.getItem('StoreName')) {
+      // === localStorage.getItem('StoreName')
+      // if (this.resultProduct['StoreName'] ) {
         this.ourproduct = true;
 
-      }
+      // }
       try {
 
         if (localStorage.getItem('ViewedItem') !== null) {
@@ -379,7 +381,7 @@ export class SingleProductComponent implements OnInit {
 
   WatchObserver() {
     if (isPlatformBrowser(this.platformId)) {
-    this.httpService.WatchStatus(this.ProID, localStorage.getItem('UserID')).subscribe( data => {
+    this.httpService.WatchStatus().subscribe( data => {
       console.log('checkkkkkkkkkkk  ',data);
       this.WatchStatus=data.Res
       alert( this.WatchStatus)
@@ -506,6 +508,8 @@ total:any;
 statuss;
 
 Addtocart(Abc: any) {
+  // if(localStorage.set())
+  // {
     if (isPlatformBrowser(this.platformId)) {
      if (Abc === '') {
         swal('Please Select Product Quantity first','','error');
@@ -679,6 +683,10 @@ Addtocart(Abc: any) {
 
       }
     }
+  // }
+  // else{
+
+  // }
   }
 
   ClearSession() {
@@ -694,27 +702,27 @@ Addtocart(Abc: any) {
   MakeAnOffer() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('Authorization') !== null) {
-        this.LOginObj.verify_tokenWithNoRedirict().subscribe((response) => {
+       // this.LOginObj.verify_tokenWithNoRedirict().subscribe((response) => {
 
-            if (response) {
+        //     if (response) {
 
-              this.amountoffer = true;
-            } else {
+               this.amountoffer = true;
+        //     } else {
 
 
-              this.router.navigate(['/login'], {queryParams: {CatName: this.CatName, ProID: this.ProID}});
+        //       this.router.navigate(['/login'], {queryParams: {CatName: this.CatName, ProID: this.ProID}});
 
-            }
-          },
-          (err) => {
+        //     }
+        //   },
+        //   (err) => {
 
-            console.log('ERROR:' + err);
-            alert(err);
-            // this._nav.navigate(['/login']);
-          },
-          () => {
-          }
-        );
+        //     console.log('ERROR:' + err);
+        //     alert(err);
+        //     // this._nav.navigate(['/login']);
+        //   },
+        //   () => {
+        //   }
+        // );
 
 
       } else {

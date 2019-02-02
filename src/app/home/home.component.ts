@@ -125,6 +125,7 @@ export class HomeComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
       this.ProductsAllCat(1);
+      this.GetAllBuyNowproduct();
       // this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
       //   this.GetALLProductss = resSlidersData;
@@ -134,11 +135,11 @@ export class HomeComponent implements OnInit {
 
       // });
 
-      this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
+      // this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
 
-        this.GetALLBuyNowProductss = resSlidersData;
-        // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
-      });
+      //   this.GetALLBuyNowProductss = resSlidersData;
+      //   // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+      // });
 
       this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
@@ -192,6 +193,54 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+  ProductsAllCat(page: number) {
+    if(localStorage.getItem('UserID') !== null){
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+    this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
+
+      this.GetALLProductss = resSlidersData.Results.product;
+      console.log( resSlidersData.Results.product,'response')
+      //this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
+
+
+    });
+  }
+  else if(localStorage.getItem('UserID') == null) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+    this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
+
+      this.GetALLProductss = resSlidersData.Results;
+      // this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
+      console.log( resSlidersData.Results,'response')
+      // alert(resSlidersData.Results)
+
+    });
+
+  }
+
+  }
+
+  GetAllBuyNowproduct(){
+    // (localStorage.getItem('UserID') !== null)
+    if(localStorage.getItem('Authorization') !== null){
+    this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
+
+      this.GetALLBuyNowProductss = resSlidersData.Results.product;
+      // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+    });
+  }
+  else{
+    this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
+
+      this.GetALLBuyNowProductss = resSlidersData.Results;
+      // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+    });
+  }
+  }
   PhoneandTablet() {
 
     this.GetProducts.PhoneandTablet("Phones & Tablets").subscribe(resSlidersData => {
@@ -235,21 +284,7 @@ export class HomeComponent implements OnInit {
       this.WomenFashionProducts = resSlidersData.Results;
     });
   }
-  ProductsAllCat(page: number) {
-    if (page < 1 || page > this.pager.totalPages) {
-      return;
-    }
-    this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
-
-      this.GetALLProductss = resSlidersData;
-      this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
-
-
-    });
-
-
-  }
-
+  
 
   // onSuccess(resSlidersData) {
   //   console.log(resSlidersData);

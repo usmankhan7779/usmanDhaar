@@ -187,6 +187,8 @@
                     <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus"></i></div>
                   </div>
                 </div>
+                <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Buy Now</span></button>
+
                 <div *ngIf="!amountoffer" style="clear: left;">
 
 
@@ -615,45 +617,6 @@
 
 
 
-
-
-  <!-- Offer banner -->
-  <!--<div class="container">-->
-    <!--<div class="row">-->
-      <!--<div class="offer-add">-->
-        <!--<div class="col-md-4 col-sm-4 col-xs-12">-->
-          <!--<div class="jtv-banner-box banner-inner">-->
-            <!--<div class="image"> <a class="jtv-banner-opacity" href="#"><img src="assets/images/top-banner5.jpg" alt=""></a> </div>-->
-            <!--<div class="jtv-content-text">-->
-              <!--<h3 class="title">Buy 2 items</h3>-->
-              <!--<span class="sub-title">get one for free!</span><a href="#" class="button">Shop now!</a> </div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-3 col-sm-3 col-xs-12">-->
-          <!--<div class="jtv-banner-box banner-inner">-->
-            <!--<div class="image"> <a class="jtv-banner-opacity" href="#"><img src="assets/images/top-banner3.jpg" alt=""></a> </div>-->
-            <!--<div class="jtv-content-text hidden">-->
-              <!--<h3 class="title">New Arrival</h3>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="jtv-banner-box banner-inner">-->
-            <!--<div class="image "> <a class="jtv-banner-opacity" href="#"><img src="assets/images/top-banner4.jpg" alt=""></a> </div>-->
-            <!--<div class="jtv-content-text">-->
-              <!--<h3 class="title">shoes</h3>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-5 col-sm-5 col-xs-12">-->
-          <!--<div class="jtv-banner-box">-->
-            <!--<div class="image"> <a class="jtv-banner-opacity" href="#"><img src="assets/images/top-banner2.jpg" alt=""></a> </div>-->
-            <!--<div class="jtv-content-text">-->
-              <!--<h3 class="title">perfect light </h3>-->
-              <!--<span class="sub-title">on brand-new models</span> <a href="#" class="button">Buy Now</a> </div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
 </div>
 
 
