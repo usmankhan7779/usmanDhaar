@@ -55,9 +55,9 @@ export class LoginService {
               localStorage.setItem('UserID',this.decoded );
               localStorage.setItem('Authorization',this.decoded);
               this.GetUSerdetailsByUserId().subscribe(resSlidersData => {
-                alert(resSlidersData['ISConfirmed'])
+                // alert(resSlidersData['ISConfirmed'])
                 if (resSlidersData['ISConfirmed'] === true) {
-                  alert(localStorage.setItem('Authorization', this.decoded))
+                  // alert(localStorage.setItem('Authorization', this.decoded))
                   localStorage.setItem('Authorization', this.decoded);
                   localStorage.setItem('password', null);
                   localStorage.setItem('Username', null);

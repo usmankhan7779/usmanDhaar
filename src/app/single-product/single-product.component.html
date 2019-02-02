@@ -186,6 +186,8 @@
                     <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;" class="inc qtybutton" style="margin-top: 10px"><i class="fa fa-plus">&nbsp;</i></div>
                   </div>
                 </div>
+                <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Buy Now</span></button>
+
                 <div *ngIf="!amountoffer" style="clear: left;">
 
 

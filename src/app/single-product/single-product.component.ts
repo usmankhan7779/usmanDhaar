@@ -305,7 +305,7 @@ export class SingleProductComponent implements OnInit {
       console.log('Pics are:', this.ProPics);
       // === localStorage.getItem('StoreName')
       // if (this.resultProduct['StoreName'] ) {
-      //   this.ourproduct = true;
+        this.ourproduct = true;
 
       // }
       try {
@@ -508,8 +508,8 @@ total:any;
 statuss;
 
 Addtocart(Abc: any) {
-  if(localStorage.set())
-  {
+  // if(localStorage.set())
+  // {
     if (isPlatformBrowser(this.platformId)) {
      if (Abc === '') {
         swal('Please Select Product Quantity first','','error');
@@ -683,10 +683,10 @@ Addtocart(Abc: any) {
 
       }
     }
-  }
-  else{
+  // }
+  // else{
 
-  }
+  // }
   }
 
   ClearSession() {
@@ -702,27 +702,27 @@ Addtocart(Abc: any) {
   MakeAnOffer() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('Authorization') !== null) {
-        this.LOginObj.verify_tokenWithNoRedirict().subscribe((response) => {
+       // this.LOginObj.verify_tokenWithNoRedirict().subscribe((response) => {
 
-            if (response) {
+        //     if (response) {
 
-              this.amountoffer = true;
-            } else {
+               this.amountoffer = true;
+        //     } else {
 
 
-              this.router.navigate(['/login'], {queryParams: {CatName: this.CatName, ProID: this.ProID}});
+        //       this.router.navigate(['/login'], {queryParams: {CatName: this.CatName, ProID: this.ProID}});
 
-            }
-          },
-          (err) => {
+        //     }
+        //   },
+        //   (err) => {
 
-            console.log('ERROR:' + err);
-            alert(err);
-            // this._nav.navigate(['/login']);
-          },
-          () => {
-          }
-        );
+        //     console.log('ERROR:' + err);
+        //     alert(err);
+        //     // this._nav.navigate(['/login']);
+        //   },
+        //   () => {
+        //   }
+        // );
 
 
       } else {
