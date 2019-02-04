@@ -80,7 +80,7 @@ h6{font-size:16px;}
 .navbar{background:none;}
 .navbar-collapse{padding:0;}
 .navbar-nav>li{padding:0;}
-.navbar-nav>li>a{text-transform:capitalize;font-weight:600;padding:16px 8px;font-size: 20px}
+.navbar-nav>li>a{text-transform:capitalize;font-weight:600;padding:16px 6px;font-size: 20px;color: #616161;}
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{background:none;}
 .navbar-nav>li>a:hover, .navbar-nav>li:hover>a, .navbar-nav>li.active>a{color:red !important;background:#fff !important;}
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{background-color:#fff;}
@@ -131,13 +131,9 @@ h6{font-size:16px;}
 .tparrows{width:auto !important;height:auto !important;background-image:none !important;}
 .tp-arr-allwrapper{margin:0 10px;}
 .tp-arr-allwrapper:hover .tp-arr-iwrapper{color:#fff;}
-.tp-leftarrow .tp-arr-allwrapper{}
-.tp-rightarrow .tp-arr-allwrapper{}
 .tp-arr-iwrapper{color:#fff;text-align:center;font-size:72px;font-family:Hind,sans-serif;line-height:60px;}
-.tp-leftarrow .tp-arr-iwrapper{}
 .tp-leftarrow .tp-arr-iwrapper:before{content:"\f104";}
 .tp-rightarrow .tp-arr-iwrapper:before{content:"\f105";}
-.tp-rightarrow .tp-arr-iwrapper{}
 .slide-h1{margin:5px 0 !important;padding:0 0 10px !important;padding-bottom:5px !important;color:#444;text-transform:uppercase;font-weight:bold;font-size:57px;}
 .slide-h2{margin:5px 0 !important;padding:0 0 10px !important;padding-bottom:5px !important;color:#555;font-weight:bold;font-size:55px;line-height:100%;}
 .big-font{text-transform:uppercase;font-weight:800;font-size:60px;}
@@ -493,7 +489,6 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .whatList li .iconWrap{display:inline-block;border:4px solid #ddd;border-radius:100%;padding:10px;}
 .whatList li .icon{font-size:103px;color:#fff;background:#ed2424;width:180px;height:180px;text-align:center;line-height:180px;border-radius:100%;}
 .whatList li h3{font-size:30px;color:#333;padding-top:30px;margin-bottom:15px;font-weight:600;}
-.whatList li p{}
 .textrow{padding-top:100px;}
 ul.orderlist{list-style:none;margin-top:30px;}
 ul.orderlist li{float:left;width:48%;margin-bottom:12px;color:#333;font-size:16px;}

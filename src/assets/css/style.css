@@ -850,9 +850,8 @@ input:focus {
     border: none;
     color: white;
     transition: 0.5s all ease;
-    border-radius: 50px;
-    width: 150px;
-    height: 50px;
+    border-radius: 25px;
+    padding: 8px 20px;
 }
 
 #search h2 {
@@ -888,7 +887,7 @@ input:focus {
 }
 
 #search button i {
-    font-size: 18px
+    font-size: 22px;
 }
 
 .cate-dropdown {
@@ -994,7 +993,6 @@ select {
 
 .logo {
     vertical-align: middle;
-    text-align: center
 }
 
 
@@ -1442,30 +1440,24 @@ ul#cart-sidebar {
 }
 
 .tab-info h3 {
-    text-transform: uppercase;
-    border-radius: 6px;
+    text-transform: capitalize;
+    border-radius: 6px 6px 0 0;
     margin: auto;
     font-size: 16px;
-    letter-spacing: 0.5px;
-    background-color: #fff;
+    background-color: #e3e3e3;
     color: #000;
     padding: 8px 12px;
     font-weight: 700;
     border: 1px solid #c1c1c1;
-    border-bottom: 2px #ed2424 solid;
-    margin-bottom: -2px
+    border-bottom: 2px #000000 solid;
 }
 
 .home-product-tabs {
-    line-height: normal;
     margin: 0;
     outline: none;
     padding: 0px;
-    border-bottom: 2px solid #e0e0e0;
-    margin-top: 0px;
+    border-bottom: 2px solid #e3e3e3;
     text-align: right;
-    padding-top: 8px;
-    margin-bottom: 5px;
 }
 
 .home-product-tabs li a {
@@ -1492,19 +1484,9 @@ ul#cart-sidebar {
     line-height: 1.42857143;
     border-radius: 0px;
     border: 0px solid #999;
-    padding: 0px 7px;
+    padding: 5px;
     background: #fff;
     font-weight: 600;
-}
-
-.home-product-tabs li:first-child a {
-    padding-left: 0px;
-    padding-right: 8px;
-}
-
-.home-product-tabs li:last-child a {
-    padding-left: 0px;
-    padding-right: 0px;
 }
 
 .home-nav-tabs>li.active>a,
@@ -1545,11 +1527,6 @@ ul#cart-sidebar {
     width: 1px;
 }
 
-.home-tab .product-item .item-inner {
-    margin-bottom: 25px;
-    padding: 0px 0px 20px;
-}
-
 .home-tab {
     display: inline-block;
     width: 100%;
@@ -1558,10 +1535,8 @@ ul#cart-sidebar {
 
 .home-tab .tab-content {
     padding: 5px 0px 0px 0px;
-    overflow: visible;
     font-size: 14px;
     line-height: 19px;
-    margin: 0 -15px;
 }
 
 .home-tab .product-flexslider {
@@ -1919,13 +1894,11 @@ ul#cart-sidebar {
 .product-item .item-inner .product-thumbnail .product-item-photo {
     display: block;
     width: 100%;
-    padding: 0;
+    padding: 10px;
 }
-
-.product-item .item-inner .product-thumbnail:hover .product-item-photo img {
-    opacity: 0.6;
+.product-item .item-inner .product-thumbnail .product-item-photo .product-image-photo{
+    width: 200px;
 }
-
 .product-item .item-inner .pro-box-info {
     float: left;
     width: 100%;
@@ -2115,7 +2088,8 @@ ul#cart-sidebar {
     font-size: 16px;
     text-transform: none;
     letter-spacing: 0.5px;
-    min-height: 56px;
+    height: 38px;
+    line-height: normal;
 }
 
 
@@ -3821,7 +3795,7 @@ footer .footer-links ul {
 
 footer .footer-links ul li {
     list-style-type: none;
-    padding: 0px 27px 12px;
+    padding: 0 0 12px;
     font-size: 15px;
     margin-right: -3px;
     position: relative;
@@ -3843,10 +3817,16 @@ footer .footer-links ul li a {
 
 footer .footer-links ul li a:hover {
     transition: all .3s ease-in-out 0s;
-    padding-left: 10px;
+    margin-left: 10px;
     color: #fff
 }
-
+footer .footer-links ul li a i{
+    margin-right: 6px;
+    font-size: 17px;
+}
+footer .footer-links .social ul li a i{
+    margin: 0;
+}
 .footer-logo {
     text-align: left;
     margin-bottom: 15px;
@@ -4015,7 +3995,7 @@ button.subscribe:before {
     height: 40px;
     line-height: 36px;
     width: 40px;
-    display: inline-grid;
+    display: inline-block;
     text-align: center;
     border-radius: 30px;
 }
@@ -4070,7 +4050,7 @@ button.subscribe:before {
 
 .social ul li {
     margin-left: 0px;
-    display: inline-block
+    display: block;
 }
 
 .social ul li:first-child {
@@ -5885,7 +5865,9 @@ ul.products-list .sale-left {
 .product-variation span.pull-right{
     font-weight: 600;
 }
-
+.product-variation span .lead{
+    font-weight: 600;
+}
 .numbers-row {
     float: left
 }
@@ -5965,16 +5947,13 @@ button.button.pro-add-to-cart span {
 }
 
 .product-tabs li a {
-    border-bottom: none;
-    color: #666;
-    margin-right: 15px;
+    color: #000000;
     text-decoration: none;
-    text-transform: uppercase;
-    font-size: 14px;
+    text-transform: capitalize;
+    font-size: 16px;
     font-weight: 600;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
     padding: 0 20px;
-    letter-spacing: 1px;
 }
 
 .product-tabs li.active a {
@@ -5999,25 +5978,25 @@ button.button.pro-add-to-cart span {
 
 .nav-tabs.product-tabs>li>a {
     line-height: 1.42857143;
-    border-radius: 0px;
-    border: 1px solid #eee;
+    border-radius: 5px;
+    border: 1px solid #000000;
     padding: 8px 28px;
-    background: #fff;
-    border-bottom: none;
+    background: #e3e3e3;
 }
 
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:hover,
 .nav-tabs>li.active>a:focus {
-    background: #ed2424;
-    border: 1px solid #ed2424;
-    color: #fff
+    background: #000000;
+    border: 1px solid #000000;
+    color: #fff;
+    cursor: pointer;
 }
 
 .nav-tabs>li>a:hover {
-    background: #ed2424;
+    background: #000000;
     color: #fff;
-    border: 1px solid #ed2424
+    border: 1px solid #000000
 }
 
 .tab-content {
@@ -9139,18 +9118,22 @@ hr.invis {
 .logo-box {
     width: 25%;
     float: left;
+    padding-left: 20px;
 }
 
 .search-box {
-    width: 15%;
-    padding: 15px 0;
+    width: auto;
+    padding: 18px 0;
     float: left;
+    position: absolute;
+    left: 50%;
+    margin-left: -180px;
 }
 
 .menu-box {
-    width: 60%;
+    width: auto;
     padding: 15px 0;
-    float: left;
+    float: right;
 }
 
 .navbar-toggle {
@@ -9177,10 +9160,17 @@ hr.invis {
     display: inherit;
     text-align: center;
 }
-
+.width100{
+    width: 100%;
+}
+@media (max-width: 1153px) {
+    .navbar-nav>li>a {
+        font-size: 18px !important;
+    }
+}
 @media (max-width: 1024px) {
     .navbar-nav>li>a {
-        font-size: 15px !important;
+        font-size: 17px !important;
     }
 }
 
@@ -9291,7 +9281,7 @@ hr.invis {
     transition: all .4s linear;
     object-fit: contain;
     border: none;
-    width: 100%;;
+    width: 100%;
 }
 
 .hovereffect h2 {
