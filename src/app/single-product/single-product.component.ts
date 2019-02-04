@@ -295,8 +295,8 @@ export class SingleProductComponent implements OnInit {
 
     
       console.log('Pics are:', this.ProPics);
-     alert(this.resultProduct['StoreName'])
-     alert(localStorage.getItem('StoreName'))
+    //  alert(this.resultProduct['StoreName'])
+    //  alert(localStorage.getItem('StoreName'))
       // if (this.resultProduct['StoreName'] === localStorage.getItem('StoreName') ) {
         this.ourproduct = true;
 
@@ -377,7 +377,7 @@ export class SingleProductComponent implements OnInit {
     this.httpService.WatchStatus().subscribe( data => {
       console.log('checkkkkkkkkkkk  ',data);
       this.WatchStatus=data
-      alert( this.WatchStatus)
+      // alert( this.WatchStatus)
       
       // this.checkwatchstatus = this.WatchStatus;
       // alert(this.checkwatchstatus)

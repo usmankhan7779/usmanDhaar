@@ -17,9 +17,11 @@ import { SharedData } from '../shared-service';
 export class CategoryDetailComponent implements OnInit {
   r: any;
   pageno: any;
+  public GetallPhoneProduct: any = [];
   CoverPix: any;
   sub: any;
   modelNo: any;
+  Trendee: any = [];
   Trend: any = [];
   GetPhotos: any = [];
   Cart = false;
@@ -46,6 +48,7 @@ export class CategoryDetailComponent implements OnInit {
               public _shareData: SharedData,
               private GetAdd: HomeService,
               private route: ActivatedRoute,
+              private GetProducts: HomeService,
               private httpService: CategoryServices) {
   }
 
@@ -57,7 +60,7 @@ export class CategoryDetailComponent implements OnInit {
     // alert(this.pageno);
     this.httpService.getAllPhoneAndTabletProduct(this.pageno, this.CatName).subscribe(
       data => {
-        this.Trend = data;
+        this.Trendee = data;
       });
   }
 
@@ -69,7 +72,7 @@ export class CategoryDetailComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.CatName = params['CatName'] || '0';
-
+alert(this.CatName)
         if (this.CatName === 'Phones & Tablets') {
           this.CoverPix = 'PT';
         } else if (this.CatName === 'Women\'s Fashion') {
@@ -95,10 +98,21 @@ export class CategoryDetailComponent implements OnInit {
 
         // alert(this.CatName);
           //  console.log('Phones & Tablets')
+          // PhoneandTablet() {
+
+            this.GetProducts.PhoneandTablet(this.CatName).subscribe(resSlidersData => {
+              console.log(resSlidersData)
+              this.Trend = resSlidersData.Results;
+              if (this.Trend['Total Result'] === 0) {
+                this.errormessage = true;
+              }
+            });
+          // }
           this.httpService.getAllPhoneAndTabletProduct(1,this.CatName).subscribe(
             data => {
-              this.Trend = data;
-              if (this.Trend['totalItems'] === 0) {
+
+              this.Trendee = data;
+              if (this.Trendee['totalItems'] === 0) {
                 this.errormessage = true;
               }
             });

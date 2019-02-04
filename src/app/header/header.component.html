@@ -246,10 +246,15 @@
                     <div class="menu-block menu-block-center">
                       <div class="menu-block-1">
                         <ul>
-                          <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Phones & Tablets','Phones']">Phones<span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
+                          <li> 
+                            
+                            <a class="mega-title" [routerLink]="['/sub-category-detail','Phones & Tablets','Phones']">Phones<span class="menu-item-tag menu-item-tag-hot">hot</span></a></li>
                           <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Smartphones']"><i class="	fa fa-angle-double-right">Smartphones</i></a></li>
                           <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Featured Phones']"><i class="	fa fa-angle-double-right">Featured Phones</i> </a></li>
                         </ul>
+                        <!-- [queryParams]="{ ProID:  phoneProducts.ProductID, -->
+                          <!-- <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> Bid Now</button> </a> -->
+
                         <ul>
                           <li> <a class="mega-title" [routerLink]="['/sub-category-detail','Phones & Tablets','Mobile Accessories']">Mobile Accessories<span class="menu-item-tag menu-item-tag-hot">Sale</span></a></li>
                           <li><a [routerLink]="['/subsub-category-detail','Phones & Tablets','Screen Protector']"><i class="	fa fa-angle-double-right">Screen Protector</i></a></li>
