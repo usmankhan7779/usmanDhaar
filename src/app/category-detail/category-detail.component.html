@@ -88,7 +88,7 @@
           <ng-container *ngIf="!errormessage" >
           <div *ngIf="!View" class="product-grid-area">
             <ul class="products-grid">
-              <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id' }">
+              <ng-container *ngFor="let phoneProducts of Trend">
               <ng-container *ngIf="phoneProducts.Active">
                 <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="product-item">
@@ -168,7 +168,7 @@
                 <!-- ad start -->
 
 
-                <ng-container *ngFor="let phoneProducts of Trend.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:Trend.totalItems,id:'trend-id2' }">
+                <ng-container *ngFor="let phoneProducts of Trend">
                 <ng-container *ngIf="phoneProducts.Active">
                   <li>
                     <div class="row">

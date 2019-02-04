@@ -1008,9 +1008,15 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
 
 
   UserDetailsUpdate(id: number, FName: string, Lname: string, Country: string, State: string, City: string, Zip: string, Mobile: string, Address: string, Vendor: string, Pic: any, Username: string, ISConfirmed: string, Complete: string) {
-    this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
-    console.log(this.USerNameID)
-    return this.http.put(this.ServerUrl + 'UserFullDetails/' + this.USerNameID,
+    // this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+    // console.log(this.USerNameID)
+    // Get_User_details
+    // UserFullDetails
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this.http.put(this.ServerUrl + 'Get_User_details/' ,
       {
         "id": id,
         // "user_id": 277,
@@ -1029,11 +1035,12 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         'Complete': Complete
 
 
-      })
+      },{headers:headers})
       .map((res: Response) => {
 
         if (res) {
           if (res.status === 201 || res.status === 200) {
+            // const responce_data = res.json();
             const responce_data = res.json();
           }
         }
