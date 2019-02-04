@@ -1787,6 +1787,7 @@ ul#cart-sidebar {
 }
 
 .product-item .item-inner {
+    border: 1px solid #e8e8e8;
     margin-bottom: 0px;
     transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
@@ -5394,7 +5395,7 @@ ul.products-list .sale-left {
 
 .regular-price .price {
     font-size: 18px;
-    color: #000;
+    color: #ff0000;
 }
 
 .block .regular-price,
