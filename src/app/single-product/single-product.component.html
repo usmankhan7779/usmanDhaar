@@ -63,7 +63,7 @@
 
           </div>
           <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
-            <div class="product-name pull-left">
+            <div class="product-name width100 pull-left">
               <h1>{{ resultProduct.P_Title}}</h1>
               <h1 class="text-right"><i class="far fa-heart"></i></h1>
             </div>
@@ -178,16 +178,18 @@
 
                   <textarea type="text" class="form-control" style="margin-bottom: 15px;"  name="SellerMessage" [(ngModel)]="model.message" placeholder="Message for Seller" ></textarea>
                 </div>
-                <span class="pull-right">Quantity Available: <span class="lead">{{ resultProduct.Quantity}}</span></span>
-                <div class="cart-plus-minus">
-                  <label for="qty" class="quantity-label">Quantity:</label>
-                  <div class="numbers-row">
-                    <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                    <input type="text" ng-Model="1"  [(ngModel)]="qty" #qtys class="qty" style="font-size: 15px !important;"  id="qty" name="qty">
-                    <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus"></i></div>
+                <div class="width100 pull-left">
+                  <span class="pull-right">Quantity Available: <span class="lead">{{ resultProduct.Quantity}}</span></span>
+                  <div class="cart-plus-minus">
+                    <label for="qty" class="quantity-label">Quantity:</label>
+                    <div class="numbers-row">
+                      <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus"></i></div>
+                      <input type="text" ng-Model="1"  [(ngModel)]="qty" #qtys class="qty" style="font-size: 15px !important;"  id="qty" name="qty">
+                      <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus"></i></div>
+                    </div>
                   </div>
                 </div>
-                <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Buy Now</span></button>
+                <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart" type="button">Buy Now</button>
 
                 <div *ngIf="!amountoffer" style="clear: left;">
 
@@ -329,7 +331,7 @@
                   <div class="tab-pane fade in active" id="description">
                     <div class="std">
                       <ng-container *ngFor="let Des of ProPDes">
-                      <p style="font-size: 20px;">{{ Des}} </p>
+                      <p>{{ Des}}</p>
                       </ng-container>
                     </div>
                   </div>
@@ -524,7 +526,7 @@
           <h3 class="new-product-title pull-left">Related Products</h3>
           <ul class="nav home-nav-tabs home-product-tabs">
             <!--<li class="active"><a href="#all" data-toggle="tab" aria-expanded="false">All</a></li>-->
-            <li> <a href="#women" data-toggle="tab" aria-expanded="false">Phones & Tablets</a> </li>
+            <li class="active"> <a href="#women" data-toggle="tab" aria-expanded="false">Phones & Tablets</a> </li>
             <!--<li> <a href="#men" data-toggle="tab" aria-expanded="false">Fashion</a> </li>-->
             <!--<li> <a href="#kids" data-toggle="tab" aria-expanded="false">Electronics</a> </li>-->
           </ul>
@@ -532,9 +534,9 @@
         </div>
         <div id="productTabContent1" class="tab-content">
 
-          <div class="tab-pane active in" id="women">
+          <div class="tab-pane active in pull-left" id="women">
             <!-- <ng-container *ngFor="let phoneProducts of GetallPhoneProduct.Results"> -->
-              <div class="product-item col-md-3 col-sm-6" *ngFor="let phoneProducts of GetallPhoneProduct.Results" >
+              <div class="product-item col-md-2 col-sm-4" *ngFor="let phoneProducts of GetallPhoneProduct.Results" >
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <!--<div class="icon-sale-label sale-left">Sale</div>-->
@@ -547,7 +549,7 @@
                         <div class="slider-items slider-width-col6">
 
                           <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> 
-                            <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic.split(',')[0] }}" alt="{{phoneProducts.pic }}"></a>
+                            <img class="product-image-photo" src="{{ phoneProducts.Pic.split(',')[0] }}" alt="{{phoneProducts.pic }}"></a>
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 
@@ -567,11 +569,6 @@
                           <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
                         </div>
                         <div class="item-content">
-                          <div class="rating">
-                            <p> Seller: <a [routerLink]="['/store', phoneProducts.StoreName]"> {{phoneProducts.StoreName}}</a></p>
-
-
-                          </div>
                           <div *ngIf="phoneProducts.Auction == true" class="item-price">
 
                             <div  class="price-box"> <span class="regular-price"> <span class="price"  >Rs {{ phoneProducts.MaxBidPrice | number:'.0-0' }} </span> </span> </div>
@@ -587,10 +584,10 @@
                       <div class="product-item-actions">
                         <ng-container *ngIf="!ourproduct">
                         <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Bid Now</span> </button> </a>
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> Bid Now</button> </a>
                         </div>
                         <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> <span>Buy Now</span> </button> </a>
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> Buy Now</button> </a>
                         </div>
                         </ng-container>
                       </div>

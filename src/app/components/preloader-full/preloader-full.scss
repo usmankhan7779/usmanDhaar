@@ -176,10 +176,17 @@
   background: url('../../../assets/images/red.gif') center center;
   background-size: contain;
   background-color: transparent;
-  transition-origin: 50% 50%;
   animation: spin 5s ease-in-out infinite, delay 2s ease-in-out 1 ;
   // animation: spinner 3s infinite alternate ease-in-out;
 }
+@keyframes delay {
+
+	0% { opacity: 0; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+
+}
+
 //.spinner-center {
 //  display: inline-block;
 //  position: absolute;
