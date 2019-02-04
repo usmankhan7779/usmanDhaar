@@ -40,7 +40,7 @@ export class SingleProductComponent implements OnInit {
   ViewItemCheck = false ;
   Timeclose = false ;
   MinBidPrice = false ;
-  amountoffer = false ;
+  amountoffer:boolean = false ;
   AuctionTest = true;
   noreview = false;
   Solddd = false;
@@ -49,7 +49,7 @@ export class SingleProductComponent implements OnInit {
   checkwatchstatus = 'false';
   minOffer = false;
   openreviews = true;
-  ourproduct = false;
+  ourproduct:boolean=false;
   minOfferDone = false;
   AuctionProductPrice: number;
 
@@ -130,16 +130,7 @@ export class SingleProductComponent implements OnInit {
       this.username= localStorage.getItem('UserName');
 
 
-      // this.GetAdd.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
-      //   this.GetallPhoneProduct = resSlidersData;
-      // });
-      //  this.GetAdd.GetAllProductsgatorgy(this.SubCatName).subscribe(resSlidersData => {
-      //   this.GetallPhoneProduct= resSlidersData['Results'];
-
-      //   console.log(this.GetallPhoneProduct.Results,"results")
-      // });
-
-      // GetAllPhoneandtabletsProducts
+     
       window.scrollTo(0, 0);
       this.sub = this.route
         .queryParams
@@ -152,6 +143,7 @@ export class SingleProductComponent implements OnInit {
           console.log(this.SubCatName,'subcatname')
           // alert(this.SubCatName)
          this.RedirectFromlogin = params['Redirect'] || null;
+        //  this.amountoffer = true;
 
           this.GetAdd.GetAllProductsgatorgy(this.SubCatName).subscribe(resSlidersData => {
             this.GetallPhoneProduct= resSlidersData['Results'];
@@ -185,7 +177,7 @@ export class SingleProductComponent implements OnInit {
           } else {
             this.LoginID = false;
           }
-          this.httpService.GetallIDByUser(this.ProID, localStorage.getItem('UserID')).subscribe(
+          this.httpService.GetallIDByUser(this.ProID).subscribe(
             data => {
               this.invoice = data;
               // if ( this.invoice['0']['id'] !== null ) {
@@ -288,7 +280,7 @@ export class SingleProductComponent implements OnInit {
     this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
       this.Title = this.resultProduct['P_Title']
-      this.ourproduct = true;
+      // this.ourproduct = true;
       console.log('Description of product is:', this.resultProduct['P_Des']);
       this.ProPDes = this.resultProduct['P_Des'].split('\n');
 
@@ -303,8 +295,9 @@ export class SingleProductComponent implements OnInit {
 
     
       console.log('Pics are:', this.ProPics);
-      // === localStorage.getItem('StoreName')
-      // if (this.resultProduct['StoreName'] ) {
+     alert(this.resultProduct['StoreName'])
+     alert(localStorage.getItem('StoreName'))
+      // if (this.resultProduct['StoreName'] === localStorage.getItem('StoreName') ) {
         this.ourproduct = true;
 
       // }
@@ -383,7 +376,7 @@ export class SingleProductComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
     this.httpService.WatchStatus().subscribe( data => {
       console.log('checkkkkkkkkkkk  ',data);
-      this.WatchStatus=data.Res
+      this.WatchStatus=data
       alert( this.WatchStatus)
       
       // this.checkwatchstatus = this.WatchStatus;
@@ -795,7 +788,9 @@ Addtocart(Abc: any) {
 
   SubmitReview() {
     console.log('Store Name is', this.resultProduct['StoreName']);
-    this.GetAdd.InsertProductReviews(localStorage.getItem('UserName'), localStorage.getItem('UserID'), this.model.YourReview, this.ProID, this.starp, this.resultProduct['StoreName']).subscribe(resSlidersData => {
+    // Reviews: any, Product_ID: any, RateNUmber: any
+    // localStorage.getItem('UserName'), localStorage.getItem('UserID'),, this.resultProduct['StoreName']
+    this.GetAdd.InsertProductReviews( this.model.YourReview, this.ProID, this.starp).subscribe(resSlidersData => {
         swal('Your Review has been submitted','','success');
         this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
           this.GetallProductReview = resSlidersData;

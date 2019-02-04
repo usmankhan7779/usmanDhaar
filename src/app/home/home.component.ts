@@ -124,8 +124,9 @@ export class HomeComponent implements OnInit {
 
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
-      this.ProductsAllCat(1);
+      this.ProductsAllCat();
       this.GetAllBuyNowproduct();
+      this.GetAcutionProduct();
       // this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
       //   this.GetALLProductss = resSlidersData;
@@ -141,12 +142,11 @@ export class HomeComponent implements OnInit {
       //   // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
       // });
 
-      this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
+      // this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
-        this.GetALLAuctionProductss = resSlidersData;
-        // console.log(this.GetALLAuctionProductss.results.pic.split([,],3000),'pic')
-        // localStorage.setItem('sub_sub_cat', this.GetALLAuctionProductss.results[0].Sub_Sub_Cat_Name);
-      });
+      //   this.GetALLAuctionProductss = resSlidersData;
+       
+      // });
 
       this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
 
@@ -185,7 +185,7 @@ export class HomeComponent implements OnInit {
       this.PhoneandTablet();
       this.CategorySlider();
       this.HotDealSlider();
-      this.RecommendedSlider();
+      // this.RecommendedSlider();
       this.ViewedItemSlider();
       if (localStorage.getItem('UserID')) {
         this.usercheck = true;
@@ -193,51 +193,80 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-  ProductsAllCat(page: number) {
-    if(localStorage.getItem('UserID') !== null){
-    if (page < 1 || page > this.pager.totalPages) {
-      return;
+  ProductsAllCat() {
+    // page: number
+    if (localStorage.getItem('Authorization') !== null) {
+      
+      this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
+
+        let demoprods;
+        demoprods = resSlidersData.Results;
+// console.log(demoprods)
+        for (let prods of demoprods)
+        {
+          this.GetALLProductss.push(prods.product);
+        }
+        console.log(this.GetALLProductss);
+
+
+        // alert(this.GetALLProductss)
+        // console.log(this.GetALLProductss, 'response')
+        //this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
+
+
+      });
     }
-    this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
+    else {
+      
+      this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
-      this.GetALLProductss = resSlidersData.Results.product;
-      console.log( resSlidersData.Results.product,'response')
-      //this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
+        this.GetALLProductss = resSlidersData.Results;
 
+      
+        console.log(this.GetALLProductss, 'response')
+        
 
-    });
-  }
-  else if(localStorage.getItem('UserID') == null) {
-    if (page < 1 || page > this.pager.totalPages) {
-      return;
+      });
+
     }
-    this.GetProducts.GetProductsfromAllCat(page).subscribe(resSlidersData => {
-
-      this.GetALLProductss = resSlidersData.Results;
-      // this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
-      console.log( resSlidersData.Results,'response')
-      // alert(resSlidersData.Results)
-
-    });
 
   }
 
-  }
-
-  GetAllBuyNowproduct(){
+  GetAllBuyNowproduct() {
     // (localStorage.getItem('UserID') !== null)
-    if(localStorage.getItem('Authorization') !== null){
-    this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
+    if (localStorage.getItem('Authorization') !== null) {
+      this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersDatass => {
 
-      this.GetALLBuyNowProductss = resSlidersData.Results.product;
-      // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+        this.GetALLBuyNowProductss = resSlidersDatass.Results.product;
+        // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+      });
+    }
+    else {
+      this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersDatass => {
+
+        this.GetALLBuyNowProductss = resSlidersDatass.Results;
+        // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+      });
+    }
+  }
+  GetAcutionProduct(){
+    if (localStorage.getItem('Authorization') !== null) {
+      // if (page < 1 || page > this.pager.totalPages) {
+      //   return;
+      // }
+      // alert(localStorage.getItem('Authorization'))
+      // this.GetALLProductss=undefined;
+    this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
+
+      this.GetALLAuctionProductss = resSlidersData.Results;
+     
     });
   }
   else{
-    this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
+    this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
-      this.GetALLBuyNowProductss = resSlidersData.Results;
-      // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+      this.GetALLAuctionProductss = resSlidersData.Results;
+     
     });
   }
   }
@@ -284,7 +313,7 @@ export class HomeComponent implements OnInit {
       this.WomenFashionProducts = resSlidersData.Results;
     });
   }
-  
+
 
   // onSuccess(resSlidersData) {
   //   console.log(resSlidersData);

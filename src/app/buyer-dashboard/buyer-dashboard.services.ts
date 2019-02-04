@@ -30,10 +30,22 @@ export class BuyerDashboardServices {
     return this._http.get( this.saleServerUrl + 'GetallInvoiceIDByUser/' + UserID  ).map(response => response.json());
   }
 
-  GetallIDByUser( PId: any, UserID: any) {
-      return this._http.get( this.saleServerUrl + 'ActiveReviewsByUserId/' + PId + '/' + UserID ).map(response => response.json());
-    }
+  GetallIDByUser( PId: any) {
+    if (localStorage.getItem('Authorization') !== null) {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // headers.append('Authorization', 'Token ' +  this.authentication);
+      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get( this.ServerUrl + 'InsertUserReview/' + PId ,{headers:headers}).map(response => response.json());
 
+      // return this._http.get( this.saleServerUrl + 'ActiveReviewsByUserId/' + PId + '/' + UserID ).map(response => response.json());
+    }
+    else{
+      return this._http.get( this.ServerUrl + 'InsertUserReview/' + PId ).map(response => response.json());
+    }
+  }
+// InsertUserReview
 
   GetInvoiceByInvoiceID( UserID: any) {
     return this._http.get( this.saleServerUrl + 'GetInvoiceByInvoiceID/' + UserID  ).map(response => response.json());
