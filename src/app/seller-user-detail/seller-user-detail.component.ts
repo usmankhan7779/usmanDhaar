@@ -65,9 +65,10 @@ filetoup: FileList;
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.SessionstoreName = localStorage.getItem('StoreName');
-      this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
-
-      this.obj.GetUserDetailByName().subscribe(resSlidersData => {
+    //  this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+    // GetUSerdetailsByUserId
+    // GetUserDetailByName
+      this.obj.GetUSerdetailsByUserId().subscribe(resSlidersData => {
         this.GetUSerdetails = resSlidersData;
         // console.log('fdsf');
         this.id= this.GetUSerdetails['id']
@@ -75,7 +76,8 @@ filetoup: FileList;
         this.complete = this.GetUSerdetails['Complete']
         this.ISConfirmed = this.GetUSerdetails['ISConfirmed']
         this.picname= this.GetUSerdetails['Pic']
-        console.log(this.GetUSerdetails);
+        this.USerNameID= this.GetUSerdetails['user_id']
+        console.log(this.GetUSerdetails,'getuser');
       });
     }
 
