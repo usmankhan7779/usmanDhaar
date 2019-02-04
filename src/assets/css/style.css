@@ -2115,7 +2115,7 @@ ul#cart-sidebar {
     font-size: 16px;
     text-transform: none;
     letter-spacing: 0.5px;
-    height: 40px;
+    min-height: 56px;
 }
 
 
@@ -2859,11 +2859,11 @@ article.jtv-entry {
 
 .rating {
     color: #000000;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
 }
 .rating > p > a{
-    color: #1a9cb7;
+    color: #1a60b7;
     font-size: 14px;
     font-weight: normal;
 }
@@ -4371,22 +4371,21 @@ nav {
 
 button.button {
     display: inline-block;
-    border: 0;
-    background: #ed2424;
-    padding: 6px 16px;
-    font-size: 20px;
-    border: 1px solid #ed2424;
-    font-weight: 400;
+    background: #000000;
+    padding: 8px 22px;
+    font-size: 16px;
+    border: 1px solid #000000;
     text-align: center;
     white-space: nowrap;
     color: #fff;
-    font-weight: normal;
     transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 50px
+    border-radius: 50px;
+    text-transform: capitalize;
+    font-weight: 600;
 }
 
 button.button:hover {
@@ -4396,12 +4395,6 @@ button.button:hover {
     -moz-transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
     color: #fff
-}
-
-button span {
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.5px;
 }
 
 .breadcrumbs {
@@ -5421,7 +5414,7 @@ ul.products-list .sale-left {
 
 .regular-price .price {
     font-size: 18px;
-    color: #ff0000;
+    color: #000;
 }
 
 .block .regular-price,
@@ -5723,11 +5716,20 @@ ul.products-list .sale-left {
 
 .product-view-area .product-name h1 {
     font-size: 22px;
+    width: 50%;
     margin: 0;
-    text-align: left;
     padding: 15px 0;
     letter-spacing: normal;
     font-weight: 600;
+    float: left;
+}
+.product-view-area .product-name h1 i{
+    color: #757575;
+    font-size: 24px;
+    cursor: pointer;
+}
+.product-view-area .product-name h1 i:hover{
+    color: red;
 }
 
 .product-view-area .short-description {
@@ -5767,14 +5769,21 @@ ul.products-list .sale-left {
     margin-bottom: 12px;
     display: inline-block
 }
-.availability.in-stock span{
-    font-size: 24px;
+.availability.in-stock{
+    font-size: 16px;
+    font-weight: 600;
 }
 .availability.in-stock span.sold {
-    color: red;
+    background: red;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 10px;
 }
 .availability.in-stock span.not-sold {
-    color: #5cb85c;
+    background: #5cb85c;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 10px;
 }
 .availability.out-of-stock span {
     color: #fff;
@@ -5813,68 +5822,54 @@ ul.products-list .sale-left {
 }
 
 .cart-plus-minus .qty {
-    border: 1px solid #e0e0e0;
+    border: none;
     color: #000000;
     float: left;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
-    height: 40px;
+    height: 36px;
     margin-right: 0;
     padding: 0 5px 1px;
     text-align: center;
-    width: 65px
+    width: 45px;
 }
 
-.dec.qtybutton {
+.dec.qtybutton, .inc.qtybutton {
     background-color: #e5e5e5;
     border: 1px #eaeaea solid;
     border-right: none;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
-    color: #000000;
+    color: #a2a2a2;
     font-size: 14px;
-    line-height: normal;
-    padding: 12px 14px 9px 16px;
+    padding: 9px 11px;
     line-height: 18px;
-    display: inline-block;
     border-radius: 0px;
-    height: 40px;
+    height: 36px;
     float: left;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .dec.qtybutton:hover,
 .inc.qtybutton:hover {
-    background-color: #ed2424;
-    color: #fff
+    color: #000;
 }
 
 .inc.qtybutton {
-    background-color: #e5e5e5;
-    border: 1px #eaeaea solid;
     border-left: none;
-    transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
-    color: #000000;
-    font-size: 14px;
-    line-height: normal;
-    padding: 12px 14px 9px 16px;
-    line-height: 18px;
-    display: inline-block;
-    height: 40px;
-    float: left;
-    cursor: pointer
 }
 
 .cart-plus-minus label {
-    display: inline-block;
     float: left;
     margin-top: 10px;
     text-align: left;
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 14px;
     margin-right: 10px
 }
-
+.quantity-label{
+    margin: 11px 30px 0 0 !important;
+    color: #000000;
+}
 .cart-plus-minus {
     display: inline-block;
     float: left;
@@ -5884,10 +5879,11 @@ ul.products-list .sale-left {
 .product-variation {
     display: inline-block;
     width: 100%;
-    border-top: 1px #e5e5e5 solid;
-    border-bottom: 1px #e5e5e5 solid;
-    padding: 15px 0px;
+    padding: 8px 0px;
     margin-bottom: 15px
+}
+.product-variation span.pull-right{
+    font-weight: 600;
 }
 
 .numbers-row {
@@ -5898,17 +5894,11 @@ ul.products-list .sale-left {
     float: left
 }
 button.button.pro-add-to-cart:hover {
-    background: #ed2424;
-    border: 2px #ed2424 solid;
-    color: #fff;
+    box-shadow: 0 0 10px -1px #000
 }
 
 button.button.pro-add-to-cart span {
     font-size: 16px
-}
-
-button.button.pro-add-to-cart span i {
-    margin-right: 10px
 }
 
 .email-addto-box {
@@ -8435,7 +8425,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 }
 
 .singlebutton {
-    margin-top: 33px;
+    margin-top: 15px;
 }
 
 .offer-btn {
@@ -9300,6 +9290,8 @@ hr.invis {
     -webkit-transition: all .4s linear;
     transition: all .4s linear;
     object-fit: contain;
+    border: none;
+    width: 100%;;
 }
 
 .hovereffect h2 {

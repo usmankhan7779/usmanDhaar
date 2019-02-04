@@ -63,8 +63,9 @@
 
           </div>
           <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
-            <div class="product-name">
+            <div class="product-name pull-left">
               <h1>{{ resultProduct.P_Title}}</h1>
+              <h1 class="text-right"><i class="far fa-heart"></i></h1>
             </div>
             <ng-container *ngIf="resultProduct.Auction">
               <div class="price-box">
@@ -177,13 +178,13 @@
 
                   <textarea type="text" class="form-control" style="margin-bottom: 15px;"  name="SellerMessage" [(ngModel)]="model.message" placeholder="Message for Seller" ></textarea>
                 </div>
+                <span class="pull-right">Quantity Available: <span class="lead">{{ resultProduct.Quantity}}</span></span>
                 <div class="cart-plus-minus">
-                  <span style="float: left;">Quantity Available: {{ resultProduct.Quantity}}</span>
-                  <label for="qty" style="clear: left; margin-top: 20px">Quantity:</label>
+                  <label for="qty" class="quantity-label">Quantity:</label>
                   <div class="numbers-row">
-                    <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;" class="dec qtybutton" style="margin-top: 10px"><i class="fa fa-minus">&nbsp;</i></div>
-                    <input type="number" ng-Model="1"   [(ngModel)]="qty" #qtys class="qty" style="font-size: 15px !important; margin-top: 10px"  id="qty" name="qty">
-                    <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;" class="inc qtybutton" style="margin-top: 10px"><i class="fa fa-plus">&nbsp;</i></div>
+                    <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus"></i></div>
+                    <input type="text" ng-Model="1"  [(ngModel)]="qty" #qtys class="qty" style="font-size: 15px !important;"  id="qty" name="qty">
+                    <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus"></i></div>
                   </div>
                 </div>
                 <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Buy Now</span></button>
@@ -194,9 +195,9 @@
                   <ng-container *ngIf="!ourproduct">
 
 
-                    <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart" type="button"><span><i class="fa fa-shopping-cart"></i> Buy Now</span></button>
+                    <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart" type="button">Buy Now</button>
 
-                    <button *ngIf="LoginID === true && resultProduct.Addbestoffer" class="button pro-add-to-cart singlebutton" style="margin-left: 3px;" (click)="MakeAnOffer()" title="Add to Cart" type="button"><span><i class="fa fa-bullhorn"></i> Make Offer</span></button>
+                    <button *ngIf="LoginID === true && resultProduct.Addbestoffer" class="button pro-add-to-cart singlebutton" style="margin-left: 3px;" (click)="MakeAnOffer()" title="Add to Cart" type="button">Make Offer</button>
                     <ng-container *ngIf="LoginID === true">
                       <div *ngIf="WatchStatus == false">
                         <button class="button pro-add-to-cart singlebutton" title="Watch This Product" type="submit" style="margin-left: 3px; float:left; font-size: 20px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
