@@ -55,7 +55,7 @@ stroeid :any;
       window.scrollTo(0, 0);
       this.GetProducts.GetAllStoreByStorenames().subscribe(resSlidersData => {
 
-        this.GetALLBuyNowProductss = resSlidersData;
+        this.GetALLBuyNowProductss = resSlidersData.Results;
         
         console.log(this.GetALLBuyNowProductss,'get store')
       });

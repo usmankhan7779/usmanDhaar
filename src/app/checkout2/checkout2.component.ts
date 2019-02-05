@@ -407,9 +407,9 @@ export class Checkout2Component implements OnInit {
       this.orderreview = false;
       if (this.Total > 0) {
 
-        this.Profile.verify_tokenWithNoRedirict().subscribe((response) => {
+       // this.Profile.verify_tokenWithNoRedirict().subscribe((response) => {
 
-          if (response) {
+         // if (response) {
 
             this.LoggedIn = true;
             this.LoginName = localStorage.getItem('UserName');
@@ -429,20 +429,21 @@ export class Checkout2Component implements OnInit {
 
             });
 
-          } else {
+        //   }
+        //    else {
 
-            this.CheckoutMethod = true;
+        //     this.CheckoutMethod = true;
 
-          }
-        },
-          (err) => {
-            console.log('ERROR:' + err);
-            alert(err);
-            // this._nav.navigate(['/login']);
-          },
-          () => {
-          }
-        );
+        //   }
+        // },
+        //   (err) => {
+        //     console.log('ERROR:' + err);
+        //     alert(err);
+        //     // this._nav.navigate(['/login']);
+        //   },
+        //   () => {
+        //   }
+      //  );
 
 
         // this.model.LoginEMail;

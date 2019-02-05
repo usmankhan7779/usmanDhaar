@@ -605,7 +605,65 @@ export class HomeService {
 
     }
   }
+  subsubcatmenu(category_name) {
+    if (localStorage.getItem('Authorization') !== null) {
+      const headers = new Headers();
+      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
+      headers.append('Content-Type', 'application/json');
+      if (isPlatformBrowser(this.platformId)) {
 
+        return this._http.post(this.ServerUrl + 'Getbuynow_auction_products/',
+          {
+            'category_name': category_name,
+            // 'Cat_Name': CatName ,
+            // 'User_ID': User_ID,
+          }, { headers: headers }).map((res: Response) => {
+            if (res) {
+
+              if (res.status === 200) {
+                const responce_data = res.json();
+                return responce_data;
+              }
+            }
+          }).catch((error: any) => {
+            console.log(error.toString());
+            return Observable.throw(new Error(error.status));
+          });
+
+
+      }
+    }
+    else {
+      const headers = new Headers();
+      // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+      // console.log('pofile', localStorage.getItem('Authorization'));
+      headers.append('Content-Type', 'application/json');
+      if (isPlatformBrowser(this.platformId)) {
+
+        return this._http.post(this.ServerUrl + 'Getbuynow_auction_products/',
+          {
+            'category_name': category_name,
+            // 'Cat_Name': CatName ,
+            // 'User_ID': User_ID,
+          }, { headers: headers }).map((res: Response) => {
+            if (res) {
+
+              if (res.status === 200) {
+                const responce_data = res.json();
+                return responce_data;
+              }
+            }
+          }).catch((error: any) => {
+            console.log(error.toString());
+            return Observable.throw(new Error(error.status));
+          });
+
+
+      }
+
+    }
+  }
   WatchProduct(Product_ID: any) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');

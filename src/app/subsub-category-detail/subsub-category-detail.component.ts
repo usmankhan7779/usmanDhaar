@@ -5,6 +5,7 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import {PaginatePipe, PaginationService} from 'ng2-pagination';
+import { HomeService } from '../home/home.services';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class SubsubCategoryDetailComponent implements OnInit {
   sub: any;
   modelNo: any;
   Trend: any = [];
+  Trendee: any = [];
   GetPhotos: any = [];
   CatName: any;
   Subcat: any;
@@ -39,6 +41,7 @@ export class SubsubCategoryDetailComponent implements OnInit {
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private _nav: Router,
                private route: ActivatedRoute,
+               private GetProducts: HomeService,
                private httpService: CategoryServices) { }
 
   pageTrendChanged(event) {
@@ -86,10 +89,18 @@ export class SubsubCategoryDetailComponent implements OnInit {
 
         // alert(this.CatName);
           //  console.log('Phones & Tablets')
-          this.httpService.getAllSubSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
-            data => {
-              this.Trend = data;
-              if (this.Trend['results'].length === 0) {
+          // this.httpService.getAllSubSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
+          //   data => {
+          //     this.Trendee = data;
+          //     if (this.Trendee['results'].length === 0) {
+          //       this.errormessage = true;
+          //     }
+          //   });
+            // this.Subcat = params['SubCat'];
+        this.GetProducts.subsubcatmenu(this.Subcat).subscribe(resSlidersData => {
+              console.log(resSlidersData)
+              this.Trend = resSlidersData.Results;
+              if (this.Trend['Total Result'] === 0) {
                 this.errormessage = true;
               }
             });

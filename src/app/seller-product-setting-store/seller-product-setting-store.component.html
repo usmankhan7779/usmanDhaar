@@ -38,96 +38,98 @@
     <h3>My Store Setting</h3>
     <!-- <ul class="searchList"> -->
     <!-- ad start -->
+<div *ngFor="let data of GetALLBuyNowProductss">
+  <div class="product-item col-md-4 col-sm-6" *ngFor="let TvVideoaudio88 of data.StoreInfo">
+    <div *ngFor="let Tv of data.BankInfo">
+      <div class="item-inner" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
 
-    <div class="product-item col-md-4 col-sm-6" *ngFor="let TvVideoaudio88 of GetALLBuyNowProductss.StoreInfo">
-      <div *ngFor="let Tv of GetALLBuyNowProductss.BankInfo">
-        <div class="item-inner" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
-
-          <h2 class="product-heading" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">{{TvVideoaudio88?.StoreName}}</h2>
-          <div class="product-thumbnail" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
-            <div class="hovereffect" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
-              <img class="img-responsive" src="{{TvVideoaudio88.userimage}}" onerror="this.src='https://storage.dhaar.pk/logostores/0519764032018162721/91JA5-hAnoL._SL1500_-min.jpg'">
-              <!-- <div  class="overlay">
-                          <h2 >Computing &amp; Laptops</h2> -->
-              <!-- <a  class="info" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops">Product Detail</a>
-                        </div> -->
-            </div>
+        <h2 class="product-heading" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">{{TvVideoaudio88?.StoreName}}</h2>
+        <div class="product-thumbnail" *ngIf="TvVideoaudio88.StoreName ===Tv.StoreID_id">
+          <div class="hovereffect" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
+            <img class="img-responsive" src="{{TvVideoaudio88.userimage}}" onerror="this.src='https://storage.dhaar.pk/logostores/0519764032018162721/91JA5-hAnoL._SL1500_-min.jpg'">
+            <!-- <div  class="overlay">
+                        <h2 >Computing &amp; Laptops</h2> -->
+            <!-- <a  class="info" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops">Product Detail</a>
+                      </div> -->
           </div>
-
-          <div class="pro-box-info" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
-            <div class="item-info">
-              <div class="info-inner">
-                <div class="item-title">
-                  <!-- <h4 ><a  title="Product Title Here" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops"></a></h4> -->
-                </div>
-                <div class="item-content">
-                  <div class="seller-name">
-                    <p> Seller Name: {{TvVideoaudio88.StoreName}}
-                      <!-- <a  ng-reflect-router-link="/store,logostores" href="/store/logostores"> -->
-                      <!-- logostores</a> -->
-                    </p>
-
-                  </div>
-
-                  <!-- <div class="item-price">
-                    <div class="price-box"><span class="regular-price">
-                        <span  class="price">Rs 15,600</span>
-                      </span>
-                    </div>
-                  </div> -->
-
-
-                </div>
-
-
-              </div>
-            </div>
-
-            <div class="box-hover">
-              <div class="product-item-actions">
-                <div class="pro-actions">
-                  <a [routerLink]="['/seller-product-setting']" [queryParams]="{ storename:  TvVideoaudio88.StoreName }"
-                    class="action add-to-cart">View Store</a>
-                </div>
-                <div class="pro-actions">
-                  <!-- <a [routerLink]="['/seller-product-setting']" [queryParams]="{ storename:  TvVideoaudio88.StoreName }">
-                    view store
-                  </a> -->
-                  <!-- [routerLink]="['/seller-store-setting']" [queryParams]="{ StoreId:  TvVideoaudio88.id }"  -->
-                  <a (click)="Getallbuynowproductsdetail (TvVideoaudio88.id,TvVideoaudio88.StoreName,TvVideoaudio88.OwnerName
-                  ,TvVideoaudio88.BusinessEmail,TvVideoaudio88.Zip
-                  ,TvVideoaudio88.City,TvVideoaudio88.OwnerContactNum
-                  ,TvVideoaudio88.BusinessPhone,TvVideoaudio88.Address
-                  ,TvVideoaudio88.FbrRegister,TvVideoaudio88.LegalName
-                  ,TvVideoaudio88.NTN,TvVideoaudio88.STRN
-                  ,TvVideoaudio88.activestore,Tv.id,Tv.StoreID_id,Tv.AccountTitle,
-                  Tv.AccountNumber,Tv.BankName,Tv.BranchName,Tv.BranchCode,TvVideoaudio88.pic);step1=false;"
-                    class="action add-to-cart" data-toggle="modal" data-target="#myModal">
-                    Edit Your Store
-                  </a>
-                  <!-- <button  class="action add-to-cart"(click)="Getallbuynowproductsdetail  (TvVideoaudio88.id,TvVideoaudio88.StoreName,TvVideoaudio88.OwnerName
-                                ,TvVideoaudio88.BusinessEmail,TvVideoaudio88.Zip
-                                ,TvVideoaudio88.City,TvVideoaudio88.OwnerContactNum
-                                ,TvVideoaudio88.BusinessPhone,TvVideoaudio88.Address
-                                ,TvVideoaudio88.FbrRegister,TvVideoaudio88.LegalName
-                                ,TvVideoaudio88.NTN,TvVideoaudio88.STRN
-                                ,TvVideoaudio88.activestore)"  
-                                data-toggle="modal" data-target="#myModal"title="Add to Cart" type="button"><span >Edit your store information</span></button> -->
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ad end -->
-
-
-          <!-- ad end -->
-          <!-- </ul> -->
         </div>
+
+        <div class="pro-box-info" *ngIf="TvVideoaudio88.StoreName===Tv.StoreID_id">
+          <div class="item-info">
+            <div class="info-inner">
+              <div class="item-title">
+                <!-- <h4 ><a  title="Product Title Here" ng-reflect-query-params="[object Object]" ng-reflect-router-link="/single-product" href="/single-product?ProID=0519764032018162721&amp;CatName=Computing%20%26%20Laptops"></a></h4> -->
+              </div>
+              <div class="item-content">
+                <div class="seller-name">
+                  <p> Seller Name: {{TvVideoaudio88.StoreName}}
+                    <!-- <a  ng-reflect-router-link="/store,logostores" href="/store/logostores"> -->
+                    <!-- logostores</a> -->
+                  </p>
+
+                </div>
+
+                <!-- <div class="item-price">
+                  <div class="price-box"><span class="regular-price">
+                      <span  class="price">Rs 15,600</span>
+                    </span>
+                  </div>
+                </div> -->
+
+
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="box-hover">
+            <div class="product-item-actions">
+              <div class="pro-actions">
+                <a [routerLink]="['/seller-product-setting']" [queryParams]="{ storename:  TvVideoaudio88.StoreName }"
+                  class="action add-to-cart">View Store</a>
+              </div>
+              <div class="pro-actions">
+                <!-- <a [routerLink]="['/seller-product-setting']" [queryParams]="{ storename:  TvVideoaudio88.StoreName }">
+                  view store
+                </a> -->
+                <!-- [routerLink]="['/seller-store-setting']" [queryParams]="{ StoreId:  TvVideoaudio88.id }"  -->
+                <a (click)="Getallbuynowproductsdetail (TvVideoaudio88.id,TvVideoaudio88.StoreName,TvVideoaudio88.OwnerName
+                ,TvVideoaudio88.BusinessEmail,TvVideoaudio88.Zip
+                ,TvVideoaudio88.City,TvVideoaudio88.OwnerContactNum
+                ,TvVideoaudio88.BusinessPhone,TvVideoaudio88.Address
+                ,TvVideoaudio88.FbrRegister,TvVideoaudio88.LegalName
+                ,TvVideoaudio88.NTN,TvVideoaudio88.STRN
+                ,TvVideoaudio88.activestore,Tv.id,Tv.StoreID_id,Tv.AccountTitle,
+                Tv.AccountNumber,Tv.BankName,Tv.BranchName,Tv.BranchCode,TvVideoaudio88.pic);step1=false;"
+                  class="action add-to-cart" data-toggle="modal" data-target="#myModal">
+                  Edit Your Store
+                </a>
+                <!-- <button  class="action add-to-cart"(click)="Getallbuynowproductsdetail  (TvVideoaudio88.id,TvVideoaudio88.StoreName,TvVideoaudio88.OwnerName
+                              ,TvVideoaudio88.BusinessEmail,TvVideoaudio88.Zip
+                              ,TvVideoaudio88.City,TvVideoaudio88.OwnerContactNum
+                              ,TvVideoaudio88.BusinessPhone,TvVideoaudio88.Address
+                              ,TvVideoaudio88.FbrRegister,TvVideoaudio88.LegalName
+                              ,TvVideoaudio88.NTN,TvVideoaudio88.STRN
+                              ,TvVideoaudio88.activestore)"  
+                              data-toggle="modal" data-target="#myModal"title="Add to Cart" type="button"><span >Edit your store information</span></button> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ad end -->
+
+
+        <!-- ad end -->
+        <!-- </ul> -->
       </div>
-      <!-- </ng-container> -->
     </div>
+    <!-- </ng-container> -->
+  </div>
+</div>
+  
     <div class="col-md-4 product-item btn-plus">
       <a href="#"><i class="fas fa-7x fa-plus-square"></i></a>
     </div>

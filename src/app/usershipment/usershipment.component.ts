@@ -57,7 +57,8 @@ export class UsershipmentComponent implements OnInit {
     });
     }
   }
-  save(FName: string, province: string,  City: string, Area: string, Mobile: string, Address: string,Shipmentaddress,Shipmentbilladdress) {
+  
+  save(FName: string,Address:string, province: string,  City: string, Area: string,  Shipmentaddress,Shipmentbilladdress,Mobile) {
     
     // if ( this.fileName) {
       //this.uploadItemsToActivity();
@@ -67,8 +68,12 @@ export class UsershipmentComponent implements OnInit {
         // data => {
          // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
           console.log('Successs' )
-          this.httpService.Useraddressaddtocart(FName,province,City,Area,Mobile,Address,Shipmentaddress,Shipmentbilladdress).subscribe((response) => {
-         console.log(FName,province,City,Area,Mobile,Address,Shipmentaddress)
+          // fullname.value,address.value,province.value,city.value,area.value,default_shipment_address.value,default_bill_address.value,phone_no.value
+          // fullname.value,phone_no.value,province.value,city.value,area.value,default_shipment_address.value,default_bill_address.value,address.value
+          // fullname.value,address.value,province.value,city.value,area.value,default_shipment_address.value,default_bill_address.value,phone_no.value
+          this.httpService.Useraddressaddtocart(FName,Address,province,City,Area,Shipmentaddress,Shipmentbilladdress,Mobile).subscribe((response) => {
+         console.log(FName,Address,province,City,Area,Shipmentaddress,Shipmentbilladdress,Mobile)
+         
          this.obj.GetUSeraddress().subscribe(resAddSlidersData => {
           this.GetUSerAddress = resAddSlidersData;
           console.log('User Id is:', this.GetUSerAddress);

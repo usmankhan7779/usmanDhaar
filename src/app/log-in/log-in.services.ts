@@ -878,7 +878,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         console.log('Response:', res);
       });
   }
-  Useraddressaddtocart(FName: string, province: string, City: string, Area: string, Mobile: string, Address: string, Shipmentaddress,Shipmentbilladdress) {
+  Useraddressaddtocart(FName: string, Address: string, province: string, City: string, Area: string, Shipmentaddress,Shipmentbilladdress,Mobile) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     headers.append('Content-Type', 'application/json');
@@ -890,14 +890,23 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
        
         'fullname': FName,
         'address': Address,
-        'phone_no': Mobile,
         'province': province,
-        'default_shipment_address': Shipmentaddress,
-        'default_bill_address':Shipmentbilladdress,
         'city': City,
         'area': Area,
-        // 'Address': Address,
-        // 'Pic' : Pic,
+        'default_shipment_address': Shipmentaddress,
+        'default_bill_address':Shipmentbilladdress,
+        'phone_no': Mobile
+        // FName,address,province,city,area,Shipmentaddress,Shipmentbilladdress,mobile
+                // {
+        //   "fullname":"hassan",
+        //   "address":"2nd adrresss",
+        //   "province":"punjab",
+        //   "city":"fsd",
+        //   "area":"samanabad",
+        //   "default_shipment_address":false,
+        //   "default_bill_address":true,
+        //   "phone_no":"89128963447"
+        //   }
 
 
       }, { headers: headers })
@@ -906,6 +915,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
         if (res) {
           if (res.status === 201 || res.status === 200) {
             const responce_data = res.json();
+            return responce_data;
           }
         }
       }).catch((error: any) => {

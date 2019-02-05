@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
     ProID: any;
     Price: any;
   }[];
+  viewlogin;
   intervalId = 0;
   message = '';
   seconds = 59;
@@ -121,7 +122,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+this.viewlogin=localStorage.getItem('Authorization');
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
       this.ProductsAllCat();
@@ -195,17 +196,18 @@ export class HomeComponent implements OnInit {
   }
   ProductsAllCat() {
     // page: number
-    if (localStorage.getItem('Authorization') !== null) {
+    if (this.viewlogin !== null) {
       
       this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
-        let demoprods;
-        demoprods = resSlidersData.Results;
+        // let demoprods;
+        // demoprods = resSlidersData.Results;
+        this.GetALLProductss= resSlidersData.Results;
 // console.log(demoprods)
-        for (let prods of demoprods)
-        {
-          this.GetALLProductss.push(prods.product);
-        }
+        // for (let prods of demoprods)
+        // {
+          //this.GetALLProductss.push(prods.product);
+        // }
         console.log(this.GetALLProductss);
 
 
@@ -216,7 +218,7 @@ export class HomeComponent implements OnInit {
 
       });
     }
-    else {
+    else if (this.viewlogin == null){
       
       this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 

@@ -6,6 +6,7 @@ import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import {PaginatePipe, PaginationService} from 'ng2-pagination';
+import { HomeService } from '../home/home.services';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class SubCategoryDetailComponent implements OnInit {
   sub: any;
   modelNo: any;
   Trend: any = [];
+  Trendee: any = [];
   GetPhotos: any = [];
   CatName: any;
   Subcat: any;
@@ -39,7 +41,7 @@ export class SubCategoryDetailComponent implements OnInit {
 
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private _nav: Router,
-
+               private GetProducts: HomeService,
                private route: ActivatedRoute,
                private httpService: CategoryServices) { }
 
@@ -86,8 +88,16 @@ export class SubCategoryDetailComponent implements OnInit {
           //  console.log('Phones & Tablets')
           this.httpService.getAllSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
             data => {
-              this.Trend = data;
-              if (this.Trend['results'].length === 0) {
+              this.Trendee = data;
+              if (this.Trendee['results'].length === 0) {
+                this.errormessage = true;
+              }
+            });
+        this.Subcat = params['SubCat'];
+        this.GetProducts.PhoneandTablet(this.Subcat).subscribe(resSlidersData => {
+              console.log(resSlidersData)
+              this.Trend = resSlidersData.Results;
+              if (this.Trend['Total Result'] === 0) {
                 this.errormessage = true;
               }
             });

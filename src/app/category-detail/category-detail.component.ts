@@ -72,7 +72,7 @@ export class CategoryDetailComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.CatName = params['CatName'] || '0';
-alert(this.CatName)
+// alert(this.CatName)
         if (this.CatName === 'Phones & Tablets') {
           this.CoverPix = 'PT';
         } else if (this.CatName === 'Women\'s Fashion') {
@@ -108,14 +108,14 @@ alert(this.CatName)
               }
             });
           // }
-          this.httpService.getAllPhoneAndTabletProduct(1,this.CatName).subscribe(
-            data => {
+          // this.httpService.getAllPhoneAndTabletProduct(1,this.CatName).subscribe(
+          //   data => {
 
-              this.Trendee = data;
-              if (this.Trendee['totalItems'] === 0) {
-                this.errormessage = true;
-              }
-            });
+          //     this.Trendee = data;
+          //     if (this.Trendee['totalItems'] === 0) {
+          //       this.errormessage = true;
+          //     }
+          //   });
         this.Waitcall = false;
       });
     if (this.CatName === '0') {
