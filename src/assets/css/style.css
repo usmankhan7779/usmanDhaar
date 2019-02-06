@@ -9171,6 +9171,19 @@ hr.invis {
 .width100{
     width: 100%;
 }
+.download-here {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+    z-index: 9;
+}
+.download-here a {
+    display: inline-block;
+}
+.download-here img {
+    width: 123px;
+    height: 100%;
+}
 @media (max-width: 1153px) {
     .navbar-nav>li>a {
         font-size: 18px !important;

@@ -207,8 +207,8 @@
               <li *ngIf="!loginCheck()"><a [routerLink]="['/sign-up']" style="border-left: 1px solid black;"><i class="fa fa-lock header-icons-rightsetting"></i>Sign
                   up</a></li>
               <li *ngIf="loginCheck()"><a (click)="ValueReset()" [routerLink]="['/login']"><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
-              <li class="shop-cart"><a (click)="notgocart()" title="Shopping Cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <span>{{total}}</span></a></li>
+              <li class="shop-cart"><a (click)="notgocart()" title="Shopping Cart"> <i class="fas fa-shopping-cart"></i>
+                  <sup>{{total}}</sup></a></li>
               <!-- <li class="shop-cart"><a [routerLink]="['/checkout2']" title="Shopping Cart"> <span class="glyphicon glyphicon-shopping-cart"></span> <span>{{total}}</span></a></li> -->
             </ul>
           </div>
