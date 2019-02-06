@@ -129,62 +129,7 @@ export class HomeComponent implements OnInit {
       this.GetAllBuyNowproduct();
       this.GetAcutionProduct();
       this.GetFreateuredProducts();
-      // this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
-      //   this.GetALLProductss = resSlidersData;
-      //   // Sub_Sub_Cat_Name
-      //   // localStorage.setItem('sub_sub_cat', this.GetALLProductss.results[0].Sub_Sub_Cat_Name);
-      //   // localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
-
-      // });
-
-      // this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersData => {
-
-      //   this.GetALLBuyNowProductss = resSlidersData;
-      //   // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
-      // });
-
-      // this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
-
-      //   this.GetALLAuctionProductss = resSlidersData;
-
-      // });
-      //this section for get all fearture products 
-
-      // this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
-
-      //   this.GetALLFeaturedProductss = resSlidersData;
-      // });
-
-      // this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
-      //   this.GetallPhoneProduct = resSlidersData;
-      // });
-
-
-      // this.GetProducts.GetWomenFashionProducts4().subscribe(resSlidersData => {
-
-      //   this.WomenFashionProducts = resSlidersData;
-      // });
-
-      // this.GetProducts.GetMenFashionProducts4().subscribe(resSlidersData => {
-
-      //   this.MenFashionProducts = resSlidersData;
-      // });
-
-      // this.GetProducts.getTVAudioVideoProduct().subscribe(resSlidersData => {
-
-      //   this.getTvAudioVideoProduct = resSlidersData;
-      // });
-
-      // this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
-
-      //   this.getcomputinglaptopsproduct = resSlidersData;
-      // });
-
-      // this.GetProducts.gethomeappliancesproduct8().subscribe(resSlidersData => {
-
-      //   this.gethomeappliancesproduct = resSlidersData;
-      // });
       this.PhoneandTablet();
       this.CategorySlider();
       this.HotDealSlider();
@@ -256,7 +201,7 @@ export class HomeComponent implements OnInit {
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersDatass => {
 
         this.GetALLBuyNowProductss = resSlidersDatass.Results;
-        alert(this.GetALLAuctionProductss)
+        // alert(this.GetALLAuctionProductss)
 
       });
     }
