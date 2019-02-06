@@ -195,77 +195,8 @@
 
         <div class="tab-content">
             <div id="productTabContent2" class="tab-pane fade in active">
- <ng-container *ngIf="this.viewlogin !== null" >
-  <div *ngFor="let Lastest of GetALLProductss">
-    <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-      <div class="item-inner">
-        <div class="product-thumbnail">
-          <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"-->
-          <!--class="product-item-photo"> <img class="product-image-photo" height="225"-->
-          <!--src="{{TvVideoaudio88.Pic }}"-->
-          <!--alt="{{TvVideoaudio88.Pic }}"></a>-->
-          <div class="hovereffect">
-            <img class="img-responsive" src="{{Lastest.product.Pic }}" alt="{{Lastest.product.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
-            <div class="overlay">
-              <h2>{{Lastest.product.Cat_Name}}</h2>
-              <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.id, CatName: Lastest.product.Cat_Name, SubCatName:Lastest.product.Sub_Sub_Cat_Name, id:Lastest.product.id }">Product
-                Detail</a>
-            </div>
-          </div>
-        </div>
 
-        <div class="pro-box-info">
-          <div class="item-info">
-            <div class="info-inner">
-              <div class="item-title">
-                <h4><a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.product.id, CatName: Lastest.product.Cat_Name, SubCatName:Lastest.product.Sub_Sub_Cat_Name, id:Lastest.product.id }">{{
-                    Lastest.product.P_Title }} </a></h4>
-              </div>
-              <div class="item-content">
-
-                <div *ngIf="Lastest.product.Auction == true" class="item-price">
-
-                  <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                        Lastest.product.SrartingPrice | number:'.0-0' }}</span> </span>
-                  </div>
-
-
-                </div>
-                <div *ngIf="Lastest.product.Auction == false" class="item-price">
-                  <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                        Lastest.product.FixedPrice | number:'.0-0' }}</span> </span>
-                  </div>
-                </div>
-
-
-              </div>
-
-
-            </div>
-          </div>
-          <div class="box-hover">
-            <div class="product-item-actions">
-              <div *ngIf="Lastest.product.Auction == true" class="pro-actions">
-                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.id, CatName: Lastest.product.Cat_Name ,  SubCatName:Lastest.product.Sub_Sub_Cat_Name, id:Lastest.product.id}">
-                  <button class="action add-to-cart" type="button" title="Add to Cart">
-                    <span>Bid Now</span></button>
-                </a>
-              </div>
-              <div *ngIf="Lastest.product.Auction == false" class="pro-actions">
-                <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.id, CatName: Lastest.product.Cat_Name, SubCatName:Lastest.product.Sub_Sub_Cat_Name, id:Lastest.product.id }">
-                  <button class="action add-to-cart" type="button" title="Add to Cart">
-                    <span>Buy Now</span></button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
- </ng-container>
-<ng-container *ngIf="this.viewlogin == null">
+<!-- <ng-container *ngIf="this.viewlogin == null"> -->
           <div *ngFor="let Lastest of GetALLProductss">
             <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
               <div class="item-inner">
@@ -334,7 +265,7 @@
             </div>
 
           </div>
-          </ng-container>
+          <!-- </ng-container> -->
             </div>
 
 
@@ -394,9 +325,9 @@
                               <span>Bid Now</span></button>
                           </a>
                         </div>
-                        <!-- *ngIf="TvVideoaudio88.product.Auction == false" -->
+                        <!-- *ngIf="TvVideoaudio88.Auction == false" -->
                         <div *ngIf="BuyNow.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.product.Sub_Sub_Cat_Name, id:BuyNow.id }">
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy Now</span></button>
                           </a>
                         </div>
@@ -416,10 +347,10 @@
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
-                      <img class="img-responsive" src="{{Auctionpro.product.Pic}}" alt="{{Auctionpro.product.Pic }}"
+                      <img class="img-responsive" src="{{Auctionpro.Pic}}" alt="{{Auctionpro.Pic }}"
                         onerror="this.src='../../assets/images/Check-Resolution.png'">
                       <div class="overlay">
-                        <h2>{{Auctionpro.product.Cat_Name}}</h2>
+                        <h2>{{Auctionpro.Cat_Name}}</h2>
                         <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id }">Product
                           Detail</a>
                       </div>
@@ -478,16 +409,16 @@
           </div>
           <div class="tab-pane fade" id="featured">
 
-            <ng-container *ngFor="let TvVideoaudio88 of GetALLFeaturedProductss.Results">
+            <ng-container *ngFor="let TvVideoaudio88 of GetALLFeaturedProductss">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.product.Pic }}" alt="{{TvVideoaudio88.product.Pic }}"
+                      <img class="img-responsive" src="{{TvVideoaudio88.Pic }}" alt="{{TvVideoaudio88.Pic }}"
                         onerror="this.src='../../assets/images/Check-Resolution.png'">
                       <div class="overlay">
                         <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">Product
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product
                           Detail</a>
                       </div>
                     </div>
@@ -498,24 +429,24 @@
                     <div class="item-info">
                       <div class="info-inner">
                         <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name,SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">
-                              {{TvVideoaudio88.product.P_Title }} </a></h4>
+                          <h4><a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                              {{TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
                           <!-- <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                             class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                           </div> -->
 
-                          <div *ngIf="TvVideoaudio88.product.Auction == true" class="item-price">
+                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.product.MaxBidPrice | number:'.0-0'}}</span> </span>
+                                  TvVideoaudio88.MaxBidPrice | number:'.0-0'}}</span> </span>
                             </div>
 
                           </div>
-                          <div *ngIf="TvVideoaudio88.product.Auction == false" class="item-price">
+                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.product.FixedPrice | number:'.0-0' }}</span> </span>
+                                  TvVideoaudio88.FixedPrice | number:'.0-0' }}</span> </span>
                             </div>
                           </div>
 
@@ -527,14 +458,14 @@
                     </div>
                     <div class="box-hover">
                       <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.product.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name,SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">
+                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart">
                               <span>Bid Now</span></button>
                           </a>
                         </div>
-                        <div *ngIf="TvVideoaudio88.product.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name,SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">
+                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy Now</span></button>
                           </a>
                         </div>

@@ -122,12 +122,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-this.viewlogin=localStorage.getItem('Authorization');
+    this.viewlogin = localStorage.getItem('Authorization');
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
       this.ProductsAllCat();
-      // this.GetAllBuyNowproduct();
-      // this.GetAcutionProduct();
+      this.GetAllBuyNowproduct();
+      this.GetAcutionProduct();
+      this.GetFreateuredProducts();
       // this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
       //   this.GetALLProductss = resSlidersData;
@@ -146,7 +147,7 @@ this.viewlogin=localStorage.getItem('Authorization');
       // this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
       //   this.GetALLAuctionProductss = resSlidersData;
-       
+
       // });
       //this section for get all fearture products 
 
@@ -198,17 +199,16 @@ this.viewlogin=localStorage.getItem('Authorization');
   ProductsAllCat() {
     // page: number
     if (this.viewlogin !== null) {
-      
+
       this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
-        // let demoprods;
-        // demoprods = resSlidersData.Results;
-        this.GetALLProductss= resSlidersData.Results;
-// console.log(demoprods)
-        // for (let prods of demoprods)
-        // {
-          //this.GetALLProductss.push(prods.product);
-        // }
+        let demoprods;
+        demoprods = resSlidersData.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demoprods)
+        for (let prods of demoprods) {
+          this.GetALLProductss.push(prods.product);
+        }
         console.log(this.GetALLProductss);
 
 
@@ -219,15 +219,15 @@ this.viewlogin=localStorage.getItem('Authorization');
 
       });
     }
-    else if (this.viewlogin == null){
-      
+    else if (this.viewlogin == null) {
+
       this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
         this.GetALLProductss = resSlidersData.Results;
 
-      
+
         console.log(this.GetALLProductss, 'response')
-        
+
 
       });
 
@@ -240,8 +240,16 @@ this.viewlogin=localStorage.getItem('Authorization');
     if (this.viewlogin !== null) {
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersDatass => {
 
-        this.GetALLBuyNowProductss = resSlidersDatass.Results.product;
-        // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+        // this.GetALLBuyNowProductss = resSlidersDatass.Results.product;
+        let demobuyprods;
+        demobuyprods = resSlidersDatass.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demobuyprods)
+        for (let prods of demobuyprods) {
+          this.GetALLBuyNowProductss.push(prods.product);
+        }
+        console.log(this.GetALLProductss);
+
       });
     }
     else if (this.viewlogin == null) {
@@ -249,30 +257,73 @@ this.viewlogin=localStorage.getItem('Authorization');
 
         this.GetALLBuyNowProductss = resSlidersDatass.Results;
         alert(this.GetALLAuctionProductss)
-        // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
+
       });
     }
   }
-  GetAcutionProduct(){
-    if (localStorage.getItem('Authorization') !== null) {
+  GetAcutionProduct() {
+    if (this.viewlogin !== null) {
       // if (page < 1 || page > this.pager.totalPages) {
       //   return;
       // }
       // alert(localStorage.getItem('Authorization'))
       // this.GetALLProductss=undefined;
-    this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
+      this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
-      this.GetALLAuctionProductss = resSlidersData.Results;
-     
-    });
-  }
-  else{
-    this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
+        // this.GetALLAuctionProductss = resSlidersData.Results;
+        let demoactuprods;
+        demoactuprods = resSlidersData.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demoactuprods)
+        for (let prods of demoactuprods) {
+          this.GetALLAuctionProductss.push(prods.product);
+        }
+        console.log(this.GetALLAuctionProductss);
 
-      this.GetALLAuctionProductss = resSlidersData.Results;
-     
-    });
+
+      });
+    }
+    else if (this.viewlogin == null) {
+      this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
+
+        this.GetALLAuctionProductss = resSlidersData.Results;
+
+      });
+    }
   }
+  GetFreateuredProducts() {
+    // this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
+
+    //   this.GetALLFeaturedProductss = resSlidersData;
+    // });
+    if (this.viewlogin !== null) {
+      // if (page < 1 || page > this.pager.totalPages) {
+      //   return;
+      // }
+      // alert(localStorage.getItem('Authorization'))
+      // this.GetALLProductss=undefined;
+      this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
+
+        // this.GetALLAuctionProductss = resSlidersData.Results;
+        let demofreprods;
+        demofreprods = resSlidersData.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demofreprods)
+        for (let prods of demofreprods) {
+          this.GetALLFeaturedProductss.push(prods.product);
+        }
+        console.log(this.GetALLFeaturedProductss);
+
+
+      });
+    }
+    else if (this.viewlogin == null) {
+      this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
+
+        this.GetALLFeaturedProductss = resSlidersData.Results;
+
+      });
+    }
   }
   PhoneandTablet() {
 
