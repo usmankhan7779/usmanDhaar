@@ -65,7 +65,7 @@
           <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
             <div class="product-name width100 pull-left">
               <h1>{{ resultProduct.P_Title}}</h1>
-              <h1 class="text-right"><i class="far fa-heart"></i></h1>
+              <h1 class="text-right"><i class="fas fa-heart"></i></h1>
             </div>
             <ng-container *ngIf="resultProduct.Auction">
               <div class="price-box">
@@ -79,7 +79,7 @@
                 <p class="availability in-stock pull-right">Availability: <span *ngIf="!Solddd" class="not-sold">In Stock</span> <span *ngIf="Solddd" class="sold">Sold Out</span></p>
               </div>
               <div class="product-variation">
-                <div id="clockdiv" style="margin-bottom: 15px; float: left;">
+                <div id="clockdiv">
                   <div>
                     <span class="days">{{days}}</span>
                     <div class="smalltext">Days</div>
@@ -97,7 +97,6 @@
                     <div class="smalltext">Seconds</div>
                   </div>
                 </div>
-                <br>
                 <div class="product-cart-option">
                   <ul>
                     <li><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{ BidingProduct.length}})</span></a></li>
@@ -117,7 +116,7 @@
                 </ng-container>
                 <ng-container *ngIf="LoginID">
                   <ng-container *ngIf="AuctionTest == true">
-                    <div>
+                    <div class="message-alerts">
                       <div  *ngIf="highestbid && !Timeclose" class="bid-message alert alert-success">
                         "Congrats. You are the current High Bidder."
                       </div>
@@ -448,7 +447,7 @@
                         <div class="col-xs-10">
                           <div class="page-content checkout-page">
                             <div class="page-title">
-                              <h2>Biding History</h2>
+                              <h2>Bidding History</h2>
                             </div>
 
                             <!--<h4 class="checkout-sep">Biding History</h4>-->

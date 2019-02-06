@@ -452,9 +452,8 @@ input:focus {
 }
 
 .col1-layout .col-main {
-    float: none;
-    width: auto;
-    margin-top: 0%
+    float: left;
+    width: 100%;
 }
 
 .col2-left-layout .col-main {
@@ -5555,10 +5554,10 @@ ul.products-list .sale-left {
 }
 
 .product-view-area {
-    margin: auto;
     position: relative;
     z-index: 0;
-    margin: 10px 15px;
+    width: 100%;
+    float: left;
 }
 
 .product-view-area .flexslider-thumb {
@@ -5743,7 +5742,9 @@ ul.products-list .sale-left {
 
 .product-view-area .product-details-area .ratings {
     padding: 5px 0 0;
-    margin: auto
+    margin: auto;
+    float: left;
+    width: 100%;
 }
 
 .product-view-area .product-details-area .ratings .rating {
@@ -5784,6 +5785,8 @@ ul.products-list .sale-left {
 
 .product-view-area .product-details-area .price-box {
     display: block;
+    float: left;
+    width: 100%;
 }
 
 .product-view-area .product-details-area .price-box .old-price {
@@ -6001,7 +6004,11 @@ button.button.pro-add-to-cart span {
     color: #fff;
     cursor: pointer;
 }
-
+.product-tab-inner .nav-tabs>li.active>a,
+.product-tab-inner .nav-tabs>li.active>a:hover,
+.product-tab-inner .nav-tabs>li.active>a:focus {
+    border: 1px solid #000;
+}
 .nav-tabs>li>a:hover {
     background: #000000;
     color: #fff;
@@ -6251,7 +6258,14 @@ textarea {
 .col2-right-layout .product-view-area .flexslider-thumb {
     padding: 22px 65px
 }
-
+.product-view-area .product-cart-option{
+    float: right;
+    margin-top: 20px;
+}
+.product-view-area .message-alerts{
+    float: left;
+    width: 100%;
+}
 .product-view-area ul,
 .product-overview-tab ul {
     padding: 0px;
@@ -6294,7 +6308,7 @@ textarea {
 
 .page-title h2 {
     display: inline-block;
-    font-size: 24px;
+    font-size: 20px;
     letter-spacing: 1px;
     line-height: normal;
     margin: 0 0 10px;
@@ -9170,6 +9184,22 @@ hr.invis {
 }
 .width100{
     width: 100%;
+}
+.download-here {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+    z-index: 9;
+}
+.download-here a {
+    display: inline-block;
+}
+.download-here img {
+    width: 123px;
+    height: 100%;
+}
+ngx-image-viewer .img-container{
+    background-color: transparent !important;
 }
 @media (max-width: 1153px) {
     .navbar-nav>li>a {

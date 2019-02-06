@@ -73,7 +73,8 @@
   /*display: block;*/
 /*}*/
 .dropdown-menu > li > a:hover i{color: white}
-.shop-cart a{color: red}
+.shop-cart a{font-size: 17px;}
+.shop-cart a sup{top: -20px;left: -5px;font-size: 14px;}
 
 
 
