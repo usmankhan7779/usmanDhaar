@@ -3808,7 +3808,6 @@ footer .footer-links ul li a:before {
     display: inline-block;
     cursor: pointer;
     line-height: 20px;
-    margin-right: 5px
 }
 
 footer .footer-links ul li a {
@@ -3921,19 +3920,24 @@ footer .phone .fa-phone:before {
     display: inline-block;
     width: 100%;
 }
+.newsletter-inner .form-group{
+    margin: 0;
+}
 
 .footer-newsletter h3 {
     margin-top: 12px;
     font-size: 16px;
     margin-bottom: 0px;
     border: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 0.5px;
     margin-top: 15px;
     padding-bottom: 0px;
     font-weight: 600;
 }
-
+.color-red{
+    color: #ff0000;
+}
 .footer-newsletter p {
     font-size: 13px;
     font-weight: 400;
@@ -3952,7 +3956,8 @@ footer .phone .fa-phone:before {
     color: #666;
     padding: 10px 12px;
     width: 68%;
-    border-radius: 50px 0px 0px 50px;
+    border-radius: 5px 0px 0px 5px;
+    height: 50px;
 }
 
 .footer-newsletter .email {
@@ -3973,9 +3978,11 @@ button.subscribe:before {
     color: #fff;
     text-decoration: none;
     background: #ed2424;
-    padding: 18px 25px 11px 18px;
-    border: 0px #000000 solid;
-    border-radius: 0px 50px 50px 0px;
+    padding: 10px 12px;
+    border: 1px #ed2424 solid;
+    border-radius: 0px 5px 5px 0px;
+    height: 50px;
+    width: 32%;
 }
 
 .footer-newsletter .subscribe:hover {
@@ -4007,7 +4014,7 @@ button.subscribe:before {
 .social .rss a:hover,
 .social .instagram a:hover,
 .social .linkedin a:hover {
-    background: #ed2424;
+    margin: 0 5px 0 0;
 }
 
 .social .fb a {
@@ -4052,6 +4059,7 @@ button.subscribe:before {
 .social ul li {
     margin-left: 0px;
     display: block;
+    float: left;
 }
 
 .social ul li:first-child {
@@ -5989,7 +5997,7 @@ button.button.pro-add-to-cart span {
 .nav-tabs>li.active>a:hover,
 .nav-tabs>li.active>a:focus {
     background: #000000;
-    border: 1px solid #000000;
+    border: 1px solid #ff0000;
     color: #fff;
     cursor: pointer;
 }
@@ -9119,7 +9127,6 @@ hr.invis {
 .logo-box {
     width: 25%;
     float: left;
-    padding-left: 20px;
 }
 
 .search-box {
