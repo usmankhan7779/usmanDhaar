@@ -126,8 +126,8 @@ this.viewlogin=localStorage.getItem('Authorization');
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0, 0);
       this.ProductsAllCat();
-      this.GetAllBuyNowproduct();
-      this.GetAcutionProduct();
+      // this.GetAllBuyNowproduct();
+      // this.GetAcutionProduct();
       // this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
       //   this.GetALLProductss = resSlidersData;
@@ -148,11 +148,12 @@ this.viewlogin=localStorage.getItem('Authorization');
       //   this.GetALLAuctionProductss = resSlidersData;
        
       // });
+      //this section for get all fearture products 
 
-      this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
+      // this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
 
-        this.GetALLFeaturedProductss = resSlidersData;
-      });
+      //   this.GetALLFeaturedProductss = resSlidersData;
+      // });
 
       // this.GetProducts.GetAllPhoneandtabletsProducts().subscribe(resSlidersData => {
       //   this.GetallPhoneProduct = resSlidersData;
@@ -236,17 +237,18 @@ this.viewlogin=localStorage.getItem('Authorization');
 
   GetAllBuyNowproduct() {
     // (localStorage.getItem('UserID') !== null)
-    if (localStorage.getItem('Authorization') !== null) {
+    if (this.viewlogin !== null) {
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersDatass => {
 
         this.GetALLBuyNowProductss = resSlidersDatass.Results.product;
         // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
       });
     }
-    else {
+    else if (this.viewlogin == null) {
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersDatass => {
 
         this.GetALLBuyNowProductss = resSlidersDatass.Results;
+        alert(this.GetALLAuctionProductss)
         // localStorage.setItem('sub_sub_cat', this.GetALLBuyNowProductss.results[0].Sub_Sub_Cat_Name);
       });
     }
