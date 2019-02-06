@@ -395,9 +395,9 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .usernavdash{margin-bottom:30px;}
 .usernavdash li a{border:1px solid #eee;border-bottom:none;padding:10px 18px;border-radius: 5px;text-transform: capitalize;color:#444;display:block;font-size:18px;background:#fff;cursor: pointer;}
 .usernavdash li:last-child a{border-bottom:1px solid #eee;}
-.usernavdash li a:hover{background:#ed2424;color:#fff;text-decoration:none;}
+.usernavdash li a:hover{background:#000;color:#fff;text-decoration:none;}
 .usernavdash li i{margin-right:2px;font-size:18px;width:25px;float: left;}
-.usernavdash li a.active{background:#ed2424;color:#fff;}
+.usernavdash li a.active{background:#000;color:#fff;}
 .profilestat li .inbox{border:1px solid #eee;text-align:center;background:#fff;padding:15px 10px;margin-bottom:30px;margin-left:15px;}
 .profilestat li i{font-size:36px;color:#999;margin-bottom:15px;display:block;}
 .profilestat li h6{font-size:30px;font-weight:600;color:#ed2424;margin-bottom:10px;}
@@ -652,7 +652,7 @@ blockquote:after{color:#ddd;content:"\f10e";display:inline-block;font-family:Hin
 .fullpagesearch .copyright{position:absolute;left:0;bottom:0;width:100%;}
 .user-detail{
     margin-top: 60px;
-    background: #ed2424;
+    background: #000;
     position: relative;
     border-radius: 5px;
     padding: 0 0 10px;

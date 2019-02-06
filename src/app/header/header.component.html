@@ -200,6 +200,10 @@
                   <li><a [routerLink]="['/contact-us']">FAQs</a></li>
                 </ul>
               </li>
+              <li class="shop-cart"><a title="Watchlist"> <i class="fas fa-heart"></i>
+                  <sup>3</sup></a></li>
+              <li class="shop-cart"><a (click)="notgocart()" title="Shopping Cart"> <i class="fas fa-cart-plus"></i>
+                <sup>{{total}}</sup></a></li>
               <li *ngIf="loginCheck()"><a (click)="gotodashboard()" class="myDhaar" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My
                   Dhaar </a></li>
               <li *ngIf="!loginCheck()"><a [routerLink]="['/login']"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log
@@ -207,8 +211,7 @@
               <li *ngIf="!loginCheck()"><a [routerLink]="['/sign-up']" style="border-left: 1px solid black;"><i class="fa fa-lock header-icons-rightsetting"></i>Sign
                   up</a></li>
               <li *ngIf="loginCheck()"><a (click)="ValueReset()" [routerLink]="['/login']"><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
-              <li class="shop-cart"><a (click)="notgocart()" title="Shopping Cart"> <i class="fas fa-shopping-cart"></i>
-                  <sup>{{total}}</sup></a></li>
+
               <!-- <li class="shop-cart"><a [routerLink]="['/checkout2']" title="Shopping Cart"> <span class="glyphicon glyphicon-shopping-cart"></span> <span>{{total}}</span></a></li> -->
             </ul>
           </div>
