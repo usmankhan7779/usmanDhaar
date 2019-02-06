@@ -168,7 +168,7 @@
         <ul class="nav nav-tabs collapse navbar-collapse" role="tablist" id="myTablist">
           <li style="text-align: center" role="presentation" class="active"><a href="#productTabContent2" aria-controls="home" role="tab"
               data-toggle="tab">Latest</a></li>
-          <li style="text-align: center" role="presentation"><a href="#buynow" aria-controls="profile" role="tab"
+          <li style="text-align: center" role="presentation"><a href="#buynow" (click)="GetAllBuyNowproduct()" aria-controls="profile" role="tab"
               data-toggle="tab">Buy Now</a></li>
           <li style="text-align: center" role="presentation"><a href="#auction" aria-controls="messages" role="tab"
               data-toggle="tab">Auction</a></li>
@@ -193,7 +193,8 @@
         <!--&lt;!&ndash; /.nav-tabs &ndash;&gt;-->
         <!--</div>-->
 
-        <div id="productTabContent2" class="tab-content">
+        <div class="tab-content">
+            <div id="productTabContent2" class="tab-pane fade in active">
  <ng-container *ngIf="this.viewlogin !== null" >
   <div *ngFor="let Lastest of GetALLProductss">
     <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
@@ -334,6 +335,7 @@
 
           </div>
           </ng-container>
+            </div>
 
 
 
@@ -387,14 +389,14 @@
                     <div class="box-hover">
                       <div class="product-item-actions">
                         <div *ngIf="BuyNow.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  BuyNow.product.ProductID, CatName: BuyNow.product.Cat_Name, SubCatName:BuyNow.product.Sub_Sub_Cat_Name, id:BuyNow.product.id }">
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart">
                               <span>Bid Now</span></button>
                           </a>
                         </div>
                         <!-- *ngIf="TvVideoaudio88.product.Auction == false" -->
                         <div *ngIf="BuyNow.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  BuyNow.product.ProductID, CatName: BuyNow.product.Cat_Name, SubCatName:BuyNow.product.Sub_Sub_Cat_Name, id:BuyNow.product.id }">
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.product.Sub_Sub_Cat_Name, id:BuyNow.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy Now</span></button>
                           </a>
                         </div>
