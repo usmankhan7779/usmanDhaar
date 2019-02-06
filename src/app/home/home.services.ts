@@ -19,6 +19,7 @@ export class HomeService {
   returnUrl: string;
   // http://192.168.30.225:9000
   // https://apis.dhaar.pk
+  
   ServerUrl = 'https://apis.dhaar.pk/products/';
   // serverurladdtocart=''
 
@@ -227,7 +228,7 @@ export class HomeService {
   }
 
   GetallUserReviewsBYProductId(pID: any) {
-    return this._http.get(this.ServerUrl + 'GetUserReviewsByProductID/' + pID).map(response => response.json());
+    return this._http.get(this.ServerUrl + 'InsertUserReview/' + pID).map(response => response.json());
   }
 
   GetallUserReviewsCalculationBYProductId(pID: any) {
@@ -847,10 +848,10 @@ export class HomeService {
       {
         // 'Name': Name,
         // 'user': user,
-        'Product_Id': Product_ID,
+        'productid': Product_ID,
         // 'StoreName': StoreName,
-        'Rating': RateNUmber,
-        'Reviews': Reviews,
+        'rating': RateNUmber,
+        'review': Reviews,
       },{headers:headers}).map((response: Response) => response.json());
 
 

@@ -290,11 +290,11 @@ export class Checkout2Component implements OnInit {
   TrashcartElement(Abc: any) {
 
     if (isPlatformBrowser(this.platformId)) {
-
-      for (const tmp of this.CartedProduct.Results) {
-        if (tmp.id === Abc) {
-          console.log(tmp.id);
-          this.GetAdd.DeleteTodoList(tmp.id).subscribe(data => {
+alert(Abc)
+      // for (const tmp of this.CartedProduct.Results) {
+      //   if (tmp.id === Abc) {
+          // console.log(tmp.id);
+          this.GetAdd.DeleteTodoList(Abc).subscribe(data => {
             // alert(tmp.product.id)
             this.total = this.CartedProduct['Total Result']
             // this._shareData.watchtotal(this.total);
@@ -316,8 +316,8 @@ export class Checkout2Component implements OnInit {
           });
           //  this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
           //localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
-        }
-      }
+        // }
+      // }
     }
   }
 

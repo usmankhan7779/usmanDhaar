@@ -82,7 +82,7 @@ const appRoutes: Routes = [
       { path: 'buyer-user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
       { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard] },
       { path: 'account-setting', loadChildren: './buyer-setting/buyer-setting.module#BuyerSettingModule', canActivate: [AuthGuard] },
-      { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', },
+      // { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', },
 
     ]
   },

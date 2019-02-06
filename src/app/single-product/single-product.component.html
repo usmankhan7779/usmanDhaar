@@ -141,17 +141,17 @@
                   <div *ngIf="MinBidPrice" class="alert alert-danger">
                     Minimum Bid Amount - Rs:  {{ resultProduct.MaxBidPrice + 1 | number:'.0-0' }}
                   </div>
-                  <ng-container *ngIf="!ourproduct">
+                  <ng-container *ngIf="ourproduct">
                     <div *ngIf="!Timeclose" class="cart-plus-minus" style="margin-bottom: 10px;">
                       <label for="qty">Place your Bid:</label>
                     </div>
                     <input *ngIf="!Timeclose" type="number" class="form-control" style="margin-bottom: 15px;"  placeholder="Minimum Bid Amount - Rs: {{ resultProduct.MaxBidPrice+1 | number:'.0-0' }}" name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
                     <div>
                       <button *ngIf="!Timeclose" class="button pro-add-to-cart" (click)="InsertBid(resultProduct.SrartingPrice, resultProduct.MaxBidPrice)" title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
-                      <div *ngIf="!WatchStatus">
+                      <div *ngIf="watchlist == 'false'" >
                         <button class="button pro-add-to-cart" title="Watch This Product" type="submit" style="margin-left: 10px; font-size: 17px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
                       </div>
-                      <div *ngIf="WatchStatus">
+                      <div *ngIf="watchlist == 'true'">
                         <button class="button pro-add-to-cart" title="Unwatch This Product" type="submit" style="margin-left: 10px; font-size: 17px; font-weight: bolder" (click)="UnwatchProduct()">Unwatch</button>
                       </div>
                     </div>
@@ -201,10 +201,12 @@
 
                     <button *ngIf="LoginID === true && resultProduct.Addbestoffer" class="button pro-add-to-cart singlebutton" style="margin-left: 3px;" (click)="MakeAnOffer()" title="Add to Cart" type="button">Make Offer</button>
                     <ng-container *ngIf="LoginID === true">
-                      <div *ngIf="WatchStatus.inwatchlist == false">
+                      <div *ngIf="watchlist == 'false'">
                         <button class="button pro-add-to-cart singlebutton" title="Watch This Product" type="submit" style="margin-left: 3px; float:left; font-size: 20px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
                       </div>
-                      <div *ngIf="WatchStatus.inwatchlist == true">
+                      <!-- watchlist -->
+                      <!-- WatchStatus -->
+                      <div *ngIf="watchlist == 'true'">
                         <button class="button pro-add-to-cart singlebutton" title="Unwatch This Product" type="submit" style="margin-left: 3px; float: left; font-size: 17px; font-weight: bolder" (click)="UnwatchProduct()">Unwatch</button>
                       </div>
                     </ng-container>
@@ -548,7 +550,7 @@
                       <div id="pro2-slider1" class="product-flexslider hidden-buttons">
                         <div class="slider-items slider-width-col6">
 
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" class="product-item-photo"> 
+                          <a [routerLink]="['/single-product']" [queryParams]="{  ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }" class="product-item-photo"> 
                             <img class="product-image-photo" src="{{ phoneProducts.Pic.split(',')[0] }}" alt="{{phoneProducts.pic }}"></a>
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                           <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
@@ -566,7 +568,7 @@
                     <div class="item-info">
                       <div class="info-inner">
                         <div class="item-title">
-                          <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">{{ phoneProducts.P_Title }}  </a></h4>
+                          <h4> <a title="Product Title Here" (click)="refresh()" [routerLink]="['/single-product']" [queryParams]="{  ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }">{{ phoneProducts.P_Title }}  </a></h4>
                         </div>
                         <div class="item-content">
                           <div *ngIf="phoneProducts.Auction == true" class="item-price">
@@ -583,11 +585,14 @@
                     <div class="box-hover">
                       <div class="product-item-actions">
                         <ng-container *ngIf="ourproduct">
+                            <!-- ProID=e3d4788253684dd88a84a3d1e70b73aa&CatName=Phones%20%26%20Tablets&SubCatName=Smartphones&id=269 -->
+                            <!-- <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }"> -->
+
                         <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> Bid Now</button> </a>
+                          <a (click)="refresh()" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> Bid Now</button> </a>
                         </div>
                         <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> Buy Now</button> </a>
+                          <a (click)="refresh()" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> Buy Now</button> </a>
                         </div>
                         </ng-container>
                       </div>
