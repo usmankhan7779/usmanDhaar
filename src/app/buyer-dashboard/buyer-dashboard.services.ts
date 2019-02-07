@@ -19,6 +19,7 @@ export class BuyerDashboardServices {
   ServerUrl = 'https://apis.dhaar.pk/products/';
   // saleServerUrl = 'https://apis.dhaar.pk/sale/';
   saleServerUrl = 'https://apis.dhaar.pk/sale/';
+  posturl='https://apis.dhaar.pk/payment/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _http: Http,
@@ -86,11 +87,14 @@ export class BuyerDashboardServices {
     });
   }
 
-  Invoice(invID:any, invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
+  Invoice( invBalance: any, invPay: any,  invGuest: any, invUserID: any) {
 
-
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.post(this.saleServerUrl + 'AddcustomerInvoice', {
-      'InvoicesID': invID,
+      // 'InvoicesID': invID,
       'InvoicesBalance': invBalance,
       'InvoicesPayment': invPay,
       'InvoicesAsGuest': invGuest,
@@ -101,7 +105,7 @@ export class BuyerDashboardServices {
       //   InvoicesAsGuest:false,
       //   InvoicesAsUserID:277
       //   }
-    })
+    },{headers:headers})
       .map((res: Response) => {
         if (res) {
           const responce_data = res.json();
@@ -127,7 +131,7 @@ export class BuyerDashboardServices {
     console.log('pofile', localStorage.getItem('Authorization'));
     if (isPlatformBrowser(this.platformId)){
 
-      return this._http.post(this.saleServerUrl+'payment/post_payment/',
+      return this._http.post(this.posturl+'post_payment/',
         {
 
 
@@ -159,14 +163,17 @@ export class BuyerDashboardServices {
   }
 
   InvoiceProducts(invID: any , prodID: any, Quantity: any, UserID: any) {
-
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
     if (isPlatformBrowser(this.platformId)) {
       return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceProduct', {
         'InvoicesID': invID,
         'ProductID': prodID,
         'UserID': UserID,
         'Qty': Quantity
-      })
+      },{headers:headers})
         .map((res: Response) => {
           if (res) {
             console.log(res.status);
@@ -181,14 +188,44 @@ export class BuyerDashboardServices {
     }
   }
 
+  Paymentemail(invID: any , userid: any) {
+      // sale/OrderEmail/
+      const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.post(this.saleServerUrl + 'OrderEmail', {
+      'InvoicesID': invID, 'user': userid,
+      // 'InvoicesID': invID, 'First_Name': fname, 'Last_Name': lname
+      // , 'Email': email, 'State': state
+      // , 'Country': country, 'City': city, 'Zip': zip, 'Address': address,  'Telephon': telephone, 'Fax': fax
+      // sale/OrderEmail/
+    },{headers:headers})
+      .map((res: Response) => {
+        if (res) {
+          console.log(res.status);
+          if (res.status === 200) {
 
-  CustomerInvoiceShippingAddress(invID: any , fname: any, lname: any, email: any, state: any, country: any, city: any, zip: any, address: any, telephone: any, fax: any) {
+          }
+        }
+      }).catch((error: any) => {
+
+        return Observable.throw(new Error(error.status));
+      });
+
+  }
+  CustomerInvoiceShippingAddress(invID: any , shipmentid: any) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.post(this.saleServerUrl + 'AddcustomerInvoiceShippingAddrres', {
-      'InvoicesID': invID, 'First_Name': fname, 'Last_Name': lname
-      , 'Email': email, 'State': state
-      , 'Country': country, 'City': city, 'Zip': zip, 'Address': address,  'Telephon': telephone, 'Fax': fax
-
-    })
+      'InvoicesID': invID, 'ShipmentID': shipmentid,
+      // 'InvoicesID': invID, 'First_Name': fname, 'Last_Name': lname
+      // , 'Email': email, 'State': state
+      // , 'Country': country, 'City': city, 'Zip': zip, 'Address': address,  'Telephon': telephone, 'Fax': fax
+      // sale/OrderEmail/
+    },{headers:headers})
       .map((res: Response) => {
         if (res) {
           console.log(res.status);

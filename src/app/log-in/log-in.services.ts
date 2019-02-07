@@ -29,7 +29,8 @@ export class LoginService {
   ServerUrl = 'https://apis.dhaar.pk/user/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
   EMailServerUrl = 'https://apis.dhaar.pk/rest-auth/';
-
+users;
+getusers;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private _http: HttpService,
@@ -56,12 +57,21 @@ export class LoginService {
               localStorage.setItem('Authorization',this.decoded);
               this.GetUSerdetailsByUserId().subscribe(resSlidersData => {
                 // alert(resSlidersData['ISConfirmed'])
+                this.users= resSlidersData;
+                this.getusers= this.users.user;
+                console.log(this.users)
+                // alert(this.getusers)
+                localStorage.setItem('userss',this.getusers)
+                
+                // localStorage.setitem('users',this.users.user)
+                // alert(this.users.user)
                 if (resSlidersData['ISConfirmed'] === true) {
-                  // alert(localStorage.setItem('Authorization', this.decoded))
+                //  alert(localStorage.setItem('Authorization', this.decoded))
                   localStorage.setItem('Authorization', this.decoded);
                   localStorage.setItem('password', null);
                   localStorage.setItem('Username', null);
                   localStorage.setItem('UserName', mail);
+                 
 
                   if (CatName !== null && ProID !== null) {
 
