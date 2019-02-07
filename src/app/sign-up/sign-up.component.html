@@ -20,19 +20,15 @@
 <div class="listpgWraper">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="userccount" style="    margin-top: 80px;">
-          <div class="login-form-1-header" style="margin-top: -80px">
+      <div class="login-signup-page">
+        <div class="userccount" style="margin-top: 80px;">
+          <div class="login-form-1-header">
             <h3>Create a new account</h3>
             <ul class="logic-from-1-sl">
               <li><a href=""><i class="fa fa-facebook"></i></a></li>
               <li><a href=""><i class="fa fa-twitter"></i></a></li>
               <li><a href=""><i class="fa fa-google-plus"></i></a></li>
             </ul>
-            <div class="signup-header-text">
-              <b> Signed Up?</b>
-              <a routerLink='/login'><u style="color: #ffffff"> Login Here..</u></a>
-            </div>
           </div>
 
           <!--<div class="alert alert-success" role="alert"><strong>Well done!</strong> Your account successfully created.</div>-->
@@ -53,11 +49,7 @@
             </div>
             <div *ngIf="EmailPosterror==true" class="alert alert-danger">
               <strong>Error!</strong> Invalid email format.
-              .
             </div>
-
-
-            <h5 style="color:#ed2424; ">User Sign up</h5>
             <div id="wsell" class="formpanel tab-pane fade in active">
               <form role="form" class="login-form" (ngSubmit)="f.form.valid && captcha && register()" #f="ngForm" novalidate>
 
@@ -146,7 +138,7 @@
 
               <div class="formrow label-overlay">
 
-                <input type="checkbox" name="Agree" placeholder="Your Mobile Number" [(ngModel)]="model.Agree" #Agree="ngModel" >I have read and agree to the <a [routerLink]="['/terms-use']" style="color: red"> Terms and Conditions</a><!-- End .form-group -->
+                <input type="checkbox" name="Agree" [(ngModel)]="model.Agree" #Agree="ngModel"> I have read and agree to the <a [routerLink]="['/terms-use']"> Terms and Conditions</a><!-- End .form-group -->
                 <!--[textMask]="{mask: mask}"-->
               </div>
 
@@ -160,13 +152,10 @@
                 <re-captcha  (resolved)="resolved($event)" siteKey="6LcMeE4UAAAAAORPbOfwjGczzxsz843f24BA92IN" required></re-captcha>
                 <div *ngIf="f.submitted && !captcha" class="help-block">Recaptcha is required</div>
                 </div>
-              <br/>
-                <div *ngIf="Waitcall" class="alert  alert-info">
-                  <p class="">
-
-
-                    <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
-
+                <div *ngIf="Waitcall" class="alert alert-info">
+                  <p>
+                    <span style="color: blue" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                    <span>&nbsp;Loading ...</span>
                   </p>
                 </div>
                 <input type="submit" class="btn" value="Register">
@@ -194,7 +183,7 @@
               <!--<input type="submit" class="btn" value="Register">-->
             <!--</div>-->
           </div>
-          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> Already a Member? <a [routerLink]="['/login']" href="#.">Login Here</a></div>
+          <div class="newuser">Already a Member? <a [routerLink]="['/login']" href="#.">Login Here</a></div>
 
 
           <!--<div class="socialLogin">-->

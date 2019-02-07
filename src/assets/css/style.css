@@ -8881,7 +8881,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 
 .login-form-1-header {
     position: relative;
-    background: #cc0000;
+    background: #000000;
     color: #fff;
     font-weight: bold;
     font-size: 30px;
@@ -8892,12 +8892,6 @@ all and (min-width:992px) and (-webkit-transform-3d) {
     width: 100%;
     border-radius: 5px;
 }
-
-.login-form-1-header h3 {
-    text-align: center;
-    margin-bottom: 6px !important;
-}
-
 .logic-from-1-sl {
     padding: 0;
     margin: 0;
@@ -8917,19 +8911,16 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 }
 
 .logic-from-1-sl > li > a > .fa-facebook:hover {
-    transform: rotate(360deg);
     transition: 0.5s;
     color: #428bca;
 }
 
 .logic-from-1-sl > li > a > .fa-twitter:hover {
-    transform: rotate(360deg);
     transition: 0.5s;
     color: #5bc0de;
 }
 
 .logic-from-1-sl > li > a > .fa-google-plus:hover {
-    transform: rotate(360deg);
     transition: 0.5s;
     color: #d34836;
 }
@@ -9010,24 +9001,10 @@ all and (min-width:992px) and (-webkit-transform-3d) {
     box-shadow: 0px 5px 10px #ccc;
 }
 
-.login-form-1-header {
-    position: relative;
-    background: #cc0000;
-    color: #fff;
-    font-weight: bold;
-    font-size: 30px;
-    padding: 10px;
-    box-sizing: border-box;
-    box-shadow: 0px 7px 15px #a5a5a5;
-    margin-top: -60px;
-    width: 100%;
-    margin-bottom: 40px;
-    border-radius: 5px;
-}
-
 .login-form-1-header h3 {
     text-align: center;
-    margin-bottom: 6px !important;
+    margin-bottom: 6px;
+    color: #fff;
 }
 
 .logic-from-1-sl {
@@ -9036,34 +9013,10 @@ all and (min-width:992px) and (-webkit-transform-3d) {
     text-align: center;
 }
 
-.logic-from-1-sl > li {
-    list-style: none;
-    margin: 15px 25px 15px 25px;
-    display: inline-block;
-}
-
 .logic-from-1-sl > li > a {
     color: white;
     text-decoration: none;
-    font-size: 40px;
-}
-
-.logic-from-1-sl > li > a > .fa-facebook:hover {
-    transform: rotate(360deg);
-    transition: 0.5s;
-    color: #428bca;
-}
-
-.logic-from-1-sl > li > a > .fa-twitter:hover {
-    transform: rotate(360deg);
-    transition: 0.5s;
-    color: #5bc0de;
-}
-
-.logic-from-1-sl > li > a > .fa-google-plus:hover {
-    transform: rotate(360deg);
-    transition: 0.5s;
-    color: #d34836;
+    font-size: 30px;
 }
 
 .login-form-1-body {
@@ -9205,6 +9158,10 @@ ngx-image-viewer .img-container{
     color: #fff;
     background: #f00;
     border-color: #f00;
+}
+.login-signup-page{
+    width: 500px;
+    margin: 0 auto;
 }
 @media (max-width: 1153px) {
     .navbar-nav>li>a {
