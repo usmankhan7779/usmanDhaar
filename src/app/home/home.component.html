@@ -203,7 +203,7 @@
                     <img class="img-responsive" src="{{Lastest.Pic }}" alt="{{Lastest.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
                     <div class="overlay">
                       <h2>{{Lastest.Cat_Name}}</h2>
-                      <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id }">Product
+                      <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">Product
                         Detail</a>
                     </div>
                   </div>
@@ -213,7 +213,7 @@
                   <div class="item-info">
                     <div class="info-inner">
                       <div class="item-title">
-                        <h4><a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id }">{{
+                        <h4><a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">{{
                             Lastest.P_Title }} </a></h4>
                       </div>
                       <div class="item-content">
@@ -241,13 +241,13 @@
                   <div class="box-hover">
                     <div class="product-item-actions">
                       <div *ngIf="Lastest.Auction == true" class="pro-actions">
-                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id}">
+                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList}">
                           <button class="action add-to-cart" type="button" title="Add to Cart">
                             <span>Bid Now</span></button>
                         </a>
                       </div>
                       <div *ngIf="Lastest.Auction == false" class="pro-actions">
-                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id }">
+                        <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">
                           <button class="action add-to-cart" type="button" title="Add to Cart">
                             <span>Buy Now</span></button>
                         </a>
@@ -412,7 +412,7 @@
                         onerror="this.src='../../assets/images/Check-Resolution.png'">
                       <div class="overlay">
                         <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product
+                        <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
                           Detail</a>
                       </div>
                     </div>
@@ -423,7 +423,7 @@
                     <div class="item-info">
                       <div class="info-inner">
                         <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                          <h4><a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
                               {{TvVideoaudio88.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
@@ -453,13 +453,13 @@
                     <div class="box-hover">
                       <div class="product-item-actions">
                         <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
                             <button class="action add-to-cart" type="button" title="Add to Cart">
                               <span>Bid Now</span></button>
                           </a>
                         </div>
                         <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                          <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
                             <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy Now</span></button>
                           </a>
                         </div>

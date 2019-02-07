@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import {ActivatedRoute, Router} from "@angular/router";
-import {ActiveAdServices} from "../active-ad/active-ad.services";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ActiveAdServices } from "../active-ad/active-ad.services";
 import swal from 'sweetalert2';
 import { HomeService } from '../home/home.services';
 
@@ -20,10 +20,10 @@ export class WatchProductComponent implements OnInit {
   pageno: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
-              private route: ActivatedRoute,
-              private _nav: Router,
-              private GetAdd: HomeService,
-              private httpService: ActiveAdServices) {
+    private route: ActivatedRoute,
+    private _nav: Router,
+    private GetAdd: HomeService,
+    private httpService: ActiveAdServices) {
   }
   pageTrendChanged(event) {
     // alert("mobile")
@@ -42,20 +42,21 @@ export class WatchProductComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
 
-      this.SessionstoreName= localStorage.getItem('StoreName');
-      if (this.SessionstoreName === null) {
-        this.seller = false;
-      } else {
-        this.seller = true;
-      }
+      // this.SessionstoreName= localStorage.getItem('StoreName');
+      // if (this.SessionstoreName === null) {
+      //   this.seller = false;
+      // } else {
+      //   this.seller = true;
+      // }
       if (localStorage.getItem('UserID') === null) {
 
         this._nav.navigate(['/login']);
       }
       // 1, localStorage.getItem('UserID')
       this.httpService.getwatchproducts().subscribe(data => {
-        this.ActiveProduct = data;
-        if (this.ActiveProduct['totalItems'] === 0) {
+        this.ActiveProduct = data.Results;
+        console.log(this.ActiveProduct.ProductID)
+        if (this.ActiveProduct['Total Result'] === 0) {
           this.errormessage = true;
         }
       });
@@ -63,33 +64,33 @@ export class WatchProductComponent implements OnInit {
 
   }
   TrashcartElement(Abc: any) {
+    // alert(Abc);
+    // if (isPlatformBrowser(this.platformId)) {
+      // for (let tmp of this.ActiveProduct.Results) {
+          alert(Abc)
+          // if (tmp.id === Abc) {
+            // console.log(tmp);
+            this.GetAdd.Deletewatchlist(Abc).subscribe(data => {
 
-    if (isPlatformBrowser(this.platformId)){
-
-    for (const tmp of this.ActiveProduct.Results) {
-      if ( tmp.id === Abc ) {
-        console.log(tmp);
-        this.GetAdd.Deletewatchlist(tmp.id).subscribe(data => {
-
-          swal('Your offer has been Deleted.','','success');
-          this.httpService.getwatchproducts().subscribe(data => {
-            this.ActiveProduct = data;
-            if (this.ActiveProduct['totalItems'] === 0) {
-              this.errormessage = true;
-            }
-          });
-        });
-      //  this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
-        //localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
-        }
-      }
-    }
+              swal('Your offer has been Deleted.', '', 'success');
+              this.httpService.getwatchproducts().subscribe(data => {
+                this.ActiveProduct = data.Results;
+                if (this.ActiveProduct['Total Result'] === 0) {
+                  this.errormessage = true;
+                }
+              });
+            });
+            //  this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), 1 );
+            //localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
+          // }
+      // }
+    // }
   }
 
   clearSessionstoreage() {
-    if (isPlatformBrowser(this.platformId)){
+    if (isPlatformBrowser(this.platformId)) {
       localStorage.clear();
-      swal('You have been successfully signed out from Dhaar.','','success');
+      swal('You have been successfully signed out from Dhaar.', '', 'success');
     }
   }
 }

@@ -52,7 +52,7 @@
                         <span>Rs: {{ abc.product.FixedPrice * abc.Quantity | number:'.0-0' }} </span>
                       </td>
                       <td class="action">
-                        <a (click)="TrashcartElement(abc.id)"><i class="fa fa-trash-o"></i></a>
+                        <a (click)="TrashcartElement(abc.product.id)"><i class="fa fa-trash-o"></i></a>
                       </td>
                     </tr>
 

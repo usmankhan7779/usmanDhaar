@@ -34,6 +34,7 @@ export class SingleProductComponent implements OnInit {
   productid1: string;
   qty = '1';
   SubCatName: string;
+  watchlist: string;
   Getphoto: any = [];
   NewBidInserted = false;
   NewCart = false;
@@ -140,6 +141,9 @@ export class SingleProductComponent implements OnInit {
           this.ProID = params['ProID'] || '0';
           this.productid1 = params['id']
           this.SubCatName = params['SubCatName'] || '0';
+          this.watchlist=params['W'] || '0';
+          // alert(this.watchlist)
+          // W
           console.log(this.SubCatName, 'subcatname')
           // alert(this.SubCatName)
           this.RedirectFromlogin = params['Redirect'] || null;
@@ -231,10 +235,12 @@ export class SingleProductComponent implements OnInit {
     }
 
   }
-
+  refresh(): void {
+    window.location.reload();
+}
   ProductReviews() {
     this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
-      this.GetallProductReview = resSlidersData;
+      this.GetallProductReview = resSlidersData.Res;
       if (this.GetallProductReview.length !== 0) {
 
         this.GetAdd.GetallUserReviewsCalculationBYProductId(this.ProID).subscribe(data => {
@@ -795,7 +801,7 @@ export class SingleProductComponent implements OnInit {
     this.GetAdd.InsertProductReviews(this.model.YourReview, this.ProID, this.starp).subscribe(resSlidersData => {
       swal('Your Review has been submitted', '', 'success');
       this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
-        this.GetallProductReview = resSlidersData;
+        this.GetallProductReview = resSlidersData.Res;
         this.noreview = false;
       });
       this.ProductReviews();
