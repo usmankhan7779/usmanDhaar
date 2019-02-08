@@ -17,30 +17,30 @@
 
             <div class="product-slider">
               <!--<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">-->
-                <!--<div class="carousel-inner">-->
-                  <!--<div class="item active"> <img data-toggle="modal" data-target="#myModal" imageZoom="{{ProPics[0]}}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{ProPics[0]}}"> </div>-->
-                  <!--<ng-container *ngFor="let itm of PicList">-->
-                  <!--<div class="item"> <img data-toggle="modal" data-target="#myModal" imageZoom="{{itm}}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{itm}}"> </div>-->
-                  <!--&lt;!&ndash;<div class="item"> <img src="{{ProPics[2]}}"> </div>&ndash;&gt;-->
-                  <!--</ng-container>-->
-                <!--</div>-->
-                <!--<a class="left carousel-control" href="#carousel" data-slide="prev">-->
-                  <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+              <!--<div class="carousel-inner">-->
+              <!--<div class="item active"> <img data-toggle="modal" data-target="#myModal" imageZoom="{{ProPics[0]}}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{ProPics[0]}}"> </div>-->
+              <!--<ng-container *ngFor="let itm of PicList">-->
+              <!--<div class="item"> <img data-toggle="modal" data-target="#myModal" imageZoom="{{itm}}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{itm}}"> </div>-->
+              <!--&lt;!&ndash;<div class="item"> <img src="{{ProPics[2]}}"> </div>&ndash;&gt;-->
+              <!--</ng-container>-->
+              <!--</div>-->
+              <!--<a class="left carousel-control" href="#carousel" data-slide="prev">-->
+              <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
 
-                <!--</a>-->
-                <!--<a class="right carousel-control" href="#carousel" data-slide="next">-->
-                  <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+              <!--</a>-->
+              <!--<a class="right carousel-control" href="#carousel" data-slide="next">-->
+              <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
 
-                <!--</a>-->
+              <!--</a>-->
               <!--</div>-->
               <div class="clearfix">
                 <div id="thumbcarousel" class="carousel slide" data-interval="false">
                   <div class="carousel-inner">
                     <div class="item active">
                       <ng-container *ngIf="ProPics.length === 3">
-                      <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ProPics[0]}}" (click)="IndexChange(0)"></div>
-                      <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ProPics[1]}}" (click)="IndexChange(1)"></div>
-                      <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ProPics[2]}}" (click)="IndexChange(2)"></div>
+                        <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ProPics[0]}}" (click)="IndexChange(0)"></div>
+                        <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ProPics[1]}}" (click)="IndexChange(1)"></div>
+                        <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ProPics[2]}}" (click)="IndexChange(2)"></div>
                       </ng-container>
                       <ng-container *ngIf="ProPics.length === 2">
                         <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ProPics[0]}}" (click)="IndexChange(0)"></div>
@@ -70,13 +70,14 @@
             <ng-container *ngIf="resultProduct.Auction">
               <div class="price-box">
                 <p class="special-price"> <span class="price-label">Price</span>
-                  <span class="price"> Rs: {{ resultProduct.SrartingPrice | number:'.0-0' }}   </span> </p>
+                  <span class="price"> Rs: {{ resultProduct.SrartingPrice | number:'.0-0' }} </span> </p>
               </div>
               <div class="ratings">
                 <div class="rating">
                   <p> Seller: <a [routerLink]="['/store', resultProduct.StoreName]"> {{resultProduct.StoreName}}</a></p>
                 </div>
-                <p class="availability in-stock pull-right">Availability: <span *ngIf="!Solddd" class="not-sold">In Stock</span> <span *ngIf="Solddd" class="sold">Sold Out</span></p>
+                <p class="availability in-stock pull-right">Availability: <span *ngIf="!Solddd" class="not-sold">In
+                    Stock</span> <span *ngIf="Solddd" class="sold">Sold Out</span></p>
               </div>
               <div class="product-variation">
                 <div id="clockdiv">
@@ -99,7 +100,8 @@
                 </div>
                 <div class="product-cart-option">
                   <ul>
-                    <li><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{ BidingProduct.length}})</span></a></li>
+                    <li><a href="#Bidhistory" data-toggle="tab"><i class="fa fa-history"></i><span>Bid History ({{
+                          BidingProduct.length}})</span></a></li>
                     <!--<li><a href="#Bidhistory"><i class="fa fa-envelope"></i><span>Share</span></a></li>-->
                   </ul>
                 </div>
@@ -110,48 +112,56 @@
                   <div *ngIf="login_error==true" class="alert alert-danger">
                     <strong>Error!</strong> Invalid Login Details
                   </div>
-                  <input type="text" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="UserPriceBid" [(ngModel)]="model.Username" placeholder="Username" required>
-                  <input type="Password" class="form-control" style="margin-bottom: 15px;"  name="UserPriceBid" [(ngModel)]="model.Password" placeholder="Password" required>
-                  <button class="button pro-add-to-cart col-md-push-6 " (click)="LoginUser()" title="Bid Now" type="button"><span> Login</span></button>
+                  <input type="text" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  " name="UserPriceBid"
+                    [(ngModel)]="model.Username" placeholder="Username" required>
+                  <input type="Password" class="form-control" style="margin-bottom: 15px;" name="UserPriceBid"
+                    [(ngModel)]="model.Password" placeholder="Password" required>
+                  <button class="button pro-add-to-cart col-md-push-6 " (click)="LoginUser()" title="Bid Now" type="button"><span>
+                      Login</span></button>
                 </ng-container>
                 <ng-container *ngIf="LoginID">
                   <ng-container *ngIf="AuctionTest == true">
                     <div class="message-alerts">
-                      <div  *ngIf="highestbid && !Timeclose" class="bid-message alert alert-success">
+                      <div *ngIf="highestbid && !Timeclose" class="bid-message alert alert-success">
                         "Congrats. You are the current High Bidder."
                       </div>
-                      <div  *ngIf="highestbid && Timeclose" class="bid-message alert alert-success">
+                      <div *ngIf="highestbid && Timeclose" class="bid-message alert alert-success">
                         "Congrats! You won this Auction. Pay Now"
                       </div>
-                      <div  *ngIf="!highestbid && Timeclose && !zerobid" class="bid-message alert alert-success">
+                      <div *ngIf="!highestbid && Timeclose && !zerobid" class="bid-message alert alert-success">
                         "Auction Ended. Contact Seller for more inventory"
                       </div>
-                      <div  *ngIf="!highestbid && !Timeclose && !zerobid" class="bid-message alert alert-danger">
+                      <div *ngIf="!highestbid && !Timeclose && !zerobid" class="bid-message alert alert-danger">
                         "You have been outbid by someone else' Maximum Bid. You can still win by bidding again."
                       </div>
-                      <div  *ngIf="zerobid && !Timeclose" class="bid-message alert alert-danger">
+                      <div *ngIf="zerobid && !Timeclose" class="bid-message alert alert-danger">
                         "No Bid on this Product yet."
                       </div>
-                      <div  *ngIf="zerobid && Timeclose" class="bid-message alert alert-success">
+                      <div *ngIf="zerobid && Timeclose" class="bid-message alert alert-success">
                         "Bidding Time is finished, without any bid"
                       </div>
                     </div>
                   </ng-container>
                   <div *ngIf="MinBidPrice" class="alert alert-danger">
-                    Minimum Bid Amount - Rs:  {{ resultProduct.MaxBidPrice + 1 | number:'.0-0' }}
+                    Minimum Bid Amount - Rs: {{ resultProduct.MaxBidPrice + 1 | number:'.0-0' }}
                   </div>
                   <ng-container *ngIf="ourproduct">
                     <div *ngIf="!Timeclose" class="cart-plus-minus" style="margin-bottom: 10px;">
                       <label for="qty">Place your Bid:</label>
                     </div>
-                    <input *ngIf="!Timeclose" type="number" class="form-control" style="margin-bottom: 15px;"  placeholder="Minimum Bid Amount - Rs: {{ resultProduct.MaxBidPrice+1 | number:'.0-0' }}" name="UserPriceBid" [(ngModel)]="model.UserPriceBid" required>
+                    <input *ngIf="!Timeclose" type="number" class="form-control" style="margin-bottom: 15px;"
+                      placeholder="Minimum Bid Amount - Rs: {{ resultProduct.MaxBidPrice+1 | number:'.0-0' }}" name="UserPriceBid"
+                      [(ngModel)]="model.UserPriceBid" required>
                     <div>
-                      <button *ngIf="!Timeclose" class="button pro-add-to-cart" (click)="InsertBid(resultProduct.SrartingPrice, resultProduct.MaxBidPrice)" title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
-                      <div *ngIf="watchlist == 'false'" >
-                        <button class="button pro-add-to-cart" title="Watch This Product" type="submit" style="margin-left: 10px; font-size: 17px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
+                      <button *ngIf="!Timeclose" class="button pro-add-to-cart" (click)="InsertBid(resultProduct.SrartingPrice, resultProduct.MaxBidPrice)"
+                        title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
+                      <div *ngIf="watchlist == 'false'">
+                        <button class="button pro-add-to-cart" title="Watch This Product" type="submit" style="margin-left: 10px; font-size: 17px; font-weight: bolder"
+                          (click)="WatchProduct()">Watch</button>
                       </div>
                       <div *ngIf="watchlist == 'true'">
-                        <button class="button pro-add-to-cart" title="Unwatch This Product" type="submit" style="margin-left: 10px; font-size: 17px; font-weight: bolder" (click)="UnwatchProduct()">Unwatch</button>
+                        <button class="button pro-add-to-cart" title="Unwatch This Product" type="submit" style="margin-left: 10px; font-size: 17px; font-weight: bolder"
+                          (click)="UnwatchProduct()">Unwatch</button>
                       </div>
                     </div>
                   </ng-container>
@@ -161,30 +171,37 @@
             <ng-container *ngIf="!resultProduct.Auction">
               <div class="price-box">
                 <p class="special-price"> <span class="price-label">Price</span>
-                  <span class="price"> Rs: {{ resultProduct.FixedPrice | number:'.0-0' }}   </span> </p>
+                  <span class="price"> Rs: {{ resultProduct.FixedPrice | number:'.0-0' }} </span> </p>
               </div>
               <div class="ratings">
                 <div class="rating">
 
                   <p> Seller: <a [routerLink]="['/store', resultProduct.StoreName]"> {{resultProduct.StoreName}}</a></p>
                 </div>
-                <p class="availability in-stock pull-right">Availability: <span *ngIf="!soldfix" class="not-sold">In Stock</span> <span *ngIf="soldfix" class="sold">Sold Out</span></p>
+                <p class="availability in-stock pull-right">Availability: <span *ngIf="!soldfix" class="not-sold">In
+                    Stock</span> <span *ngIf="soldfix" class="sold">Sold Out</span></p>
               </div>
               <div class="product-variation">
                 <div *ngIf="amountoffer">
-                  <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="QuantityProduct" [(ngModel)]="model.QuantityProduct" placeholder="Enter Quantity Of Product" required>
-                  <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  "  name="OfferAmount" [(ngModel)]="model.OfferAmount" placeholder="Your Offer Amount per Product" required>
+                  <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  " name="QuantityProduct"
+                    [(ngModel)]="model.QuantityProduct" placeholder="Enter Quantity Of Product" required>
+                  <input type="number" class="form-control" style="margin-bottom: 15px; padding-right: 30px;  " name="OfferAmount"
+                    [(ngModel)]="model.OfferAmount" placeholder="Your Offer Amount per Product" required>
 
-                  <textarea type="text" class="form-control" style="margin-bottom: 15px;"  name="SellerMessage" [(ngModel)]="model.message" placeholder="Message for Seller" ></textarea>
+                  <textarea type="text" class="form-control" style="margin-bottom: 15px;" name="SellerMessage"
+                    [(ngModel)]="model.message" placeholder="Message for Seller"></textarea>
                 </div>
                 <div class="width100 pull-left">
                   <span class="pull-right">Quantity Available: <span class="lead">{{ resultProduct.Quantity}}</span></span>
                   <div class="cart-plus-minus">
                     <label for="qty" class="quantity-label">Quantity:</label>
                     <div class="numbers-row">
-                      <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                      <input type="text" ng-Model="1"  [(ngModel)]="qty" #qtys class="qty" style="font-size: 15px !important;"  id="qty" name="qty">
-                      <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus"></i></div>
+                      <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"
+                        class="dec qtybutton"><i class="fa fa-minus"></i></div>
+                      <input type="text" ng-Model="1" [(ngModel)]="qty" #qtys class="qty" style="font-size: 15px !important;"
+                        id="qty" name="qty">
+                      <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;"
+                        class="inc qtybutton"><i class="fa fa-plus"></i></div>
                     </div>
                   </div>
                 </div>
@@ -196,37 +213,43 @@
                   <ng-container *ngIf="ourproduct">
 
 
-                    <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart" type="button">Buy Now</button>
+                    <button class="button pro-add-to-cart singlebutton" (click)=" Addtocart(qtys.value)" title="Add to Cart"
+                      type="button">Buy Now</button>
 
-                    <button *ngIf="LoginID === true && resultProduct.Addbestoffer" class="button pro-add-to-cart singlebutton" style="margin-left: 3px;" (click)="MakeAnOffer()" title="Add to Cart" type="button">Make Offer</button>
+                    <button *ngIf="LoginID === true && resultProduct.Addbestoffer" class="button pro-add-to-cart singlebutton"
+                      style="margin-left: 3px;" (click)="MakeAnOffer()" title="Add to Cart" type="button">Make Offer</button>
                     <ng-container *ngIf="LoginID === true">
                       <div *ngIf="watchlist == 'false'">
-                        <button class="button pro-add-to-cart singlebutton" title="Watch This Product" type="submit" style="margin-left: 3px; float:left; font-size: 20px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
+                        <button class="button pro-add-to-cart singlebutton" title="Watch This Product" type="submit"
+                          style="margin-left: 3px; float:left; font-size: 20px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
                       </div>
                       <!-- watchlist -->
                       <!-- WatchStatus -->
                       <div *ngIf="watchlist == 'true'">
-                        <button class="button pro-add-to-cart singlebutton" title="Unwatch This Product" type="submit" style="margin-left: 3px; float: left; font-size: 17px; font-weight: bolder" (click)="UnwatchProduct()">Unwatch</button>
+                        <button class="button pro-add-to-cart singlebutton" title="Unwatch This Product" type="submit"
+                          style="margin-left: 3px; float: left; font-size: 17px; font-weight: bolder" (click)="UnwatchProduct()">Unwatch</button>
                       </div>
                     </ng-container>
                   </ng-container>
                 </div>
 
-                <button *ngIf="amountoffer" class="button pro-add-to-cart" style="margin-left: 5px;" (click)="SubmitOffer()" title="Submit Offer" type="button"><span><i class="fa fa-paper-plane"></i>Submit Offer</span></button>
-                <button *ngIf="amountoffer" class="button pro-add-to-cart" style="margin-left: 5px;" (click)="CancelOffer()" title="Cancel" type="button"><span><i class="fa fa-window-close"></i>Cancel Offer</span></button>
+                <button *ngIf="amountoffer" class="button pro-add-to-cart" style="margin-left: 5px;" (click)="SubmitOffer()"
+                  title="Submit Offer" type="button"><span><i class="fa fa-paper-plane"></i>Submit Offer</span></button>
+                <button *ngIf="amountoffer" class="button pro-add-to-cart" style="margin-left: 5px;" (click)="CancelOffer()"
+                  title="Cancel" type="button"><span><i class="fa fa-window-close"></i>Cancel Offer</span></button>
 
-                <br/>
-                <br/>
+                <br />
+                <br />
               </div>
             </ng-container>
           </div>
         </div>
       </div>
 
-        <div class="product-overview-tab">
+      <div class="product-overview-tab">
 
-          <div class="container">
-            <div class="row">
+        <div class="container">
+          <div class="row">
             <div class="col-xs-12">
               <div class="container">
                 <div class="row">
@@ -237,10 +260,11 @@
                         <h1 class="rating-num">
                           {{AverageRating}}</h1>
                         <div class="rating">
-                          <ng-container *ngFor="let number of [0,1,2,3,4]" >
-                          <span *ngIf="number < AverageRating && (number+1) <= AverageRating" class="star-icon full">☆</span>
-                          <span *ngIf="number < AverageRating && (number+1) > AverageRating" class="star-icon half" [style.width.%]="StarPercent">☆</span>
-                          <span *ngIf="number >= AverageRating && (number+1) > AverageRating" class="star-icon">☆</span>
+                          <ng-container *ngFor="let number of [0,1,2,3,4]">
+                            <span *ngIf="number < AverageRating && (number+1) <= AverageRating" class="star-icon full">☆</span>
+                            <span *ngIf="number < AverageRating && (number+1) > AverageRating" class="star-icon half"
+                              [style.width.%]="StarPercent">☆</span>
+                            <span *ngIf="number >= AverageRating && (number+1) > AverageRating" class="star-icon">☆</span>
                           </ng-container>
                         </div>
                         <div>
@@ -254,7 +278,8 @@
                           </div>
                           <div class="col-xs-8 col-md-10">
                             <div class="progress progress-striped">
-                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="count5">
+                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                aria-valuemin="0" aria-valuemax="100" [style.width.%]="count5">
                                 <span class="sr-only">{{count5}}%</span>
                               </div>
                             </div>
@@ -265,7 +290,8 @@
                           </div>
                           <div class="col-xs-8 col-md-10">
                             <div class="progress">
-                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="count4">
+                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                aria-valuemin="0" aria-valuemax="100" [style.width.%]="count4">
                                 <span class="sr-only">{{count4}}%</span>
                               </div>
                             </div>
@@ -276,7 +302,8 @@
                           </div>
                           <div class="col-xs-8 col-md-10">
                             <div class="progress">
-                              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="count3">
+                              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                aria-valuemin="0" aria-valuemax="100" [style.width.%]="count3">
                                 <span class="sr-only">{{count3}}%</span>
                               </div>
                             </div>
@@ -287,7 +314,8 @@
                           </div>
                           <div class="col-xs-8 col-md-10">
                             <div class="progress">
-                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" [style.width.%]="count2">
+                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20"
+                                aria-valuemin="0" aria-valuemax="100" [style.width.%]="count2">
                                 <span class="sr-only">{{count2}}%</span>
                               </div>
                             </div>
@@ -298,7 +326,8 @@
                           </div>
                           <div class="col-xs-8 col-md-10">
                             <div class="progress">
-                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" [style.width.%]="count1">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                aria-valuemin="0" aria-valuemax="100" [style.width.%]="count1">
                                 <span class="sr-only">{{count1}}%</span>
                               </div>
                             </div>
@@ -308,7 +337,8 @@
                           </div>
                           <div class="col-xs-8 col-md-10">
                             <div class="progress">
-                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" [style.width.%]="count0">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                aria-valuemin="0" aria-valuemax="100" [style.width.%]="count0">
                                 <span class="sr-only">{{count0}}%</span>
                               </div>
                             </div>
@@ -325,14 +355,15 @@
                 <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
                   <li class="active"> <a href="#description" data-toggle="tab"> Description </a> </li>
                   <li> <a href="#reviews" data-toggle="tab">Reviews ({{ GetallProductReview.length}})</a> </li>
-                  <li *ngIf="resultProduct.Auction"> <a href="#Bidhistory"  data-toggle="tab">Bid History ({{ BidingProduct.length}})</a> </li>
+                  <li *ngIf="resultProduct.Auction"> <a href="#Bidhistory" data-toggle="tab">Bid History ({{
+                      BidingProduct.length}})</a> </li>
 
                 </ul>
                 <div id="productTabContent" class="tab-content">
                   <div class="tab-pane fade in active" id="description">
                     <div class="std">
                       <ng-container *ngFor="let Des of ProPDes">
-                      <p>{{ Des}}</p>
+                        <p>{{ Des}}</p>
                       </ng-container>
                     </div>
                   </div>
@@ -341,103 +372,104 @@
                       <div class="reviews-content-left">
                         <h2 style="font-size: 20px">Customer Reviews</h2>
                         <ng-container *ngIf="noreview">No Review</ng-container>
-                        <ng-container *ngFor="let ProductReview of GetallProductReview" >
-                        <div class="review-ratting">
-                          <p><a>{{ ProductReview.Reviews }}</a>
-                           </p>
-                          <table>
-                            <tbody>
-                            <tr>
-                              <th>Rating</th>
-                              <td>
-                                <div class="rating">
-                                 <ng-container *ngFor="let number of [0,1,2,3,4,5]" >
-                                <i *ngIf="number < ProductReview.Rating" class="fa fa-star"></i>
-                                <i *ngIf="number > ProductReview.Rating" class="fa fa-star-o"></i>
-                                 </ng-container>
+                        <ng-container *ngFor="let ProductReview of GetallProductReview">
+                          <div class="review-ratting">
+                            <p><a>{{ ProductReview.Reviews }}</a>
+                            </p>
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <th>Rating</th>
+                                  <td>
+                                    <div class="rating">
+                                      <ng-container *ngFor="let number of [0,1,2,3,4,5]">
+                                        <i *ngIf="number < ProductReview.Rating" class="fa fa-star"></i>
+                                        <i *ngIf="number > ProductReview.Rating" class="fa fa-star-o"></i>
+                                      </ng-container>
 
 
-                              </div>
-                              </td>
-                            </tr>
+                                    </div>
+                                  </td>
+                                </tr>
 
-                            </tbody>
-                          </table>
-                          <p class="author">   {{ProductReview.Name}}<small> (Posted on {{ProductReview.CreatedDate.substr(0,10)}})</small> </p>
-                        </div>
-                         </ng-container>
+                              </tbody>
+                            </table>
+                            <p class="author"> {{ProductReview.Name}}<small> (Posted on
+                                {{ProductReview.CreatedDate.substr(0,10)}})</small> </p>
+                          </div>
+                        </ng-container>
 
                       </div>
                     </div>
 
                     <ng-container *ngIf="openreviews">
-                    <div class="col-sm-7 col-lg-7 col-md-7">
-                      <div *ngIf="LoginID" class="reviews-content-right">
-                        <h2 style="font-size: 20px">Write Your Own Review</h2>
-                        <input type="submit" class="input-button" value="Add Review" data-toggle="modal" data-target="#myModal">
-                        <!--<form (ngSubmit)="f.form.valid && SubmitReview()" #f="ngForm" novalidate id="reviewsForm">-->
+                      <div class="col-sm-7 col-lg-7 col-md-7">
+                        <div *ngIf="LoginID" class="reviews-content-right">
+                          <h2 style="font-size: 20px">Write Your Own Review</h2>
+                          <input type="submit" class="input-button" value="Add Review" data-toggle="modal" data-target="#myModal">
+                          <!--<form (ngSubmit)="f.form.valid && SubmitReview()" #f="ngForm" novalidate id="reviewsForm">-->
                           <!--<h2>You're reviewing: <span style="color: red;">{{ resultProduct[0].P_Title}}</span></h2>-->
                           <!--<h4>How do you rate this product?<em>*</em></h4>-->
 
                           <!--<div class="col-lg-12">-->
                           <!--<fieldset class="ratingq">-->
-                            <!--<input type="radio" id="star5q" name="rating" value="5" (click)="getValueq(5)"/>-->
-                            <!--<label class="full" for="star5q" title="Awesome - 5 stars"></label>-->
-                            <!--&lt;!&ndash;<input type="radio" id="star4halfq" name="rating" value="4 and a half"&ndash;&gt;-->
-                                   <!--&lt;!&ndash;(click)="getValueq(4.5)"/><label class="half" for="star4halfq"&ndash;&gt;-->
-                                                                    <!--&lt;!&ndash;title="Pretty good - 4.5 stars"></label>&ndash;&gt;-->
-                            <!--<input type="radio" id="starq" name="rating" value="4" (click)="getValueq(4)"/><label-->
+                          <!--<input type="radio" id="star5q" name="rating" value="5" (click)="getValueq(5)"/>-->
+                          <!--<label class="full" for="star5q" title="Awesome - 5 stars"></label>-->
+                          <!--&lt;!&ndash;<input type="radio" id="star4halfq" name="rating" value="4 and a half"&ndash;&gt;-->
+                          <!--&lt;!&ndash;(click)="getValueq(4.5)"/><label class="half" for="star4halfq"&ndash;&gt;-->
+                          <!--&lt;!&ndash;title="Pretty good - 4.5 stars"></label>&ndash;&gt;-->
+                          <!--<input type="radio" id="starq" name="rating" value="4" (click)="getValueq(4)"/><label-->
 
-                            <!--class="full" for="starq" title="Pretty good - 4 stars"></label>-->
-                            <!--&lt;!&ndash;<input type="radio" id="star3halfq" name="rating" value="3 and a half"&ndash;&gt;-->
-                                   <!--&lt;!&ndash;(click)="getValueq(3.5)"/><label class="half" for="star3halfq"&ndash;&gt;-->
-                                                                    <!--&lt;!&ndash;title="Meh - 3.5 stars"></label>&ndash;&gt;-->
-                            <!--<input type="radio" id="star3q" name="rating" value="3" (click)="getValueq(3)"/><label-->
-                            <!--class="full" for="star3q" title="Meh - 3 stars"></label>-->
-                            <!--&lt;!&ndash;<input type="radio" id="star2halfq" name="rating" value="2 and a half"&ndash;&gt;-->
-                                   <!--&lt;!&ndash;(click)="getValueq(2.5)"/><label class="half" for="star2halfq"&ndash;&gt;-->
-                                                                    <!--&lt;!&ndash;title="Kinda bad - 2.5 stars"></label>&ndash;&gt;-->
-                            <!--<input type="radio" id="star2q" name="rating" value="2" (click)="getValueq(2)"/><label-->
-                            <!--class="full" for="star2q" title="Kinda bad - 2 stars"></label>-->
-                            <!--&lt;!&ndash;<input type="radio" id="star1halfq" name="rating" value="1 and a half"&ndash;&gt;-->
-                                   <!--&lt;!&ndash;(click)="getValueq(1.5)"/><label class="half" for="star1halfq"&ndash;&gt;-->
-                                                                    <!--&lt;!&ndash;title="Meh - 1.5 stars"></label>&ndash;&gt;-->
-                            <!--<input type="radio" id="star1q" name="rating" value="1" (click)="getValueq(1)"/><label-->
-                            <!--class="full" for="star1q" title="Sucks big time - 1 star"></label>-->
-                            <!--&lt;!&ndash;<input type="radio" id="starhalfq" (click)="getValueq(0.5)" name="rating" value="half"/><label&ndash;&gt;-->
-                            <!--&lt;!&ndash;class="half" for="starhalfq" title="Sucks big time - 0.5 stars"></label>&ndash;&gt;-->
+                          <!--class="full" for="starq" title="Pretty good - 4 stars"></label>-->
+                          <!--&lt;!&ndash;<input type="radio" id="star3halfq" name="rating" value="3 and a half"&ndash;&gt;-->
+                          <!--&lt;!&ndash;(click)="getValueq(3.5)"/><label class="half" for="star3halfq"&ndash;&gt;-->
+                          <!--&lt;!&ndash;title="Meh - 3.5 stars"></label>&ndash;&gt;-->
+                          <!--<input type="radio" id="star3q" name="rating" value="3" (click)="getValueq(3)"/><label-->
+                          <!--class="full" for="star3q" title="Meh - 3 stars"></label>-->
+                          <!--&lt;!&ndash;<input type="radio" id="star2halfq" name="rating" value="2 and a half"&ndash;&gt;-->
+                          <!--&lt;!&ndash;(click)="getValueq(2.5)"/><label class="half" for="star2halfq"&ndash;&gt;-->
+                          <!--&lt;!&ndash;title="Kinda bad - 2.5 stars"></label>&ndash;&gt;-->
+                          <!--<input type="radio" id="star2q" name="rating" value="2" (click)="getValueq(2)"/><label-->
+                          <!--class="full" for="star2q" title="Kinda bad - 2 stars"></label>-->
+                          <!--&lt;!&ndash;<input type="radio" id="star1halfq" name="rating" value="1 and a half"&ndash;&gt;-->
+                          <!--&lt;!&ndash;(click)="getValueq(1.5)"/><label class="half" for="star1halfq"&ndash;&gt;-->
+                          <!--&lt;!&ndash;title="Meh - 1.5 stars"></label>&ndash;&gt;-->
+                          <!--<input type="radio" id="star1q" name="rating" value="1" (click)="getValueq(1)"/><label-->
+                          <!--class="full" for="star1q" title="Sucks big time - 1 star"></label>-->
+                          <!--&lt;!&ndash;<input type="radio" id="starhalfq" (click)="getValueq(0.5)" name="rating" value="half"/><label&ndash;&gt;-->
+                          <!--&lt;!&ndash;class="half" for="starhalfq" title="Sucks big time - 0.5 stars"></label>&ndash;&gt;-->
                           <!--</fieldset>-->
                           <!--</div>-->
 
                           <!--<div class="form-area">-->
-                            <!--<div class="form-element">-->
-                              <!--<label>Your Name <em>*</em></label>-->
-                              <!--<div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourName.valid }">-->
-                              <!--<input type="text" name="YourName" [(ngModel)]="model.YourName"  #YourName="ngModel" required>-->
-                                <!--<div *ngIf="f.submitted && !YourName.valid" class="help-block">Name is required</div>-->
-                              <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="form-element">-->
-                              <!--<div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourEmail.valid }">-->
-                              <!--<label>Your Email <em>*</em></label>-->
-                              <!--<input type="email" name="YourEmail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.YourEmail"  #YourEmail="ngModel" required>-->
-                                <!--<div *ngIf="f.submitted && !YourEmail.valid" class="help-block">Invalid email format.</div>-->
-                              <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="form-element">-->
-                              <!--<div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourReview.valid }">-->
-                              <!--<label>Review <em>*</em></label>-->
-                              <!--<textarea name="YourReview" [(ngModel)]="model.YourReview"  #YourReview="ngModel" required></textarea>-->
-                                <!--<div *ngIf="f.submitted && !YourReview.valid" class="help-block">Review is required</div>-->
-                              <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="buttons-set">-->
-                              <!--<button class="button submit" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;Review</span></button>-->
-                            <!--</div>-->
+                          <!--<div class="form-element">-->
+                          <!--<label>Your Name <em>*</em></label>-->
+                          <!--<div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourName.valid }">-->
+                          <!--<input type="text" name="YourName" [(ngModel)]="model.YourName"  #YourName="ngModel" required>-->
+                          <!--<div *ngIf="f.submitted && !YourName.valid" class="help-block">Name is required</div>-->
                           <!--</div>-->
-                        <!--</form>-->
+                          <!--</div>-->
+                          <!--<div class="form-element">-->
+                          <!--<div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourEmail.valid }">-->
+                          <!--<label>Your Email <em>*</em></label>-->
+                          <!--<input type="email" name="YourEmail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.YourEmail"  #YourEmail="ngModel" required>-->
+                          <!--<div *ngIf="f.submitted && !YourEmail.valid" class="help-block">Invalid email format.</div>-->
+                          <!--</div>-->
+                          <!--</div>-->
+                          <!--<div class="form-element">-->
+                          <!--<div class="formrow" [ngClass]="{ 'has-error': f.submitted && !YourReview.valid }">-->
+                          <!--<label>Review <em>*</em></label>-->
+                          <!--<textarea name="YourReview" [(ngModel)]="model.YourReview"  #YourReview="ngModel" required></textarea>-->
+                          <!--<div *ngIf="f.submitted && !YourReview.valid" class="help-block">Review is required</div>-->
+                          <!--</div>-->
+                          <!--</div>-->
+                          <!--<div class="buttons-set">-->
+                          <!--<button class="button submit" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;Review</span></button>-->
+                          <!--</div>-->
+                          <!--</div>-->
+                          <!--</form>-->
+                        </div>
                       </div>
-                    </div>
                     </ng-container>
                   </div>
                   <div class="tab-pane fade " id="Bidhistory">
@@ -455,41 +487,41 @@
                               <div class="table-responsive">
                                 <table class="table table-bordered cart_summary">
                                   <thead>
-                                  <tr>
-                                    <th>Sr.</th>
-                                    <th>Bidder</th>
-                                    <th>Bid Amount</th>
-                                    <th>BidTime</th>
+                                    <tr>
+                                      <th>Sr.</th>
+                                      <th>Bidder</th>
+                                      <th>Bid Amount</th>
+                                      <th>BidTime</th>
 
-                                  </tr>
+                                    </tr>
                                   </thead>
                                   <tbody>
                                     <ng-container *ngFor="let abc of BidingProduct; let i = index">
-                                    <tr>
-                                      <td >
-                                        <span> {{ i+1 }} </span>
-                                      </td>
-                                      <td >
-                                        <p> {{ abc.User_Id.substr(0, 2 ) }}****</p>
-                                        <!--<small><a href="#">Color : Beige</a></small><br>-->
-                                        <!--<small><a href="#">Size : S</a></small>-->
-                                      </td>
-                                      <td class="cart_avail"><span>Rs {{ abc.Price |   number:'.0-0' }}</span></td>
-                                      <td>{{ abc.CreatedDate.substr(0, 19 ) }}</td>
-                                    </tr>
+                                      <tr>
+                                        <td>
+                                          <span> {{ i+1 }} </span>
+                                        </td>
+                                        <td>
+                                          <p> {{ abc.User_Id.substr(0, 2 ) }}****</p>
+                                          <!--<small><a href="#">Color : Beige</a></small><br>-->
+                                          <!--<small><a href="#">Size : S</a></small>-->
+                                        </td>
+                                        <td class="cart_avail"><span>Rs {{ abc.Price | number:'.0-0' }}</span></td>
+                                        <td>{{ abc.CreatedDate.substr(0, 19 ) }}</td>
+                                      </tr>
                                     </ng-container>
                                   </tbody>
                                   <tfoot>
 
-                                  <tr>
-                                    <td colspan="2" rowspan="2">
-                                      <span>If two people bid the same amount, the first bid has priority</span>
-                                      <br/>
-                                      <button (click)="RefreshBids()" class="button"><span>Refresh</span></button>
-                                    </td>
+                                    <tr>
+                                      <td colspan="2" rowspan="2">
+                                        <span>If two people bid the same amount, the first bid has priority</span>
+                                        <br />
+                                        <button (click)="RefreshBids()" class="button"><span>Refresh</span></button>
+                                      </td>
 
 
-                                  </tr>
+                                    </tr>
 
                                   </tfoot>
                                 </table>
@@ -497,18 +529,18 @@
                             </div>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+
             </div>
           </div>
         </div>
+
       </div>
-
-
-            </div>
-          </div>
-        </div>
-
-        </div>
     </div>
   </div>
 </div>
@@ -518,7 +550,7 @@
 <!-- Related Product Slider -->
 
 <div class="home-tab">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <!-- Home Tabs  -->
@@ -537,68 +569,83 @@
 
           <div class="tab-pane active in pull-left" id="women">
             <!-- <ng-container *ngFor="let phoneProducts of GetallPhoneProduct.Results"> -->
-              <div class="product-item col-md-2 col-sm-4" *ngFor="let phoneProducts of GetallPhoneProduct.Results" >
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <!--<div class="icon-sale-label sale-left">Sale</div>-->
-                    <!--<div class="box-hover">-->
-                    <!--<div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>-->
-                    <!--<div class="add-to-links" data-role="add-to-links"> <a href="#" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="#" class="action add-to-compare" title="Add to Compare"></a> </div>-->
-                    <!--</div>-->
-                    <div class="slider-items-products">
-                      <div id="pro2-slider1" class="product-flexslider hidden-buttons">
-                        <div class="slider-items slider-width-col6">
+            <div class="product-item col-md-2 col-sm-4" *ngFor="let phoneProducts of GetallPhoneProduct.Results">
+              <div class="item-inner">
+                <div class="product-thumbnail">
+                  <!--<div class="icon-sale-label sale-left">Sale</div>-->
+                  <!--<div class="box-hover">-->
+                  <!--<div class="btn-quickview"> <a href="#" data-toggle="modal" data-target="#modal-quickview"><i class="fa fa-search-plus" aria-hidden="true"></i> Quick View</a> </div>-->
+                  <!--<div class="add-to-links" data-role="add-to-links"> <a href="#" class="action add-to-wishlist" title="Add to Wishlist"></a> <a href="#" class="action add-to-compare" title="Add to Compare"></a> </div>-->
+                  <!--</div>-->
+                  <div class="slider-items-products">
+                    <div id="pro2-slider1" class="product-flexslider hidden-buttons">
+                      <div class="slider-items slider-width-col6">
 
-                          <a [routerLink]="['/single-product']" [queryParams]="{  ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }" class="product-item-photo"> 
-                            <img class="product-image-photo" src="{{ phoneProducts.Pic.split(',')[0] }}" alt="{{phoneProducts.pic }}"></a>
-                          <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
-                          <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
+                        <a [routerLink]="['/single-product']" [queryParams]="{  ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }"
+                          class="product-item-photo">
+                          <img class="product-image-photo" src="{{ phoneProducts.Pic.split(',')[0] }}" alt="{{phoneProducts.pic }}"></a>
+                        <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
+                        <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 
-                          <!--<div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">-->
-                          <!--<div class="countbox_1 jtv-timer-grid">-->
+                        <!--<div *ngIf="phoneProducts.Auction == true" class="jtv-box-timer">-->
+                        <!--<div class="countbox_1 jtv-timer-grid">-->
 
-                          <!--</div>-->
-                          <!--</div>-->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4> <a title="Product Title Here" (click)="refresh()" [routerLink]="['/single-product']" [queryParams]="{  ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }">{{ phoneProducts.P_Title }}  </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="phoneProducts.Auction == true" class="item-price">
-
-                            <div  class="price-box"> <span class="regular-price"> <span class="price"  >Rs {{ phoneProducts.MaxBidPrice | number:'.0-0' }} </span> </span> </div>
-
-                          </div>
-                          <div *ngIf="phoneProducts.Auction == false" class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">Rs {{ phoneProducts.FixedPrice | number:'.0-0' }}.00</span> </span> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <ng-container *ngIf="ourproduct">
-                            <!-- ProID=e3d4788253684dd88a84a3d1e70b73aa&CatName=Phones%20%26%20Tablets&SubCatName=Smartphones&id=269 -->
-                            <!-- <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }"> -->
-
-                        <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
-                          <a (click)="refresh()" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">   <button  class="action add-to-cart" type="button" title="Add to Cart"> Bid Now</button> </a>
-                        </div>
-                        <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                          <a (click)="refresh()" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }" >    <button  class="action add-to-cart" type="button" title="Add to Cart"> Buy Now</button> </a>
-                        </div>
-                        </ng-container>
+                        <!--</div>-->
+                        <!--</div>-->
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="pro-box-info">
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title">
+                        <h4> <a title="Product Title Here" (click)="refresh()" [routerLink]="['/single-product']"
+                            [queryParams]="{  ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }">{{
+                            phoneProducts.P_Title }} </a></h4>
+                      </div>
+                      <div class="item-content">
+                        <div *ngIf="phoneProducts.Auction == true" class="item-price">
+
+                          <div class="price-box"> <span class="regular-price">
+                              <span class="price">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0' }} </span> <span
+                                class="price-box-icons pull-right">
+                                <a href="#"><i class="far fa-heart"></i></a>
+                                <a href="#"><i class="fas fa-cart-plus"></i></a>
+                              </span></span> </div>
+
+                        </div>
+                        <div *ngIf="phoneProducts.Auction == false" class="item-price">
+                          <div class="price-box"> <span class="regular-price">
+                              <span class="price">Rs {{ phoneProducts.FixedPrice | number:'.0-0' }}.00</span><span
+                                class="price-box-icons pull-right">
+                                <a href="#"><i class="far fa-heart"></i></a>
+                                <a href="#"><i class="fas fa-cart-plus"></i></a>
+                              </span> </span> </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="box-hover">
+                    <div class="product-item-actions">
+                      <ng-container *ngIf="ourproduct">
+                        <!-- ProID=e3d4788253684dd88a84a3d1e70b73aa&CatName=Phones%20%26%20Tablets&SubCatName=Smartphones&id=269 -->
+                        <!-- <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }"> -->
+
+                        <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
+                          <a (click)="refresh()" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">
+                            <button class="action add-to-cart" type="button" title="Add to Cart"> Bid Now</button> </a>
+                        </div>
+                        <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
+                          <a (click)="refresh()" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">
+                            <button class="action add-to-cart" type="button" title="Add to Cart"> Buy Now</button> </a>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
             <!-- </ng-container> -->
 
           </div>
@@ -636,53 +683,54 @@
       </div>
       <section id="contact">
         <div class="section-content">
-          <h1 class="section-header">Hello <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s">{{username}}</span></h1>
+          <h1 class="section-header">Hello <span class="content-header wow fadeIn " data-wow-delay="0.2s"
+              data-wow-duration="2s">{{username}}</span></h1>
           <h2>You're reviewing: <span style="color: red;">{{Title}}</span></h2>
         </div>
         <div class="contact-section">
           <div class="container">
-            <form name="form" role="form" (ngSubmit)="SubmitReview()" id="reviewsForm"
-                  #f="ngForm" novalidate>
+            <form name="form" role="form" (ngSubmit)="SubmitReview()" id="reviewsForm" #f="ngForm" novalidate>
               <div class="row">
                 <div class="col-sm-6 col-md-6">
                   <h4>How do you rate this product?<em>*</em></h4>
 
                   <div class="col-lg-12">
                     <fieldset class="ratingq">
-                      <input type="radio" id="star5q" name="rating" value="5" (click)="getValueq(5)"/>
+                      <input type="radio" id="star5q" name="rating" value="5" (click)="getValueq(5)" />
                       <label class="full" for="star5q" title="Awesome - 5 stars"></label>
                       <!--<input type="radio" id="star4halfq" name="rating" value="4 and a half"-->
                       <!--(click)="getValueq(4.5)"/><label class="half" for="star4halfq"-->
                       <!--title="Pretty good - 4.5 stars"></label>-->
-                      <input type="radio" id="starq" name="rating" value="4" (click)="getValueq(4)"/><label
-
-                      class="full" for="starq" title="Pretty good - 4 stars"></label>
+                      <input type="radio" id="starq" name="rating" value="4" (click)="getValueq(4)" /><label class="full"
+                        for="starq" title="Pretty good - 4 stars"></label>
                       <!--<input type="radio" id="star3halfq" name="rating" value="3 and a half"-->
                       <!--(click)="getValueq(3.5)"/><label class="half" for="star3halfq"-->
                       <!--title="Meh - 3.5 stars"></label>-->
-                      <input type="radio" id="star3q" name="rating" value="3" (click)="getValueq(3)"/><label
-                      class="full" for="star3q" title="Meh - 3 stars"></label>
+                      <input type="radio" id="star3q" name="rating" value="3" (click)="getValueq(3)" /><label class="full"
+                        for="star3q" title="Meh - 3 stars"></label>
                       <!--<input type="radio" id="star2halfq" name="rating" value="2 and a half"-->
                       <!--(click)="getValueq(2.5)"/><label class="half" for="star2halfq"-->
                       <!--title="Kinda bad - 2.5 stars"></label>-->
-                      <input type="radio" id="star2q" name="rating" value="2" (click)="getValueq(2)"/><label
-                      class="full" for="star2q" title="Kinda bad - 2 stars"></label>
+                      <input type="radio" id="star2q" name="rating" value="2" (click)="getValueq(2)" /><label class="full"
+                        for="star2q" title="Kinda bad - 2 stars"></label>
                       <!--<input type="radio" id="star1halfq" name="rating" value="1 and a half"-->
                       <!--(click)="getValueq(1.5)"/><label class="half" for="star1halfq"-->
                       <!--title="Meh - 1.5 stars"></label>-->
-                      <input type="radio" id="star1q" name="rating" value="1" (click)="getValueq(1)"/><label
-                      class="full" for="star1q" title="Sucks big time - 1 star"></label>
+                      <input type="radio" id="star1q" name="rating" value="1" (click)="getValueq(1)" /><label class="full"
+                        for="star1q" title="Sucks big time - 1 star"></label>
                       <!--<input type="radio" id="starhalfq" (click)="getValueq(0.5)" name="rating" value="half"/><label-->
                       <!--class="half" for="starhalfq" title="Sucks big time - 0.5 stars"></label>-->
                     </fieldset>
                   </div>
                   <div class="form-group">
                     <label class="label-review"> Review</label>
-                    <textarea class="form-control textarea-review" placeholder="Enter your Reiview" name="YourReview" [(ngModel)]="model.YourReview"  #YourReview="ngModel" required > </textarea>
+                    <textarea class="form-control textarea-review" placeholder="Enter your Reiview" name="YourReview"
+                      [(ngModel)]="model.YourReview" #YourReview="ngModel" required> </textarea>
                   </div>
                   <div style="margin-bottom: 10px">
 
-                    <button class="button submit" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i> &nbsp;Review</span></button>
+                    <button class="button submit" title="Submit Review" type="submit"><span><i class="fa fa-thumbs-up"></i>
+                        &nbsp;Review</span></button>
                     <!--<i class="fa fa-paper-plane" aria-hidden="true"></i>-->
                   </div>
 

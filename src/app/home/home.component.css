@@ -12,7 +12,7 @@
   box-shadow: inset 0px 1px 0px rgba(255,255,255,.3),
   inset 0px 0px 20px rgba(0,0,0,0.1),
   0px 1px 1px rgba(0,0,0,0.4);
-  background: #000000;
+  background: #f00;
 }
 
 #ribbon:before, #ribbon:after {
@@ -21,7 +21,7 @@
   bottom:-.5em;
   position:absolute;
   display:block;
-  border: .9em solid #000000;
+  border: .9em solid #f00;
   box-shadow:0px 1px 0px rgba(0,0,0,0.4);
   z-index:-2;
 }
@@ -44,7 +44,7 @@
   position:absolute;
   display:block;
   border-style:solid;
-  border-color: #000000 transparent transparent transparent;
+  border-color: #f00 transparent transparent transparent;
   z-index:-1;
 }
 

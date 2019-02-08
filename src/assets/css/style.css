@@ -1787,7 +1787,7 @@ ul#cart-sidebar {
 
 .product-item .item-inner {
     border: 1px solid #e8e8e8;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     transition: all 0.4s ease-out;
     -webkit-transition: all 0.4s ease-out;
     -moz-transition: all 0.4s ease-out;
@@ -5404,7 +5404,10 @@ ul.products-list .sale-left {
     font-size: 18px;
     color: #ff0000;
 }
-
+.regular-price .price-box-icons a{
+    font-size: 18px;
+    color: #f00;
+}
 .block .regular-price,
 .block .regular-price .price {
     color: #000000
