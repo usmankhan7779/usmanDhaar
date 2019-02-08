@@ -40,6 +40,7 @@ export class HomeService {
     return this._http.get(this.ServerUrl + 'Related_Products/' + pk).map(response => response.json());
     // console.log(this.CateDeatils)
   }
+
   GetAllProductPicture(pk: string) {
 
     return this._http.get(this.ServerUrl + 'Getproductimages/' + pk).map(response => response.json());
@@ -250,7 +251,37 @@ export class HomeService {
     });
 
   }
+GetAllRecentProducts(Productid) {
+    if (localStorage.getItem('Authorization') !== null) {
+      const headers = new Headers();
+      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
+      headers.append('Content-Type', 'application/json');
+      if (isPlatformBrowser(this.platformId)) {
 
+        return this._http.post(this.ServerUrl + 'addrecentproduct/',
+          {
+            'productid': Productid,
+            // 'Cat_Name': CatName ,
+            // 'User_ID': User_ID,
+          }, { headers: headers }).map((res: Response) => {
+            if (res) {
+
+              if (res.status === 200) {
+                const responce_data = res.json();
+                return responce_data;
+              }
+            }
+          }).catch((error: any) => {
+            console.log(error.toString());
+            return Observable.throw(new Error(error.status));
+          });
+
+
+      }
+    }
+     
+  }
 
   womenFashion(category_name1) {
     if (localStorage.getItem('Authorization') !== null) {

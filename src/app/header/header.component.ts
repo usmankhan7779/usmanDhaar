@@ -11,6 +11,7 @@ import {CategoryServices} from "../category-detail/category-detail.services";
 import { HomeService } from '../home/home.services';
 import { SharedData } from '../shared-service';
 import swal from 'sweetalert2';
+import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 
 declare const $: any;
 
@@ -40,6 +41,8 @@ export class HeaderComponent implements OnInit {
   GetallSubCat: any=[];
   GetallSubSubCat: any=[];
   total:any;
+  totallist:any;
+  WatchStatus;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private PostAdd: AdService,
@@ -47,7 +50,8 @@ export class HeaderComponent implements OnInit {
               private _nav: Router,
               private GetAdd: HomeService,
               public _shareData: SharedData,
-              private httpService: CategoryServices) { }
+              private httpService: CategoryServices,
+              private buyer: BuyerDashboardServices) { }
 
   // @HostListener('window:popstate', ['$event'])
   // onPopState(event) {
@@ -90,9 +94,11 @@ export class HeaderComponent implements OnInit {
     // });
     if (localStorage.getItem('UserID') !== null) {
         this._shareData.currentMessagetotal.subscribe(message => this.total = message)
+        this._shareData.currentMessagetotalwatchlist.subscribe(messagess => this.totallist = messagess)
     }
     else{
       this.total=0
+      this.totallist=0
     }
     this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
@@ -103,6 +109,16 @@ export class HeaderComponent implements OnInit {
 
       // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
     
+    });
+    this.buyer.WatchStatus().subscribe(data => {
+      console.log('checkkkkkkkkkkk  ', data);
+      this.WatchStatus = data
+      this.totallist = this.WatchStatus['Total Result']
+      this._shareData.watchtotallist(this.totallist);
+      // alert( this.WatchStatus)
+
+      // this.checkwatchstatus = this.WatchStatus;
+      // alert(this.checkwatchstatus)
     });
     if (localStorage.getItem('UserID') !== null) {
       this.ValueRec = true;

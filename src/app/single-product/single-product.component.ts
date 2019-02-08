@@ -25,7 +25,8 @@ export class SingleProductComponent implements OnInit {
   imageIndexTwo = 0;
   private sub: any;
   model: any = {};
-  GetallPhoneProduct: any = [];
+  GetallPhoneProduct: any = []
+  GetallRecentProducts: any = [];
   GetallProductReview: any = [];
   element: HTMLElement;
   LoginID: Boolean = false;
@@ -103,7 +104,10 @@ export class SingleProductComponent implements OnInit {
   username: any;
   CartedProduct;
   Title: any;
-
+  total: any;
+  totallist:any;
+  statuss;
+  statuslist;
   // imageIndex = this.ProPics;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -118,6 +122,7 @@ export class SingleProductComponent implements OnInit {
   ngOnInit() {
 
     this._shareData.currentMessagetotal.subscribe(message => this.total = message)
+    this._shareData.currentMessagetotalwatchlist.subscribe(messagess => this.totallist = messagess)
 
     if (isPlatformBrowser(this.platformId)) {
       setInterval(() => {
@@ -167,7 +172,7 @@ export class SingleProductComponent implements OnInit {
 
             console.log(this.GetallPhoneProduct.Results, "results")
           });
-
+          // GetAllRecentProducts
           if (this.RedirectFromlogin !== null) {
             if (this.RedirectFromlogin === 'MakeOffer') {
               this.amountoffer = true;
@@ -193,6 +198,16 @@ export class SingleProductComponent implements OnInit {
             // alert(this.ProID)
             this.GetAdd.GetAllProductPicture(this.ProID).subscribe(resSlidersData => {
               this.ProductPictures = resSlidersData;
+            });
+          }
+          if(localStorage.getItem('Authorization')!== null)
+          {
+          
+            this.GetAdd.GetAllRecentProducts(this.ProID).subscribe(resSlidersData => {
+              this.GetallRecentProducts = resSlidersData;
+              console.log(this.GetallRecentProducts)
+            
+              console.log(this.GetallRecentProducts, "results")
             });
           }
 
@@ -399,9 +414,41 @@ export class SingleProductComponent implements OnInit {
         //localStorage.getItem('UserID'),
         // this.resultProduct['Cat_Name'],
       ).subscribe(data => {
+        alert(data)
+        this.statuslist = data.Message;
+        this.totallist = data['Total Result']
+        console.log(this.totallist)
+        // console.log(this.statuss)
+
+        alert(this.statuslist)
+        // console.log(this.statuss, 'status')
+        this._shareData.watchtotallist(this.totallist)
+        this.WatchObserver();
+        if (this.statuslist == "Product Added To Your Watchlist") {
+          swal({
+            type: 'info',
+            title: 'This Product Is Already In Your add to cart',
+            showConfirmButton: true,
+            confirmButtonColor: "#090200",
+            width: '512px',
+
+          });
+        }
+        else if (this.statuslist == "Product Already In Your Watchlist..!!") {
+          swal({
+            type: 'success',
+            title: 'Products succesfully added to your Add to cart list',
+            showConfirmButton: true,
+            confirmButtonColor: "#090200",
+            width: '512px',
+          });
+          //  alert("else wali condition")
+          // this.router.navigate(['/checkout2']);
+
+        }
         // console.log(data);
         // this.WatchStatus=false;
-        this.WatchObserver();
+        
       },
         error => {
           // console.log(error);
@@ -503,8 +550,7 @@ export class SingleProductComponent implements OnInit {
 
 
   // }
-  total: any;
-  statuss;
+ 
 
   Addtocart(Abc: any) {
     if(localStorage.getItem('Authorization') !== null)

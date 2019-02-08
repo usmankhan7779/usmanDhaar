@@ -17,6 +17,8 @@ export class SharedData {
   unreadnotification = this.unreadnotiSubject.asObservable();
   watchtotalSubject=new BehaviorSubject<any>('');
   currentMessagetotal = this.watchtotalSubject.asObservable();
+  watchtotalSubjectlist = new BehaviorSubject<any>('');
+  currentMessagetotalwatchlist = this.watchtotalSubjectlist.asObservable();
 
   constructor() {
  
@@ -30,6 +32,11 @@ export class SharedData {
   
   watchtotal(message) {
     this.watchtotalSubject.next(message)
+    console.log( message)
+
+  }
+  watchtotallist(message) {
+    this.watchtotalSubjectlist.next(message)
     console.log( message)
 
   }

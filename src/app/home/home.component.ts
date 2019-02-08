@@ -133,7 +133,7 @@ export class HomeComponent implements OnInit {
       this.PhoneandTablet();
       this.CategorySlider();
       this.HotDealSlider();
-      // this.RecommendedSlider();
+      this.RecommendedSlider();
       this.ViewedItemSlider();
       if (localStorage.getItem('UserID')) {
         this.usercheck = true;
@@ -427,7 +427,7 @@ export class HomeComponent implements OnInit {
     });
   }
   RecommendedSlider() {
-    this.Category.getAllPhoneAndTabletProduct(1, 'Phone').subscribe(resSlidersData => {
+    this.Category.getAllPhoneAndTabletProduct().subscribe(resSlidersData => {
       this.RecommendedProducts = resSlidersData;
       $('.recommendedslider').fadeOut(0);
       if (this.RecommendedProducts) {

@@ -29,9 +29,17 @@ export class  CategoryServices {
 
 
   //Phone
-  getAllPhoneAndTabletProduct(page: any, cat:any) {
-    return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProduct/' + cat +'?page=' + page, ).map(response => response.json());
+  getAllPhoneAndTabletProduct( ) {
+    if(localStorage.getItem('Authorization') !== null){
+    const headers = new Headers();
+      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
+      headers.append('Content-Type', 'application/json');
+    // return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProduct/' + cat +'?page=' + page, ).map(response => response.json());
+    return this._http.get( this.ServerUrl + 'recommended_products/'  ,{headers:headers}).map(response => response.json());
+
   }
+}
   getAllPhoneAndTabletProductBuyItNow(page: any, cat: any) {
     return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductbuy/' + cat + '?page=' + page, ).map(response => response.json());
   }
