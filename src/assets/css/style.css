@@ -2075,6 +2075,7 @@ ul#cart-sidebar {
 .product-item .item-inner .item-info .item-title {
     font-size: 14px;
     font-weight: 400;
+    margin-bottom: 5px;
 }
 .product-item .item-inner .item-info .item-title h4{
     margin: 0;
