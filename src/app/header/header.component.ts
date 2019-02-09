@@ -83,6 +83,21 @@ export class HeaderComponent implements OnInit {
       );
     }
   }
+  watchlist(){
+    // [routerLink]="['/watch-Product']
+    if(localStorage.getItem('UserName') !== null){
+      this._nav.navigate(['/watch-Product'])
+// this.router.navigate(['/ChangePassword1']);
+    }
+    else if(localStorage.getItem('UserName') == null)
+    {
+      swal(
+        'Watch list!',
+        'Your Watchlist  is empty',
+        'error'
+      );
+    }
+  }
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
     // console.log('fdsfsdfdsgj' + localStorage.getItem('UserID'));

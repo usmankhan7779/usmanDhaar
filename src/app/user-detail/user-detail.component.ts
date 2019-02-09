@@ -68,14 +68,24 @@ export class UserDetailComponent implements OnInit {
 
       // this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
       console.log(this.USerNameID)
-
-      this.obj.GetUserDetailByName().subscribe(resSlidersData => {
+      
+      // GetUserDetailByName
+      this.obj.GetUSerdetailsByUserId().subscribe(resSlidersData => {
         this.GetUSerdetails = resSlidersData;
         this.id= this.GetUSerdetails['id']
         this.Vendor= this.GetUSerdetails['Vendor']
         this.complete = this.GetUSerdetails['Complete']
         this.ISConfirmed = this.GetUSerdetails['ISConfirmed']
         this.picname= this.GetUSerdetails['Pic']
+        this.USerNameID= this.GetUSerdetails['user_id']
+
+        // this.id= this.GetUSerdetails['id']
+        // this.Vendor= this.GetUSerdetails['Vendor']
+        // this.complete = this.GetUSerdetails['Complete']
+        // this.ISConfirmed = this.GetUSerdetails['ISConfirmed']
+        // this.picname= this.GetUSerdetails['Pic']
+        // this.USerNameID= this.GetUSerdetails['user_id']
+        // console.log(this.GetUSerdetails,'getuser');
         console.log(this.id)
         // this.Username= this.GetUSerdetails['user_id']
 
