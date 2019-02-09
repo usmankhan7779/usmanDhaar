@@ -78,7 +78,7 @@ const appRoutes: Routes = [
       { path: 'buyer-invoice', loadChildren: './buyer-invoice/buyer-invoice.module#BuyerInvoiceModule', canActivate: [AuthGuard] },
       { path: 'buyer-offer', loadChildren: './buyer-offer/buyer-offer.module#BuyerOfferModule', canActivate: [AuthGuard] },
       { path: 'buyer-store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard] },
-      { path: 'my-watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', canActivate: [AuthGuard] },
+      { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule', canActivate: [AuthGuard] },
       { path: 'buyer-user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
       { path: 'user-detail', loadChildren: './user-detail/user-detail.module#UserDetailModule', canActivate: [AuthGuard] },
       { path: 'account-setting', loadChildren: './buyer-setting/buyer-setting.module#BuyerSettingModule', canActivate: [AuthGuard] },
