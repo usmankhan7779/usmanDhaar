@@ -180,9 +180,9 @@ export class CategoryDetailComponent implements OnInit {
 
     // alert(this.CatName);
       //  console.log('Phones & Tablets')
-      this.httpService.getAllPhoneAndTabletProduct(1,this.CatName).subscribe(
+      this.httpService.getBuyNowAuctionproducts('latest',this.CatName).subscribe(
         data => {
-          this.Trend = data;
+          this.Trend = data.Results;
           if (this.Trend['totalItems'] === 0) {
             this.errormessage = true;
           }
@@ -222,13 +222,14 @@ export class CategoryDetailComponent implements OnInit {
 
     // alert(this.CatName);
       //  console.log('Phones & Tablets')
-      this.httpService.getAllPhoneAndTabletProductAuction(1,this.CatName).subscribe(
+      this.httpService.getBuyNowAuctionproducts('auction',this.CatName).subscribe(
         data => {
-          this.Trend = data;
+          this.Trend = data.Results;
           if (this.Trend['totalItems'] === 0) {
             this.errormessage = true;
           }
         });
+    // this.Waitcall = false;
     this.Waitcall = false;
 
   }

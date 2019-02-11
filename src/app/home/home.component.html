@@ -224,8 +224,8 @@
                               <span class="regular-price">
                                 <span class="price">Rs {{ Lastest.SrartingPrice | number:'.0-0' }}</span>
                                 <span class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  <!-- <a href="#"><i class="far fa-heart"></i></a>
+                                  <a href="#"><i class="fas fa-cart-plus"></i></a> -->
                                 </span>
                               </span>
                             </div>
@@ -237,22 +237,21 @@
                               <span class="regular-price">
                                 <span class="price">Rs {{Lastest.FixedPrice | number:'.0-0' }}</span>
                                 <span class="price-box-icons pull-right">
-                                  <a href="#"><i class="fas fa-heart"></i></a>
-                                  <!-- <div *ngIf="!data.wishlist==false" class="sh-red">
-                                    <i class="fas fa-heart"></i>
-                                </div>
-                            </a>
-                            <div class="product-list__wishlist wishlist_icon" (click)="addwishlist(data.id,nullvalue,nullvalue,nullvalue)"
-                                *ngIf="!data.wishlist==true">
-                                <i class="far fa-heart"></i>
-                            </div> -->
+                                  <!-- <a href="#"><i class="far fa-heart"></i></a> -->
+                                 
                                   <a href="#"><i class="fas fa-cart-plus"></i></a>
                                 </span>
                               </span>
                             </div>
                           </div>
 
-
+                          <div *ngIf="Lastest?.inWishList==false" >
+                            <i class="far fa-heart"></i>
+                        </div>
+                    <!-- </a> -->
+                    <div     *ngIf="Lastest?.inWishList== true">
+                        <i class="fas fa-heart"></i>
+                    </div>
                         </div>
 
 

@@ -1,9 +1,14 @@
 import 'rxjs/add/operator/map';
-import {Injectable} from '@angular/core';
+// import {Injectable} from '@angular/core';
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
+import { isPlatformBrowser } from '@angular/common';
 import {HttpService} from '../services/http-service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/map';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+
 import 'rxjs/add/operator/map';
 
 
@@ -18,7 +23,7 @@ export class  CategoryServices {
   ServerUrlLocal = 'http://127.0.0.1:8000/products/';
 
 
-  constructor(private _http: HttpService,
+  constructor(@Inject(PLATFORM_ID) private platformId: Object,private _http: HttpService,
               private _nav: Router) {
   }
   // GetphotoById() {
@@ -40,6 +45,79 @@ export class  CategoryServices {
 
   // }
 }
+// getBuyNowAuctionproducts(page: any, cat: any ) {
+//   // if(localStorage.getItem('Authorization') !== null){
+//   const headers = new Headers();
+//     // headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+//     console.log('pofile', localStorage.getItem('Authorization'));
+//     headers.append('Content-Type', 'application/json');
+//   return this._http.get( this.ServerUrl + 'Getbuynow_auction_products/' , ).map(response => response.json());
+//   // return this._http.get( this.ServerUrl + 'recommended_products/'  ,{headers:headers}).map(response => response.json());
+
+// // }
+// }
+getBuyNowAuctionproducts(category_name,fillter) {
+  if (localStorage.getItem('Authorization') !== null) {
+    const headers = new Headers();
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    headers.append('Content-Type', 'application/json');
+    if (isPlatformBrowser(this.platformId)) {
+
+      return this._http.post(this.ServerUrl + 'Getbuynow_auction_products/',
+        {
+          'category_name': category_name,
+          "filter_type":fillter
+          // 'Cat_Name': CatName ,
+          // 'User_ID': User_ID,
+        }, { headers: headers }).map((res: Response) => {
+          if (res) {
+
+            if (res.status === 200) {
+              const responce_data = res.json();
+              return responce_data;
+            }
+          }
+        }).catch((error: any) => {
+          console.log(error.toString());
+          return Observable.throw(new Error(error.status));
+        });
+
+
+    }
+  }
+  else {
+    const headers = new Headers();
+    // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+    // console.log('pofile', localStorage.getItem('Authorization'));
+    headers.append('Content-Type', 'application/json');
+    if (isPlatformBrowser(this.platformId)) {
+
+      return this._http.post(this.ServerUrl + 'Getbuynow_auction_products/',
+        {
+          'category_name': category_name,
+          "filter_type":fillter
+          // 'Cat_Name': CatName ,
+          // 'User_ID': User_ID,
+        }, { headers: headers }).map((res: Response) => {
+          if (res) {
+
+            if (res.status === 200) {
+              const responce_data = res.json();
+              return responce_data;
+            }
+          }
+        }).catch((error: any) => {
+          console.log(error.toString());
+          return Observable.throw(new Error(error.status));
+        });
+
+
+    }
+
+  }
+}
+// Getbuynow_auction_products
   getAllPhoneAndTabletProductBuyItNow(page: any, cat: any) {
     return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductbuy/' + cat + '?page=' + page, ).map(response => response.json());
   }
