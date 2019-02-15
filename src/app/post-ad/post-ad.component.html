@@ -36,7 +36,7 @@
                 <div class="formrow">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Title.valid }">
 
-                    <label style="color: black" class="help-block">Title</label>
+                    <label class="help-block">Title</label>
                     <div *ngIf="f.submitted && !Title.valid" class="help-block">Title required</div>
                     <input type="text" class="form-control" maxlength="90" name="Title" placeholder="Product Title" [(ngModel)]="model.Title" #Title="ngModel"  required>
 
@@ -57,9 +57,9 @@
   
   && StoreName.valid
                   </mat-select> -->
-                <label  style="color: black" class="help-block">Select Your StoreName</label>
+                <label  class="help-block">Select Your Store Name</label>
                 <div *ngIf="f.submitted " class="help-block">Select Your StoreName</div>
-                <select [(ngModel)]="model.StoreName"  class="col-md-push-6" name="StoreName" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                <select [(ngModel)]="model.StoreName"  class="col-md-push-6" name="StoreName"  >
                   <option *ngFor="let data of StoreNamess" [value]="data.StoreName"  >
                     {{data.StoreName}}
                    </option>
@@ -73,8 +73,8 @@
               <div  class="col-md-12">
                 <div class="formrow">
 
-                  <label  style="color: black" class="help-block">Product condition</label>
-                  <select   [(ngModel)]="model.condition" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                  <label  class="help-block">Product condition</label>
+                  <select   [(ngModel)]="model.condition" class="col-md-push-6" name="Subcat"  >
                     <option value="New" selected>New</option>
                     <option value="Used">Used</option>
 
@@ -89,8 +89,8 @@
               <div  class="col-md-12">
                 <div class="formrow">
 
-                    <label  style="color: black" class="help-block">Select Sub Catgory</label>
-                    <select   [(ngModel)]="model.subcat" class="col-md-push-6" name="Subcat" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                    <label  class="help-block">Select Sub Catgory</label>
+                    <select   [(ngModel)]="model.subcat" class="col-md-push-6" name="Subcat"  >
                       <optgroup *ngFor="let item of GetAllSubCat"  label="{{ item.Sub_Cat_Name}}">
                         <ng-container *ngFor="let item_sub of GetAllSubSubCat">
                         <option  *ngIf="item.Sub_Cat_Name == item_sub.Sub_Cat_ID" [value]="item.Sub_Cat_Name +'!' +item.id+ '!'+item_sub.Sub_Sub_Cat_Name+ '!' + item_sub.id"> {{ item_sub.Sub_Sub_Cat_Name }}</option>
@@ -109,7 +109,7 @@
                 <div class="formrow">
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Addetail.valid }">
 
-                    <label style="color: black" class="help-block">Ad Detail*</label>
+                    <label class="help-block">Ad Detail*</label>
                     <div *ngIf="f.submitted && !Addetail.valid" class="help-block">Ad-details required</div>
                     <textarea style="font-size: 20px !important;" maxlength="1500" class="form-control" name="Addetail" placeholder="Ad Detail" [(ngModel)]="model.Addetail" #Addetail="ngModel"  required></textarea>
                 </div>
@@ -187,8 +187,8 @@
                       <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control" placeholder="Reserve Price">
                     </div> -->
                       <div class="formrow">
-                        <label  style="color: black" class="help-block">Select Your Listing</label>
-                        <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing" style="height: 45px; font-size: 20px; color:#555555; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
+                        <label  class="help-block">Select Your Listing</label>
+                        <select [(ngModel)]="model.AuctionListing"  class="col-md-push-6" name="listing"  >
                           <option value="10" selected>10 Days</option>
                           <option value="7">7 Days</option>
                           <option value="5">5 Days</option>
