@@ -77,44 +77,39 @@
               <table class="table table-user-information">
                 <tbody>
                   <tr>
-                    <td>Name:</td>
+                    <td><i class="fas fa-user"></i></td>
                     <td>{{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}</td>
                   </tr>
                   <tr>
-                    <td>Mobile:</td>
+                    <td><i class="fas fa-mobile-alt"></i></td>
                     <td>{{GetUSerDOne['Mobile']}}</td>
                   </tr>
                   <tr>
-                    <td>Address:</td>
+                    <td><i class="far fa-address-card"></i></td>
                     <td>{{GetUSerDOne['Address']}}</td>
                   </tr>
-
                   <tr>
                   <tr>
-                    <td>City:</td>
+                    <td><i class="fas fa-city"></i></td>
                     <td>{{ GetUSerDOne['City'] +' ' +GetUSerDOne['Zip'] }}</td>
                   </tr>
                   <tr>
-                    <td>State</td>
+                    <td><i class="fas fa-university"></i></td>
                     <td>{{GetUSerDOne['State'] }} </td>
                   </tr>
                   <tr>
-                    <td>Country</td>
+                    <td><i class="far fa-flag"></i></td>
                     <td>{{GetUSerDOne['Country'] }}</td>
                   </tr>
-
-
                 </tbody>
               </table>
-
-
             </div>
           </ng-container>
         </div>
       </div>
       <div class="panel-footer">
         <a [routerLink]="['/user-detail']" data-original-title="Edit this user" data-toggle="tooltip" type="button"
-          class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+          class="btn btn-sm btn-red"><i class="glyphicon glyphicon-edit"></i></a>
         <!--<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>-->
         <span class="pull-right">
         </span>
@@ -185,7 +180,7 @@
       </div>
       <div class="panel-footer">
         <a [routerLink]="['/user-detail']" data-original-title="Edit this user" data-toggle="tooltip" type="button"
-          class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+          class="btn btn-sm btn-red"><i class="glyphicon glyphicon-edit"></i></a>
         <span class="pull-right">
         </span>
       </div>
