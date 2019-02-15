@@ -429,8 +429,8 @@ export class SingleProductComponent implements OnInit {
     
         if (this.statuslist == "Product Added To Your Watchlist") {
           swal({
-            type: 'info',
-            title: 'This Product Is Already In Your add to cart',
+            type: 'success',
+            title: 'Product Added To Your Watchlist',
             showConfirmButton: true,
             confirmButtonColor: "#090200",
             width: '512px',
@@ -439,8 +439,8 @@ export class SingleProductComponent implements OnInit {
         }
         else if (this.statuslist == "Product Already In Your Watchlist..!!") {
           swal({
-            type: 'success',
-            title: 'Products succesfully added to your Add to cart list',
+            type: 'info',
+            title: 'Product Already In Your Watchlist..!!',
             showConfirmButton: true,
             confirmButtonColor: "#090200",
             width: '512px',
