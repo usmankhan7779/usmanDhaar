@@ -2112,6 +2112,7 @@ ul#cart-sidebar {
 
 .home-tab .product-item {
     margin: 0px;
+    min-height: 330px;
 }
 
 .product-grid-area.col4 .product-item {
