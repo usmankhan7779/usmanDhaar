@@ -42,18 +42,18 @@ export class ManageCouponsComponent implements OnInit {
       }
   }
   }
-  pageTrendChanged(event) {
-    if (isPlatformBrowser(this.platformId)){
-      this.r = event;
-      this.pageno = event;
+  // pageTrendChanged(event) {
+  //   if (isPlatformBrowser(this.platformId)){
+  //     this.r = event;
+  //     this.pageno = event;
 
-      alert(this.pageno);
-      this.obj.getAll_ProductBYStoreName(this.pageno, localStorage.getItem('StoreName')).subscribe(
-        data => {
-          this.ActiveProduct = data;
-        });
-    }
-  }
+  //     alert(this.pageno);
+  //     this.obj.getAll_ProductBYStoreName(this.pageno, localStorage.getItem('StoreName')).subscribe(
+  //       data => {
+  //         this.ActiveProduct = data;
+  //       });
+  //   }
+  // }
 
   SaveProduct(product, index) {
 

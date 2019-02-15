@@ -41,7 +41,7 @@ export class StoreTemplateComponent implements OnInit {
             this._nav.navigate(['/404']);
           } else {
 
-            this.Getstoreinfo.getAll_ProductBYStoreName(1, this.StoreName).subscribe(
+            this.Getstoreinfo.getAll_ProductBYStoreName( this.StoreName).subscribe(
               data1 => {
                 this.Trend = data1;
                 console.log('Start');
@@ -62,17 +62,17 @@ export class StoreTemplateComponent implements OnInit {
 
   }
 
-  pageTrendChanged(event) {
-    // alert("mobile")
-    this.r = event;
-    this.pageno = event;
+  // pageTrendChanged(event) {
+  //   // alert("mobile")
+  //   this.r = event;
+  //   this.pageno = event;
 
-    // alert(this.pageno);
-    this.Getstoreinfo.getAll_ProductBYStoreName(this.pageno, this.StoreName).subscribe(
-      data => {
-        this.Trend = data;
-        alert('end wali condtion')
-      });
-  }
+  //   // alert(this.pageno);
+  //   this.Getstoreinfo.getAll_ProductBYStoreName(this.pageno, this.StoreName).subscribe(
+  //     data => {
+  //       this.Trend = data;
+  //       alert('end wali condtion')
+  //     });
+  // }
 
 }

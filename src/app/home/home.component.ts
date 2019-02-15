@@ -427,7 +427,7 @@ export class HomeComponent implements OnInit {
     });
   }
   RecommendedSlider() {
-    this.Category.getAllPhoneAndTabletProduct(1,"phone").subscribe(resSlidersData => {
+    this.Category.getRecommended().subscribe(resSlidersData => {
       this.RecommendedProducts = resSlidersData;
       $('.recommendedslider').fadeOut(0);
       if (this.RecommendedProducts) {

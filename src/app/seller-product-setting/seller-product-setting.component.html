@@ -49,7 +49,7 @@
               <br />
               <ul class="searchList">
                 <!-- ad start -->
-                <ng-container *ngFor="let phoneProducts of ActiveProduct.Results | paginate: { itemsPerPage: 12,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }; let item = index">
+                <ng-container *ngFor="let phoneProducts of ActiveProduct.Results">
                   <li>
                     <div class="row">
                       <div class="col-md-2 col-sm-4">
@@ -69,9 +69,9 @@
                               <p class="label label-warning">{{phoneProducts.P_Des}}</p>
                             </div>
                             <div class="col-md-4 col-sm-5 text-right">
-                              <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.MaxBidPrice |
+                              <div *ngIf="phoneProducts.Auction == true " class="adprice">Rs {{ phoneProducts.MaxBidPrice |
                                 number:'.0-0'}}</div>
-                              <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs {{ phoneProducts.FixedPrice |
+                              <div *ngIf="phoneProducts.Auction == false " class="adprice">Rs {{ phoneProducts.FixedPrice |
                                 number:'.0-0'}}</div>
                               <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
                               <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }"

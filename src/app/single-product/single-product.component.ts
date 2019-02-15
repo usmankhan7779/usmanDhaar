@@ -414,16 +414,19 @@ export class SingleProductComponent implements OnInit {
         //localStorage.getItem('UserID'),
         // this.resultProduct['Cat_Name'],
       ).subscribe(data => {
-        alert(data)
-        this.statuslist = data.Message;
+        // alert(data)
+        console.log(data)
+        this.statuslist = data['Message']
+        this._shareData.watchtotallist(this.totallist)
+        this.WatchObserver();
+        console.log(this.statuslist)
         this.totallist = data['Total Result']
         console.log(this.totallist)
         // console.log(this.statuss)
 
-        alert(this.statuslist)
+        
         // console.log(this.statuss, 'status')
-        this._shareData.watchtotallist(this.totallist)
-        this.WatchObserver();
+    
         if (this.statuslist == "Product Added To Your Watchlist") {
           swal({
             type: 'info',

@@ -55,7 +55,7 @@ export class SellerProductSettingComponent implements OnInit {
         // getAll_ProductBYStoreName
         // getactivedeacvtiveproductbystorename
         // getdeacvtiveproductbystorename
-        this.ad.getAll_ProductBYStoreName(1,this.SessionstoreName).subscribe(data => {
+        this.ad.getAll_ProductBYStoreName(this.SessionstoreName).subscribe(data => {
           this.Allproducts = data;
           console.log('Active Products are:::', this.ActiveProduct);
         });
@@ -81,18 +81,18 @@ export class SellerProductSettingComponent implements OnInit {
     // alert(this.Active)
     
   }
-  pageTrendChanged(event) {
-    if (isPlatformBrowser(this.platformId)){
-      this.r = event;
-      this.pageno = event;
+  // pageTrendChanged(event) {
+  //   if (isPlatformBrowser(this.platformId)){
+  //     this.r = event;
+  //     this.pageno = event;
 
-      alert(this.pageno);
-      this.ad.getAll_ProductBYStoreName(this.pageno, this.SessionstoreName).subscribe(
-        data => {
-          this.ActiveProduct = data;
-        });
-    }
-  }
+  //     alert(this.pageno);
+  //     this.ad.getAll_ProductBYStoreName(this.pageno, this.SessionstoreName).subscribe(
+  //       data => {
+  //         this.ActiveProduct = data;
+  //       });
+  //   }
+  // }
 
   SaveProduct(product, index) {
     this.currentindex = index;

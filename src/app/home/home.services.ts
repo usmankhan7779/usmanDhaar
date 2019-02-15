@@ -711,13 +711,17 @@ GetAllRecentProducts(Productid) {
           // 'Cat_Name': CatName ,
           // 'User_ID': User_ID,
         }, { headers: headers }).map((res: Response) => {
-          if (res) {
+          // if (res) {
 
-            if (res.status === 200) {
-              const responce_data = res.json();
-              return [{ status: res.status, json: res }];
-            }
-          }
+            // if (res.status === 200) {
+              // const responce_data = res.json();
+              // return [{ status: res.status, json: res }];
+              // const responce_data = 
+             return res.json();
+              // console.log(res.json())
+              // return { status: res.status, responce_data };
+            // }
+          // }
         }).catch((error: any) => {
           console.log(error.toString());
           return Observable.throw(new Error(error.status));
