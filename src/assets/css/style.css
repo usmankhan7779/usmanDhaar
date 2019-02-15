@@ -5421,11 +5421,11 @@ ul.products-list .sale-left {
     font-size: 18px;
     color: #ff0000;
 }
-.regular-price .price-box-icons a{
+.regular-price .price-box-icons a, .regular-price .price-box-icons i.fa-heart{
     font-size: 18px;
     color: #f00;
 }
-.regular-price .price-box-icons a:hover{
+.regular-price .price-box-icons a:hover, .regular-price .price-box-icons i.fa-heart:hover{
     color: #000;
 }
 .block .regular-price,
@@ -9176,11 +9176,15 @@ ngx-image-viewer .img-container{
 .btn-red{
     color: #fff;
     background: #f00;
-    border-color: #f00;
+    border: 1px solid #f00;
+    box-shadow: 0 0 15px -2px #f00;
 }
 .login-signup-page{
     width: 500px;
     margin: 0 auto;
+}
+.d-inline-block{
+    display: inline-block;
 }
 @media (max-width: 1153px) {
     .navbar-nav>li>a {
