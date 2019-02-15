@@ -169,6 +169,21 @@ export class HomeService {
     }
 
   }
+  Getlikeforyou() {
+    // if (localStorage.getItem('Authorization') !== null) {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // headers.append('Authorization', 'Token ' +  this.authentication);
+      // headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
+      return this._http.get(this.ServerUrl + 'getalljustfunproducts', { headers: headers }).map(response => response.json());
+      // console.log(this.CateDeatils)
+    // }
+    // else {
+    //   return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat').map(response => response.json());
+    //   // console.log(this.CateDeatils)
+    // }
+  }
   GetAuctionProductsfromAllCat() {
     if (localStorage.getItem('Authorization') !== null) {
       let headers = new Headers();

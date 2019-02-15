@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
   GetALLFeaturedProductss: any = [];
   GetALLAuctionProductss: any = [];
   GetALLBuyNowProductss: any = [];
+  GetALLLikeforyou: any = [];
   HotDealProducts: any = [];
   RecommendedProducts: any = [];
   ViewedProducts: any = { "products": [] };
@@ -129,7 +130,7 @@ export class HomeComponent implements OnInit {
       this.GetAllBuyNowproduct();
       this.GetAcutionProduct();
       this.GetFreateuredProducts();
-
+      this.Getjustlikeforyou();
       this.PhoneandTablet();
       this.CategorySlider();
       this.HotDealSlider();
@@ -156,10 +157,6 @@ export class HomeComponent implements OnInit {
         }
         console.log(this.GetALLProductss);
 
-
-        // alert(this.GetALLProductss)
-        // console.log(this.GetALLProductss, 'response')
-        //this.pager = this.pagerService.getPager(resSlidersData['Total Result'], page, 10);
 
 
       });
@@ -236,6 +233,15 @@ export class HomeComponent implements OnInit {
       });
     }
   }
+  Getjustlikeforyou() {
+
+    this.GetProducts.Getlikeforyou().subscribe(resSlidersData => {
+
+      this.GetALLLikeforyou = resSlidersData.Results;
+
+    });
+  }
+
   GetFreateuredProducts() {
     // this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
 
