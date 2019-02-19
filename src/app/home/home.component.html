@@ -1146,7 +1146,7 @@
             <span id="content" style="font-weight: bolder">Dhaar Recommendations for You </span>
           </div>
           <div class="recommendedslider" style="margin-top: 0px !important;">
-            <ng-container *ngFor="let TvVideoaudio88 of RecommendedProducts.results">
+            <ng-container *ngFor="let TvVideoaudio88 of RecommendedProducts">
               <div class="product-item col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
@@ -1225,7 +1225,7 @@
         </div>
       </div>
     </ng-container>
-
+    <!-- <ng-container *ngIf="GetALLLikeforyou.length ==0"> -->
     <div class="container-fluid">
       <div class="row">
         <div id="ribbon">
@@ -1313,6 +1313,7 @@
         </div>
       </div>
     </div>
+    <!-- </ng-container> -->
 
     <ng-container *ngIf="ViewedProducts!== null">
       <div class="container-fluid">

@@ -131,7 +131,10 @@
 </div>
   
     <div class="col-md-4 product-item btn-plus">
-      <a href="#"><i class="fas fa-7x fa-plus-square"></i></a>
+      <a [routerLink]="['/store-registration']">
+          
+        <i class="fas fa-7x fa-plus-square"></i>
+      </a>
     </div>
   </div>
 </div>
@@ -355,7 +358,7 @@
                     <input type="text" class="input form-control" required placeholder="activestore" ng-Model="model.activestore"
                       #branchcod name="activestore" id="activestore" value="{{branchcode}}">
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-4" hidden="true">
 
                     <label for="as" class="required">User Image(*)</label>
 

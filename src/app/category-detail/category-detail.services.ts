@@ -48,11 +48,13 @@ export class  CategoryServices {
 getRecommended( ) {
   // if(localStorage.getItem('Authorization') !== null){
   const headers = new Headers();
+
     headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
-    console.log('pofile', localStorage.getItem('Authorization'));
     headers.append('Content-Type', 'application/json');
+    console.log('pofile', localStorage.getItem('Authorization'));
+   
   // return this._http.get( this.ServerUrl + 'Getbuynow_auction_products/' , ).map(response => response.json());
-  return this._http.get( this.ServerUrl + 'recommended_products/'  ,{headers:headers}).map(response => response.json());
+  return this._http.get(this.ServerUrl +  'recommended_products/'  ,{headers:headers}).map(response => response.json());
 
 // }
 }

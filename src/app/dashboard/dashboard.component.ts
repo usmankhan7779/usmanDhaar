@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
       this.Profile.GetUSerdetailsByUserId().subscribe(resSlidersData => {
         this.GetUSerDOne = resSlidersData;
         this.ValueRec = true;
+        // alert(this.GetUSerDOne.user)
     this.USerName= this.GetUSerDOne.Fname;
       });
 
@@ -125,7 +126,7 @@ export class DashboardComponent implements OnInit {
       console.log('I am in 1 Component');
       this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
         data => {
-          // this.Profile.UserDetailsUpdatePic(this.GetUSerDOne.user_id,this.fileName).subscribe();
+           this.Profile.UserDetailsUpdatePic(this.GetUSerDOne.user,this.fileName).subscribe();
           console.log('Successs')
         },
         error => {

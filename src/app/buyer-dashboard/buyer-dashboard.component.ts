@@ -85,7 +85,8 @@ export class BuyerDashboardComponent implements OnInit {
       data => {
         console.log(data)
         alert(data)
-        this.obj.UserDetailsUpdatePic(this.GetUSerDOne['user_id'],this.fileName).subscribe();
+        this.obj.UserDetailsUpdatePic(this.GetUSerDOne['user'],this.fileName).subscribe();
+        // this.Profile.UserDetailsUpdatePic(this.GetUSerDOne.user,this.fileName).subscribe();
         console.log('Successs')
       },
       error => {

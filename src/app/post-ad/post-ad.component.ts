@@ -111,7 +111,7 @@ export class PostAdComponent implements OnInit {
         this.ActiveProduct = data;
         console.log(this.ActiveProduct,"get store information ")
         if (this.ActiveProduct ) {
-          this.StoreNamess =data.StoreInfo;
+          this.StoreNamess =data;
           console.log(this.StoreNamess)
           localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
           // localStorage.setItem('StoreName', this.ActiveProduct[0].StoreName);

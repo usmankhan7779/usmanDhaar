@@ -52,17 +52,17 @@ export class CategoryDetailComponent implements OnInit {
               private httpService: CategoryServices) {
   }
 
-  pageTrendChanged(event) {
-    // alert("mobile")
-    this.r = event;
-    this.pageno = event;
+  // pageTrendChanged(event) {
+  //   // alert("mobile")
+  //   this.r = event;
+  //   this.pageno = event;
 
-    // alert(this.pageno);
-    this.httpService.getAllPhoneAndTabletProduct(this.pageno, this.CatName).subscribe(
-      data => {
-        this.Trendee = data;
-      });
-  }
+  //   // alert(this.pageno);
+  //   this.httpService.getAllPhoneAndTabletProduct(this.pageno, this.CatName).subscribe(
+  //     data => {
+  //       this.Trendee = data;
+  //     });
+  // }
 
   ngOnInit() {
     this.Waitcall = true;

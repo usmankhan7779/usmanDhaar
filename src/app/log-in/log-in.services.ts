@@ -53,11 +53,14 @@ getusers;
             console.log(this.decoded,"decode")
 
               // this.decoded = this.jwtHelper.decodeToken(res.json().token)['user_id'];
-              localStorage.setItem('UserID',this.decoded );
+              // localStorage.setItem('UserID',this.decoded );
               localStorage.setItem('Authorization',this.decoded);
               this.GetUSerdetailsByUserId().subscribe(resSlidersData => {
                 // alert(resSlidersData['ISConfirmed'])
+               
                 this.users= resSlidersData;
+                localStorage.setItem('UserID',this.users.user );
+                console.log(this.users.user)
                 this.getusers= this.users.user;
                 console.log(this.users)
                 // alert(this.getusers)
@@ -401,8 +404,9 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get(this.StoreServerUrl + 'GetStoreInformation/' ,{headers :headers}).map((response: Response) => response.json());
-
+    return this._http.get( 'http://192.168.30.225:8000/products/all_stores_names/' ,{headers :headers}).map((response: Response) => response.json());
+    // http://192.168.30.225:8000/products/all_stores_names/
+    //  this.StoreServerUrl 
   }
 
   verify_token() {

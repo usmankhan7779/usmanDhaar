@@ -116,6 +116,7 @@ export class LogInComponent implements OnInit {
     this.obj.loged_in(username, password, this.CatName, this.ProID, this.checkout).subscribe((response) => {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
+        
         swal(
           'Logged In!',
           'Successfully login to your account',
