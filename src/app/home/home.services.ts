@@ -89,8 +89,8 @@ export class HomeService {
     // console.log(this.CateDeatils)
   }
   get_PhoneAndTabletProduct_ProductById(proId: string) {
-
-    return this._http.get(this.ServerUrl + 'getphoneproductsById/' + proId).map(response => response.json());
+    // this.ServerUrl + 
+    return this._http.get('http://192.168.30.225:8000/products/getphoneproductsById/' + proId).map(response => response.json());
     // console.log(this.CateDeatils)
   }
   getWomenFashionProductById(proId: string) {

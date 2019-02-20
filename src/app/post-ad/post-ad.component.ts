@@ -21,7 +21,7 @@ export class PostAdComponent implements OnInit {
 
   private sub: any;
   model: any = {"AddBestOffer":false};
-
+  store:any;
   subcatNsubScat: any = [];
   GetAllSubSubCat: any = [];
   PictureData: any = [];
@@ -84,6 +84,7 @@ export class PostAdComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
+
     this.sub = this.route
       .queryParams
       .subscribe(params => {
@@ -120,13 +121,19 @@ export class PostAdComponent implements OnInit {
 
 
           });
-          this.SessionstoreName = localStorage.getItem('StoreName');
+          // this.SessionstoreName = localStorage.getItem('StoreName');
         } else {
           this.router.navigate(['/store-registration']);
         }
       });
 
   }
+  }
+  storess(){
+    alert  (this.model.StoreName)
+    this.SessionstoreName= this.model.StoreName
+    alert(this.SessionstoreName)
+    console.log(this.SessionstoreName)
   }
 
   EnableAuction() {
@@ -147,6 +154,7 @@ export class PostAdComponent implements OnInit {
 
   }
 
+  
   BuyitnowFun() {
 
     if ( this.Buyitnow === true ) {

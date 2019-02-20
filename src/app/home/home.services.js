@@ -38,7 +38,7 @@ var HomeService = (function () {
         // console.log(this.CateDeatils)
     };
     HomeService.prototype.get_PhoneAndTabletProduct_ProductById = function (proId) {
-        return this._http.get(this.ServerUrl + 'getphoneproductsById/' + proId).map(function (response) { return response.json(); });
+        return this._http.get('http://192.168.30.225:8000/products/getphoneproductsById/' + proId).map(function (response) { return response.json(); });
         // console.log(this.CateDeatils)
     };
     HomeService.prototype.getWomenFashionProductById = function (proId) {

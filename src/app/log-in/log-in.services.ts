@@ -404,7 +404,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get( 'http://192.168.30.225:8000/products/all_stores_names/' ,{headers :headers}).map((response: Response) => response.json());
+    return this._http.get( 'http://192.168.29.225:8000/products/all_stores_names/' ,{headers :headers}).map((response: Response) => response.json());
     // http://192.168.30.225:8000/products/all_stores_names/
     //  this.StoreServerUrl 
   }

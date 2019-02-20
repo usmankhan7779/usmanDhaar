@@ -37,6 +37,29 @@
                 <div id="thumbcarousel" class="carousel slide" data-interval="false">
                   <div class="carousel-inner">
                     <div class="item active">
+                        <ng-container *ngIf="ProPics.length === 6">
+                            <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ProPics[0]}}" (click)="IndexChange(0)"></div>
+                            <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ProPics[1]}}" (click)="IndexChange(1)"></div>
+                            <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ProPics[2]}}" (click)="IndexChange(2)"></div>
+                            <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="{{ProPics[3]}}" (click)="IndexChange(3)"></div>
+                            <div data-target="#carousel" data-slide-to="4" class="thumb"><img src="{{ProPics[4]}}" (click)="IndexChange(4)"></div>
+                            <div data-target="#carousel" data-slide-to="5" class="thumb"><img src="{{ProPics[5]}}" (click)="IndexChange(5)"></div>
+
+                          </ng-container>
+                        <ng-container *ngIf="ProPics.length === 5">
+                            <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ProPics[0]}}" (click)="IndexChange(0)"></div>
+                            <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ProPics[1]}}" (click)="IndexChange(1)"></div>
+                            <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ProPics[2]}}" (click)="IndexChange(2)"></div>
+                            <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="{{ProPics[3]}}" (click)="IndexChange(3)"></div>
+                            <div data-target="#carousel" data-slide-to="4" class="thumb"><img src="{{ProPics[4]}}" (click)="IndexChange(4)"></div>
+
+                          </ng-container>
+                        <ng-container *ngIf="ProPics.length === 4">
+                            <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ProPics[0]}}" (click)="IndexChange(0)"></div>
+                            <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ProPics[1]}}" (click)="IndexChange(1)"></div>
+                            <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="{{ProPics[2]}}" (click)="IndexChange(2)"></div>
+                            <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="{{ProPics[3]}}" (click)="IndexChange(3)"></div>
+                          </ng-container>
                       <ng-container *ngIf="ProPics.length === 3">
                         <div data-target="#carousel" data-slide-to="0" class="thumb"><img src="{{ProPics[0]}}" (click)="IndexChange(0)"></div>
                         <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="{{ProPics[1]}}" (click)="IndexChange(1)"></div>
@@ -268,7 +291,7 @@
                           </ng-container>
                         </div>
                         <div>
-                          <!-- <span class="glyphicon glyphicon-user"></span>{{GetallProductReview.length}} total -->
+                          <span class="glyphicon glyphicon-user"></span>{{GetallProductReview.length}} total
                         </div>
                       </div>
                       <div class="col-xs-12 col-md-9">
@@ -354,7 +377,7 @@
               <div class="product-tab-inner">
                 <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
                   <li class="active"> <a href="#description" data-toggle="tab"> Description </a> </li>
-                  <!-- <li> <a href="#reviews" data-toggle="tab">Reviews ({{ GetallProductReview.length}})</a> </li> -->
+                  <li> <a href="#reviews" data-toggle="tab">Reviews ({{ GetallProductReview.length}})</a> </li>
                   <li *ngIf="resultProduct.Auction"> <a href="#Bidhistory" data-toggle="tab">Bid History ({{
                       BidingProduct.length}})</a> </li>
 

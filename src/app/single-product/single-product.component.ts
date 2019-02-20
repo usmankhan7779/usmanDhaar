@@ -255,7 +255,7 @@ export class SingleProductComponent implements OnInit {
 }
   ProductReviews() {
     this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
-      this.GetallProductReview = resSlidersData.Res;
+      this.GetallProductReview = resSlidersData.Results;
       if (this.GetallProductReview.length !== 0) {
 
         this.GetAdd.GetallUserReviewsCalculationBYProductId(this.ProID).subscribe(data => {
@@ -850,7 +850,7 @@ export class SingleProductComponent implements OnInit {
     this.GetAdd.InsertProductReviews(this.model.YourReview, this.ProID, this.starp).subscribe(resSlidersData => {
       swal('Your Review has been submitted', '', 'success');
       this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
-        this.GetallProductReview = resSlidersData.Res;
+        this.GetallProductReview = resSlidersData.Results;
         this.noreview = false;
       });
       this.ProductReviews();
