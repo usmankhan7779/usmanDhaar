@@ -19,9 +19,9 @@ select{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
 .titleTop{text-align:center;margin-bottom:60px;}
 .titleTop .subtitle{font-size:24px;font-weight:600;color:#888;}
 .titleTop h3{font-size:42px;font-weight:500;color:#000;position:relative;margin-bottom:40px;}
-.titleTop h3 span{color:#ed2424;font-weight:200;}
+.titleTop h3 span{color:#ed2424;}
 .titleTop h3:after{background:#ed2424;width:80px;height:2px;position:absolute;left:50%;bottom:-20px;content:'';margin-left:-40px;}
-.titleTop p{max-width:750px;margin:0 auto;font-size:16px;}
+.titleTop p{max-width:750px;margin:0 auto;font-size:16px;font-weight: 600;}
 .margintop10{margin-top:10px;}
 .margintop20{margin-top:20px;}
 .margintop30{margin-top:30px;}
@@ -178,11 +178,11 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .howlist li h4{font-size:24px;font-weight:700;color:#ed2424;margin-bottom:10px;}
 .howlist li p{font-size:16px;line-height:24px;color:#999;}
 .catewrap{background:#fff;}
-.categoryList{margin:0 -15px;display: flex}
-.categoryList li{text-align:center;}
+.categoryList{margin:0 -15px;}
+.categoryList li{text-align:center; min-height: 267px;}
 .categoryList li a{display:block;margin-bottom:30px;font-size:18px;font-family:Hind,sans-serif;font-weight:600;color:#000;text-decoration:none;}
 .categoryList li img{margin-bottom:10px;}
-.categoryList li span{display:block;background:#eee;padding:8px 5px;border-bottom:2px solid #ddd;}
+.categoryList li span{display: block;background: #eee;padding: 8px 5px;box-shadow: 0 0 3px 0px #5d5d5d;border-radius: 5px;font-size: 15px;transition: 0.4s}
 .categoryList li a i{font-size:12px;color:#777;}
 .categoryList li a:hover span{color:#fff;background:#ed2424;}
 .categoryList li a:hover i{color:#CCC;}
@@ -448,7 +448,7 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .uploadphotobx h4{font-size:30px;color:#777}
 .uploadphotobx p{font-size:18px;margin-top:5px;}
 .uploadphotobx .uploadBox input[type="file"]{cursor:inherit;display:block;font-size:1px;filter:alpha(opacity=0);min-height:100%;min-width:100%;opacity:0;position:absolute;right:0;text-align:right;top:0;cursor:pointer;}
-.uploadphotobx .uploadBox{font-size:18px;color:#fff;font-weight:bold;padding:10px 20px;margin:20px 0 0 0;overflow:hidden;background:#000; border-radius: 5px; display:inline-block;position:relative;}
+.uploadphotobx .uploadBox{font-size:18px;color:#fff;font-weight:bold;padding:10px 20px;margin:20px 0 0 0;overflow:hidden;background:#000; border-radius: 5px; display:inline-block;position:relative;transition: 0.4s;}
 .uploadphotobx .uploadBox:hover{background:#ed2424;box-shadow:0 0 10px #ccc;color:#fff;}
 .fileattached{background:#f6f6f6;border:1px solid #ddd;padding:7px 10px;margin-top:5px;}
 .fileattached img{width:30px;float:left;margin-right:10px;}
@@ -459,7 +459,7 @@ a.wit-btn{background:#fff;color:#333 !important;text-transform:uppercase;}
 .googlemap{pointer-events:none;margin-bottom:30px;}
 .googlemap iframe{height:380px;width:100%;border:5px solid #fff;}
 .userccount{background:#fff;border:1px solid #ddd;padding:25px 30px;box-shadow: 0px 5px 10px #ccc;}
-.userccount p{text-align:left;line-height:24px;font-size: 16px; font-weight: 600; color:#999;}
+.userccount p{line-height:24px;font-size: 16px; font-weight: 600; color:#999;}
 .userccount h5{font-size:30px;color:#555;font-weight:700;margin-bottom:25px;}
 .socialLogin{margin-top:20px;text-align:center;border-top:1px solid #eee;padding-top:20px;}
 .socialLogin a{display:inline-block;width:36px;height:36px;color:#fff;font-size:18px;margin:0 5px;line-height:36px;}

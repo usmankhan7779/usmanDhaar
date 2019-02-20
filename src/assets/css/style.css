@@ -11,21 +11,25 @@ body {
 }
 #myBtn {
     display: block;
-    /* display: none;    */
-     position: fixed;
-     bottom: 5px;
-     z-index: 99;
+    position: fixed;
+    bottom: 5px;
+    z-index: 99;
     right: 10px;border: none;
-    outline: none !important;
-     background-color: #214147;
+    outline: none;
+    background-color: #ff0000;
+    box-shadow: 0 0 12px #f00;
     color: white;
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
-    height: 60px !important;
+    height: 60px;
     width: 60px;
   }
-
+#myBtn i{
+    display: block;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
 * {
     margin: 0;
     padding: 0;
@@ -1812,6 +1816,7 @@ ul#cart-sidebar {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
+    padding: 10px;
 }
 
 .product-item .item-inner:hover {
@@ -8852,7 +8857,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 .recommendedslider {
     max-width: 1400px;
     margin: 10px auto 0;
-    padding: 0 80px;
+    padding: 0 20px;
     text-align: center;
 }
 
