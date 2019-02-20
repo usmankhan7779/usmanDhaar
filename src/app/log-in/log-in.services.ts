@@ -27,6 +27,8 @@ export class LoginService {
   // http://192.168.30.225:7000
   // https://apis.dhaar.pk
   ServerUrl = 'https://apis.dhaar.pk/user/';
+  
+   productsUrl = 'https://apis.dhaar.pk/products/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
   EMailServerUrl = 'https://apis.dhaar.pk/rest-auth/';
 users;
@@ -404,7 +406,7 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get( 'http://192.168.29.225:8000/products/all_stores_names/' ,{headers :headers}).map((response: Response) => response.json());
+    return this._http.get(this.productsUrl + 'all_stores_names/' ,{headers :headers}).map((response: Response) => response.json());
     // http://192.168.30.225:8000/products/all_stores_names/
     //  this.StoreServerUrl 
   }
