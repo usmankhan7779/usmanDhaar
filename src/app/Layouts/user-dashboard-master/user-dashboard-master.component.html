@@ -36,20 +36,37 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-4">
+        <ng-container *ngIf="GetUSerDOne !== null">
           <div class="user-detail">
-            <div class="upload-img-wrapper">
-              <img alt="User Pic" src='../../assets/images/Image.png'>
+            <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] !== ''">
+              <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" onerror="this.src='../../assets/images/Image.png'">
               <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
               <i class="fa fa-camera upload-cam-img"></i>
+              <!-- <img src="../../../assets/images/Image.png"> -->
+              <!-- <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*"> -->
+              <!-- <i class="fa fa-camera upload-cam-img"></i> -->
+            </div>
+            <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] === ''">
+
+              <img alt="User Pic" src="assets/images/Image.jpg" onerror="this.src='../../assets/images/Image.png'">
+              <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
+              <i class="fa fa-camera upload-cam-img"></i>
+              <!-- <img src="../../../assets/images/Image.png"> -->
+              <!-- <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*"> -->
+              <!-- <i class="fa fa-camera upload-cam-img"></i> -->
             </div>
             <p class="user-name">
-              Anas Tahir
+              <!-- Anas Tahir  -->
+              {{GetUSerDOne['Fname'] +' '+ GetUSerDOne['Lname'] }}
             </p>
             <p class="user-address">
               <i class="fas fa-flag"></i>
-              103-C Madina Town, Faisalabad Pakistan
+              {{GetUSerDOne['Address'] +' '+ GetUSerDOne['City'] +' '+ GetUSerDOne['State'] +' '+
+              GetUSerDOne['Country']}}
+              <!-- 103-C Madina Town, Faisalabad Pakistan -->
             </p>
           </div>
+        </ng-container>
         <ul class="usernavdash">
           <li><a routerLinkActive="active" [routerLink]="['/buyer-dashboard']"><i class="fa fa-tachometer" aria-hidden="true"></i>Dashboard</a></li>
           <li><a routerLinkActive="active" [routerLink]="['/select-category']"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Add New Product</a></li>

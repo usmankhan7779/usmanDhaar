@@ -46,7 +46,6 @@ const appRoutes: Routes = [
       // { path: 'buyer-orders', loadChildren: './buyer-order/buyer-order.module#BuyerOrderModule', canActivate: [AuthGuard] },
        { path: 'buyer-invoice', loadChildren: './buyer-invoice/buyer-invoice.module#BuyerInvoiceModule', canActivate: [AuthGuard] },
       // { path: 'seller-purchasing', loadChildren: './seller-purchasing/seller-purchasing.module#SellerPurchasingModule', canActivate: [AuthGuard]},
-      { path: 'seller-purchasing-invoice', loadChildren: './seller-purchasing-invoice/seller-purchasing-invoice.module#SellerPurchasingInvoiceModule', canActivate: [AuthGuard] },
       { path: 'store/:storename', loadChildren: './store-template/store-template.module#StoreTemplateModule' },
       { path: 'sub-category-detail/:CatName/:SubCat', loadChildren: './sub-category-detail/sub-category-detail.module#SubCategoryDetailModule' },
       { path: 'subsub-category-detail/:CatName/:SubsubCat', loadChildren: './subsub-category-detail/subsub-category-detail.module#SubsubCategoryDetailModule' },
@@ -105,6 +104,7 @@ const appRoutes: Routes = [
       { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard] },
       { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule',canActivate: [AuthGuard]  },
       { path: 'user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
+      { path: 'seller-purchasing-invoice', loadChildren: './seller-purchasing-invoice/seller-purchasing-invoice.module#SellerPurchasingInvoiceModule', canActivate: [AuthGuard] },
 
       // SellerSettingStoreUpdateModule
 

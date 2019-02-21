@@ -68,6 +68,10 @@ export class Checkout2Component implements OnInit {
   user_id: '';
   Shipmentaddress = "False";
   Shipmentbilladdress = "False";
+  Error;
+  Right;
+  Waitcall;
+  i;
   // //     "id": 2,
   // //     "fullname": "hassan",
   // //     "address": "madina",

@@ -117,7 +117,8 @@ export class HomeComponent implements OnInit {
     private GetCat: AdService,
     private pagerService: PagerService,
     private Category: CategoryServices,
-    private GetWatch: ActiveAdServices) {
+    // private GetWatch: ActiveAdServices,
+    private httpService: ActiveAdServices) {
 
 
   }
@@ -398,7 +399,7 @@ export class HomeComponent implements OnInit {
         setTimeout(function () {
           $('.hotslider').slick({
             infinite: true,
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1,
             autoplay: true,
             prevArrow: '<button class="leftRsBanner">&lt;</button>',
@@ -440,7 +441,7 @@ export class HomeComponent implements OnInit {
         setTimeout(function () {
           $('.recommendedslider').slick({
             infinite: true,
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1,
             autoplay: true,
             prevArrow: '<button class="leftRsBanner">&lt;</button>',
@@ -523,15 +524,22 @@ export class HomeComponent implements OnInit {
       // });
     }
   }
+  // this.httpService.getwatchproducts().subscribe(data => {
+  //   this.ActiveProduct = data.Results;
+  //   console.log(this.ActiveProduct.ProductID)
+  //   if (this.ActiveProduct['Total Result'] === 0) {
+  //     this.errormessage = true;
+  //   }
+  // });
   WatchedItemSlider() {
-    this.GetWatch.GetallWatchProducts(1, localStorage.getItem('UserID')).subscribe(resSlidersData => {
-      this.WatchedProducts = resSlidersData;
+    this.httpService.getwatchproducts().subscribe(resSlidersData => {
+      this.WatchedProducts = resSlidersData.Results;
       $('.watchslider').fadeOut(0);
       if (this.WatchedProducts.totalItems >= 5) {
         setTimeout(function () {
           $('.watchslider').slick({
             infinite: true,
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1,
             autoplay: true,
             prevArrow: '<button class="leftRsBanner">&lt;</button>',

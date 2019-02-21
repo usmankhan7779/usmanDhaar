@@ -194,8 +194,10 @@ export class BuyerDashboardServices {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.post(this.saleServerUrl + 'OrderEmail', {
-      'InvoicesID': invID, 'user': userid,
+    // http://192.168.30.189:7000/sale/OrderEmail/
+    // this.saleServerUrl +
+    return this._http.post( this.saleServerUrl +'OrderEmail/', {
+      'InvoicesID': invID, 'UserID': userid,
       // 'InvoicesID': invID, 'First_Name': fname, 'Last_Name': lname
       // , 'Email': email, 'State': state
       // , 'Country': country, 'City': city, 'Zip': zip, 'Address': address,  'Telephon': telephone, 'Fax': fax

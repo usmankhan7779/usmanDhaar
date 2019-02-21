@@ -29,6 +29,7 @@ export class BuyerDashboardComponent implements OnInit {
   filetoup: FileList;
   fileName: any;
   total:any;
+  Results:any[];
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router,

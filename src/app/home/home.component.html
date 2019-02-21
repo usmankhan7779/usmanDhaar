@@ -528,31 +528,7 @@
 
           </div>
         </div>
-        <div class="text-center">
-          <!-- Pagination -->
-
-          <!-- items being paged -->
-          <div *ngFor="let item of pagedItems">{{item.name}}</div>
-
-          <!-- pager -->
-          <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-            <li [ngClass]="{hide:pager.currentPage === 1}">
-              <a (click)="ProductsAllCat(1)" class="btn btn-fill">First</a>
-            </li>
-            <li [ngClass]="{hide:pager.currentPage === 1}">
-              <a (click)="ProductsAllCat(pager.currentPage - 1)" class="btn btn-fill">Previous</a>
-            </li>
-            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-              <a (click)="ProductsAllCat(page)" class="btn btn-fill">{{page}}</a>
-            </li>
-            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-              <a (click)="ProductsAllCat(pager.currentPage + 1)" class="btn btn-fill" type="Next">Next</a>
-            </li>
-            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-              <a (click)="ProductsAllCat(pager.totalPages)" class="btn btn-fill" type="Last">Last</a>
-            </li>
-          </ul>
-        </div>
+       
 
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -1139,7 +1115,7 @@
       </div>
     </ng-container>
 
-    <!-- <ng-container *ngIf="RecommendedProducts==0"> -->
+    <ng-container  *ngIf="usercheck === true ">
       <div class="container-fluid">
         <div class="row">
           <div id="ribbon">
@@ -1224,8 +1200,8 @@
           </div>
         </div>
       </div>
-    <!-- </ng-container> -->
-    <!-- <ng-container *ngIf="GetALLLikeforyou.length ==0"> -->
+    </ng-container>
+    <!-- <ng-container  > -->
     <div class="container-fluid">
       <div class="row">
         <div id="ribbon">
@@ -1245,7 +1221,7 @@
                   <div class="overlay">
                     <h2>{{Lastest.Cat_Name}}</h2>
                     <a class="info" [routerLink]="['/single-product']"
-                      [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">Product
+                      [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">Product
                       Detail</a>
                   </div>
                 </div>
@@ -1256,7 +1232,7 @@
                   <div class="info-inner">
                     <div class="item-title">
                       <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">{{
+                          [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">{{
                                 Lastest.P_Title }} </a></h4>
                     </div>
                     <div class="item-content">
@@ -1293,14 +1269,14 @@
                   <div class="product-item-actions">
                     <div *ngIf="Lastest.Auction == true" class="pro-actions">
                       <a [routerLink]="['/single-product']"
-                        [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList}">
+                        [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist}">
                         <button class="action add-to-cart" type="button" title="Add to Cart">
                           <span>Bid Now</span></button>
                       </a>
                     </div>
                     <div *ngIf="Lastest.Auction == false" class="pro-actions">
                       <a [routerLink]="['/single-product']"
-                        [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">
+                        [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">
                         <button class="action add-to-cart" type="button" title="Add to Cart">
                           <span>Buy Now</span></button>
                       </a>
@@ -1401,24 +1377,24 @@
         </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="usercheck === true && WatchedProducts.totalItems !== 0">
+    <ng-container *ngIf="usercheck === true ">
       <div class="container-fluid">
         <div class="row">
           <div id="ribbon">
             <span id="content" style="font-weight: bolder">Your Watched Items</span>
           </div>
           <div class="watchslider" style="margin-top: 0px !important;">
-            <ng-container *ngFor="let TvVideoaudio88 of WatchedProducts.results">
+            <ng-container *ngFor="let TvVideoaudio88 of WatchedProducts">
               <div class="product-item col-md-3 col-sm-6">
                 <div class="item-inner">
                   <div class="product-thumbnail">
                     <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
+                      <img class="img-responsive" src="{{TvVideoaudio88.ProductID.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
                         onerror="this.src='../../assets/images/Check-Resolution.png'">
                       <div class="overlay">
                         <h2>{{TvVideoaudio88.Cat_Name}}</h2>
                         <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product
+                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">Product
                           Detail</a>
                       </div>
                     </div>
@@ -1429,14 +1405,14 @@
                       <div class="info-inner">
                         <div class="item-title">
                           <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">{{
-                              TvVideoaudio88.P_Title }} </a></h4>
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">{{
+                              TvVideoaudio88.ProductID.P_Title }} </a></h4>
                         </div>
                         <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                          <div *ngIf="TvVideoaudio88.ProductID.Auction == true" class="item-price">
 
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.SrartingPrice | number:'.0-0' }}</span><span
+                                  TvVideoaudio88.ProductID.SrartingPrice | number:'.0-0' }}</span><span
                                   class="price-box-icons pull-right">
                                   <a href="#"><i class="far fa-heart"></i></a>
                                   <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -1445,9 +1421,9 @@
 
 
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
+                          <div *ngIf="TvVideoaudio88.ProductID.Auction == false" class="item-price">
                             <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.FixedPrice | number:'.0-0' }}</span> <span
+                                  TvVideoaudio88.ProductID.FixedPrice | number:'.0-0' }}</span> <span
                                   class="price-box-icons pull-right">
                                   <a href="#"><i class="far fa-heart"></i></a>
                                   <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -1459,16 +1435,16 @@
                     </div>
                     <div class="box-hover">
                       <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                        <div *ngIf="TvVideoaudio88.ProductID.Auction == true" class="pro-actions">
                           <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart">
                               <span>Bid Now</span></button>
                           </a>
                         </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                        <div *ngIf="TvVideoaudio88.ProductID.Auction == false" class="pro-actions">
                           <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">
                             <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
                                 Now</span></button>
                           </a>
