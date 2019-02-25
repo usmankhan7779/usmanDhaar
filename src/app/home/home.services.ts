@@ -89,9 +89,18 @@ export class HomeService {
     // console.log(this.CateDeatils)
   }
   get_PhoneAndTabletProduct_ProductById(proId: string) {
-
-    return this._http.get(this.ServerUrl + 'getphoneproductsById/' + proId).map(response => response.json());
+    if (localStorage.getItem('Authorization') !== null) {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // headers.append('Authorization', 'Token ' +  this.authentication);
+      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+      console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'getphoneproductsById/' + proId,{headers:headers}).map(response => response.json());
     // console.log(this.CateDeatils)
+    }
+    else  {
+      return this._http.get(this.ServerUrl + 'getphoneproductsById/' + proId).map(response => response.json());
+    }
   }
   getWomenFashionProductById(proId: string) {
 
@@ -266,37 +275,37 @@ export class HomeService {
     });
 
   }
-GetAllRecentProducts(Productid) {
-    if (localStorage.getItem('Authorization') !== null) {
-      const headers = new Headers();
-      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
-      console.log('pofile', localStorage.getItem('Authorization'));
-      headers.append('Content-Type', 'application/json');
-      if (isPlatformBrowser(this.platformId)) {
+// GetAllRecentProducts(Productid) {
+//     if (localStorage.getItem('Authorization') !== null) {
+//       const headers = new Headers();
+//       headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+//       console.log('pofile', localStorage.getItem('Authorization'));
+//       headers.append('Content-Type', 'application/json');
+//       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'addrecentproduct/',
-          {
-            'productid': Productid,
-            // 'Cat_Name': CatName ,
-            // 'User_ID': User_ID,
-          }, { headers: headers }).map((res: Response) => {
-            if (res) {
+//         return this._http.post(this.ServerUrl + 'addrecentproduct/',
+//           {
+//             'productid': Productid,
+//             // 'Cat_Name': CatName ,
+//             // 'User_ID': User_ID,
+//           }, { headers: headers }).map((res: Response) => {
+//             if (res) {
 
-              if (res.status === 200) {
-                const responce_data = res.json();
-                return responce_data;
-              }
-            }
-          }).catch((error: any) => {
-            console.log(error.toString());
-            return Observable.throw(new Error(error.status));
-          });
+//               if (res.status === 200) {
+//                 const responce_data = res.json();
+//                 return responce_data;
+//               }
+//             }
+//           }).catch((error: any) => {
+//             console.log(error.toString());
+//             return Observable.throw(new Error(error.status));
+//           });
 
 
-      }
-    }
+//       }
+//     }
      
-  }
+//   }
 
   womenFashion(category_name1) {
     if (localStorage.getItem('Authorization') !== null) {
