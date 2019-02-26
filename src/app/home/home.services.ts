@@ -21,6 +21,7 @@ export class HomeService {
   // https://apis.dhaar.pk
   
   ServerUrl = 'https://apis.dhaar.pk/products/';
+  
   // serverurladdtocart=''
 
 
@@ -373,8 +374,8 @@ export class HomeService {
       console.log('pofile', localStorage.getItem('Authorization'));
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
-
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        // this.ServerUrl +
+        return this._http.post( 'http://192.168.30.187:8000/products/Category_Products/',
           {
             'category_name2': category_name2,
             // 'Cat_Name': CatName ,

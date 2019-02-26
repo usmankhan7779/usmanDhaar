@@ -402,8 +402,10 @@
                         <ng-container *ngIf="noreview">No Review</ng-container>
                         <ng-container *ngFor="let ProductReview of GetallProductReview">
                           <div class="review-ratting">
-                            <p><a>{{ ProductReview.Reviews }}</a>
+                              <p><a>{{ ProductReview.user.username }}</a></p>
+                            <p>{{ ProductReview.Reviews }}
                             </p>
+                           
                             <table>
                               <tbody>
                                 <tr>

@@ -28,6 +28,7 @@ export class SingleProductComponent implements OnInit {
   GetallPhoneProduct: any = []
   GetallRecentProducts: any = [];
   GetallProductReview: any = [];
+  getusername:any=[];
   element: HTMLElement;
   LoginID: Boolean = false;
   login_error: Boolean = false;
@@ -254,9 +255,16 @@ export class SingleProductComponent implements OnInit {
   refresh(): void {
     window.location.reload();
 }
+
   ProductReviews() {
-    this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
+    this.httpService.GetallIDByUser(this.ProID).subscribe(resSlidersData => {
       this.GetallProductReview = resSlidersData.Results;
+ 
+      this.getusername = this.GetallProductReview.user.username;
+      alert(this.getusername)
+      console.log(this.getusername)
+  
+
       if (this.GetallProductReview.length !== 0) {
 
         this.GetAdd.GetallUserReviewsCalculationBYProductId(this.ProID).subscribe(data => {
@@ -861,7 +869,7 @@ export class SingleProductComponent implements OnInit {
     // localStorage.getItem('UserName'), localStorage.getItem('UserID'),, this.resultProduct['StoreName']
     this.GetAdd.InsertProductReviews(this.model.YourReview, this.ProID, this.starp).subscribe(resSlidersData => {
       swal('Your Review has been submitted', '', 'success');
-      this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
+      this.httpService.GetallIDByUser(this.ProID).subscribe(resSlidersData => {
         this.GetallProductReview = resSlidersData.Results;
         this.noreview = false;
       });

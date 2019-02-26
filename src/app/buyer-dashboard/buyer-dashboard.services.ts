@@ -16,7 +16,9 @@ export class BuyerDashboardServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'https://apis.dhaar.pk/products/';
+  ServerUrl = 'http://192.168.30.187:8000/products/';
+  // https://apis.dhaar.pk/products/
+  
   // saleServerUrl = 'https://apis.dhaar.pk/sale/';
   saleServerUrl = 'https://apis.dhaar.pk/sale/';
   posturl='https://apis.dhaar.pk/payment/';
@@ -46,7 +48,7 @@ export class BuyerDashboardServices {
       return this._http.get( this.ServerUrl + 'InsertUserReview/' + PId ).map(response => response.json());
     }
   }
-// InsertUserReview
+ 
 
   GetInvoiceByInvoiceID( UserID: any) {
     return this._http.get( this.saleServerUrl + 'GetInvoiceByInvoiceID/' + UserID  ).map(response => response.json());
