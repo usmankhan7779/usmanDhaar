@@ -60,6 +60,7 @@ export class SingleProductComponent implements OnInit {
 
   resultProduct: any = [];
   ProPics: any = [];
+  selectedImage;
   productsPics: any = [];
   prodimg: any = [];
   ProPDes: any = [];
@@ -315,7 +316,7 @@ export class SingleProductComponent implements OnInit {
       this.ProPDes = this.resultProduct['P_Des'].split('\n');
 
       this.ProPics = this.resultProduct['Pic'].split(',');
-
+      this.selectedImage = this.ProPics[0];
       for (let i = 0; i < this.ProPics.length - 1; i++) {
         this.PicList[i] = this.ProPics[i + 1];
       }

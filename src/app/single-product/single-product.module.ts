@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {ImageZoomModule} from "angular2-image-zoom";
 import {HeaderModule} from "../header/header.module";
 import {NewModule} from '../home/new.module';
+// import {NgxImageZoomModule} from'ngx-image-zoom';
+  import { from } from 'rxjs/observable/from';
 const loginRoutes: Routes = [
   { path: '', component: SingleProductComponent }
 ];
@@ -21,6 +23,7 @@ const loginRoutes: Routes = [
     HeaderModule,
     ImageZoomModule,
     NewModule,
+    // NgxImageZoomModule.forRoot(),
 
     // ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)

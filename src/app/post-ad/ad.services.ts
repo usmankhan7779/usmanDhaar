@@ -139,7 +139,11 @@ export class AdService {
   }
 
   Edit_PhoneAndTabletProduct_Product(model: any []) {
+   
     const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
     headers.append('Content-Type', 'application/json');
     if (isPlatformBrowser(this.platformId)){
 

@@ -13,26 +13,10 @@
           <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
 
             <ngx-image-viewer [src]="ProPics" [(index)]="imageIndexOne" (customEvent)="handleEvent($event)"></ngx-image-viewer>
-            <!--[(config)]="config"-->
+             
 
             <div class="product-slider">
-              <!--<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">-->
-              <!--<div class="carousel-inner">-->
-              <!--<div class="item active"> <img data-toggle="modal" data-target="#myModal" imageZoom="{{ProPics[0]}}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{ProPics[0]}}"> </div>-->
-              <!--<ng-container *ngFor="let itm of PicList">-->
-              <!--<div class="item"> <img data-toggle="modal" data-target="#myModal" imageZoom="{{itm}}" lensWidth="300" lensHeight="300" lensStyle="LENS" src="{{itm}}"> </div>-->
-              <!--&lt;!&ndash;<div class="item"> <img src="{{ProPics[2]}}"> </div>&ndash;&gt;-->
-              <!--</ng-container>-->
-              <!--</div>-->
-              <!--<a class="left carousel-control" href="#carousel" data-slide="prev">-->
-              <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
-
-              <!--</a>-->
-              <!--<a class="right carousel-control" href="#carousel" data-slide="next">-->
-              <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
-
-              <!--</a>-->
-              <!--</div>-->
+             
               <div class="clearfix">
                 <div id="thumbcarousel" class="carousel slide" data-interval="false">
                   <div class="carousel-inner">
@@ -77,14 +61,28 @@
                   <!-- /carousel-inner -->
                   <!--<a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </a> <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i> </a>-->
                 </div>
-                <!-- /thumbcarousel -->
+               
 
               </div>
             </div>
 
-            <!-- end: more-images -->
+           
 
           </div>
+
+
+        <!-- <div class="col-sm-12 image-gallary">
+          <ngx-image-zoom [thumbImage]=selectedImage [fullImage]=selectedImage [magnification]=2
+              [enableScrollZoom]=false></ngx-image-zoom>
+            
+      </div>
+      <div class="col-sm-12 img-thumb-outer">
+          <div class="img-thumb" *ngFor="let image of ProPics">
+              <img [src]="image" alt="images" (click)="selectedImage=image">
+          </div>
+      </div> -->
+
+
           <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
             <div class="product-name width100 pull-left">
               <h1>{{ resultProduct.P_Title}}</h1>

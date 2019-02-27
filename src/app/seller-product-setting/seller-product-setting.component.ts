@@ -98,11 +98,13 @@ export class SellerProductSettingComponent implements OnInit {
     this.currentindex = index;
     this.model = product;
     for(const itm of this.GetallCat) {
-      if(itm.Cat_Name === this.model.Cat_Name) {
+      if(itm.Cat_Name_id === this.model.Cat_Name) {
         this.CatId = itm.id;
+          console.log(itm.Sub_Sub_Cat_Name_id)
         console.log('ID is:', this.CatId);
       }
     }
+    // alert(itm.Sub_Sub_Cat_Name_id)
 
     this.PostAdd.GetAllSubCategoriesByCatID(this.CatId).subscribe(resSlidersData => {
       this.GetAllSubCat = resSlidersData
@@ -171,7 +173,7 @@ export class SellerProductSettingComponent implements OnInit {
   MainCatSel(id) {
     console.log('Cat ID issssssssss:', id);
     for(const itm of this.GetallCat) {
-      if(itm.Cat_Name === id) {
+      if(itm.Cat_Name_id === id) {
         this.ManCatID = itm.id;
       }
     }
@@ -198,7 +200,7 @@ export class SellerProductSettingComponent implements OnInit {
 
     console.log('Sub-Cat ID issssssssss:', id);
     for(const itm of this.GetAllSubCat) {
-      if(itm.Sub_Cat_Name === id) {
+      if(itm.Sub_Cat_Name_id === id) {
         this.SubCatID = itm.id;
       }
     }

@@ -25,7 +25,7 @@
             <div class="checkout-shop">
               <div class="checkout-shop-left">
                 <div class="checkout-shop-title">
-                  <a href="#" class="checkout-shop-name">Shop Name</a>
+                  <a href="#" class="checkout-shop-name">{{abc.product.StoreName}}</a>
                 </div>
               </div>
             </div>
@@ -39,8 +39,15 @@
                           onerror="this.src='../../assets/images/Check-Resolution.png'">
                       </a>
                     </div>
+                    <!-- <button class="action add-to-cart" type="button" title="Add to Cart">
+                        <span>Bid Now</span></button> -->
                     <div class="content col-sm-7">
-                      <a href="#" class="product-price">{{ abc.product.P_Title }} </a>
+                        <!-- <a [routerLink]="['/single-product']"
+                        [queryParams]="{ ProID:  abc.product.ProductID, CatName: abc.product.Cat_Name_id ,  SubCatName:abc.product.Sub_Sub_Cat_Name_id, id:abc.product.id, W:abc.product.inWishList}">
+                        
+                      </a> -->
+                      <a [routerLink]="['/single-product']"
+                      [queryParams]="{ ProID:  abc.product.ProductID, CatName: abc.product.Cat_Name ,  SubCatName:abc.product.Sub_Sub_Cat_Name, id:abc.product.id, W:abc.product.inWishList}" class="product-price">{{ abc.product.P_Title }} </a>
                       <div class="product-icons">
                         <a href="#" class="heart-icon">
                           <i class="far fa-heart"></i>
@@ -54,6 +61,7 @@
                   </div>
                   <div class="cart-item-right col-sm-4">
                     <div class="numbers-row">
+                        <form role="form">
                       <div
                         onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"
                         class="dec qtybutton">
@@ -62,11 +70,18 @@
                       <input class="qty" maxlength="3" minlength="1"
                         (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty
                         [(ngModel)]="abc.Quantity">
-                      <div
+
+                        <!-- <form role="form">
+                            <input maxlength="3" minlength="1"
+                              (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty
+                              [(ngModel)]="abc.Quantity" type="number">
+                          </form> -->
+                       <div
                         onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;"
                         class="inc qtybutton">
                         <i class="fa fa-plus"></i>
-                      </div>
+                      </div>  
+                    </form>
                     </div>
                   </div>
                 </div>
