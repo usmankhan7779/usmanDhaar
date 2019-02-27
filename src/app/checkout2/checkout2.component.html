@@ -1,6 +1,139 @@
 <app-header></app-header>
 
 <!--<h1>Checkout is working</h1>-->
+<section class="main-container">
+  <div class="container">
+    <div class="page-title">
+      <h2>Checkout</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div id="listHeader_H" class="list-header">
+          <div class="list-header-left col-sm-6">
+            <div class="checkbox-wrap">
+              Product
+            </div>
+            <div class="list-header-operations">
+              <div class="btn-wrap automation-btn-delete">Description</div>
+            </div>
+          </div>
+          <span class="list-header-middle col-sm-2">PRICE</span>
+          <span class="list-header-right col-sm-4">QUANTITY</span>
+        </div>
+        <ng-container *ngFor="let abc of CartedProduct.Results; let i=index">
+          <div class="checkout-shop-outer">
+            <div class="checkout-shop">
+              <div class="checkout-shop-left">
+                <div class="checkout-shop-title">
+                  <a href="#" class="checkout-shop-name">Shop Name</a>
+                </div>
+              </div>
+            </div>
+            <div class="checkout-shop-children">
+              <div id="item_if5f2bb" class="cart-item">
+                <div class="cart-item-inner">
+                  <div class="cart-item-left col-sm-6">
+                    <div class="img-wrap col-sm-4">
+                      <a href="#" class="automation-link-from-image-to-prod">
+                        <img class="img" src="{{ProPics[i]}}" alt="products" alt="Product"
+                          onerror="this.src='../../assets/images/Check-Resolution.png'">
+                      </a>
+                    </div>
+                    <div class="content col-sm-7">
+                      <a href="#" class="product-price">{{ abc.product.P_Title }} </a>
+                      <div class="product-icons">
+                        <a href="#" class="heart-icon">
+                          <i class="far fa-heart"></i>
+                        </a>
+                        <a class="del-icon" (click)="TrashcartElement(abc.product.id)"><i class="fa fa-trash-o"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cart-item-middle col-sm-2">
+                    <p class="current-price">Rs. {{ abc.product.FixedPrice | number:'.0-0' }}</p>
+                  </div>
+                  <div class="cart-item-right col-sm-4">
+                    <div class="numbers-row">
+                      <div
+                        onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"
+                        class="dec qtybutton">
+                        <i class="fa fa-minus"></i>
+                      </div>
+                      <input class="qty" maxlength="3" minlength="1"
+                        (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty
+                        [(ngModel)]="abc.Quantity">
+                      <div
+                        onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;"
+                        class="inc qtybutton">
+                        <i class="fa fa-plus"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+      <div class="col-md-4 bg-light-grey">
+        <ng-container *ngIf="BillingMethod === true">
+          <div *ngIf="total_GetUSeradress != 0">
+            <div *ngFor="let GetUser of GetUSeradress.Results">
+              <p class="address-heading">Shipping and Billing</p>
+              <div class="address-title-container">
+                <span class="address-title">Ship to</span>
+                <a (click)="SaveProduct(GetUser.id,GetUser.fullname,GetUser.phone_no,GetUser.area, GetUser.city,GetUser.province,GetUser.address,GetUser.default_shipment_address )"
+                  data-toggle="modal" data-target="#myModal" class="address-edit">Edit</a>
+              </div>
+              <div class="address-title-container">
+                <div class="address-name">{{GetUser.fullname }}</div>
+                <div class="address-info-item">{{GetUser.area}}, {{GetUser.address }}</div>
+                <div class="address-info-item">{{ GetUser.city }}, {{ GetUser.province }}</div>
+                <div class="address-info-item">{{GetUser.phone_no}}</div>
+              </div>
+              <div class="address-title-container">
+                <span class="address-title">Bill to the same address</span>
+                <a (click)="SaveProduct(GetUser.id,GetUser.fullname,GetUser.phone_no,GetUser.area, GetUser.city,GetUser.province,GetUser.address,GetUser.default_shipment_address )"
+                  data-toggle="modal" data-target="#myModal" class="address-edit">Edit</a>
+              </div>
+              <div class="address-title-container">
+                <span class="address-title">Email: anastahir411@gmail.com</span>
+                <a (click)="SaveProduct(GetUser.id,GetUser.fullname,GetUser.phone_no,GetUser.area, GetUser.city,GetUser.province,GetUser.address,GetUser.default_shipment_address )"
+                  data-toggle="modal" data-target="#myModal" class="address-edit">Edit</a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <div class="address-title-container">
+          <p class="address-heading">Order Summary</p>
+          <div *ngIf="!TotalDiscount">
+            <span class="checkout-summary-label">Subtotal</span>
+            <span class="checkout-summary-value">Rs. {{ Total | number:'.0-0'}}</span>
+          </div>
+          <div class="margin-top-10">
+            <span class="checkout-summary-label">Shipping Fee</span>
+            <span class="checkout-summary-value">Free</span>
+          </div>
+          <div class="voucher">
+            <input [(ngModel)]="mymodel.coupon" #coupon="ngModel" type="text" placeholder="Enter Coupon Code"
+              class="voucher-input">
+            <button type="submit" (click)="Applycoupon(coupon.value)" class="voucher-input-button">Apply</button>
+          </div>
+          <div class="margin-top-10" *ngIf="TotalDiscount>0">
+            <span class="checkout-summary-label">Coupon Discount</span>
+            <span class="checkout-summary-value">Rs. {{ TotalDiscount | number:'.0-2'}}</span>
+          </div>
+          <div class="width100 pull-left">
+            <span class="price-total">Total</span>
+            <span class="total-number">Rs. {{ Total | number:'.0-0'}}</span>
+          </div>
+          <a (click)="ContinuetoCHeckout()" class="btn-order">Place Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section *ngIf="OrderPlaced == false" class="main-container col2-right-layout">
   <div class="main container">
@@ -33,7 +166,8 @@
                   <ng-container *ngFor="let abc of CartedProduct.Results; let i=index">
                     <tr>
                       <td class="cart_product">
-                        <a href="#"><img src="{{ ProPics[i]}}" alt="products" alt="Product" onerror="this.src='../../assets/images/Check-Resolution.png'"></a>
+                        <a href="#"><img src="{{ ProPics[i]}}" alt="products" alt="Product"
+                            onerror="this.src='../../assets/images/Check-Resolution.png'"></a>
                       </td>
                       <td class="cart_description">
                         <p class="product-name"><a href="#">{{ abc.product.P_Title }} </a></p>
@@ -44,8 +178,9 @@
                       <td class="price"><span>Rs: {{ abc.product.FixedPrice | number:'.0-0' }}</span></td>
                       <td class="qty">
                         <form role="form">
-                          <input maxlength="3" minlength="1" (change)="onChange($event, abc.product.ProductID,qty.value)"
-                            name="qty" #qty [(ngModel)]="abc.Quantity" class="form-control input-sm" type="number">
+                          <input maxlength="3" minlength="1"
+                            (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty
+                            [(ngModel)]="abc.Quantity" class="form-control input-sm" type="number">
                         </form>
                       </td>
                       <td class="price">
@@ -66,8 +201,8 @@
 
                     <td colspan="2" rowspan="2">
 
-                      <input [(ngModel)]="mymodel.coupon" #coupon="ngModel" type="text" class="button col-lg-6" style="font-size: 20px"
-                        name="" id="first_name"><span class="col-lg-push-3">-</span>
+                      <input [(ngModel)]="mymodel.coupon" #coupon="ngModel" type="text" class="button col-lg-6"
+                        style="font-size: 20px" name="" id="first_name"><span class="col-lg-push-3">-</span>
                       <button type="submit" (click)="Applycoupon(coupon.value)" class="button col-lg-push-6"><span>Apply
                           Coupon</span></button>
                       <br />
@@ -114,7 +249,8 @@
                   <p><i class="fa fa-check-circle text-primary"></i> Fast and easy check out</p>
                   <p><i class="fa fa-check-circle text-primary"></i> Easy access to your order history and status</p>
                   <ng-container *ngIf="GuestButton === false">
-                    <button (click)="RegisterOrGuest(Guest.checked,Register.checked)" class="button"><i class="fa fa-angle-double-right"></i>&nbsp;
+                    <button (click)="RegisterOrGuest(Guest.checked,Register.checked)" class="button"><i
+                        class="fa fa-angle-double-right"></i>&nbsp;
                       <span>Continue</span></button>
                   </ng-container>
                 </div>
@@ -166,8 +302,8 @@
                   <li class="row">
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !fname.valid }">
-                        <input type="text" class="form-control" placeholder="First Name" name="fname" [(ngModel)]="model.fname"
-                          #fname="ngModel" required>
+                        <input type="text" class="form-control" placeholder="First Name" name="fname"
+                          [(ngModel)]="model.fname" #fname="ngModel" required>
                         <div *ngIf="f.submitted && !fname.valid" class="help-block">First Name is required</div>
                       </div>
 
@@ -176,8 +312,8 @@
                     <!--<div class="formrow">-->
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lname.valid }">
-                        <input type="text" class="form-control" placeholder="Last Name" name="lname" [(ngModel)]="model.lname"
-                          #lname="ngModel" required>
+                        <input type="text" class="form-control" placeholder="Last Name" name="lname"
+                          [(ngModel)]="model.lname" #lname="ngModel" required>
                         <div *ngIf="f.submitted && !lname.valid" class="help-block">Last Name is required</div>
                         <!--</div>-->
                       </div>
@@ -198,8 +334,8 @@
                     <!--<div class="formrow">-->
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !mobile.valid }">
-                        <input type="text" class="form-control" placeholder="Mobile" name="mobile" [(ngModel)]="model.mobile"
-                          #mobile="ngModel" required>
+                        <input type="text" class="form-control" placeholder="Mobile" name="mobile"
+                          [(ngModel)]="model.mobile" #mobile="ngModel" required>
                         <div *ngIf="f.submitted && !mobile.valid" class="help-block">Mobile is required</div>
                         <!--</div>-->
                       </div>
@@ -210,8 +346,8 @@
                   <li class="formrow">
                     <!--<div class="col-sm-6">-->
                     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !address.valid }">
-                      <input type="text" class="form-control" placeholder="Shipping Address" name="address" [(ngModel)]="model.address"
-                        #address="ngModel" required>
+                      <input type="text" class="form-control" placeholder="Shipping Address" name="address"
+                        [(ngModel)]="model.address" #address="ngModel" required>
                       <div *ngIf="f.submitted && !address.valid" class="help-block">Shipping Address is required</div>
                     </div>
                     <!--</div>-->
@@ -220,8 +356,8 @@
                   <li class="row">
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !country.valid }">
-                        <input type="text" class="form-control" placeholder="Country" name="country" [(ngModel)]="model.country"
-                          #country="ngModel" required>
+                        <input type="text" class="form-control" placeholder="Country" name="country"
+                          [(ngModel)]="model.country" #country="ngModel" required>
                         <div *ngIf="f.submitted && !country.valid" class="help-block">Country is required</div>
                       </div>
 
@@ -230,8 +366,8 @@
                     <!--<div class="formrow">-->
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !state.valid }">
-                        <input type="text" class="form-control" placeholder="State" name="state" [(ngModel)]="model.state"
-                          #state="ngModel" required>
+                        <input type="text" class="form-control" placeholder="State" name="state"
+                          [(ngModel)]="model.state" #state="ngModel" required>
                         <div *ngIf="f.submitted && !state.valid" class="help-block">State is required</div>
                         <!--</div>-->
                       </div>
@@ -273,7 +409,8 @@
             <br>
             <br>
             <h4 class="checkout-sep">Shipping Information</h4>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad">
+            <div
+              class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad">
 
 
               <div class="panel panel-info">
@@ -536,9 +673,9 @@
                                 <br />
 
                                 <label for="first_name_1" class="required">Name on the Card</label>
-                                <input [(ngModel)]="model.card_name" #card_name="ngModel" pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$"
-                                  class="input form-control" type="text" name="card_name" required name="card_name"
-                                  placeholder="">
+                                <input [(ngModel)]="model.card_name" #card_name="ngModel"
+                                  pattern="^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$" class="input form-control" type="text"
+                                  name="card_name" required name="card_name" placeholder="">
                                 <div style="color:red" *ngIf="f.submitted  && !card_name.valid" class="help-block">
                                   This field is required
                                 </div>
@@ -550,8 +687,9 @@
                               <div class="col-sm-6">
                                 <br />
                                 <label for="first_name_1" class="required">Card Number</label>
-                                <input [(ngModel)]="model.card_number" #card_number="ngModel" required [textMask]="{mask: mask}"
-                                  class="input form-control" type="text" name="card_number" placeholder="">
+                                <input [(ngModel)]="model.card_number" #card_number="ngModel" required
+                                  [textMask]="{mask: mask}" class="input form-control" type="text" name="card_number"
+                                  placeholder="">
                                 <div style="color:red" *ngIf="f.submitted  && !card_number.valid" class="help-block">
                                   This field is required
                                 </div>
@@ -566,9 +704,9 @@
                               <div class="col-sm-1">
                                 <br />
                                 <label for="expiry_month" class="required">-Expiry month</label>
-                                <input class="input form-control" [(ngModel)]="model.expiry_month" #expiry_month="ngModel"
-                                  required maxlength="2" minlength="2" pattern="([0-9])+$" type="text" name="expiry_month"
-                                  placeholder="05">
+                                <input class="input form-control" [(ngModel)]="model.expiry_month"
+                                  #expiry_month="ngModel" required maxlength="2" minlength="2" pattern="([0-9])+$"
+                                  type="text" name="expiry_month" placeholder="05">
                                 <div style="color:red" *ngIf="f.submitted  && !expiry_month.valid" class="help-block">
                                   This field is required
                                 </div>
@@ -577,8 +715,8 @@
                                 <br />
                                 <label for="expiry_year" class="required">-Expiry Year</label>
                                 <input class="input form-control" [(ngModel)]="model.expiry_year" #expiry_year="ngModel"
-                                  required maxlength="4" minlength="4" pattern="([0-9])+$" type="text" name="expiry_year"
-                                  placeholder="2025">
+                                  required maxlength="4" minlength="4" pattern="([0-9])+$" type="text"
+                                  name="expiry_year" placeholder="2025">
                                 <div style="color:red" *ngIf="f.submitted  && !expiry_year.valid" class="help-block">
                                   This field is required
                                 </div>
@@ -587,7 +725,8 @@
                                 <br />
                                 <label for="cvv" class="required">-CVV Number</label>
                                 <input class="input form-control" [(ngModel)]="model.cvv" #cvv="ngModel" required
-                                  maxlength="3" minlength="3" pattern="([0-9])+$" type="text" name="cvv" placeholder="365">
+                                  maxlength="3" minlength="3" pattern="([0-9])+$" type="text" name="cvv"
+                                  placeholder="365">
                                 <div style="color:red" *ngIf="f.submitted  && !cvv.valid" class="help-block">
                                   This field is required
                                 </div>
@@ -632,7 +771,8 @@
           <!-- yaha pe payment start ho ti -->
           <ng-container *ngIf="BillingMethod === true">
             <h4 class="checkout-sep">Shippingssss Information</h4>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad">
+            <div
+              class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad">
 
 
               <div class="panel panel-info">
@@ -683,7 +823,8 @@
                               <td>{{GetUser.default_shipment_address}}</td>
                             </tr>
                             <div class="panel-footer">
-                              <a data-original-title="Edit this user" (click)="SaveProduct(GetUser.id,GetUser.fullname,GetUser.phone_no,GetUser.area, GetUser.city,GetUser.province,GetUser.address,GetUser.default_shipment_address )"
+                              <a data-original-title="Edit this user"
+                                (click)="SaveProduct(GetUser.id,GetUser.fullname,GetUser.phone_no,GetUser.area, GetUser.city,GetUser.province,GetUser.address,GetUser.default_shipment_address )"
                                 data-toggle="modal" data-target="#myModal" type="button" class="btn btn-sm btn-warning">
                                 <i class="glyphicon glyphicon-edit">
                                 </i>
@@ -722,8 +863,8 @@
                                   <div class="col-sm-6">
 
                                     <label for="FName" class="required">First Name(*)</label>
-                                    <input type="text" ng-Model="model.FName" #FName name="FName" required class="input form-control"
-                                      placeholder="First Name" id="FName">
+                                    <input type="text" ng-Model="model.FName" #FName name="FName" required
+                                      class="input form-control" placeholder="First Name" id="FName">
 
 
 
@@ -792,8 +933,9 @@
                                   <div class="col-xs-12">
                                     <label for="address" class="required">Address(*)</label>
 
-                                    <input type="text" class="input form-control" required placeholder="shop #, street# etc"
-                                      ng-Model="model.Address" #Address name="Address" id="address">
+                                    <input type="text" class="input form-control" required
+                                      placeholder="shop #, street# etc" ng-Model="model.Address" #Address name="Address"
+                                      id="address">
                                   </div>
                                 </li>
                                 <li class="row">
@@ -801,18 +943,21 @@
                                     <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
                                     <label for="Shipmentaddress" class="required">Shipping(*)</label>
 
-                                    <input type="checkbox" class="input form-control" required ng-Model="model.Shipmentaddress"
-                                      #Shipmentaddress name="Shipmentaddress" id="Shipmentaddress" (change)="checked3($event,i)">
+                                    <input type="checkbox" class="input form-control" required
+                                      ng-Model="model.Shipmentaddress" #Shipmentaddress name="Shipmentaddress"
+                                      id="Shipmentaddress" (change)="checked3($event,i)">
                                   </div>
                                   <!--/ [col] -->
                                 </li>
                                 <li class="row">
                                   <div class="col-xs-12">
                                     <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
-                                    <label for="Shipmentbilladdress" class="required">Shipping Billing address(*)</label>
+                                    <label for="Shipmentbilladdress" class="required">Shipping Billing
+                                      address(*)</label>
 
-                                    <input type="checkbox" class="input form-control" required ng-Model="model.Shipmentbilladdress"
-                                      #Shipmentbilladdress name="Shipmentbilladdress" id="Shipmentbilladdress" (change)="checked4($event,i)">
+                                    <input type="checkbox" class="input form-control" required
+                                      ng-Model="model.Shipmentbilladdress" #Shipmentbilladdress
+                                      name="Shipmentbilladdress" id="Shipmentbilladdress" (change)="checked4($event,i)">
                                   </div>
                                   <!--/ [col] -->
                                 </li>
@@ -842,7 +987,8 @@
 
                                   </p>
                                 </div> -->
-                                <input type="submit" (click)="save(FName.value,province.value,City.value,Area.value,Mobile.value,Address.value,Shipmentaddress.value,Shipmentbilladdress.value)"
+                                <input type="submit"
+                                  (click)="save(FName.value,province.value,City.value,Area.value,Mobile.value,Address.value,Shipmentaddress.value,Shipmentbilladdress.value)"
                                   class="btn" value="Update">
                               </div>
                             </div>
@@ -894,7 +1040,7 @@
 
                               </div>
                             </div> -->
-                             <!-- // creditno ,
+                            <!-- // creditno ,
                                 // exp,
                                 // ccv ,
                                 // paymenttype ,
@@ -906,7 +1052,7 @@
                               <div class="col-sm-6">
                                 <br />
                                 <label for="first_name_1" class="required">Card Number</label>
-                                <input [(ngModel)]="model.creditno" #creditno="ngModel" required 
+                                <input [(ngModel)]="model.creditno" #creditno="ngModel" required
                                   class="input form-control" type="text" name="creditno" placeholder="">
                                 <div style="color:red" *ngIf="f.submitted  && !creditno.valid" class="help-block">
                                   This field is required
@@ -922,9 +1068,9 @@
                               <div class="col-sm-1">
                                 <br />
                                 <label for="expiry_month" class="required">-Expiry month</label>
-                                <input class="input form-control" [(ngModel)]="model.expiry_month" #expiry_month="ngModel"
-                                  required maxlength="2" minlength="2" pattern="([0-9])+$" type="text" name="expiry_month"
-                                  placeholder="05">
+                                <input class="input form-control" [(ngModel)]="model.expiry_month"
+                                  #expiry_month="ngModel" required maxlength="2" minlength="2" pattern="([0-9])+$"
+                                  type="text" name="expiry_month" placeholder="05">
                                 <div style="color:red" *ngIf="f.submitted  && !expiry_month.valid" class="help-block">
                                   This field is required
                                 </div>
@@ -933,8 +1079,8 @@
                                 <br />
                                 <label for="expiry_year" class="required">-Expiry Year</label>
                                 <input class="input form-control" [(ngModel)]="model.expiry_year" #expiry_year="ngModel"
-                                  required maxlength="4" minlength="4" pattern="([0-9])+$" type="text" name="expiry_year"
-                                  placeholder="2025">
+                                  required maxlength="4" minlength="4" pattern="([0-9])+$" type="text"
+                                  name="expiry_year" placeholder="2025">
                                 <!-- <div style="color:red" *ngIf="f.submitted  && !expiry_year.valid" class="help-block">
                                   This field is required
                                 </div> -->
@@ -943,7 +1089,8 @@
                                 <br />
                                 <label for="cvv" class="required">-CVV Number</label>
                                 <input class="input form-control" [(ngModel)]="model.ccv" #ccv="ngModel" required
-                                  maxlength="3" minlength="3" pattern="([0-9])+$" type="text" name="ccv" placeholder="365">
+                                  maxlength="3" minlength="3" pattern="([0-9])+$" type="text" name="ccv"
+                                  placeholder="365">
                                 <div style="color:red" *ngIf="f.submitted  && !ccv.valid" class="help-block">
                                   This field is required
                                 </div>
@@ -1034,48 +1181,30 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 style="font-size: 30px !important;" class="modal-title" id="myModalLabel">Edit Product</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+        <h4 class="edit-modal-title" id="myModalLabel">Edit Product</h4>
       </div>
       <div class="modal-body">
-        <div class="formpanel">
-          <div class="tab-content">
-            <!-- <ng-container *ngIf="GetUSerdetails"> -->
-            <div id="step1" class="formpanel tab-pane fade in active">
-
-              <ul>
-
-                <li class="row">
-                  <div class="col-sm-6">
-
-                    <label for="FName" class="required">First Name(*)</label>
-                    <input type="text" ng-Model="model.FName" #FName name="FName" required class="input form-control"
-                      placeholder="First Name" id="FName" value="{{fullname}}">
-
-
-
-                  </div>
-
-                  <!--/ [col] -->
-
-
-                  <div class="col-sm-6">
-                    <!-- [textMask]="{mask: mask}" -->
-                    <label for="telephone" class="required">Contact Number(*)</label>
-
-
-                    <input class="input form-control" placeholder="your contact number" type="text" required ng-Model="model.Mobile"
-                      #Mobile name="Mobile" id="telephone" value="{{phone_no}}">
-                  </div>
-
-                </li>
-
-                <!--/ .row -->
-
-                <br>
-                <li class="row">
-
-                  <!-- <div class="col-sm-6">
+        <!-- <ng-container *ngIf="GetUSerdetails"> -->
+        <div id="step1">
+          <ul>
+            <li class="row">
+              <div class="col-sm-6">
+                <label for="FName" class="required">First Name(*)</label>
+                <input type="text" ng-Model="model.FName" #FName name="FName" required class="input form-control" placeholder="First Name" id="FName" value="{{fullname}}">
+              </div>
+              <!--/ [col] -->
+              <div class="col-sm-6">
+                <!-- [textMask]="{mask: mask}" -->
+                <label for="telephone" class="required">Contact Number(*)</label>
+                <input class="input form-control" placeholder="your contact number" type="text" required ng-Model="model.Mobile" #Mobile name="Mobile" id="telephone" value="{{phone_no}}">
+              </div>
+            </li>
+            <!--/ .row -->
+            <br>
+            <li class="row">
+              <!-- <div class="col-sm-6">
 
                       <label   class="required">Select Your Country(*) </label>
                       <select  class="form-control"  ng-Model="model.Country" #Country name="Country" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
@@ -1085,128 +1214,100 @@
 
                     </div>
 -->
+              <div class="col-sm-6">
+                <label for="State" class="required">Province(*)</label>
+                <input type="text" ng-Model="model.province" #province name="province" required class="input form-control" placeholder="Province" id="State" value="{{Provinces}}">
+                <!-- </div> -->
+              </div>
+              <div class="col-sm-6">
 
+                <label class="required">Your City(*)</label>
 
+                <input class="input form-control" placeholder="Your City" type="text" required ng-Model="model.City"
+                  #City name="City" value="{{city}}">
+              </div>
+            </li>
+            <br>
+            <li class="row">
+            </li>
+            <!-- <br> -->
+            <li class="row">
 
-                  <div class="col-sm-6">
+              <div class="col-sm-12">
 
+                <label class="required">Area(*)</label>
 
+                <input class="input form-control" placeholder="Your Area" type="text" required ng-Model="model.Area"
+                  #Area name="Area" value="{{area}}">
+              </div>
+            </li>
+            <!--/ .row -->
 
+            <br>
+            <li class="row">
+              <div class="col-xs-12">
+                <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
+                <label for="address" class="required">Address(*)</label>
 
-                    <label for="State" class="required">Province(*)</label>
-                    <input type="text" ng-Model="model.province" #province name="province" required class="input form-control"
-                      placeholder="Province" id="State" value="{{Provinces}}">
-
-
-
-                    <!-- </div> -->
-
-                  </div>
-                  <div class="col-sm-6">
-
-                    <label class="required">Your City(*)</label>
-
-                    <input class="input form-control" placeholder="Your City" type="text" required ng-Model="model.City"
-                      #City name="City" value="{{city}}">
-                  </div>
-
-
-                </li>
-
-                <br>
-                <li class="row">
-
-
-
-
-
-                </li>
-
-                <!-- <br> -->
-                <li class="row">
-
-                  <div class="col-sm-12">
-
-                    <label class="required">Area(*)</label>
-
-                    <input class="input form-control" placeholder="Your Area" type="text" required ng-Model="model.Area"
-                      #Area name="Area" value="{{area}}">
-                  </div>
-                </li>
-                <!--/ .row -->
-
-                <br>
-                <li class="row">
-                  <div class="col-xs-12">
-                    <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
-                    <label for="address" class="required">Address(*)</label>
-
-                    <input type="text" class="input form-control" required placeholder="shop #, street# etc" ng-Model="model.Address"
-                      #Address name="Address" id="address" value="{{address}}">
-                  </div>
-                  <!--/ [col] -->
-                </li><!-- / .row -->
-                <li class="row">
-                  <div class="col-xs-12">
-                    <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
-                    <label for="Shipmentaddress" class="required">Shipping(*)</label>
-
-                    <input type="checkbox" class="input form-control" required ng-Model="model.Shipmentaddress"
-                      #Shipmentaddress name="Shipmentaddress" id="Shipmentaddress" (change)="checked3($event,i)">
-                  </div>
-                  <!--/ [col] -->
-                </li>
-                <li class="row">
-                  <div class="col-xs-12">
-                    <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
-                    <label for="Shipmentbilladdress" class="required">Shipping Billing address(*)</label>
-
-                    <input type="checkbox" class="input form-control" required ng-Model="model.Shipmentbilladdress"
-                      #Shipmentbilladdress name="Shipmentbilladdress" id="Shipmentbilladdress" (change)="checked4($event,i)">
-                  </div>
-                  <!--/ [col] -->
-                </li>
-                <!-- <div class="col-xs-2">
+                <input type="text" class="input form-control" required placeholder="shop #, street# etc"
+                  ng-Model="model.Address" #Address name="Address" id="address" value="{{address}}">
+              </div>
+              <!--/ [col] -->
+            </li><!-- / .row -->
+            <li class="row">
+              <div class="col-xs-12">
+                <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
+                <label for="Shipmentaddress" class="required checkbox-container">Shipping(*)
+                  <input type="checkbox" required ng-Model="model.Shipmentaddress"
+                  #Shipmentaddress name="Shipmentaddress" id="Shipmentaddress" (change)="checked3($event,i)">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <!--/ [col] -->
+            </li>
+            <li class="row">
+              <div class="col-xs-12">
+                <!-- FName,province,City,Area,Mobile,Address,Shipmentaddress -->
+                <label for="Shipmentbilladdress" class="required checkbox-container">Shipping Billing address(*)
+                  <input type="checkbox" required ng-Model="model.Shipmentbilladdress"
+                  #Shipmentbilladdress name="Shipmentbilladdress" id="Shipmentbilladdress"
+                  (change)="checked4($event,i)">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <!--/ [col] -->
+            </li>
+            <!-- <div class="col-xs-2">
 
                   <label for="fbrRegister" class="required">FbrRegister(*)</label>
 
                   <input type="checkbox" class="input form-control" required placeholder="FbrRegister" ng-Model="model.FbrRegister"
                     #fbrregister name="FbrRegister" id="fbrRegister" (change)="checked3($event,i)"  >
                 </div> -->
-                <!-- / .row -->
-
-
-              </ul>
-
-
-
-              <br>
-
-
-              <div class="nav nav-tabs">
-                <div *ngIf="Error" class="alert alert-danger">
-                  <strong>Error </strong> While updating record.
-                </div>
-
-                <div *ngIf="Right" class="alert alert-success">
-                  <strong>Profile Updated! <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go to
-                      Dashboard Section</a></strong>
-                </div>
-                <div *ngIf="Waitcall" class="alert  alert-info">
-                  <p class="">
-                    <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>
-                      &nbsp; Loading ...</span>
-
-                  </p>
-                </div>
-                <input type="submit" (click)="save(FName.value,province.value,City.value,Area.value,Mobile.value,Address.value,Shipmentaddress.value,Shipmentbilladdress.value)"
-                  class="btn" value="Update">
-              </div>
+            <!-- / .row -->
+          </ul>
+          <div class="nav nav-tabs">
+            <div *ngIf="Error" class="alert alert-danger">
+              <strong>Error </strong> While updating record.
             </div>
-            <!-- </ng-container> -->
 
+            <div *ngIf="Right" class="alert alert-success">
+              <strong>Profile Updated! <a style="color: red !important;" [routerLink]="['/buyer-dashboard']">Go to
+                  Dashboard Section</a></strong>
+            </div>
+            <div *ngIf="Waitcall" class="alert  alert-info">
+              <p class="">
+                <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate">
+                </span><span>
+                  &nbsp; Loading ...</span>
+
+              </p>
+            </div>
+            <input type="submit" (click)="save(FName.value,province.value,City.value,Area.value,Mobile.value,Address.value,Shipmentaddress.value,Shipmentbilladdress.value)" class="btn-order" value="Update">
           </div>
-          <!-- <div class="formrow">
+        </div>
+        <!-- </ng-container> -->
+        <!-- <div class="formrow">
         <label>Category:</label>
         <select [(ngModel)]="model.Cat_Name" name="cat" (click)="MainCatSel(model.Cat_Name)" required>
           <ng-container *ngFor="let cat of GetallCat">
@@ -1214,7 +1315,7 @@
           </ng-container>
         </select>
             </div> -->
-          <!-- <div class="formrow">
+        <!-- <div class="formrow">
         <label>Sub-Category:</label>
         <select [(ngModel)]="model.Sub_Cat_Name" name="Subcat" (click)="SubCatSel(model.Sub_Cat_Name)" required>
           <ng-container *ngFor="let cat of GetAllSubCat">
@@ -1230,19 +1331,19 @@
           </ng-container>
         </select>
           </div> -->
-          <!-- <div class="formrow">
+        <!-- <div class="formrow">
         <label>Title:</label>
         <input type="text" class="form-control" name="Title" [(ngModel)]="model.P_Title" required>
           </div> -->
-          <!-- <div class="formrow">
+        <!-- <div class="formrow">
         <label>Product Condition:</label>
         <input type="text" class="form-control" name="Condition" [(ngModel)]="model.P_Condition" required>
           </div> -->
-          <!-- <div class="formrow">
+        <!-- <div class="formrow">
         <label>Product Description:</label>
         <textarea type="text" class="form-control" name="Description" [(ngModel)]="model.P_Des" ></textarea>
           </div> -->
-          <!-- <ng-container *ngIf="model.Auction">
+        <!-- <ng-container *ngIf="model.Auction">
         <div class="col-md-12">
           <div class="userbtns">
             <ul class="nav nav-tabs">
@@ -1289,7 +1390,7 @@
           </div>
         </div>
         </ng-container> -->
-          <!-- <ng-container *ngIf="!model.Auction">
+        <!-- <ng-container *ngIf="!model.Auction">
           <div class="col-md-12">
             <div class="userbtns">
               <ul class="nav nav-tabs">
@@ -1339,7 +1440,6 @@
             </div>
           </div>
         </ng-container> -->
-        </div>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
