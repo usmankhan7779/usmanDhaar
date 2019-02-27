@@ -241,7 +241,12 @@
 
                     <button *ngIf="LoginID === true && resultProduct.Addbestoffer" class="button pro-add-to-cart singlebutton"
                       style="margin-left: 3px;" (click)="MakeAnOffer()" title="Add to Cart" type="button">Make Offer</button>
-                    <ng-container *ngIf="LoginID === true">
+                      <ng-container *ngIf="LoginID === false">
+                          <button class="button pro-add-to-cart singlebutton" title="Watch This Product" type="submit"
+                          style="margin-left: 3px; float:left; font-size: 20px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
+
+                      </ng-container>
+                      <ng-container *ngIf="LoginID === true">
                       <div *ngIf="watchlist == 'false'">
                         <button class="button pro-add-to-cart singlebutton" title="Watch This Product" type="submit"
                           style="margin-left: 3px; float:left; font-size: 20px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
@@ -397,8 +402,10 @@
                         <ng-container *ngIf="noreview">No Review</ng-container>
                         <ng-container *ngFor="let ProductReview of GetallProductReview">
                           <div class="review-ratting">
-                            <p><a>{{ ProductReview.Reviews }}</a>
+                              <p><a>{{ ProductReview.user.username }}</a></p>
+                            <p>{{ ProductReview.Reviews }}
                             </p>
+                           
                             <table>
                               <tbody>
                                 <tr>

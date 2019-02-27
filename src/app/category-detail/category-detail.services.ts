@@ -52,10 +52,10 @@ getRecommended( ) {
     headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     headers.append('Content-Type', 'application/json');
     console.log('pofile', localStorage.getItem('Authorization'));
-   
+    // this.ServerUrl 
   // return this._http.get( this.ServerUrl + 'Getbuynow_auction_products/' , ).map(response => response.json());
-  return this._http.get(this.ServerUrl +  'recommended_products/'  ,{headers:headers}).map(response => response.json());
-
+  return this._http.get( this.ServerUrl +'recommended_products/'  ,{headers:headers}).map(response => response.json());
+ 
 // }
 }
 getBuyNowAuctionproducts(category_name,fillter) {

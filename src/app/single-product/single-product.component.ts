@@ -28,6 +28,7 @@ export class SingleProductComponent implements OnInit {
   GetallPhoneProduct: any = []
   GetallRecentProducts: any = [];
   GetallProductReview: any = [];
+  getusername:any=[];
   element: HTMLElement;
   LoginID: Boolean = false;
   login_error: Boolean = false;
@@ -66,6 +67,7 @@ export class SingleProductComponent implements OnInit {
   // onePeoduct: Productlist[];
   onePeoduct: any = [];
   products: any = { 'products': [] };
+  viewlogin;
 
   TmpresultProduct: any = { 'products': [] };
   ViewedProduct: any = { 'products': [] };
@@ -123,7 +125,7 @@ export class SingleProductComponent implements OnInit {
 
     this._shareData.currentMessagetotal.subscribe(message => this.total = message)
     this._shareData.currentMessagetotalwatchlist.subscribe(messagess => this.totallist = messagess)
-
+    this.viewlogin = localStorage.getItem('Authorization');
     if (isPlatformBrowser(this.platformId)) {
       setInterval(() => {
         this.timer(this.element);
@@ -200,16 +202,16 @@ export class SingleProductComponent implements OnInit {
               this.ProductPictures = resSlidersData;
             });
           }
-          if(localStorage.getItem('Authorization')!== null)
-          {
+          // if(localStorage.getItem('Authorization')!== null)
+          // {
           
-            this.GetAdd.GetAllRecentProducts(this.ProID).subscribe(resSlidersData => {
-              this.GetallRecentProducts = resSlidersData;
-              console.log(this.GetallRecentProducts)
+          //   this.GetAdd.GetAllRecentProducts(this.ProID).subscribe(resSlidersData => {
+          //     this.GetallRecentProducts = resSlidersData;
+          //     console.log(this.GetallRecentProducts)
             
-              console.log(this.GetallRecentProducts, "results")
-            });
-          }
+          //     console.log(this.GetallRecentProducts, "results")
+          //   });
+          // }
 
           this.ProductReviews();
 
@@ -253,9 +255,16 @@ export class SingleProductComponent implements OnInit {
   refresh(): void {
     window.location.reload();
 }
+
   ProductReviews() {
-    this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
+    this.httpService.GetallIDByUser(this.ProID).subscribe(resSlidersData => {
       this.GetallProductReview = resSlidersData.Results;
+ 
+      this.getusername = this.GetallProductReview.user.username;
+      alert(this.getusername)
+      console.log(this.getusername)
+  
+
       if (this.GetallProductReview.length !== 0) {
 
         this.GetAdd.GetallUserReviewsCalculationBYProductId(this.ProID).subscribe(data => {
@@ -407,6 +416,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   WatchProduct() {
+    if (this.viewlogin !== null) {
     if (isPlatformBrowser(this.platformId)) {
       this.GetAdd.WatchProduct(
         this.productid1
@@ -457,7 +467,17 @@ export class SingleProductComponent implements OnInit {
           // console.log(error);
           // this.WatchStatus=true;
         });
+    }}
+    else if (this.viewlogin == null) {
+      swal({
+        type: 'error',
+        title: 'Please login ',
+        showConfirmButton: true,
+        confirmButtonColor: "#090200",
+        width: '512px',
+      });
     }
+
   }
   UnwatchProduct() {
     if (isPlatformBrowser(this.platformId)) {
@@ -849,7 +869,7 @@ export class SingleProductComponent implements OnInit {
     // localStorage.getItem('UserName'), localStorage.getItem('UserID'),, this.resultProduct['StoreName']
     this.GetAdd.InsertProductReviews(this.model.YourReview, this.ProID, this.starp).subscribe(resSlidersData => {
       swal('Your Review has been submitted', '', 'success');
-      this.GetAdd.GetallUserReviewsBYProductId(this.ProID).subscribe(resSlidersData => {
+      this.httpService.GetallIDByUser(this.ProID).subscribe(resSlidersData => {
         this.GetallProductReview = resSlidersData.Results;
         this.noreview = false;
       });

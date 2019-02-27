@@ -435,7 +435,7 @@ export class HomeComponent implements OnInit {
   }
   RecommendedSlider() {
     this.Category.getRecommended().subscribe(resSlidersData => {
-      this.RecommendedProducts = resSlidersData;
+      this.RecommendedProducts = resSlidersData.Results;
       $('.recommendedslider').fadeOut(0);
       if (this.RecommendedProducts) {
         setTimeout(function () {
