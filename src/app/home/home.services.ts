@@ -375,7 +375,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
         // this.ServerUrl +
-        return this._http.post( 'http://192.168.30.187:8000/products/Category_Products/',
+        return this._http.post( this.ServerUrl +'Category_Products/',
           {
             'category_name2': category_name2,
             // 'Cat_Name': CatName ,
