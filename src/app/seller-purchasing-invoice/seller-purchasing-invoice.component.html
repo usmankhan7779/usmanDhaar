@@ -108,7 +108,7 @@
                 <td class="no">{{ i+1 }}</td>
                 <td class="desc"><h3>{{ abc.P_Title }}</h3>{{ abc.P_Des }}</td>
                 <td class="unit">Rs: {{ abc.FixedPrice | number:'.0-0'}}</td>
-                <td class="qty">{{ abc.Qty }}</td>
+                <td class="qty"><ng-container>{{qty}}</ng-container></td>
                 <!--{{ abc.Qty}}-->
                 <td class="total">Rs: {{ abc.FixedPrice * abc.Qty | number:'.0-0' }}</td>
               </tr>

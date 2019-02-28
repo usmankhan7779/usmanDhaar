@@ -20,7 +20,7 @@ export class HomeService {
   // http://192.168.30.225:9000
   // https://apis.dhaar.pk
   
-  ServerUrl = 'http://192.168.29.225:8000/products/';
+  ServerUrl = 'https://apis.dhaar.pk/products/';
   // ServerUrl = 'https://apis.dhaar.pk/products/';
   
   // serverurladdtocart=''
@@ -87,7 +87,7 @@ export class HomeService {
 
   get_AnyProduct_ProductById(proId: string) {
 
-    return this._http.get(this.ServerUrl + 'getAnyProductById/' + proId).map(response => response.json());
+    return this._http.get(this.ServerUrl + 'getProductByProductID/' + proId).map(response => response.json());
     // console.log(this.CateDeatils)
   }
   get_PhoneAndTabletProduct_ProductById(proId: string) {

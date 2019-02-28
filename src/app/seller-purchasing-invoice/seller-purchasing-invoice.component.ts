@@ -36,6 +36,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
   Allproducts: any = {'products': []};
   GetAllproducts = [];
+  qty;
 
   @ViewChild('content') content:ElementRef;
 
@@ -99,13 +100,20 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
       this.httpService.GetAllProductBYInvoiceId( this.InvoicesID).subscribe(
         data => {
           this.ProductsID = data;
+          this.qty=data.qty;
+          // this.qty = this.ProductsID.Qty;
+          // alert(this.ProductsID.Qty)
           console.log('Products are:::', this.ProductsID);
 
           for (const itm of this.ProductsID) {
             this.GetOneProduct.get_AnyProduct_ProductById(itm.ProductID).subscribe(data => {
               // this.GetAllproducts.Qty = itm.Qty;
               data['Qty']=itm.Qty;
-              this.GetAllproducts.push(data);
+
+              alert(itm.Qty)
+              this.GetAllproducts= data.results;
+              // this.GetAllproducts.push(data);
+              // alert(this.GetAllproducts)
             });
           }
           console.log('Products details are', this.GetAllproducts);
