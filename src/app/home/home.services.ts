@@ -20,7 +20,8 @@ export class HomeService {
   // http://192.168.30.225:9000
   // https://apis.dhaar.pk
   
-  ServerUrl = 'https://apis.dhaar.pk/products/';
+  ServerUrl = 'http://192.168.29.225:8000/products/';
+  // ServerUrl = 'https://apis.dhaar.pk/products/';
   
   // serverurladdtocart=''
 
@@ -377,7 +378,7 @@ export class HomeService {
         // this.ServerUrl +
         return this._http.post( this.ServerUrl +'Category_Products/',
           {
-            'category_name2': category_name2,
+            'category_name1': category_name2,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -405,7 +406,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name2': category_name2,
+            'category_name1': category_name2,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -436,7 +437,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name3': category_name3,
+            'category_name1': category_name3,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -464,7 +465,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name3': category_name3,
+            'category_name1': category_name3,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -495,7 +496,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name4': category_name4,
+            'category_name1': category_name4,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -523,7 +524,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name4': category_name4,
+            'category_name1': category_name4,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -554,7 +555,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name5': category_name5,
+            'category_name1': category_name5,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -582,7 +583,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name5': category_name5,
+            'category_name1': category_name5,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -613,7 +614,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name6': category_name6,
+            'category_name1': category_name6,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {
@@ -641,7 +642,7 @@ export class HomeService {
 
         return this._http.post(this.ServerUrl + 'Category_Products/',
           {
-            'category_name6': category_name6,
+            'category_name1': category_name6,
             // 'Cat_Name': CatName ,
             // 'User_ID': User_ID,
           }, { headers: headers }).map((res: Response) => {

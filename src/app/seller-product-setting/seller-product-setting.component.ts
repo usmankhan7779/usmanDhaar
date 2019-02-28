@@ -98,7 +98,7 @@ export class SellerProductSettingComponent implements OnInit {
     this.currentindex = index;
     this.model = product;
     for(const itm of this.GetallCat) {
-      if(itm.Cat_Name_id === this.model.Cat_Name) {
+      if(itm.Cat_Name === this.model.Cat_Name) {
         this.CatId = itm.id;
           console.log(itm.Sub_Sub_Cat_Name_id)
         console.log('ID is:', this.CatId);

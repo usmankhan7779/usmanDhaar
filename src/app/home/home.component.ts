@@ -166,8 +166,16 @@ export class HomeComponent implements OnInit {
 
       this.GetProducts.GetProductsfromAllCat().subscribe(resSlidersData => {
 
-        this.GetALLProductss = resSlidersData.Results;
-
+        // this.GetALLProductss = resSlidersData.Results;
+        // .product
+        let demoprods;
+        demoprods = resSlidersData.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demoprods)
+        for (let prods of demoprods) {
+          this.GetALLProductss.push(prods.product);
+        }
+        console.log(this.GetALLProductss);
 
         console.log(this.GetALLProductss, 'response')
 
@@ -198,8 +206,16 @@ export class HomeComponent implements OnInit {
     else if (this.viewlogin == null) {
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersDatass => {
 
-        this.GetALLBuyNowProductss = resSlidersDatass.Results;
+        // this.GetALLBuyNowProductss = resSlidersDatass.Results;
         // alert(this.GetALLAuctionProductss)
+        let demobuyprods;
+        demobuyprods = resSlidersDatass.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demobuyprods)
+        for (let prods of demobuyprods) {
+          this.GetALLBuyNowProductss.push(prods.product);
+        }
+        console.log(this.GetALLProductss);
 
       });
     }
@@ -229,7 +245,14 @@ export class HomeComponent implements OnInit {
     else if (this.viewlogin == null) {
       this.GetProducts.GetAuctionProductsfromAllCat().subscribe(resSlidersData => {
 
-        this.GetALLAuctionProductss = resSlidersData.Results;
+        // this.GetALLAuctionProductss = resSlidersData.Results;
+        let demoactuprods;
+        demoactuprods = resSlidersData.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demoactuprods)
+        for (let prods of demoactuprods) {
+          this.GetALLAuctionProductss.push(prods.product);
+        }
 
       });
     }
@@ -272,42 +295,77 @@ export class HomeComponent implements OnInit {
     else if (this.viewlogin == null) {
       this.GetProducts.GetAllFeaturedProducts().subscribe(resSlidersData => {
 
-        this.GetALLFeaturedProductss = resSlidersData.Results;
+        // this.GetALLFeaturedProductss = resSlidersData.Results;
+        let demofreprods;
+        demofreprods = resSlidersData.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demofreprods)
+        for (let prods of demofreprods) {
+          this.GetALLFeaturedProductss.push(prods.product);
+        }
 
       });
     }
   }
   PhoneandTablet() {
 
-    this.GetProducts.PhoneandTablet("Phones & Tablets").subscribe(resSlidersData => {
-      console.log(resSlidersData)
-      this.GetallPhoneProduct = resSlidersData.Results;
+    this.GetProducts.PhoneandTablet("Phones & Tablets").subscribe(resSlidersDatasss => {
+      console.log(resSlidersDatasss)
+      this.GetallPhoneProduct = resSlidersDatasss.Results;
     });
   }
   menfashion() {
     this.GetProducts.MenFashion("Men's Fashion").subscribe(resSlidersData => {
 
-      this.MenFashionProducts = resSlidersData.Results;
+      // this.MenFashionProducts = resSlidersData.Results;
+      let demomenprods;
+      demomenprods = resSlidersData.Results;
+      //this.GetALLProductss= resSlidersData.Results;
+      console.log(demomenprods)
+      for (let prods of demomenprods) {
+        this.MenFashionProducts.push(prods.product);
+      }
     });
   }
   tv() {
     this.GetProducts.TV("TV, Audio & Video").subscribe(resSlidersData => {
 
-      this.getTvAudioVideoProduct = resSlidersData.Results;
+      // this.getTvAudioVideoProduct = resSlidersData.Results;
+      let demotvprods;
+      demotvprods = resSlidersData.Results;
+      //this.GetALLProductss= resSlidersData.Results;
+      console.log(demotvprods)
+      for (let prods of demotvprods) {
+        this.getTvAudioVideoProduct.push(prods.product);
+      }
     });
 
   }
   computer() {
     this.GetProducts.Computer("Computing & Laptops").subscribe(resSlidersData => {
 
-      this.getcomputinglaptopsproduct = resSlidersData.Results;
+      // this.getcomputinglaptopsproduct = resSlidersData.Results;
+      let democompprods;
+      democompprods = resSlidersData.Results;
+      //this.GetALLProductss= resSlidersData.Results;
+      console.log(democompprods)
+      for (let prods of democompprods) {
+        this.getcomputinglaptopsproduct.push(prods.product);
+      }
     });
 
   }
   home() {
     this.GetProducts.Home("Home Appliances").subscribe(resSlidersData => {
 
-      this.gethomeappliancesproduct = resSlidersData.Results;
+      // this.gethomeappliancesproduct = resSlidersData.Results;
+      let demohomwprods;
+      demohomwprods = resSlidersData.Results;
+      //this.GetALLProductss= resSlidersData.Results;
+      console.log(demohomwprods)
+      for (let prods of demohomwprods) {
+        this.gethomeappliancesproduct.push(prods.product);
+      }
     });
 
   }
@@ -317,7 +375,14 @@ export class HomeComponent implements OnInit {
 
     this.GetProducts.womenFashion("Women's Fashion").subscribe(resSlidersData => {
       console.log(resSlidersData)
-      this.WomenFashionProducts = resSlidersData.Results;
+      // this.WomenFashionProducts = resSlidersData.Results;
+      let demowomprods;
+      demowomprods = resSlidersData.Results;
+      //this.GetALLProductss= resSlidersData.Results;
+      console.log(demowomprods)
+      for (let prods of demowomprods) {
+        this.WomenFashionProducts.push(prods.product);
+      }
     });
   }
 
