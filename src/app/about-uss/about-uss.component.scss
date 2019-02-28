@@ -29,8 +29,17 @@ strong{
     z-index:-1;
   }
 }
+.about-title{
+  font-size: 24px;
+  margin-top: 20px;
+  color: red;
+  text-align: center;
+}
 .about-text{
-  font-size: 20px;
+  margin-left: 30px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
 }
 h2.ribbon {
   @extend %ribbon;
@@ -59,7 +68,7 @@ h3.ribbon {
   box-shadow: 0 1px 20px 0 rgba(0,0,0,.3);
   //background: #b3b3b3;
   border-radius: 6px;
-  padding: 30px 0px;
+  padding: 30px 0px 0;
   margin-bottom: 20px;
 
 }
@@ -80,9 +89,12 @@ h3.ribbon {
 .back-cover {
   background:url("../../assets/images/backcover.jpg/title-background.32fef2fdaa817cd71569.jpg");
   width: 100%;
-  margin: 0 auto;
+  margin: 10px auto 0;
+  padding: 20px 0;
 }
-
+.white-color{
+  color: #fff;
+}
 
 
 

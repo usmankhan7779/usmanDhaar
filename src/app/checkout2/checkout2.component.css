@@ -310,8 +310,9 @@
     border: none;
     transition: 0.4s;
 }
-.voucher-input-button:hover, .btn-order:hover{
+.voucher-input-button:hover{
     box-shadow: 0 0 15px -2px #f80000;
+    color: #fff;
 }
 .price-total{
     font-size: 18px;
@@ -326,22 +327,7 @@
     float: right;
     font-weight: 600;
 }
-.btn-order{
-    float: left;
-    width: 100%;
-    margin-top: 10px;
-    padding: 12px;
-    text-align: center;
-    background: #f80000;
-    color: #fff;
-    border-radius: 5px;
-    text-transform: capitalize;
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.4s;
-    cursor: pointer;
-    border: none;
-}
+
 .edit-modal-title{
     font-size: 20px;
     color: #fff;

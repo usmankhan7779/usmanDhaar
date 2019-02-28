@@ -7166,13 +7166,11 @@ button.button.btn-proceed-checkout span {
 
 #contact input,
 #contact select {
-    border-radius: 0;
     border-color: #ddd;
     box-shadow: inherit;
     outline: 0 none;
     height: 35px;
-    background: #f8f8f8;
-    border-radius: 50px;
+    font-size: 20px;
 }
 
 #contact textarea {
@@ -7181,7 +7179,6 @@ button.button.btn-proceed-checkout span {
     box-shadow: inherit;
     outline: 0 none;
     height: 135px;
-    background: #f8f8f8;
     border-radius: 5px;
 }
 
@@ -9370,4 +9367,24 @@ ngx-image-viewer .img-container{
 .hovereffect:hover a.info {
     -webkit-transition-delay: .2s;
     transition-delay: .2s;
+}
+.btn-order{
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    text-align: center;
+    background: #f80000;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.4s;
+    cursor: pointer;
+    border: none;
+}
+.btn-order:hover{
+    box-shadow: 0 0 15px -2px #f80000;
+    color: #fff;
 }
