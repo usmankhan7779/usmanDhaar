@@ -69,28 +69,28 @@
           </div>
         </header>
         <main>
-          <ng-container *ngFor="let Invoiceship of ShipingInvoice">
+          <!-- <ng-container *ngFor="let Invoiceship of GetAllproducts.invoice_detail"> -->
             <div id="details" class="clearfix">
               <div id="client">
                 <p class="to">SHIP TO:</p>
 
-                <h2 >{{ Invoiceship.First_Name }} {{ Invoiceship.Last_Name}}</h2>
-                <h6 >Tel: {{ Invoiceship.Telephon }} </h6>
-                <p>{{ Invoiceship.Address}}
-                <p>{{ Invoiceship.City}} ,{{ Invoiceship.Zip}} </p>
-                <p>{{ Invoiceship.State}} , {{ Invoiceship.Country }} </p>
-                <p>Fax: {{ Invoiceship.Fax }} </p>
-                <p><a href="mailto:{{ Invoiceship.Email}}">{{ Invoiceship.Email}}</a></p>
+                <h2 >{{ GetAllproducts.invoice_detail?.first_name }} {{ GetAllproducts.invoice_detail?.last_name}}</h2>
+                <h6 >Tel: {{ GetAllproducts.invoice_detail?.tel }} </h6>
+                <p>{{ GetAllproducts.invoice_detail?.address}}
+                <p>{{ GetAllproducts.invoice_detail?.city}} </p>
+                <p>{{ GetAllproducts.invoice_detail?.State}} , {{ GetAllproducts.invoice_detail?.country }} </p>
+                <p>Fax: {{ GetAllproducts.invoice_detail?.tel }} </p>
+                <p><a href="mailto:{{ GetAllproducts.invoice_detail?.email}}">{{ GetAllproducts.invoice_detail?.email}}</a></p>
               </div>
 
               <div id="invoice">
                 <h1>ORDER ID</h1>
-                <h3>{{ InvoicesID}}</h3>
-                <div class="date">Date of Order: {{ Invoiceship.CreatedDate.substr(0,10)}}</div>
+                <h3>{{ GetAllproducts.invoice_detail?.inoviceno}}</h3>
+                <div class="date">Date of Order: {{ GetAllproducts.invoice_detail?.date.substr(0,10)}}</div>
 
               </div>
             </div>
-          </ng-container>
+          <!-- </ng-container> -->
           <table border="0" cellspacing="0" cellpadding="0">
             <thead>
             <tr>
@@ -103,24 +103,24 @@
             </thead>
             <tbody>
             <!--<ng-container *ngFor="let fetchedproducts of Allproducts.products">-->
-            <ng-container>
-              <tr  *ngFor="let abc of GetAllproducts; let i = index">
+            <!-- <ng-container> -->
+              <tr  *ngFor="let abc of GetAllproducts.product_detail; let i = index">
                 <td class="no">{{ i+1 }}</td>
-                <td class="desc"><h3>{{ abc.P_Title }}</h3>{{ abc.P_Des }}</td>
-                <td class="unit">Rs: {{ abc.FixedPrice | number:'.0-0'}}</td>
-                <td class="qty"><ng-container>{{qty}}</ng-container></td>
+                <td class="desc"><h3>{{ abc.pro_title }}</h3>{{ abc.product_desc | slice:0:130 }}....</td>
+                <td class="unit">Rs: {{ abc.unit_price | number:'.0-0'}}</td>
+                <td class="qty">{{abc.product_quantity}}</td>
                 <!--{{ abc.Qty}}-->
-                <td class="total">Rs: {{ abc.FixedPrice * abc.Qty | number:'.0-0' }}</td>
+                <td class="total">Rs: {{ abc.unit_price * abc.product_quantity | number:'.0-0' }}</td>
               </tr>
-            </ng-container>
+            <!-- </ng-container> -->
 
             </tbody>
             <tfoot>
-            <ng-container *ngFor="let invdata of InvoiceData">
+            <!-- <ng-container > -->
               <tr>
                 <td colspan="2"></td>
                 <td colspan="2">SUBTOTAL</td>
-                <td>Rs {{invdata.InvoicesBalance | number:'.0-0'}}</td>
+                <td>Rs {{GetAllproducts.TotalAmount | number:'.0-0'}}</td>
               </tr>
               <tr>
                 <td colspan="2"></td>
@@ -130,9 +130,9 @@
               <tr>
                 <td colspan="2"></td>
                 <td colspan="2">GRAND TOTAL</td>
-                <td>Rs: {{invdata.InvoicesBalance | number:'.0-0' }}</td>
+                <td>Rs: {{GetAllproducts.TotalAmount | number:'.0-0' }}</td>
               </tr>
-            </ng-container>
+            <!-- </ng-container> -->
             </tfoot>
           </table>
           <div id="thanks">Thank you!</div>

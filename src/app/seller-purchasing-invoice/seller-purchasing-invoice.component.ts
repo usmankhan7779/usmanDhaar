@@ -23,7 +23,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
   modelNo: any;
   ShipingInvoice: any = [];
   InvoiceData: any = [];
-
+GetInvoice:any=[];
   ProductsID: any = [];
   AllCategories: any = [];
   resultProduct: any = [];
@@ -36,6 +36,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
 
   Allproducts: any = {'products': []};
   GetAllproducts = [];
+  totalamount;
   qty;
 
   @ViewChild('content') content:ElementRef;
@@ -80,44 +81,45 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
       this._nav.navigate(['/login']);
     } else {
 
-      //Gets all Shi[pping detail of user
-      this.httpService.GetShippingByInvoiceId( this.InvoicesID).subscribe(
-        data => {
-          this.ShipingInvoice = data;
-        });
+     
 
-      this.CatServices.GetAllCategories().subscribe(
-        data => {
-          this.AllCategories = data;
-        });
+       
 
-      //Gets all invoice details e.g. payment, guest, balance, userID
-      this.httpService.GetInvoiceByInvoiceID( this.InvoicesID).subscribe(
-        data => {
-          this.InvoiceData = data;
-        });
+     
 
-      this.httpService.GetAllProductBYInvoiceId( this.InvoicesID).subscribe(
-        data => {
-          this.ProductsID = data;
-          this.qty=data.qty;
-          // this.qty = this.ProductsID.Qty;
-          // alert(this.ProductsID.Qty)
-          console.log('Products are:::', this.ProductsID);
+        this.httpService.GetAllProductsBYIncoiceBILL( this.InvoicesID).subscribe(
+          dataamount => {
+            this.GetAllproducts = dataamount;
+            // this.totalamount= this.GetAllproducts.TotalAmount;
 
-          for (const itm of this.ProductsID) {
-            this.GetOneProduct.get_AnyProduct_ProductById(itm.ProductID).subscribe(data => {
-              // this.GetAllproducts.Qty = itm.Qty;
-              data['Qty']=itm.Qty;
+            console.log(this.GetAllproducts,'amount')
+          });
 
-              alert(itm.Qty)
-              this.GetAllproducts= data.results;
-              // this.GetAllproducts.push(data);
-              // alert(this.GetAllproducts)
-            });
-          }
-          console.log('Products details are', this.GetAllproducts);
-        });
+        // this.httpService.GetShippingByInvoiceId(this.InvoicesID).subscribe(data => 
+
+        // )
+
+      // this.httpService.GetAllProductBYInvoiceId( this.InvoicesID).subscribe(
+      //   data => {
+      //     this.ProductsID = data;
+      //     this.qty=data.qty;
+      //     // this.qty = this.ProductsID.Qty;
+      //     // alert(this.ProductsID.Qty)
+      //     console.log('Products are:::', this.ProductsID);
+
+      //     for (const itm of this.ProductsID) {
+      //       this.GetOneProduct.get_AnyProduct_ProductById(itm.ProductID).subscribe(data => {
+      //         // this.GetAllproducts.Qty = itm.Qty;
+      //         data['Qty']=itm.Qty;
+
+      //         // alert(itm.Qty)
+      //         this.GetAllproducts= data.results;
+      //         // this.GetAllproducts.push(data);
+      //         // alert(this.GetAllproducts)
+      //       });
+      //     }
+      //     console.log('Products details are', this.GetAllproducts);
+      //   });
 
     }
   }

@@ -20,7 +20,8 @@ export class BuyerDashboardServices {
   // https://apis.dhaar.pk/products/
   
   // saleServerUrl = 'https://apis.dhaar.pk/sale/';
-  saleServerUrl = 'https://apis.dhaar.pk/sale/';
+
+  saleServerUrl = 'http://192.168.30.187:8000/sale/';
   posturl='https://apis.dhaar.pk/payment/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -58,6 +59,9 @@ export class BuyerDashboardServices {
     return this._http.get( this.saleServerUrl + 'GetAllProductBYInvoiceId/' + InvoiceId  ).map(response => response.json());
   }
 
+  GetAllProductsBYIncoiceBILL( InvoiceId: any) {
+    return this._http.get( this.saleServerUrl + 'get_product_detail/' + InvoiceId  ).map(response => response.json());
+  }
   GetShippingByInvoiceId( InvoiceId: any) {
     return this._http.get( this.saleServerUrl + 'GetShippingByInvoiceId/' + InvoiceId  ).map(response => response.json());
   }
