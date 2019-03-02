@@ -33,7 +33,7 @@ export class PostAdComponent implements OnInit {
   User_ID: string;
   StoreName: string;
   StoreNamess;
-
+  Vendor= false;
   CatName: string;
   SubCat_ID: string;
   arrayIndex = 0;
@@ -72,6 +72,7 @@ export class PostAdComponent implements OnInit {
   fileCounter = 0;
   filetoup1:any=[];
   product_ad_active ="False";
+  
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private HomeServics: HomeService,
@@ -104,7 +105,7 @@ export class PostAdComponent implements OnInit {
 
     this.PostAdd.GetAllSubCategoriesByCatID(this.CatId).subscribe(resSlidersData => this.GetAllSubCat = resSlidersData);
       console.log(this.GetAllSubCat);
-
+this.vendors();
     this.PostAdd.GetAllSubSubCategoriesByCatID(this.CatId).subscribe(resSlidersData => this.GetAllSubSubCat = resSlidersData);
 
     this.Profile.GetStoreInformationByUserId().subscribe(
@@ -128,6 +129,13 @@ export class PostAdComponent implements OnInit {
       });
 
   }
+  }
+  vendors(){
+     if(localStorage.getItem('Vendor') === 'true')
+    {
+      this.Vendor = true;
+    }
+    
   }
   storess(){
     alert  (this.model.StoreName)
