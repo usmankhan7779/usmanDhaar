@@ -4397,6 +4397,7 @@ button.button {
     border-radius: 50px;
     text-transform: capitalize;
     font-weight: 600;
+    margin: 10px 3px;
 }
 
 button.button:hover {
@@ -5731,14 +5732,25 @@ ul.products-list .sale-left {
     padding: 0px 0px 20px 22px;
 }
 
-.product-view-area .product-name h1 {
+.product-view-area .product-name .heading {
     font-size: 22px;
-    width: 50%;
+    width: 85%;
     margin: 0;
     padding: 15px 0;
     letter-spacing: normal;
     font-weight: 600;
     float: left;
+}
+.product-view-area .product-name .heart-icon {
+    font-size: 22px;
+    width: 15%;
+    float: right;
+    margin: 0;
+    padding: 15px 0;
+    letter-spacing: normal;
+    font-weight: 600;
+    float: left;
+    text-align: right;
 }
 .product-view-area .product-name h1 i{
     color: #757575;
@@ -8109,6 +8121,35 @@ label[for="rememberme"] {
     background: #ffffff;
     width: 50%;
 }
+
+/* Style */
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #cc0000;
+}
+/* .review-box{
+    height: 255px;
+    overflow: hidden;
+} */
+
+
+
 
 @media (max-width:768px) and (max-width:1199px) {
     .modal-dialog {
