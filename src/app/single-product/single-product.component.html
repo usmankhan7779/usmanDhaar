@@ -85,8 +85,8 @@
 
           <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7 product-details-area">
             <div class="product-name width100 pull-left">
-              <h1>{{ resultProduct.P_Title}}</h1>
-              <h1 class="text-right"><i class="fas fa-heart"></i></h1>
+              <h1 class="heading">{{ resultProduct.P_Title}}</h1>
+              <h1 class="heart-icon"><i class="fas fa-heart"></i></h1>
             </div>
             <ng-container *ngIf="resultProduct.Auction">
               <div class="price-box">
@@ -241,7 +241,7 @@
                       style="margin-left: 3px;" (click)="MakeAnOffer()" title="Add to Cart" type="button">Make Offer</button>
                       <ng-container *ngIf="LoginID === false">
                           <button class="button pro-add-to-cart singlebutton" title="Watch This Product" type="submit"
-                          style="margin-left: 3px; float:left; font-size: 20px; font-weight: bolder" (click)="WatchProduct()">Watch</button>
+                          (click)="WatchProduct()">Watch</button>
 
                       </ng-container>
                       <ng-container *ngIf="LoginID === true">
@@ -268,6 +268,14 @@
                 <br />
               </div>
             </ng-container>
+
+            <div class="review-box">
+              <h3>Description</h3>
+              <ng-container *ngFor="let Des of ProPDes">
+                <p>{{ Des}}</p>
+              </ng-container>
+            </div>
+
           </div>
         </div>
       </div>
@@ -388,9 +396,9 @@
                 <div id="productTabContent" class="tab-content">
                   <div class="tab-pane fade in active" id="description">
                     <div class="std">
-                      <ng-container *ngFor="let Des of ProPDes">
-                        <p>{{ Des}}</p>
-                      </ng-container>
+                        <ng-container *ngFor="let Des of ProPDes">
+                            <p>{{ Des}}</p>
+                          </ng-container>
                     </div>
                   </div>
                   <div id="reviews" class="tab-pane fade">

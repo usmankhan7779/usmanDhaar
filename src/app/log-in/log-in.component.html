@@ -144,10 +144,11 @@
                   <a [routerLink]="['/forget-password']"> Forgot Password? </a>
                 </p>
                 <div class="formrow">
-                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !captcha}">
-                    <re-captcha (resolved)="resolved($event)" siteKey="6LcMeE4UAAAAAORPbOfwjGczzxsz843f24BA92IN"
+                  <div class="form-group">
+                    <app-recapcha></app-recapcha>
+                    <!-- <re-captcha (resolved)="resolved($event)" siteKey="6LcMeE4UAAAAAORPbOfwjGczzxsz843f24BA92IN"
                       required></re-captcha>
-                    <div *ngIf="f.submitted && !captcha" class="help-block">ReCaptcha is required</div>
+                    <div *ngIf="f.submitted && !captcha" class="help-block">ReCaptcha is required</div> -->
                     <!--[(ngModel)]="model.recaptcha" #recaptcha="ngModel"-->
                   </div>
                 </div>

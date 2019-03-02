@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './log-in.services';
@@ -6,7 +6,8 @@ import {FormControl, NgModel, Validators} from '@angular/forms';
 import {NgForm} from '@angular/forms';
 import {HttpService} from '../services/http-service';
 import { Headers} from "@angular/http";
-
+import { RecapchaComponent } from '../recapcha/recapcha.component';
+import { RecapchaService } from '../recapcha/recapcha.service';
 import { AuthService } from 'angular4-social-login';
 import { SocialUser } from 'angular4-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
@@ -19,6 +20,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./log-in.component.css'],
 })
 export class LogInComponent implements OnInit {
+  @ViewChild(RecapchaComponent) captcha: RecapchaComponent;
   user: SocialUser;
   model: any = {};
   private sub: any;
@@ -34,7 +36,7 @@ export class LogInComponent implements OnInit {
 
   checkout: string;
   returnUrl: string;
-  captcha = false;
+  // captcha = false;
 
   // CaptchaForm = new FormControl(
   // Validators.required,
@@ -45,6 +47,7 @@ export class LogInComponent implements OnInit {
 
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private http: HttpService,
+               private recha: RecapchaService,
                private authService: AuthService,
                private obj: LoginService,
                private _nav: Router,
@@ -107,12 +110,13 @@ export class LogInComponent implements OnInit {
   signOut(): void {
     this.authService.signOut();
   }
-  resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response ${captchaResponse}:`);
-    this.captcha= true;
-  }
+  // resolved(captchaResponse: string) {
+  //   console.log(`Resolved captcha with response ${captchaResponse}:`);
+  //   this.captcha= true;
+  // }
 
   loged_in(username: any, password: any) {
+    if (this.recha.check()) {
     this.obj.loged_in(username, password, this.CatName, this.ProID, this.checkout).subscribe((response) => {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
@@ -142,6 +146,18 @@ export class LogInComponent implements OnInit {
         //   console.log("COMPLETED");
       }
     );
+    }
+    else{
+      this.recha.resetImg();
+        swal({
+          type: 'error',
+          title: 'Recaptcha Confirmation',
+          text: 'Please confirm you are not a robot',
+          showConfirmButton: false,
+          width: '512px',
+          timer: 2000
+        });
+    }
   }
 
 
