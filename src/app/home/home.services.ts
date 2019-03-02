@@ -245,13 +245,13 @@ export class HomeService {
   }
 
   GetallProductsOffersByStoreName(page: any, StoreName: any) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'Token ' +  this.authentication);
-    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
-    console.log('pofile', localStorage.getItem('Authorization'));
+    // let headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    // // headers.append('Authorization', 'Token ' +  this.authentication);
+    // headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    // console.log('pofile', localStorage.getItem('Authorization'));
 
-    return this._http.get(this.ServerUrl + 'GetallProductsOffersByStoreName/' + StoreName + '?page=' + page, { headers: headers }).map(response => response.json());
+    return this._http.get(this.ServerUrl + 'GetallProductsOffersByStoreName/' + StoreName + '?page=' + page).map(response => response.json());
   }
 
   GetallUserReviewsBYProductId(pID: any) {

@@ -176,11 +176,11 @@
                     <div>
                       <button *ngIf="!Timeclose" class="button pro-add-to-cart" (click)="InsertBid(resultProduct.SrartingPrice, resultProduct.MaxBidPrice)"
                         title="Bid Now" type="button"><span><i class="fa fa-shopping-cart"></i> Bid Now</span></button>
-                      <div *ngIf="watchlist == 'false'">
+                      <div *ngIf="resultProduct.inWishList == 'false'">
                         <button class="button pro-add-to-cart" title="Watch This Product" type="submit" style="margin-left: 10px;"
                           (click)="WatchProduct()">Watch</button>
                       </div>
-                      <div *ngIf="watchlist == 'true'">
+                      <div *ngIf="resultProduct.inWishList == 'true'">
                         <button class="button pro-add-to-cart" title="Unwatch This Product" type="submit" style="margin-left: 10px;"
                           (click)="UnwatchProduct()">Unwatch</button>
                       </div>

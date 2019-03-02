@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <!--<h1>Checkout is working</h1>-->
-<section class="main-container">
+<section *ngIf="OrderPlaced == false" class="main-container">
   <div class="container">
     <div class="page-title">
       <h2>Checkout</h2>
@@ -1025,8 +1025,8 @@
 
             </div>
 
-            <form (ngSubmit)="f.form.valid  && EditProduct()" #f="ngForm" novalidate>
-
+            <form (ngSubmit)="f.form.valid  " #f="ngForm" novalidate>
+              <!-- && EditProduct() -->
               <h4 class="checkout-sep">Paymentsss Method</h4>
               <div class="box-border">
                 <ul>

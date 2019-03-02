@@ -50,12 +50,12 @@ export class ActiveAdServices {
     return this._http.get( this.StoreServerUrl + 'store_products_deactive/' + UserID + '?page=' + page,{headers : headers} ).map(response => response.json());
   }
   getAll_ProductBYStoreName( UserID: any) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'Token ' +  this.authentication);
-    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
-    console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + UserID ,{headers : headers} ).map(response => response.json());
+    // let headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    // // headers.append('Authorization', 'Token ' +  this.authentication);
+    // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+    // console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get( this.ServerUrl + 'GetallProductsOffersByStoreName/' + UserID ).map(response => response.json());
   }
   getBuyNow_ProductBYStoreName(page: any, UserID: any) {
     return this._http.get( this.ServerUrl + 'getBuyNow_ProductBYStoreName/' + UserID + '?page=' + page, ).map(response => response.json());
@@ -128,12 +128,12 @@ export class ActiveAdServices {
   }
 
   GetStoreOffers(st:any) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    // headers.append('Authorization', 'Token ' +  this.authentication);
-    headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
-    console.log('pofile', localStorage.getItem('Authorization'));
-    return this._http.get(this.ServerUrl + 'GetallProductsOffersByStoreName/' + st,{headers :headers}).map(response => response.json());
+    // let headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    // // headers.append('Authorization', 'Token ' +  this.authentication);
+    // headers.append('Authorization', 'Token ' +localStorage.getItem('Authorization'));
+    // console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get(this.ServerUrl + 'GetallProductsOffersByStoreName/' + st).map(response => response.json());
   }
 
   DeleteOffer(pk:any, st:any) {

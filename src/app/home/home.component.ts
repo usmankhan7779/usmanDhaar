@@ -191,7 +191,7 @@ export class HomeComponent implements OnInit {
     if (this.viewlogin !== null) {
       this.GetProducts.GetBuyNowProductsfromAllCat().subscribe(resSlidersDatass => {
 
-        // this.GetALLBuyNowProductss = resSlidersDatass.Results.product;
+        
         let demobuyprods;
         demobuyprods = resSlidersDatass.Results;
         //this.GetALLProductss= resSlidersData.Results;

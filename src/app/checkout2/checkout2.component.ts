@@ -474,7 +474,7 @@ alert(Abc)
         data => {
           // console.log( this.CartedProduct['products']);
           for (const item of this.CartedProduct['products']) {
-            this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, 'Guest').subscribe(
+            this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, 'Guest',item.User_ID).subscribe(
               data => {
 
               }, (err) => {
@@ -618,10 +618,10 @@ invoiceproductid;
            // }
           // for (const { item, index } of this.CartedProduct['products'].map((item, index) => ({ item, index }))) {
            for (const item of this.CartedProduct.Results) {
-
+alert(item.product.User_ID)
             // if (item === this.CartedProduct.Results.length ) {
               // console.log('item is:  ', item, '  Index is:  ', index);
-              this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.product.id, item.Quantity, localStorage.getItem('UserID')).subscribe(
+              this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.product.ProductID, item.Quantity, localStorage.getItem('UserID'),item.product.User_ID).subscribe(
                 data => {
                   alert("InvoiceProducts wai api in loop")
                   // this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type).subscribe(data => {
@@ -668,7 +668,7 @@ invoiceproductid;
                  alert("paymentmail wali api ")
                     
                   // this.OrderPlaced = true;
-                  swal('Your Order Has Been Placed', '', 'success');
+                  // swal('Your Order Has Been Placed', '', 'success');
     
                   // this.InvoiceIDSet = localStorage.getItem('InvoiceID');
     

@@ -1,4 +1,3 @@
-
 <app-header></app-header>
 
 <!-- Page Title start -->
@@ -48,52 +47,73 @@
 
 
             <!-- <ng-container *ngFor="let phoneProducts of Trend.results  "> -->
-              <li >
-                <div class="row">
-                  <div class="col-md-2 col-sm-4">
-                    <div class="adimg"><img src="{{phoneProducts.Pic   }}" alt="Ad Name"></div>
-                  </div>
-                  <div class="col-md-10 col-sm-8">
-                    <div class="jobinfo">
-                      <div class="row">
-                        <div class="col-md-8 col-sm-7">
-                          <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id}" >{{ phoneProducts.P_Title }}</a></h3>
-                          <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name }}</a>   </div>
-                          <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
-                          <div class="clearfix"></div>
-                          <p>
-                          <span> Auction: <span style="color: red !important;"  *ngIf="phoneProducts.Auction === true">Yes </span><span style="color: red !important;" *ngIf="phoneProducts.Auction === false">No</span> </span>
-                          </p>
-                          <p>
-                            <span *ngIf="phoneProducts.Auction === true"> Sold: <span style="color: red !important;"  *ngIf="phoneProducts.Sold === true">Yes </span><span style="color: red !important;" *ngIf="phoneProducts.Sold === false">No</span> </span>
-                          </p>
-                          <p>
-                            <span *ngIf="phoneProducts.Auction === false"> Sold: <span style="color: red !important;"  *ngIf="phoneProducts.Sold === true">Yes </span><span style="color: red !important;" *ngIf="phoneProducts.Sold === false">No</span> </span>
-                          </p>
-                          <p>
-                            <span *ngIf="phoneProducts.Auction === false">Remaning Qty: <span style="color: red !important;"> {{phoneProducts.Quantity}} </span> </span>
-                          </p>
-                          <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">View Details</a></div>
-                          <!-- <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name,SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">Product Detail</a> -->
+            <li>
+              <div class="row">
+                <div class="col-md-2 col-sm-4">
+                  <div class="adimg"><img src="{{phoneProducts.Pic.split(',')[0]    }}" alt="Ad Name"></div>
+                </div>
+                <div class="col-md-10 col-sm-8">
+                  <div class="jobinfo">
+                    <div class="row">
+                      <div class="col-md-8 col-sm-7">
+                        <h3>
+                          <a [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList}">{{ phoneProducts.P_Title }}</a>
+                        </h3>
+                        <!-- <a class="info" [routerLink]="['/single-product']"
+                        [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name,SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">Product
+                        Detail</a> -->
+                        <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name }}</a> <i
+                            class="fa fa-angle-double-right" aria-hidden="true"></i> <a
+                            href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right"
+                            aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name }}</a> </div>
+                        <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
+                        <div class="clearfix"></div>
+                        <p>
+                          <span> Auction: <span style="color: red !important;"
+                              *ngIf="phoneProducts.Auction === true">Yes </span><span style="color: red !important;"
+                              *ngIf="phoneProducts.Auction === false">No</span> </span>
+                        </p>
+                        <p>
+                          <span *ngIf="phoneProducts.Auction === true"> Sold: <span style="color: red !important;"
+                              *ngIf="phoneProducts.Sold === true">Yes </span><span style="color: red !important;"
+                              *ngIf="phoneProducts.Sold === false">No</span> </span>
+                        </p>
+                        <p>
+                          <span *ngIf="phoneProducts.Auction === false"> Sold: <span style="color: red !important;"
+                              *ngIf="phoneProducts.Sold === true">Yes </span><span style="color: red !important;"
+                              *ngIf="phoneProducts.Sold === false">No</span> </span>
+                        </p>
+                        <p>
+                          <span *ngIf="phoneProducts.Auction === false">Remaning Qty: <span
+                              style="color: red !important;"> {{phoneProducts.Quantity}} </span> </span>
+                        </p>
+                        <div class="listbtn"><a [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList  }">View
+                            Details</a></div>
+                        <!-- <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name,SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">Product Detail</a> -->
 
-                          <!-- <div class="listbtn"><a (click)="DisableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Disable This Ad</a></div> -->
-                          <!--<div *ngIf="!phoneProducts.Active" class="listbtn"><a (click)="EnableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Enable This Ad</a></div>-->
-                        </div>
-                        <div class="col-md-4 col-sm-5 text-right">
-                          <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>
-                          <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs {{ phoneProducts.FixedPrice | number:'.0-0'}}</div>
-                          <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
-                        </div>
+                        <!-- <div class="listbtn"><a (click)="DisableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Disable This Ad</a></div> -->
+                        <!--<div *ngIf="!phoneProducts.Active" class="listbtn"><a (click)="EnableProduct(phoneProducts.Cat_Name, phoneProducts.ProductID)">Enable This Ad</a></div>-->
+                      </div>
+                      <div class="col-md-4 col-sm-5 text-right">
+                        <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs
+                          {{ phoneProducts.MaxBidPrice | number:'.0-0'}}</div>
+                        <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs
+                          {{ phoneProducts.FixedPrice | number:'.0-0'}}</div>
+                        <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
                       </div>
                     </div>
                   </div>
                 </div>
-              </li>
+              </div>
+            </li>
             <!-- </ng-container> -->
 
             <div class="col-sm-4 col-sm-push-8">
-              <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
-                                   nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
+              <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true"
+                autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination"
+                class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
 
             </div>
             <!-- ad end -->

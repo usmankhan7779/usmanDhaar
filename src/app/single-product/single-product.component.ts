@@ -150,7 +150,7 @@ export class SingleProductComponent implements OnInit {
           this.productid1 = params['id']
           this.SubCatName = params['SubCatName'] || '0';
           this.watchlist=params['W'] || '0';
-          // alert(this.watchlist)
+          // alert(this.resultProduct.inWishList)
           // W
           console.log(this.SubCatName, 'subcatname')
           // alert(this.SubCatName)
@@ -311,6 +311,7 @@ export class SingleProductComponent implements OnInit {
     this.GetAdd.get_PhoneAndTabletProduct_ProductById(this.ProID).subscribe(resSlidersData => {
       this.resultProduct = resSlidersData;
       this.Title = this.resultProduct['P_Title']
+      // alert(this.resultProduct.inWishList)
       // this.ourproduct = true;
       console.log('Description of product is:', this.resultProduct['P_Des']);
       this.ProPDes = this.resultProduct['P_Des'].split('\n');
@@ -427,9 +428,10 @@ export class SingleProductComponent implements OnInit {
       ).subscribe(data => {
         // alert(data)
         console.log(data)
+        this.WatchObserver();
         this.statuslist = data['Message']
         this._shareData.watchtotallist(this.totallist)
-        this.WatchObserver();
+        
         console.log(this.statuslist)
         this.totallist = data['Total Result']
         console.log(this.totallist)
