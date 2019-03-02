@@ -102,7 +102,7 @@ const appRoutes: Routes = [
       { path: 'seller-setting', loadChildren: './seller-setting/seller-setting.module#SellerSettingModule', canActivate: [AuthGuard] },
       // { path: 'seller-store-setting', loadChildren: './seller-store-setting-update/seller-store-setting-update.module#SellerSettingStoreUpdateModule', canActivate: [AuthGuard] },
       { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard] },
-      { path: 'watch-Product', loadChildren: './watch-product/watch-product.module#WatchProductModule',canActivate: [AuthGuard]  },
+      { path: 'watch-Product-seller', loadChildren: './watch-product/watch-product.module#WatchProductModule',canActivate: [AuthGuard]  },
       { path: 'user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },
       { path: 'seller-purchasing-invoice', loadChildren: './seller-purchasing-invoice/seller-purchasing-invoice.module#SellerPurchasingInvoiceModule', canActivate: [AuthGuard] },
 

@@ -28,7 +28,7 @@ export class LoginService {
   // https://apis.dhaar.pk
   // ServerUrl = 'https://apis.dhaar.pk/user/';
   // http://192.168.30.187:8000
-  ServerUrl = 'https://apis.dhaar.pk/user/';
+  ServerUrl = 'http://192.168.30.187:8000/user/';
   
    productsUrl = 'https://apis.dhaar.pk/products/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
