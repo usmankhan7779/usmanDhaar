@@ -100,7 +100,7 @@ const appRoutes: Routes = [
       { path: 'seller-purchasing', loadChildren: './seller-purchasing/seller-purchasing.module#SellerPurchasingModule', canActivate: [AuthGuard] },
       { path: 'seller-user-detail', loadChildren: './seller-user-detail/seller-user-detail.module#SellerUserDetailModule', canActivate: [AuthGuard] },
       { path: 'seller-setting', loadChildren: './seller-setting/seller-setting.module#SellerSettingModule', canActivate: [AuthGuard] },
-      // { path: 'seller-store-setting', loadChildren: './seller-store-setting-update/seller-store-setting-update.module#SellerSettingStoreUpdateModule', canActivate: [AuthGuard] },
+      { path: 'seller-order-receive', loadChildren: './seller-receive-order/seller-receive-order.module#SellerReceiveorderModule', canActivate: [AuthGuard] },
       { path: 'store-registration', loadChildren: './store-registration/store-registration.module#StoreRegistrationModule', canActivate: [AuthGuard] },
       { path: 'watch-Product-seller', loadChildren: './watch-product/watch-product.module#WatchProductModule',canActivate: [AuthGuard]  },
       { path: 'user-shipment', loadChildren: './usershipment/usershipment.module#UserShipmentModule', canActivate: [AuthGuard] },

@@ -1,13 +1,14 @@
-import {Routes, RouterModule} from '@angular/router';
-import {NgModule} from '@angular/core';
-import {CommonModule} from "@angular/common";
-import {SingleProductComponent} from "./single-product.component";
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import {ImageZoomModule} from "angular2-image-zoom";
-import {HeaderModule} from "../header/header.module";
-import {NewModule} from '../home/new.module';
-// import {NgxImageZoomModule} from'ngx-image-zoom';
-  import { from } from 'rxjs/observable/from';
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { SingleProductComponent } from "./single-product.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImageZoomModule } from "angular2-image-zoom";
+import { HeaderModule } from "../header/header.module";
+import { NewModule } from '../home/new.module';
+import { NgxImageZoomModule } from '../Image Zoom/index';
+// import { NgxImageZoomModule } from 'ngx-image-zoom';
+
 const loginRoutes: Routes = [
   { path: '', component: SingleProductComponent }
 ];
@@ -23,14 +24,14 @@ const loginRoutes: Routes = [
     HeaderModule,
     ImageZoomModule,
     NewModule,
-    // NgxImageZoomModule.forRoot(),
+    NgxImageZoomModule.forRoot(),
 
     // ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)
   ],
 
   providers: [],
-  exports: []
+  exports: [],
 })
 
 export class SingleProductModule {

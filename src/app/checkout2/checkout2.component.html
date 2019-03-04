@@ -60,28 +60,46 @@
                     <p class="current-price">Rs. {{ abc.product.FixedPrice | number:'.0-0' }}</p>
                   </div>
                   <div class="cart-item-right col-sm-4">
+                    
                     <div class="numbers-row">
-                        <form role="form">
+                        <!-- <form role="form">
+                            <input maxlength="3" minlength="1"
+                              (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty
+                              [(ngModel)]="abc.Quantity" type="number">
+                          </form> -->
+                          <div class="numbers-row">
+                              <form role="form">
+                              <!-- <div
+                                onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"
+                                class="dec qtybutton"><i class="fa fa-minus" (click)="onChange($event, abc.product.ProductID,abc.Quantity)" ></i></div> -->
+                              <input type="number" ng-Model="1" [(ngModel)]="abc.Quantity" #qty class="qty"
+                                style="font-size: 15px !important;" id="qty" (change)="onChange($event, abc.product.ProductID,qty.value)"  name="qty">
+                                <!-- <input type="text" class="qty" maxlength="3" minlength="1"
+                        (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty id="qty"
+                        [(ngModel)]="abc.Quantity"> -->
+                              <!-- <div
+                                onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;"
+                                class="inc qtybutton "  (click)="onChange($event, abc.product.ProductID,abc.Quantity)" ><i class="fa fa-plus"></i></div> -->
+                              </form> 
+                            </div>
+                          
+                        <!-- <form role="form">
                       <div
                         onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;"
-                        class="dec qtybutton">
+                        class="dec qtybutton" (change)="onChange($event, abc.product.ProductID,qty.value)">
                         <i class="fa fa-minus"></i>
                       </div>
                       <input class="qty" maxlength="3" minlength="1"
                         (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty
                         [(ngModel)]="abc.Quantity">
 
-                        <!-- <form role="form">
-                            <input maxlength="3" minlength="1"
-                              (change)="onChange($event, abc.product.ProductID,qty.value)" name="qty" #qty
-                              [(ngModel)]="abc.Quantity" type="number">
-                          </form> -->
+                       
                        <div
                         onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) ) result.value++;return false;"
-                        class="inc qtybutton">
+                        class="inc qtybutton" (change)="onChange($event, abc.product.ProductID,qty.value)">
                         <i class="fa fa-plus"></i>
                       </div>  
-                    </form>
+                    </form> -->
                     </div>
                   </div>
                 </div>

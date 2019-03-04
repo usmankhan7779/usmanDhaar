@@ -58,6 +58,7 @@ import { SellerDashboardMastersComponent } from './layouts/seller-dashboard-mast
 import { HeaderModule } from './header/header.module';
 import { UserDashboardMasterComponent } from './layouts/user-dashboard-master/user-dashboard-master.component';
 import { PagerService } from './pager.service';
+
 // import { BuyerDashboardMastersComponent } from './layouts/buyer-dashboard-masters/buyer-dashboard-masters.component';
 @NgModule({
   declarations: [
@@ -70,7 +71,9 @@ import { PagerService } from './pager.service';
     
     SellerDashboardMastersComponent,
     
-    UserDashboardMasterComponent,
+    UserDashboardMasterComponent
+    
+   
     
      
     

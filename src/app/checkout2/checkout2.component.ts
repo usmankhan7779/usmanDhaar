@@ -203,7 +203,7 @@ export class Checkout2Component implements OnInit {
 
 
   onChange(qty, Abc: any, value: any) {
-
+// alert(value)
     for (const tmp of this.CartedProduct.Results) {
       if (tmp.ProductID === Abc) {
         tmp.Quantity = value;
