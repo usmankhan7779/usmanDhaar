@@ -1804,7 +1804,9 @@ ul#cart-sidebar {
     top: 0;
     z-index: 1;
 }
-
+.product-item > a{
+    display: block
+}
 .product-item .item-inner {
     border: 1px solid #e8e8e8;
     margin-bottom: 10px;
@@ -1861,6 +1863,7 @@ ul#cart-sidebar {
     text-align: center;
     float: left;
     width: 100%;
+    min-height: 206px;
 }
 
 .product-item .item-inner .product-thumbnail .btn-quickview {
@@ -2868,7 +2871,8 @@ article.jtv-entry {
     text-decoration: underline;
 }
 .rating .fa-star {
-    color: #FC0
+    color: #f4c150;
+    font-size: 16px;
 }
 
 .offer-add {
@@ -6110,23 +6114,40 @@ p.note {
 }
 
 .review-ratting {
-    margin: 15px 0
+    margin: 15px 0;
+    width: 100%;
+    float: left;
 }
-
+.review-ratting .user-image {
+    background-color: #686F7A;
+    border-radius: 50%;
+    border: 1px solid #FFF;
+    color: #FFF;
+    font-size: 15px;
+    float: left;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.review-ratting .user-image span {
+    width: 100%;
+    text-align: center;
+  }
 .review-ratting p {
     margin: 4px 0 6px;
     font-weight: bold
 }
-
+.review-ratting .rating-user-name{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #000;
+}
 .review-ratting p a {
     color: #ed2424;
     text-decoration: none
 }
-
-.review-ratting p a:hover {
-    color: #000000
-}
-
 .review-ratting table tr th,
 .review-ratting table tr td {
     font-size: 12px;
@@ -8884,28 +8905,28 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 .hotslider {
     max-width: 1400px;
     margin: 10px auto 0;
-    padding: 0 80px;
+    padding: 0 30px;
     text-align: center;
 }
 
 .recommendedslider {
     max-width: 1400px;
     margin: 10px auto 0;
-    padding: 0 20px;
+    padding: 0 30px;
     text-align: center;
 }
 
 .viewedslider {
     max-width: 1400px;
     margin: 10px auto 0;
-    padding: 0 80px;
+    padding: 0 30px;
     text-align: center;
 }
 
 .watchslider {
     max-width: 1400px;
     margin: 10px auto 0;
-    padding: 0 80px;
+    padding: 0 30px;
     text-align: center;
 }
 
@@ -9196,6 +9217,9 @@ hr.invis {
 }
 .width100{
     width: 100%;
+}
+.width50{
+    width: 50%;
 }
 .download-here {
     position: absolute;

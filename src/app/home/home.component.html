@@ -194,82 +194,85 @@
             <!-- <ng-container *ngIf="this.viewlogin == null"> -->
             <div *ngFor="let Lastest of GetALLProductss">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"-->
-                    <!--class="product-item-photo"> <img class="product-image-photo" height="225"-->
-                    <!--src="{{TvVideoaudio88.Pic }}"-->
-                    <!--alt="{{TvVideoaudio88.Pic }}"></a>-->
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{Lastest.Pic.split(',')[0] }}" alt="{{Lastest.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{Lastest.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"-->
+                      <!--class="product-item-photo"> <img class="product-image-photo" height="225"-->
+                      <!--src="{{TvVideoaudio88.Pic }}"-->
+                      <!--alt="{{TvVideoaudio88.Pic }}"></a>-->
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{Lastest.Pic.split(',')[0] }}" alt="{{Lastest.Pic }}"
+                          onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{Lastest.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">{{
                               Lastest.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
+                          </div>
+                          <div class="item-content">
 
-                          <div *ngIf="Lastest.Auction == true" class="item-price pull-left">
-                            <div class="price-box">
-                              <span class="regular-price">
-                                <span class="price">Rs {{ Lastest.SrartingPrice | number:'.0-0' }}</span>
-                              </span>
+                            <div *ngIf="Lastest.Auction == true" class="item-price pull-left">
+                              <div class="price-box">
+                                <span class="regular-price">
+                                  <span class="price">Rs {{ Lastest.SrartingPrice | number:'.0-0' }}</span>
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                          <div *ngIf="Lastest.Auction == false" class="item-price pull-left">
-                            <div class="price-box">
-                              <span class="regular-price">
-                                <span class="price">Rs {{Lastest.FixedPrice | number:'.0-0' }}</span>
-                              </span>
+                            <div *ngIf="Lastest.Auction == false" class="item-price pull-left">
+                              <div class="price-box">
+                                <span class="regular-price">
+                                  <span class="price">Rs {{Lastest.FixedPrice | number:'.0-0' }}</span>
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                          <div class="regular-price pull-right">
-                            <div class="price-box-icons">
-                              <!-- <div class="d-inline-block" *ngIf="Lastest?.inWishList==false">
+                            <div class="regular-price pull-right">
+                              <div class="price-box-icons">
+                                <!-- <div class="d-inline-block" *ngIf="Lastest?.inWishList==false">
                                 <i class="far fa-heart"></i>
                               </div> -->
-                              <div class="d-inline-block" *ngIf="Lastest?.inWishList== true">
-                                <i class="fas fa-heart"></i>
+                                <div class="d-inline-block" *ngIf="Lastest?.inWishList== true">
+                                  <i class="fas fa-heart"></i>
+                                </div>
+                                <a href="#"><i class="fas fa-cart-plus"></i></a>
                               </div>
-                              <a href="#"><i class="fas fa-cart-plus"></i></a>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="box-hover width100 d-inline-block">
-                      <div class="product-item-actions">
-                        <div *ngIf="Lastest.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList}">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="Lastest.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Buy Now</span></button>
-                          </a>
+                      <div class="box-hover width100 d-inline-block">
+                        <div class="product-item-actions">
+                          <div *ngIf="Lastest.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList}">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="Lastest.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Buy Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
 
             </div>
@@ -279,79 +282,82 @@
 
             <ng-container *ngFor="let BuyNow of GetALLBuyNowProductss">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{BuyNow.Pic.split(',')[0] }}" alt="{{BuyNow.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{BuyNow.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name,SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{BuyNow.Pic.split(',')[0] }}" alt="{{BuyNow.Pic }}"
+                          onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{BuyNow.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name,SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name,SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name,SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">{{
                               BuyNow.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-
-                          <div *ngIf="BuyNow.Auction == true" class="item-price">
-
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  BuyNow.SrartingPrice }}</span>
-                                <span class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
-                            </div>
-
                           </div>
-                          <div *ngIf="BuyNow.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  BuyNow.FixedPrice }}</span>
-                                <span class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
+                          <div class="item-content">
+
+                            <div *ngIf="BuyNow.Auction == true" class="item-price pull-left">
+                              <div class="price-box">
+                                <span class="regular-price">
+                                  <span class="price">Rs {{ BuyNow.SrartingPrice }}</span>
                                 </span>
-                              </span>
+                              </div>
+                            </div>
+                            <div *ngIf="BuyNow.Auction == false" class="item-price pull-left">
+                              <div class="price-box">
+                                <span class="regular-price">
+                                  <span class="price">Rs {{ BuyNow.FixedPrice }}</span>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="regular-price pull-right">
+                              <div class="price-box-icons">
+                                <!-- <div class="d-inline-block" *ngIf="Lastest?.inWishList==false">
+                                <i class="far fa-heart"></i>
+                              </div> -->
+                                <div class="d-inline-block" *ngIf="Lastest?.inWishList== true">
+                                  <i class="fas fa-heart"></i>
+                                </div>
+                                <a href="#"><i class="fas fa-cart-plus"></i></a>
+                              </div>
                             </div>
                           </div>
-
-
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="BuyNow.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <!-- *ngIf="TvVideoaudio88.Auction == false" -->
-                        <div *ngIf="BuyNow.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover width100 d-inline-block">
+                        <div class="product-item-actions">
+                          <div *ngIf="BuyNow.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <!-- *ngIf="TvVideoaudio88.Auction == false" -->
+                          <div *ngIf="BuyNow.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  BuyNow.ProductID, CatName: BuyNow.Cat_Name, SubCatName:BuyNow.Sub_Sub_Cat_Name, id:BuyNow.id, W:BuyNow.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
 
@@ -361,77 +367,85 @@
 
             <ng-container *ngFor="let Auctionpro of GetALLAuctionProductss">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{Auctionpro.Pic.split(',')[0]}}" alt="{{Auctionpro.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{Auctionpro.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{Auctionpro.Pic.split(',')[0]}}" alt="{{Auctionpro.Pic }}"
+                          onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{Auctionpro.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">{{
                               Auctionpro.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
+                          </div>
+                          <div class="item-content">
 
-                          <div *ngIf="Auctionpro.Auction == true" class="item-price">
-
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  Auctionpro.SrartingPrice | number:'.0-0'}}</span>
-                                <span class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                            <div *ngIf="Auctionpro.Auction == true" class="item-price pull-left">
+                              <div class="price-box">
+                                <span class="regular-price">
+                                  <span class="price">Rs {{ Auctionpro.SrartingPrice | number:'.0-0'}}</span>
+                                </span>
+                              </div>
+                            </div>
+                            <div *ngIf="Auctionpro.Auction == false" class="item-price pull-left">
+                              <div class="price-box">
+                                <span class="regular-price">
+                                  <span class="price">Rs {{ Auctionpro.FixedPrice | number:'.0-0'}}</span>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="regular-price pull-right">
+                              <div class="price-box-icons">
+                                <!-- <div class="d-inline-block" *ngIf="Lastest?.inWishList==false">
+                                <i class="far fa-heart"></i>
+                              </div> -->
+                                <div class="d-inline-block" *ngIf="Lastest?.inWishList== true">
+                                  <i class="fas fa-heart"></i>
+                                </div>
+                                <a href="#"><i class="fas fa-cart-plus"></i></a>
+                              </div>
                             </div>
 
-                          </div>
-                          <div *ngIf="Auctionpro.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  Auctionpro.FixedPrice | number:'.0-0'}}</span>
-                                <span class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span></span>
-                            </div>
+
                           </div>
 
 
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="Auctionpro.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="Auctionpro.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover width100 d-inline-block">
+                        <div class="product-item-actions">
+                          <div *ngIf="Auctionpro.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="Auctionpro.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  Auctionpro.ProductID, CatName: Auctionpro.Cat_Name, SubCatName:Auctionpro.Sub_Sub_Cat_Name, id:Auctionpro.id, W:Auctionpro.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
 
@@ -441,88 +455,92 @@
 
             <ng-container *ngFor="let TvVideoaudio88 of GetALLFeaturedProductss">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
+
                     </div>
 
-                  </div>
-
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                              {{TvVideoaudio88.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <!-- <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                                {{TvVideoaudio88.P_Title }} </a></h4>
+                          </div>
+                          <div class="item-content">
+                            <!-- <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                             class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                           </div> -->
 
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
-
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.MaxBidPrice | number:'.0-0'}}</span>
-                                <span class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                            <div *ngIf="TvVideoaudio88.Auction == true" class="item-price pull-left">
+                              <div class="price-box">
+                                <span class="regular-price">
+                                  <span class="price">Rs {{ TvVideoaudio88.MaxBidPrice | number:'.0-0'}}</span>
+                                </span>
+                              </div>
                             </div>
-
-                          </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.FixedPrice | number:'.0-0' }}</span>
-                                <span class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                            <div *ngIf="TvVideoaudio88.Auction == false" class="item-price pull-left">
+                              <div class="price-box">
+                                <span class="regular-price">
+                                  <span class="price">Rs {{ TvVideoaudio88.FixedPrice | number:'.0-0' }}</span>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="regular-price pull-right">
+                              <div class="price-box-icons">
+                                <!-- <div class="d-inline-block" *ngIf="Lastest?.inWishList==false">
+                                <i class="far fa-heart"></i>
+                              </div> -->
+                                <div class="d-inline-block" *ngIf="Lastest?.inWishList== true">
+                                  <i class="fas fa-heart"></i>
+                                </div>
+                                <a href="#"><i class="fas fa-cart-plus"></i></a>
+                              </div>
                             </div>
                           </div>
-
-
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover width100 d-inline-block">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name,SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
 
 
           </div>
         </div>
-       
+
 
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -553,79 +571,81 @@
               role="tab" data-toggle="tab "(click)="home()">Home Appliances</a></li> -->
         </ul>
 
-        <div id="productTabContent" class="tab-content">
+        <div class="tab-content">
 
           <div class="tab-pane active in" id="phonetablet">
             <ng-container *ngFor="let phoneProducts of GetallPhoneProduct">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{phoneProducts.product.Pic.split(',')[0]  }}" alt="{{phoneProducts.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{phoneProducts.product.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name,SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList  }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name,SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList  }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{phoneProducts.product.Pic.split(',')[0]  }}"
+                          alt="{{phoneProducts.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{phoneProducts.product.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name,SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList  }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name, SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name, SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList }">{{
                               phoneProducts.product.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="phoneProducts.product.Auction == true" class="item-price">
-
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  phoneProducts.product.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span>
-                              </span>
-                            </div>
-
-
                           </div>
-                          <div *ngIf="phoneProducts.product.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                          <div class="item-content">
+                            <div *ngIf="phoneProducts.product.Auction == true" class="item-price">
+
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                                  phoneProducts.product.SrartingPrice | number:'.0-0' }}</span><span
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span>
+                                </span>
+                              </div>
+
+
+                            </div>
+                            <div *ngIf="phoneProducts.product.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   phoneProducts.product.FixedPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="phoneProducts.product.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name, SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="phoneProducts.product.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name, SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Buy Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="phoneProducts.product.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name, SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="phoneProducts.product.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name, SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Buy Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
           </div>
@@ -633,72 +653,75 @@
 
             <ng-container *ngFor="let phoneProducts of WomenFashionProducts">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{phoneProducts.Pic }}" alt="{{phoneProducts.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{phoneProducts.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{phoneProducts.Pic }}" alt="{{phoneProducts.Pic }}"
+                          onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{phoneProducts.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">{{
                               phoneProducts.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="phoneProducts.Auction == true" class="item-price">
-
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  phoneProducts.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
-                            </div>
-
-
                           </div>
-                          <div *ngIf="phoneProducts.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                          <div class="item-content">
+                            <div *ngIf="phoneProducts.Auction == true" class="item-price">
+
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                                  phoneProducts.SrartingPrice | number:'.0-0' }}</span><span
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
+
+
+                            </div>
+                            <div *ngIf="phoneProducts.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   phoneProducts.FixedPrice | number:'.0-0' }}</span> <span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span></span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span></span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Buy Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="phoneProducts.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Buy Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
 
@@ -706,78 +729,81 @@
           <div class="tab-pane fade" id="menfashion">
             <ng-container *ngFor="let TvVideoaudio88 of MenFashionProducts">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">{{
                               TvVideoaudio88.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                          </div>
+                          <div class="item-content">
+                            <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
+
+
                             </div>
-
-
-                          </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                            <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.FixedPrice | number:'.0-0' }}</span> <span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span>
                                 </span>
-                              </span>
+                              </div>
                             </div>
+
+
                           </div>
 
 
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
 
@@ -785,77 +811,80 @@
           <div class="tab-pane fade" id="tvaudiovideo">
             <ng-container *ngFor="let TvVideoaudio88 of getTvAudioVideoProduct">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">{{
                               TvVideoaudio88.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                          </div>
+                          <div class="item-content">
+                            <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
+
+
                             </div>
-
-
-                          </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                            <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.FixedPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
                             </div>
+
+
                           </div>
 
 
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
 
@@ -863,77 +892,80 @@
           <div class="tab-pane fade" id="computinglaptop">
             <ng-container *ngFor="let TvVideoaudio88 of getcomputinglaptopsproduct">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name_id, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name_id, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">{{
                               TvVideoaudio88.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                          </div>
+                          <div class="item-content">
+                            <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
+
+
                             </div>
-
-
-                          </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                            <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.FixedPrice | number:'.0-0' }}</span> <span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span></span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span></span>
+                              </div>
                             </div>
+
+
                           </div>
 
 
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
 
@@ -941,77 +973,80 @@
           <div class="tab-pane fade" id="home">
             <ng-container *ngFor="let TvVideoaudio88 of gethomeappliancesproduct">
               <div class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">{{
                               TvVideoaudio88.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                          </div>
+                          <div class="item-content">
+                            <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
+
+
                             </div>
-
-
-                          </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                            <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.FixedPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
                             </div>
+
+
                           </div>
 
 
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
 
@@ -1031,77 +1066,80 @@
           <div class="hotslider" style="margin-top: 0px !important;">
             <ng-container *ngFor="let TvVideoaudio88 of HotDealProducts">
               <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">{{
-                              TvVideoaudio88.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">{{
+                                TvVideoaudio88.P_Title }} </a></h4>
+                          </div>
+                          <div class="item-content">
+                            <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                                    TvVideoaudio88.SrartingPrice | number:'.0-0' }}</span><span
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
+
+
+                            </div>
+                            <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                                    TvVideoaudio88.FixedPrice | number:'.0-0' }}</span><span
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
                             </div>
 
 
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.FixedPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
-                            </div>
-                          </div>
 
 
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
           </div>
@@ -1109,7 +1147,7 @@
       </div>
     </ng-container>
 
-    <ng-container  *ngIf="usercheck === true ">
+    <ng-container *ngIf="usercheck === true ">
       <div class="container-fluid">
         <div class="row">
           <div id="ribbon">
@@ -1118,80 +1156,84 @@
           <div class="recommendedslider" style="margin-top: 0px !important;">
             <ng-container *ngFor="let TvVideoaudio88 of RecommendedProducts">
               <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.product.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.product.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.product.Cat_Name_id}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">Product
-                          Detail</a>
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.product.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.product.Pic }}"
+                          onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.product.Cat_Name_id}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">Product
+                            Detail</a>
                           <!-- { ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList} -->
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">{{
-                              TvVideoaudio88.product.P_Title }} </a></h4>
-                              <!-- [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">Product
-                              Detail</a> -->
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.product.Auction == true" class="item-price">
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">{{
+                                TvVideoaudio88.product.P_Title }} </a></h4>
+                            <!-- [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inWishList }">Product
+                                Detail</a> -->
+                          </div>
+                          <div class="item-content">
+                            <div *ngIf="TvVideoaudio88.product.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.product.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                                    TvVideoaudio88.product.SrartingPrice | number:'.0-0' }}</span><span
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
+
+
+                            </div>
+                            <div *ngIf="TvVideoaudio88.product.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                                    TvVideoaudio88.product.FixedPrice | number:'.0-0' }}</span><span
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
                             </div>
 
 
                           </div>
-                          <div *ngIf="TvVideoaudio88.product.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.product.FixedPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
-                            </div>
-                          </div>
 
 
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.product.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.product.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.product.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.product.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name_id, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.product.id, W:TvVideoaudio88.product.inWishList }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
           </div>
@@ -1206,82 +1248,85 @@
         </div>
         <div class="recommendedslider" style="margin-top: 0px !important;">
           <div *ngFor="let Lastest of GetALLLikeforyou" class="product-item home-productss col-md-2 col-sm-4 col-xs-6">
-            <div class="item-inner">
-              <div class="product-thumbnail">
-                <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"-->
-                <!--class="product-item-photo"> <img class="product-image-photo" height="225"-->
-                <!--src="{{TvVideoaudio88.Pic }}"-->
-                <!--alt="{{TvVideoaudio88.Pic }}"></a>-->
-                <div class="hovereffect">
-                  <img class="img-responsive" src="{{Lastest.Pic }}" alt="{{Lastest.Pic }}"
-                    onerror="this.src='../../assets/images/Check-Resolution.png'">
-                  <div class="overlay">
-                    <h2>{{Lastest.Cat_Name}}</h2>
-                    <a class="info" [routerLink]="['/single-product']"
-                      [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">Product
-                      Detail</a>
+            <a [routerLink]="['/single-product']"
+              [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">
+              <div class="item-inner">
+                <div class="product-thumbnail">
+                  <!--<a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name }"-->
+                  <!--class="product-item-photo"> <img class="product-image-photo" height="225"-->
+                  <!--src="{{TvVideoaudio88.Pic }}"-->
+                  <!--alt="{{TvVideoaudio88.Pic }}"></a>-->
+                  <div class="hovereffect">
+                    <img class="img-responsive" src="{{Lastest.Pic }}" alt="{{Lastest.Pic }}"
+                      onerror="this.src='../../assets/images/Check-Resolution.png'">
+                    <div class="overlay">
+                      <h2>{{Lastest.Cat_Name}}</h2>
+                      <a class="info" [routerLink]="['/single-product']"
+                        [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">Product
+                        Detail</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pro-box-info">
+                  <div class="item-info">
+                    <div class="info-inner">
+                      <div class="item-title">
+                        <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">{{
+                                  Lastest.P_Title }} </a></h4>
+                      </div>
+                      <div class="item-content">
+
+                        <div *ngIf="Lastest.Auction == true" class="item-price pull-left">
+                          <div class="price-box">
+                            <span class="regular-price">
+                              <span class="price">Rs {{ Lastest.SrartingPrice | number:'.0-0' }}</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div *ngIf="Lastest.Auction == false" class="item-price pull-left">
+                          <div class="price-box">
+                            <span class="regular-price">
+                              <span class="price">Rs {{Lastest.FixedPrice | number:'.0-0' }}</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="regular-price pull-right">
+                          <div class="price-box-icons">
+                            <div class="d-inline-block" *ngIf="Lastest?.inWishList==false">
+                              <i class="far fa-heart"></i>
+                            </div>
+                            <div class="d-inline-block" *ngIf="Lastest?.inWishList== true">
+                              <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="#"><i class="fas fa-cart-plus"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="box-hover width100 d-inline-block">
+                    <div class="product-item-actions">
+                      <div *ngIf="Lastest.Auction == true" class="pro-actions">
+                        <a [routerLink]="['/single-product']"
+                          [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist}">
+                          <button class="action add-to-cart" type="button" title="Add to Cart">
+                            <span>Bid Now</span></button>
+                        </a>
+                      </div>
+                      <div *ngIf="Lastest.Auction == false" class="pro-actions">
+                        <a [routerLink]="['/single-product']"
+                          [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">
+                          <button class="action add-to-cart" type="button" title="Add to Cart">
+                            <span>Buy Now</span></button>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div class="pro-box-info">
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title">
-                      <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">{{
-                                Lastest.P_Title }} </a></h4>
-                    </div>
-                    <div class="item-content">
-
-                      <div *ngIf="Lastest.Auction == true" class="item-price pull-left">
-                        <div class="price-box">
-                          <span class="regular-price">
-                            <span class="price">Rs {{ Lastest.SrartingPrice | number:'.0-0' }}</span>
-                          </span>
-                        </div>
-                      </div>
-                      <div *ngIf="Lastest.Auction == false" class="item-price pull-left">
-                        <div class="price-box">
-                          <span class="regular-price">
-                            <span class="price">Rs {{Lastest.FixedPrice | number:'.0-0' }}</span>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="regular-price pull-right">
-                        <div class="price-box-icons">
-                          <div class="d-inline-block" *ngIf="Lastest?.inWishList==false">
-                            <i class="far fa-heart"></i>
-                          </div>
-                          <div class="d-inline-block" *ngIf="Lastest?.inWishList== true">
-                            <i class="fas fa-heart"></i>
-                          </div>
-                          <a href="#"><i class="fas fa-cart-plus"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="box-hover width100 d-inline-block">
-                  <div class="product-item-actions">
-                    <div *ngIf="Lastest.Auction == true" class="pro-actions">
-                      <a [routerLink]="['/single-product']"
-                        [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name ,  SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist}">
-                        <button class="action add-to-cart" type="button" title="Add to Cart">
-                          <span>Bid Now</span></button>
-                      </a>
-                    </div>
-                    <div *ngIf="Lastest.Auction == false" class="pro-actions">
-                      <a [routerLink]="['/single-product']"
-                        [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">
-                        <button class="action add-to-cart" type="button" title="Add to Cart">
-                          <span>Buy Now</span></button>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -1296,78 +1341,81 @@
           </div>
           <div class="viewedslider" style="margin-top: 0px !important;">
             <ng-container *ngFor="let TvVideoaudio88 of ViewedProducts">
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product
-                          Detail</a>
+              <div class="product-item col-md-2 col-sm-4 col-xs-6">
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">Product
+                            Detail</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">{{
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">{{
                               TvVideoaudio88.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
+                          </div>
+                          <div class="item-content">
+                            <div *ngIf="TvVideoaudio88.Auction == true" class="item-price">
 
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.SrartingPrice | number:'.0-0' }}</span> <span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span></span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span></span>
+                              </div>
+
+
                             </div>
-
-
-                          </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                            <div *ngIf="TvVideoaudio88.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
                                   TvVideoaudio88.FixedPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
                             </div>
+
+
                           </div>
 
 
                         </div>
-
-
                       </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </ng-container>
           </div>
@@ -1382,74 +1430,77 @@
           </div>
           <div class="watchslider" style="margin-top: 0px !important;">
             <ng-container *ngFor="let TvVideoaudio88 of WatchedProducts">
-              <div class="product-item col-md-3 col-sm-6">
-                <div class="item-inner">
-                  <div class="product-thumbnail">
-                    <div class="hovereffect">
-                      <img class="img-responsive" src="{{TvVideoaudio88.ProductID.Pic.split(',')[0] }}" alt="{{TvVideoaudio88.Pic }}"
-                        onerror="this.src='../../assets/images/Check-Resolution.png'">
-                      <div class="overlay">
-                        <h2>{{TvVideoaudio88.Cat_Name}}</h2>
-                        <a class="info" [routerLink]="['/single-product']"
-                          [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">Product
-                          Detail</a>
+              <div class="product-item col-md-2 col-sm-4 col-xs-6">
+                <a [routerLink]="['/single-product']"
+                  [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">
+                  <div class="item-inner">
+                    <div class="product-thumbnail">
+                      <div class="hovereffect">
+                        <img class="img-responsive" src="{{TvVideoaudio88.ProductID.Pic.split(',')[0] }}"
+                          alt="{{TvVideoaudio88.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'">
+                        <div class="overlay">
+                          <h2>{{TvVideoaudio88.Cat_Name}}</h2>
+                          <a class="info" [routerLink]="['/single-product']"
+                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">Product
+                            Detail</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="pro-box-info">
+                      <div class="item-info">
+                        <div class="info-inner">
+                          <div class="item-title">
+                            <h4><a title="Product Title Here" [routerLink]="['/single-product']"
+                                [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">{{
+                                TvVideoaudio88.ProductID.P_Title }} </a></h4>
+                          </div>
+                          <div class="item-content">
+                            <div *ngIf="TvVideoaudio88.ProductID.Auction == true" class="item-price">
+
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                                    TvVideoaudio88.ProductID.SrartingPrice | number:'.0-0' }}</span><span
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span> </span>
+                              </div>
+
+
+                            </div>
+                            <div *ngIf="TvVideoaudio88.ProductID.Auction == false" class="item-price">
+                              <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
+                                    TvVideoaudio88.ProductID.FixedPrice | number:'.0-0' }}</span> <span
+                                    class="price-box-icons pull-right">
+                                    <a href="#"><i class="far fa-heart"></i></a>
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                  </span></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="box-hover">
+                        <div class="product-item-actions">
+                          <div *ngIf="TvVideoaudio88.ProductID.Auction == true" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart">
+                                <span>Bid Now</span></button>
+                            </a>
+                          </div>
+                          <div *ngIf="TvVideoaudio88.ProductID.Auction == false" class="pro-actions">
+                            <a [routerLink]="['/single-product']"
+                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">
+                              <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
+                                  Now</span></button>
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-
-                  <div class="pro-box-info">
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title">
-                          <h4><a title="Product Title Here" [routerLink]="['/single-product']"
-                              [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">{{
-                              TvVideoaudio88.ProductID.P_Title }} </a></h4>
-                        </div>
-                        <div class="item-content">
-                          <div *ngIf="TvVideoaudio88.ProductID.Auction == true" class="item-price">
-
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.ProductID.SrartingPrice | number:'.0-0' }}</span><span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span> </span>
-                            </div>
-
-
-                          </div>
-                          <div *ngIf="TvVideoaudio88.ProductID.Auction == false" class="item-price">
-                            <div class="price-box"><span class="regular-price"> <span class="price">Rs {{
-                                  TvVideoaudio88.ProductID.FixedPrice | number:'.0-0' }}</span> <span
-                                  class="price-box-icons pull-right">
-                                  <a href="#"><i class="far fa-heart"></i></a>
-                                  <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                </span></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-hover">
-                      <div class="product-item-actions">
-                        <div *ngIf="TvVideoaudio88.ProductID.Auction == true" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart">
-                              <span>Bid Now</span></button>
-                          </a>
-                        </div>
-                        <div *ngIf="TvVideoaudio88.ProductID.Auction == false" class="pro-actions">
-                          <a [routerLink]="['/single-product']"
-                            [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">
-                            <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
-                                Now</span></button>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </a>
               </div>
             </ng-container>
           </div>
