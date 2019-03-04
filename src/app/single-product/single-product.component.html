@@ -402,36 +402,30 @@
                     </div>
                   </div>
                   <div id="reviews" class="tab-pane fade">
-                    <div class="col-sm-5 col-lg-5 col-md-5">
+                    <div class="col-md-6 col-sm-8 col-xs-12">
                       <div class="reviews-content-left">
                         <h2 style="font-size: 20px">Customer Reviews</h2>
                         <ng-container *ngIf="noreview">No Review</ng-container>
                         <ng-container *ngFor="let ProductReview of GetallProductReview">
                           <div class="review-ratting">
-                              <p><a>{{ ProductReview.user.username }}</a></p>
-                            <p>{{ ProductReview.Reviews }}
-                            </p>
-                           
-                            <table>
-                              <tbody>
-                                <tr>
-                                  <th>Rating</th>
-                                  <td>
-                                    <div class="rating">
-                                      <ng-container *ngFor="let number of [0,1,2,3,4,5]">
-                                        <i *ngIf="number < ProductReview.Rating" class="fa fa-star"></i>
-                                        <i *ngIf="number > ProductReview.Rating" class="fa fa-star-o"></i>
-                                      </ng-container>
-
-
-                                    </div>
-                                  </td>
-                                </tr>
-
-                              </tbody>
-                            </table>
-                            <p class="author"> {{ProductReview.Name}}<small> (Posted on
-                                {{ProductReview.CreatedDate.substr(0,10)}})</small> </p>
+                            <div class="width50 pull-left">
+                              <div class="user-image"><span>AT</span></div>
+                              <div class="pull-left">
+                                <p class="author"> {{ProductReview.Name}}
+                                  <small>(Posted on {{ProductReview.CreatedDate.substr(0,10)}})</small>
+                                </p>
+                                <p class="rating-user-name">{{ ProductReview.user.username }}</p>
+                              </div>
+                            </div>
+                            <div class="width50 pull-right">
+                              <div class="rating">
+                                <ng-container *ngFor="let number of [0,1,2,3,4,5]">
+                                  <i *ngIf="number < ProductReview.Rating" class="fa fa-star"></i>
+                                  <i *ngIf="number > ProductReview.Rating" class="fa fa-star-o"></i>
+                                </ng-container>
+                              </div>
+                              <p>{{ ProductReview.Reviews }}</p>
+                            </div>
                           </div>
                         </ng-container>
 
