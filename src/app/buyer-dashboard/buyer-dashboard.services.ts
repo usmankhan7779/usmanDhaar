@@ -21,7 +21,7 @@ export class BuyerDashboardServices {
   
   // saleServerUrl = 'https://apis.dhaar.pk/sale/';
   // http://192.168.30.187:8000
-  saleServerUrl = 'https://apis.dhaar.pk//sale/';
+  saleServerUrl = ' http://192.168.30.187:8000/sale/';
   posturl='https://apis.dhaar.pk/payment/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -34,6 +34,14 @@ export class BuyerDashboardServices {
     return this._http.get( this.saleServerUrl + 'GetallInvoiceIDByUser/' + UserID  ).map(response => response.json());
   }
 
+  GetallreceiveOrderByUser( ) {
+    let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // headers.append('Authorization', 'Token ' +  this.authentication);
+      headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+      // console.log('pofile', localStorage.getItem('Authorization'));
+    return this._http.get( this.saleServerUrl + 'inovice_detail/' ,{headers :headers} ).map(response => response.json());
+  }
   GetallIDByUser( PId: any) {
     if (localStorage.getItem('Authorization') !== null) {
       let headers = new Headers();

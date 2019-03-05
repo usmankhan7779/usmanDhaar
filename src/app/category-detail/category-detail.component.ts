@@ -43,6 +43,7 @@ export class CategoryDetailComponent implements OnInit {
   PriceStatus = false;
   BothCheck = false;
   total: any;
+  userlogin= false;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav: Router,
               public _shareData: SharedData,
@@ -94,7 +95,7 @@ export class CategoryDetailComponent implements OnInit {
         } else if (this.CatName === 'Vehicles & GPS') {
           this.CoverPix = 'VG';
         }
-
+// this.AllListingFuc();
 
         // alert(this.CatName);
           //  console.log('Phones & Tablets')
@@ -102,7 +103,17 @@ export class CategoryDetailComponent implements OnInit {
 
             this.GetProducts.PhoneandTablet(this.CatName).subscribe(resSlidersData => {
               console.log(resSlidersData)
-              this.Trend = resSlidersData.Results;
+              // this.Trend = resSlidersData.Results;
+              
+              let demoprods;
+              demoprods = resSlidersData.Results;
+              //this.GetALLProductss= resSlidersData.Results;
+              console.log(demoprods)
+              for (let prods of demoprods) {
+                this.Trend.push(prods.product);
+              }
+        console.log(this.Trend);
+
               if (this.Trend['Total Result'] === 0) {
                 this.errormessage = true;
               }
@@ -180,9 +191,16 @@ export class CategoryDetailComponent implements OnInit {
 
     // alert(this.CatName);
       //  console.log('Phones & Tablets')
-      this.httpService.getBuyNowAuctionproducts('latest',this.CatName).subscribe(
+      this.GetProducts.PhoneandTablet(this.CatName).subscribe(
         data => {
           this.Trend = data.Results;
+          // let demoprods;
+          // demoprods = data.Results;
+          // //this.GetALLProductss= resSlidersData.Results;
+          // console.log(demoprods)
+          // for (let prods of demoprods) {
+          //   this.Trend.push(prods.product);
+          // }
           if (this.Trend['totalItems'] === 0) {
             this.errormessage = true;
           }
@@ -190,7 +208,13 @@ export class CategoryDetailComponent implements OnInit {
     this.Waitcall = false;
 
   }
-
+  vendors(){
+    if(localStorage.getItem('Vendor') === 'true')
+   {
+     this.userlogin = true;
+   }
+   
+ }
   BuyItNowFuc() {
     this.AllListing = false;
     this.thisAuction = false;
@@ -201,9 +225,9 @@ export class CategoryDetailComponent implements OnInit {
 
     // alert(this.CatName);
       //  console.log('Phones & Tablets')
-      this.httpService.getAllPhoneAndTabletProductBuyItNow(1,this.CatName).subscribe(
+      this.httpService.getBuyNowAuctionproducts(this.CatName,'buyitnow').subscribe(
         data => {
-          this.Trend = data;
+          this.Trend = data.Results;
           if (this.Trend['totalItems'] === 0) {
             this.errormessage = true;
           }
@@ -222,7 +246,7 @@ export class CategoryDetailComponent implements OnInit {
 
     // alert(this.CatName);
       //  console.log('Phones & Tablets')
-      this.httpService.getBuyNowAuctionproducts('auction',this.CatName).subscribe(
+      this.httpService.getBuyNowAuctionproducts(this.CatName,'auction').subscribe(
         data => {
           this.Trend = data.Results;
           if (this.Trend['totalItems'] === 0) {

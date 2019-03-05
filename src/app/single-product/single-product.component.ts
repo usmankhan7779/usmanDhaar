@@ -149,7 +149,7 @@ export class SingleProductComponent implements OnInit {
           this.ProID = params['ProID'] || '0';
           this.productid1 = params['id']
           this.SubCatName = params['SubCatName'] || '0';
-          this.watchlist=params['W'] || '0';
+          // this.watchlist=params['W'] || '0';
           // alert(this.resultProduct.inWishList)
           // W
           console.log(this.SubCatName, 'subcatname')
@@ -317,7 +317,10 @@ export class SingleProductComponent implements OnInit {
       this.ProPDes = this.resultProduct['P_Des'].split('\n');
 
       this.ProPics = this.resultProduct['Pic'].split(',');
+      console.log(this.ProPics[0])
+
       this.selectedImage = this.ProPics[0];
+      console.log(this.selectedImage);
       for (let i = 0; i < this.ProPics.length - 1; i++) {
         this.PicList[i] = this.ProPics[i + 1];
       }

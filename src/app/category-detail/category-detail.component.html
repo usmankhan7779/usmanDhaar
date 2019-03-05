@@ -89,7 +89,7 @@
           <div *ngIf="!View" class="product-grid-area">
             <ul class="products-grid">
               <ng-container *ngFor="let phoneProducts of Trend">
-              <ng-container *ngIf="phoneProducts.Active">
+              <!-- <ng-container *ngIf="phoneProducts.Active"> -->
                 <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="product-item">
                   <div class="item-inner">
@@ -102,7 +102,7 @@
                       <div class="slider-items-products">
                         <div id="pro2-slider" class="product-flexslider hidden-buttons">
                           <div class="slider-items slider-width-col6">
-                               <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name }"  class="product-item-photo">
+                               <a  [routerLink]="['/single-product']"  [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }"  class="product-item-photo">
                                  <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'"  alt="{{ phoneProducts.Pic }}"></a>
 
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
@@ -119,7 +119,7 @@
                       <div class="item-info">
                         <div class="info-inner">
                           <div class="item-title">
-                            <h4> <a title="Product Title Here" [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">{{ phoneProducts.P_Title }}  </a></h4>
+                            <h4> <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">{{ phoneProducts.P_Title }}  </a></h4>
                             <!-- <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">Product
                               Detail</a> -->
                           </div>
@@ -153,7 +153,7 @@
                 </div>
               </li>
 
-              </ng-container>
+              <!-- </ng-container> -->
               </ng-container>
 
             </ul>
@@ -169,7 +169,7 @@
 
 
                 <ng-container *ngFor="let phoneProducts of Trend">
-                <ng-container *ngIf="phoneProducts.Active">
+                <!-- <ng-container *ngIf="phoneProducts.Active"> -->
                   <li>
                     <div class="row">
                       <div class="col-md-2 col-sm-4">
@@ -200,7 +200,7 @@
                       </div>
                     </div>
                   </li>
-                </ng-container>
+                <!-- </ng-container> -->
                 </ng-container>
 
                 <!--<div class="col-sm-4 col-sm-push-8">-->
@@ -379,13 +379,15 @@
             </div>
           </div>
         </div>
+        <!-- <div *ngIf="View" class="product-grid-area"></div> -->
+        <ng-container *ngIf="Vendor == true"  >
         <div class="block sidebar-cart">
           <div class="sidebar-bar-title">
             <h3>My Cart</h3>
           </div>
           <div class="block-content">
             <ng-container *ngIf="!Cart" >
-            <p class="amount">There are <a href="">{{ CartedProduct.Results.length }} items</a> in your cart.</p>
+            <p class="amount">There are <a href="">{{ CartedProduct.Results?.length }} items</a> in your cart.</p>
             <ul>
               <ng-container *ngFor="let abc of CartedProduct.Results ">
               <li class="item"> <a  title="Sample Product" class="product-image"><img src="{{abc.product.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'" alt="Sample Product "></a>
@@ -408,7 +410,7 @@
             <p *ngIf="Cart" class="amount">There are <a href="">0 items</a> in your cart.</p>
           </div>
         </div>
-
+      </ng-container>
 
         <div class="single-img-add sidebar-add-slider ">
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
