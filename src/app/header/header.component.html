@@ -206,9 +206,9 @@
                 <sup>{{total}}</sup></a></li>
               <li *ngIf="loginCheck()"><a (click)="gotodashboard()" class="myDhaar" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My
                   Dhaar </a></li>
-              <li *ngIf="!loginCheck()"><a [routerLink]="['/login']"><i class="fa fa-sign-in header-icons-rightsetting"></i>Log
+              <li *ngIf="!loginCheck()"><a [routerLink]="['/login']"><i class="fa fa-lock header-icons-rightsetting"></i>Log
                   In</a></li>
-              <li *ngIf="!loginCheck()"><a [routerLink]="['/sign-up']" style="border-left: 1px solid black;"><i class="fa fa-lock header-icons-rightsetting"></i>Sign
+              <li *ngIf="!loginCheck()"><a [routerLink]="['/sign-up']" style="border-left: 1px solid black;"><i class="fas fa-user-plus header-icons-rightsetting"></i>Sign
                   up</a></li>
               <li *ngIf="loginCheck()"><a (click)="ValueReset()" [routerLink]="['/login']"><i class="fa fa-sign-out header-icons-rightsetting"></i>Logout</a></li>
 
@@ -254,7 +254,7 @@
                   <!--<li  class="active custom-menu"><a [routerLink]="['/home']">Home</a>-->
 
                   <!--</li>-->
-                  <li class="megamenu"><a (click)="Phone()"><i class="fa fa-tablet header-icons-rightsettingnew"></i>Phones
+                  <li class="megamenu"><a (click)="Phone()"><i class="fas fa-mobile-alt header-icons-rightsettingnew"></i>Phones
                       & Tablets</a>
                     <!--class="fa fa-mobile-phone header-icons-setting"-->
                     <div class="mega-menu">
@@ -400,7 +400,7 @@
                     </div>
                   </li>
                   <li class="megamenu"><a [routerLink]="['/category-detail']" [queryParams]="{ CatName:  'Men\'s Fashion' }"><i
-                        class="fa fa-black-tie header-icons-rightsettingnew"></i>Men's Fashion</a>
+                        class="fab fa-black-tie header-icons-rightsettingnew"></i>Men's Fashion</a>
                     <!--class="fa fa-male header-icons-setting"-->
                     <div class="mega-menu">
                       <div class="menu-block menu-block-center">
@@ -625,7 +625,7 @@
                       </div>
                     </div>
                   </li>
-                  <li class="megamenu"><a (click)="Sports()"><i class="fa fa-soccer-ball-o header-icons-rightsettingnew"></i>Sports
+                  <li class="megamenu"><a (click)="Sports()"><i class="fas fa-futbol header-icons-rightsettingnew"></i>Sports
                       Goods</a>
                     <!--class="fa fa-home header-icons-setting"-->
                     <div class="mega-menu">
@@ -752,7 +752,7 @@
                       </div>
                     </div>
                   </li>
-                  <li class="megamenu"><a (click)="Health()"><i class="fa fa-heart-o header-icons-rightsettingnew"></i>Health
+                  <li class="megamenu"><a (click)="Health()"><i class="fas fa-heart header-icons-rightsettingnew"></i>Health
                       & Beauty</a>
                     <!--class="fa fa-home header-icons-setting"-->
                     <div class="mega-menu">
