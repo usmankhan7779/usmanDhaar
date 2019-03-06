@@ -59,10 +59,10 @@
                         <div class="jobinfo">
                           <div class="row">
                             <div class="col-md-8 col-sm-7">
-                              <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name_id }}</a> <i class="fa fa-angle-double-right"
-                                  aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name_id }}</a> <i class="fa fa-angle-double-right"
-                                  aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name_id }}</a> </div>
-                              <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name_id,SubCatName:phoneProducts.Sub_Sub_Cat_Name_id, id:phoneProducts.id }">{{
+                              <div class="cateName"> <a href="#.">{{ phoneProducts.Cat_Name }}</a> <i class="fa fa-angle-double-right"
+                                  aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right"
+                                  aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name }}</a> </div>
+                              <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }">{{
                                   phoneProducts.P_Title }}</a></h3>
                               <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
                               <div class="clearfix"></div>
@@ -70,9 +70,9 @@
                               <!-- {{ phoneProducts.FixedPrice}} -->
                             </div>
                             <div class="col-md-4 col-sm-5 text-right">
-                              <div *ngIf="phoneProducts.Auction == false " class="adprice">Rs {{ phoneProducts.MaxBidPrice |
+                              <div *ngIf="phoneProducts.Auction ==  true " class="adprice">Rs {{ phoneProducts.MaxBidPrice |
                                 number:'.0-0'}}</div>
-                              <div *ngIf="phoneProducts.Auction == true " class="adprice">Rs {{ phoneProducts.FixedPrice |
+                              <div *ngIf="phoneProducts.Auction == false " class="adprice">Rs {{ phoneProducts.FixedPrice |
                                 number:'.0-0'}}</div>
                               <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
                               <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name,SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }"
@@ -119,20 +119,20 @@
                             <div class="row">
                               <div class="col-md-8 col-sm-7">
                                 <div class="cateName">
-                                   <a href="#.">{{ phoneProducts.Cat_Name_id }}</a> 
+                                   <a href="#.">{{ phoneProducts.Cat_Name }}</a> 
                                    <i class="fa fa-angle-double-right"
-                                    aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name_id }}</a> <i class="fa fa-angle-double-right"
-                                    aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name_id }}</a> </div>
-                                <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name_id, SubCatName:phoneProducts.Sub_Sub_Cat_Name_id, id:phoneProducts.id }">{{
+                                    aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right"
+                                    aria-hidden="true"></i> <a href="#.">{{ phoneProducts.Sub_Sub_Cat_Name}}</a> </div>
+                                <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id }">{{
                                     phoneProducts.P_Title }}</a></h3>
                                 <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
                                 <div class="clearfix"></div>
                                 <p class="label label-warning">{{phoneProducts.P_Des}}</p>
                               </div>
                               <div class="col-md-4 col-sm-5 text-right">
-                                <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs {{ phoneProducts.MaxBidPrice |
+                                <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.MaxBidPrice |
                                   number:'.0-0'}}</div>
-                                <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.FixedPrice |
+                                <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs {{ phoneProducts.FixedPrice |
                                   number:'.0-0'}}</div>
                                 <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
                                 <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name_id,SubCatName:phoneProducts.Sub_Sub_Cat_Name_id, id:phoneProducts.id }"
@@ -189,9 +189,9 @@
                               <p class="label label-warning">{{phoneProducts.P_Des}}</p>
                             </div>
                             <div class="col-md-4 col-sm-5 text-right">
-                              <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs {{ phoneProducts.MaxBidPrice |
+                              <div *ngIf="phoneProducts.Auction ===  true  " class="adprice">Rs {{ phoneProducts.MaxBidPrice |
                                 number:'.0-0'}}</div>
-                              <div *ngIf="phoneProducts.Auction === true " class="adprice">Rs {{ phoneProducts.FixedPrice |
+                              <div *ngIf="phoneProducts.Auction === false " class="adprice">Rs {{ phoneProducts.FixedPrice |
                                 number:'.0-0'}}</div>
                               <!--<a href="#" class="editad"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this ad</a> <span class="pendingad">Pending</span> -->
                               <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name_id,SubCatName:phoneProducts.Sub_Sub_Cat_Name_id, id:phoneProducts.id }"
@@ -241,7 +241,7 @@
                   <label>Category:</label>
                   <select [(ngModel)]="model.Cat_Name" name="cat" (click)="MainCatSel(model.Cat_Name)" required>
                     <ng-container *ngFor="let cat of GetallCat">
-                      <option value="{{cat.Cat_Name_id}}">{{cat.Cat_Name_id}}</option>
+                      <option value="{{cat.Cat_Name}}">{{cat.Cat_Name}}</option>
                     </ng-container>
                   </select>
                 </div>
@@ -249,7 +249,7 @@
                   <label>Sub-Category:</label>
                   <select [(ngModel)]="model.Sub_Cat_Name" name="Subcat" (click)="SubCatSel(model.Sub_Cat_Name)" required>
                     <ng-container *ngFor="let cat of GetAllSubCat">
-                      <option value="{{cat.Sub_Cat_Name_id}}">{{cat.Sub_Cat_Name_id}}</option>
+                      <option value="{{cat.Sub_Cat_Name}}">{{cat.Sub_Cat_Name}}</option>
                     </ng-container>
                   </select>
                   <div class="formrow">
@@ -257,7 +257,7 @@
                   <label>Sub-Sub-Category:</label>
                   <select [(ngModel)]="model.Sub_Sub_Cat_Name" name="SubSubcat" required>
                     <ng-container *ngFor="let cat of GetAllSubSubCat">
-                      <option value="{{cat.Sub_Sub_Cat_Name_id}}">{{cat.Sub_Sub_Cat_Name_id}}</option>
+                      <option value="{{cat.Sub_Sub_Cat_Name}}">{{cat.Sub_Sub_Cat_Name}}</option>
                     </ng-container>
                   </select>
                 </div>
@@ -272,6 +272,32 @@
                 <div class="formrow">
                   <label>Product Description:</label>
                   <textarea type="text" class="form-control" name="Description" [(ngModel)]="model.P_Des"></textarea>
+                </div>
+                <div class="col-md-12">
+                  <div class="formrow">
+                    <!--<image-upload [style]="customStyle" [max]="3" [extensions]="['jpeg','png']" (removed)="onRemoved($event)" (uploadFinished)="onUploadFinished($event)" (uploadStateChanged)="onUploadStateChanged($event)">-->
+                    <!--</image-upload>-->
+                    <div class="uploadphotobx"> <i class="fa fa-upload" aria-hidden="true"></i>
+                      <h4>Upload Product photos</h4>
+                      <p>It must be a head-shot photo</p>
+                      <label class="uploadBox">Click to Upload Cover Photos
+                        <input type="file" #fileImportInput id="file1" name="file" class="file" data-preview-file-type="text" (change)="onChange($event.target.files)" multiple accept="image/*">
+                      </label><br>
+                    </div>
+  
+                  </div>
+                </div>
+  
+                <div class="col-md-12">
+                  <div class="formrow" style="text-align: right">
+                    <ng-container *ngFor="let img of url; let i=index">
+                      <div class="col-md-2">
+                        <i class="fa fa-close" (click)="removepic(i)" style="cursor: pointer"></i>
+                        <img [src]="img">
+                      </div>
+                      <!--<input type="submit" value="Delete" (click)="removepic(i)">-->
+                    </ng-container>
+                  </div>
                 </div>
                 <ng-container *ngIf="model.Auction">
                   <div class="col-md-12">
@@ -344,7 +370,7 @@
                           <input type="checkbox" [(ngModel)]="model.AddBestOffer" value="agree text" name="agree" />
                           Accept Offers?
                         </div>
-                        <div class="formrow">
+                        <div class="formrow">   
                           <input type="number" [(ngModel)]="model.Quantity" name="Quantity" class="form-control">
                         </div>
                       </div>

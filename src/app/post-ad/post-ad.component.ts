@@ -432,6 +432,7 @@ this.vendors();
     this.PicCounter -=1;
     console.log('filetoup after remove:', this.filetoup);
   }
+  
 
   onChange(event:FileList) {
 

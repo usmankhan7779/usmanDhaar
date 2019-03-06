@@ -122,7 +122,7 @@
                   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !RePassword.valid}">
                     <div *ngIf="f.submitted && !Password.valid" class="help-block">Please re-enter Password.</div>
 
-                    <input type="Password" class="form-control" (ngModelChange)="OnPassReset()" name="RePassword" (blur)="checkPassowed(RePassword.value, Password.value)" placeholder="Confrim Password" [(ngModel)]="model.RePassword" data-ng-match="Password" #RePassword="ngModel" required>
+                    <input type="Password" class="form-control" (ngModelChange)="OnPassReset()" name="RePassword" (blur)="checkPassowed(RePassword.value, Password.value)" placeholder="Confirm Password" [(ngModel)]="model.RePassword" data-ng-match="Password" #RePassword="ngModel" required>
 
                     <div *ngIf=" PassMatch == false "  class="help-block"  style="color: red" >Password Not Matched.</div>
                   </div><!-- End .form-group -->

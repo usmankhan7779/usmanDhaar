@@ -4,6 +4,7 @@ import {ActiveAdServices} from '../active-ad/active-ad.services';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AdService} from '../post-ad/ad.services';
 import swal from 'sweetalert2';
+import { UploadItemService } from '../file-uploads/upload-item-service';
 
 @Component({
   selector: 'app-seller-product-setting',
@@ -30,10 +31,17 @@ export class SellerProductSettingComponent implements OnInit {
   sub: any;
   product_ad_active ="False";
   Active="True"
-
+  filetoup:any=[];
+  url: any=[];
+  PicCounter: any =0;
+  filetoup1:any=[];
+  PictureCheck = false;
+  MaxPictureCheck = false;
+  ShowPictureError = false;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav:Router,
               // private route: ActivatedRoute,
+              private itemUploadService: UploadItemService,
               private ad:ActiveAdServices,
               private PostAdd: AdService,
               private route: ActivatedRoute,
@@ -115,6 +123,59 @@ export class SellerProductSettingComponent implements OnInit {
     });
     console.log('Attributes are:', this.model);
     console.log('Index are:', index);
+  }   
+
+  removepic(image:File) {
+    console.log('image isss:', image);
+    this.filetoup.splice(image,1);
+    this.url.splice(image,1);
+    this.PicCounter -=1;
+    console.log('filetoup after remove:', this.filetoup);
+  }
+  
+  onChange(event:FileList) {
+
+    this.PicCounter +=event.length;
+
+    console.log('PicCounter is', this.PicCounter);
+
+    if (event.length <=5 && this.PicCounter <= 5) {
+      this.PictureCheck = true;
+      console.log('Event', event);
+      for (let i = 0; i < event.length; i++) {
+        if (event) {
+          const reader = new FileReader();
+          reader.onload = (event: any) => {
+            console.log('Inner event', event);
+            this.url.push(event.target.result);
+          };
+          reader.readAsDataURL(event[i]);
+        }
+      }
+      this.filetoup1 = event;
+      for (let itm of this.filetoup1) {
+        this.filetoup.push(itm);
+      }
+      console.log('Filetoup has:', this.filetoup);
+    } else {
+      swal('Maximum 5 Pictures are allow','','error');
+      this.PicCounter -= event.length;
+    }
+
+    console.log('PicCounter at end is', this.PicCounter);
+
+  }
+
+  uploadItemsToActivity(StoreName,ProductID) {
+    // if (this.filetoup.length === 1) {
+    console.log('I am in 1 Component');
+    this.itemUploadService.PostImage(this.filetoup, StoreName, ProductID).subscribe(
+      data => {
+        console.log('Successs')
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   checked3(event, i) {

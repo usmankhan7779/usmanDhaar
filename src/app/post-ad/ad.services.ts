@@ -165,6 +165,9 @@ export class AdService {
           'MaxQuantity': model['MaxQuantity'],
           'product_ad_active':model['product_ad_active'],
           'Active':model['Active']
+//           Pic
+// StartbidTime
+// EndbidTime
         }, { headers: headers }).map((res: Response) => {
 
       }).catch((error: any) => {

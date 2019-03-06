@@ -21,7 +21,7 @@ export class BuyerDashboardServices {
   
   // saleServerUrl = 'https://apis.dhaar.pk/sale/';
   // http://192.168.30.187:8000
-  saleServerUrl = ' http://192.168.30.187:8000/sale/';
+  saleServerUrl = ' https://apis.dhaar.pk/sale/';
   posturl='https://apis.dhaar.pk/payment/';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
