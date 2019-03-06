@@ -138,14 +138,14 @@ export class BuyerDashboardServices {
 
   }
   // http://192.168.30.225:7000/sale/AddcustomerInvoice
-  paymentmethod(creditno , exp, ccv ,paymenttype , price , currency_code , card_type ) {
+  paymentmethod(creditno , exp, ccv ,paymenttype , price , currency_code , card_type,InvoiceID ) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     if (isPlatformBrowser(this.platformId)){
-
-      return this._http.post(this.posturl+'post_payment/',
+      // this.posturl+
+      return this._http.post('http://192.168.30.187:8000/sale/payementpost/',
         {
 
 
@@ -156,7 +156,9 @@ export class BuyerDashboardServices {
             "paymenttype":paymenttype ,
             "price":price,
             "currency_code":currency_code ,
-            "card_type":card_type 
+            "card_type":card_type ,
+            "InvoiceID":InvoiceID
+
             // "shipmentid":shipmentid
 
         }, { headers: headers }).map((res: Response) => {
@@ -202,7 +204,32 @@ export class BuyerDashboardServices {
         });
     }
   }
+proceesedtocheckout(bill,list:any,ShipmentID){
+  const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    // http://192.168.30.189:7000/sale/OrderEmail/
+    // this.saleServerUrl +this.saleServerUrl +
+    return this._http.post( 'http://192.168.30.187:8000/sale/addcustominvoice/', {
+      "InvoicesBalance":bill,
+      "list":list,
+// "list": [{"ProductID": "123","UserID":"338","Qty":"1","sellerid":"hassan"}, {"ProductID": "321","UserID":"338","Qty":"2","sellerid":"hassan"}],
+"ShipmentID":ShipmentID
 
+    },{headers:headers})
+      .map((res: Response) => {
+        if (res) {
+          console.log(res.status);
+          if (res.status === 200) {
+            return res.json()
+          }
+        }
+      }).catch((error: any) => {
+
+        return Observable.throw(new Error(error.status));
+      });
+}
   Paymentemail(invID: any , userid: any) {
       // sale/OrderEmail/
       const headers = new Headers();

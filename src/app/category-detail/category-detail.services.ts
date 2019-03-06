@@ -19,7 +19,7 @@ export class  CategoryServices {
   private head: any;
   public login: any;
   returnUrl: string;
-  ServerUrl = 'http://192.168.30.225:8000/products/';
+  ServerUrl = 'https://apis.dhaar.pk/products/';
   ServerUrlLocal = 'http://127.0.0.1:8000/products/';
 
 

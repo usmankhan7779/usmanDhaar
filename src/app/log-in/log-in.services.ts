@@ -149,7 +149,7 @@ getusers;
     headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
     console.log('pofile', localStorage.getItem('Authorization'));
     return this._http.get(this.ServerUrl + 'Get_User_details/',{headers:headers} ).map(response => response.json());
-    // return this._http.get(this.ServerUrl + 'post_shipment_details/' + decoded).map(response => response.json());
+ 
   }
   GetUSeraddress() {
     const headers = new Headers();

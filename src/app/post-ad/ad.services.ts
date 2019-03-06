@@ -164,10 +164,11 @@ export class AdService {
           'Quantity': model['Quantity'],
           'MaxQuantity': model['MaxQuantity'],
           'product_ad_active':model['product_ad_active'],
-          'Active':model['Active']
-//           Pic
-// StartbidTime
-// EndbidTime
+          'Active':model['Active'],
+
+          'Pic':model['Pic'],
+'StartbidTime':model['StartbidTime'],
+'EndbidTime':model['EndbidTime'],
         }, { headers: headers }).map((res: Response) => {
 
       }).catch((error: any) => {

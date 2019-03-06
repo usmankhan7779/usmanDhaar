@@ -287,7 +287,10 @@
   
                   </div>
                 </div>
-  
+                <div class="formrow">
+                  <label>Pic:</label>
+                  <input type="text" class="form-control" name="Title" [(ngModel)]="model.Pic" required>
+                </div>
                 <div class="col-md-12">
                   <div class="formrow" style="text-align: right">
                     <ng-container *ngFor="let img of url; let i=index">
@@ -299,6 +302,7 @@
                     </ng-container>
                   </div>
                 </div>
+                
                 <ng-container *ngIf="model.Auction">
                   <div class="col-md-12">
                     <div class="userbtns">
@@ -312,6 +316,12 @@
                         <div class="formrow">
                           <input type="number" name="StartingPrice" class="form-control" [(ngModel)]="model.SrartingPrice">
                         </div>
+                        <div class="formrow">
+                          <input type="date" name="Starting Bid Date" class="form-control"   [(ngModel)]="model.StartbidTime">
+                        </div>
+                        <div class="formrow">
+                          <input type="date" name="Ending Bid Date" class="form-control"   [(ngModel)]="model.EndbidTime">
+                        </div>
                         <!--<div *ngIf="Buyitnow == true" class="formrow">-->
                         <!--<input type="number" name="BuyitNow" class="form-control" [(ngModel)]="model.Buyitnow">-->
                         <!--</div>-->
@@ -320,6 +330,7 @@
                           <input type="checkbox" (click)="AddReservePriceFun()" value="agree text" name="agree" />
                           Add a Reserve Price
                         </div>
+                        
                         <div *ngIf="ReservePrice == true" class="formrow">
                           <input type="number" [(ngModel)]="model.ReservePrice" name="name3" class="form-control">
                         </div>

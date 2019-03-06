@@ -9,6 +9,7 @@ import { SharedData } from '../shared-service';
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 import swal from 'sweetalert2';
 import { HomeService } from '../home/home.services';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 @Component({
   selector: 'app-checkout2',
@@ -29,6 +30,8 @@ export class Checkout2Component implements OnInit {
   days: any;
   model: any = {};
   GetUSeradress: any = [];
+  Getinvoiceamount: any = [];
+  OrderInvoiceid;
   GetUSerDOne: any = [];
   GetUser: any = [];
   GetUSallerCoupon: any = [];
@@ -71,6 +74,7 @@ export class Checkout2Component implements OnInit {
   Error;
   Right;
   Waitcall;
+  list :any=[];
   i;
   // //     "id": 2,
   // //     "fullname": "hassan",
@@ -94,6 +98,7 @@ export class Checkout2Component implements OnInit {
 
   }
   total_GetUSeradress;
+  
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -139,6 +144,16 @@ export class Checkout2Component implements OnInit {
         this.CartedProduct = resSlidersData;
         console.log(this.CartedProduct.Results, 'cart')
         this.total = this.CartedProduct['Total Result']
+        for(const checkout of this.CartedProduct.Results){
+          // {"ProductID": "123","UserID":"338","Qty":"1","sellerid":"hassan"}
+          this.list.push({
+            "ProductID":checkout.product.ProductID,
+            "Qty":checkout.Quantity,
+            "sellerid":checkout.product.User_ID
+          })
+          console.log(this.list,'fatimaaaaaaaaaa')
+        //  this.list.push(checkout.product.ProductID,checkout.Quantity,checkout.product.User_ID)
+        }
         this._shareData.watchtotal(this.total);
 
         // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
@@ -407,12 +422,7 @@ alert(Abc)
   ContinuetoCHeckout() {
 
     if (isPlatformBrowser(this.platformId)) {
-      // console.log('itemsqty',this.CartedProduct['products'][0]['itemsqty']);
-      // console.log('Quantity',this.CartedProduct['products'][0]['Quantity']);
-
-      // if (this.CartedProduct['products'][0]['itemsqty'] > this.CartedProduct['products'][0]['Quantity']) {
-      // alert('You are exceding from Maximum Quantity of product available');
-      // } else {
+       
       this.orderreview = false;
       if (this.Total > 0) {
 
@@ -437,26 +447,32 @@ alert(Abc)
               }
 
             });
+            // for(const checkout of this.CartedProduct.Results){
+            //   this.list.push(checkout.product.ProductID,checkout.Quantity,checkout.product.User_ID)
+            //  }
+            this.httpbuyerService.proceesedtocheckout(this.Total,this.list,'35' ).subscribe(
+              data => {
+               this.Getinvoiceamount= data.InvoiceID;d
+              
+               console.log(this.Getinvoiceamount)
+            // this.OrderInvoiceid= this.Getinvoiceamount.InvoiceID;
+                
+               alert("order done place ho gya hi  ")
+                  
+                // this.OrderPlaced = true;
+                swal('order done place ho gya hi', '', 'success');
+  
+                // this.InvoiceIDSet = localStorage.getItem('InvoiceID');
+  
+   
+  
+                 
+  
+  
+              } 
+            );
 
-        //   }
-        //    else {
-
-        //     this.CheckoutMethod = true;
-
-        //   }
-        // },
-        //   (err) => {
-        //     console.log('ERROR:' + err);
-        //     alert(err);
-        //     // this._nav.navigate(['/login']);
-        //   },
-        //   () => {
-        //   }
-      //  );
-
-
-        // this.model.LoginEMail;
-        // this.Renderer123.selectRootElement('#LoginEmailAddress').focus();
+        
 
       } else {
         alert('No sufficient Amount');
@@ -561,23 +577,23 @@ alert(Abc)
   card_type;
   exp;
   shipmentid;
-  EditProduct() {
+  // EditProduct() {
 
-    this.exp = this.model.expiry_month + this.model.expiry_year;
-    this.paymenttype = "online";
-    this.card_type = "visa";
-    this.currency_code = "USD"
-    this.price = this.Total;
-    // this.shipmentid = "24"
+  //   this.exp = this.model.expiry_month + this.model.expiry_year;
+  //   this.paymenttype = "online";
+  //   this.card_type = "visa";
+  //   this.currency_code = "USD"
+  //   this.price = this.Total;
+  //   // this.shipmentid = "24"
 
-    this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type).subscribe(response => {
-      swal('Changes has been Saved', '', 'success');
-      console.log(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type)
-    })
+  //   this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type).subscribe(response => {
+  //     swal('Changes has been Saved', '', 'success');
+  //     console.log(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type)
+  //   })
 
 
 
-  }
+  // }
 invoiceproductid;
   ShippingDetails() {
 
@@ -589,131 +605,112 @@ invoiceproductid;
     if (isPlatformBrowser(this.platformId)) {
       console.log(this.model);
       console.log('id value is:', localStorage.getItem('UserID'));
-      this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type).subscribe(data => {
+      this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type,this.Getinvoiceamount).subscribe(data => {
 
         // this.httpbuyerService.SendEmail(localStorage.getItem('InvoiceID')).subscribe(data => {
           console.log('cartproduct Successssssssss');
         alert("paymentmethod")
-      this.httpbuyerService.Invoice(this.Total, true, false, this.user).subscribe(
-        data => {
-        //  data=localStorage.setitem('InvoiceID')
-        this.invoiceproductid=data;
-        // alert(this.invoiceproductid.id)
-        // alert("invoce wali api ")
-        // localStorage.setItem('InvoiceID',data.id)
-          // console.log( this.CartedProduct['products']);,
-          // this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
+             swal('Your Order Has Been Placed', '', 'success');
+             this.OrderPlaced = true;
+      }, (err) => {
 
-            // this.CartedProduct = resSlidersData;
-           // console.log(this.CartedProduct.Results, 'cart')
-            // this.total = this.CartedProduct['Total Result']
-            // this._shareData.watchtotal(this.total);
+        alert('false');
+        this.status = 2;
+        
+      },
+    );
+
     
-            // // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
-            // console.log('Carted products are:', this.CartedProduct);
-            // for (const tmp1 of this.CartedProduct.Results) {
-            //   console.log('Temp1 is:', tmp1);
-            //   console.log('Values are:', tmp1.product.Pic);
-            //   this.ProPics.push(tmp1.product.Pic.split(',')[0]);
-           // }
-          // for (const { item, index } of this.CartedProduct['products'].map((item, index) => ({ item, index }))) {
-           for (const item of this.CartedProduct.Results) {
-alert(item.product.User_ID)
-            // if (item === this.CartedProduct.Results.length ) {
-              // console.log('item is:  ', item, '  Index is:  ', index);
-              this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.product.ProductID, item.Quantity, localStorage.getItem('UserID'),item.product.User_ID).subscribe(
-                data => {
-                  alert("InvoiceProducts wai api in loop")
-                  // this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type).subscribe(data => {
+    localStorage.removeItem('Cartdata');
 
-                  // // this.httpbuyerService.SendEmail(localStorage.getItem('InvoiceID')).subscribe(data => {
-                  //   console.log('cartproduct Successssssssss');
-                  // });
-                }, (err) => {
+  }
+      // this.httpbuyerService.Invoice(this.Total, true, false, this.user).subscribe(
+      //   data => {
+ 
+      //   this.invoiceproductid=data;
+        //ye code old hi 
+       
+//            for (const item of this.CartedProduct.Results) {
+// alert(item.product.User_ID)
+//             // if (item === this.CartedProduct.Results.length ) {
+//               // console.log('item is:  ', item, '  Index is:  ', index);
+//               this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.product.ProductID, item.Quantity, localStorage.getItem('UserID'),item.product.User_ID).subscribe(
+//                 data => {
+//                   alert("InvoiceProducts wai api in loop")
+//                   // this.httpbuyerService.paymentmethod(this.model.creditno, this.exp, this.model.ccv, this.paymenttype, this.price, this.currency_code, this.card_type).subscribe(data => {
 
-                  alert(err);
-                  this.status = 2;
-                  /* this function is executed when there's an ERROR */
-                  //   console.log("ERROR: "+err);
-                },
-              );
-            // } 
-            // else {
-            //   // console.log('item is:  ', item, '  Index is:  ', index);
-            //   this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
-            //     data => {
+//                   // // this.httpbuyerService.SendEmail(localStorage.getItem('InvoiceID')).subscribe(data => {
+//                   //   console.log('cartproduct Successssssssss');
+//                   // });
+//                 }, (err) => {
 
-            //     }, (err) => {
+//                   alert(err);
+//                   this.status = 2;
+//                   /* this function is executed when there's an ERROR */
+//                   //   console.log("ERROR: "+err);
+//                 },
+//               );
+//             // } 
+//             // else {
+//             //   // console.log('item is:  ', item, '  Index is:  ', index);
+//             //   this.httpbuyerService.InvoiceProducts(localStorage.getItem('InvoiceID'), item.ProductID, item.itemsqty, localStorage.getItem('UserID')).subscribe(
+//             //     data => {
 
-            //       alert(err);
-            //       this.status = 2;
-            //       /* this function is executed when there's an ERROR */
-            //       //   console.log("ERROR: "+err); 
-            //     },
-            //   );
-            // }
-          }
-          this.httpbuyerService.CustomerInvoiceShippingAddress(localStorage.getItem('InvoiceID'),"31" ).subscribe(
-            data => {
+//             //     }, (err) => {
+
+//             //       alert(err);
+//             //       this.status = 2;
+//             //       /* this function is executed when there's an ERROR */
+//             //       //   console.log("ERROR: "+err); 
+//             //     },
+//             //   );
+//             // }
+//           }
+          // this.httpbuyerService.CustomerInvoiceShippingAddress(localStorage.getItem('InvoiceID'),"31" ).subscribe(
+          //   data => {
 
              
-                alert("customer")
-              this.OrderPlaced = true;
-              swal('Your Order Has Been Placed', '', 'success');
+          //       alert("customer")
+          //     this.OrderPlaced = true;
+          //     swal('Your Order Has Been Placed', '', 'success');
 
-              this.InvoiceIDSet = localStorage.getItem('InvoiceID');
-              this.httpbuyerService.Paymentemail(localStorage.getItem('InvoiceID'),localStorage.getItem('userss') ).subscribe(
-                data => {
+          //     this.InvoiceIDSet = localStorage.getItem('InvoiceID');
+          //     this.httpbuyerService.Paymentemail(localStorage.getItem('InvoiceID'),localStorage.getItem('userss') ).subscribe(
+          //       data => {
     
-                 alert("paymentmail wali api ")
+          //        alert("paymentmail wali api ")
                     
-                  // this.OrderPlaced = true;
-                  // swal('Your Order Has Been Placed', '', 'success');
+          //         // this.OrderPlaced = true;
+          //         // swal('Your Order Has Been Placed', '', 'success');
     
-                  // this.InvoiceIDSet = localStorage.getItem('InvoiceID');
+          //         // this.InvoiceIDSet = localStorage.getItem('InvoiceID');
     
      
     
                    
     
     
-                } 
-              );
+          //       } 
+          //     );
  
 
                
 
 
-            }, (err) => {
+          //   }, (err) => {
 
-              alert(err);
-              this.status = 2;
-              /* this function is executed when there's an ERROR */
-              //   console.log("ERROR: "+err);
-            },
-          );
+          //     alert(err);
+          //     this.status = 2;
+          //     /* this function is executed when there's an ERROR */
+          //     //   console.log("ERROR: "+err);
+          //   },
+          // );
          
           
-        });
+        // });
 
 
-        }, (err) => {
-
-          alert('false');
-          this.status = 2;
-          /* this function is executed when there's an ERROR */
-          //   console.log("ERROR: "+err);
-        },
-      );
-
-      // for (const tmp of this.CartedProduct['products']) {
-      //     console.log(tmp);
-      //     this.CartedProduct['products'].splice(this.CartedProduct['products'].indexOf(tmp), this.CartedProduct['products'].length );
-      //     localStorage.setItem('Cartdata', JSON.stringify(this.CartedProduct));
-      // }
-      localStorage.removeItem('Cartdata');
-
-    }
+      
   }
 
   LoginUser() {
