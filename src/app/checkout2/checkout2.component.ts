@@ -452,7 +452,7 @@ alert(Abc)
             //  }
             this.httpbuyerService.proceesedtocheckout(this.Total,this.list,'35' ).subscribe(
               data => {
-               this.Getinvoiceamount= data.InvoiceID;d
+               this.Getinvoiceamount= data.InvoiceID;
               
                console.log(this.Getinvoiceamount)
             // this.OrderInvoiceid= this.Getinvoiceamount.InvoiceID;

@@ -206,7 +206,7 @@
                 <sup>{{total}}</sup></a></li>
               <li *ngIf="loginCheck()"><a (click)="gotodashboard()" class="myDhaar" title="{{fname}}"><i class="fa fa-user header-icons-rightsetting"></i>My
                   Dhaar </a></li>
-              <li *ngIf="!loginCheck()"><a [routerLink]="['/login']"><i class="fa fa-lock header-icons-rightsetting"></i>Log
+              <li *ngIf="!loginCheck()"><a [routerLink]="['/login']"><i class="fa fa-lock header-icons-rightsetting"></i>Sign
                   In</a></li>
               <li *ngIf="!loginCheck()"><a [routerLink]="['/sign-up']" style="border-left: 1px solid black;"><i class="fas fa-user-plus header-icons-rightsetting"></i>Sign
                   up</a></li>
