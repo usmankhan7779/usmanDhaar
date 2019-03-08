@@ -39,13 +39,6 @@
 
                   <span *ngIf="Waitcall" style="color: white !important; font-size: 20px;float: left;padding: 10px 0px 0px 10px;">Thank
                     you for Subscribing!</span>
-
-
-
-
-
-
-
                 </div>
               </form>
             </div>
@@ -53,9 +46,10 @@
         </div>
       </div>
       <div class="col-sm-12 col-md-3 col-xs-12 col-lg-3">
-        <div class="footer-logo"><a href="index.html"><img src="assets/images/newdhaarwhite.png" alt="fotter logo"></a>
+        <div class="footer-logo">
+          <a href="/" class="pull-left"><img src="assets/images/newdhaarwhite.png" alt="fotter logo"></a>
         </div>
-        <div class="footer-content">
+        <div class="footer-content pull-left">
           <div class="email"> <i class="fa fa-envelope"></i>
             <p>Contact@Dhaar.com</p>
             <!-- <p>Contact AT Dhaar DOT com</p> -->
@@ -79,8 +73,8 @@
               Khalid Bin Waleed Road, Karachi</p>
           </div>
           <div class="address"> <i class="fa fa-map-marker"></i>
-            <p>5050 Quorum Drive, Suite 700,
-              Dallas TX 75254 USA</p>
+            <p>14681 Midway Rd Ste 200,
+              Addison TX 75001 USA</p>
           </div>
         </div>
       </div>
@@ -98,7 +92,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3">
+      <div class="col-sm-6 col-md-2 col-xs-12 col-lg-2">
         <div class="footer-links">
           <h3 class="links-title">Categories<a class="expander visible-xs" href="#TabBlock-2">+</a></h3>
           <div class="tabBlock" id="TabBlock-2">
@@ -127,19 +121,17 @@
             <ul class="list-links list-unstyled">
               <li> <a [routerLink]="['/select-category']"><i class="fa fa-camera"></i> Sell on Dhaar </a> </li>
               <li> <a [routerLink]="['/sign-up']"> <i class="fas fa-user-plus"></i>Signup </a> </li>
-              <li> <a [routerLink]="['/login']"><i class="fa fa-lock"></i>Login</a> </li>
-              <li> <a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane"></i>Store Registration</a>
-              </li>
-
+              <li> <a [routerLink]="['/login']"><i class="fas fa-fingerprint"></i>Login</a> </li>
+              <li> <a [routerLink]="['/store-registration']"><i class="fa fa-paper-plane"></i>Store Registration</a></li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-2 col-xs-12 col-lg-2">
+      <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3">
         <div class="footer-links">
 
           <h3 class="links-title">Stalk Us<a class="expander visible-xs">+</a></h3>
-          <div class="tabBlock" id="TabBlock-4">
+          <div class="tabBlock pull-left" id="TabBlock-4">
             <div class="social">
               <ul class="inline-mode">
                 <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com/"><i
@@ -151,6 +143,12 @@
                 <li class="social-network googleplus"><a title="Connect us on Pinterest" target="_blank" href="https://www.pinterest.com/"><i
                       class="fab fa-pinterest-p"></i></a></li>
               </ul>
+              <a href="#" class="pull-left">
+                <img src="../../assets/images/Adroid-Badge.png">
+              </a>
+              <a href="#" class="pull-left">
+                <img src="../../assets/images/IOS-Badge.png">
+              </a>
             </div>
           </div>
         </div>
