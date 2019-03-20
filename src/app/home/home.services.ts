@@ -165,9 +165,9 @@ export class HomeService {
       // headers.append('Authorization', 'Token ' +  this.authentication);
       headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
       console.log('pofile', localStorage.getItem('Authorization'));
-      return this._http.get(this.ServerUrl + 'getProductsfromAllCat', { headers: headers }).map(response =>
+      return this._http.get(this.ServerUrl + 'getProductsfromAllCAtHome', { headers: headers }).map(response =>
 
-
+        // getProductsfromAllCat
         response.json()
 
       );
@@ -175,7 +175,7 @@ export class HomeService {
 
     }
     else  {
-      return this._http.get(this.ServerUrl + 'getProductsfromAllCat').map(response => response.json());
+      return this._http.get(this.ServerUrl + 'getProductsfromAllCAtHome').map(response => response.json());
 
     }
 
@@ -187,9 +187,10 @@ export class HomeService {
       // headers.append('Authorization', 'Token ' +  this.authentication);
       // headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
       console.log('pofile', localStorage.getItem('Authorization'));
-      return this._http.get(this.ServerUrl + 'getalljustfunproducts', { headers: headers }).map(response => response.json());
+      return this._http.get(this.ServerUrl + 'getFunProductsHome', { headers: headers }).map(response => response.json());
       // console.log(this.CateDeatils)
-    // }
+      // getalljustfunproducts
+    // }getFunProductsHome
     // else {
     //   return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat').map(response => response.json());
     //   // console.log(this.CateDeatils)
@@ -202,12 +203,13 @@ export class HomeService {
       // headers.append('Authorization', 'Token ' +  this.authentication);
       headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
       console.log('pofile', localStorage.getItem('Authorization'));
-      return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat', { headers: headers }).map(response => response.json());
+      return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCAtHome', { headers: headers }).map(response => response.json());
       // console.log(this.CateDeatils)
+      // getAuctionProductsfromAllCat
     }
     else {
-      return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCat').map(response => response.json());
-      // console.log(this.CateDeatils)
+      return this._http.get(this.ServerUrl + 'getAuctionProductsfromAllCAtHome').map(response => response.json());
+      // console.log(this.CateDeatils)getAuctionProductsfromAllCAtHome
     }
   }
   GetBuyNowProductsfromAllCat() {
@@ -217,10 +219,11 @@ export class HomeService {
       // headers.append('Authorization', 'Token ' +  this.authentication);
       headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
       console.log('pofile', localStorage.getItem('Authorization'));
-      return this._http.get(this.ServerUrl + 'getBuyNowProductsfromAllCat', { headers: headers }).map(response => response.json());
+      return this._http.get(this.ServerUrl + 'getBuyNowProductsfromAllCAtHome', { headers: headers }).map(response => response.json());
+      // getBuyNowProductsfromAllCat
     }
     else {
-      return this._http.get(this.ServerUrl + 'getBuyNowProductsfromAllCat').map(response => response.json());
+      return this._http.get(this.ServerUrl + 'getBuyNowProductsfromAllCAtHome').map(response => response.json());
     }
   }
   GetAllFeaturedProducts() {

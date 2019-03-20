@@ -119,6 +119,45 @@ getBuyNowAuctionproducts(category_name,fillter) {
 
   }
 }
+getAllPhoneAndTabletProductWithPrice(Cat_Name,auction,maxvalue,minvalue) {
+   
+    const headers = new Headers();
+    // headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    headers.append('Content-Type', 'application/json');
+    if (isPlatformBrowser(this.platformId)) {
+
+      return this._http.post(this.ServerUrl + 'price_filters1',
+        {
+          // 'category_name': category_name,
+          // "filter_type":fillter
+          'Cat_Name': Cat_Name,
+          'auction':auction,
+          'maxvalue':maxvalue,
+          'minvalue':minvalue
+          // 'Cat_Name': CatName ,
+          // 'User_ID': User_ID,
+        }, { headers: headers }).map((res: Response) => {
+          if (res) {
+
+            if (res.status === 200) {
+              const responce_data = res.json();
+              return responce_data;
+            }
+          }
+        }).catch((error: any) => {
+          console.log(error.toString());
+          return Observable.throw(new Error(error.status));
+        });
+
+
+    }
+   
+  
+}
+// getAllPhoneAndTabletProductWithPrice(page: any, pk1: string, pk2: string, cat: any) {
+//   return this._http.get( this.ServerUrl + 'price_filters1/' + pk1 + '/' + pk2 + '/'+cat+'?page=' + page, ).map(response => response.json());
+// }
 // Getbuynow_auction_products
   getAllPhoneAndTabletProductBuyItNow(page: any, cat: any) {
     return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductbuy/' + cat + '?page=' + page, ).map(response => response.json());
@@ -147,9 +186,9 @@ getBuyNowAuctionproducts(category_name,fillter) {
     return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductType/' + Type +'/'+cat+'?page=' + page, ).map(response => response.json());
   }
 
-  getAllPhoneAndTabletProductWithPrice(page: any, pk1: string, pk2: string, cat: any) {
-    return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductPrice/' + pk1 + '/' + pk2 + '/'+cat+'?page=' + page, ).map(response => response.json());
-  }
+  // getAllPhoneAndTabletProductWithPrice(page: any, pk1: string, pk2: string, cat: any) {
+  //   return this._http.get( this.ServerUrl + 'price_filters1/' + pk1 + '/' + pk2 + '/'+cat+'?page=' + page, ).map(response => response.json());
+  // }
   getAllPhoneAndTabletProductWithFilter(page: any, pk1: string, pk2: string,pk3:any,cat:any) {
     return this._http.get( this.ServerUrl + 'getAllPhoneAndTabletProductFilter/' + pk1 + '/' + pk2 +'/'+pk3+'/'+cat+'?page=' + page, ).map(response => response.json());
   }

@@ -8,6 +8,7 @@ import {PaginatePipe, PaginationService} from 'ng2-pagination';
 import { HomeService } from '../home/home.services';
 import swal from 'sweetalert2';
 import { SharedData } from '../shared-service';
+import { StaticInjector } from '@angular/core/src/di/injector';
 
 @Component({
   selector: 'app-category-detail',
@@ -44,6 +45,9 @@ export class CategoryDetailComponent implements OnInit {
   BothCheck = false;
   total: any;
   userlogin= false;
+  Auctions;
+bothabove;
+  fixeds;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav: Router,
               public _shareData: SharedData,
@@ -378,41 +382,62 @@ export class CategoryDetailComponent implements OnInit {
     this.Waitcall = false;
 
   }
+  acution_check(val){
+    // alert(val)
+    this.Auctions =true;
+    this.ProductPrice(this.Price1,this.Price2)
+    
 
+
+
+  }
+  fixed_check(val2){
+    // alert(val2)
+    this.fixeds=false;
+    this.ProductPrice(this.Price1,this.Price2)
+
+  }
+  above_check(){
+this.bothabove="ALL";
+// alert(this.bothabove)
+this.ProductPrice(this.Price1,this.Price2)
+
+  }
 
   ProductPrice(pk1: any, pk2: any) {
     console.log('I am In Product Price');
-    if(this.BothCheck === true) {
-      this.ProType = false;
-    }
-    if (pk1 === 'all' && pk2 ==='all') {
-      this.PriceStatus = false;
-      console.log('I am In Product Price All');
-      if (this.ProType === true) {
-        console.log('I am In Product Price Protype True');
-        this.ProductType(this.ProStatus);
-      } else {
-        console.log('I am In Product Price Both Above');
-        this.BothAbove();
-      }
-    } else {
+
+    // if (pk1 === 'all' && pk2 ==='all') {
+    //   this.PriceStatus = false;
+    //   console.log('I am In Product Price All');
+    //   if (this.ProType === true) {
+    //     console.log('I am In Product Price Protype True');
+    //     this.ProductType(this.ProStatus);
+    //   } else {
+    //     console.log('I am In Product Price Both Above');
+    //     this.BothAbove();
+    //   }
+    // } else {
     this.PriceStatus = true;
     this.Price1 = pk1;
     this.Price2 = pk2;
     this.errormessage = false;
     this.Waitcall = true;
-    if (this.ProType === false){
+    // alert(Auction)
+    // alert(fixeds)
+    if (this.Auctions === true){
         //  console.log('Phones & Tablets')
-        this.httpService.getAllPhoneAndTabletProductWithPrice(1, pk1, pk2,this.CatName).subscribe(
+        this.httpService.getAllPhoneAndTabletProductWithPrice(this.CatName,this.Auctions, pk2, pk1).subscribe(
+          // Cat_Name,auction,maxvalue,minvalue
           data => {
             this.Trend = data;
             if (this.Trend['totalItems'] === 0) {
               this.errormessage = true;
             }
           });
-  } else if(this.ProType === true) {
+  } else if(this.fixeds === false) {
         //  console.log('Phones & Tablets')
-        this.httpService.getAllPhoneAndTabletProductWithFilter(1, pk1, pk2,this.ProStatus,this.CatName).subscribe(
+        this.httpService.getAllPhoneAndTabletProductWithPrice(this.CatName,this.fixeds, pk2, pk1).subscribe(
           data => {
             this.Trend = data;
             if (this.Trend['totalItems'] === 0) {
@@ -420,8 +445,18 @@ export class CategoryDetailComponent implements OnInit {
             }
           });
     }
+    else if(this.bothabove === "ALL") {
+      //  console.log('Phones & Tablets')
+      this.httpService.getAllPhoneAndTabletProductWithPrice(this.CatName,this.bothabove, pk2, pk1).subscribe(
+        data => {
+          this.Trend = data;
+          if (this.Trend['totalItems'] === 0) {
+            this.errormessage = true;
+          }
+        });
+  }
     this.Waitcall = false;
   }
-  }
+  // }
 
 }

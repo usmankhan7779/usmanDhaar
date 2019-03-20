@@ -44,7 +44,7 @@ export class MyBidsBuyerComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
 
-    this.httpService.GetallProductdBids(1, localStorage.getItem('UserID')).subscribe(
+    this.httpService.GetallProductdBids(localStorage.getItem('UserID')).subscribe(
       data => {
         this.ActiveProduct = data;
         console.log('bids products are:', this.ActiveProduct);
@@ -52,7 +52,7 @@ export class MyBidsBuyerComponent implements OnInit {
           this.errormessage = true;
         }
       });
-    this.httpService.GetSuccessfulBids(1, localStorage.getItem('UserID')).subscribe( data => {
+    this.httpService.GetSuccessfulBids(localStorage.getItem('UserID')).subscribe( data => {
       this.successbid = data;
       if (this.successbid['totalItems'] === 0) {
         this.errormessage1 = true;
