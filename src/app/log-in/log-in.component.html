@@ -47,56 +47,13 @@
 <!--</div>-->
 <!--</div>-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="listpgWraper">
   <div class="container">
     <div class="row">
 
       <div class="login-signup-page">
 
-        <div class="userccount" style="margin-top: 60px;">
+        <div class="userccount">
           <div *ngIf="SignUpDOne==true" class="alert alert-success">
             <strong>User Registered!</strong> Log In to your account
           </div>
@@ -140,10 +97,10 @@
                     #password="ngModel" required>
                   <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
                 </div>
-                <p>
+                <p class="pull-left">
                   <a [routerLink]="['/forget-password']"> Forgot Password? </a>
                 </p>
-                <div class="formrow">
+                <div class="formrow pull-right">
                   <div class="form-group">
                     <app-recapcha></app-recapcha>
                     <!-- <re-captcha (resolved)="resolved($event)" siteKey="6LcMeE4UAAAAAORPbOfwjGczzxsz843f24BA92IN"
@@ -182,6 +139,10 @@
 
           <!-- sign up form -->
           <div class="newuser">Don't have an account? <a [routerLink]="['/sign-up']">Register Here</a></div>
+          <div class="newuser">
+            <a [routerLink]="['/terms-use']" target="_blank">Terms of Use</a> and 
+            <a [routerLink]="['/privacy-policy']" target="_blank">Privacy Policy</a>
+          </div>
 
           <!--<div *ngIf="!user">-->
           <!--<div class="socialLogin">-->
