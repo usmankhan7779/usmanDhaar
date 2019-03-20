@@ -16,52 +16,69 @@
         <h3 class="panel-title">Edit My address</h3>
       </div>
       <div class="panel-body">
-        <div class="row" *ngFor="let GetUser of GetUSerAddress.Results">
-          <ng-container *ngIf="GetUSerAddress !== null ">
+        <div class=""  >
+          <!-- <ng-container *ngIf="GetUSerAddress !== null "> -->
 
-
-            <div class=" col-md-8 col-lg-8 ">
-              <table class="table table-user-information">
+            
+            <div class="col-md-12 col-lg-12">
+              <table class="table user-information">
+                <thead>
+                  <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Mobile
+                    </th>
+                    <th>
+                        Area
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <!-- <th>
+                        State:
+                    </th> -->
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Default Address
+                    </th>
+                    <th></th>
+                  </tr>
+                </thead>
                 <tbody>
-                  <tr>
-                    <td>Name:</td>
+                  <tr *ngFor="let GetUser of GetUSerAddress.Results">
+                      <ng-container *ngIf="GetUSerAddress !== null ">
                     <td>{{GetUser.fullname }}</td>
-                  </tr>
-                  <tr>
-                    <td>Mobile:</td>
                     <td>{{GetUser.phone_no}}</td>
-                  </tr>
-                  <tr>
-                    <td>Area:</td>
                     <td>{{GetUser.area}}</td>
-                  </tr>
-
-                  <tr>
-                  <tr>
-                    <td>City:</td>
-                    <!-- +' ' +GetUser['Zip']/ -->
+                    
                     <td>{{ GetUser.city }}</td>
-                  </tr>
-
-                  <tr>
-                    <td>State</td>
-                    <td>{{GetUser.province }} </td>
-                  </tr>
-                  <tr>
-                    <td>Address</td>
+                    
+                    <!-- <td>{{GetUser.province }} </td> -->
+                    
                     <td>{{GetUser.address }}</td>
-                  </tr>
-                  <tr>
-                    <td>Default Address:</td>
+                    
                     <td>{{GetUser.default_shipment_address}}</td>
+                    <td>
+                      <a href="#"><i class="fa fa-edit"></i></a>
+                      <a href="#"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+
+
+
+                  </ng-container>
                   </tr>
+                
 
                 </tbody>
               </table>
-
+              <button class="new-address-btn">Add New Address</button>
 
             </div>
-          </ng-container>
+         
 
 
 
