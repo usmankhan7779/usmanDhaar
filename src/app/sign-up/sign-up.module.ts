@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {TextMaskModule} from "angular2-text-mask";
 import {HeaderModule} from "../header/header.module";
 import {RecaptchaModule} from 'ng-recaptcha';
+import { RecapchaModule } from '../recapcha/recapcha.module';
 const loginRoutes: Routes = [
   { path: '', component: SignUpComponent }
 ];
@@ -21,6 +22,7 @@ const loginRoutes: Routes = [
     HeaderModule,
     FormsModule,
     TextMaskModule,
+    RecapchaModule,
     RecaptchaModule.forRoot(),
     RouterModule.forChild(loginRoutes)
   ],

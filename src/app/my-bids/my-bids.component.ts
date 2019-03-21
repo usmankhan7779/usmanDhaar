@@ -25,7 +25,8 @@ export class MyBidsComponent implements OnInit {
   successbid: any = [];
   CatName: any;
   SessionstoreName: any;
-  errormessage = false;
+  errormessagefirst = false;
+  errormessage=false;
 
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private _nav: Router,
@@ -33,30 +34,21 @@ export class MyBidsComponent implements OnInit {
                private route: ActivatedRoute,
                private httpService: ActiveAdServices) { }
 
-  pageTrendChanged(event) {
-    if (isPlatformBrowser(this.platformId)){
 
-    // alert("mobile")
-    this.r = event;
-    this.pageno = event;
-
-    this.httpService.GetAllActiveproductsBYUserID(this.pageno, localStorage.getItem('user_id')).subscribe(
-      data => {
-        this.ActiveProduct = data;
-      });
-  }
-  }
+               
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
+      // alert(localStorage.getItem('UserID'))
       this.SessionstoreName = localStorage.getItem('StoreName');
-      this.httpService.GetallProductdBids(1, localStorage.getItem('UserID')).subscribe(
+      this.httpService.GetallProductdBids( localStorage.getItem('UserID')).subscribe(
         data => {
-          this.ActiveProduct = data;
+          this.ActiveProduct = data.results;
+          console.log(this.ActiveProduct)
           if (this.ActiveProduct['totalItems'] === 0) {
-            this.errormessage = true;
+            this.errormessagefirst = true;
           }
         });
-      this.httpService.GetSuccessfulBids(1, localStorage.getItem('UserID')).subscribe( data => {
+      this.httpService.GetSuccessfulBids(localStorage.getItem('UserID')).subscribe( data => {
         this.successbid = data;
         if (this.successbid['totalItems'] === 0) {
           this.errormessage = true;

@@ -66,12 +66,12 @@ export class ActiveAdServices {
     return this._http.get( this.ServerUrl + 'getAll_pending_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
   }
 
-  GetallProductdBids(page: any, UserID: any) {
-    return this._http.get( this.ServerUrl + 'GetallProductdBids/' + UserID + '?page=' + page, ).map(response => response.json());
+  GetallProductdBids( UserID: any) {
+    return this._http.get( this.ServerUrl + 'GetallProductdBids/' + UserID  ).map(response => response.json());
   }
 
-  GetSuccessfulBids(page: any, UserID: any) {
-    return this._http.get( this.ServerUrl + 'GetWinProductdBids/' + UserID + '?page=' + page, ).map(response => response.json());
+  GetSuccessfulBids( UserID: any) {
+    return this._http.get( this.ServerUrl + 'GetWinProductdBids/' + UserID ).map(response => response.json());
   }
 
 

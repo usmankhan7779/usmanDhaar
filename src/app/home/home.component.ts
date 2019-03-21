@@ -261,7 +261,14 @@ export class HomeComponent implements OnInit {
 
     this.GetProducts.Getlikeforyou().subscribe(resSlidersData => {
 
-      this.GetALLLikeforyou = resSlidersData.Results;
+      // this.GetALLLikeforyou = resSlidersData.Results;
+      let demoactuprods;
+        demoactuprods = resSlidersData.Results;
+        //this.GetALLProductss= resSlidersData.Results;
+        console.log(demoactuprods)
+        for (let prods of demoactuprods) {
+          this.GetALLLikeforyou.push(prods.product);
+        }
 
     });
   }

@@ -55,8 +55,8 @@
             <div id="productTabContent" class="tab-content">
               <!-- ad start -->
               <div class="tab-pane active in" id="currentbids">
-                <ng-container *ngIf="!errormessage">
-                  <ng-container *ngFor="let phoneProducts of ActiveProduct.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                <ng-container *ngIf="!errormessagefirst">
+                  <ng-container *ngFor="let phoneProducts of ActiveProduct">
                     <li>
                       <div class="row">
                         <div class="col-md-2 col-sm-4">
@@ -84,23 +84,23 @@
                     </li>
                   </ng-container>
                 </ng-container>
-                <ng-container *ngIf="errormessage">
+                <ng-container *ngIf="errormessagefirst">
                   <div class="alert alert-danger">
                     <h3 align="center">No Active Bids Found</h3>
                   </div>
                 </ng-container>
                 <!-- ad end -->
 
-                <div class="col-sm-4 col-sm-push-8">
+                <!-- <div class="col-sm-4 col-sm-push-8">
                   <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true" previousLabel="Previous"
                                        nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
 
-                </div>
+                </div> -->
                 <!-- ad end -->
               </div>
               <div class="tab-pane fade" id="successfulbids">
                 <ng-container *ngIf="!errormessage">
-                  <ng-container *ngFor="let phoneProducts of successbid.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                  <ng-container *ngFor="let phoneProducts of successbid.results ">
                     <li>
                       <div class="row">
                         <div class="col-md-2 col-sm-4">

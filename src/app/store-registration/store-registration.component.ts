@@ -7,6 +7,7 @@ import {HttpService} from '../services/http-service';
 import {Observable} from 'rxjs/Rx';
 // import { UploadItemService } from '../file-uploads/upload-item-service';
 import {UploadItemService} from '../file-uploads/upload-item-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-store-registration',
@@ -49,6 +50,7 @@ export class StoreRegistrationComponent implements OnInit {
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private obj: LoginService,
                private _http: HttpService,
+               private router: Router,
               //  private Profile: LoginService,
                private itemUploadService: UploadItemService ) {
   }
@@ -94,6 +96,7 @@ uploadItemsToActivity() {
       });
 
     }
+    msg;
 
   save() {
 
@@ -102,9 +105,33 @@ uploadItemsToActivity() {
       if ( this.fileName) {
         console.log('Inside base 64');
         
-        this.obj.StoreRegistrationPic(this.model, this.fileName).subscribe();
+        this.obj.StoreRegistrationPic(this.model, this.fileName).subscribe((response) => {
+          this.msg =response;
+          alert(this.msg)
+          if(this.msg == "Store Added Successfully..!!")
+          {
+            swal('You have been successfully Regsiter you Store in Dhaar.','','success');
+            this.router.navigate(['/seller-product-setting-store']);
+          }
+          
+        });
+
+       
       } else {
-        this.obj.StoreRegistration(this.model).subscribe();
+        this.obj.StoreRegistration(this.model).subscribe(
+          (response) => {
+            this.msg=response;
+            alert(this.msg)
+            if(this.msg == "Store Added Successfully..!!")
+            {
+              swal('You have been successfully Regsiter you Store in Dhaar.','','success');
+              this.router.navigate(['/seller-product-setting-store']);
+            }
+           
+          }
+        );
+        // swal('You have been successfully Regsiter you Store in Dhaar.','','success');
+        // this.router.navigate(['/seller-product-setting-store']);
       }
     } else {
       alert('You must agree to the terms  first.');

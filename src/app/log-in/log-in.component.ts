@@ -13,7 +13,7 @@ import { SocialUser } from 'angular4-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
 import swal from 'sweetalert2';
 
-
+       
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -116,7 +116,7 @@ export class LogInComponent implements OnInit {
   // }
 
   loged_in(username: any, password: any) {
-    // if (this.recha.check()) {
+    if (this.recha.check()) {
     this.obj.loged_in(username, password, this.CatName, this.ProID, this.checkout).subscribe((response) => {
         /* this function is executed every time there's a new output */
         // console.log("VALUE RECEIVED: "+response);
@@ -146,18 +146,18 @@ export class LogInComponent implements OnInit {
         //   console.log("COMPLETED");
       }
     );
-    // }
-    // else{
-    //   this.recha.resetImg();
-    //     swal({
-    //       type: 'error',
-    //       title: 'Recaptcha Confirmation',
-    //       text: 'Please confirm you are not a robot',
-    //       showConfirmButton: false,
-    //       width: '512px',
-    //       timer: 2000
-    //     });
-    // }
+    }
+    else{
+      this.recha.resetImg();
+        swal({
+          type: 'error',
+          title: 'Recaptcha Confirmation',
+          text: 'Please confirm you are not a robot',
+          showConfirmButton: false,
+          width: '512px',
+          timer: 2000
+        });
+    }
   }
 
 

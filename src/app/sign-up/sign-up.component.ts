@@ -1,9 +1,11 @@
 
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
 import { isPlatformBrowser } from '@angular/common';
+import { RecapchaComponent } from '../recapcha/recapcha.component';
+import { RecapchaService } from '../recapcha/recapcha.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -12,6 +14,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  @ViewChild(RecapchaComponent) captcha: RecapchaComponent;
   public mask = [  /\d/, /\d/, /\d/, /\d/, '-' , /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
   model: any = {"Agree": false};
   loading = false;
@@ -30,7 +33,7 @@ export class SignUpComponent implements OnInit {
   termsAggre= false;
   PassMatch= true;
   registration_error = false;
-  captcha = false;
+  // captcha = false;
   Country ='';
   State='';
   City='';
@@ -41,6 +44,7 @@ export class SignUpComponent implements OnInit {
                private singup: LoginService,
                private route: ActivatedRoute,
                private router: Router,
+               private recha: RecapchaService,
 
   ) { }
 
@@ -50,12 +54,14 @@ export class SignUpComponent implements OnInit {
 
     }
   }
-  resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response ${captchaResponse}:`);
-    this.captcha= true;
-  }
+  // resolved(captchaResponse: string) {
+  //   console.log(`Resolved captcha with response ${captchaResponse}:`);
+  //   this.captcha= true;
+  // }
   register() {
+    if (this.recha.check()) {
     if (isPlatformBrowser(this.platformId)) {
+      
       console.log('agree value is:',this.model.Agree);
 
     if (this.model.Agree) {
@@ -70,11 +76,11 @@ export class SignUpComponent implements OnInit {
           this.singup.post_signup_form(this.model.Username, this.model.Email, this.model.Password, this.model.FName, this.model.LName, this.model.Mobile,this.Country,this.State,this.City,this.zip,this.Address,this.Pic).subscribe((response) => {
               /* this function is executed every time there's a new output */
               // console.log("VALUE RECEIVED: "+response);
-              // swal(
-              //   'Registered!',
-              //   'You have successfully Registered',
-              //   'success'
-              // );
+              swal(
+                'Registered!',
+                'You have successfully Registered',
+                'success'
+              );
               this.registration_ok = true;
             },
             (err) => {
@@ -108,6 +114,18 @@ export class SignUpComponent implements OnInit {
     // alert('???');
 
   }
+}
+else{
+  this.recha.resetImg();
+    swal({
+      type: 'error',
+      title: 'Recaptcha Confirmation',
+      text: 'Please confirm you are not a robot',
+      showConfirmButton: false,
+      width: '512px',
+      timer: 2000
+    });
+}
   }
 
   onChange(username: string) {

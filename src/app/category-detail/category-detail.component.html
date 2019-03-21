@@ -35,31 +35,31 @@
               <!--</ul>-->
             <!--</div>-->
             <div class="sorter">
-              <div class="col-lg-8">
+              <!-- <div class="col-lg-8"> -->
 
                 <!--<span (click)="listView()"  onmouseleave="this.style='border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555" >List - <span class="fa fa-list" ></span></span>-->
 
-                 <span *ngIf="AllListing" (click)="AllListingFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >All Listings</span>
+                 <!-- <span *ngIf="AllListing" (click)="AllListingFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >All Listings</span>
                  <span *ngIf="!AllListing" (click)="AllListingFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555; font-family: Hind,sans-serif;"   >All Listings</span>
 
                 <span *ngIf="BuyItNow" (click)="BuyItNowFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >Buy It Now</span>
                 <span *ngIf="!BuyItNow" (click)="BuyItNowFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555; font-family: Hind,sans-serif;"   >Buy It Now</span>
 
                 <span *ngIf="thisAuction" (click)="thisAuctionFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >Auction</span>
-                <span *ngIf="!thisAuction" (click)="thisAuctionFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555; font-family: Hind,sans-serif;"   >Auction</span>
+                <span *ngIf="!thisAuction" (click)="thisAuctionFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555; font-family: Hind,sans-serif;"   >Auction</span> -->
 
 
                 <!--<span *ngIf="AcceptOffer" (click)="AcceptOfferFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  background-color:#ed2424; padding: 5px; color: white; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; background-color:#ed2424; cursor:pointer; color: white; font-family: Hind,sans-serif;" >Accept Offers</span>-->
                 <!--<span *ngIf="!AcceptOffer" (click)="AcceptOfferFuc()" onmouseleave="this.style='font-size: 15px; border: 1px #555 solid;  padding: 5px; color: #555; cursor:pointer;';"  onmouseover="this.style='font-size: 15px; background-color:#ed2424; color border: 1px #555 solid; color: white;  padding: 5px; cursor:pointer;';" style="font-size: 15px; border: 1px #555 solid;  padding: 5px; cursor:pointer; color: #555;font-family: Hind,sans-serif;"   >Accept Offers</span>-->
 
 
-                <label>&nbsp;</label>
+                <!-- <label>&nbsp;</label> -->
                 <!--<select>-->
                 <!--<option selected="selected">Grid<span class="fa fa-list" ></span></option>-->
                 <!--<option>List <span class="fa fa-list" aria-hidden="true"></span> </option>-->
 
                 <!--</select>-->
-              </div>
+              <!-- </div> -->
               <div class="short-by page">
                 <label>View:</label>
 
@@ -102,9 +102,9 @@
                       <div class="slider-items-products">
                         <div id="pro2-slider" class="product-flexslider hidden-buttons">
                           <div class="slider-items slider-width-col6">
-                               <a  [routerLink]="['/single-product']"  [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }"  class="product-item-photo">
-                                 <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'"  alt="{{ phoneProducts.Pic }}"></a>
-
+                               <a  [routerLink]="['/single-product']"  [queryParams]="{ ProID:  phoneProducts?.ProductID, CatName: phoneProducts?.Cat_Name, SubCatName:phoneProducts?.Sub_Sub_Cat_Name, id:phoneProducts?.id  }"  class="product-item-photo">
+                                  <img class="product-image-photo" height="225" src="{{ phoneProducts.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'"  alt="{{ phoneProducts.Pic }}">  
+                                </a> 
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img20.jpg" alt=""></a> -->
                               <!--<a href="single_product.html" class="product-item-photo"> <img class="product-image-photo" src="assets/images/products/img19.jpg" alt=""></a> -->
 
@@ -119,13 +119,13 @@
                       <div class="item-info">
                         <div class="info-inner">
                           <div class="item-title">
-                            <h4> <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id  }">{{ phoneProducts.P_Title }}  </a></h4>
+                            <h4> <a  [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts?.ProductID, CatName: phoneProducts?.Cat_Name, SubCatName:phoneProducts?.Sub_Sub_Cat_Name, id:phoneProducts?.id  }">{{ phoneProducts?.P_Title }}  </a></h4>
                             <!-- <a class="info" [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.product.ProductID, CatName: TvVideoaudio88.product.Cat_Name, SubCatName:TvVideoaudio88.product.Sub_Sub_Cat_Name, id:TvVideoaudio88.product.id }">Product
                               Detail</a> -->
                           </div>
                           <div class="item-content">
                             <div class="rating">
-                              <p> Seller: <a [routerLink]="['/store', phoneProducts.StoreName]"> {{phoneProducts.StoreName}}</a></p>
+                              <!-- <p> Seller: <a [routerLink]="['/store', phoneProducts.StoreName]"> {{phoneProducts.StoreName}}</a></p> -->
                             </div>
                             <div *ngIf="phoneProducts.Auction == true" class="item-price">
 
@@ -254,15 +254,15 @@
               <div class="layered-content">
                 <ul class="check-box-list">
                   <li>
-                    <input (click)="ProductType(true)" type="radio" id="jtv1" name="jtvc">
+                    <input (click)="acution_check('true')" type="radio" id="jtv1"  name="jtvc">
                     <label for="jtv1"> <span class="button"></span> Auction Products </label>
                   </li>
                   <li>
-                    <input (click)="ProductType(false)" type="radio" id="jtv2" name="jtvc">
+                    <input (click)="fixed_check('false')" type="radio" id="jtv2" name="jtvc">
                     <label for="jtv2"> <span class="button"></span> Fixed Products </label>
                   </li>
                   <li>
-                    <input (click)="BothAbove()" type="radio" id="jtv3" name="jtvc">
+                    <input (click)="above_check()" type="radio" id="jtv3" name="jtvc">
                     <label for="jtv3"> <span class="button"></span> Both Above</label>
                   </li>
                   <li>
@@ -371,7 +371,7 @@
                   <label for="p15"> <span class="button"></span> Rs 5,00,001 < ... </label>
                 </li>
                 <li>
-                  <input (click)="ProductPrice('all','all')" type="radio" id="p16" name="cc" />
+                  <input (click)="ProductPrice()" type="radio" id="p16" name="cc" />
                   <label for="p16"> <span class="button"></span> All Prices</label>
                 </li>
 

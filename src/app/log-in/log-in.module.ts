@@ -21,7 +21,7 @@ const loginRoutes: Routes = [
     HeaderModule,
     ReactiveFormsModule,
     RecapchaModule,
-    RecaptchaModule.forRoot(),
+    RecaptchaModule.forRoot(),     
     // HeaderModule,
     RouterModule.forChild(loginRoutes)
   ],
