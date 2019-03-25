@@ -3,22 +3,25 @@
     margin: 8px 0 0;
     background: #fff;
     padding: 4px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     font-size: 20px;
-    border: 2px inset;
+    /* border: 2px inset; */
+    border: none;
     font-weight: 600;
-    color: #000
+    color: #000;
+    border-bottom: 1px solid;
+    text-align: center;
 }
-
 .recapcha-input::placeholder {
-    color: #5d5d5d
+    color: #5d5d5d;
+    font-weight: 400;
 }
 
 .card {
     width: 188px;
     float: right;
     padding: 8px;
-    background: #f2f2f2;
+    background: #fff;
   margin: 0 0 10px;
 }
 

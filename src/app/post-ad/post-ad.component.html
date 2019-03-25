@@ -22,19 +22,19 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="userccount">
-          <div class="formpanel">
+          <div class="">
             <form role="form" class="login-form" (ngSubmit)="f.form.valid && save('fsd','sfs')"  #f="ngForm" novalidate>
 
-            <div class="form-group">
+            <div class="">
               <label class="control-label">Product Type: </label> <span> <u>{{ CatName }}</u>  </span> <a [routerLink]="['/select-category']">Change</a>
             </div>
             <!-- Ad Information -->
 
-            <h5>Ad Information</h5>
+            <h5 class="margin-t-b-5">Ad Information</h5>
             <div class="row">
               <div class="col-md-12">
                 <div class="formrow">
-                  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Title.valid }">
+                  <div class="" [ngClass]="{ 'has-error': f.submitted && !Title.valid }">
 
                     <label class="help-block">Title</label>
                     <div *ngIf="f.submitted && !Title.valid" class="help-block">Title required</div>
@@ -45,7 +45,7 @@
                   <!--<input type="text" name="jobtitle" class="form-control" placeholder="Ad Title ">-->
                 </div>
               </div>
-              <div class="col-md-12" *ngIf="Vendor == true" >
+              <div class="col-lg-6" *ngIf="Vendor == true" >
               <div class="formrow">
                   <!-- <mat-select (change)="checked17($event,i,name)" value="name" required [(ngModel)]="name" name="name">
 
@@ -57,22 +57,28 @@
   
   && StoreName.valid
                   </mat-select> -->
-                <label  class="help-block">Select Your Store Name</label>
-                <div *ngIf="f.submitted " class="help-block">Select Your StoreName</div>
-                <select [(ngModel)]="model.StoreName"  class="col-md-push-6" name="StoreName" (change)="storess()" >
-                  <option *ngFor="let data of StoreNamess" [value]="data.StoreName"      >
-                    {{data.StoreName}}
-                   </option>
-                  <!-- <option value="7">7 Days</option>
-                  <option value="5">5 Days</option>
-                  <option value="3">3 Days</option> -->
-                </select>
-                <input hidden="true" type="text" class="form-control"  name="store" placeholder="Product Title" [(ngModel)]="model.StoreName"   required>
 
+
+                  <label  class="help-block">Select Your Store Name</label>
+                  <div *ngIf="f.submitted " class="help-block">Select Your StoreName</div>
+                  <select [(ngModel)]="model.StoreName"  class="col-md-push-6" name="StoreName" (change)="storess()" >
+                    <option *ngFor="let data of StoreNamess" [value]="data.StoreName"      >
+                      {{data.StoreName}}
+                    </option>
+                    <!-- <option value="7">7 Days</option>
+                    <option value="5">5 Days</option>
+                    <option value="3">3 Days</option> -->
+                  </select>
+                
               </div>
               </div>
-
-              <div  class="col-md-12">
+              <div class="col-lg-6">
+                  <div class="formrow">
+                  <label  class="help-block">Title</label>
+                  <input hidden="true" type="text" class="form-control"  name="store" placeholder="Product Title" [(ngModel)]="model.StoreName"   required>
+                  </div>
+              </div>
+              <div  class="col-md-6">
                 <div class="formrow">
 
                   <label  class="help-block">Product condition</label>
@@ -88,7 +94,7 @@
               </div>
 
 
-              <div  class="col-md-12">
+              <div  class="col-md-6">
                 <div class="formrow">
 
                     <label  class="help-block">Select Sub Catgory</label>
@@ -147,17 +153,17 @@
                 </div>
               </div>
 
-              <div class="col-md-12">
-                <div class="formrow" style="text-align: right">
+              <div class="col-md-12 uploadimg">
                   <ng-container *ngFor="let img of url; let i=index">
+
                     <div class="col-md-2">
                       <i class="fa fa-close" (click)="removepic(i)" style="cursor: pointer">
                         <i class="fa fa-times" aria-hidden="true"></i></i>
                         <img [src]="img">
+
                     </div>
                     <!--<input type="submit" value="Delete" (click)="removepic(i)">-->
                   </ng-container>
-                </div>
               </div>
 
               <div class="col-md-12">
@@ -268,7 +274,7 @@
 
                 </p>
               </div>
-            <input type="submit" class="btn" value="Post An Ad">
+            <input type="submit" class="btn-black" value="Post An Ad">
 
             </form>
           </div>
