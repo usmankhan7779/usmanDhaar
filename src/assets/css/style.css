@@ -2011,7 +2011,7 @@ ul#cart-sidebar {
     padding: 3px 12px;
     border-radius: 50px;
     margin-right: 5px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     white-space: nowrap;
     border: 1px solid #000;
@@ -2019,7 +2019,7 @@ ul#cart-sidebar {
     -o-transition: .4s;
     transition: .4s;
     cursor: pointer;
-    -webkit-box-shadow: 0 0 20px -5px #000;
+    -webkit-box-shadow: 0 0 18px -6px #000;
     box-shadow: 0 0 20px -5px #000
 }
 
@@ -6120,8 +6120,8 @@ textarea {
     border: 1px solid #ddd;
     margin-top: 0;
     padding: 5px 10px 7px;
-    width: 35%;
-    border-radius: 0
+    width: 100%;
+    border-radius: 5px;
 }
 
 button.button.add-tags {
@@ -8795,7 +8795,9 @@ all and (min-width:992px) and (-webkit-transform-3d) {
     height: 90px;
     margin: 0 auto
 }
-
+.margin-t-b-5{
+    margin: 5px 0 !important;
+}
 .margin-top-10 {
     margin-top: 10px
 }
