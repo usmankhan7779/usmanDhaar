@@ -54,13 +54,16 @@
             <h5>My Details</h5>
 
 
-            <div class="">
+            <div class="tab-content">
               <ng-container *ngIf="GetUSerdetails">
-                <div id="step1" class="tab-pane fade in active">
-                    <div class="row">
-                      <div class="col-sm-6 formrow">
+                <div id="step1" class="formpanel tab-pane fade in active">
 
-                        <label for="FName" class="required help-block">First Name(*)</label>
+                  <ul>
+
+                    <li class="row">
+                      <div class="col-sm-6">
+
+                        <label for="FName" class="required">First Name(*)</label>
                         <input type="text"ng-Model="model.FName" #FName name="FName"
                                required class="input form-control"
                                placeholder="First Name"
@@ -69,12 +72,14 @@
 
 
 
-                      </div>
-                      <div class="col-sm-6 formrow">
+                      </div><!--/ [col] -->
+
+
+                      <div class="col-sm-6">
 
 
 
-                        <label for="Lname" class="required help-block">Last Name(*)</label>
+                        <label for="Lname" class="required">Last Name(*)</label>
 
                         <input type="text" class="input form-control"
                                required
@@ -85,19 +90,29 @@
 
 
                       </div>
-                      <div class="col-sm-6 formrow">
 
-                        <label   class="required help-block">Select Your Country(*) </label>
-                        <select  class="form-control"  ng-Model="model.Country" #Country name="Country">
+                    </li><!--/ .row -->
+
+                    <br>
+                    <li class="row">
+
+                      <div class="col-sm-6">
+
+                        <label   class="required">Select Your Country(*) </label>
+                        <select  class="form-control"  ng-Model="model.Country" #Country name="Country" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                           <option value="Pakistan" selected>Pakistan</option>
 
                         </select>
 
                       </div>
-                      <div class="col-sm-6 formrow">
 
-                        <label  class="required help-block">Select Your State/Province(*)</label>
-                        <select  class="form-control"  ng-Model="model.State" #State name="State" >
+
+
+
+                      <div class="col-sm-6">
+
+                        <label  class="required">Select Your State/Province(*)</label>
+                        <select  class="form-control"  ng-Model="model.State" #State name="State" style="color: black; line-height: 20px; border: 2px #f1f1f1 solid !important;" >
                           <option value="Punjab" selected>Punjab</option>
 
                           <option value="Sindh" >Sindh</option>
@@ -108,9 +123,17 @@
                         </select>
 
                       </div>
-                      <div class="col-sm-6 formrow">
 
-                        <label  class="required help-block">Your City(*)</label>
+
+
+                    </li>
+
+                    <br>
+                    <li class="row">
+
+                      <div class="col-sm-6">
+
+                        <label  class="required">Your City(*)</label>
 
                         <input class="input form-control"
                                placeholder="Your City"
@@ -118,9 +141,10 @@
                                ng-Model="model.City" #City name="City"
                                value="{{GetUSerdetails.City}}">
                       </div>
-                      <div class="col-sm-6 formrow">
 
-                        <label for="postal_code" class="required help-block">Zip/Postal Code(*)</label>
+                      <div class="col-sm-6">
+
+                        <label for="postal_code" class="required">Zip/Postal Code(*)</label>
                         <input class="input form-control" type="text"
                                pattern="([0-9])+$"
 
@@ -128,9 +152,17 @@
                                required ng-Model="model.zipcode" #zipcode name="zipcode" id="postal_code"
                                value="{{GetUSerdetails.Zip}}">
                       </div>
-                      <div class="col-sm-6 formrow">
 
-                        <label for="telephone" class="required help-block">Owner Contact Number(*)</label>
+
+                    </li>
+
+                    <br>
+                    <li class="row">
+
+
+                      <div class="col-sm-6">
+
+                        <label for="telephone" class="required">Owner Contact Number(*)</label>
 
 
                         <input class="input form-control"
@@ -140,12 +172,12 @@
                                type="text" required ng-Model="model.personal" #personal name="personal"
                                id="telephone"
                                value="{{GetUSerdetails.Mobile}}">
-                      </div>
-                      <div class="col-sm-6 formrow">
+                      </div><!--/ [col] -->
+                      <div class="col-sm-6">
 
                         <div class="form-group">
 
-                          <label for="telephone" class="required help-block">Upload Your Profile Picture</label>
+                          <label for="telephone" class="required">Upload Your Profile Picture</label>
 
 
                           <input type="file" #fileImportInput id="file1" name="file" class="file" data-preview-file-type="text" (change)="handleFileInput($event.target.files)"  multiple accept="image/*">
@@ -153,22 +185,33 @@
 
                         </div>
 
-                      </div>
-                      <div class="col-xs-12 formrow">
-                        <label for="address" class="required help-block">Address(*)</label>
+                      </div><!--/ [col] -->
+
+                    </li><!--/ .row -->
+
+                    <br>
+                    <li class="row">
+                      <div class="col-xs-12">
+
+                        <label for="address" class="required">Address(*)</label>
 
                         <input type="text" class="input form-control" required
                                placeholder="shop #, street# etc"
                                ng-Model="model.address"
                                #address name="address" id="address"
                                value="{{GetUSerdetails.Address}}">
-                      </div>
-                    </div>
+                      </div><!--/ [col] -->
+                    </li><!-- / .row -->
+
+
+                  </ul>
 
 
 
+                  <br>
 
-                  <div class="">
+
+                  <div class="nav nav-tabs">
                     <div *ngIf="Error"  class="alert alert-danger">
                       <strong>Error </strong> While updating record.
                     </div>
@@ -182,7 +225,7 @@
 
                       </p>
                     </div>
-                    <input type="submit" (click)="save(FName.value,Lname.value,Country.value,State.value,City.value, zipcode.value, personal.value, address.value)" class="btn-black" value="Update">
+                    <input type="submit" (click)="save(FName.value,Lname.value,Country.value,State.value,City.value, zipcode.value, personal.value, address.value)" class="btn" value="Update">
                   </div>
                 </div>
               </ng-container>
