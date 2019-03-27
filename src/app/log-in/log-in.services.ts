@@ -28,7 +28,7 @@ export class LoginService {
   // https://apis.dhaar.pk
   // ServerUrl = 'https://apis.dhaar.pk/user/';
   // http://192.168.30.187:8000
-  ServerUrl = 'http://192.168.30.187:7000/user/';
+  ServerUrl = 'https://apis.dhaar.pk/user/';
   
    productsUrl = 'https://apis.dhaar.pk/products/';
   StoreServerUrl = 'https://apis.dhaar.pk/store/';
@@ -178,8 +178,8 @@ getusers;
     return this._http.get(this.ServerUrl + 'post_shipment_details/', { headers: headers }).map(response => response.json());
   }
 
-  GetUSerdetailsByUserIdupdate(id: number, fullname: string, address: string, province: string, city: string, area: string, default_shipment_address: string, phone_no: string,default_billing_address:string) {
-    // this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+  GetUSerdetailsByUserIdupdate(id: number, fullname: string, address: string, province: string, city: string, area: string, default_shipment_address: string, phone_no: string, user) {
+    this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
     console.log(this.USerNameID)
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
@@ -196,10 +196,9 @@ getusers;
         "province": province,
         "city": city,
         "area": area,
-        "shipmentadress": default_shipment_address,
-        "billadress":default_billing_address,
+        "default_shipment_address": default_shipment_address,
         "phone_no": phone_no,
-        // "user_id": user
+        "user_id": user
 
 
       }, { headers: headers })
@@ -1286,11 +1285,5 @@ post_signup_form(username: string, email: string, password: string, Fname, LName
     }).map((response: Response) => response.json());
   }
 
-DeleteAddress(id){
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-  headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
-  return this.http.delete(this.ServerUrl + 'put_delete_shipment_details/' + id,
-  { headers: headers }).map((response: Response) => response.json());
-}
+
 }
