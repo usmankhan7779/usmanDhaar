@@ -51,7 +51,7 @@
 
 
           <div class="userccount">
-            <h5>Change Password</h5>
+            <h4>Change Password</h4>
             <div *ngIf="Error"  class="alert alert-danger">
               <strong>Error </strong> While updating record.
             </div>
@@ -62,7 +62,7 @@
               <strong>Password Updated!</strong>
             </div>
             <!-- form -->
-            <div class="formpanel">
+            <div class="">
               <div class="formrow">
                 <input type="password" name="old" class="form-control" ng-Model="model.old" #old placeholder="Enter Current Password">
               </div>
@@ -80,7 +80,7 @@
                   <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
                 </p>
               </div>
-              <input type="submit" class="btn" value="Sumbit">
+              <input type="submit" class="btn-black" value="Sumbit">
             </div>
             <!-- form  end-->
 
