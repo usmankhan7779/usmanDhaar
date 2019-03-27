@@ -78,7 +78,7 @@ export class UsershipmentupdateComponent implements OnInit {
     }
   }
   // GetUSerdetailsByUserIdupdate
-  save(fullname:string,phone_no:string,province:string,city:string,area:string,default_shipment_address:string,address:string) {
+  save(fullname:string,phone_no:string,province:string,city:string,area:string,default_shipment_address:string,address:string,default_billing_address:string) {
       //this.uploadItemsToActivity();
       this.Waitcall = true;
       console.log('I am in 1 Component');
@@ -89,7 +89,7 @@ export class UsershipmentupdateComponent implements OnInit {
           // save(FName.value,Lname.value,Country.value,State.value,City.value, zipcode.value, personal.value, address.value)
           // GetUSerdetailsByUserIdupdate(id:number,fullname:string,address:string,province:string,city:string,area:string,default_shipment_address:string,phone_no:string,user) {
 //  
-          this.obj.GetUSerdetailsByUserIdupdate(this.id,fullname,address,province,city,area,default_shipment_address,phone_no,this.USerNameID).subscribe((response) => {
+          this.obj.GetUSerdetailsByUserIdupdate(this.id,fullname,address,province,city,area,default_shipment_address,phone_no,default_billing_address).subscribe((response) => {
         //  console.log(this.id,FName, Lname, Country, State, City, Zip, Mobile, Address, this.Vendor,this.fileName, this.USerNameID,this.complete,this.ISConfirmed)
           this.Error = false;
           this.Waitcall = false;

@@ -155,10 +155,12 @@
 
               <div class="col-md-12 uploadimg">
                   <ng-container *ngFor="let img of url; let i=index">
-                    <div class="img-box">
-                        <i class="fas fa-times" (click)="removepic(i)"></i>
-                      <!-- <i class="fa fa-close" (click)="removepic(i)" style="cursor: pointer"></i> -->
-                      <img [src]="img">
+
+                    <div class="col-md-2">
+                      <i class="fa fa-close" (click)="removepic(i)" style="cursor: pointer">
+                        <i class="fa fa-times" aria-hidden="true"></i></i>
+                        <img [src]="img">
+
                     </div>
                     <!--<input type="submit" value="Delete" (click)="removepic(i)">-->
                   </ng-container>

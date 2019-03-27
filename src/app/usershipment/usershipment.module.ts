@@ -5,7 +5,8 @@ import {CommonModule} from "@angular/common";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {TextMaskModule} from "angular2-text-mask";
 import {HeaderModule} from "../header/header.module";
-import { UsershipmentComponent } from './usershipment.component';
+import { UsershipmentComponent} from './usershipment.component';
+import { MatDialog,MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 const loginRoutes: Routes = [
   { path: '', component: UsershipmentComponent }
 ];
@@ -13,7 +14,7 @@ const loginRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    UsershipmentComponent
+    UsershipmentComponent,
   ],
 
   imports: [
@@ -22,13 +23,16 @@ const loginRoutes: Routes = [
     // Ng2PaginationModule,
     FormsModule,
     TextMaskModule,
-
+    MatDialogModule,
     // ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)
   ],
 
   providers: [],
-  exports: []
+  exports: [],
+  entryComponents: [
+  ],
+  
 })
 
 export class UserShipmentModule {
