@@ -69,7 +69,7 @@
                 <li>
                   <div class="row">
                     <div class="col-md-2 col-sm-4">
-                      <div class="adimg"><img src="{{phoneProducts.ProductID.Pic.split(',')[0]  }}" alt="Ad Name"></div>
+                      <div class=""><img src="{{phoneProducts.ProductID.Pic.split(',')[0]  }}" alt="Ad Name"></div>
                     </div>
                     <div class="col-md-10 col-sm-8">
                       <div class="jobinfo">
@@ -89,7 +89,7 @@
 
                           </div>
                           <div class="col-md-4 col-sm-5 text-right">
-                              <a (click)="TrashcartElement(phoneProducts.ProductID.id)"><i class="fa fa-trash-o"></i>{{phoneProducts.ProductID.id}}</a>
+                              <a (click)="TrashcartElement(phoneProducts.ProductID.id)">{{phoneProducts.ProductID.id}} <i class="fa fa-trash"></i></a>
                             <ng-container *ngIf="phoneProducts.ProductID.Auction === true">
                             <div class="adprice">Rs {{ phoneProducts.ProductID.MaxBidPrice | number:'.0-0'}}</div>
                             </ng-container>

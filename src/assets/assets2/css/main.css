@@ -1879,10 +1879,10 @@ a.wit-btn {
 }
 
 .adprice {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 20px;
-    color: #ed2424
+    margin: 10px 0;
+    color: #000;
 }
 
 .adverify {
@@ -4411,15 +4411,17 @@ input.upload-input {
     padding: 10px;
 }
 .Watchlist-box h3{
-    margin: 0 0 5px !important;
-}
-.Watchlist-box h2{
+    margin: 10px 0!important;
     text-align: center;
-    margin: 10px;
     font-size: 30px;
 }
+.Watchlist-box h2{
+    text-align: left;
+    margin: 0;
+    line-height: 20px;
+}
 .Watchlist-box h2 a{
-    font-size: 25px;
+    font-size: 20px;
     text-transform: capitalize;
 }
 /* End Watchlist */
