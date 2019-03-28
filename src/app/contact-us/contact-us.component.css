@@ -6,7 +6,7 @@ textarea{
   font-weight: bold;
 }
 #contact {
-  padding-top: 60px;
+  padding-top: 10px;
   width: 100%;
   color: #fff;
 }
@@ -32,7 +32,7 @@ input{
 }
 
 .contact-section {
-  padding-top: 40px
+  padding-top: 20px
 }
 
 .contact-section .col-md-6 {
@@ -60,7 +60,7 @@ textarea.form-control {
   font-weight: 900;
 }
 #contact-map{
-  margin-top: 50px;
+  margin-top: 20px;
 }
 label{
   color: #000000;

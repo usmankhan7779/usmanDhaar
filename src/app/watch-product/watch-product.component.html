@@ -59,7 +59,7 @@
         </div>
       </ng-container> -->
       <div class="col-md-9 col-sm-8">
-        <div class="myads">
+        <div class="Watchlist-box">
           <h3>My Watch Products</h3>
 
           <ul class="searchList">
@@ -75,11 +75,15 @@
                       <div class="jobinfo">
                         <div class="row">
                           <div class="col-md-8 col-sm-7">
-                            <h3><a [routerLink]="['/single-product']" [queryParams]="{ProID:  phoneProducts.ProductID.ProductID, CatName: phoneProducts.ProductID.Cat_Name, SubCatName:phoneProducts.ProductID.Sub_Cat_Name, id:phoneProducts.ProductID.id }" >{{ phoneProducts.ProductID.P_Title }}</a></h3>
+                            <h2><a [routerLink]="['/single-product']" [queryParams]="{ProID:  phoneProducts.ProductID.ProductID, CatName: phoneProducts.ProductID.Cat_Name, SubCatName:phoneProducts.ProductID.Sub_Cat_Name, id:phoneProducts.ProductID.id }" >{{ phoneProducts.ProductID.P_Title }}</a></h2>
                             <div class="cateName"> <a href="#.">{{ phoneProducts.ProductID.Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.ProductID.Sub_Cat_Name }}</a> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="#.">{{ phoneProducts.ProductID.Sub_Sub_Cat_Name }}</a> </div>
                             <!--<div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> <span>New York</span></div>-->
                             <div class="clearfix"></div>
-                            <p>{{phoneProducts.ProductID.P_Des}}</p>
+
+
+                            <!-- <p>{{phoneProducts.ProductID.P_Des}}</p> -->
+
+
                             <div class="listbtn"><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.ProductID.ProductID, CatName: phoneProducts.ProductID.Cat_Name, SubCatName:phoneProducts.ProductID.Sub_Cat_Name, id:phoneProducts.ProductID.id }">View Details</a></div>
                                                      <!-- <a [routerLink]="['/single-product']" [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }"> -->
 
