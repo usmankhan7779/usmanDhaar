@@ -24,6 +24,9 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
   ShipingInvoice: any = [];
   InvoiceData: any = [];
 GetInvoice:any=[];
+invoice_detail;
+product_detail;
+TotalAmount;
   ProductsID: any = [];
   AllCategories: any = [];
   resultProduct: any = [];

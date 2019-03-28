@@ -282,9 +282,7 @@ select {
 .margintop50 {
     margin-top: 50px
 }
-.margin-tb-10{
-    margin: 10px 0;
-}
+
 .marginbt10 {
     margin-bottom: 10px
 }
@@ -3010,7 +3008,7 @@ a.wit-btn {
     font-size: 30px;
     color: #000000;
     font-weight: 700;
-    /* margin-bottom: 25px */
+    margin-bottom: 25px
 }
 
 .socialLogin {
@@ -3056,15 +3054,8 @@ a.wit-btn {
 }
 
 .userbtns .nav-tabs {
-    /*border-bottom: none;
-    margin-bottom: 30px; */
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    border: none;
-}
-.nav-tabs{
-    border: none;
+    border-bottom: none;
+    margin-bottom: 30px
 }
 
 .userbtns .nav-tabs>li {
