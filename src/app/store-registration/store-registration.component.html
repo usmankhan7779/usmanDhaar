@@ -67,7 +67,7 @@
         <div class="col-md-9 col-sm-8">
           <div class="userccount">
 
-            <div class="userbtns" style="margin-left: 16%">
+            <div class="userbtns">
               <ul class="nav nav-tabs">
                 <li  *ngIf="step1==true" class="active"style="width: 200px;"><a [ngClass]="{disabled : !step2Button}" (click)="step2=false;step3=false;step4=false"   data-toggle="tab"  class="btn"  >Store Information </a></li>
                 <li  *ngIf="step1==false" style="width: 200px;" ><a [ngClass]="{disabled : !step2Button}" (click)="step2=false;step3=false;step4=false"   data-toggle="tab"  class="btn"  >Store Information </a></li>
@@ -84,13 +84,12 @@
               </ul>
             </div>
             <div class="tab-content">
-              <div id="step1" class="formpanel tab-pane fade in active">
+              <div id="step1" class="tab-pane fade in active">
 
-                <ul>
-                  <li class="row">
-                    <div class="col-sm-8 ">
+                <div class="row from-setting">
+                    <div class="col-sm-6 ">
                       <div class="form-group form-group has-feedback" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="Store _name" class="required">Store URL(*)</label>
+                        <label  for="Store _name" class="required">Store URL(*)</label>
                         <div style="color:red" *ngIf="model.storename!=null && storename.touched && !storename.valid" class="help-block">Store Name required or invalid
                         </div>
                         <input type="text" [(ngModel)]="model.storename"
@@ -109,16 +108,12 @@
 
                       </div>
 
-                    </div><!--/ [col] -->
-
-                  </li><!--/ .row -->
-
-                  <li class="row">
+                    </div>
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ownername.valid }">
 
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="company_name" class="required">Owner Name(*)</label>
+                        <label  for="company_name" class="required">Owner Name(*)</label>
                         <div style="color:red" *ngIf=" model.ownername!=null && !ownername.valid" class="help-block">Owner name required or invalid
                         </div>
 
@@ -132,16 +127,14 @@
 
                       </div>
 
-                    </div><!--/ [col] -->
-
-
+                    </div>
                     <div class="col-sm-6">
 
 
 
                       <div class="form-group  form-group has-feedback" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="email_address" class="required">Business Email(*)</label>
+                        <label  for="email_address" class="required">Business Email(*)</label>
                         <div  style="color:red" *ngIf=" (!email.valid && email.touched  ) " class="help-block">Email required in proper format</div>
 
                         <input type="text" class="input form-control"
@@ -160,15 +153,10 @@
 
                       </div><!--/ [col] -->
                     </div>
-
-                  </li><!--/ .row -->
-
-                  <br>
-                  <li class="row">
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !zipcode.valid }">
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="postal_code" class="required">Zip/Postal Code</label>
+                        <label  for="postal_code" class="required">Zip/Postal Code</label>
                         <div  style="color:red" *ngIf=" model.zipcode!=null  && !zipcode.valid" class="help-block">Zip code required</div>
 
                         <input class="input form-control" type="text"
@@ -178,12 +166,11 @@
                                maxlength="10"
                                 [(ngModel)]="model.zipcode" #zipcode="ngModel" name="zipcode" id="postal_code">
                       </div>
-                    </div><!--/ [col] -->
-
+                    </div>
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !city.valid }">
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="city" class="required">City(*)</label>
+                        <label  for="city" class="required">City(*)</label>
                         <div  style="color:red" *ngIf=" model.city!=null && !city.valid" class="help-block">City invalid/required</div>
 
                         <input class="input form-control"
@@ -192,19 +179,11 @@
                                pattern="^([A-Za-z])+$"
                                type="text" required [(ngModel)]="model.city" #city="ngModel" name="city" id="city">
                       </div>
-                    </div><!--/ [col] -->
-
-
-                  </li>
-
-                  <br>
-                  <li class="row">
-
-
+                    </div>
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !personal.valid }">
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="telephone" class="required">Owner Contact Number(*)</label>
+                        <label  for="telephone" class="required">Owner Contact Number(*)</label>
                         <div  style="color:red" *ngIf=" model.personal!=null  && !personal.valid" class="help-block">Contact number required in proper format
                         </div>
 
@@ -216,14 +195,13 @@
                                type="text" required [(ngModel)]="model.personal" #personal="ngModel" name="personal"
                                id="telephone">
                       </div>
-                    </div><!--/ [col] -->
-
+                    </div>
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !business.valid }">
 
                         <div class="form-group">
 
-                          <label style="font-size: 20px; margin-bottom: 10px;" for="telephone" class="required">Business Contact Number</label>
+                          <label  for="telephone" class="required">Business Contact Number</label>
                           <div  style="color:red" *ngIf=" model.business!=null && !business.valid && business.touched" class="help-block">Contact number required in proper format</div>
 
                           <input class="input form-control"
@@ -236,15 +214,11 @@
                                  id="telepone">
                         </div>
                       </div>
-                    </div><!--/ [col] -->
-
-                  </li><!--/ .row -->
-                  <br>
-                  <li class="row">
-                    <div class="col-xs-12">
+                    </div>
+                    <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="address" class="required">Address(*)</label>
+                        <label  for="address" class="required">Address(*)</label>
                         <div  style="color:red" *ngIf=" model.address!=null && !address.valid" class="help-block">Address required</div>
 
                         <input type="text" class="input form-control" required
@@ -253,10 +227,8 @@
                                [(ngModel)]="model.address"
                                #address="ngModel" name="address" id="address">
                       </div>
-                    </div><!--/ [col] -->
-                  </li>
-
-                  <div class="form-group">
+                    </div>
+                    <div class="col-lg-12">
 
                       <!-- <div class="form-group"> -->
 
@@ -276,41 +248,34 @@
                     <!-- <input type="file" #Picture id="file1" name="file" class="file" data-preview-file-type="text" (change)="onChange($event.target.files)" multiple accept="image/*"> -->
 
 
-                  </div>
-
-
-                </ul>
-
-
-                <br>
-
+                    </div>
+                </div>
                 <p style="color:red">Please review your information before submission</p>
 
-                <div class="nav nav-tabs">
-                  <a data-toggle="tab" [ngClass]="{disabled : !step1button}"  (click)="step1=false; step2=true;step3=false;step4=false;  " href="#step2" class="btn" value="Save and Continue">Save and Continue</a>
+                <div class="marginbt10 nav nav-tabs">
+                  <a data-toggle="tab" [ngClass]="{disabled : !step1button}"  (click)="step1=false; step2=true;step3=false;step4=false;  " href="#step2" class="btn-black" value="Save and Continue">Save and Continue</a>
                 </div>
               </div>
 
-              <div id="step2" class="formpanel tab-pane fade in">
-                <h5>Unregistered / Registered on FBR</h5>
-                <ul>
-                  <li>
-                    <label style="font-size: 20px;">
+              <div id="step2" class="tab-pane fade in">
+                <h4>Unregistered / Registered on FBR</h4>
+                <div class="from-setting">
+                    <label>
                       <input type="checkbox" [checked]="model.fbrunregister"
                              (change)="closeregister()"
 
                        [(ngModel)]="model.fbrunregister" #fbrunregister="ngModel"
                              name="fbrunregister" value="unregister">
-                      Unregistered</label></li>
+                      Unregistered</label>
 
-                  <li><label style="font-size: 20px;"><input type="checkbox" [checked]="model.fbrregister"
+                  <label><input type="checkbox" [checked]="model.fbrregister"
                                     (change)="closecheck()"
 
                                     [(ngModel)]="model.fbrregister"
                                     #fbrregister="ngModel" name="fbrregister"
-                  > Registered</label></li>
-                </ul>
-                <br>
+                  > Registered</label>
+                  </div>
+              
 
                 <div>
                 <ul *ngIf="model.fbrregister== true" >
@@ -376,8 +341,8 @@
                 </ul>
                 </div>
 
-                <div class="nav nav-tabs">
-                  <a data-toggle="tab" [ngClass]="{disabled : !step2button}" (click)="step1=false; step2=false;step3=false;step4=true " href="#step4" class="btn" value="Save and Continue">Save and Continue</a>
+                <div class="nav nav-tabs marginbt10">
+                  <a data-toggle="tab" [ngClass]="{disabled : !step2button}" (click)="step1=false; step2=false;step3=false;step4=true " href="#step4" class="btn-black" value="Save and Continue">Save and Continue</a>
                 </div>
               </div>
 
@@ -413,18 +378,15 @@
                 </div>
               </div>
 
-              <div id="step4" class="formpanel tab-pane fade in">
-                <h5>As per NTN / CNIC given above</h5>
-
-
-                <ul>
-                  <li class="row">
+              <div id="step4" class="tab-pane fade in">
+                <h4>As per NTN / CNIC given above</h4>
+                <div class="row from-setting">
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !acount_title.valid }">
                         <div  style="color:red" *ngIf=" model.acount_title!=null && !acount_title.valid" class="help-block">Account title is  required</div>
 
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="Store _name" class="required">Bank Account Title</label>
+                        <label  for="Store _name" class="required">Bank Account Title</label>
                       <input  type="text" class="input form-control" required
                              placeholder="Bank Account Title"
                              pattern="^([A-Za-z]+?[ ]?|[A-Za-z]+?)+$"
@@ -432,14 +394,13 @@
                              #acount_title="ngModel" name="acount_title" id="acount_title">
                       </div>
 
-                    </div><!--/ [col] -->
-
+                    </div>
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !acount_number.valid }">
                         <div  style="color:red" *ngIf=" model.acount_number!=null && !acount_number.valid" class="help-block">Account number is  required</div>
 
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="company_name">Bank Account Number </label>
+                        <label  for="company_name">Bank Account Number </label>
                         <input type="text" class="input form-control" required
                                placeholder="Bank Account Number"
 
@@ -447,17 +408,13 @@
                                [(ngModel)]="model.acount_number"
                                #acount_number="ngModel" name="acount_number" id="acount_number">
                       </div>
-                    </div><!--/ [col] -->
-
-                  </li><!--/ .row -->
-                  <li class="row">
-
+                    </div>
                     <div class="col-sm-12">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Bank_name.valid }">
                         <div  style="color:red" *ngIf=" model.Bank_name!=null && !Bank_name.valid" class="help-block">Bank name is  required</div>
 
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="company_name">Bank Name </label>
+                        <label  for="company_name">Bank Name </label>
                         <input type="text" class="input form-control" required
                                placeholder="Bank Name"
                                pattern="^([A-Za-z]+?[ ]?|[A-Za-z]+?)+$"
@@ -465,41 +422,33 @@
                                #Bank_name="ngModel" name="Bank_name" id="bank">
                       </div>
 
-                    </div><!--/ [col] -->
-                  </li><!--/ .row -->
-
-                  <li class="row">
+                    </div>
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Branch_name.valid }">
                         <div  style="color:red" *ngIf=" model.Branch_name!=null && !Branch_name.valid" class="help-block">Bank name is  required</div>
 
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="company_name">Branch Name </label>
+                        <label  for="company_name">Branch Name </label>
                         <input type="text" class="input form-control" required
                                placeholder="Branch Name"
                                pattern="^([A-Za-z]+?[ ]?|[A-Za-z]+?)+$"
                                [(ngModel)]="model.Branch_name"
                                #Branch_name="ngModel" name="Branch_name" id="Branch_name">
                       </div>
-                    </div><!--/ [col] -->
-
+                    </div>
                     <div class="col-sm-6">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Branch_code.valid }">
                         <div  style="color:red" *ngIf=" model.Branch_code!=null && !Branch_code.valid" class="help-block">Bank name is  required</div>
 
 
-                        <label style="font-size: 20px; margin-bottom: 10px;" for="company_name">Branch Code </label>
+                        <label  for="company_name">Branch Code </label>
                         <input type="text" class="input form-control" required
                                placeholder="Branch Code"
                                pattern="([0-9])+$"
                                [(ngModel)]="model.Branch_code"
                                #Branch_code="ngModel" name="Branch_code" id="Branch_code">
                       </div>
-                    </div><!--/ [col] -->
-
-                  </li><!--/ .row -->
-
-
+                    </div>
                   <div class="formrow">
                     <input type="checkbox" [checked]="model.terms"
                            (change)="closecheck()"
@@ -510,7 +459,7 @@
                     I agree to the Terms and Conditions laid out in the COMMISSION AGENT AGREEMENT
                   </div>
 
-                </ul>
+                </div>
                 <div *ngIf="!Waitcall" class="alert  alert-info">
                   <p class="">
                     <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
@@ -518,7 +467,7 @@
                   </p>
                 </div>
 
-                <input type="submit" class="btn" value="Submit">
+                <input type="submit" class="btn-black" value="Submit">
               </div>
 
             </div>

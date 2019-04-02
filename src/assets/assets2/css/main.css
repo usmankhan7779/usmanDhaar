@@ -1,84 +1,83 @@
-
-html,
-body,
-div,
-span,
+a,
+abbr,
+acronym,
+address,
 applet,
-object,
-iframe,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
+header,
+hgroup,
+html,
+i,
+iframe,
 img,
 ins,
 kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
 q,
+ruby,
 s,
 samp,
+section,
 small,
+span,
 strike,
 strong,
 sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
 summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
 time,
-mark,
-audio,
+tr,
+tt,
+u,
+ul,
+var,
 video {
     margin: 0;
     padding: 0;
@@ -118,10 +117,10 @@ q {
     quotes: none
 }
 
-blockquote:before,
 blockquote:after,
-q:before,
-q:after {
+blockquote:before,
+q:after,
+q:before {
     content: '';
     content: none
 }
@@ -142,10 +141,10 @@ h6 {
 }
 
 a {
-    transition: 0.3s ease-in-out;
-    -webkit-transition: 0.3s ease-in-out;
-    -ms-transition: 0.3s ease-in-out;
-    -moz-transition: 0.3s ease-in-out
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out
 }
 
 a:focus {
@@ -158,7 +157,7 @@ a:focus {
 
 input:focus,
 textarea:focus {
-    outline: none
+    outline: 0
 }
 
 p {
@@ -169,23 +168,19 @@ img {
     max-width: 100%
 }
 
-
-
-
-/* Start Shipment */
 .user-information {
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 5px
 }
 
 .user-information th {
-    padding: 8px !important;
-    font-size: 15px !important;
-    background: #f7f4f4;
+    padding: 8px!important;
+    font-size: 15px!important;
+    background: #f7f4f4
 }
 
 .user-information td {
-    font-size: 15px !important;
+    font-size: 15px!important
 }
 
 .new-address-btn {
@@ -196,16 +191,17 @@ img {
     padding: 8px 15px;
     border: none;
     box-shadow: 1px 1px 7px 2px #ccc;
-    float: right;
+    float: right
 }
-/* End Ship Ment */
 
-.color-blue{
-    color: #007dff;
+.color-blue {
+    color: #007dff
 }
-.overfliw-h{
-    overflow: hidden;
+
+.overfliw-h {
+    overflow: hidden
 }
+
 select {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -213,7 +209,6 @@ select {
 }
 
 .section {
-    /* padding: 70px 0; */
     padding: 20px 0;
     overflow: hidden
 }
@@ -262,7 +257,9 @@ select {
     font-size: 16px;
     font-weight: 600
 }
-
+.margin-0{
+    margin: 0;
+}
 .margintop10 {
     margin-top: 10px
 }
@@ -303,13 +300,13 @@ select {
     margin-bottom: 30px
 }
 
-h1,
-.h1 {
+.h1,
+h1 {
     font-size: 45px
 }
 
-h2,
-.h2 {
+.h2,
+h2 {
     font-size: 30px
 }
 
@@ -372,19 +369,23 @@ h6 {
     color: #fff;
     text-decoration: none
 }
-.btn-black{
+
+.btn-black {
     background: #000;
     padding: 8px 18px;
     box-shadow: 0 0 3px 0 #5d5d5d;
     border-radius: 30px;
     font-size: 14px;
-    transition: 0.4s;
+    transition: .4s;
     color: #fff;
     border: none;
-    font-weight: bold;
+    font-weight: 700
 }
-.sitebtn i,
-.button-orng i {
+.nav-tabs{
+    border: none !important;
+}
+.button-orng i,
+.sitebtn i {
     padding-right: 7px;
     font-size: 16px;
     display: inline-block
@@ -599,7 +600,7 @@ h6 {
 }
 
 .navbar-default {
-    background: none;
+    background: 0 0;
     border: none;
     margin-bottom: 0;
     min-height: auto;
@@ -607,7 +608,7 @@ h6 {
 }
 
 .navbar {
-    background: none
+    background: 0 0
 }
 
 .navbar-collapse {
@@ -630,12 +631,12 @@ h6 {
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
-    background: none
+    background: 0 0
 }
 
-.navbar-nav>li>a:hover,
+.navbar-nav>li.active>a,
 .navbar-nav>li:hover>a,
-.navbar-nav>li.active>a {
+.navbar-nav>li>a:hover {
     color: red!important;
     background: #fff!important
 }
@@ -1230,12 +1231,12 @@ a.wit-btn {
 .categoryList li {
     text-align: center;
     min-height: 220px;
-    padding: 10px;
+    padding: 10px
 }
 
 .categoryList li a {
     display: block;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-size: 18px;
     font-family: Hind, sans-serif;
     font-weight: 600;
@@ -1243,23 +1244,22 @@ a.wit-btn {
     text-decoration: none;
     padding: 10px;
     box-shadow: 1px 1px 5px 1px #ccc;
-    border-radius: 5px;
+    border-radius: 5px
 }
 
 .categoryList li img {
-    /* margin-bottom: 10px */
-    width: 85%;
+    width: 85%
 }
 
 .categoryList li span {
     display: block;
-    background: #000 !important;
+    background: #000!important;
     padding: 8px 5px;
     box-shadow: 0 0 3px 0 #5d5d5d;
     border-radius: 30px;
     font-size: 14px;
-    transition: 0.4s;
-    color: #fff;
+    transition: .4s;
+    color: #fff
 }
 
 .categoryList li a i {
@@ -1269,11 +1269,11 @@ a.wit-btn {
 
 .categoryList li a:hover span {
     color: #fff;
-    background: red !important;
+    background: red!important
 }
 
 .categoryList li a:hover i {
-    color: #CCC
+    color: #ccc
 }
 
 .topsearchwrap {
@@ -1620,7 +1620,7 @@ a.wit-btn {
 }
 
 .sortbybar .input-group-addon {
-    background: none;
+    background: 0 0;
     border: none;
     padding: 0 10px 0 0;
     font-weight: 700
@@ -1699,11 +1699,11 @@ a.wit-btn {
     margin: 0 -5px
 }
 
-.searchform .col-md-3,
 .searchform .col-md-2,
-.searchform .col-sm-3,
+.searchform .col-md-3,
+.searchform .col-md-5,
 .searchform .col-sm-2,
-.searchform .col-md-5 {
+.searchform .col-sm-3 {
     padding: 0 5px
 }
 
@@ -1780,7 +1780,7 @@ a.wit-btn {
     display: none
 }
 
-.optionlist li input[type=checkbox] + label {
+.optionlist li input[type=checkbox]+label {
     width: 20px;
     height: 20px;
     border: 1px solid #e0e0e0;
@@ -1791,7 +1791,7 @@ a.wit-btn {
     top: 0
 }
 
-.optionlist li input[type=checkbox]:checked + label:before {
+.optionlist li input[type=checkbox]:checked+label:before {
     content: '\f00c';
     font-family: Hind, sans-serif;
     color: #4ece00;
@@ -1836,20 +1836,20 @@ a.wit-btn {
 
 .searchList {
     list-style: none;
-    margin: 0;
+    margin: 0
 }
 
 .searchList li {
     background: #fbfafa;
     padding: 10px;
     margin-bottom: 10px;
-    transition: 0.4s all ease-in-out;
+    transition: .4s all ease-in-out;
     border: 1px solid #ebebeb;
-    border-radius: 10px;
+    border-radius: 10px
 }
 
 .searchList li:hover {
-    box-shadow: 1px 1px 5px 1px #ebebeb;
+    box-shadow: 1px 1px 5px 1px #ebebeb
 }
 
 .searchList li .adimg {
@@ -1861,7 +1861,9 @@ a.wit-btn {
 }
 
 .searchList li h3 {
-    margin: 10px 0
+    /* margin: 10px 0; */
+    text-align: left;
+    margin: 0;
 }
 
 .searchList li h3 a {
@@ -1882,7 +1884,7 @@ a.wit-btn {
     font-size: 20px;
     font-weight: 600;
     margin: 10px 0;
-    color: #000;
+    color: #000
 }
 
 .adverify {
@@ -1909,8 +1911,8 @@ a.wit-btn {
 }
 
 .pendingad {
-    background: #FFDDDE;
-    border: 1px solid #FFC1C2;
+    background: #ffddde;
+    border: 1px solid #ffc1c2;
     color: 0;
     display: inline-block;
     margin-top: 15px;
@@ -2250,7 +2252,7 @@ a.wit-btn {
 }
 
 .jbdetail li span.freelance {
-    color: #F07200
+    color: #f07200
 }
 
 .adimages {
@@ -2297,7 +2299,6 @@ a.wit-btn {
     padding: 0!important
 }
 
-.flex-direction-nav li:before,
 .flex-direction-nav li:before {
     display: none
 }
@@ -2495,9 +2496,9 @@ a.wit-btn {
     color: #2079f2
 }
 
-.userPortfolio li.shown,
 .no-cssanimations .userPortfolio li,
-.no-js .grid li {
+.no-js .grid li,
+.userPortfolio li.shown {
     opacity: 1
 }
 
@@ -2632,7 +2633,7 @@ a.wit-btn {
 .myads h3 {
     font-size: 30px;
     text-align: center;
-    margin: 10px;
+    margin: 10px
 }
 
 .inner-page {
@@ -2735,7 +2736,7 @@ a.wit-btn {
 }
 
 .faqs .panel-default>.panel-heading {
-    background: none;
+    background: 0 0;
     border: none;
     padding: 0
 }
@@ -2760,8 +2761,8 @@ a.wit-btn {
 }
 
 .faqs h4 .collapsed:hover,
-.faqs h4 a:hover,
-.faqs h4 a:active {
+.faqs h4 a:active,
+.faqs h4 a:hover {
     text-decoration: none;
     background: #ed2424;
     color: #fff
@@ -2780,10 +2781,10 @@ a.wit-btn {
     font-size: 16px;
     display: inline-block;
     text-align: center;
-    transition: 0.3s ease-in;
-    -moz-transition: 0.3s ease-in;
-    -webkit-transition: 0.3s ease-in;
-    -ms-transition: 0.3s ease-in
+    transition: .3s ease-in;
+    -moz-transition: .3s ease-in;
+    -webkit-transition: .3s ease-in;
+    -ms-transition: .3s ease-in
 }
 
 .faqs h4 .collapsed:before {
@@ -2799,10 +2800,10 @@ a.wit-btn {
     font-size: 16px;
     display: inline-block;
     text-align: center;
-    transition: 0.3s ease-in;
-    -moz-transition: 0.3s ease-in;
-    -webkit-transition: 0.3s ease-in;
-    -ms-transition: 0.3s ease-in;
+    transition: .3s ease-in;
+    -moz-transition: .3s ease-in;
+    -webkit-transition: .3s ease-in;
+    -ms-transition: .3s ease-in;
     text-decoration: none
 }
 
@@ -2816,18 +2817,21 @@ a.wit-btn {
     margin-top: 20px
 }
 
-.formpanel .formrow , .formrow {
+.formpanel .formrow,
+.formrow {
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 14px
 }
 
 .formpanel .formrow a {
     color: #007dff;
-    font-weight: 600;
+    font-weight: 600
 }
-.help-block{
-    margin-bottom: 5px;
+
+.help-block {
+    margin-bottom: 5px
 }
+
 .formpanel .form-control {
     height: auto;
     padding: 5px 0;
@@ -2860,11 +2864,11 @@ a.wit-btn {
     text-transform: capitalize;
     box-shadow: 0 0 20px -5px #000;
     margin: 0 auto;
-    display: block;
+    display: block
 }
 
 .formpanel .btn:hover {
-    background: red;
+    background: red
 }
 
 .uploadphotobx {
@@ -2877,8 +2881,7 @@ a.wit-btn {
 .uploadphotobx i {
     font-size: 50px;
     color: #999;
-    display: block;
-    /* margin-bottom: 15px */
+    display: block
 }
 
 .uploadphotobx h4 {
@@ -2889,14 +2892,13 @@ a.wit-btn {
 .uploadphotobx p {
     font-size: 18px;
     margin-top: 5px;
-    margin: 0;
+    margin: 0
 }
 
-.uploadphotobx .uploadBox input[type="file"] {
+.uploadphotobx .uploadBox input[type=file] {
     cursor: inherit;
     display: block;
     font-size: 1px;
-    filter: alpha(opacity=0);
     min-height: 100%;
     min-width: 100%;
     opacity: 0;
@@ -2918,7 +2920,7 @@ a.wit-btn {
     border-radius: 5px;
     display: inline-block;
     position: relative;
-    transition: 0.4s
+    transition: .4s
 }
 
 .uploadphotobx .uploadBox:hover {
@@ -2926,23 +2928,28 @@ a.wit-btn {
     box-shadow: 0 0 10px #ccc;
     color: #fff
 }
-.uploadimg{
-    text-align: center;
+
+.uploadimg {
+    text-align: center
 }
-.uploadimg .img-box{
+
+.uploadimg .img-box {
     position: relative;
     width: 20%;
-    margin: 0 auto 10px;
+    margin: 0 auto 10px
 }
-.img-box i{
+
+.img-box i {
     position: absolute;
     right: 0;
     font-size: 20px;
-    cursor: pointer;
+    cursor: pointer
 }
-.uploadimg img{
-    width: 100%;
+
+.uploadimg img {
+    width: 100%
 }
+
 .fileattached {
     background: #f6f6f6;
     border: 1px solid #ddd;
@@ -2997,7 +3004,7 @@ a.wit-btn {
     border: 1px solid #ddd;
     padding: 25px 20px 10px;
     box-shadow: 0 5px 10px #ccc;
-    border-radius: 5px;
+    border-radius: 5px
 }
 
 .userccount p {
@@ -3009,9 +3016,9 @@ a.wit-btn {
 
 .userccount h5 {
     font-size: 30px;
-    color: #000000;
+    color: #000;
     font-weight: 700;
-    margin-bottom: 25px
+    margin-bottom: 10px
 }
 
 .socialLogin {
@@ -3053,12 +3060,15 @@ a.wit-btn {
     font-weight: 600;
     text-decoration: underline;
     color: #007dff;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .userbtns .nav-tabs {
     border-bottom: none;
-    margin-bottom: 30px
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
 }
 
 .userbtns .nav-tabs>li {
@@ -3234,7 +3244,7 @@ ul.orderlist li:before {
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
-    color: #82B440
+    color: #82b440
 }
 
 .four-plan {
@@ -3672,10 +3682,10 @@ ul.orderlist li:before {
     content: '';
     position: absolute;
     z-index: 10;
-    transition: 0.3s ease-in-out;
-    -webkit-transition: 0.3s ease-in-out;
-    -ms-transition: 0.3s ease-in-out;
-    -moz-transition: 0.3s ease-in-out
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out
 }
 
 .blogList li:hover .postimg:before {
@@ -3720,19 +3730,19 @@ ul.orderlist li:before {
     line-height: 24px
 }
 
-.postmeta span,
-.postmeta a {
+.postmeta a,
+.postmeta span {
     color: #ed2424
 }
 
-.blogList p,
-.blogGrid li p {
+.blogGrid li p,
+.blogList p {
     line-height: 24px;
     color: #333
 }
 
-.blogList .readmore,
-.blogGrid .readmore {
+.blogGrid .readmore,
+.blogList .readmore {
     border-bottom: 1px dotted #00b1f1;
     display: inline-block;
     margin-top: 15px;
@@ -3741,8 +3751,8 @@ ul.orderlist li:before {
     padding-bottom: 5px
 }
 
-.blogList .readmore:hover,
-.blogGrid .readmore:hover {
+.blogGrid .readmore:hover,
+.blogList .readmore:hover {
     text-decoration: none;
     color: #00b1f1
 }
@@ -3925,7 +3935,7 @@ blockquote:after {
     margin-top: 5px;
     border-radius: 0;
     box-shadow: none;
-    background: none;
+    background: 0 0;
     border: 1px solid #e8e8e8
 }
 
@@ -3962,7 +3972,7 @@ blockquote:after {
     right: 0;
     top: 0;
     border-radius: 0;
-    background: none;
+    background: 0 0;
     font-size: 20px
 }
 
@@ -4014,11 +4024,11 @@ blockquote:after {
     font-size: 12px;
     color: #777;
     margin-top: 10px;
-    -webkit-transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
-    -ms-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out
 }
 
 .archive li a:hover span {
@@ -4206,8 +4216,8 @@ blockquote:after {
     font-size: 18px
 }
 
-.footerWrap .phone a,
-.footerWrap .email a {
+.footerWrap .email a,
+.footerWrap .phone a {
     color: #333;
     font-weight: 600
 }
@@ -4267,7 +4277,7 @@ blockquote:after {
 }
 
 .fullpagesearch .searchwrap {
-    background: none;
+    background: 0 0;
     height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -4389,43 +4399,62 @@ input.upload-input {
     color: #272d33
 }
 
-
-
-
-.contact-address h2{
+.contact-address h2 {
     font-weight: 400;
-    margin: 5px 0;
+    margin: 5px 0
 }
-.contact-address h5{
-    font-weight: 600 !important;
+
+.contact-address h5 {
+    font-weight: 600!important;
     margin: 0;
     font-size: 15px;
-    line-height: 26px !important;
-    color: #555;
+    line-height: 26px!important;
+    color: #555
 }
 
-/* Start Watchlist */
-.Watchlist-box{
+.Watchlist-box {
     box-shadow: 1px 1px 6px 2px #e9e9e9;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px
 }
-.Watchlist-box h3{
+
+.Watchlist-box h3 {
     margin: 10px 0!important;
     text-align: center;
-    font-size: 30px;
+    font-size: 30px
 }
-.Watchlist-box h2{
+
+.Watchlist-box h2 {
     text-align: left;
     margin: 0;
-    line-height: 20px;
+    line-height: 20px
 }
-.Watchlist-box h2 a{
-    font-size: 20px;
-    text-transform: capitalize;
-}
-/* End Watchlist */
 
+.Watchlist-box h2 a {
+    font-size: 20px;
+    text-transform: capitalize
+}
+
+.checkout-table {
+    border: 1px solid #efefef
+}
+
+.terms-use .ribbon {
+    text-align: left!important;
+    padding: 0!important
+}
+
+
+/* Start from-setting */
+.from-setting input , select{
+    margin-bottom: 10px;
+}
+.from-setting label{
+    font-size: 18px;
+    margin-bottom: 5px;
+    display: block;
+}
+/* End from-setting */
 
 @media screen and (max-width:1199px) {
     .main-plan .plan-price2 {
@@ -4496,7 +4525,7 @@ input.upload-input {
         margin-top: 15px
     }
     .three-plan ul {
-        background: none
+        background: 0 0
     }
     .main-plan {
         max-width: 150px;
@@ -4539,8 +4568,8 @@ input.upload-input {
     .sidebar .social a {
         font-size: 30px
     }
-    .pageTitle h1,
-    .breadCrumb {
+    .breadCrumb,
+    .pageTitle h1 {
         text-align: center
     }
     .adButtons a {
@@ -4588,8 +4617,8 @@ input.upload-input {
     .searchbar div.row {
         padding: 0
     }
-    .listpgWraper,
-    .inner-page {
+    .inner-page,
+    .listpgWraper {
         padding: 50px 15px
     }
     .searchList li .listbtn {
@@ -4643,8 +4672,8 @@ input.upload-input {
     .navbar-toggle .icon-bar {
         background: #fff
     }
-    .navbar-nav li.postjob,
-    .navbar-nav li.jobseeker {
+    .navbar-nav li.jobseeker,
+    .navbar-nav li.postjob {
         margin-bottom: 10px
     }
     .gridlist li h3 {
@@ -4768,13 +4797,13 @@ input.upload-input {
         margin: 0 auto;
         margin-bottom: 10px
     }
-    .advert-header .jobinfo .companyinfo,
     .advert-header .jobinfo .candidateinfo,
+    .advert-header .jobinfo .companyinfo,
     .educationList li {
         text-align: center
     }
-    .advert-header .jobinfo .companyinfo .companylogo,
     .advert-header .jobinfo .candidateinfo .userPic,
+    .advert-header .jobinfo .companyinfo .companylogo,
     .educationList li .date {
         float: none;
         margin: 0 auto;
@@ -4833,7 +4862,7 @@ input.upload-input {
     text-align: justify;
     margin-bottom: 15px;
     line-height: 24px;
-    color: black
+    color: #000
 }
 
 .content-setting h5 {
@@ -4856,7 +4885,7 @@ input.upload-input {
 
 .content-setting h3 {
     font-size: 30px;
-    color: black;
+    color: #000;
     font-weight: 700;
     margin-bottom: 30px;
     margin-top: 30px;
