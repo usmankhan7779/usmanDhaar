@@ -134,12 +134,14 @@ export class HomeComponent implements OnInit {
       this.Getjustlikeforyou();
       this.PhoneandTablet();
       this.CategorySlider();
-      this.HotDealSlider();
+      // this.HotDealSlider();
       this.RecommendedSlider();
       this.ViewedItemSlider();
       if (localStorage.getItem('UserID')) {
         this.usercheck = true;
+        if (this.viewlogin !== null) {
         this.WatchedItemSlider();
+        }
       }
     }
   }
@@ -463,49 +465,50 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  HotDealSlider() {
-    this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
-      this.HotDealProducts = resSlidersData;
-      $('.hotslider').fadeOut(0);
-      if (this.HotDealProducts.length >= 5) {
-        setTimeout(function () {
-          $('.hotslider').slick({
-            infinite: true,
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            autoplay: true,
-            prevArrow: '<button class="leftRsBanner">&lt;</button>',
-            nextArrow: '<button class="rightRsBanner">&lt;</button>',
-            responsive: [
-              {
-                breakpoint: 1199,
-                settings: {
-                  slidesToShow: 3,
-                  infinite: true
-                }
-              },
-              {
-                breakpoint: 767,
-                settings: {
-                  slidesToShow: 2,
-                }
-              },
-              {
-                breakpoint: 639,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1
-                }
-              }
+  // HotDealSlider() {
+  //   this.GetProducts.getcomputinglaptopsproduct8().subscribe(resSlidersData => {
+  //     this.HotDealProducts = resSlidersData;
+  //     $('.hotslider').fadeOut(0);
+  //     if (this.HotDealProducts.length >= 5) {
+  //       setTimeout(function () {
+  //         $('.hotslider').slick({
+  //           infinite: true,
+  //           slidesToShow: 5,
+  //           slidesToScroll: 1,
+  //           autoplay: true,
+  //           prevArrow: '<button class="leftRsBanner">&lt;</button>',
+  //           nextArrow: '<button class="rightRsBanner">&lt;</button>',
+  //           responsive: [
+  //             {
+  //               breakpoint: 1199,
+  //               settings: {
+  //                 slidesToShow: 3,
+  //                 infinite: true
+  //               }
+  //             },
+  //             {
+  //               breakpoint: 767,
+  //               settings: {
+  //                 slidesToShow: 2,
+  //               }
+  //             },
+  //             {
+  //               breakpoint: 639,
+  //               settings: {
+  //                 slidesToShow: 1,
+  //                 slidesToScroll: 1
+  //               }
+  //             }
 
-            ]
-          });
-        }, 0);
-      }
-      $('.hotslider').fadeIn(500).delay(200);
-    });
-  }
+  //           ]
+  //         });
+  //       }, 0);
+  //     }
+  //     $('.hotslider').fadeIn(500).delay(200);
+  //   });
+  // }
   RecommendedSlider() {
+    if (this.viewlogin !== null) {
     this.Category.getRecommended().subscribe(resSlidersData => {
       this.RecommendedProducts = resSlidersData.Results;
       $('.recommendedslider').fadeOut(0);
@@ -547,6 +550,12 @@ export class HomeComponent implements OnInit {
       $('.recommendedslider').fadeIn(500).delay(200);
     });
   }
+  // else if (this.viewlogin == null) {
+
+  // }
+}
+
+
   ViewedItemSlider() {
     this.ViewedProducts = JSON.parse(localStorage.getItem('ViewedItem'));
     if (this.ViewedProducts === null) {
@@ -596,14 +605,9 @@ export class HomeComponent implements OnInit {
       // });
     }
   }
-  // this.httpService.getwatchproducts().subscribe(data => {
-  //   this.ActiveProduct = data.Results;
-  //   console.log(this.ActiveProduct.ProductID)
-  //   if (this.ActiveProduct['Total Result'] === 0) {
-  //     this.errormessage = true;
-  //   }
-  // });
+   
   WatchedItemSlider() {
+    if (this.viewlogin !== null) {
     this.httpService.getwatchproducts().subscribe(resSlidersData => {
       this.WatchedProducts = resSlidersData.Results;
       $('.watchslider').fadeOut(0);
@@ -644,6 +648,7 @@ export class HomeComponent implements OnInit {
       }
       $('.watchslider').fadeIn(500).delay(200);
     });
+  }
   }
 
   timer(end_date: string) {

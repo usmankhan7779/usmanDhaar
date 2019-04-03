@@ -197,12 +197,12 @@ export class SingleProductComponent implements OnInit {
               // }
             });
 
-          if (this.ProID !== '0') {
-            // alert(this.ProID)
-            this.GetAdd.GetAllProductPicture(this.ProID).subscribe(resSlidersData => {
-              this.ProductPictures = resSlidersData;
-            });
-          }
+          // if (this.ProID !== '0') {
+          //   // alert(this.ProID)
+          //   this.GetAdd.GetAllProductPicture(this.ProID).subscribe(resSlidersData => {
+          //     this.ProductPictures = resSlidersData;
+          //   });
+          // }
           // if(localStorage.getItem('Authorization')!== null)
           // {
           
@@ -242,9 +242,9 @@ export class SingleProductComponent implements OnInit {
             }
           });
         });
-      this.GetAdd.GetphotoById().subscribe(resSlidersData => {
-        this.Getphoto = resSlidersData;
-      });
+      // this.GetAdd.GetphotoById().subscribe(resSlidersData => {
+      //   this.Getphoto = resSlidersData;
+      // });
 
       if (this.CatName === '0') {
         this.router.navigate(['/login']);
