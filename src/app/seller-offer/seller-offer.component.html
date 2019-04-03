@@ -48,8 +48,8 @@
       <div class="col-md-9 col-sm-8">
         <div class="myads">
           <h3>My Offers</h3>
-          <br/>
-          <br/>
+
+
           <div class="tab-info">
             <div class="nav home-nav-tabs home-product-tabs">
               <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#pendingoffers" data-toggle="tab" aria-expanded="false">Pending Offers</a></h3>
@@ -57,9 +57,18 @@
               <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#rejectedoffers" data-toggle="tab" aria-expanded="false">Rejected Offers</a></h3>
               <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#mycounteroffer" data-toggle="tab" aria-expanded="false">My Counter Offer</a></h3>
               <h3 class="new-product-title pull-left" style="font-size: 12px"><a href="#sellercounteroffer" data-toggle="tab" aria-expanded="false">Seller Counter Offer</a></h3>
-
             </div>
           </div>
+
+
+
+
+          
+
+
+
+
+
           <ul class="searchList">
             <!-- ad start -->
             <div id="productTabContent" class="tab-content">
@@ -67,9 +76,7 @@
                 <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
                   <div *ngIf="phoneProducts.Status && !phoneProducts.CounterStatus && phoneProducts.Accept">
                     <li>
-                      <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                          <div class="jobinfo">
+                      
                             <div class="row">
                               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
@@ -85,9 +92,6 @@
                               </div>
 
                             </div>
-                          </div>
-                        </div>
-                      </div>
                     </li>
                   </div>
                 </ng-container>
@@ -96,9 +100,7 @@
                 <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
                   <div *ngIf="phoneProducts.Status && phoneProducts.CounterStatus && !phoneProducts.Accept">
                     <li>
-                      <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                          <div class="jobinfo">
+                      
                             <div class="row">
                               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
@@ -116,9 +118,6 @@
                               </div>
 
                             </div>
-                          </div>
-                        </div>
-                      </div>
                     </li>
                   </div>
                 </ng-container>
@@ -127,9 +126,7 @@
                 <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
                   <div *ngIf="phoneProducts.Status && phoneProducts.CounterStatus && phoneProducts.Accept">
                     <li>
-                      <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                          <div class="jobinfo">
+                      
                             <div class="row">
                               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
@@ -145,9 +142,6 @@
                               </div>
 
                             </div>
-                          </div>
-                        </div>
-                      </div>
                     </li>
                   </div>
                 </ng-container>
@@ -156,9 +150,7 @@
                 <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
                   <div *ngIf="!phoneProducts.Status && !phoneProducts.CounterStatus && !phoneProducts.Accept">
                     <li>
-                      <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                          <div class="jobinfo">
+                      
                             <div class="row">
                               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
@@ -174,9 +166,6 @@
                               </div>
 
                             </div>
-                          </div>
-                        </div>
-                      </div>
                     </li>
                   </div>
                 </ng-container>
@@ -185,9 +174,7 @@
                 <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
                   <div *ngIf="phoneProducts.Status && !phoneProducts.CounterStatus && !phoneProducts.Accept">
                     <li>
-                      <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                          <div class="jobinfo">
+                      
                             <div class="row">
                               <div class="col-md-12 col-sm-12 col-xs-12">
                                 <h3><a [routerLink]="['/single-product']" [queryParams]="{ ProID:  phoneProducts.Product_ID, CatName: phoneProducts.Cat_Name }" >{{phoneProducts.P_Title}}</a></h3>
@@ -204,9 +191,6 @@
                               </div>
 
                             </div>
-                          </div>
-                        </div>
-                      </div>
                     </li>
                   </div>
                 </ng-container>
