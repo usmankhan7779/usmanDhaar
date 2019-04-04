@@ -138,9 +138,9 @@ this.vendors();
     
   }
   storess(){
-    alert  (this.model.StoreName)
+    // alert  (this.model.StoreName)
     this.SessionstoreName= this.model.StoreName
-    alert(this.SessionstoreName)
+    // alert(this.SessionstoreName)
     console.log(this.SessionstoreName)
   }
 
@@ -209,14 +209,14 @@ this.vendors();
         console.log(event.target.checked)
         this.product_ad_active = "True";
         console.log(this.product_ad_active,'true fbr register')
-        alert(this.product_ad_active)
+        // alert(this.product_ad_active)
         //this.setPage(1);
     }
     else if (event.target.checked == false) {
         console.log(event.target.checked)
         this.product_ad_active="False";
         console.log(this.product_ad_active,'false fbr register')
-        alert(this.product_ad_active)
+        // alert(this.product_ad_active)
         //this.setPage(1);
     }
     //console.log(this.months3)

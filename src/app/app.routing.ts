@@ -66,10 +66,10 @@ const appRoutes: Routes = [
       // SellerProductSettingStoreModule
     ]
   },
+
   
   {
-    path: '',
-    component: UserDashboardMasterComponent,
+    path: '',    component: UserDashboardMasterComponent,
     children: [
       { path: 'buyer-dashboard', loadChildren: './buyer-dashboard/buyer-dashboard.module#BuyerDashboardModule', canActivate: [AuthGuard] },
       { path: 'my-bids-buyer', loadChildren: './my-bids-buyer/my-bids-buyer.module#MyBidsBuyerModule', canActivate: [AuthGuard] },
