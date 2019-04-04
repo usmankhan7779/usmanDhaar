@@ -45,7 +45,7 @@
             </div> 
             <div class="tab-content">
               <div id="home" class="tab-pane fade in active">
-                <div class="myads">
+                <div class="text-center">
                   <h3>My Products {{SessionstoreName}} </h3>
                   <ul class="searchList">
                     <!-- ad start -->
@@ -102,10 +102,8 @@
               <div id="home1" class="tab-pane fade">
                   <h3>All Products</h3>
               
-                  <div class="myads">
+                  <div class="text-center">
                     <h3>My Products {{SessionstoreName}} </h3>
-                    <br />
-                    <br />
                     <ul class="searchList">
                       <!-- ad start -->
                       <ng-container *ngFor="let phoneProducts of Allproducts.Results | paginate: { itemsPerPage: 12,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }; let item = index">
@@ -163,10 +161,8 @@
                 </div>
               <div id="menu1" class="tab-pane fade">
               
-                <div class="myads">
+                <div class="text-center">
                   <h3>My Products {{SessionstoreName}} </h3>
-                  <br />
-                  <br />
                   <ul class="searchList">
                     <!-- ad start -->
                     <ng-container *ngFor="let phoneProducts of DeactiveProducts.Results | paginate: { itemsPerPage: 12,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }; let item = index">
@@ -232,29 +228,29 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 style="font-size: 30px !important;" class="modal-title" id="myModalLabel">Edit Product</h4>
+                <h4 class="model-heading" id="myModalLabel">Edit Product</h4>
               </div>
               <div class="modal-body">
-                <div class="formpanel">
+                <div class="">
         
-                  <div class="formrow">
-                    <label>Category:</label>
+                  <div class="">
+                    <label class="help-block">Category:</label>
                     <select [(ngModel)]="model.Cat_Name" name="cat" (click)="MainCatSel(model.Cat_Name)" required>
                       <ng-container *ngFor="let cat of GetallCat">
                         <option value="{{cat.Cat_Name}}">{{cat.Cat_Name}}</option>
                       </ng-container>
                     </select>
                   </div>
-                  <div class="formrow">
-                    <label>Sub-Category:</label>
+                  <div class="">
+                    <label class="help-block" >Sub-Category:</label>
                     <select [(ngModel)]="model.Sub_Cat_Name" name="Subcat" (click)="SubCatSel(model.Sub_Cat_Name)" required>
                       <ng-container *ngFor="let cat of GetAllSubCat">
                         <option value="{{cat.Sub_Cat_Name}}">{{cat.Sub_Cat_Name}}</option>
                       </ng-container>
                     </select>
-                    <div class="formrow">
+                    <div class="">
                     </div>
-                    <label>Sub-Sub-Category:</label>
+                    <label class="help-block" >Sub-Sub-Category:</label>
                     <select [(ngModel)]="model.Sub_Sub_Cat_Name" name="SubSubcat" required>
                       <ng-container *ngFor="let cat of GetAllSubSubCat">
                         <option value="{{cat.Sub_Sub_Cat_Name}}">{{cat.Sub_Sub_Cat_Name}}</option>
@@ -262,15 +258,15 @@
                     </select>
                   </div>
                   <div class="formrow">
-                    <label>Title:</label>
+                    <label class="help-block" >Title:</label>
                     <input type="text" class="form-control" name="Title" [(ngModel)]="model.P_Title" required>
                   </div>
                   <div class="formrow">
-                    <label>Product Condition:</label>
+                    <label class="help-block" >Product Condition:</label>
                     <input type="text" class="form-control" name="Condition" [(ngModel)]="model.P_Condition" required>
                   </div>
                   <div class="formrow">
-                    <label>Product Description:</label>
+                    <label class="help-block" >Product Description:</label>
                     <textarea type="text" class="form-control" name="Description" [(ngModel)]="model.P_Des"></textarea>
                   </div>
                   <div class="col-md-12">
@@ -282,20 +278,20 @@
                         <p>It must be a head-shot photo</p>
                         <label class="uploadBox">Click to Upload Cover Photos
                           <input type="file" #fileImportInput id="file1" name="file" class="file" data-preview-file-type="text" (change)="onChange($event.target.files)" multiple accept="image/*">
-                        </label><br>
+                        </label>
                       </div>
     
                     </div>
                   </div>
                   <div class="formrow">
-                    <label>Pic:</label>
+                    <label class="help-block" >Pic:</label>
                     <input type="text" class="form-control" name="Title" [(ngModel)]="model.Pic" required>
                   </div>
                   <div class="col-md-12">
-                    <div class="formrow" style="text-align: right">
+                    <div class="formrow uploadimg">
                       <ng-container *ngFor="let img of url; let i=index">
-                        <div class="col-md-2">
-                          <i class="fa fa-close" (click)="removepic(i)" style="cursor: pointer"></i>
+                        <div class="img-box">
+                          <i class="fa fa-times" (click)="removepic(i)" style="cursor: pointer"></i>
                           <img [src]="img">
                         </div>
                         <!--<input type="submit" value="Delete" (click)="removepic(i)">-->
@@ -422,8 +418,8 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="EditProduct()">Submit</button>
+                <button type="button" class="btn-black" data-dismiss="modal">Close</button>
+                <button type="button" class="btn-black" data-dismiss="modal" (click)="EditProduct()">Submit</button>
               </div>
             </div>
           </div>
