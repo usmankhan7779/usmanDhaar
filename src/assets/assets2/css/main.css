@@ -1261,7 +1261,7 @@ a.wit-btn {
     padding: 8px 5px;
     box-shadow: 0 0 3px 0 #5d5d5d;
     border-radius: 30px;
-    font-size: 14px;
+    font-size: 12px;
     transition: .4s;
     color: #fff
 }
@@ -1877,7 +1877,8 @@ a.wit-btn {
 }
 
 .searchList li .cateName {
-    color: #969595
+    color: #969595;
+    text-align: left;
 }
 
 .searchList li .cateName a {
