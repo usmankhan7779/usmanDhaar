@@ -241,7 +241,7 @@ footer h3{border-bottom:1px #111 solid;padding-top:10px;}
 .sidebar .block{margin-bottom:20px;}
 .color ul li{margin-right:3px;}
 .subscribe-pop-up{margin-top:230px;}
-.container{width:750px;}
+.container{width:100%;}
 .top-cart{padding-left:0px;}
 .mini-cart .basket a .cart-total{font-size:12px;}
 .mini-cart .basket a .cart-title{font-size:13px;}

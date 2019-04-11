@@ -108,6 +108,24 @@ export class UserDashboardMasterComponent implements OnInit {
 
     }
   }
+
+
+
+  openNav() {
+    document.getElementById("mySidenav").style.width = "30%";
+  }
+  
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+
+
+
+
+
+
+
+
   handleFileInput(files: FileList) {
       this. filetoup = files;
       console.log('uploaded filetoup  ', this.filetoup);

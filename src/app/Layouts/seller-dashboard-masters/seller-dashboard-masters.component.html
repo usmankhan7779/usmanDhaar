@@ -4,7 +4,9 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-md-3 col-sm-4">
+
+      <div class="sidenav" id="mySidenav">
+          <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
         <ng-container *ngIf="GetUSerDOne !== null">
           <div class="user-detail">
             <div class="upload-img-wrapper" *ngIf="GetUSerDOne['Pic'] !== ''">
@@ -140,8 +142,11 @@
         <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad">
           </a> </div>
       </div>
-
+      <div class="right-nav">
+          <span class="open-btn" (click)="openNav()">&#9776;</span>
       <router-outlet></router-outlet>
+      </div>
+
     </div>
   </div>
 </div>

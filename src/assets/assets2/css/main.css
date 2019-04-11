@@ -4459,7 +4459,9 @@ input.upload-input {
 select {
     margin-bottom: 10px
 }
-
+.from-setting select{
+    line-height: 17px;
+}
 .from-setting label {
     font-size: 18px;
     margin-bottom: 5px;
@@ -4481,8 +4483,56 @@ select {
     margin: 20px auto;
 }
 
+/* Start Side Bar */
+.sidenav {
+    height: 100%;
+    width: 25%;
+    z-index: 1;
+    position: relative;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+    float: left;
+  }
+  .right-nav{
+      width: 75%;
+      float: right;
+  }
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  .open-btn{
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+  }
+  .sidenav .closebtn {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: -3px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #000;
+  }
+/* End Side Bar */
 
 
+@media screen and (min-width:991px) {
+    .sidenav{
+        width: 25% !important;
+    }
+}
 @media screen and (max-width:1199px) {
     .main-plan .plan-price2 {
         margin-left: 0;
@@ -4538,6 +4588,20 @@ select {
 }
 
 @media screen and (max-width:991px) {
+    .sidenav{
+        width: 0;
+        position: fixed;
+        margin-top: -13px;
+    }
+    .right-nav{
+        width: 100%
+    }
+    .open-btn{
+        display: block;
+    }
+    .sidenav .closebtn{
+        display: block;
+    }
     body {
         font-size: 16px
     }
@@ -4644,9 +4708,11 @@ select {
     .searchbar div.row {
         padding: 0
     }
-    .inner-page,
     .listpgWraper {
         padding: 50px 15px
+    }
+    .inner-page{
+        padding: 14px 15px;
     }
     .searchList li .listbtn {
         margin-top: 20px

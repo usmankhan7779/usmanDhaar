@@ -246,7 +246,9 @@ ul ul {
 .padding-l-r-10 {
     padding: 0 10px
 }
-
+.padding-l-r-15 {
+    padding: 0 15px
+}
 .no-bg {
     background: 0 0
 }

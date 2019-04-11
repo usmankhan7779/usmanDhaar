@@ -23,18 +23,32 @@
         </ul>
         <div class="adimages"> <a [routerLink]="['/home']"> <img src="assets/assets2/images/large-ad.jpg" alt="google ad"> </a> </div>
       </div> -->
-      <div class="col-md-9 col-sm-8">
+      <div class="col-md-12 col-sm-12">
         <div class="myads">
           <h3>My Bids For Products</h3>
-            <br>
-            <br>
-          <div class="tab-info">
+
+
+          <!-- <div class="tab-info">
             <div class="nav home-nav-tabs home-product-tabs">
               <h3 class="new-product-title pull-left" style="font-size: 15px"><a href="#currentbids" data-toggle="tab" aria-expanded="false">Current Bids</a></h3>
               <h3 class="new-product-title pull-left" style="font-size: 15px"><a href="#successfulbids" data-toggle="tab" aria-expanded="false">Successful Bids</a></h3>
               <h3 class="new-product-title pull-left" style="font-size: 15px"><a href="#unsuccessfulbids" data-toggle="tab" aria-expanded="false">Unsuccessful Bids</a></h3>
             </div>
+          </div> -->
+
+
+          <div class="userbtns">
+            <ul class="nav nav-tabs">
+              <li class="active" style="width: 200px;">
+                <a href="#currentbids" data-toggle="tab" aria-expanded="false">Current Bids</a>
+              </li>
+              <li ><a href="#successfulbids" data-toggle="tab" aria-expanded="false">Successful Bids</a>
+              </li>
+              <li ><a href="#unsuccessfulbids" data-toggle="tab" aria-expanded="false">Unsuccessful Bids</a></li>
+            </ul>
           </div>
+
+
 
           <ul class="searchList">
             <div id="productTabContent" class="tab-content">
