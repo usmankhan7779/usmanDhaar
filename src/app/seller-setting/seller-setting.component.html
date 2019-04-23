@@ -47,11 +47,11 @@
 
       <form role="form" class="login-form" (ngSubmit)="updatePassword(old.value,new1.value,new2.value)">
 
-        <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12 change-password">
 
 
-          <div class="userccount">
-            <h5>Change Password</h5>
+          <div class="userAccount">
+            <h5 class="password-heading">Change Password</h5>
             <div *ngIf="Error"  class="alert alert-danger">
               <strong>Error </strong> While updating record.
             </div>
@@ -80,7 +80,7 @@
                   <span style="color: blue  " class="glyphicon glyphicon-refresh glyphicon-refresh-animate"> </span><span>	&nbsp;  Loading ...</span>
                 </p>
               </div>
-              <input type="submit" class="btn" value="Sumbit">
+              <input type="submit" class="btn" value="submit">
             </div>
             <!-- form  end-->
 

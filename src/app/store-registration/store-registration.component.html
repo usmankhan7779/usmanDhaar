@@ -90,7 +90,7 @@
                     <div class="col-sm-6 ">
                       <div class="form-group form-group has-feedback" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
                         <label  for="Store _name" class="required">Store URL(*)</label>
-                        <div style="color:red" *ngIf="model.storename!=null && storename.touched && !storename.valid" class="help-block">Store Name required or invalid
+                        <div style="color:#C00;" *ngIf="model.storename!=null && storename.touched && !storename.valid" class="help-block">Store Name required or invalid
                         </div>
                         <input type="text" [(ngModel)]="model.storename"
                                pattern="^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$"
