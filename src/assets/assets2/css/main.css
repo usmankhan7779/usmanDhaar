@@ -4388,10 +4388,11 @@ input.upload-input {
     top: -42px;
     font-size: 55px;
     color: #000;
-    left: 26px;
+    left: 114px;
     cursor: pointer;
     display: none
 }
+
 
 .upload-img-wrapper:hover .upload-cam-img {
     display: block
@@ -4548,6 +4549,9 @@ select {
   }
   .panel-title{
       text-align: center
+  }
+  .password-heading{
+      text-align: center;
   }
 
 /* End Side Bar */
