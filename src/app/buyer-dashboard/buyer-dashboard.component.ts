@@ -24,12 +24,13 @@ export class BuyerDashboardComponent implements OnInit {
   Mobile: string;
   Address: string;
   GetUSerDOne: any [];
+  Results:any;
   GetUSerAddress:any[];
   ValueRec: Boolean = false;
   filetoup: FileList;
   fileName: any;
   total:any;
-  Results;
+  // Results;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private obj: LoginService,
               private _nav: Router,
@@ -63,7 +64,7 @@ export class BuyerDashboardComponent implements OnInit {
       this.ValueRec = true;
     });
     this.obj.GetUSeraddress().subscribe(resAddSlidersData => {
-      this.GetUSerAddress = resAddSlidersData;
+      this.GetUSerAddress = resAddSlidersData['Results'];
       console.log('User Id is:', this.GetUSerAddress);
       this.ValueRec = true;
     });

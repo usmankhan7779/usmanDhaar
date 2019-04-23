@@ -87,11 +87,7 @@
                       </li>
                     </ng-container>
           
-                    <!-- <div class="col-sm-4 col-sm-push-8">
-                      <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true"
-                        previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
-          
-                    </div> -->
+                    
                     <!-- ad end -->
           
           
@@ -106,7 +102,7 @@
                     <h3>My Products {{SessionstoreName}} </h3>
                     <ul class="searchList">
                       <!-- ad start -->
-                      <ng-container *ngFor="let phoneProducts of Allproducts.Results | paginate: { itemsPerPage: 12,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }; let item = index">
+                      <ng-container *ngFor="let phoneProducts of Allproducts.Results ; let item = index">
                         <li>
                           <div class="row">
                             <div class="col-md-2 col-sm-4">
@@ -147,11 +143,7 @@
                         </li>
                       </ng-container>
             
-                      <!-- <div class="col-sm-4 col-sm-push-8">
-                        <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true"
-                          previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
-            
-                      </div> -->
+                   
                       <!-- ad end -->
             
             
@@ -165,7 +157,7 @@
                   <h3>My Products {{SessionstoreName}} </h3>
                   <ul class="searchList">
                     <!-- ad start -->
-                    <ng-container *ngFor="let phoneProducts of DeactiveProducts.Results | paginate: { itemsPerPage: 12,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }; let item = index">
+                    <ng-container *ngFor="let phoneProducts of DeactiveProducts.Results; let item = index">
                       <li>
                         <div class="row">
                           <div class="col-md-2 col-sm-4">
@@ -204,11 +196,7 @@
                       </li>
                     </ng-container>
           
-                    <!-- <div class="col-sm-4 col-sm-push-8">
-                      <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true"
-                        previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
-          
-                    </div> -->
+                    
                     <!-- ad end -->
           
           
