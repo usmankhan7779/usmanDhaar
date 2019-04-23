@@ -381,7 +381,9 @@ h6 {
     transition: .4s;
     color: #fff;
     border: none;
-    font-weight: 700
+    font-weight: 700;
+    /* float: right;
+    margin-top: -54px */
 }
 
 .nav-tabs {
@@ -1250,6 +1252,9 @@ a.wit-btn {
     box-shadow: 1px 1px 5px 1px #ccc;
     border-radius: 5px
 }
+.categoryList li a:hover{
+    transform: scale(1.05)
+}
 
 .categoryList li img {
     width: 85%
@@ -1271,9 +1276,9 @@ a.wit-btn {
     color: #777
 }
 
-.categoryList li a:hover span {
+.categoryList li a span:hover {
     color: #fff;
-    background: red!important
+    background:#c00!important
 }
 
 .categoryList li a:hover i {
@@ -1397,7 +1402,7 @@ a.wit-btn {
     text-transform: uppercase;
     border-radius: 0;
     margin-top: 10px;
-    float: right
+    /* float: right */
 }
 
 .hometagline a:hover {
@@ -1849,7 +1854,8 @@ a.wit-btn {
     margin-bottom: 10px;
     transition: .4s all ease-in-out;
     border: 1px solid #ebebeb;
-    border-radius: 10px
+    border-radius: 10px;
+    transform: scale(1.02)
 }
 
 .searchList li:hover {
@@ -2824,7 +2830,7 @@ a.wit-btn {
 
 .formpanel .formrow,
 .formrow {
-    margin-bottom: 10px;
+    margin-bottom: 24px;
     font-size: 14px
 }
 
@@ -2859,21 +2865,33 @@ a.wit-btn {
 }
 
 .formpanel .btn {
-    width: 80%;
+    width: 89%;
     background: #000;
     color: #fff;
     border-radius: 50px;
     padding: 7px 0;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 600;
     text-transform: capitalize;
     box-shadow: 0 0 20px -5px #000;
-    margin: 0 auto;
+    margin: 39px auto;
     display: block
+}
+.userAccount{
+ 
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 25px 20px 10px;
+        box-shadow: 0 5px 10px #ccc;
+        border-radius: 5px;
+        height: 372px;
+        width:50%;
+        margin: 0 auto
+
 }
 
 .formpanel .btn:hover {
-    background: red
+    background:#c00
 }
 
 .uploadphotobx {
@@ -3009,7 +3027,9 @@ a.wit-btn {
     border: 1px solid #ddd;
     padding: 25px 20px 10px;
     box-shadow: 0 5px 10px #ccc;
-    border-radius: 5px
+    border-radius: 5px;
+  
+
 }
 
 .userccount p {
@@ -3020,10 +3040,11 @@ a.wit-btn {
 }
 
 .userccount h5 {
-    font-size: 30px;
+    font-size: 28px;
     color: #000;
     font-weight: 700;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    text-align: center
 }
 
 .socialLogin {
@@ -4088,8 +4109,7 @@ blockquote:after {
 
 .tags li {
     display: inline-block;
-    float: left
-}
+    }
 
 .tags a {
     color: #969595;
@@ -4367,7 +4387,7 @@ input.upload-input {
     position: absolute;
     top: -42px;
     font-size: 55px;
-    color: #fff;
+    color: #000;
     left: 26px;
     cursor: pointer;
     display: none
@@ -4525,6 +4545,10 @@ select {
     margin-left: 50px;
     color: #000;
   }
+  .panel-title{
+      text-align: center
+  }
+
 /* End Side Bar */
 
 

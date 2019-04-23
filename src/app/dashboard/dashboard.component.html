@@ -72,13 +72,13 @@
 
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">My details</h3>
+              <h3 class="panel-title">My Details</h3>
             </div>
             <div class="panel-body">
               <div class="row">
                 <ng-container *ngIf="GetUSerDOne !== null">
                   <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 upload-img-wrapper" align="center">
-                    <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" width="200" height="200"  class="img-circle img-responsive">
+                    <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" width="200" height="200"  class=" img-responsive">
                     <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
                     <i class="fa fa-camera upload-cam-img"></i>
                   </div>
@@ -173,7 +173,7 @@
         </ul>
         <div class="main container">
           <div class="row">
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-10 col-sm-12">
               <div class="myads">
                 <h3>Offers Dashboard</h3>
                 <div class="tab-info">
