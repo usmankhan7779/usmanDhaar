@@ -4348,7 +4348,7 @@ blockquote:after {
 
 .upload-img-wrapper {
     position: relative;
-    width: fit-content;
+    /* width: fit-content; */
     margin: 0 auto
 }
 
@@ -4514,6 +4514,7 @@ select {
   .open-btn{
     font-size: 30px;
     cursor: pointer;
+    margin-bottom: 10px;
     display: none;
   }
   .sidenav .closebtn {
