@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ActiveAdServices } from '../active-ad/active-ad.services';
-import { JwtHelper } from 'angular2-jwt';
+ 
 import {tryCatch} from 'rxjs/util/tryCatch';
 import swal from 'sweetalert2';
 

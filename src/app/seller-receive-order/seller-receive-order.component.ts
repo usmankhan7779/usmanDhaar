@@ -3,7 +3,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
-import { Ng2PaginationModule } from 'ng2-pagination';
+ 
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';

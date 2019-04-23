@@ -6,7 +6,7 @@ import { LoginService } from '../log-in/log-in.services';
 import { HomeService } from '../home/home.services';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
-import { JwtHelper } from 'angular2-jwt';
+
 import {ActiveAdServices} from "../active-ad/active-ad.services";
 import swal from "sweetalert2";
 import {UploadItemService} from '../file-uploads/upload-item-service';
@@ -17,7 +17,7 @@ import { SharedData } from '../shared-service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  jwtHelper: JwtHelper = new JwtHelper();
+  
   ServerUrl =  'https://apis.dhaar.pk/';
   NewPostcheck = false ;
   ValueRec: Boolean = false;
@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
       });
 
 
-      // this.USerName = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+   
       console.log('NewPost is:', localStorage.getItem('NewPost'));
       this.ProductID = localStorage.getItem('NewProduct');
       this.CatName = localStorage.getItem('NewCat');

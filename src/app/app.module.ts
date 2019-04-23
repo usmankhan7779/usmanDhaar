@@ -30,7 +30,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginService } from './log-in/log-in.services';
 import { HomeService } from './home/home.services';
-import { Ng2PaginationModule } from 'ng2-pagination';
 import { AdService } from './post-ad/ad.services';
 import { CategoryServices } from './category-detail/category-detail.services';
 import { ActiveAdServices } from './active-ad/active-ad.services';
@@ -46,7 +45,7 @@ import { PreloaderService } from './services/preloader-service';
 import { PostService } from './services/post-service';
 import { PreloaderFull } from './components/preloader-full/preloader-full';
 import { PreloaderSmall } from './components/preloader-small/preloader-small';
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+// import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import {ImageZoomModule} from 'angular2-image-zoom';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { LayoutComponent } from './layout/layout.component';
@@ -87,12 +86,11 @@ import { PagerService } from './pager.service';
     HttpClientModule,
     BrowserTransferStateModule,
     BrowserAnimationsModule,
-    Ng2PaginationModule,
     FormsModule,
      HeaderModule,
     HttpModule,
     ImageZoomModule,
-    Ng2AutoCompleteModule,
+    // Ng2AutoCompleteModule,
     TextMaskModule,
     SocialLoginModule,
     RecaptchaModule.forRoot(),

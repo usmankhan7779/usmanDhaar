@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
-import { JwtHelper } from 'angular2-jwt';
+ 
 import swal from 'sweetalert2';
 import { UploadItemService } from '../file-uploads/upload-item-service';
 import { Observable } from 'rxjs/Observable';
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SellerUserDetailComponent implements OnInit {
   model: any = {};
-  jwtHelper: JwtHelper = new JwtHelper();
+ 
   public mask = [  /\d/, /\d/, /\d/, /\d/, '-' , /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
   step1 = true;
   step2 = false;

@@ -17,7 +17,6 @@ const loginRoutes: Routes = [
 
   imports: [
     CommonModule,
-    // Ng2PaginationModule,
     HeaderModule,
     FormsModule,
     TextMaskModule,

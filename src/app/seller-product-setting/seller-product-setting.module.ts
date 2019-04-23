@@ -2,7 +2,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import {Ng2PaginationModule} from "ng2-pagination";
+ 
 import {HeaderModule} from "../header/header.module";
 import {SellerProductSettingComponent} from './seller-product-setting.component';
 const loginRoutes: Routes = [
@@ -17,7 +17,7 @@ const loginRoutes: Routes = [
 
   imports: [
     CommonModule,
-    Ng2PaginationModule,
+ 
     HeaderModule,
     FormsModule,
     ReactiveFormsModule,

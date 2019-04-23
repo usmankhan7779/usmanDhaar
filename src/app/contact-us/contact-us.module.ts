@@ -4,7 +4,7 @@ import {CommonModule} from "@angular/common";
 import {ContactUsComponent} from "./contact-us.component";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {TextMaskModule} from "angular2-text-mask";
-import {Ng2PaginationModule} from "ng2-pagination";
+ 
 import {HeaderModule} from "../header/header.module";
 import {RecaptchaModule} from "ng-recaptcha";
 const loginRoutes: Routes = [

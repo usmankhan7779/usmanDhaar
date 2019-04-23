@@ -4,7 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { BuyerDashboardServices } from '../buyer-dashboard/buyer-dashboard.services';
 import { AdService } from '../post-ad/ad.services';
 import { HomeService } from '../home/home.services';
-import { Ng2PaginationModule } from 'ng2-pagination';
+ 
 // import * as jsPDF from 'jspdf';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
@@ -24,6 +24,7 @@ export class SellerPurchasingInvoiceComponent implements OnInit {
   ShipingInvoice: any = [];
   InvoiceData: any = [];
 GetInvoice:any=[];
+
 invoice_detail;
 product_detail;
 TotalAmount;

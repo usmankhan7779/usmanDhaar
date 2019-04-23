@@ -1,10 +1,10 @@
 import {Component, OnInit, Inject, PLATFORM_ID} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import {CategoryServices} from './category-detail.services';
-import {Ng2PaginationModule} from 'ng2-pagination';
+ 
 
 import {Router, RouterModule, ActivatedRoute} from '@angular/router';
-import {PaginatePipe, PaginationService} from 'ng2-pagination';
+ 
 import { HomeService } from '../home/home.services';
 import swal from 'sweetalert2';
 import { SharedData } from '../shared-service';
@@ -37,6 +37,7 @@ export class CategoryDetailComponent implements OnInit {
   CatName: any;
   CartedProduct: any = [];
   Total: number;
+  Vendor;
   ProType = false;
   ProStatus = false;
   Price1: string;
