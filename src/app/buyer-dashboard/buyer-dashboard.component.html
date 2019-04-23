@@ -54,12 +54,12 @@
       <div class="panel-body">
         <div class="row">
           <ng-container *ngIf="GetUSerDOne !== null">
-            <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 upload-img-wrapper" align="center">
+            <div *ngIf="GetUSerDOne['Pic'] === ''" class="col-md-4 col-lg-4 col-sm-4 col-xs-12 upload-img-wrapper" align="center">
               <img alt="User Pic" src="assets/images/defaultprofile.jpg" width="200" height="200" class="img-circle img-responsive">
               <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
               <i class="fa fa-camera upload-cam-img"></i>
             </div>
-            <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 upload-img-wrapper" align="center">
+            <div *ngIf="GetUSerDOne['Pic'] !== ''" class="col-md-4 col-lg-4 col-sm-4 col-xs-12 upload-img-wrapper" align="center">
               <img alt="User Pic" src="{{GetUSerDOne['Pic']}}" width="200" height="200" class="img-circle img-responsive">
               <input type="file" class="upload-input" (change)="handleFileInput($event.target.files)" accept="image/*">
               <i class="fa fa-camera upload-cam-img"></i>
@@ -73,7 +73,7 @@
             <!--<input type="submit">-->
             <!--</div>-->
             <!--</form>-->
-            <div class=" col-md-8 col-lg-8 ">
+            <div class=" col-md-8 col-lg-8 col-sm-8 col-xs-12">
               <table class="table table-user-information">
                 <tbody>
                   <tr>
@@ -134,7 +134,7 @@
           <ng-container *ngIf="GetUSerAddress !== null && GetUser.default_shipment_address == true">
 
 
-            <div class=" col-md-8 col-lg-8 ">
+            <div class=" col-md-12 col-lg-12 ">
               <table class="table table-user-information">
                 <tbody>
                   <tr>

@@ -3816,7 +3816,7 @@ footer h3 {
 footer .footer-links ul {
     margin: 0;
     padding: 0;
-    float: left
+    /* float: left; */
 }
 
 footer .footer-links ul li {
@@ -3858,7 +3858,8 @@ footer .footer-links .social ul li a i {
 .footer-logo {
     text-align: left;
     margin-bottom: 15px;
-    float: left
+    /* float: left; */
+    display: block;
 }
 
 .footer-logo img {
@@ -4085,7 +4086,7 @@ button.subscribe:before {
 }
 
 .social {
-    margin-top: 18px;
+    margin-top: 0px;
     text-align: center;
     float: left
 }
@@ -8488,7 +8489,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 .header-icons-rightsettingnew {
     margin-right: 3px;
     color: red;
-    font-size: 17px
+    font-size: 16px
 }
 
 .header-icons-rightsettingnew:hover {
@@ -9279,7 +9280,23 @@ ngx-image-viewer .img-container {
         width: 95%;
         font-size: 31px;
         left: 22px;
-}
+    }
+    .email .fa-envelope:before{
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+    }
+    footer .phone .fa-phone:before{
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+    }
+    .address .fa-map-marker:before{
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+    }
+
 }
 
 @media (max-width:991px) {
