@@ -44,7 +44,7 @@ export class MyBidsBuyerComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
 
-    this.httpService.GetallProductdBids(localStorage.getItem('UserID')).subscribe(
+    this.httpService.GetallProductdBids().subscribe(
       data => {
         this.ActiveProduct = data;
         console.log('bids products are:', this.ActiveProduct);

@@ -66,13 +66,50 @@ export class ActiveAdServices {
     return this._http.get( this.ServerUrl + 'getAll_pending_ProductBYUserID/' + UserID + '?page=' + page, ).map(response => response.json());
   }
 
-  GetallProductdBids( UserID: any) {
-    return this._http.get( this.ServerUrl + 'GetallProductdBids/' + UserID  ).map(response => response.json());
+  GetallProductdBids( ) {
+    const headers = new Headers();
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    headers.append('Content-Type', 'application/json');
+    return this._http.get( this.ServerUrl + 'GetallProductdBids/' ,{headers:headers}  ).map(response => response.json());
   }
+  // GetSuccessfulBids( UserID: any) {
+  //   return this._http.get( this.ServerUrl + 'GetWinProductdBids/' + UserID ).map(response => response.json());
+  // }
+  GetSuccessfulBids(win) {
+   
+    const headers = new Headers();
+    headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
+    console.log('pofile', localStorage.getItem('Authorization'));
+    headers.append('Content-Type', 'application/json');
+    // if (isPlatformBrowser(this.platformId)) {
 
-  GetSuccessfulBids( UserID: any) {
-    return this._http.get( this.ServerUrl + 'GetWinProductdBids/' + UserID ).map(response => response.json());
-  }
+      return this._http.post(this.ServerUrl + 'GetWinProductdBids',
+        {
+          // 'category_name': category_name,
+          // "filter_type":fillter
+         'win':win
+          // 'Cat_Name': CatName ,
+          // 'User_ID': User_ID,
+        }, { headers: headers }).map((res: Response) => {
+          if (res) {
+
+            if (res.status === 200) {
+              const responce_data = res.json();
+              return responce_data;
+            }
+          }
+        }).catch((error: any) => {
+          console.log(error.toString());
+          return Observable.throw(new Error(error.status));
+        });
+
+
+    }
+   
+  
+// }
+  
 
 
   GetallWatchProducts(page: any, UserID: any) {

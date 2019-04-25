@@ -39,7 +39,7 @@ TotalAmount;
   SessionstoreName: string;
 
   Allproducts: any = {'products': []};
-  GetAllproducts = [];
+  GetAllproducts ;
   totalamount;
   qty;
 

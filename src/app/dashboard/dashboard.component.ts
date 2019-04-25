@@ -51,13 +51,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.Profile.GetUSerdetailsByUserId().subscribe(resSlidersData => {
-        this.GetUSerDOne = resSlidersData;
-        this.ValueRec = true;
-        // alert(this.GetUSerDOne.user)
-    this.USerName= this.GetUSerDOne.Fname;
-      });
-
+      
+this.getuserdetails();
 
    
       console.log('NewPost is:', localStorage.getItem('NewPost'));
@@ -73,44 +68,56 @@ export class DashboardComponent implements OnInit {
 
       window.scrollTo(0, 0);
 
-      this.HomeServics.GetAllProductcart().subscribe(resSlidersData => {
+      // this.HomeServics.GetAllProductcart().subscribe(resSlidersData => {
 
-        this.CartedProduct = resSlidersData;
-        console.log(this.CartedProduct.Results, 'cart')
-        this.total = this.CartedProduct['Total Result']
-        this._shareData.watchtotal(this.total);
+      //   this.CartedProduct = resSlidersData;
+      //   console.log(this.CartedProduct.Results, 'cart')
+      //   this.total = this.CartedProduct['Total Result']
+      //   this._shareData.watchtotal(this.total);
 
-        // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+      //   // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
       
-      });
-      this.Profile.GetStoreInformationByUserId().subscribe(
-        data => {
-          this.ActiveProduct = data;
-          console.log(this.ActiveProduct,"get store infomation")
-          //alert(this.ActiveProduct = data )
-        //  if (this.ActiveProduct.length > 0) {
-            localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
-            this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName')).subscribe(resSlidersData => {
-              this.GetUSerOffer = resSlidersData;
-              // this.offerLength = GetUSerOffer['results'].length;
+      // });
+      // this.Profile.GetStoreInformationByUserId().subscribe(
+      //   data => {
+      //     this.ActiveProduct = data;
+      //     console.log(this.ActiveProduct,"get store infomation")
+      //     //alert(this.ActiveProduct = data )
+      //   //  if (this.ActiveProduct.length > 0) {
+      //       localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
+      //       this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName')).subscribe(resSlidersData => {
+      //         this.GetUSerOffer = resSlidersData;
+      //         // this.offerLength = GetUSerOffer['results'].length;
 
 
-            });
-            this.storename = localStorage.getItem('StoreName');
-          // }
-          //  else {
-          //   this._nav.navigate(['/login']);
-          // }
-        });
-      this.sessionstore = localStorage.getItem('StoreName');
-      console.log('storename is', this.sessionstore);
-      this.httpService.GetStoreOffers(this.sessionstore).subscribe(data => {
-        this.ProductOffer = data;
-        console.log('product offer is: ',this.ProductOffer);
-      });
+      //       });
+      //       this.storename = localStorage.getItem('StoreName');
+      //     // }
+      //     //  else {
+      //     //   this._nav.navigate(['/login']);
+      //     // }
+      //   });
+
+
+
+      
+      // this.sessionstore = localStorage.getItem('StoreName');
+      // console.log('storename is', this.sessionstore);
+      // this.httpService.GetStoreOffers(this.sessionstore).subscribe(data => {
+      //   this.ProductOffer = data;
+      //   console.log('product offer is: ',this.ProductOffer);
+      // });
 
 
     }
+  }
+  getuserdetails(){
+    this.Profile.GetUSerdetailsByUserId().subscribe(resSlidersData => {
+      this.GetUSerDOne = resSlidersData;
+      this.ValueRec = true;
+      // alert(this.GetUSerDOne.user)
+  this.USerName= this.GetUSerDOne.Fname;
+    });
   }
   handleFileInput(files: FileList) {
       this. filetoup = files;

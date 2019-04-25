@@ -15,7 +15,7 @@ import swal from 'sweetalert2';
 })
 export class UsershipmentupdateComponent implements OnInit {
 
-  
+  Inc;
   file: File;
   GetallCat: any;
   Waitcall: boolean;
@@ -24,7 +24,9 @@ export class UsershipmentupdateComponent implements OnInit {
   Mobile: string;
   Address: string;
   GetUSerDOne: any [];
-  GetUSerAddress:any[];
+  GetUSerAddress;
+  mask;
+  Right;
   ValueRec: Boolean = false;
   filetoup: FileList;
   fileName: any;
