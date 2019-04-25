@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import {HeaderComponent} from "./header.component";
-import {Ng2PaginationModule} from 'ng2-pagination';
+ 
 const loginRoutes: Routes = [
   { path: 'hahah', component: HeaderComponent }
 ];
@@ -17,7 +17,7 @@ const loginRoutes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    Ng2PaginationModule,
+ 
     // HomeModule,
     ReactiveFormsModule,
     RouterModule.forChild(loginRoutes)

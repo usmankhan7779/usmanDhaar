@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
-import { JwtHelper } from 'angular2-jwt';
+ 
 import swal from 'sweetalert2';
 import { UploadItemService } from '../file-uploads/upload-item-service';
 
@@ -14,7 +14,7 @@ import { UploadItemService } from '../file-uploads/upload-item-service';
 export class UserDetailComponent implements OnInit {
   model: any = {};
   public mask = [  /\d/, /\d/, /\d/, /\d/, '-' , /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
-  jwtHelper: JwtHelper = new JwtHelper();
+ 
   step1 = true;
   step2 = false;
   step3 = false;

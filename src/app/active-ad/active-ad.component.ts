@@ -2,10 +2,10 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { ActiveAdServices } from './active-ad.services';
-import { Ng2PaginationModule } from 'ng2-pagination';
+;
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-import {PaginatePipe, PaginationService} from 'ng2-pagination';
+
 import swal from 'sweetalert2';
 
 @Component({

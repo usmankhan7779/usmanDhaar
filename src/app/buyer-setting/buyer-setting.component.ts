@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
-import { JwtHelper } from 'angular2-jwt';
+
 import swal from 'sweetalert2';
 
 
@@ -13,7 +13,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./buyer-setting.component.css']
 })
 export class BuyerSettingComponent implements OnInit {
-  jwtHelper: JwtHelper = new JwtHelper();
+ 
   match = true;
   Right = false;
   notsame = false;
@@ -26,7 +26,8 @@ export class BuyerSettingComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
-    this.USerNameID =  this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+    // this.USerNameID =  
+    // this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
     }
   }
 

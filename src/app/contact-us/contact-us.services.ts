@@ -2,7 +2,6 @@ import 'rxjs/add/operator/map';
 import {Injectable} from '@angular/core';
 import {Http , Headers , Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-import { JwtHelper } from 'angular2-jwt';
 import {HttpService} from '../services/http-service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';

@@ -20,7 +20,7 @@ const loginRoutes: Routes = [
   imports: [
     CommonModule,
     HeaderModule,
-    // Ng2PaginationModule,
+
     FormsModule,
     TextMaskModule,
 

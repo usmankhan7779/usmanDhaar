@@ -3,7 +3,7 @@ import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { JwtHelper } from 'angular2-jwt';
+ 
 import { HttpService } from '../services/http-service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
@@ -17,7 +17,7 @@ import { StaticInjector } from '@angular/core/src/di/injector';
 
 export class LoginService {
 
-  jwtHelper: JwtHelper = new JwtHelper();
+ 
   private id: any;
   private head: any;
   public login: any;
@@ -56,7 +56,7 @@ getusers;
               this.decoded = res.json().Key;
             console.log(this.decoded,"decode")
 
-              // this.decoded = this.jwtHelper.decodeToken(res.json().token)['user_id'];
+        
               // localStorage.setItem('UserID',this.decoded );
               localStorage.setItem('Authorization',this.decoded);
               this.GetUSerdetailsByUserId().subscribe(resSlidersData => {
@@ -129,7 +129,7 @@ getusers;
             if (res.status === 200) {
               localStorage.setItem('Authorization', res.json().token);
               localStorage.setItem('UserName', mail);
-              this.decoded = this.jwtHelper.decodeToken(res.json().token)['user_id'];
+              // this.decoded = this.jwtHelper.decodeToken(res.json().token)['user_id'];
               localStorage.setItem('UserID', this.decoded);
 
             }
@@ -179,7 +179,7 @@ getusers;
   }
 
   GetUSerdetailsByUserIdupdate(id: number, fullname: string, address: string, province: string, city: string, area: string, default_shipment_address: string, phone_no: string, user) {
-    this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+    // this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
     console.log(this.USerNameID)
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');

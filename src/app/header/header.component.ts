@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { JwtHelper } from 'angular2-jwt';
+ 
 import { HostListener } from '@angular/core';
 import { AdService } from '../post-ad/ad.services';
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+// import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { LoginService } from '../log-in/log-in.services';
 import { CategoryServices } from "../category-detail/category-detail.services";
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   opSearch: number = 0;
   model: any = {};
   GetallCat: any = [];
-  jwtHelper: JwtHelper = new JwtHelper();
+  
   ValueRec: Boolean = false;
   GetUSerDOne: any[];
   cartcount: any = [];
@@ -305,7 +305,7 @@ export class HeaderComponent implements OnInit {
 
   gotodashboard() {
     if (isPlatformBrowser(this.platformId)) {
-      // this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id']
+     
       this.obj.GetUSerdetailsByUserId().subscribe(resSlidersData => {
 
         if (resSlidersData['Vendor'] === true) {

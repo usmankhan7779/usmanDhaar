@@ -187,7 +187,7 @@
                   <!-- ad start -->
                   <div id="productTabContent" class="tab-content">
                     <div class="tab-pane active in" id="pendingoffers">
-                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer ">
                         <div *ngIf="phoneProducts.Status && !phoneProducts.CounterStatus && !phoneProducts.Accept">
                           <li>
                             <div class="row">
@@ -218,7 +218,7 @@
                       </ng-container>
                     </div>
                     <div class="tab-pane fade" id="mycounteroffer">
-                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer ">
                         <div *ngIf="phoneProducts.Status && phoneProducts.CounterStatus && !phoneProducts.Accept">
                           <li>
                             <div class="row">
@@ -247,7 +247,7 @@
                       </ng-container>
                     </div>
                     <div class="tab-pane fade" id="buyercounteroffer">
-                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer ">
                         <div *ngIf="phoneProducts.Status && phoneProducts.CounterStatus && phoneProducts.Accept">
                           <li>
                             <div class="row">
@@ -278,7 +278,7 @@
                       </ng-container>
                     </div>
                     <div class="tab-pane fade" id="rejectedoffers">
-                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer ">
                         <div *ngIf="!phoneProducts.Status && !phoneProducts.CounterStatus && !phoneProducts.Accept">
                           <li>
                             <div class="row">
@@ -307,7 +307,7 @@
                       </ng-container>
                     </div>
                     <div class="tab-pane fade" id="acceptedoffers">
-                      <ng-container *ngFor="let phoneProducts of ProductOffer | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+                      <ng-container *ngFor="let phoneProducts of ProductOffer ">
                         <div *ngIf="phoneProducts.Status && !phoneProducts.CounterStatus && phoneProducts.Accept">
                           <li>
                             <div class="row">

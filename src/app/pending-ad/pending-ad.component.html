@@ -56,7 +56,7 @@
           <h3>My Pending Ads</h3>
           <ul class="searchList">
             <!-- ad start -->
-            <ng-container *ngFor="let phoneProducts of ActiveProduct.results | paginate: { itemsPerPage: 15,currentPage:r, totalItems:ActiveProduct.totalItems,id:'trend-id' }">
+            <ng-container *ngFor="let phoneProducts of ActiveProduct.results ">
               <li>
                 <div class="row">
                   <div class="col-md-2 col-sm-4">
@@ -93,11 +93,7 @@
               </li>
             </ng-container>
 
-            <div class="col-sm-4 col-sm-push-8">
-              <pagination-controls id="trend-id" (pageChange)="pageTrendChanged($event)" directionLinks="true" autoHide="true"
-                previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination" class="pagination-container pagination-center wow fadeInUp"></pagination-controls>
-
-            </div>
+           
             <!-- ad end -->
           </ul>
         </div>

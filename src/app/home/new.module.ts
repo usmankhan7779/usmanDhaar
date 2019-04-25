@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {CategoryDetailComponent} from '../category-detail/category-detail.component';
 import {SingleProductComponent} from '../single-product/single-product.component';
-import {Ng2PaginationModule} from 'ng2-pagination';
+ 
 import {ImageZoomModule} from 'angular2-image-zoom';
 import {HeaderComponent} from '../header/header.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -49,7 +49,7 @@ const config = {
   imports: [
     CommonModule,
     FormsModule,
-    Ng2PaginationModule,
+   
     ImageZoomModule,
     HeaderModule,
     PreloaderFullModule,

@@ -8,7 +8,7 @@ import {Http , Headers , Response} from '@angular/http';
 
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
-import { JwtHelper } from 'angular2-jwt';
+ 
 
 import swal from "sweetalert2";
 import { LoginService } from '../../log-in/log-in.services';
@@ -24,7 +24,7 @@ import { UploadItemService } from '../../file-uploads/upload-item-service';
 })
 export class SellerDashboardMastersComponent implements OnInit {
 
-  jwtHelper: JwtHelper = new JwtHelper();
+ 
   ServerUrl =  'https://apis.dhaar.pk/';
   NewPostcheck = false ;
   ValueRec: Boolean = false;
@@ -68,7 +68,7 @@ export class SellerDashboardMastersComponent implements OnInit {
         this.USerName= this.GetUSerDOne.Fname;
       });
 
-      // this.USerName = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+ 
       console.log('NewPost is:', localStorage.getItem('NewPost'));
       this.ProductID = localStorage.getItem('NewProduct');
       this.CatName = localStorage.getItem('NewCat');

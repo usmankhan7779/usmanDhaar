@@ -9525,3 +9525,12 @@ ngx-image-viewer .img-container {
 body{
     display: block !important;
 }
+ 
+.discover, .master-card, .paypal, .visa
+{ max-width: 100%; background-size: 100%; background-image: url('../images/payments.png'); }
+ 
+.discover { background-position: 0 0%; background-size: 100%; }
+.master-card { background-position: 0 33.333333%; background-size: 100%; }
+.paypal { background-position: 0 66.666667%; background-size: 100%; }
+.visa { background-position: 0 100%; background-size: 100%; }
+

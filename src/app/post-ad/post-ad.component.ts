@@ -18,7 +18,7 @@ import swal from "sweetalert2";
 })
 export class PostAdComponent implements OnInit {
   _nav: any;
-
+i;
   private sub: any;
   model: any = {"AddBestOffer":false};
   store:any;

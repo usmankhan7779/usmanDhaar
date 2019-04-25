@@ -4,7 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../log-in/log-in.services';
-import { JwtHelper } from 'angular2-jwt';
+ 
 import swal from 'sweetalert2';
 
 @Component({
@@ -13,7 +13,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./seller-setting.component.css']
 })
 export class SellerSettingComponent implements OnInit {
-  jwtHelper: JwtHelper = new JwtHelper();
+  
   match = true;
   Right = false;
   Error = false;
@@ -29,7 +29,7 @@ export class SellerSettingComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.SessionstoreName = localStorage.getItem('StoreName');
       // this.obj.verify_token().subscribe((response) => {
-      this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
+      // this.USerNameID = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'))['user_id'];
 
       console.log('Authorization is:',this.USerNameID);
       //
