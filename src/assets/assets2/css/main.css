@@ -193,6 +193,10 @@ img {
     box-shadow: 1px 1px 7px 2px #ccc;
     float: right
 }
+.new-address-btn:hover{
+    background-color: #c00;
+    color: white
+}
 
 .color-blue {
     color: #007dff
@@ -384,6 +388,10 @@ h6 {
     font-weight: 700;
     /* float: right;
     margin-top: -54px */
+}
+.btn-black:hover {
+    text-decoration: none;
+    color: #fff
 }
 
 .nav-tabs {
@@ -2831,7 +2839,8 @@ a.wit-btn {
 .formpanel .formrow,
 .formrow {
     margin-bottom: 24px;
-    font-size: 14px
+    font-size: 14px;
+    position:relative
 }
 
 .formpanel .formrow a {
@@ -4552,6 +4561,14 @@ select {
   }
   .password-heading{
       text-align: center;
+  }
+  .field-icon{
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: #c00;
+
   }
 
 /* End Side Bar */

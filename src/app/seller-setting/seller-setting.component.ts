@@ -95,4 +95,5 @@ export class SellerSettingComponent implements OnInit {
       swal('You have been successfully signed out from Dhaar.','','success');
     }
   }
+
 }
