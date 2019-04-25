@@ -64,13 +64,14 @@
             <!-- form -->
             <div class="formpanel">
               <div class="formrow">
-                <input type="password" name="old" class="form-control" ng-Model="model.old" #old placeholder="Enter Current Password">
+                  <input type="password" name="old" class="form-control" ng-Model="model.old" #old placeholder="Enter Current Password" value="secret">  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
               </div>
               <div class="formrow">
-                <input type="password" name="new1" class="form-control" ng-Model="model.new1"  #new1 placeholder="Enter New Password">
+               
+                <input type="password" name="new1" class="form-control" ng-Model="model.new1"  #new1 placeholder="Enter New Password" value="secret"><span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" ></span>
               </div>
               <div class="formrow">
-                <input type="password" name="new2" class="form-control" ng-Model="model.new2"  #new2 placeholder="Confirm New Password">
+                <input type="password" name="new2" class="form-control" ng-Model="model.new2"  #new2 placeholder="Confirm New Password" value="secret"><span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
               </div>
               <div *ngIf="!match"  class="alert alert-danger">
                 <strong>Password not matched</strong>

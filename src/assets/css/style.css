@@ -50,7 +50,7 @@ a {
 
 a:hover {
     text-decoration: none;
-    color: #ed2424
+   color: #c00;
 }
 
 a:focus {
@@ -889,7 +889,7 @@ input:focus {
 }
 
 #search button:hover {
-    background: red;
+    background:#c00;
     border: none;
     color: #fff;
     transition: .5s all ease
@@ -3971,9 +3971,9 @@ footer .phone .fa-phone:before {
     font-weight: 600
 }
 
-.color-red {
+/* .color-red {
     color: red
-}
+} */
 
 .footer-newsletter p {
     font-size: 13px;
