@@ -189,7 +189,7 @@
                 </ng-container>
               </div>
             </ng-container>
-            <ng-container *ngIf="!resultProduct.Auction">
+            <ng-container *ngIf="!resultProduct.Auction || resultProduct.Auction  ">
               <div class="price-box">
                 <p class="special-price"> <span class="price-label">Price</span>
                   <span class="price"> Rs: {{ resultProduct.FixedPrice | number:'.0-0' }} </span> </p>

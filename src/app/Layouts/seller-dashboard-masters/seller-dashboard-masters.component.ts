@@ -62,12 +62,7 @@ export class SellerDashboardMastersComponent implements OnInit {
   // }
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.Profile.GetUSerdetailsByUserId().subscribe(resSlidersData => {
-        this.GetUSerDOne = resSlidersData;
-        this.ValueRec = true;
-        this.USerName= this.GetUSerDOne.Fname;
-      });
-
+     this.getuserdetails();
  
       console.log('NewPost is:', localStorage.getItem('NewPost'));
       this.ProductID = localStorage.getItem('NewProduct');
@@ -82,36 +77,44 @@ export class SellerDashboardMastersComponent implements OnInit {
 
       window.scrollTo(0, 0);
 
-      this.Profile.GetStoreInformationByUserId().subscribe(
-        data => {
-          this.ActiveProduct = data;
-          console.log(this.ActiveProduct,"get store infomation")
-          //alert(this.ActiveProduct = data )
-        //  if (this.ActiveProduct.length > 0) {
-            localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
-            this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName')).subscribe(resSlidersData => {
-              this.GetUSerOffer = resSlidersData;
-              // this.offerLength = GetUSerOffer['results'].length;
+      // this.Profile.GetStoreInformationByUserId().subscribe(
+      //   data => {
+      //     this.ActiveProduct = data;
+      //     console.log(this.ActiveProduct,"get store infomation")
+      //     //alert(this.ActiveProduct = data )
+      //   //  if (this.ActiveProduct.length > 0) {
+      //       localStorage.setItem('StoreName', this.ActiveProduct.StoreInfo[0].StoreName);
+      //       this.HomeServics.GetallProductsOffersByStoreName(1, localStorage.getItem('StoreName')).subscribe(resSlidersData => {
+      //         this.GetUSerOffer = resSlidersData;
+      //         // this.offerLength = GetUSerOffer['results'].length;
 
 
-            });
-            this.storename = localStorage.getItem('StoreName');
-          // }
-          //  else {
-          //   this._nav.navigate(['/login']);
-          // }
-        });
-      this.sessionstore = localStorage.getItem('StoreName');
-      console.log('storename is', this.sessionstore);
-      this.httpService.GetStoreOffers(this.sessionstore).subscribe(data => {
-        this.ProductOffer = data;
-        console.log('product offer is: ',this.ProductOffer);
-      });
+      //       });
+      //       this.storename = localStorage.getItem('StoreName');
+      //     // }
+      //     //  else {
+      //     //   this._nav.navigate(['/login']);
+      //     // }
+      //   });
+      // this.sessionstore = localStorage.getItem('StoreName');
+      // console.log('storename is', this.sessionstore);
+      // this.httpService.GetStoreOffers(this.sessionstore).subscribe(data => {
+      //   this.ProductOffer = data;
+      //   console.log('product offer is: ',this.ProductOffer);
+      // });
 
 
     }
   }
 
+  getuserdetails(){
+    this.Profile.GetUSerdetailsByUserId().subscribe(resSlidersData => {
+      this.GetUSerDOne = resSlidersData;
+      this.ValueRec = true;
+      // alert(this.GetUSerDOne.user)
+  this.USerName= this.GetUSerDOne.Fname;
+    });
+  }
 
   openNav() {
     document.getElementById("mySidenav").style.width = "30%";

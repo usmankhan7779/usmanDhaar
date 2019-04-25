@@ -233,11 +233,12 @@ export class HomeService {
       // headers.append('Authorization', 'Token ' +  this.authentication);
       headers.append('Authorization', 'Token ' + localStorage.getItem('Authorization'));
       console.log('pofile', localStorage.getItem('Authorization'));
-      return this._http.get(this.ServerUrl + 'getallfeaturedProducts', { headers: headers }).map(response => response.json());
+      return this._http.get(this.ServerUrl + 'getFeaturedProductHome/', { headers: headers }).map(response => response.json());
       // console.log(this.CateDeatils)
+      // getallfeaturedProducts
     }
     else {
-      return this._http.get(this.ServerUrl + 'getallfeaturedProducts').map(response => response.json());
+      return this._http.get(this.ServerUrl + 'getFeaturedProductHome/').map(response => response.json());
       // console.log(this.CateDeatils)
 
     }

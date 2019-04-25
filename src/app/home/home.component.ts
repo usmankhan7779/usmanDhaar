@@ -154,11 +154,11 @@ export class HomeComponent implements OnInit {
         let demoprods;
         demoprods = resSlidersData.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demoprods)
+        // console.log(demoprods)
         for (let prods of demoprods) {
           this.GetALLProductss.push(prods.product);
         }
-        console.log(this.GetALLProductss);
+        // console.log(this.GetALLProductss);
 
 
 
@@ -173,13 +173,13 @@ export class HomeComponent implements OnInit {
         let demoprods;
         demoprods = resSlidersData.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demoprods)
+        // console.log(demoprods)
         for (let prods of demoprods) {
           this.GetALLProductss.push(prods.product);
         }
-        console.log(this.GetALLProductss);
+        // console.log(this.GetALLProductss);
 
-        console.log(this.GetALLProductss, 'response')
+        // console.log(this.GetALLProductss, 'response')
 
 
       });
@@ -197,11 +197,11 @@ export class HomeComponent implements OnInit {
         let demobuyprods;
         demobuyprods = resSlidersDatass.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demobuyprods)
+        // console.log(demobuyprods)
         for (let prods of demobuyprods) {
           this.GetALLBuyNowProductss.push(prods.product);
         }
-        console.log(this.GetALLProductss);
+        // console.log(this.GetALLProductss);
 
       });
     }
@@ -213,11 +213,11 @@ export class HomeComponent implements OnInit {
         let demobuyprods;
         demobuyprods = resSlidersDatass.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demobuyprods)
+        // console.log(demobuyprods)
         for (let prods of demobuyprods) {
           this.GetALLBuyNowProductss.push(prods.product);
         }
-        console.log(this.GetALLProductss);
+        // console.log(this.GetALLProductss);
 
       });
     }
@@ -235,11 +235,11 @@ export class HomeComponent implements OnInit {
         let demoactuprods;
         demoactuprods = resSlidersData.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demoactuprods)
+        // console.log(demoactuprods)
         for (let prods of demoactuprods) {
           this.GetALLAuctionProductss.push(prods.product);
         }
-        console.log(this.GetALLAuctionProductss);
+        // console.log(this.GetALLAuctionProductss);
 
 
       });
@@ -251,7 +251,7 @@ export class HomeComponent implements OnInit {
         let demoactuprods;
         demoactuprods = resSlidersData.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demoactuprods)
+        // console.log(demoactuprods)
         for (let prods of demoactuprods) {
           this.GetALLAuctionProductss.push(prods.product);
         }
@@ -267,7 +267,7 @@ export class HomeComponent implements OnInit {
       let demoactuprods;
         demoactuprods = resSlidersData.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demoactuprods)
+        // console.log(demoactuprods)
         for (let prods of demoactuprods) {
           this.GetALLLikeforyou.push(prods.product);
         }
@@ -292,7 +292,7 @@ export class HomeComponent implements OnInit {
         let demofreprods;
         demofreprods = resSlidersData.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demofreprods)
+        // console.log(demofreprods)
         for (let prods of demofreprods) {
           this.GetALLFeaturedProductss.push(prods.product);
         }
@@ -308,7 +308,7 @@ export class HomeComponent implements OnInit {
         let demofreprods;
         demofreprods = resSlidersData.Results;
         //this.GetALLProductss= resSlidersData.Results;
-        console.log(demofreprods)
+        // console.log(demofreprods)
         for (let prods of demofreprods) {
           this.GetALLFeaturedProductss.push(prods.product);
         }
@@ -319,7 +319,7 @@ export class HomeComponent implements OnInit {
   PhoneandTablet() {
 
     this.GetProducts.PhoneandTablet("Phones & Tablets").subscribe(resSlidersDatasss => {
-      console.log(resSlidersDatasss)
+      // console.log(resSlidersDatasss)
       this.GetallPhoneProduct = resSlidersDatasss.Results;
     });
   }
@@ -330,7 +330,7 @@ export class HomeComponent implements OnInit {
       let demomenprods;
       demomenprods = resSlidersData.Results;
       //this.GetALLProductss= resSlidersData.Results;
-      console.log(demomenprods)
+      // console.log(demomenprods)
       for (let prods of demomenprods) {
         this.MenFashionProducts.push(prods.product);
       }
@@ -343,7 +343,7 @@ export class HomeComponent implements OnInit {
       let demotvprods;
       demotvprods = resSlidersData.Results;
       //this.GetALLProductss= resSlidersData.Results;
-      console.log(demotvprods)
+      // console.log(demotvprods)
       for (let prods of demotvprods) {
         this.getTvAudioVideoProduct.push(prods.product);
       }
@@ -357,7 +357,7 @@ export class HomeComponent implements OnInit {
       let democompprods;
       democompprods = resSlidersData.Results;
       //this.GetALLProductss= resSlidersData.Results;
-      console.log(democompprods)
+      // console.log(democompprods)
       for (let prods of democompprods) {
         this.getcomputinglaptopsproduct.push(prods.product);
       }
@@ -371,7 +371,7 @@ export class HomeComponent implements OnInit {
       let demohomwprods;
       demohomwprods = resSlidersData.Results;
       //this.GetALLProductss= resSlidersData.Results;
-      console.log(demohomwprods)
+      // console.log(demohomwprods)
       for (let prods of demohomwprods) {
         this.gethomeappliancesproduct.push(prods.product);
       }
@@ -383,12 +383,12 @@ export class HomeComponent implements OnInit {
   womenFashion() {
 
     this.GetProducts.womenFashion("Women's Fashion").subscribe(resSlidersData => {
-      console.log(resSlidersData)
+      // console.log(resSlidersData)
       // this.WomenFashionProducts = resSlidersData.Results;
       let demowomprods;
       demowomprods = resSlidersData.Results;
       //this.GetALLProductss= resSlidersData.Results;
-      console.log(demowomprods)
+      // console.log(demowomprods)
       for (let prods of demowomprods) {
         this.WomenFashionProducts.push(prods.product);
       }
