@@ -87,9 +87,9 @@
               <div id="step1" class="tab-pane fade in active">
 
                 <div class="row from-setting">
-                    <div class="col-sm-6 ">
+                    <div class="col-sm-4 ">
                       <div class="form-group form-group has-feedback" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
-                        <label  for="Store _name" class="required">Store URL(*)</label>
+                        <label  for="Store _name" class="required">Store URL <span class="span-lab">*</span></label>
                         <div style="color:#C00;" *ngIf="model.storename!=null && storename.touched && !storename.valid" class="help-block">Store Name required or invalid
                         </div>
                         <input type="text" [(ngModel)]="model.storename"
@@ -109,11 +109,11 @@
                       </div>
 
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ownername.valid }">
 
 
-                        <label  for="company_name" class="required">Owner Name(*)</label>
+                        <label  for="company_name" class="required">Owner Name<span class="span-lab">*</span></label>
                         <div style="color:red" *ngIf=" model.ownername!=null && !ownername.valid" class="help-block">Owner name required or invalid
                         </div>
 
@@ -128,13 +128,13 @@
                       </div>
 
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
 
 
 
                       <div class="form-group  form-group has-feedback" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
 
-                        <label  for="email_address" class="required">Business Email(*)</label>
+                        <label  for="email_address" class="required">Business Email<span class="span-lab">*</span></label>
                         <div  style="color:red" *ngIf=" (!email.valid && email.touched  ) " class="help-block">Email required in proper format</div>
 
                         <input type="text" class="input form-control"
@@ -153,7 +153,7 @@
 
                       </div><!--/ [col] -->
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !zipcode.valid }">
 
                         <label  for="postal_code" class="required">Zip/Postal Code</label>
@@ -167,10 +167,10 @@
                                 [(ngModel)]="model.zipcode" #zipcode="ngModel" name="zipcode" id="postal_code">
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !city.valid }">
 
-                        <label  for="city" class="required">City(*)</label>
+                        <label  for="city" class="required">City<span class="span-lab">*</span></label>
                         <div  style="color:red" *ngIf=" model.city!=null && !city.valid" class="help-block">City invalid/required</div>
 
                         <input class="input form-control"
@@ -180,10 +180,10 @@
                                type="text" required [(ngModel)]="model.city" #city="ngModel" name="city" id="city">
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !personal.valid }">
 
-                        <label  for="telephone" class="required">Owner Contact Number(*)</label>
+                        <label  for="telephone" class="required">Owner Contact Number<span class="span-lab">*</span></label>
                         <div  style="color:red" *ngIf=" model.personal!=null  && !personal.valid" class="help-block">Contact number required in proper format
                         </div>
 
@@ -196,7 +196,7 @@
                                id="telephone">
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !business.valid }">
 
                         <div class="form-group">
@@ -215,10 +215,10 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !storename.valid }">
 
-                        <label  for="address" class="required">Address(*)</label>
+                        <label  for="address" class="required">Address<span class="span-lab">*</span></label>
                         <div  style="color:red" *ngIf=" model.address!=null && !address.valid" class="help-block">Address required</div>
 
                         <input type="text" class="input form-control" required
