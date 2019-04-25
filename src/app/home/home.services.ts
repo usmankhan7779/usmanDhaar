@@ -321,7 +321,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name1,
             // 'Cat_Name': CatName ,
@@ -349,7 +349,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name1,
             // 'Cat_Name': CatName ,
@@ -380,7 +380,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
         // this.ServerUrl +
-        return this._http.post( this.ServerUrl +'Category_Products/',
+        return this._http.post( this.ServerUrl +'Category_ProductsHome/',
           {
             'category_name1': category_name2,
             // 'Cat_Name': CatName ,
@@ -408,7 +408,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name2,
             // 'Cat_Name': CatName ,
@@ -439,7 +439,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name3,
             // 'Cat_Name': CatName ,
@@ -467,7 +467,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name3,
             // 'Cat_Name': CatName ,
@@ -498,7 +498,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name4,
             // 'Cat_Name': CatName ,
@@ -526,7 +526,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name4,
             // 'Cat_Name': CatName ,
@@ -557,7 +557,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name5,
             // 'Cat_Name': CatName ,
@@ -585,7 +585,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name5,
             // 'Cat_Name': CatName ,
@@ -616,7 +616,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name6,
             // 'Cat_Name': CatName ,
@@ -644,7 +644,7 @@ export class HomeService {
       headers.append('Content-Type', 'application/json');
       if (isPlatformBrowser(this.platformId)) {
 
-        return this._http.post(this.ServerUrl + 'Category_Products/',
+        return this._http.post(this.ServerUrl + 'Category_ProductsHome/',
           {
             'category_name1': category_name6,
             // 'Cat_Name': CatName ,
