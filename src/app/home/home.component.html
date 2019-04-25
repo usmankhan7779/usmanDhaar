@@ -161,10 +161,10 @@
         <ul class="nav nav-tabs collapse navbar-collapse" role="tablist" id="myTablist">
           <li style="text-align: center" role="presentation" class="active"><a href="#productTabContent2"
               aria-controls="home" role="tab" data-toggle="tab">Latest</a></li>
-          <li style="text-align: center" role="presentation"><a href="#buynow" (click)="GetAllBuyNowproduct()"
+          <li style="text-align: center" role="presentation"><a href="#buynow"  
               aria-controls="profile" role="tab" data-toggle="tab">Buy Now</a></li>
           <li style="text-align: center" role="presentation"><a href="#auction" aria-controls="messages" role="tab"
-              data-toggle="tab">Auction</a></li>
+              data-toggle="tab"  >Auction</a></li>
           <li style="text-align: center" role="presentation"><a href="#featured" aria-controls="messages" role="tab"
               data-toggle="tab">Featured</a></li>
         </ul>
@@ -633,7 +633,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="phoneProducts.product.Auction == false" class="pro-actions">
+                          <!-- *ngIf="phoneProducts.product.Auction == false" -->
+                          <div  class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  phoneProducts.product.ProductID, CatName: phoneProducts.product.Cat_Name, SubCatName:phoneProducts.product.Sub_Sub_Cat_Name, id:phoneProducts.product.id, W:phoneProducts.product.inWishList }">
                               <button class="action add-to-cart" type="button" title="Add to Cart">
@@ -709,7 +710,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="phoneProducts.Auction == false" class="pro-actions">
+                          <!-- *ngIf="phoneProducts.Auction == false"  -->
+                          <div class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  phoneProducts.ProductID, CatName: phoneProducts.Cat_Name, SubCatName:phoneProducts.Sub_Sub_Cat_Name, id:phoneProducts.id, W:phoneProducts.inWishList }">
                               <button class="action add-to-cart" type="button" title="Add to Cart">
@@ -791,7 +793,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                          <!-- *ngIf="TvVideoaudio88.Auction == false" -->
+                          <div  class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
                               <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
@@ -872,7 +875,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                          <!-- *ngIf="TvVideoaudio88.Auction == false" -->
+                          <div  class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
                               <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
@@ -953,7 +957,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                          <!-- *ngIf="TvVideoaudio88.Auction == false"  -->
+                          <div class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
                               <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
@@ -1034,7 +1039,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                          <!-- *ngIf="TvVideoaudio88.Auction == false" -->
+                          <div  class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
                               <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
@@ -1127,7 +1133,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                          <!-- *ngIf="TvVideoaudio88.Auction == false"  -->
+                          <div class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
                               <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
@@ -1221,7 +1228,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                          <!-- *ngIf="TvVideoaudio88.Auction == false"  -->
+                          <div class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name_id, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name_id, id:TvVideoaudio88.id, W:TvVideoaudio88.inWishList }">
                               <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
@@ -1314,7 +1322,8 @@
                             <span>Bid Now</span></button>
                         </a>
                       </div>
-                      <div *ngIf="Lastest.Auction == false" class="pro-actions">
+                      <!-- *ngIf="Lastest.Auction == false" -->
+                      <div  class="pro-actions">
                         <a [routerLink]="['/single-product']"
                           [queryParams]="{ ProID:  Lastest.ProductID, CatName: Lastest.Cat_Name, SubCatName:Lastest.Sub_Sub_Cat_Name, id:Lastest.id, W:Lastest.inwhishlist }">
                           <button class="action add-to-cart" type="button" title="Add to Cart">
@@ -1403,7 +1412,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="TvVideoaudio88.Auction == false" class="pro-actions">
+                          <!-- *ngIf="TvVideoaudio88.Auction == false" -->
+                          <div  class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  TvVideoaudio88.ProductID, CatName: TvVideoaudio88.Cat_Name, SubCatName:TvVideoaudio88.Sub_Sub_Cat_Name, id:TvVideoaudio88.id }">
                               <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy
@@ -1488,7 +1498,8 @@
                                 <span>Bid Now</span></button>
                             </a>
                           </div>
-                          <div *ngIf="TvVideoaudio88.ProductID.Auction == false" class="pro-actions">
+                          <!-- *ngIf="TvVideoaudio88.ProductID.Auction == false" -->
+                          <div  class="pro-actions">
                             <a [routerLink]="['/single-product']"
                               [queryParams]="{ ProID:  TvVideoaudio88.ProductID.ProductID, CatName: TvVideoaudio88.ProductID.Cat_Name, SubCatName:TvVideoaudio88.ProductID.Sub_Sub_Cat_Name, id:TvVideoaudio88.ProductID.id }">
                               <button class="action add-to-cart" type="button" title="Add to Cart"><span>Buy

@@ -24,7 +24,7 @@ export class UsershipmentComponent implements OnInit {
   Mobile: string;
   Address: string;
   GetUSerDOne: any [];
-  GetUSerAddress:any[];
+  GetUSerAddress;
   ValueRec: Boolean = false;
   filetoup: FileList;
   fileName: any;

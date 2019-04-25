@@ -23,6 +23,7 @@ export class MyBidsComponent implements OnInit {
   ActiveProduct: any = [];
   GetPhotos: any = [];
   successbid: any = [];
+  unsusssbid:any=[];
   CatName: any;
   SessionstoreName: any;
   errormessagefirst = false;
@@ -40,7 +41,7 @@ export class MyBidsComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)){
       // alert(localStorage.getItem('UserID'))
       this.SessionstoreName = localStorage.getItem('StoreName');
-      this.httpService.GetallProductdBids( localStorage.getItem('UserID')).subscribe(
+      this.httpService.GetallProductdBids().subscribe(
         data => {
           this.ActiveProduct = data.results;
           console.log(this.ActiveProduct)
@@ -48,15 +49,32 @@ export class MyBidsComponent implements OnInit {
             this.errormessagefirst = true;
           }
         });
-      this.httpService.GetSuccessfulBids(localStorage.getItem('UserID')).subscribe( data => {
-        this.successbid = data;
-        if (this.successbid['totalItems'] === 0) {
-          this.errormessage = true;
-        }
-      });
+    
+        this.Getsuccssful();
+        this.Getunsuccssful();
   }
   }
 
+  Getsuccssful()
+  {
+
+    this.httpService.GetSuccessfulBids(true).subscribe( data => {
+      this.successbid = data;
+      if (this.successbid['totalItems'] === 0) {
+        this.errormessage = true;
+      }
+    });
+  }
+  Getunsuccssful()
+  {
+    
+    this.httpService.GetSuccessfulBids(false).subscribe( data => {
+      this.unsusssbid = data;
+      if (this.unsusssbid['totalItems'] === 0) {
+        this.errormessage = true;
+      }
+    });
+  }
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
       localStorage.clear();
