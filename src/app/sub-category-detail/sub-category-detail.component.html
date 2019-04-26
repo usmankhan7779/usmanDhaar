@@ -365,7 +365,7 @@
                   <label for="p14"> <span class="button"></span> Rs 4,00,001 - Rs 5,00,000  </label>
                 </li>
                 <li>
-                  <input (click)="ProductPrice(500001,999999999)" type="radio" id="p15" name="cc" />
+                  <input (click)="ProductPrice(500001,999999)" type="radio" id="p15" name="cc" />
                   <label for="p15"> <span class="button"></span> Rs 5,00,001 < ... </label>
                 </li>
 
@@ -373,7 +373,38 @@
             </div>
           </div>
         </div>
-        <div class="block sidebar-cart">
+        <ng-container *ngIf="Vendor == true"  >
+            <div class="block sidebar-cart">
+              <div class="sidebar-bar-title">
+                <h3>My Cart</h3>
+              </div>
+              <div class="block-content">
+                <ng-container *ngIf="!Cart" >
+                <p class="amount">There are <a href="">{{ CartedProduct.Results?.length }} items</a> in your cart.</p>
+                <ul>
+                  <ng-container *ngFor="let abc of CartedProduct.Results ">
+                  <li class="item"> <a  title="Sample Product" class="product-image"><img src="{{abc.product.Pic }}" onerror="this.src='../../assets/images/Check-Resolution.png'" alt="Sample Product "></a>
+                    <div class="product-details">
+                      <div class="access"> <a (click)="TrashcartElement(abc.ProductID)" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a></div>
+                      <p class="product-name"> <a href="shopping_cart.html">{{ abc.product.P_Title }}{{ abc.product.P_Title }}</a> </p>
+                      <p class="product-name"> <a href="shopping_cart.html">{{ abc.product.P_Title }}{{ abc.product.P_Title }}</a> </p>
+                      <strong>{{  abc.Quantity }}</strong> x <span class="price">Rs: {{ abc.product.FixedPrice | number:'.0-0' }}</span> </div>
+                  </li>
+    
+                  </ng-container>
+                </ul>
+                <div class="summary">
+                  <p class="subtotal"> <span class="label">Cart Subtotal:</span> <span class="price">Rs: {{Total | number:'.0-0' }}</span> </p>
+                </div>
+                <div class="cart-checkout">
+                    <button (click)="ClickCheckOut()" class="button button-checkout"  title="Submit"><i class="fa fa-check"></i> <span>Checkout</span></button>
+                </div>
+                </ng-container>
+                <p *ngIf="Cart" class="amount">There are <a href="">0 items</a> in your cart.</p>
+              </div>
+            </div>
+          </ng-container>
+        <!-- <div class="block sidebar-cart">
           <div class="sidebar-bar-title">
             <h3>My Cart</h3>
           </div>
@@ -400,7 +431,7 @@
             </ng-container>
             <p *ngIf="Cart" class="amount">There are <a href="">0 items</a> in your cart.</p>
           </div>
-        </div>
+        </div> -->
 
 
         <div class="single-img-add sidebar-add-slider ">
