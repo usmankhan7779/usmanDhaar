@@ -242,23 +242,7 @@
                   <div *ngFor="let item of pagedItems">{{item.name}}</div>
             
                   <!-- pager -->
-                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-                    <!-- <li [ngClass]="{hide:pager.currentPage === 1}">
-                      <a (click)="showallproducts(1)" class="btn btn-fill">First</a>
-                    </li> -->
-                    <!-- <li [ngClass]="{hide:pager.currentPage === 1}">
-                      <a (click)="showallproducts(pager.currentPage - 1)" class="btn btn-fill">Previous</a>
-                    </li> -->
-                    <!-- <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                      <a (click)="showallproducts(page)" class="btn btn-fill">{{page}}</a>
-                    </li> -->
-                    <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                      <a (click)="showallproducts(pager.currentPage + 1)" class="btn btn-fill" type="Next">Next</a>
-                    </li>
-                    <!-- <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                      <a (click)="showallproducts(pager.totalPages)" class="btn btn-fill" type="Last">Last</a>
-                    </li> -->
-                  </ul>
+                 
                 </div>
               </div>
           </div>
@@ -505,11 +489,32 @@
       </aside>
     </div>
   </div>
+  <div class="col-md-6"></div>
+  <!-- <div class="col-md-6"></div> -->
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination col-md-3">
+    <!-- <li [ngClass]="{hide:pager.currentPage === 1}">
+      <a (click)="showallproducts(1)" class="btn btn-fill">First</a>
+    </li> -->
+    <!-- <li [ngClass]="{hide:pager.currentPage === 1}">
+      <a (click)="showallproducts(pager.currentPage - 1)" class="btn btn-fill">Previous</a>
+    </li> -->
+    <!-- <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+      <a (click)="showallproducts(page)" class="btn btn-fill">{{page}}</a>
+    </li> -->
+    <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+      <a (click)="showallproducts(pager.currentPage + 1)" class="btn btn-fill" type="Next">Load More</a>
+    </li>
+    <!-- <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+      <a (click)="showallproducts(pager.totalPages)" class="btn btn-fill" type="Last">Last</a>
+    </li> -->
+  </ul>
+  <div class="col-md-3"></div>
+
 </div>
 <!-- Main Container End -->
 <div class="container">
   <!-- service section -->
-  <div class="jtv-service-area">
+  <!-- <div class="jtv-service-area">
     <div class="row">
       <div class="col col-md-4 col-sm-4 col-xs-12 padding-l-r-10">
         <div class="block-wrapper ship">
@@ -536,7 +541,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 <!-- our clients Slider -->
 
