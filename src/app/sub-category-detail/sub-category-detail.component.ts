@@ -45,17 +45,17 @@ export class SubCategoryDetailComponent implements OnInit {
                private route: ActivatedRoute,
                private httpService: CategoryServices) { }
 
-  pageTrendChanged(event) {
-    // alert("mobile")
-    this.r = event;
-    this.pageno = event;
+  // pageTrendChanged(event) {
+  //   // alert("mobile")
+  //   this.r = event;
+  //   this.pageno = event;
 
 
-    this.httpService.getAllSubPhoneAndTabletProduct(this.pageno,this.Subcat).subscribe(
-      data => {
-        this.Trend = data;
-      });
-  }
+  //   this.httpService.getAllSubPhoneAndTabletProduct(this.pageno,this.Subcat).subscribe(
+  //     data => {
+  //       this.Trend = data;
+  //     });
+  // }
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.sub = this.route.params.subscribe(params => {
@@ -86,13 +86,13 @@ export class SubCategoryDetailComponent implements OnInit {
 
 
           //  console.log('Phones & Tablets')
-          this.httpService.getAllSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
-            data => {
-              this.Trendee = data;
-              if (this.Trendee['results'].length === 0) {
-                this.errormessage = true;
-              }
-            });
+          // this.httpService.getAllSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
+          //   data => {
+          //     this.Trendee = data;
+          //     if (this.Trendee['results'].length === 0) {
+          //       this.errormessage = true;
+          //     }
+          //   });
         this.Subcat = params['SubCat'];
         this.GetProducts.PhoneandTablet(this.Subcat).subscribe(resSlidersData => {
               console.log(resSlidersData)
@@ -121,10 +121,7 @@ export class SubCategoryDetailComponent implements OnInit {
       }
 
 
-      // this.httpService.GetphotoById().subscribe(resSlidersData => {
-      //   this.GetPhotos = resSlidersData;
-      //
-      // });
+    
     }
   }
 
