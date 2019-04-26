@@ -9,6 +9,7 @@ import { HomeService } from '../home/home.services';
 import swal from 'sweetalert2';
 import { SharedData } from '../shared-service';
 import { StaticInjector } from '@angular/core/src/di/injector';
+import { PagerService } from '../pager.service';
 
 @Component({
   selector: 'app-category-detail',
@@ -21,6 +22,7 @@ export class CategoryDetailComponent implements OnInit {
   public GetallPhoneProduct: any = [];
   CoverPix: any;
   sub: any;
+  pager: any = {};
   modelNo: any;
   Trendee: any = [];
   Trend: any = [];
@@ -53,6 +55,7 @@ bothabove;
               private _nav: Router,
               public _shareData: SharedData,
               private GetAdd: HomeService,
+              private pagerService: PagerService,
               private route: ActivatedRoute,
               private GetProducts: HomeService,
               private httpService: CategoryServices) {
@@ -76,9 +79,9 @@ bothabove;
     this.sub = this.route
       .queryParams
       .subscribe(params => {
-        // Defaults to 0 if no query param provided.
+ 
         this.CatName = params['CatName'] || '0';
-// alert(this.CatName)
+ 
         if (this.CatName === 'Phones & Tablets') {
           this.CoverPix = 'PT';
         } else if (this.CatName === 'Women\'s Fashion') {
@@ -100,38 +103,10 @@ bothabove;
         } else if (this.CatName === 'Vehicles & GPS') {
           this.CoverPix = 'VG';
         }
-// this.AllListingFuc();
 
-        // alert(this.CatName);
-          //  console.log('Phones & Tablets')
-          // PhoneandTablet() {
-
-            this.GetProducts.PhoneandTablet(this.CatName).subscribe(resSlidersData => {
-              console.log(resSlidersData)
-              // this.Trend = resSlidersData.Results;
-              
-              let demoprods;
-              demoprods = resSlidersData.Results;
-              //this.GetALLProductss= resSlidersData.Results;
-              console.log(demoprods)
-              for (let prods of demoprods) {
-                this.Trend.push(prods.product);
-              }
-        console.log(this.Trend);
-
-              if (this.Trend['Total Result'] === 0) {
-                this.errormessage = true;
-              }
-            });
-          // }
-          // this.httpService.getAllPhoneAndTabletProduct(1,this.CatName).subscribe(
-          //   data => {
-
-          //     this.Trendee = data;
-          //     if (this.Trendee['totalItems'] === 0) {
-          //       this.errormessage = true;
-          //     }
-          //   });
+this.showallproducts(1);
+           
+      
         this.Waitcall = false;
       });
     if (this.CatName === '0') {
@@ -139,7 +114,7 @@ bothabove;
     }
 
     if (isPlatformBrowser(this.platformId)){
-    // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+
 
     this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
@@ -149,17 +124,13 @@ bothabove;
       this.total = this.CartedProduct['Total Result']
       this._shareData.watchtotal(this.total);
  
-      // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+ 
       console.log('Carted products are:', this.CartedProduct);
       if (this.CartedProduct.Results === null) {
         this.Cart = true;
       }
       this.Total = 0;
-      // for (const tmp of this.CartedProduct.Results) {
-  
-      //   this.Total = this.Total + (tmp.product.FixedPrice * tmp.Quantity);
-      //   console.log(tmp.product.FixedPrice, 'total')
-      // }
+     
       if (this.CartedProduct !== null) {
       for (const tmp of this.CartedProduct.Results) {
         
@@ -177,7 +148,26 @@ bothabove;
 
   }
 
+showallproducts(page: number){
+  this.GetProducts.PhoneandTablet(this.CatName).subscribe(resSlidersData => {
+    console.log(resSlidersData)
+    // this.Trend = resSlidersData.Results;
+    
+    let demoprods;
+    demoprods = resSlidersData.Results;
+    //this.GetALLProductss= resSlidersData.Results;
+    console.log(demoprods)
+    for (let prods of demoprods) {
+      this.Trend.push(prods.product);
+    }
+    this.pager = this.pagerService.getPager(resSlidersData['Results'], page, 10);
+console.log(this.Trend);
 
+    if (this.Trend['Total Result'] === 0) {
+      this.errormessage = true;
+    }
+  });
+}
   listView() {
     this.View = true;
   }
@@ -199,6 +189,7 @@ bothabove;
       this.GetProducts.PhoneandTablet(this.CatName).subscribe(
         data => {
           this.Trend = data.Results;
+          
           // let demoprods;
           // demoprods = data.Results;
           // //this.GetALLProductss= resSlidersData.Results;

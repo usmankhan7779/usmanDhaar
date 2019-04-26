@@ -116,14 +116,14 @@ Error;
       console.log(event.target.checked)
       this.fbrRegister = "True";
       console.log(this.fbrRegister,'true fbr register')
-      alert(this.fbrRegister)
+      // alert(this.fbrRegister)
       //this.setPage(1);
   }
   else if (event.target.checked == false) {
       console.log(event.target.checked)
       this.fbrRegister="False";
       console.log(this.fbrRegister,'false fbr register')
-      alert(this.fbrRegister)
+      // alert(this.fbrRegister)
       //this.setPage(1);
   }
   //console.log(this.months3)
@@ -134,7 +134,7 @@ Error;
     //this.uploadItemsToActivity();
     // this.Waitcall = true;
     console.log('I am in 1 Component');
-    alert(this.fbrRegister)
+    // alert(this.fbrRegister)
     // this.itemUploadService.PostImage(this.filetoup, 'UserPics',localStorage.getItem('UserID') ).subscribe(
       // data => {
        // this.Profile.UserDetailsUpdatePic(localStorage.getItem('UserID') ,this.fileName).subscribe();
