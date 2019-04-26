@@ -7,6 +7,8 @@ import { CategoryServices } from '../category-detail/category-detail.services';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 
 import { HomeService } from '../home/home.services';
+import { PagerService } from '../pager.service';
+import { SharedData } from '../shared-service';
 
 
 @Component({
@@ -16,6 +18,7 @@ import { HomeService } from '../home/home.services';
 })
 export class SubCategoryDetailComponent implements OnInit {
   r: any;
+  pager: any = {};
   pageno: any;
   sub: any;
   modelNo: any;
@@ -31,7 +34,7 @@ export class SubCategoryDetailComponent implements OnInit {
   Total: number;
   View = false;
   Cart = false;
-
+  total: any;
   BuyItNow = false;
   AllListing = true;
   Auction = false;
@@ -41,7 +44,9 @@ export class SubCategoryDetailComponent implements OnInit {
 
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private _nav: Router,
+               public _shareData: SharedData,
                private GetProducts: HomeService,
+               private pagerService: PagerService,
                private route: ActivatedRoute,
                private httpService: CategoryServices) { }
 
@@ -84,7 +89,7 @@ export class SubCategoryDetailComponent implements OnInit {
           this.CoverPix = 'VG';
         }
 
-
+this.showallproducts(1);
           //  console.log('Phones & Tablets')
           // this.httpService.getAllSubPhoneAndTabletProduct(1, this.Subcat).subscribe(
           //   data => {
@@ -93,14 +98,14 @@ export class SubCategoryDetailComponent implements OnInit {
           //       this.errormessage = true;
           //     }
           //   });
-        this.Subcat = params['SubCat'];
-        this.GetProducts.PhoneandTablet(this.Subcat).subscribe(resSlidersData => {
-              console.log(resSlidersData)
-              this.Trend = resSlidersData.Results;
-              if (this.Trend['Total Result'] === 0) {
-                this.errormessage = true;
-              }
-            });
+        // this.Subcat = params['SubCat'];
+        // this.GetProducts.PhoneandTablet(this.Subcat).subscribe(resSlidersData => {
+        //       console.log(resSlidersData)
+        //       this.Trend = resSlidersData.Results;
+        //       if (this.Trend['Total Result'] === 0) {
+        //         this.errormessage = true;
+        //       }
+        //     });
         this.Waitcall = false;
 
       });
@@ -109,22 +114,67 @@ export class SubCategoryDetailComponent implements OnInit {
       }
 
 
-      this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
-      if (this.CartedProduct === null) {
-        this.Cart = true;
-      }
-      this.Total = 0;
-      if (this.CartedProduct !== null) {
-      for (const tmp of this.CartedProduct['products']) {
-        this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
-      }
-      }
+      // this.CartedProduct = JSON.parse(localStorage.getItem('Cartdata'));
+      // if (this.CartedProduct === null) {
+      //   this.Cart = true;
+      // }
+      // this.Total = 0;
+      // if (this.CartedProduct !== null) {
+      // for (const tmp of this.CartedProduct['products']) {
+      //   this.Total = this.Total + (tmp.FixedPrice * tmp.itemsqty);
+      // }
+      // }
+      this.GetProducts.GetAllProductcart().subscribe(resSlidersData => {
 
+        this.CartedProduct = resSlidersData;
+    
+        console.log(this.CartedProduct.Results, 'cart')
+        this.total = this.CartedProduct['Total Result']
+        this._shareData.watchtotal(this.total);
+   
+   
+        console.log('Carted products are:', this.CartedProduct);
+        if (this.CartedProduct.Results === null) {
+          this.Cart = true;
+        }
+        this.Total = 0;
+       
+        if (this.CartedProduct !== null) {
+        for (const tmp of this.CartedProduct.Results) {
+          
+          this.Total = this.Total + (tmp.product.FixedPrice * tmp.Quantity);
+          console.log(tmp.product.FixedPrice, 'total')
+        }
+        console.log(this.Total)
+        }
+      });
+  
 
     
     }
   }
 
+  showallproducts(page: number){
+    this.GetProducts.PhoneandTablet(this.Subcat).subscribe(resSlidersData => {
+      console.log(resSlidersData)
+      // this.Trend = resSlidersData.Results;
+      
+      let demoprods;
+      demoprods = resSlidersData.Results;
+      //this.GetALLProductss= resSlidersData.Results;
+      console.log(demoprods)
+      for (let prods of demoprods) {
+        this.Trend.push(prods.product);
+      }
+      this.pager = this.pagerService.getPager(resSlidersData['Results'], page, 10);
+  console.log(this.Trend);
+  
+      if (this.Trend['Total Result'] === 0) {
+        this.errormessage = true;
+      }
+    });
+  }
+  
   message() {
     this.errormessage = !this.errormessage;
   }
