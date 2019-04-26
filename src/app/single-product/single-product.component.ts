@@ -111,6 +111,7 @@ export class SingleProductComponent implements OnInit {
   totallist:any;
   statuss;
   statuslist;
+  checkout: string;
   // imageIndex = this.ProPics;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
@@ -149,6 +150,7 @@ export class SingleProductComponent implements OnInit {
           this.ProID = params['ProID'] || '0';
           this.productid1 = params['id']
           this.SubCatName = params['SubCatName'] || '0';
+          this.checkout = params['checkout'] || null ;
           // this.watchlist=params['W'] || '0';
           // alert(this.resultProduct.inWishList)
           // W
@@ -554,14 +556,27 @@ export class SingleProductComponent implements OnInit {
   }
 
   LoginUser() {
+  
+    this.LOginObj.loged_in(this.model.Username, this.model.Password, this.CatName, this.ProID, this.checkout).subscribe((response) => {
+        /* this function is executed every time there's a new output */
+        // console.log("VALUE RECEIVED: "+response);
+        
+        swal(
+          'Logged In!',
+          'Successfully login to your account',
+          'success'
+        );
+        this.login_error = false;
+        // this.Waitcall = true;
 
-    this.LOginObj.loged_No_redirect(this.model.Username, this.model.Password).subscribe((response) => {
-      /* this function is executed every time there's a new output */
-      // console.log("VALUE RECEIVED: "+response);
-      this.LoginID = true;
-      this.login_error = false;
-    },
+      },
       (err) => {
+        swal(
+          'Invalid Credentials',
+          'You have entered invalid login credentials',
+          'error'
+        );
+        // this.Waitcall = false;
         this.login_error = true;
         /* this function is executed when there's an ERROR */
         //   console.log("ERROR: "+err);
@@ -571,7 +586,28 @@ export class SingleProductComponent implements OnInit {
         //   console.log("COMPLETED");
       }
     );
-  }
+    }
+    
+
+  // LoginUser() {
+
+  //   this.LOginObj.loged_No_redirect(this.model.Username, this.model.Password).subscribe((response) => {
+  //     /* this function is executed every time there's a new output */
+  //     // console.log("VALUE RECEIVED: "+response);
+  //     this.LoginID = true;
+  //     this.login_error = false;
+  //   },
+  //     (err) => {
+  //       this.login_error = true;
+  //       /* this function is executed when there's an ERROR */
+  //       //   console.log("ERROR: "+err);
+  //     },
+  //     () => {
+  //       /* this function is executed when the observable ends (completes) its stream */
+  //       //   console.log("COMPLETED");
+  //     }
+  //   );
+  // }
   // addtocartproducts(){
   //           // this.productid1=params['id']
   //           this.GetAdd.addtocartProduct(this.productid1).subscribe();

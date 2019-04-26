@@ -177,7 +177,7 @@ export class HeaderComponent implements OnInit {
       this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
         this.CartedProduct = resSlidersData;
-        console.log(this.CartedProduct.Results, 'cart')
+        // console.log(this.CartedProduct.Results, 'cart')
         this.total = this.CartedProduct['Total Result']
         this._shareData.watchtotal(this.total);
 
@@ -189,7 +189,7 @@ export class HeaderComponent implements OnInit {
   WatchStatuscount() {
     if (this.viewlogin !== null) {
       this.buyer.WatchStatus().subscribe(data => {
-        console.log('checkkkkkkkkkkk  ', data);
+        // console.log('checkkkkkkkkkkk  ', data);
         this.WatchStatus = data
         this.totallist = this.WatchStatus['Total Result']
         this._shareData.watchtotallist(this.totallist);
@@ -325,7 +325,7 @@ export class HeaderComponent implements OnInit {
 
     if (search) {
 
-      console.log('search value is', search)
+      // console.log('search value is', search)
       this.Searchres = true;
       this.httpService.getAllSearchProducts(1, search).subscribe(
         data => {

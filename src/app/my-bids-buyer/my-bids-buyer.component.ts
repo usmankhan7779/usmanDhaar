@@ -22,25 +22,26 @@ export class MyBidsBuyerComponent implements OnInit {
   successbid: any = [];
   GetPhotos: any = [];
   CatName: any;
+  unsusssbid:any=[];
 
   constructor( @Inject(PLATFORM_ID) private platformId: Object,
                private _nav: Router,
                private route: ActivatedRoute,
                private httpService: ActiveAdServices) { }
 
-  pageTrendChanged(event) {
-    // alert("mobile")
-    this.r = event;
-    this.pageno = event;
+  // pageTrendChanged(event) {
+  //   // alert("mobile")
+  //   this.r = event;
+  //   this.pageno = event;
 
-    alert(this.pageno);
-    this.httpService.GetAllActiveproductsBYUserID(this.pageno, localStorage.getItem('user_id')).subscribe(
-      data => {
-        this.ActiveProduct = data;
-      });
+  //   alert(this.pageno);
+  //   this.httpService.GetAllActiveproductsBYUserID(this.pageno, localStorage.getItem('user_id')).subscribe(
+  //     data => {
+  //       this.ActiveProduct = data;
+  //     });
 
 
-  }
+  // }
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)){
 
@@ -52,14 +53,38 @@ export class MyBidsBuyerComponent implements OnInit {
           this.errormessage = true;
         }
       });
-    this.httpService.GetSuccessfulBids(localStorage.getItem('UserID')).subscribe( data => {
+      this.Getsuccssful();
+        this.Getunsuccssful();
+    // this.httpService.GetSuccessfulBids(localStorage.getItem('UserID')).subscribe( data => {
+    //   this.successbid = data;
+    //   if (this.successbid['totalItems'] === 0) {
+    //     this.errormessage1 = true;
+    //   }
+    // });
+  }
+  }
+  
+  Getsuccssful()
+  {
+
+    this.httpService.GetSuccessfulBids(true).subscribe( data => {
       this.successbid = data;
       if (this.successbid['totalItems'] === 0) {
-        this.errormessage1 = true;
+        this.errormessage = true;
       }
     });
   }
+  Getunsuccssful()
+  {
+    
+    this.httpService.GetSuccessfulBids(false).subscribe( data => {
+      this.unsusssbid = data;
+      if (this.unsusssbid['totalItems'] === 0) {
+        this.errormessage = true;
+      }
+    });
   }
+
   clearSessionstoreage() {
     if (isPlatformBrowser(this.platformId)){
     localStorage.clear();
