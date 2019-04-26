@@ -1752,7 +1752,8 @@ a.wit-btn {
 .sidebar {
     background: #fff;
     padding: 20px;
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    margin-left: -90px
 }
 
 .sidebar .widget {
