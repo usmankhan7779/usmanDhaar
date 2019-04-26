@@ -117,7 +117,7 @@ bothabove;
 
     if (isPlatformBrowser(this.platformId)){
 
-
+    this.vendors();
     this.GetAdd.GetAllProductcart().subscribe(resSlidersData => {
 
       this.CartedProduct = resSlidersData;
@@ -207,9 +207,16 @@ console.log(this.Trend);
 
   }
   vendors(){
-    if(localStorage.getItem('Vendor') === 'true')
+    if(localStorage.getItem('Vendor') == 'true')
    {
-     this.userlogin = true;
+     this.Vendor = true;
+   }
+   else if (localStorage.getItem('Vendor') =='false')
+   {
+    this.Vendor = true;
+   }
+   else if (localStorage.getItem('Vendor') == null){
+     this.Vendor= false;
    }
    
  }
