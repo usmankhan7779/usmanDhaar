@@ -1818,7 +1818,8 @@ ul#cart-sidebar {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    padding: 10px
+    padding: 10px;
+    cursor: pointer
 }
 
 .product-item .item-inner:hover {
@@ -2120,7 +2121,7 @@ ul#cart-sidebar {
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0;
-    font-size: 16px;
+    font-size: 12px;
     text-transform: none;
     height: 38px;
     line-height: normal
@@ -5459,9 +5460,12 @@ ul.products-list .sale-left {
 }
 
 .regular-price .price {
-    font-size: 16px;
+    font-size: 14px;
     color: #000;
     font-weight: 600
+}
+.Dhaar-for-you{
+    font-weight: bolder;
 }
 
 .regular-price .price-box-icons a,
@@ -5773,7 +5777,7 @@ ul.products-list .sale-left {
 }
 
 .product-view-area .product-name .heading {
-    font-size: 22px;
+    font-size: 21px;
     width: 85%;
     margin: 0;
     padding: 15px 0;
@@ -8692,7 +8696,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
     width: 100%;
     text-align: center;
     color: #fff;
-    font-size: 34px;
+    font-size: 31px;
     font-weight: 600;
     margin-bottom: 19px;
     position: absolute;
@@ -8821,7 +8825,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 
 .item.slick-slide {
     border: solid 1px #222;
-    min-height: 172px;
+    min-height: 155px;
     padding: 10px;
     border-radius: 4px;
     background: #0000004f;
@@ -8839,7 +8843,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 .item.slick-slide a {
     position: relative;
     top: 10px;
-    font-size: 16px
+    font-size: 15px
 }
 
 .owl-carousel.owl-option-02 .owl-next,
@@ -9427,7 +9431,8 @@ ngx-image-viewer .img-container {
     opacity: 0;
     background-color: rgba(0, 0, 0, .5);
     -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out
+    transition: all .4s ease-in-out;
+    cursor: pointer
 }
 
 .hovereffect img {
