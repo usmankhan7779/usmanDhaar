@@ -51,6 +51,7 @@ export class CategoryDetailComponent implements OnInit {
   Auctions;
 bothabove;
   fixeds;
+  Subcat: any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
               private _nav: Router,
               public _shareData: SharedData,
@@ -81,6 +82,7 @@ bothabove;
       .subscribe(params => {
  
         this.CatName = params['CatName'] || '0';
+        this.Subcat = params['SubCat'] || '0';
  
         if (this.CatName === 'Phones & Tablets') {
           this.CoverPix = 'PT';
@@ -104,7 +106,7 @@ bothabove;
           this.CoverPix = 'VG';
         }
 
-this.showallproducts(1);
+  this.showallproducts(1);
            
       
         this.Waitcall = false;
@@ -149,7 +151,7 @@ this.showallproducts(1);
   }
 
 showallproducts(page: number){
-  this.GetProducts.PhoneandTablet(this.CatName).subscribe(resSlidersData => {
+  this.GetProducts.PhoneandTablet(this.CatName || this.Subcat).subscribe(resSlidersData => {
     console.log(resSlidersData)
     // this.Trend = resSlidersData.Results;
     
