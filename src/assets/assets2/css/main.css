@@ -651,7 +651,7 @@ h6 {
 .navbar-nav>li.active>a,
 .navbar-nav>li:hover>a,
 .navbar-nav>li>a:hover {
-    color: red!important;
+    color: #c00!important;
     background: #fff!important
 }
 
@@ -2593,7 +2593,7 @@ a.wit-btn {
 .profilestat li h6 {
     font-size: 30px;
     font-weight: 600;
-    color: red;
+    color:#c00;
     margin-bottom: 10px
 }
 
@@ -3593,7 +3593,7 @@ ul.orderlist li:before {
 }
 
 .three-plan .plan-detail i {
-    color: red!important
+    color: #c00!important
 }
 
 .pricing-table1-2 {
@@ -4422,7 +4422,7 @@ input.upload-input {
 
 .pagination>li>a,
 .pagination>li>span {
-    color: red
+    color: #c00
 }
 
 .pagination>.active>a,
@@ -4431,8 +4431,8 @@ input.upload-input {
 .pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
-    background-color: red;
-    border-color: red
+    background-color: #c00;
+    border-color: #c00
 }
 
 .pagination>li>a:focus,

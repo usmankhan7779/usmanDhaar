@@ -16,8 +16,8 @@ body {
     right: 10px;
     border: none;
     outline: 0;
-    background-color: red;
-    box-shadow: 0 0 12px red;
+    background-color: #c00;
+    box-shadow: 0 0 12px #c00;
     color: #fff;
     cursor: pointer;
     padding: 10px;
@@ -1924,7 +1924,7 @@ ul#cart-sidebar {
 }
 
 .product-item .item-inner .product-thumbnail .product-item-photo .product-image-photo {
-    width: 200px
+    width: 168px
 }
 
 .product-item .item-inner .pro-box-info {
@@ -2027,8 +2027,8 @@ ul#cart-sidebar {
 
 .product-item .item-inner .pro-box-info .pro-actions .action.add-to-cart:hover {
     color: #fff;
-    background: red!important;
-    border: 1px solid red;
+    background: #c00!important;
+    border: 1px solid #c00;
     transition: all .4s ease-out 0s
 }
 
@@ -2129,7 +2129,8 @@ ul#cart-sidebar {
 
 .home-tab .product-item {
     margin: 0;
-    min-height: 330px
+    min-height: 330px;
+    margin-top: 10px
 }
 
 .product-grid-area.col4 .product-item {
@@ -4160,7 +4161,7 @@ button.subscribe:before {
 }
 
 .footer-coppyright a:hover {
-    color: red
+    color: #c00
 }
 
 nav {
@@ -4843,7 +4844,7 @@ button.button-checkout {
     padding: 8px 12px;
     font-weight: 700;
     display: inline-block;
-    border: 1px solid #c1c1c1;
+    /* border: 1px solid #c1c1c1; */
     border-bottom: 2px #ed2424 solid;
     margin-bottom: -2px
 }
@@ -5104,7 +5105,7 @@ button.button.button-clear:hover {
 
 .popular-tags-area .tag li a:hover {
     background: #ed2424;
-    color: #000
+    color: #fff
 }
 
 .popular-tags-area .tag {
@@ -5805,7 +5806,7 @@ ul.products-list .sale-left {
 }
 
 .product-view-area .product-name h1 i:hover {
-    color: red
+    color: #c00
 }
 
 .product-view-area .short-description {
@@ -5854,7 +5855,7 @@ ul.products-list .sale-left {
 }
 
 .availability.in-stock span.sold {
-    background: red;
+    background: #c00;
     color: #fff;
     padding: 3px 8px;
     border-radius: 10px
@@ -6099,16 +6100,16 @@ button.button.pro-add-to-cart span {
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
-    background: red;
-    border: 1px solid red;
+    background:#c00;
+    border: 1px solid #c00;
     color: #fff;
     cursor: pointer
 }
 
 .nav-tabs>li>a:hover {
-    background: red;
+    background: #c00;
     color: #fff;
-    border: 1px solid red
+    border: 1px solid #c00
 }
 
 .tab-content {
@@ -7451,7 +7452,7 @@ a.button-back:hover {
     left: 0;
     animation: move 1s ease infinite;
     margin-top: 150px;
-    color: red
+    color: #c00
 }
 
 @keyframes move {
@@ -7544,7 +7545,7 @@ label[for=rememberme] {
 }
 
 .box-authentication .required {
-    color: red;
+    color: #c00;
     padding-left: 3px
 }
 
@@ -8492,7 +8493,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 
 .header-icons-rightsettingnew {
     margin-right: 3px;
-    color: red;
+    color: #c00;
     font-size: 16px
 }
 
@@ -8837,7 +8838,7 @@ all and (min-width:992px) and (-webkit-transform-3d) {
 }
 
 .item.slick-slide:hover a {
-    color: red!important
+    color: #c00!important
 }
 
 .item.slick-slide a {
@@ -9255,8 +9256,8 @@ ngx-image-viewer .img-container {
 
 .btn-red {
     color: #fff;
-    background: red;
-    border: 1px solid red;
+    background: #c00;
+    border: 1px solid #c00;
     box-shadow: 0 0 15px -2px red
 }
 
